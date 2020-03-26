@@ -96,7 +96,7 @@ def init_developments():
 
     print(set(developments_co['effectivedate'].dt.year))
 
-    print("Loaded.\n")
+    print("Finished loading the tables from postgres\n")
 
     return developments, developments_co, sql_engine
 
@@ -118,7 +118,7 @@ def calculate_yearly_unit_totals(developments_co):
         if (i % 1000 == 0):
             print(i)
 
-    print("Done.\n")
+    print("Done creating yearly unit totals\n")
 
     # Convert the dictionary of job_ids :  cofos to a dataframe
     df_job_groups = pd.DataFrame(job_groups)
@@ -227,9 +227,9 @@ def main():
 
 
     # Dump back to postgres
-    print("Dumping yearly_unitchange back to postgres...")
+    print("Dumping it back to postgres...")
     developments.to_sql('yearly_unitchange', con=sql_engine, if_exists='replace', chunksize=5000, index=False)
-    print("Done.")
+    print("Done dumping it back to postgres...")
 
 
 if __name__ == '__main__':

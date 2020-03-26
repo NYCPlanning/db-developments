@@ -75,7 +75,7 @@ if __name__ == '__main__':
 
     # records = geocode(records)
 
-    print('** Geosupport calls begins here **')
+    print('geocoding begins here ...')
     # Multiprocess
     with Pool(processes=cpu_count()) as pool:
         it1 = pool.map(geocode, records1, 10000)
@@ -83,6 +83,6 @@ if __name__ == '__main__':
     with Pool(processes=cpu_count()) as pool:
         it2 = pool.map(geocode, records2, 10000)
 
-    print('** Geocoding finished, dumping to postgres **')
+    print('geocoding finished, dumping tp postgres ...')
     exporter(df=pd.DataFrame(it1), table_name='hny_geocode_results', con=engine)
     exporter(df=pd.DataFrame(it2), table_name='hny_manual_geocode_results', con=engine)
