@@ -1,5 +1,5 @@
 -- create a tempory table from the housing table where development happened
--- with the desired fields in the desired order named appropriately
+-- with the desired fields in the desired order named approriatly
 -- copy that table to the output folder and drop the table
 -- update the cutoff dates
 	-- Cutoff date for 1st quarter would be March 31st.
@@ -9,19 +9,16 @@
 -- DROP TABLE IF EXISTS dev_export;
 -- SELECT * INTO dev_export FROM developments_hny LIMIT 10;
 
-
-/*
 -- output devdb for QAQC purposes
 DROP TABLE IF EXISTS dev_export;
 SELECT * INTO dev_export
 FROM developments_hny
-WHERE ((co_earliest_effectivedate::date >= '2010-01-01' AND co_earliest_effectivedate::date <=  '2020-01-01')
-OR (co_earliest_effectivedate IS NULL AND status_q::date >= '2010-01-01' AND status_q::date <=  '2020-01-01')
-OR (co_earliest_effectivedate IS NULL AND status_q IS NULL AND status_a::date >= '2010-01-01' AND status_a::date <=  '2020-01-01'))
+WHERE ((co_earliest_effectivedate::date >= '2010-01-01' AND co_earliest_effectivedate::date <=  :'CAPTURE_DATE')
+OR (co_earliest_effectivedate IS NULL AND status_q::date >= '2010-01-01' AND status_q::date <=  :'CAPTURE_DATE')
+OR (co_earliest_effectivedate IS NULL AND status_q IS NULL AND status_a::date >= '2010-01-01' AND status_a::date <=  :'CAPTURE_DATE'))
 AND x_outlier IS DISTINCT FROM 'true';
-*/
 
--- Reorder and rename developments_hny table
+-- output the table reorder rename columns
 DROP TABLE IF EXISTS developments_export;
 CREATE TABLE developments_export (
 	Job_Number text,
@@ -357,88 +354,34 @@ SELECT
 	x_geomsource,
 	x_dcpedited,
 	-- x_reason,
-	'2019Q4',
+	:'VERSION',
 	x_outlier
 FROM developments_hny;
-
--- Force occ-category to be residential for all housing DB cases prior to export
-UPDATE developments_export
-SET Occ_Category = (
-	CASE 
-		WHEN (/* Include corrections that result in non-null units */
-				(Job_Number IN (
-    				SELECT DISTINCT b.job_number
-    				FROM housing_input_research b
-    				WHERE b.new_value IS NOT NULL 
-						AND b.field IN ('units_initial',
-									'units_init',
-									'units_Init', 
-									'units_prop', 
-									'Hotel_init', 
-									'Hotel_prop', 
-									'OtherB_init', 
-									'OtherB_prop')
-						))
-				/*Identify residential by keyword*/
-				OR ((Occ_Category = 'Residential' 
-					OR Occ_Proposed LIKE '%Residential%' 
-					OR Occ_Initial LIKE '%Residential%' 
-					OR Occ_Proposed LIKE '%Assisted%Living%' 
-					OR Occ_Initial LIKE '%Assisted%Living%')
-				/* Exclude garage & miscellaneous from residential */
-				AND (Occ_Initial IS DISTINCT FROM 'Garage/Miscellaneous' 
-					OR Occ_Proposed IS DISTINCT FROM 'Garage/Miscellaneous')
-				/* Exclude new HNY hotels or dorms not in mixed-use */
-				AND Job_Number NOT IN (
-					SELECT DISTINCT Job_Number
-					FROM developments_hny
-					WHERE Job_Type = 'New Building' 
-						AND Occ_Proposed = 'Hotel or Dormitory' 
-						AND MixedUseBldg IS NULL))
-				) THEN 'Residential'
-		/* Make sure everything else is other */
-		ELSE 'Other'
-	END);
-
-
--- overwrite non-residential units to zero
-UPDATE developments_export
-SET Units_Initial = '0',
-	Units_Prop = '0',
-	Units_Net = '0'
-WHERE developments_export.Occ_Category = 'Other';
-
 
 -- output the devDB
 DROP TABLE IF EXISTS devdb_export;
 SELECT * INTO devdb_export
 FROM developments_export
-WHERE ((Date_Complete::date >= '2010-01-01' 
-		AND Date_Complete::date <=  '2020-01-01')
-	OR (Date_Complete IS NULL 
-		AND Date_Permittd::date >= '2010-01-01' 
-		AND Date_Permittd::date <=  '2020-01-01')
-	OR (Date_Complete IS NULL 
-		AND Date_Permittd IS NULL 
-		AND Date_Filed::date >= '2010-01-01' 
-		AND Date_Filed::date <=  '2020-01-01'))
+WHERE ((Date_Complete::date >= '2010-01-01' AND Date_Complete::date <=  :'CAPTURE_DATE')
+OR (Date_Complete IS NULL AND Date_Permittd::date >= '2010-01-01' AND Date_Permittd::date <=  :'CAPTURE_DATE')
+OR (Date_Complete IS NULL AND Date_Permittd IS NULL AND Date_Filed::date >= '2010-01-01' AND Date_Filed::date <=  :'CAPTURE_DATE'))
 AND x_outlier IS DISTINCT FROM 'true';
 
 -- output the housingDB
 DROP TABLE IF EXISTS housing_export;
 SELECT * INTO housing_export
 FROM developments_export
-WHERE ((Date_Complete::date >= '2010-01-01' 
-		AND Date_Complete::date <=  '2020-01-01')
-	OR (Date_Complete IS NULL 
-		AND Date_Permittd::date >= '2010-01-01' 
-		AND Date_Permittd::date <=  '2020-01-01')
-	OR (Date_Complete IS NULL 
-		AND Date_Permittd IS NULL 
-		AND Date_Filed::date >= '2010-01-01' 
-		AND Date_Filed::date <=  '2020-01-01'))
-AND Occ_Category = 'Residential'
-AND x_outlier IS DISTINCT FROM 'true';
+WHERE ((Date_Complete::date >= '2010-01-01' AND Date_Complete::date <=  :'CAPTURE_DATE')
+OR (Date_Complete IS NULL AND Date_Permittd::date >= '2010-01-01' AND Date_Permittd::date <=  :'CAPTURE_DATE')
+OR (Date_Complete IS NULL AND Date_Permittd IS NULL AND Date_Filed::date >= '2010-01-01' AND Date_Filed::date <=  :'CAPTURE_DATE'))
+AND (Occ_Category = 'Residential' OR Occ_Proposed LIKE '%Residential%' OR Occ_Initial LIKE '%Residential%' OR Occ_Proposed LIKE '%Assisted%Living%' OR Occ_Initial LIKE '%Assisted%Living%')
+AND (Occ_Initial IS DISTINCT FROM 'Garage/Miscellaneous' OR Occ_Proposed IS DISTINCT FROM 'Garage/Miscellaneous')
+AND Job_Number NOT IN (
+	SELECT DISTINCT Job_Number
+	FROM developments_hny
+	WHERE Job_Type = 'New Building' AND Occ_Proposed = 'Hotel or Dormitory' AND MixedUseBldg IS NULL)
+AND x_outlier IS DISTINCT FROM 'true'
+;
 
 -- drop outlier column from final output
 ALTER TABLE devdb_export

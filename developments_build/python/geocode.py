@@ -84,10 +84,10 @@ if __name__ == '__main__':
 
     records = df.to_dict('records')
     
-    print('** Geosupport calls begins here **')
+    print('geocoding begins here ...')
     # Multiprocess
     with Pool(processes=cpu_count()) as pool:
         it = pool.map(geocode, records, 10000)
     
-    print('** Geocoding finished, dumping to postgres **')
+    print('geocoding finished, dumping tp postgres ...')
     exporter(df=pd.DataFrame(it), table_name='development_tmp', con=engine)

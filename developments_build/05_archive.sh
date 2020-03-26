@@ -1,10 +1,9 @@
 #!/bin/bash
 source config.sh
+DATE=$(date "+%Y/%m/%d");
 
-START=$(date +%s);
 # archive developments DB
 pg_dump -t devdb_export --no-owner $BUILD_ENGINE | psql $EDM_DATA
-DATE=$(date "+%Y/%m/%d");
 psql $EDM_DATA -c "CREATE SCHEMA IF NOT EXISTS developments;";
 psql $EDM_DATA -c "ALTER TABLE devdb_export SET SCHEMA developments;";
 psql $EDM_DATA -c "DROP VIEW IF EXISTS developments.latest;";
@@ -14,7 +13,6 @@ psql $EDM_DATA -c "CREATE VIEW developments.latest AS (SELECT '$DATE' as v, * FR
 
 # archive housing DB
 pg_dump -t housing_export --no-owner $BUILD_ENGINE | psql $EDM_DATA
-DATE=$(date "+%Y/%m/%d");
 psql $EDM_DATA -c "CREATE SCHEMA IF NOT EXISTS dcp_housing;";
 psql $EDM_DATA -c "ALTER TABLE housing_export SET SCHEMA dcp_housing;";
 psql $EDM_DATA -c "DROP VIEW IF EXISTS dcp_housing.latest;";
@@ -24,13 +22,9 @@ psql $EDM_DATA -c "CREATE VIEW dcp_housing.latest AS (SELECT '$DATE' as v, * FRO
 
 # archive yearly_unitchange table
 pg_dump -t yearly_unitchange --no-owner $BUILD_ENGINE | psql $EDM_DATA
-DATE=$(date "+%Y/%m/%d");
 psql $EDM_DATA -c "CREATE SCHEMA IF NOT EXISTS yearly_unitchange;";
 psql $EDM_DATA -c "ALTER TABLE yearly_unitchange SET SCHEMA yearly_unitchange;";
 psql $EDM_DATA -c "DROP VIEW IF EXISTS yearly_unitchange.latest;";
 psql $EDM_DATA -c "DROP TABLE IF EXISTS yearly_unitchange.\"$DATE\";";
 psql $EDM_DATA -c "ALTER TABLE yearly_unitchange.yearly_unitchange RENAME TO \"$DATE\";";
 psql $EDM_DATA -c "CREATE VIEW yearly_unitchange.latest AS (SELECT '$DATE' as v, * FROM yearly_unitchange.\"$DATE\");"
-
-END=$(date +%s);
-echo $((END-START)) | awk '{print int($1/60)" minutes and "int($1%60)" seconds elapsed."}'
