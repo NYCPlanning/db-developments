@@ -1,0 +1,3045 @@
+job_number,flag,outlier
+104112728,,N
+220014400,,N
+302320904,,N
+302297002,,N
+103236954,,N
+302079738,,N
+200766527,,N
+321656310,,N
+301623474,,N
+302253406,,N
+302066993,,N
+301505789,,N
+302015913,,N
+110368726,,N
+103507466,,N
+302008565,,N
+121868513,,N
+122668700,,N
+120773804,,N
+120085950,,N
+301568239,,N
+120986077,,N
+120841928,,N
+120156311,,N
+121532252,,N
+104934083,,N
+410111230,,N
+102280586,,N
+104578878,,N
+110143924,,N
+121588969,,N
+104937678,,N
+302386095,,N
+121325869,,N
+121369429,,N
+110285334,,N
+302085277,,N
+201110939,,N
+104934074,,N
+302229693,,N
+200776446,,N
+110278468,,N
+104296218,,N
+102828585,,N
+401101151,,N
+104616122,,N
+200800311,,N
+401094604,,N
+302085302,,N
+320576925,,N
+102780545,,N
+120621354,,N
+102926915,,N
+200780262,,N
+110125962,,N
+302344443,,N
+102999980,,N
+120926070,,N
+200766821,,N
+301963276,,N
+420605296,,N
+321690103,unit_change_2018 is negative,N
+321615472,unit_change_2018 is negative,N
+321697525,unit_change_2018 is negative,N
+421583058,unit_change_2018 is negative,N
+321573472,unit_change_2018 is negative,N
+321797711,unit_change_2018 is negative,N
+421548301,unit_change_2018 is negative,N
+122934726,unit_change_2018 is negative,N
+421479572,unit_change_2018 is negative,N
+321118045,unit_change_2018 is negative,N
+121854323,job_type= A1 and units_net < -50,N
+122948640,job_type= A1 and units_net < -50,N
+302297002,job_type= DM and units_init > 19,N
+421575343,unit_change_2018 is negative,N
+520302930,unit_change_2018 is negative,N
+302079738,job_type= DM and units_init > 19,N
+320858817,unit_change_2018 is negative,N
+122470815,unit_change_2018 is negative,N
+321697437,unit_change_2018 is negative,N
+520323025,unit_change_2018 is negative,N
+520323622,unit_change_2018 is negative,N
+121588433,unit_change_2018 is negative,N
+321562858,unit_change_2018 is negative,N
+321724595,unit_change_2018 is negative,N
+321322680,unit_change_2018 is negative,N
+321676968,unit_change_2018 is negative,N
+421604972,unit_change_2018 is negative,N
+320573633,unit_change_2018 is negative,N
+520296769,unit_change_2018 is negative,N
+121636792,unit_change_2018 is negative,N
+122135215,unit_change_2018 is negative,N
+321571312,unit_change_2018 is negative,N
+421456061,unit_change_2018 is negative,N
+321697552,unit_change_2018 is negative,N
+321648160,unit_change_2018 is negative,N
+121109576,top 10 units_prop A1,
+421022164,top 10 units_prop A1,
+120069291,top 10 units_prop A1,
+310230568,top 10 units_prop A1,
+321528799,top 10 units_prop A1,
+120328476,top 10 units_prop A1,
+121109576,top 10 units_prop A1,
+310230568,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+121109576,top 10 units_prop A1,
+310230568,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+121109576,top 10 units_prop A1,
+310230568,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+121109576,top 10 units_prop A1,
+310230568,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+121109576,top 10 units_prop A1,
+310230568,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+121109576,top 10 units_prop A1,
+310230568,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+120762754,top 20 units_net A1,
+121109576,top 10 units_prop A1,
+310230568,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+121109576,top 10 units_prop A1,
+310230568,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+104869509,top 20 units_net A1,
+121109576,top 10 units_prop A1,
+320012525,top 20 units_net A1,
+310230568,top 10 units_prop A1,
+121186821,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+320350909,top 20 units_net A1,
+120021485,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121109576,top 10 units_prop A1,
+121186821,top 20 units_net A1,
+102994985,,N
+302085295,,N
+110330909,,N
+200797156,,N
+310246114,,N
+301568248,,N
+500911294,,N
+120700795,,N
+104294096,,N
+110435413,,N
+120926052,,N
+302085268,,N
+401639973,,N
+301953759,,N
+301626088,,N
+302085259,,N
+104881530,,N
+120077380,,N
+310226010,,N
+104930461,,N
+301491543,,N
+104402941,,N
+301139499,,N
+301963285,,N
+110474914,,N
+302387682,,N
+104278130,,N
+104934065,,N
+121862751,,N
+200773378,,N
+302197655,,N
+102926933,,N
+103916498,,N
+210086315,,N
+110450752,,N
+104813720,,N
+121394295,,N
+104813711,,N
+301228525,,N
+121854323,,N
+122948640,,N
+121048053,,N
+402681175,,N
+302085286,,N
+110418174,,N
+120926061,,N
+120869596,,N
+302157573,,N
+104945516,,N
+104945507,,N
+104413403,,N
+420295932,,N
+201106588,,N
+520322286,unit_change_2018 is negative,N
+321700566,unit_change_2018 is negative,N
+421548757,unit_change_2018 is negative,N
+421642235,unit_change_2018 is negative,N
+520311458,unit_change_2018 is negative,N
+321662768,unit_change_2018 is negative,N
+421398231,unit_change_2018 is negative,N
+520319414,unit_change_2018 is negative,N
+321786956,unit_change_2018 is negative,N
+310230568,top 10 units_prop A1,
+121186821,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+302250597,job_type= A1 and units_net < -50,
+122240574,,C
+321694234,unit_change_2018 is negative,N
+121641492,unit_change_2018 is negative,N
+121862751,job_type= A1 and units_net < -50,N
+320350909,top 20 units_net A1,
+120021485,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121109576,top 10 units_prop A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop A1,
+121186821,top 10 units_prop A1,
+104177481,top 10 units_prop A1,
+302250597,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+310230568,top 10 units_prop A1,
+121186821,top 20 units_net A1,
+121326476,job_type= A1 and units_net < -50,
+421548739,unit_change_2018 is negative,N
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+321528799,top 10 units_prop A1,
+410005934,top 10 units_prop A1,
+120021485,job_type= A1 and units_net < -50,
+321646778,unit_change_2018 is negative,N
+121109576,top 10 units_prop A1,
+120086762,job_type= A1 and units_net < -50,
+421548258,unit_change_2018 is negative,N
+421548720,unit_change_2018 is negative,N
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+122673446,unit_change_2018 is negative,N
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+421480365,unit_change_2018 is negative,N
+121109576,top 10 units_prop Alteration,
+520338251,unit_change_2018 is negative,N
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+320350909,top 20 units_net A1,
+321425249,unit_change_2018 is negative,N
+120021485,job_type= A1 and units_net < -50,
+121326476,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+520312812,unit_change_2018 is negative,N
+321794849,unit_change_2018 is negative,N
+121109576,top 10 units_prop A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+310230568,top 10 units_prop A1,
+321528799,top 10 units_prop A1,
+410005934,top 10 units_prop A1,
+120086762,job_type= A1 and units_net < -50,
+520324266,unit_change_2018 is negative,N
+320321362,top 20 units_net A1,
+122070098,unit_change_2018 is negative,N
+121582689,top 20 units_net A1,
+220631546,unit_change_2018 is negative,N
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+104672310,unit_change_2018 is negative,N
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+120021485,job_type= A1 and units_net < -50,
+220623626,unit_change_2018 is negative,N
+120086762,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+321676986,unit_change_2018 is negative,N
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+320284955,top 20 units_net A1,N
+421592949,unit_change_2018 is negative,N
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+120021485,job_type= A1 and units_net < -50,
+520332809,unit_change_2018 is negative,N
+120086762,job_type= A1 and units_net < -50,
+421605310,unit_change_2018 is negative,N
+520326111,unit_change_2018 is negative,N
+421531925,unit_change_2018 is negative,N
+520189929,unit_change_2018 is negative,N
+102501810,unit_change_2018 is negative,N
+302085277,job_type= DM and units_init > 19,N
+321280485,unit_change_2018 is negative,N
+120926052,job_type= A1 and units_net < -50,N
+421535459,unit_change_2018 is negative,N
+321679876,unit_change_2018 is negative,N
+421457578,unit_change_2018 is negative,N
+220600721,unit_change_2018 is negative,N
+120700795,job_type= A1 and units_net < -50,N
+321251015,unit_change_2018 is negative,N
+421239412,unit_change_2018 is negative,N
+321423679,unit_change_2018 is negative,N
+520326521,unit_change_2018 is negative,N
+420652546,top 20 units_net A1,N
+320908942,unit_change_2018 is negative,N
+320321362,top 20 units_net A1,
+122371236,unit_change_2018 is negative,N
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+520320466,unit_change_2018 is negative,N
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+122826059,unit_change_2018 is negative,N
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+321688991,unit_change_2018 is negative,N
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+321744957,unit_change_2018 is negative,N
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+520255508,unit_change_2018 is negative,N
+421569671,unit_change_2018 is negative,N
+120021485,job_type= A1 and units_net < -50,
+220611666,unit_change_2018 is negative,N
+421570311,unit_change_2018 is negative,N
+120086762,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+421592930,unit_change_2018 is negative,N
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+520311467,unit_change_2018 is negative,N
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+421484655,unit_change_2018 is negative,N
+320321362,top 20 units_net A1,
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+320321362,top 20 units_net A1,
+220547718,unit_change_2018 is negative,N
+121582689,top 20 units_net A1,
+121186821,top 20 units_net A1,
+310230568,top 10 units_prop Alteration,
+121326476,job_type= A1 and units_net < -50,
+120069291,top 10 units_prop Alteration,
+320350909,top 20 units_net A1,
+102507253,job_type= A1 and units_net < -50,
+121109576,top 10 units_prop Alteration,
+120021485,job_type= A1 and units_net < -50,
+120086762,job_type= A1 and units_net < -50,
+123599472,job_type= DM and units_init > 19,N
+120069291,top 10 units_prop Alteration,N
+310230568,top 10 units_prop Alteration,
+121188981,job_description contains both %RESID% AND %HOTEL%,N
+410005934,top 10 units_prop Alteration,C
+421484049,job_type= DM and units_init > 19,C
+123153041,job_type= DM and units_init > 19,N
+321638108,unit_change_2018 is negative,N
+123416945,job_type= DM and units_init > 19,N
+220667829,job_type= DM and units_init > 19,C
+120328476,top 10 units_prop Alteration,N
+121109576,top 10 units_prop Alteration,
+321186587,top 20 units_net A1,N
+321615427,unit_change_2018 is negative,N
+123154237,job_type= DM and units_init > 19,N
+123599472,job_type= DM and units_init > 19,N
+120069291,top 10 units_prop Alteration,N
+310230568,top 10 units_prop Alteration,
+121188981,job_description contains both %RESID% AND %HOTEL%,N
+104933235,unit_change_2018 is negative,N
+410005934,top 10 units_prop Alteration,C
+110188706,unit_change_2018 is negative,N
+421484049,job_type= DM and units_init > 19,C
+123153041,job_type= DM and units_init > 19,N
+123416945,job_type= DM and units_init > 19,N
+320914640,unit_change_2018 is negative,N
+122693530,unit_change_2018 is negative,N
+123343872,unit_change_2018 is negative,N
+220667829,job_type= DM and units_init > 19,C
+421621490,unit_change_2018 is negative,N
+120328476,top 10 units_prop Alteration,N
+421419959,unit_change_2018 is negative,N
+121109576,top 10 units_prop Alteration,
+321186587,top 20 units_net A1,N
+123154237,job_type= DM and units_init > 19,N
+421548463,unit_change_2018 is negative,N
+321366213,unit_change_2018 is negative,N
+520335726,unit_change_2018 is negative,N
+520334745,unit_change_2018 is negative,N
+321326196,unit_change_2018 is negative,N
+123131039,unit_change_2018 is negative,N
+421601289,unit_change_2018 is negative,N
+104192758,unit_change_2018 is negative,N
+321509907,unit_change_2018 is negative,N
+122817988,unit_change_2018 is negative,N
+200776446,job_type= DM and units_init > 19,N
+421587125,unit_change_2018 is negative,N
+421548454,unit_change_2018 is negative,N
+421587713,unit_change_2018 is negative,N
+220616233,unit_change_2018 is negative,N
+123599472,job_type= DM and units_init > 19,N
+120069291,top 10 units_prop Alteration,N
+310230568,top 10 units_prop Alteration,
+121188981,job_description contains both %RESID% AND %HOTEL%,N
+410005934,top 10 units_prop Alteration,C
+421584645,unit_change_2018 is negative,N
+421484049,job_type= DM and units_init > 19,C
+123153041,job_type= DM and units_init > 19,N
+123416945,job_type= DM and units_init > 19,N
+220667829,job_type= DM and units_init > 19,C
+120328476,top 10 units_prop Alteration,N
+104616122,job_type= DM and units_init > 19,N
+121109576,top 10 units_prop Alteration,
+321186587,top 20 units_net A1,N
+123154237,job_type= DM and units_init > 19,N
+321564516,unit_change_2018 is negative,N
+123599472,job_type= DM and units_init > 19,N
+421643190,unit_change_2018 is negative,N
+401101151,job_type= DM and units_init > 19,N
+120069291,top 10 units_prop Alteration,N
+310230568,top 10 units_prop Alteration,
+121188981,job_description contains both %RESID% AND %HOTEL%,N
+410005934,top 10 units_prop Alteration,C
+421484049,job_type= DM and units_init > 19,C
+123153041,job_type= DM and units_init > 19,N
+123416945,job_type= DM and units_init > 19,N
+220667829,job_type= DM and units_init > 19,C
+120328476,top 10 units_prop Alteration,N
+520323052,unit_change_2018 is negative,N
+121109576,top 10 units_prop Alteration,
+321186587,top 20 units_net A1,N
+123154237,job_type= DM and units_init > 19,N
+123599472,job_type= DM and units_init > 19,N
+120069291,top 10 units_prop Alteration,N
+310230568,top 10 units_prop Alteration,
+121188981,job_description contains both %RESID% AND %HOTEL%,N
+410005934,top 10 units_prop Alteration,C
+421484049,job_type= DM and units_init > 19,C
+321749907,unit_change_2018 is negative,N
+321520430,unit_change_2018 is negative,N
+103977412,unit_change_2018 is negative,N
+123153041,job_type= DM and units_init > 19,N
+123416945,job_type= DM and units_init > 19,N
+220667829,job_type= DM and units_init > 19,C
+421589506,unit_change_2018 is negative,N
+120328476,top 10 units_prop Alteration,N
+121109576,top 10 units_prop Alteration,
+321186587,top 20 units_net A1,N
+123154237,job_type= DM and units_init > 19,N
+123599472,job_type= DM and units_init > 19,N
+321728314,unit_change_2018 is negative,N
+120069291,top 10 units_prop Alteration,N
+310230568,top 10 units_prop Alteration,
+121188981,job_description contains both %RESID% AND %HOTEL%,N
+410005934,top 10 units_prop Alteration,C
+421484049,job_type= DM and units_init > 19,C
+123153041,job_type= DM and units_init > 19,N
+123416945,job_type= DM and units_init > 19,N
+220667829,job_type= DM and units_init > 19,C
+120328476,top 10 units_prop Alteration,N
+421524345,unit_change_2018 is negative,N
+121109576,top 10 units_prop Alteration,
+321186587,top 20 units_net A1,N
+321694323,unit_change_2018 is negative,N
+123154237,job_type= DM and units_init > 19,N
+123599472,job_type= DM and units_init > 19,N
+120069291,top 10 units_prop Alteration,N
+310230568,top 10 units_prop Alteration,
+121188981,job_description contains both %RESID% AND %HOTEL%,N
+410005934,top 10 units_prop Alteration,C
+421484049,job_type= DM and units_init > 19,C
+123153041,job_type= DM and units_init > 19,N
+123416945,job_type= DM and units_init > 19,N
+220667829,job_type= DM and units_init > 19,C
+120328476,top 10 units_prop Alteration,N
+121109576,top 10 units_prop Alteration,
+321186587,top 20 units_net A1,N
+123154237,job_type= DM and units_init > 19,N
+123557463,top 10 units_prop Alteration,
+121184538,job_type= A1 and units_net < -50,
+123766594,job_type= DM and units_init > 19,
+121816080,unit_change_2018 is negative,N
+120932465,job_type= A1 and units_net < -50,
+103818950,job_type= A1 and units_net < -50,
+123375631,job_type= A1 and units_net < -50,
+122753074,unit_change_2018 is negative,N
+520326585,unit_change_2018 is negative,N
+120710917,job_type= A1 and units_net < -50,
+120451082,job_type= A1 and units_net < -50,
+320624767,unit_change_2018 is negative,N
+104739829,job_type= A1 and units_net < -50,
+123751190,job_type= DM and units_init > 19,
+321930979,job_type= A1 and units_net < -50,
+321952099,job_type= DM and units_init > 19,
+121972106,job_type= A1 and units_net < -50,
+123835476,job_description contains both %RESID% AND %HOTEL%,
+122977172,job_description contains both %RESID% AND %HOTEL%,
+121185029,job_type= A1 and units_net < -50,
+421022164,top 10 units_prop Alteration,
+421593957,unit_change_2018 is negative,N
+321587939,unit_change_2018 is negative,N
+220611504,top 10 units_prop Alteration,
+120951318,job_type= A1 and units_net < -50,
+321952080,job_type= DM and units_init > 19,
+121184672,job_type= A1 and units_net < -50,
+520326763,unit_change_2018 is negative,N
+120447524,unit_change_2018 is negative,N
+421550315,unit_change_2018 is negative,N
+421593001,unit_change_2018 is negative,N
+123557463,top 10 units_prop Alteration,
+123766594,job_type= DM and units_init > 19,
+321647018,unit_change_2018 is negative,N
+123751190,job_type= DM and units_init > 19,
+421557540,unit_change_2018 is negative,N
+123835476,job_description contains both %RESID% AND %HOTEL%,
+421022164,top 10 units_prop Alteration,
+321621606,unit_change_2018 is negative,N
+220611504,top 10 units_prop Alteration,
+520329136,unit_change_2018 is negative,N
+320865649,unit_change_2018 is negative,N
+122850628,unit_change_2018 is negative,N
+302003711,top 10 units_prop A1,N
+200780262,job_type= DM and units_init > 19,N
+421537117,unit_change_2018 is negative,N
+321750949,unit_change_2018 is negative,N
+321694412,unit_change_2018 is negative,N
+103319491,unit_change_2018 is negative,N
+421387243,unit_change_2018 is negative,N
+520319405,unit_change_2018 is negative,N
+321626763,unit_change_2018 is negative,N
+421589766,unit_change_2018 is negative,N
+321102025,top 10 units_prop A1,N
+321475658,unit_change_2018 is negative,N
+421585172,unit_change_2018 is negative,N
+120873206,unit_change_2018 is negative,N
+321525159,unit_change_2018 is negative,N
+321528619,unit_change_2018 is negative,N
+320516884,top 20 units_net A1,N
+220632019,unit_change_2018 is negative,N
+123557463,top 10 units_prop Alteration,
+123766594,job_type= DM and units_init > 19,
+123751190,job_type= DM and units_init > 19,
+123835476,job_description contains both %RESID% AND %HOTEL%,
+421022164,top 10 units_prop Alteration,
+220611504,top 10 units_prop Alteration,
+520325746,unit_change_2018 is negative,N
+321535255,unit_change_2018 is negative,N
+520324284,unit_change_2018 is negative,N
+421578769,unit_change_2018 is negative,N
+520320439,unit_change_2018 is negative,N
+321694332,unit_change_2018 is negative,N
+500911294,job_type= DM and units_init > 19,N
+520323659,unit_change_2018 is negative,N
+321475667,unit_change_2018 is negative,N
+122401971,unit_change_2018 is negative,N
+103154612,top 10 units_prop A1,N
+420650664,unit_change_2018 is negative,N
+520318530,unit_change_2018 is negative,N
+121588969,job_description contains both %RESID% AND %HOTEL%,N
+321505670,unit_change_2018 is negative,N
+104578878,job_description contains both %RESID% AND %HOTEL%,N
+321701814,unit_change_2018 is negative,N
+321655650,unit_change_2018 is negative,N
+103143527,unit_change_2018 is negative,N
+122109734,unit_change_2018 is negative,N
+520143719,unit_change_2018 is negative,N
+121186171,unit_change_2018 is negative,N
+123012587,unit_change_2018 is negative,N
+421412153,unit_change_2018 is negative,N
+421583094,unit_change_2018 is negative,N
+120481246,unit_change_2018 is negative,N
+520324355,unit_change_2018 is negative,N
+302085295,job_type= DM and units_init > 19,N
+321455322,unit_change_2018 is negative,N
+520318166,unit_change_2018 is negative,N
+122168206,unit_change_2018 is negative,N
+121532252,job_description contains both %RESID% AND %HOTEL%,N
+520330874,unit_change_2018 is negative,N
+321498107,unit_change_2018 is negative,N
+321697623,unit_change_2018 is negative,N
+421580809,unit_change_2018 is negative,N
+104402941,job_type= DM and units_init > 19,N
+110474914,job_type= DM and units_init > 19,N
+102812912,unit_change_2018 is negative,N
+110278468,top 20 units_net A1,N
+321727342,unit_change_2018 is negative,N
+321629056,unit_change_2018 is negative,N
+123083796,unit_change_2018 is negative,N
+520317540,unit_change_2018 is negative,N
+120986077,job_type= A1 and units_net < -50,N
+120085950,job_type= A1 and units_net < -50,N
+520336262,unit_change_2018 is negative,N
+520307374,unit_change_2018 is negative,N
+321515295,unit_change_2018 is negative,N
+421548613,unit_change_2018 is negative,N
+421616120,unit_change_2018 is negative,N
+520318040,unit_change_2018 is negative,N
+122239871,unit_change_2018 is negative,N
+321353851,unit_change_2018 is negative,N
+321716808,unit_change_2018 is negative,N
+321244382,unit_change_2018 is negative,N
+302085259,job_type= DM and units_init > 19,N
+321505661,unit_change_2018 is negative,N
+320506092,top 20 units_net A1,N
+421605819,unit_change_2018 is negative,N
+321676977,unit_change_2018 is negative,N
+321727333,unit_change_2018 is negative,N
+421569626,unit_change_2018 is negative,N
+121868513,job_description contains both %RESID% AND %HOTEL%,N
+421589515,unit_change_2018 is negative,N
+421513268,unit_change_2018 is negative,N
+421579296,unit_change_2018 is negative,N
+520328967,unit_change_2018 is negative,N
+421523934,unit_change_2018 is negative,N
+122822062,unit_change_2018 is negative,N
+321546305,unit_change_2018 is negative,N
+421566068,unit_change_2018 is negative,N
+421582834,unit_change_2018 is negative,N
+421559904,unit_change_2018 is negative,N
+420605296,top 20 units_net A1,N
+120869596,job_type= DM and units_init > 19,N
+321783469,unit_change_2018 is negative,N
+321627218,unit_change_2018 is negative,N
+321656310,job_type= A1 and units_net < -50,N
+321506713,unit_change_2018 is negative,N
+103236954,job_description contains both %RESID% AND %HOTEL%,N
+421378896,unit_change_2018 is negative,N
+301228525,job_type= DM and units_init > 19,N
+321695135,unit_change_2018 is negative,N
+421575496,unit_change_2018 is negative,N
+220014400,job_type= A1 and units_net < -50,N
+520313795,unit_change_2018 is negative,N
+321697534,unit_change_2018 is negative,N
+220588718,unit_change_2018 is negative,N
+120715501,unit_change_2018 is negative,N
+420951713,unit_change_2018 is negative,N
+123389403,unit_change_2018 is negative,N
+320624080,unit_change_2018 is negative,N
+321316143,unit_change_2018 is negative,N
+421588222,unit_change_2018 is negative,N
+520323089,unit_change_2018 is negative,N
+320949417,unit_change_2018 is negative,N
+421525193,unit_change_2018 is negative,N
+421592958,unit_change_2018 is negative,N
+321697428,unit_change_2018 is negative,N
+421587134,unit_change_2018 is negative,N
+301505789,job_type= DM and units_init > 19,N
+420288959,top 20 units_net A1,N
+321436451,unit_change_2018 is negative,N
+421582825,unit_change_2018 is negative,N
+321701805,unit_change_2018 is negative,N
+104413403,job_description contains both %RESID% AND %HOTEL%,N
+321677280,unit_change_2018 is negative,N
+110416210,unit_change_2018 is negative,N
+301623474,job_type= DM and units_init > 19,N
+302066993,job_type= DM and units_init > 19,N
+302253406,job_type= DM and units_init > 19,N
+321786670,unit_change_2018 is negative,N
+220600981,unit_change_2018 is negative,N
+104813720,job_description contains both %RESID% AND %HOTEL%,N
+321626745,unit_change_2018 is negative,N
+520315329,unit_change_2018 is negative,N
+520322017,unit_change_2018 is negative,N
+520331775,unit_change_2018 is negative,N
+321424589,unit_change_2018 is negative,N
+321628164,unit_change_2018 is negative,N
+104608195,unit_change_2018 is negative,N
+121394295,job_description contains both %RESID% AND %HOTEL%,N
+520323711,unit_change_2018 is negative,N
+104813711,job_description contains both %RESID% AND %HOTEL%,N
+321703796,unit_change_2018 is negative,N
+421587232,unit_change_2018 is negative,N
+321785314,unit_change_2018 is negative,N
+321187023,unit_change_2018 is negative,N
+321688982,unit_change_2018 is negative,N
+123294924,unit_change_2018 is negative,N
+104112728,job_type= DM and units_init > 19,N
+321692110,unit_change_2018 is negative,N
+421548677,unit_change_2018 is negative,N
+121324717,unit_change_2018 is negative,N
+320783194,unit_change_2018 is negative,N
+321697366,unit_change_2018 is negative,N
+520324444,unit_change_2018 is negative,N
+520318497,unit_change_2018 is negative,N
+220650043,unit_change_2018 is negative,N
+520327824,unit_change_2018 is negative,N
+421481042,unit_change_2018 is negative,N
+421544314,unit_change_2018 is negative,N
+104278130,job_description contains both %RESID% AND %HOTEL%,N
+220607074,unit_change_2018 is negative,N
+520164893,unit_change_2018 is negative,N
+104930461,job_type= A1 and units_net < -50,N
+301649973,unit_change_2018 is negative,N
+421518968,unit_change_2018 is negative,N
+520312741,unit_change_2018 is negative,N
+520320475,unit_change_2018 is negative,N
+321362538,unit_change_2018 is negative,N
+301568239,job_type= DM and units_init > 19,N
+421488508,unit_change_2018 is negative,N
+421567628,unit_change_2018 is negative,N
+220626972,unit_change_2018 is negative,N
+421630328,unit_change_2018 is negative,N
+121830439,unit_change_2018 is negative,N
+421548472,unit_change_2018 is negative,N
+220575900,unit_change_2018 is negative,N
+321411879,unit_change_2018 is negative,N
+421560867,unit_change_2018 is negative,N
+121369429,job_type= DM and units_init > 19,N
+122363539,unit_change_2018 is negative,N
+321521402,unit_change_2018 is negative,N
+421594206,unit_change_2018 is negative,N
+122043500,unit_change_2018 is negative,N
+520330160,unit_change_2018 is negative,N
+310123773,unit_change_2018 is negative,N
+321638082,unit_change_2018 is negative,N
+421592985,unit_change_2018 is negative,N
+520330883,unit_change_2018 is negative,N
+421341220,unit_change_2018 is negative,N
+421465159,unit_change_2018 is negative,N
+110017151,unit_change_2018 is negative,N
+321704937,unit_change_2018 is negative,N
+421521856,unit_change_2018 is negative,N
+104934083,job_type= DM and units_init > 19,N
+220580388,unit_change_2018 is negative,N
+220627800,unit_change_2018 is negative,N
+421548659,unit_change_2018 is negative,N
+320205309,unit_change_2018 is negative,N
+321795205,unit_change_2018 is negative,N
+421575450,unit_change_2018 is negative,N
+220602541,unit_change_2018 is negative,N
+220614084,unit_change_2018 is negative,N
+321562439,unit_change_2018 is negative,N
+421581611,unit_change_2018 is negative,N
+520319441,unit_change_2018 is negative,N
+123051179,unit_change_2018 is negative,N
+421581835,unit_change_2018 is negative,N
+120392173,unit_change_2018 is negative,N
+123111248,unit_change_2018 is negative,N
+321008440,unit_change_2018 is negative,N
+421590497,unit_change_2018 is negative,N
+210033747,unit_change_2018 is negative,N
+122349404,unit_change_2018 is negative,N
+321560663,unit_change_2018 is negative,N
+520276479,unit_change_2018 is negative,N
+102999980,job_description contains both %RESID% AND %HOTEL%,N
+200766821,job_description contains both %RESID% AND %HOTEL%,N
+121184556,unit_change_2018 is negative,N
+321697419,unit_change_2018 is negative,N
+421560992,unit_change_2018 is negative,N
+321614044,unit_change_2018 is negative,N
+421613098,unit_change_2018 is negative,N
+121617759,unit_change_2018 is negative,N
+321671071,unit_change_2018 is negative,N
+321546332,unit_change_2018 is negative,N
+321653821,unit_change_2018 is negative,N
+220652844,unit_change_2018 is negative,N
+421420279,unit_change_2018 is negative,N
+121123569,unit_change_2018 is negative,N
+321633461,unit_change_2018 is negative,N
+520311476,unit_change_2018 is negative,N
+421610000,unit_change_2018 is negative,N
+520324710,unit_change_2018 is negative,N
+321675512,unit_change_2018 is negative,N
+321547037,unit_change_2018 is negative,N
+320626462,unit_change_2018 is negative,N
+320915300,unit_change_2018 is negative,N
+421548631,unit_change_2018 is negative,N
+321380359,unit_change_2018 is negative,N
+421417256,unit_change_2018 is negative,N
+520302949,unit_change_2018 is negative,N
+321655678,unit_change_2018 is negative,N
+421436431,unit_change_2018 is negative,N
+320124441,unit_change_2018 is negative,N
+421548524,unit_change_2018 is negative,N
+421635573,unit_change_2018 is negative,N
+520328672,unit_change_2018 is negative,N
+321641023,unit_change_2018 is negative,N
+520319487,unit_change_2018 is negative,N
+520323640,unit_change_2018 is negative,N
+321671026,unit_change_2018 is negative,N
+310176261,unit_change_2018 is negative,N
+120649138,top 20 units_net A1,N
+321749890,unit_change_2018 is negative,N
+421365855,unit_change_2018 is negative,N
+421593083,unit_change_2018 is negative,N
+102926915,job_type= DM and units_init > 19,N
+321766843,unit_change_2018 is negative,N
+121471326,unit_change_2018 is negative,N
+321697482,unit_change_2018 is negative,N
+321546341,unit_change_2018 is negative,N
+104294096,job_type= DM and units_init > 19,N
+321794858,unit_change_2018 is negative,N
+321528600,unit_change_2018 is negative,N
+421576538,unit_change_2018 is negative,N
+321234231,unit_change_2018 is negative,N
+421548695,unit_change_2018 is negative,N
+321738795,unit_change_2018 is negative,N
+520312956,unit_change_2018 is negative,N
+220620040,unit_change_2018 is negative,N
+321718361,unit_change_2018 is negative,N
+321633700,unit_change_2018 is negative,N
+321667175,unit_change_2018 is negative,N
+421548409,unit_change_2018 is negative,N
+520326790,unit_change_2018 is negative,N
+421552858,unit_change_2018 is negative,N
+321459863,unit_change_2018 is negative,N
+200797156,job_type= DM and units_init > 19,N
+421271938,unit_change_2018 is negative,N
+520318521,unit_change_2018 is negative,N
+321251006,unit_change_2018 is negative,N
+520317407,unit_change_2018 is negative,N
+321786000,unit_change_2018 is negative,N
+123131011,unit_change_2018 is negative,N
+410111230,job_description contains both %RESID% AND %HOTEL%,N
+421560876,unit_change_2018 is negative,N
+520320457,unit_change_2018 is negative,N
+520330838,unit_change_2018 is negative,N
+421437699,unit_change_2018 is negative,N
+520328707,unit_change_2018 is negative,N
+220547709,unit_change_2018 is negative,N
+104934065,job_type= DM and units_init > 19,N
+122357056,unit_change_2018 is negative,N
+321641041,unit_change_2018 is negative,N
+421538410,unit_change_2018 is negative,N
+321795893,unit_change_2018 is negative,N
+320295284,unit_change_2018 is negative,N
+421612801,unit_change_2018 is negative,N
+122934735,unit_change_2018 is negative,N
+421548640,unit_change_2018 is negative,N
+520295788,unit_change_2018 is negative,N
+421584510,unit_change_2018 is negative,N
+121955900,,N
+210178029,,C
+122698811,,N
+321171986,,C
+122561520,,N
+122521556,,C
+121193430,,N
+420653028,,N
+420546396,,C
+520255483,,N
+321207163,,C
+321727208,,N
+320506092,,N
+421428869,,N
+122225573,,C
+104844581,,C
+120156311,top 20 units_net A1,N
+120705683,,C
+120705674,,C
+122023032,,C
+121190996,,C
+121191325,,C
+121911020,,N
+122554477,,N
+122487772,,N
+320374171,,N
+320284955,,N
+123311371,,C
+104576246,,C
+120474593,,N
+320848035,,N
+121511658,,N
+120252412,,N
+201102387,,C
+120705692,,C
+123442747,,C
+120066187,,N
+121699625,,C
+310230568,,Y
+210177716,,N
+321188852,,C
+120490325,,N
+320913516,,N
+321187130,,C
+123311424,,C
+320565278,,N
+320516884,,N
+121712405,,C
+122678003,,N
+220550259,,N
+320288719,,C
+421561116,,C
+120252421,,N
+122281930,,C
+123567158,,C
+120580326,,N
+122334134,,N
+320891166,,C
+520238252,,C
+321166750,,C
+421328236,,C
+103739215,,C
+321194391,,C
+210033710,,C
+103045697,,C
+320177964,,N
+121496559,,N
+123311442,,C
+122186473,,N
+402591913,,N
+123023138,,N
+121718114,,N
+421176284,,C
+123214280,,N
+121236484,,C
+122684372,,N
+220069002,,N
+120909696,,N
+121699634,,C
+121109576,,Y
+402164162,,N
+123234507,,N
+122789143,,N
+122285160,,C
+120989868,,N
+110125132,,N
+520071252,,C
+210026489,,C
+122788288,,N
+120252403,,N
+123032681,,N
+121329222,,C
+420288959,,N
+122561511,,N
+320596048,,C
+104350532,,C
+120705709,,C
+122013383,,N
+121404694,,N
+401962523,,N
+122382340,,N
+120777187,,N
+121756527,,N
+421599201,,C
+122706054,,N
+122899462,,C
+320176563,,N
+321192384,,C
+121136948,,N
+110019266,,C
+110049313,,C
+320537282,,C
+320251801,,N
+121204268,,C
+320892619,,C
+121799795,,N
+123580062,,N
+321390632,,N
+121718132,,C
+121523477,,N
+122225564,,C
+220114793,,C
+320762242,,N
+121088170,,C
+122525188,,N
+120869603,,N
+122369953,,C
+123311380,,C
+320279104,,C
+103490358,,N
+120663086,,C
+301392026,,C
+122535630,,N
+321239370,,N
+121186055,,N
+220550696,,N
+421453741,,N
+104596359,,N
+110477243,,N
+121689011,,C
+421366417,,N
+121191245,,N
+121236581,,N
+122367857,,N
+121668276,,C
+110465229,,C
+220035780,,C
+120538793,,N
+122694931,,C
+320988393,,C
+120649138,,N
+121236572,,N
+123311433,,C
+122628718,,N
+120486116,,N
+120944185,,N
+122999434,,N
+120989877,,N
+122334116,,N
+122996570,,N
+120909703,,N
+421268265,,C
+220550687,,N
+102953911,,C
+104316161,,N
+123032707,,C
+122751897,,N
+121699616,,C
+420652546,,N
+121668267,,C
+320540205,,N
+122835593,,N
+520351887,,C
+410105504,,N
+122362273,,N
+120057375,,C
+122122586,,C
+420171076,,N
+110326727,,N
+402367997,,N
+402166160,,C
+421315222,,C
+121184459,,N
+123409221,,N
+122278463,,N
+122231799,,C
+420995141,,N
+122451658,,N
+122851823,,N
+121687594,,C
+122824024,,N
+120057375,job_description contains both %RESID% AND %HOTEL%,C
+420288959,top 20 units_net A1,N
+122561520,job_type= DM and units_init > 19,N
+123311424,job_type= DM and units_init > 19,C
+121511658,job_type= DM and units_init > 19,N
+120989868,job_type= DM and units_init > 19,N
+122835593,unit_change_2018 is negative,N
+123023138,job_type= DM and units_init > 19,N
+121236581,job_type= A1 and units_net < -50,N
+104316161,units_net_complete is 50+ units greater than units proposed (NBs only),N
+123214280,job_type= DM and units_init > 19,N
+320177964,job_type= DM and units_init > 19,N
+103490358,job_type= A1 and units_net < -50,N
+301392026,job_description contains both %RESID% AND %HOTEL%,C
+122535630,job_description contains both %RESID% AND %HOTEL%,N
+402367997,units_net_complete is 50+ units greater than units proposed (NBs only),N
+122240574,job_type= A1 and units_net < -50,C
+122525188,job_type= A1 and units_net < -50,N
+121756527,job_type= DM and units_init > 19,N
+122013383,job_type= DM and units_init > 19,N
+121193430,top 20 units_net A1,N
+104844581,units_net_complete is 50+ units greater than units proposed (NBs only),C
+310230568,top 10 units_prop A1,Y
+121523477,job_type= DM and units_init > 19,N
+320374171,top 10 units_prop A1,N
+320596048,job_description contains both %RESID% AND %HOTEL%,C
+321390632,job_type= DM and units_init > 19,N
+520351887,top 20 units_net A1,C
+121236572,top 20 units_net A1,N
+320279104,job_type= DM and units_init > 19,C
+104576246,units_net_complete is 50+ units greater than units proposed (NBs only),C
+103739215,job_description contains both %RESID% AND %HOTEL%,C
+321727208,unit_change_2018 is negative,N
+121236484,units_net_complete is 50+ units greater than units proposed (NBs only),C
+120490325,job_type= A1 and units_net < -50,N
+320913516,job_type= A1 and units_net < -50,N
+402166160,job_type= NB and units_init NOT 0,C
+120538793,job_type= DM and units_init > 19,N
+320988393,job_type= DM and units_init > 19,C
+121190996,job_description contains both %RESID% AND %HOTEL%,C
+121687594,job_type= DM and units_init > 19,C
+123032707,job_type= DM and units_init > 19,C
+121699616,job_type= DM and units_init > 19,C
+122554477,job_type= DM and units_init > 19,N
+321207163,job_type= DM and units_init > 19,C
+421315222,job_description contains both %RESID% AND %HOTEL%,C
+122122586,job_description contains both %RESID% AND %HOTEL%,C
+321727208,job_type= DM and units_init > 19,N
+421428869,job_type= DM and units_init > 19,N
+122362273,job_type= A1 and units_net < -50,N
+520351887,job_type= A1 and units_net < -50,C
+321171986,job_type= DM and units_init > 19,C
+121699625,job_type= DM and units_init > 19,C
+121236572,job_type= A1 and units_net < -50,N
+123311371,job_type= DM and units_init > 19,C
+121699634,job_type= DM and units_init > 19,C
+122285160,job_type= DM and units_init > 19,C
+122788288,job_type= DM and units_init > 19,N
+120490325,top 20 units_net A1,N
+220550696,job_description contains both %RESID% AND %HOTEL%,N
+121718114,job_type= DM and units_init > 19,N
+123311442,job_type= DM and units_init > 19,C
+120663086,job_description contains both %RESID% AND %HOTEL%,C
+520238252,job_type= DM and units_init > 19,C
+122561511,job_type= DM and units_init > 19,N
+121404694,job_type= DM and units_init > 19,N
+123032681,job_type= DM and units_init > 19,N
+121204268,job_description contains both %RESID% AND %HOTEL%,C
+321192384,job_description contains both %RESID% AND %HOTEL%,C
+121329222,job_description contains both %RESID% AND %HOTEL%,C
+121799795,job_type= DM and units_init > 19,N
+120252403,job_description contains both %RESID% AND %HOTEL%,N
+320537282,job_type= DM and units_init > 19,C
+121668276,job_type= DM and units_init > 19,C
+121689011,job_type= DM and units_init > 19,C
+120649138,top 20 units_net A1,N
+120869603,job_type= DM and units_init > 19,N
+122334134,job_type= A1 and units_net < -50,N
+123311380,job_type= DM and units_init > 19,C
+421328236,job_description contains both %RESID% AND %HOTEL%,C
+123567158,job_description contains both %RESID% AND %HOTEL%,C
+122999434,job_type= DM and units_init > 19,N
+122996570,job_type= DM and units_init > 19,N
+210026489,units_net_complete is 50+ units greater than units proposed (NBs only),C
+321188852,job_type= A1 and units_net < -50,C
+120066187,job_description contains both %RESID% AND %HOTEL%,N
+121191325,job_description contains both %RESID% AND %HOTEL%,C
+401962523,units_net_complete is 50+ units greater than units proposed (NBs only),N
+122240574,top 20 units_net A1,C
+122835593,job_type= DM and units_init > 19,N
+320540205,job_type= DM and units_init > 19,N
+420653028,job_description contains both %RESID% AND %HOTEL%,N
+122706054,top 20 units_net A1,N
+121911020,job_type= DM and units_init > 19,N
+121184459,job_description contains both %RESID% AND %HOTEL%,N
+520255483,job_type= DM and units_init > 19,N
+120705683,job_type= DM and units_init > 19,C
+122225573,job_type= DM and units_init > 19,C
+110019266,units_net_complete is 50+ units greater than units proposed (NBs only),C
+121955900,job_type= DM and units_init > 19,N
+421561116,job_type= DM and units_init > 19,C
+122334116,job_type= A1 and units_net < -50,N
+122487772,job_type= DM and units_init > 19,N
+120474593,job_type= DM and units_init > 19,N
+120909696,job_type= DM and units_init > 19,N
+122789143,job_type= DM and units_init > 19,N
+123234507,job_type= DM and units_init > 19,N
+110465229,job_description contains both %RESID% AND %HOTEL%,C
+110477243,job_description contains both %RESID% AND %HOTEL%,N
+104596359,job_type= A1 and units_net < -50,N
+122684372,job_type= DM and units_init > 19,N
+320374171,top 20 units_net A1,N
+321166750,job_type= DM and units_init > 19,C
+103045697,job_type= NB and units_init NOT 0,C
+121088170,job_type= A1 and units_net < -50,C
+121136948,job_type= DM and units_init > 19,N
+320176563,job_type= DM and units_init > 19,N
+120705709,job_type= DM and units_init > 19,C
+110049313,job_type= A1 and units_net < -50,C
+122225564,job_type= DM and units_init > 19,C
+320848035,top 10 units_prop A1,N
+121718132,job_type= DM and units_init > 19,C
+320892619,job_type= DM and units_init > 19,C
+520071252,job_type= A1 and units_net < -50,C
+220035780,job_type= DM and units_init > 19,C
+421453741,job_type= DM and units_init > 19,N
+421366417,job_type= DM and units_init > 19,N
+122186473,job_type= A1 and units_net < -50,N
+122369953,job_type= DM and units_init > 19,C
+121186055,top 20 units_net A1,N
+121712405,job_type= A1 and units_net < -50,C
+321187130,job_type= A1 and units_net < -50,C
+120989877,job_type= DM and units_init > 19,N
+123311433,job_type= DM and units_init > 19,C
+120252412,job_description contains both %RESID% AND %HOTEL%,N
+210033710,units_net_complete is 50+ units greater than units proposed (NBs only),C
+122851823,job_type= DM and units_init > 19,N
+123409221,job_type= DM and units_init > 19,N
+102953911,job_type= NB and units_init NOT 0,C
+122751897,job_type= DM and units_init > 19,N
+121668267,job_type= DM and units_init > 19,C
+110326727,job_description contains both %RESID% AND %HOTEL%,N
+120705674,job_type= DM and units_init > 19,C
+122023032,job_type= DM and units_init > 19,C
+410105504,job_description contains both %RESID% AND %HOTEL%,N
+421366417,unit_change_2018 is negative,N
+122698811,job_type= DM and units_init > 19,N
+122678003,job_type= DM and units_init > 19,N
+220550259,job_type= DM and units_init > 19,N
+320288719,job_type= DM and units_init > 19,C
+122281930,job_type= DM and units_init > 19,C
+120580326,job_type= DM and units_init > 19,N
+220550687,job_description contains both %RESID% AND %HOTEL%,N
+120486116,job_type= A1 and units_net < -50,N
+120705692,job_type= DM and units_init > 19,C
+123442747,job_type= DM and units_init > 19,C
+122186473,top 20 units_net A1,N
+121191245,job_description contains both %RESID% AND %HOTEL%,N
+421176284,job_type= DM and units_init > 19,C
+220069002,job_type= DM and units_init > 19,N
+121186055,job_type= A1 and units_net < -50,N
+121496559,job_type= DM and units_init > 19,N
+320891166,job_type= DM and units_init > 19,C
+420171076,top 10 units_prop A1,N
+122382340,job_type= DM and units_init > 19,N
+220114793,job_type= A1 and units_net < -50,C
+120777187,job_type= DM and units_init > 19,N
+123580062,job_type= A1 and units_net < -50,N
+320762242,job_type= DM and units_init > 19,N
+122899462,job_type= A1 and units_net < -50,C
+122706054,job_type= A1 and units_net < -50,N
+421599201,job_description contains both %RESID% AND %HOTEL%,C
+104350532,job_type= A1 and units_net < -50,C
+122367857,job_type= DM and units_init > 19,N
+110125132,job_description contains both %RESID% AND %HOTEL%,N
+402591913,job_type= A1 and units_net < -50,N
+321194391,job_type= A1 and units_net < -50,C
+321239370,job_type= DM and units_init > 19,N
+120909703,job_type= DM and units_init > 19,N
+421268265,job_type= DM and units_init > 19,C
+120252421,job_description contains both %RESID% AND %HOTEL%,N
+320565278,job_description contains both %RESID% AND %HOTEL%,N
+402164162,units_net_complete is 50+ units greater than units proposed (NBs only),N
+122628718,job_type= DM and units_init > 19,N
+120944185,job_type= DM and units_init > 19,N
+122694931,job_type= DM and units_init > 19,C
+122278463,job_type= DM and units_init > 19,N
+122231799,job_type= DM and units_init > 19,C
+420995141,job_type= DM and units_init > 19,N
+122824024,job_type= DM and units_init > 19,N
+122451658,job_type= DM and units_init > 19,N
+320251801,top 20 units_net A1,N
+121109576,top 10 units_prop A1,Y
+420546396,job_description contains both %RESID% AND %HOTEL%,C
+210178029,job_description contains both %RESID% AND %HOTEL%,C
+122521556,job_description contains both %RESID% AND %HOTEL%,C
+120057375,job_description contains both %RESID% AND %HOTEL%,C
+122561520,job_type= DM and units_init > 19,N
+123311424,job_type= DM and units_init > 19,C
+121511658,job_type= DM and units_init > 19,N
+120989868,job_type= DM and units_init > 19,N
+110465229,job_description contains both %RESID% AND %HOTEL%,C
+122835593,unit_change_2018 is negative,N
+110477243,job_description contains both %RESID% AND %HOTEL%,N
+123023138,job_type= DM and units_init > 19,N
+121236581,job_type= A1 and units_net < -50,N
+104316161,units_net_complete is 50+ units greater than units proposed (NBs only),N
+123214280,job_type= DM and units_init > 19,N
+104596359,job_type= A1 and units_net < -50,N
+122684372,job_type= DM and units_init > 19,N
+320284955,top 20 units_net A1,N
+320177964,job_type= DM and units_init > 19,N
+320374171,top 20 units_net A1,N
+103490358,job_type= A1 and units_net < -50,N
+301392026,job_description contains both %RESID% AND %HOTEL%,C
+122535630,job_description contains both %RESID% AND %HOTEL%,N
+321166750,job_type= DM and units_init > 19,C
+103045697,job_type= NB and units_init NOT 0,C
+402367997,units_net_complete is 50+ units greater than units proposed (NBs only),N
+122240574,job_type= A1 and units_net < -50,C
+122525188,job_type= A1 and units_net < -50,N
+121088170,job_type= A1 and units_net < -50,C
+121136948,job_type= DM and units_init > 19,N
+121756527,job_type= DM and units_init > 19,N
+320176563,job_type= DM and units_init > 19,N
+120705709,job_type= DM and units_init > 19,C
+122013383,job_type= DM and units_init > 19,N
+110049313,job_type= A1 and units_net < -50,C
+121193430,top 20 units_net A1,N
+210177716,top 10 units_prop A1,N
+104844581,units_net_complete is 50+ units greater than units proposed (NBs only),C
+310230568,top 10 units_prop A1,Y
+121523477,job_type= DM and units_init > 19,N
+122225564,job_type= DM and units_init > 19,C
+320596048,job_description contains both %RESID% AND %HOTEL%,C
+321390632,job_type= DM and units_init > 19,N
+420652546,top 20 units_net A1,N
+121718132,job_type= DM and units_init > 19,C
+520351887,top 20 units_net A1,C
+320892619,job_type= DM and units_init > 19,C
+520071252,job_type= A1 and units_net < -50,C
+220035780,job_type= DM and units_init > 19,C
+421453741,job_type= DM and units_init > 19,N
+421366417,job_type= DM and units_init > 19,N
+121236572,top 20 units_net A1,N
+122186473,job_type= A1 and units_net < -50,N
+320279104,job_type= DM and units_init > 19,C
+104576246,units_net_complete is 50+ units greater than units proposed (NBs only),C
+103739215,job_description contains both %RESID% AND %HOTEL%,C
+122369953,job_type= DM and units_init > 19,C
+321727208,unit_change_2018 is negative,N
+121186055,top 20 units_net A1,N
+121236484,units_net_complete is 50+ units greater than units proposed (NBs only),C
+121712405,job_type= A1 and units_net < -50,C
+321187130,job_type= A1 and units_net < -50,C
+120490325,job_type= A1 and units_net < -50,N
+120989877,job_type= DM and units_init > 19,N
+320913516,job_type= A1 and units_net < -50,N
+123311433,job_type= DM and units_init > 19,C
+120252412,job_description contains both %RESID% AND %HOTEL%,N
+402166160,job_type= NB and units_init NOT 0,C
+120538793,job_type= DM and units_init > 19,N
+210033710,units_net_complete is 50+ units greater than units proposed (NBs only),C
+320988393,job_type= DM and units_init > 19,C
+121190996,job_description contains both %RESID% AND %HOTEL%,C
+121687594,job_type= DM and units_init > 19,C
+122851823,job_type= DM and units_init > 19,N
+123409221,job_type= DM and units_init > 19,N
+102953911,job_type= NB and units_init NOT 0,C
+122751897,job_type= DM and units_init > 19,N
+123032707,job_type= DM and units_init > 19,C
+121699616,job_type= DM and units_init > 19,C
+121668267,job_type= DM and units_init > 19,C
+122554477,job_type= DM and units_init > 19,N
+110326727,job_description contains both %RESID% AND %HOTEL%,N
+321207163,job_type= DM and units_init > 19,C
+421315222,job_description contains both %RESID% AND %HOTEL%,C
+122122586,job_description contains both %RESID% AND %HOTEL%,C
+321727208,job_type= DM and units_init > 19,N
+120705674,job_type= DM and units_init > 19,C
+122023032,job_type= DM and units_init > 19,C
+421428869,job_type= DM and units_init > 19,N
+122362273,job_type= A1 and units_net < -50,N
+520351887,job_type= A1 and units_net < -50,C
+410105504,job_description contains both %RESID% AND %HOTEL%,N
+421366417,unit_change_2018 is negative,N
+122698811,job_type= DM and units_init > 19,N
+321171986,job_type= DM and units_init > 19,C
+122678003,job_type= DM and units_init > 19,N
+220550259,job_type= DM and units_init > 19,N
+320288719,job_type= DM and units_init > 19,C
+122281930,job_type= DM and units_init > 19,C
+120580326,job_type= DM and units_init > 19,N
+220550687,job_description contains both %RESID% AND %HOTEL%,N
+121699625,job_type= DM and units_init > 19,C
+120486116,job_type= A1 and units_net < -50,N
+120705692,job_type= DM and units_init > 19,C
+123442747,job_type= DM and units_init > 19,C
+121236572,job_type= A1 and units_net < -50,N
+122186473,top 20 units_net A1,N
+123311371,job_type= DM and units_init > 19,C
+121699634,job_type= DM and units_init > 19,C
+122285160,job_type= DM and units_init > 19,C
+122788288,job_type= DM and units_init > 19,N
+120490325,top 20 units_net A1,N
+220550696,job_description contains both %RESID% AND %HOTEL%,N
+121718114,job_type= DM and units_init > 19,N
+121191245,job_description contains both %RESID% AND %HOTEL%,N
+421176284,job_type= DM and units_init > 19,C
+220069002,job_type= DM and units_init > 19,N
+121186055,job_type= A1 and units_net < -50,N
+121496559,job_type= DM and units_init > 19,N
+123311442,job_type= DM and units_init > 19,C
+120663086,job_description contains both %RESID% AND %HOTEL%,C
+320891166,job_type= DM and units_init > 19,C
+520238252,job_type= DM and units_init > 19,C
+320506092,top 20 units_net A1,N
+122382340,job_type= DM and units_init > 19,N
+220114793,job_type= A1 and units_net < -50,C
+120777187,job_type= DM and units_init > 19,N
+122561511,job_type= DM and units_init > 19,N
+121404694,job_type= DM and units_init > 19,N
+123580062,job_type= A1 and units_net < -50,N
+123032681,job_type= DM and units_init > 19,N
+121204268,job_description contains both %RESID% AND %HOTEL%,C
+320762242,job_type= DM and units_init > 19,N
+321192384,job_description contains both %RESID% AND %HOTEL%,C
+122899462,job_type= A1 and units_net < -50,C
+122706054,job_type= A1 and units_net < -50,N
+421599201,job_description contains both %RESID% AND %HOTEL%,C
+121329222,job_description contains both %RESID% AND %HOTEL%,C
+121799795,job_type= DM and units_init > 19,N
+104350532,job_type= A1 and units_net < -50,C
+120252403,job_description contains both %RESID% AND %HOTEL%,N
+320537282,job_type= DM and units_init > 19,C
+122367857,job_type= DM and units_init > 19,N
+121668276,job_type= DM and units_init > 19,C
+110125132,job_description contains both %RESID% AND %HOTEL%,N
+121689011,job_type= DM and units_init > 19,C
+402591913,job_type= A1 and units_net < -50,N
+321194391,job_type= A1 and units_net < -50,C
+321239370,job_type= DM and units_init > 19,N
+120869603,job_type= DM and units_init > 19,N
+122334134,job_type= A1 and units_net < -50,N
+123311380,job_type= DM and units_init > 19,C
+421328236,job_description contains both %RESID% AND %HOTEL%,C
+120909703,job_type= DM and units_init > 19,N
+123567158,job_description contains both %RESID% AND %HOTEL%,C
+421268265,job_type= DM and units_init > 19,C
+120252421,job_description contains both %RESID% AND %HOTEL%,N
+320565278,job_description contains both %RESID% AND %HOTEL%,N
+122999434,job_type= DM and units_init > 19,N
+402164162,units_net_complete is 50+ units greater than units proposed (NBs only),N
+122996570,job_type= DM and units_init > 19,N
+210026489,units_net_complete is 50+ units greater than units proposed (NBs only),C
+321188852,job_type= A1 and units_net < -50,C
+122628718,job_type= DM and units_init > 19,N
+120944185,job_type= DM and units_init > 19,N
+120066187,job_description contains both %RESID% AND %HOTEL%,N
+122694931,job_type= DM and units_init > 19,C
+121191325,job_description contains both %RESID% AND %HOTEL%,C
+122278463,job_type= DM and units_init > 19,N
+122231799,job_type= DM and units_init > 19,C
+401962523,units_net_complete is 50+ units greater than units proposed (NBs only),N
+420995141,job_type= DM and units_init > 19,N
+122824024,job_type= DM and units_init > 19,N
+122451658,job_type= DM and units_init > 19,N
+122240574,top 20 units_net A1,C
+122835593,job_type= DM and units_init > 19,N
+320540205,job_type= DM and units_init > 19,N
+320251801,top 20 units_net A1,N
+420653028,job_description contains both %RESID% AND %HOTEL%,N
+121109576,top 10 units_prop A1,Y
+420546396,job_description contains both %RESID% AND %HOTEL%,C
+210178029,job_description contains both %RESID% AND %HOTEL%,C
+122521556,job_description contains both %RESID% AND %HOTEL%,C
+122706054,top 20 units_net A1,N
+121911020,job_type= DM and units_init > 19,N
+121184459,job_description contains both %RESID% AND %HOTEL%,N
+520255483,job_type= DM and units_init > 19,N
+120705683,job_type= DM and units_init > 19,C
+122225573,job_type= DM and units_init > 19,C
+110019266,units_net_complete is 50+ units greater than units proposed (NBs only),C
+121955900,job_type= DM and units_init > 19,N
+421561116,job_type= DM and units_init > 19,C
+122334116,job_type= A1 and units_net < -50,N
+122487772,job_type= DM and units_init > 19,N
+120474593,job_type= DM and units_init > 19,N
+120909696,job_type= DM and units_init > 19,N
+122789143,job_type= DM and units_init > 19,N
+123234507,job_type= DM and units_init > 19,N
+320516884,top 20 units_net A1,N
+421419968,unit_change_2018 is negative,N
+220630271,unit_change_2018 is negative,N
+321509300,unit_change_2018 is negative,N
+302197655,job_type= DM and units_init > 19,N
+121561283,unit_change_2018 is negative,N
+321615409,unit_change_2018 is negative,N
+220640965,unit_change_2018 is negative,N
+301963285,job_type= DM and units_init > 19,N
+320578344,unit_change_2018 is negative,N
+321584200,unit_change_2018 is negative,N
+103397370,unit_change_2018 is negative,N
+121185671,unit_change_2018 is negative,N
+321701823,unit_change_2018 is negative,N
+302319694,unit_change_2018 is negative,N
+122925120,unit_change_2018 is negative,N
+520285619,unit_change_2018 is negative,N
+320625640,unit_change_2018 is negative,N
+320576346,unit_change_2018 is negative,N
+104881530,job_type= DM and units_init > 19,N
+421593092,unit_change_2018 is negative,N
+120077380,job_type= DM and units_init > 19,N
+104343266,unit_change_2018 is negative,N
+421596491,unit_change_2018 is negative,N
+321562457,unit_change_2018 is negative,N
+421489062,unit_change_2018 is negative,N
+104945507,job_type= DM and units_init > 19,N
+421544742,unit_change_2018 is negative,N
+421619118,unit_change_2018 is negative,N
+104945516,job_type= DM and units_init > 19,N
+421518272,unit_change_2018 is negative,N
+103507466,job_description contains both %RESID% AND %HOTEL%,N
+220582929,unit_change_2018 is negative,N
+123113120,unit_change_2018 is negative,N
+302363412,unit_change_2018 is negative,N
+201106588,job_type= DM and units_init > 19,N
+321697491,unit_change_2018 is negative,N
+520307230,unit_change_2018 is negative,N
+310070017,unit_change_2018 is negative,N
+321628173,unit_change_2018 is negative,N
+421355624,unit_change_2018 is negative,N
+321646359,unit_change_2018 is negative,N
+420603421,unit_change_2018 is negative,N
+421555711,unit_change_2018 is negative,N
+321679796,unit_change_2018 is negative,N
+220627819,unit_change_2018 is negative,N
+421607363,unit_change_2018 is negative,N
+321677299,unit_change_2018 is negative,N
+421575325,unit_change_2018 is negative,N
+421341239,unit_change_2018 is negative,N
+421586304,unit_change_2018 is negative,N
+321482258,unit_change_2018 is negative,N
+120929763,unit_change_2018 is negative,N
+320968850,unit_change_2018 is negative,N
+321571232,unit_change_2018 is negative,N
+210086315,job_type= DM and units_init > 19,N
+103907284,unit_change_2018 is negative,N
+220425154,unit_change_2018 is negative,N
+122927985,unit_change_2018 is negative,N
+302015913,job_type= DM and units_init > 19,N
+321581748,unit_change_2018 is negative,N
+321779535,unit_change_2018 is negative,N
+421548711,unit_change_2018 is negative,N
+321474855,unit_change_2018 is negative,N
+421570286,unit_change_2018 is negative,N
+421552732,unit_change_2018 is negative,N
+121048053,job_description contains both %RESID% AND %HOTEL%,N
+421581167,unit_change_2018 is negative,N
+520331409,unit_change_2018 is negative,N
+120918533,unit_change_2018 is negative,N
+321691433,unit_change_2018 is negative,N
+220627409,unit_change_2018 is negative,N
+121560765,unit_change_2018 is negative,N
+321498090,unit_change_2018 is negative,N
+321687055,unit_change_2018 is negative,N
+421603893,unit_change_2018 is negative,N
+321699408,unit_change_2018 is negative,N
+220650230,unit_change_2018 is negative,N
+520336173,unit_change_2018 is negative,N
+420865246,unit_change_2018 is negative,N
+421579651,unit_change_2018 is negative,N
+520317559,unit_change_2018 is negative,N
+421548276,unit_change_2018 is negative,N
+122523821,unit_change_2018 is negative,N
+103261514,unit_change_2018 is negative,N
+321794821,unit_change_2018 is negative,N
+520320983,unit_change_2018 is negative,N
+122260668,unit_change_2018 is negative,N
+321633693,unit_change_2018 is negative,N
+520319575,unit_change_2018 is negative,N
+520329047,unit_change_2018 is negative,N
+520331150,unit_change_2018 is negative,N
+321535166,unit_change_2018 is negative,N
+421051818,unit_change_2018 is negative,N
+321701832,unit_change_2018 is negative,N
+321637298,unit_change_2018 is negative,N
+321723328,unit_change_2018 is negative,N
+320981452,unit_change_2018 is negative,N
+321697446,unit_change_2018 is negative,N
+321751751,unit_change_2018 is negative,N
+520328949,unit_change_2018 is negative,N
+421412144,unit_change_2018 is negative,N
+220575919,unit_change_2018 is negative,N
+421418996,unit_change_2018 is negative,N
+421595134,unit_change_2018 is negative,N
+321751733,unit_change_2018 is negative,N
+321320833,unit_change_2018 is negative,N
+321684842,unit_change_2018 is negative,N
+321131360,unit_change_2018 is negative,N
+220627837,unit_change_2018 is negative,N
+320587726,unit_change_2018 is negative,N
+520318451,unit_change_2018 is negative,N
+421601163,unit_change_2018 is negative,N
+120156311,top 20 units_net A1,N
+220591205,unit_change_2018 is negative,N
+122801708,unit_change_2018 is negative,N
+220621940,unit_change_2018 is negative,N
+421587241,unit_change_2018 is negative,N
+201110939,job_type= DM and units_init > 19,N
+220630280,unit_change_2018 is negative,N
+520327557,unit_change_2018 is negative,N
+421270305,unit_change_2018 is negative,N
+421548515,unit_change_2018 is negative,N
+520323668,unit_change_2018 is negative,N
+321505297,unit_change_2018 is negative,N
+302386095,job_type= DM and units_init > 19,N
+421603642,unit_change_2018 is negative,N
+520317292,unit_change_2018 is negative,N
+520255492,unit_change_2018 is negative,N
+421525184,unit_change_2018 is negative,N
+520316578,unit_change_2018 is negative,N
+321431438,unit_change_2018 is negative,N
+421484646,unit_change_2018 is negative,N
+102994985,job_description contains both %RESID% AND %HOTEL%,N
+321562448,unit_change_2018 is negative,N
+421299348,unit_change_2018 is negative,N
+121705342,unit_change_2018 is negative,N
+220575642,unit_change_2018 is negative,N
+320915248,unit_change_2018 is negative,N
+321640408,unit_change_2018 is negative,N
+421548418,unit_change_2018 is negative,N
+421578563,unit_change_2018 is negative,N
+421491282,unit_change_2018 is negative,N
+421611152,unit_change_2018 is negative,N
+520285600,unit_change_2018 is negative,N
+321251024,unit_change_2018 is negative,N
+520304322,unit_change_2018 is negative,N
+120926070,job_type= A1 and units_net < -50,N
+200800311,job_type= DM and units_init > 19,N
+220614100,unit_change_2018 is negative,N
+121189668,unit_change_2018 is negative,N
+320915239,unit_change_2018 is negative,N
+421538401,unit_change_2018 is negative,N
+421603045,unit_change_2018 is negative,N
+421575548,unit_change_2018 is negative,N
+302085302,job_type= DM and units_init > 19,N
+321741004,unit_change_2018 is negative,N
+321631061,unit_change_2018 is negative,N
+421492076,unit_change_2018 is negative,N
+320576961,unit_change_2018 is negative,N
+520322188,unit_change_2018 is negative,N
+121186359,unit_change_2018 is negative,N
+220620068,unit_change_2018 is negative,N
+103298502,unit_change_2018 is negative,N
+120621354,job_type= A1 and units_net < -50,N
+321728323,unit_change_2018 is negative,N
+321697561,unit_change_2018 is negative,N
+421592976,unit_change_2018 is negative,N
+321750976,unit_change_2018 is negative,N
+421548383,unit_change_2018 is negative,N
+421550468,unit_change_2018 is negative,N
+122668700,unit_change_2018 is negative,N
+520278627,unit_change_2018 is negative,N
+520326095,unit_change_2018 is negative,N
+321641050,unit_change_2018 is negative,N
+321642013,unit_change_2018 is negative,N
+321795198,unit_change_2018 is negative,N
+321675503,unit_change_2018 is negative,N
+220627436,unit_change_2018 is negative,N
+421583021,unit_change_2018 is negative,N
+110278468,job_type= A1 and units_net < -50,N
+520323016,unit_change_2018 is negative,N
+321511262,unit_change_2018 is negative,N
+321729171,unit_change_2018 is negative,N
+321762115,unit_change_2018 is negative,N
+321546234,unit_change_2018 is negative,N
+123298760,unit_change_2018 is negative,N
+321686537,unit_change_2018 is negative,N
+520325755,unit_change_2018 is negative,N
+121325869,job_description contains both %RESID% AND %HOTEL%,N
+321641014,unit_change_2018 is negative,N
+220580404,unit_change_2018 is negative,N
+121325869,job_type= A1 and units_net < -50,N
+421593886,unit_change_2018 is negative,N
+421539687,unit_change_2018 is negative,N
+520332792,unit_change_2018 is negative,N
+520333498,unit_change_2018 is negative,N
+421601252,unit_change_2018 is negative,N
+520319450,unit_change_2018 is negative,N
+520336075,unit_change_2018 is negative,N
+421575334,unit_change_2018 is negative,N
+110330909,job_type= DM and units_init > 19,N
+123071353,unit_change_2018 is negative,N
+122993458,unit_change_2018 is negative,N
+321511253,unit_change_2018 is negative,N
+421613105,unit_change_2018 is negative,N
+104921373,unit_change_2018 is negative,N
+321626736,unit_change_2018 is negative,N
+321767441,unit_change_2018 is negative,N
+321718414,unit_change_2018 is negative,N
+110143924,job_description contains both %RESID% AND %HOTEL%,N
+320522715,unit_change_2018 is negative,N
+103951387,unit_change_2018 is negative,N
+321692129,unit_change_2018 is negative,N
+421531916,unit_change_2018 is negative,N
+520324471,unit_change_2018 is negative,N
+220609385,unit_change_2018 is negative,N
+321525435,unit_change_2018 is negative,N
+520306865,unit_change_2018 is negative,N
+220623305,unit_change_2018 is negative,N
+321756943,unit_change_2018 is negative,N
+421355269,unit_change_2018 is negative,N
+520328814,unit_change_2018 is negative,N
+220600856,unit_change_2018 is negative,N
+421603161,unit_change_2018 is negative,N
+320547039,unit_change_2018 is negative,N
+321500862,unit_change_2018 is negative,N
+421535191,unit_change_2018 is negative,N
+122810556,unit_change_2018 is negative,N
+123037640,unit_change_2018 is negative,N
+122096310,unit_change_2018 is negative,N
+421587223,unit_change_2018 is negative,N
+301491543,job_type= DM and units_init > 19,N
+421573014,unit_change_2018 is negative,N
+421607372,unit_change_2018 is negative,N
+421390998,unit_change_2018 is negative,N
+520332818,unit_change_2018 is negative,N
+320985029,unit_change_2018 is negative,N
+520307249,unit_change_2018 is negative,N
+103815515,unit_change_2018 is negative,N
+321653064,unit_change_2018 is negative,N
+421548560,unit_change_2018 is negative,N
+321637323,unit_change_2018 is negative,N
+220586293,unit_change_2018 is negative,N
+321197922,unit_change_2018 is negative,N
+310226010,job_type= DM and units_init > 19,N
+122668700,job_type= A1 and units_net < -50,N
+120773804,job_description contains both %RESID% AND %HOTEL%,N
+421548481,unit_change_2018 is negative,N
+321716791,unit_change_2018 is negative,N
+421315099,unit_change_2018 is negative,N
+321648179,unit_change_2018 is negative,N
+421317998,unit_change_2018 is negative,N
+421593662,unit_change_2018 is negative,N
+421270957,unit_change_2018 is negative,N
+520325050,unit_change_2018 is negative,N
+321546261,unit_change_2018 is negative,N
+123343881,unit_change_2018 is negative,N
+103559846,unit_change_2018 is negative,N
+421318229,unit_change_2018 is negative,N
+110368726,job_type= A1 and units_net < -50,N
+123343863,unit_change_2018 is negative,N
+220591198,unit_change_2018 is negative,N
+321088292,unit_change_2018 is negative,N
+520329500,unit_change_2018 is negative,N
+520326120,unit_change_2018 is negative,N
+220650052,unit_change_2018 is negative,N
+402681175,job_type= DM and units_init > 19,N
+122514859,unit_change_2018 is negative,N
+321638091,unit_change_2018 is negative,N
+321817423,unit_change_2018 is negative,N
+120560240,unit_change_2018 is negative,N
+421590031,unit_change_2018 is negative,N
+121992013,unit_change_2018 is negative,N
+421572195,unit_change_2018 is negative,N
+520316587,unit_change_2018 is negative,N
+122881854,unit_change_2018 is negative,N
+102926933,job_type= DM and units_init > 19,N
+103916498,job_type= DM and units_init > 19,N
+321542960,unit_change_2018 is negative,N
+520318488,unit_change_2018 is negative,N
+321500871,unit_change_2018 is negative,N
+321650076,unit_change_2018 is negative,N
+220631270,unit_change_2018 is negative,N
+321694403,unit_change_2018 is negative,N
+421548294,unit_change_2018 is negative,N
+321381143,unit_change_2018 is negative,N
+321559309,unit_change_2018 is negative,N
+120926061,job_type= A1 and units_net < -50,N
+110418174,job_type= A1 and units_net < -50,N
+421548551,unit_change_2018 is negative,N
+122354647,unit_change_2018 is negative,N
+321695215,unit_change_2018 is negative,N
+321626754,unit_change_2018 is negative,N
+321572623,unit_change_2018 is negative,N
+321637314,unit_change_2018 is negative,N
+122541776,unit_change_2018 is negative,N
+220600847,unit_change_2018 is negative,N
+122076010,unit_change_2018 is negative,N
+220610097,unit_change_2018 is negative,N
+320624703,unit_change_2018 is negative,N
+123343854,unit_change_2018 is negative,N
+321655838,unit_change_2018 is negative,N
+421571070,unit_change_2018 is negative,N
+321749863,unit_change_2018 is negative,N
+520321438,unit_change_2018 is negative,N
+121330808,unit_change_2018 is negative,N
+321293079,unit_change_2018 is negative,N
+321431429,unit_change_2018 is negative,N
+421586732,unit_change_2018 is negative,N
+220611657,unit_change_2018 is negative,N
+321697473,unit_change_2018 is negative,N
+120049964,unit_change_2018 is negative,N
+121749493,unit_change_2018 is negative,N
+421592967,unit_change_2018 is negative,N
+302320904,job_type= DM and units_init > 19,N
+421392175,unit_change_2018 is negative,N
+520277147,unit_change_2018 is negative,N
+121192896,unit_change_2018 is negative,N
+321750967,unit_change_2018 is negative,N
+220627418,unit_change_2018 is negative,N
+220638601,unit_change_2018 is negative,N
+520312723,unit_change_2018 is negative,N
+301139499,job_description contains both %RESID% AND %HOTEL%,N
+220603666,unit_change_2018 is negative,N
+520326228,unit_change_2018 is negative,N
+121689707,unit_change_2018 is negative,N
+321646368,unit_change_2018 is negative,N
+421057698,unit_change_2018 is negative,N
+421569699,unit_change_2018 is negative,N
+421593831,unit_change_2018 is negative,N
+520320974,unit_change_2018 is negative,N
+321184115,unit_change_2018 is negative,N
+421591138,unit_change_2018 is negative,N
+122401560,unit_change_2018 is negative,N
+321356108,unit_change_2018 is negative,N
+520322482,unit_change_2018 is negative,N
+302008565,job_type= DM and units_init > 19,N
+421638981,unit_change_2018 is negative,N
+321148030,unit_change_2018 is negative,N
+321751742,unit_change_2018 is negative,N
+421603679,unit_change_2018 is negative,N
+520323613,unit_change_2018 is negative,N
+321756890,unit_change_2018 is negative,N
+122512414,unit_change_2018 is negative,N
+421548542,unit_change_2018 is negative,N
+123031389,unit_change_2018 is negative,N
+220547451,unit_change_2018 is negative,N
+401639973,job_description contains both %RESID% AND %HOTEL%,N
+321562126,unit_change_2018 is negative,N
+520327904,unit_change_2018 is negative,N
+220638308,unit_change_2018 is negative,N
+520326772,unit_change_2018 is negative,N
+104937678,job_type= DM and units_init > 19,N
+122420040,unit_change_2018 is negative,N
+321553323,unit_change_2018 is negative,N
+520336093,unit_change_2018 is negative,N
+321637332,unit_change_2018 is negative,N
+121115738,unit_change_2018 is negative,N
+421537135,unit_change_2018 is negative,N
+520328958,unit_change_2018 is negative,N
+321508640,unit_change_2018 is negative,N
+321638545,unit_change_2018 is negative,N
+421332800,unit_change_2018 is negative,N
+520310501,unit_change_2018 is negative,N
+302140546,unit_change_2018 is negative,N
+220527598,unit_change_2018 is negative,N
+520329494,unit_change_2018 is negative,N
+421487411,unit_change_2018 is negative,N
+520321429,unit_change_2018 is negative,N
+321779615,unit_change_2018 is negative,N
+123165859,unit_change_2018 is negative,N
+102780545,job_type= DM and units_init > 19,N
+421262555,unit_change_2018 is negative,N
+421552581,unit_change_2018 is negative,N
+421051809,unit_change_2018 is negative,N
+321628716,unit_change_2018 is negative,N
+421555702,unit_change_2018 is negative,N
+321405537,unit_change_2018 is negative,N
+321505634,unit_change_2018 is negative,N
+421585984,unit_change_2018 is negative,N
+321452897,unit_change_2018 is negative,N
+520277156,unit_change_2018 is negative,N
+210177565,top 10 units_prop A1,N
+321625087,unit_change_2018 is negative,N
+321672310,unit_change_2018 is negative,N
+321750958,unit_change_2018 is negative,N
+520326594,unit_change_2018 is negative,N
+421587063,unit_change_2018 is negative,N
+104296218,job_type= DM and units_init > 19,N
+110125962,job_type= A1 and units_net < -50,N
+520316596,unit_change_2018 is negative,N
+104934074,job_type= DM and units_init > 19,N
+302229693,job_type= DM and units_init > 19,N
+320985074,unit_change_2018 is negative,N
+320969519,unit_change_2018 is negative,N
+421578448,unit_change_2018 is negative,N
+122734639,unit_change_2018 is negative,N
+122849944,unit_change_2018 is negative,N
+421575851,unit_change_2018 is negative,N
+320576462,unit_change_2018 is negative,N
+520318157,unit_change_2018 is negative,N
+321192909,unit_change_2018 is negative,N
+301963276,job_type= DM and units_init > 19,N
+520317283,unit_change_2018 is negative,N
+320576925,job_description contains both %RESID% AND %HOTEL%,N
+421488401,unit_change_2018 is negative,N
+321646787,unit_change_2018 is negative,N
+220550936,unit_change_2018 is negative,N
+520307365,unit_change_2018 is negative,N
+421420901,unit_change_2018 is negative,N
+421587116,unit_change_2018 is negative,N
+321727351,unit_change_2018 is negative,N
+421591726,unit_change_2018 is negative,N
+421648248,unit_change_2018 is negative,N
+220616778,unit_change_2018 is negative,N
+421417354,unit_change_2018 is negative,N
+302344443,job_type= DM and units_init > 19,N
+421463641,unit_change_2018 is negative,N
+123058797,unit_change_2018 is negative,N
+520329939,unit_change_2018 is negative,N
+321571303,unit_change_2018 is negative,N
+321794830,unit_change_2018 is negative,N
+520274854,unit_change_2018 is negative,N
+321738802,unit_change_2018 is negative,N
+110450752,top 20 units_net A1,N
+220577098,unit_change_2018 is negative,N
+321535157,unit_change_2018 is negative,N
+421634342,unit_change_2018 is negative,N
+520324701,unit_change_2018 is negative,N
+421594215,unit_change_2018 is negative,N
+321432829,unit_change_2018 is negative,N
+110435413,job_type= DM and units_init > 19,N
+220626990,unit_change_2018 is negative,N
+220550829,unit_change_2018 is negative,N
+302085268,job_type= DM and units_init > 19,N
+421548748,unit_change_2018 is negative,N
+321571296,unit_change_2018 is negative,N
+321697605,unit_change_2018 is negative,N
+110285334,job_description contains both %RESID% AND %HOTEL%,N
+520312732,unit_change_2018 is negative,N
+301953759,job_type= DM and units_init > 19,N
+520325737,unit_change_2018 is negative,N
+421474568,unit_change_2018 is negative,N
+121900158,unit_change_2018 is negative,N
+301568248,job_type= DM and units_init > 19,N
+123131020,unit_change_2018 is negative,N
+321703705,unit_change_2018 is negative,N
+321544879,unit_change_2018 is negative,N
+321646992,unit_change_2018 is negative,N
+321288496,unit_change_2018 is negative,N
+321251033,unit_change_2018 is negative,N
+122284802,unit_change_2018 is negative,N
+421587278,unit_change_2018 is negative,N
+120162386,unit_change_2018 is negative,N
+121961243,unit_change_2018 is negative,N
+421548686,unit_change_2018 is negative,N
+321374776,unit_change_2018 is negative,N
+321727878,unit_change_2018 is negative,N
+520320448,unit_change_2018 is negative,N
+421548622,unit_change_2018 is negative,N
+520331757,unit_change_2018 is negative,N
+200773378,job_type= DM and units_init > 19,N
+520326781,unit_change_2018 is negative,N
+102828585,top 10 units_prop A1,N
+220614093,unit_change_2018 is negative,N
+220620059,unit_change_2018 is negative,N
+421436011,unit_change_2018 is negative,N
+302387682,job_type= DM and units_init > 19,N
+520336253,unit_change_2018 is negative,N
+120841928,job_type= A1 and units_net < -50,N
+520302921,unit_change_2018 is negative,N
+321676931,unit_change_2018 is negative,N
+421580792,unit_change_2018 is negative,N
+520312787,unit_change_2018 is negative,N
+121358627,unit_change_2018 is negative,N
+520331392,unit_change_2018 is negative,N
+520326530,unit_change_2018 is negative,N
+421590308,unit_change_2018 is negative,N
+321752242,unit_change_2018 is negative,N
+421548490,unit_change_2018 is negative,N
+421408792,unit_change_2018 is negative,N
+421599354,unit_change_2018 is negative,N
+320915809,unit_change_2018 is negative,N
+421569939,unit_change_2018 is negative,N
+321628725,unit_change_2018 is negative,N
+421478993,unit_change_2018 is negative,N
+302157573,job_type= DM and units_init > 19,N
+421548285,unit_change_2018 is negative,N
+103731115,unit_change_2018 is negative,N
+420295932,job_type= DM and units_init > 19,N
+321562420,unit_change_2018 is negative,N
+520315310,unit_change_2018 is negative,N
+421047352,unit_change_2018 is negative,N
+421570455,unit_change_2018 is negative,N
+321675905,unit_change_2018 is negative,N
+302085286,job_type= DM and units_init > 19,N
+220582910,unit_change_2018 is negative,N
+321744895,unit_change_2018 is negative,N
+220635089,unit_change_2018 is negative,N
+321572446,unit_change_2018 is negative,N
+421590601,unit_change_2018 is negative,N
+421582978,unit_change_2018 is negative,N
+421383791,unit_change_2018 is negative,N
+421347741,unit_change_2018 is negative,N
+200766527,job_description contains both %RESID% AND %HOTEL%,N
+421596981,unit_change_2018 is negative,N
+122725033,unit_change_2018 is negative,N
+421600565,unit_change_2018 is negative,N
+520319398,unit_change_2018 is negative,N
+220614075,unit_change_2018 is negative,N
+220625722,unit_change_2018 is negative,N
+321197469,unit_change_2018 is negative,N
+520322286,unit_change_2018 is negative,N
+321700566,unit_change_2018 is negative,N
+421548757,unit_change_2018 is negative,N
+421642235,unit_change_2018 is negative,N
+520311458,unit_change_2018 is negative,N
+321662768,unit_change_2018 is negative,N
+421398231,unit_change_2018 is negative,N
+520319414,unit_change_2018 is negative,N
+321786956,unit_change_2018 is negative,N
+321690103,unit_change_2018 is negative,N
+321615472,unit_change_2018 is negative,N
+321697525,unit_change_2018 is negative,N
+421583058,unit_change_2018 is negative,N
+321573472,unit_change_2018 is negative,N
+321797711,unit_change_2018 is negative,N
+421548301,unit_change_2018 is negative,N
+122934726,unit_change_2018 is negative,N
+421479572,unit_change_2018 is negative,N
+321118045,unit_change_2018 is negative,N
+121854323,job_type= A1 and units_net < -50,N
+122948640,job_type= A1 and units_net < -50,N
+302297002,job_type= DM and units_init > 19,N
+421575343,unit_change_2018 is negative,N
+520302930,unit_change_2018 is negative,N
+302079738,job_type= DM and units_init > 19,N
+320858817,unit_change_2018 is negative,N
+122470815,unit_change_2018 is negative,N
+321697437,unit_change_2018 is negative,N
+520323025,unit_change_2018 is negative,N
+520323622,unit_change_2018 is negative,N
+121588433,unit_change_2018 is negative,N
+321562858,unit_change_2018 is negative,N
+321724595,unit_change_2018 is negative,N
+321322680,unit_change_2018 is negative,N
+321676968,unit_change_2018 is negative,N
+421604972,unit_change_2018 is negative,N
+320573633,unit_change_2018 is negative,N
+520296769,unit_change_2018 is negative,N
+121636792,unit_change_2018 is negative,N
+321694234,unit_change_2018 is negative,N
+121641492,unit_change_2018 is negative,N
+121862751,job_type= A1 and units_net < -50,N
+421548739,unit_change_2018 is negative,N
+321646778,unit_change_2018 is negative,N
+421548258,unit_change_2018 is negative,N
+421548720,unit_change_2018 is negative,N
+122673446,unit_change_2018 is negative,N
+421480365,unit_change_2018 is negative,N
+520338251,unit_change_2018 is negative,N
+321425249,unit_change_2018 is negative,N
+520312812,unit_change_2018 is negative,N
+321794849,unit_change_2018 is negative,N
+520324266,unit_change_2018 is negative,N
+122070098,unit_change_2018 is negative,N
+220631546,unit_change_2018 is negative,N
+104672310,unit_change_2018 is negative,N
+220623626,unit_change_2018 is negative,N
+321676986,unit_change_2018 is negative,N
+421592949,unit_change_2018 is negative,N
+122135215,unit_change_2018 is negative,N
+321571312,unit_change_2018 is negative,N
+421456061,unit_change_2018 is negative,N
+321697552,unit_change_2018 is negative,N
+321648160,unit_change_2018 is negative,N
+520332809,unit_change_2018 is negative,N
+421605310,unit_change_2018 is negative,N
+520326111,unit_change_2018 is negative,N
+421531925,unit_change_2018 is negative,N
+520189929,unit_change_2018 is negative,N
+102501810,unit_change_2018 is negative,N
+302085277,job_type= DM and units_init > 19,N
+321280485,unit_change_2018 is negative,N
+120926052,job_type= A1 and units_net < -50,N
+421535459,unit_change_2018 is negative,N
+220591205,unit_change_2018 is negative,N
+122801708,unit_change_2018 is negative,N
+220621940,unit_change_2018 is negative,N
+321679876,unit_change_2018 is negative,N
+421457578,unit_change_2018 is negative,N
+421587241,unit_change_2018 is negative,N
+220600721,unit_change_2018 is negative,N
+120700795,job_type= A1 and units_net < -50,N
+201110939,job_type= DM and units_init > 19,N
+321251015,unit_change_2018 is negative,N
+220630280,unit_change_2018 is negative,N
+421239412,unit_change_2018 is negative,N
+321423679,unit_change_2018 is negative,N
+520327557,unit_change_2018 is negative,N
+421270305,unit_change_2018 is negative,N
+520326521,unit_change_2018 is negative,N
+320908942,unit_change_2018 is negative,N
+421548515,unit_change_2018 is negative,N
+122371236,unit_change_2018 is negative,N
+520320466,unit_change_2018 is negative,N
+122826059,unit_change_2018 is negative,N
+321688991,unit_change_2018 is negative,N
+321744957,unit_change_2018 is negative,N
+520323668,unit_change_2018 is negative,N
+321505297,unit_change_2018 is negative,N
+302386095,job_type= DM and units_init > 19,N
+421603642,unit_change_2018 is negative,N
+520255508,unit_change_2018 is negative,N
+520317292,unit_change_2018 is negative,N
+520255492,unit_change_2018 is negative,N
+421569671,unit_change_2018 is negative,N
+220611666,unit_change_2018 is negative,N
+421525184,unit_change_2018 is negative,N
+421570311,unit_change_2018 is negative,N
+520316578,unit_change_2018 is negative,N
+321431438,unit_change_2018 is negative,N
+421592930,unit_change_2018 is negative,N
+520311467,unit_change_2018 is negative,N
+421484655,unit_change_2018 is negative,N
+421484646,unit_change_2018 is negative,N
+102994985,job_description contains both %RESID% AND %HOTEL%,N
+220547718,unit_change_2018 is negative,N
+321638108,unit_change_2018 is negative,N
+321562448,unit_change_2018 is negative,N
+321615427,unit_change_2018 is negative,N
+421299348,unit_change_2018 is negative,N
+104933235,unit_change_2018 is negative,N
+110188706,unit_change_2018 is negative,N
+320914640,unit_change_2018 is negative,N
+121705342,unit_change_2018 is negative,N
+220575642,unit_change_2018 is negative,N
+320915248,unit_change_2018 is negative,N
+122693530,unit_change_2018 is negative,N
+123343872,unit_change_2018 is negative,N
+321640408,unit_change_2018 is negative,N
+421548418,unit_change_2018 is negative,N
+421578563,unit_change_2018 is negative,N
+421491282,unit_change_2018 is negative,N
+421621490,unit_change_2018 is negative,N
+421419959,unit_change_2018 is negative,N
+421611152,unit_change_2018 is negative,N
+421548463,unit_change_2018 is negative,N
+520285600,unit_change_2018 is negative,N
+321366213,unit_change_2018 is negative,N
+321251024,unit_change_2018 is negative,N
+520335726,unit_change_2018 is negative,N
+520304322,unit_change_2018 is negative,N
+120926070,job_type= A1 and units_net < -50,N
+200767116,top 10 units_prop A1,N
+520334745,unit_change_2018 is negative,N
+200800311,job_type= DM and units_init > 19,N
+220614100,unit_change_2018 is negative,N
+321326196,unit_change_2018 is negative,N
+123131039,unit_change_2018 is negative,N
+121189668,unit_change_2018 is negative,N
+320915239,unit_change_2018 is negative,N
+421538401,unit_change_2018 is negative,N
+421601289,unit_change_2018 is negative,N
+421603045,unit_change_2018 is negative,N
+104192758,unit_change_2018 is negative,N
+421575548,unit_change_2018 is negative,N
+321509907,unit_change_2018 is negative,N
+302085302,job_type= DM and units_init > 19,N
+122817988,unit_change_2018 is negative,N
+200776446,job_type= DM and units_init > 19,N
+321741004,unit_change_2018 is negative,N
+421587125,unit_change_2018 is negative,N
+421548454,unit_change_2018 is negative,N
+421587713,unit_change_2018 is negative,N
+220616233,unit_change_2018 is negative,N
+321631061,unit_change_2018 is negative,N
+421584645,unit_change_2018 is negative,N
+104616122,job_type= DM and units_init > 19,N
+321564516,unit_change_2018 is negative,N
+421492076,unit_change_2018 is negative,N
+421643190,unit_change_2018 is negative,N
+401101151,job_type= DM and units_init > 19,N
+320576961,unit_change_2018 is negative,N
+520322188,unit_change_2018 is negative,N
+520323052,unit_change_2018 is negative,N
+321749907,unit_change_2018 is negative,N
+321520430,unit_change_2018 is negative,N
+121186359,unit_change_2018 is negative,N
+103977412,unit_change_2018 is negative,N
+220620068,unit_change_2018 is negative,N
+421589506,unit_change_2018 is negative,N
+103298502,unit_change_2018 is negative,N
+120621354,job_type= A1 and units_net < -50,N
+321728314,unit_change_2018 is negative,N
+321728323,unit_change_2018 is negative,N
+421524345,unit_change_2018 is negative,N
+321697561,unit_change_2018 is negative,N
+421592976,unit_change_2018 is negative,N
+321694323,unit_change_2018 is negative,N
+321750976,unit_change_2018 is negative,N
+421548383,unit_change_2018 is negative,N
+121816080,unit_change_2018 is negative,N
+122753074,unit_change_2018 is negative,N
+421550468,unit_change_2018 is negative,N
+520326585,unit_change_2018 is negative,N
+320624767,unit_change_2018 is negative,N
+122668700,unit_change_2018 is negative,N
+421593957,unit_change_2018 is negative,N
+321587939,unit_change_2018 is negative,N
+520326763,unit_change_2018 is negative,N
+520278627,unit_change_2018 is negative,N
+120447524,unit_change_2018 is negative,N
+520326095,unit_change_2018 is negative,N
+421550315,unit_change_2018 is negative,N
+421593001,unit_change_2018 is negative,N
+220668267,job_type= DM and units_init > 19,N
+321641050,unit_change_2018 is negative,N
+321642013,unit_change_2018 is negative,N
+321647018,unit_change_2018 is negative,N
+421557540,unit_change_2018 is negative,N
+321795198,unit_change_2018 is negative,N
+321621606,unit_change_2018 is negative,N
+520329136,unit_change_2018 is negative,N
+321675503,unit_change_2018 is negative,N
+220627436,unit_change_2018 is negative,N
+320865649,unit_change_2018 is negative,N
+122850628,unit_change_2018 is negative,N
+200780262,job_type= DM and units_init > 19,N
+421537117,unit_change_2018 is negative,N
+421583021,unit_change_2018 is negative,N
+110278468,job_type= A1 and units_net < -50,N
+321750949,unit_change_2018 is negative,N
+201030936,top 10 units_prop A1,N
+520323016,unit_change_2018 is negative,N
+321694412,unit_change_2018 is negative,N
+103319491,unit_change_2018 is negative,N
+421387243,unit_change_2018 is negative,N
+520319405,unit_change_2018 is negative,N
+321626763,unit_change_2018 is negative,N
+321511262,unit_change_2018 is negative,N
+421589766,unit_change_2018 is negative,N
+321475658,unit_change_2018 is negative,N
+421585172,unit_change_2018 is negative,N
+321729171,unit_change_2018 is negative,N
+120873206,unit_change_2018 is negative,N
+321762115,unit_change_2018 is negative,N
+321546234,unit_change_2018 is negative,N
+321525159,unit_change_2018 is negative,N
+321528619,unit_change_2018 is negative,N
+220632019,unit_change_2018 is negative,N
+520325746,unit_change_2018 is negative,N
+321535255,unit_change_2018 is negative,N
+520324284,unit_change_2018 is negative,N
+123298760,unit_change_2018 is negative,N
+321686537,unit_change_2018 is negative,N
+520325755,unit_change_2018 is negative,N
+121325869,job_description contains both %RESID% AND %HOTEL%,N
+321641014,unit_change_2018 is negative,N
+421578769,unit_change_2018 is negative,N
+220580404,unit_change_2018 is negative,N
+520320439,unit_change_2018 is negative,N
+121325869,job_type= A1 and units_net < -50,N
+421593886,unit_change_2018 is negative,N
+421539687,unit_change_2018 is negative,N
+520332792,unit_change_2018 is negative,N
+520333498,unit_change_2018 is negative,N
+421601252,unit_change_2018 is negative,N
+520319450,unit_change_2018 is negative,N
+520336075,unit_change_2018 is negative,N
+321694332,unit_change_2018 is negative,N
+421575334,unit_change_2018 is negative,N
+500911294,job_type= DM and units_init > 19,N
+520323659,unit_change_2018 is negative,N
+110330909,job_type= DM and units_init > 19,N
+321475667,unit_change_2018 is negative,N
+122401971,unit_change_2018 is negative,N
+123071353,unit_change_2018 is negative,N
+420650664,unit_change_2018 is negative,N
+122993458,unit_change_2018 is negative,N
+321511253,unit_change_2018 is negative,N
+421613105,unit_change_2018 is negative,N
+520318530,unit_change_2018 is negative,N
+121588969,job_description contains both %RESID% AND %HOTEL%,N
+104921373,unit_change_2018 is negative,N
+321626736,unit_change_2018 is negative,N
+321767441,unit_change_2018 is negative,N
+321505670,unit_change_2018 is negative,N
+321718414,unit_change_2018 is negative,N
+104578878,job_description contains both %RESID% AND %HOTEL%,N
+110143924,job_description contains both %RESID% AND %HOTEL%,N
+320522715,unit_change_2018 is negative,N
+321701814,unit_change_2018 is negative,N
+321655650,unit_change_2018 is negative,N
+103951387,unit_change_2018 is negative,N
+103143527,unit_change_2018 is negative,N
+321692129,unit_change_2018 is negative,N
+421531916,unit_change_2018 is negative,N
+520324471,unit_change_2018 is negative,N
+220609385,unit_change_2018 is negative,N
+122109734,unit_change_2018 is negative,N
+520143719,unit_change_2018 is negative,N
+321525435,unit_change_2018 is negative,N
+520306865,unit_change_2018 is negative,N
+121186171,unit_change_2018 is negative,N
+123012587,unit_change_2018 is negative,N
+220623305,unit_change_2018 is negative,N
+421412153,unit_change_2018 is negative,N
+321756943,unit_change_2018 is negative,N
+421355269,unit_change_2018 is negative,N
+421583094,unit_change_2018 is negative,N
+120481246,unit_change_2018 is negative,N
+520328814,unit_change_2018 is negative,N
+520324355,unit_change_2018 is negative,N
+220600856,unit_change_2018 is negative,N
+421603161,unit_change_2018 is negative,N
+302085295,job_type= DM and units_init > 19,N
+320547039,unit_change_2018 is negative,N
+321455322,unit_change_2018 is negative,N
+520318166,unit_change_2018 is negative,N
+122168206,unit_change_2018 is negative,N
+321500862,unit_change_2018 is negative,N
+421535191,unit_change_2018 is negative,N
+121532252,job_description contains both %RESID% AND %HOTEL%,N
+520330874,unit_change_2018 is negative,N
+321498107,unit_change_2018 is negative,N
+321697623,unit_change_2018 is negative,N
+122810556,unit_change_2018 is negative,N
+123037640,unit_change_2018 is negative,N
+421587223,unit_change_2018 is negative,N
+301491543,job_type= DM and units_init > 19,N
+421573014,unit_change_2018 is negative,N
+421607372,unit_change_2018 is negative,N
+421580809,unit_change_2018 is negative,N
+104402941,job_type= DM and units_init > 19,N
+110474914,job_type= DM and units_init > 19,N
+421390998,unit_change_2018 is negative,N
+520332818,unit_change_2018 is negative,N
+102812912,unit_change_2018 is negative,N
+320985029,unit_change_2018 is negative,N
+321727342,unit_change_2018 is negative,N
+321629056,unit_change_2018 is negative,N
+520307249,unit_change_2018 is negative,N
+123083796,unit_change_2018 is negative,N
+103815515,unit_change_2018 is negative,N
+520317540,unit_change_2018 is negative,N
+120986077,job_type= A1 and units_net < -50,N
+321653064,unit_change_2018 is negative,N
+421548560,unit_change_2018 is negative,N
+120085950,job_type= A1 and units_net < -50,N
+321637323,unit_change_2018 is negative,N
+520336262,unit_change_2018 is negative,N
+220586293,unit_change_2018 is negative,N
+520307374,unit_change_2018 is negative,N
+321197922,unit_change_2018 is negative,N
+321515295,unit_change_2018 is negative,N
+421548613,unit_change_2018 is negative,N
+310226010,job_type= DM and units_init > 19,N
+421616120,unit_change_2018 is negative,N
+520318040,unit_change_2018 is negative,N
+122239871,unit_change_2018 is negative,N
+122668700,job_type= A1 and units_net < -50,N
+120773804,job_description contains both %RESID% AND %HOTEL%,N
+321353851,unit_change_2018 is negative,N
+421548481,unit_change_2018 is negative,N
+321716808,unit_change_2018 is negative,N
+321716791,unit_change_2018 is negative,N
+321244382,unit_change_2018 is negative,N
+421315099,unit_change_2018 is negative,N
+302085259,job_type= DM and units_init > 19,N
+321648179,unit_change_2018 is negative,N
+321505661,unit_change_2018 is negative,N
+421605819,unit_change_2018 is negative,N
+421317998,unit_change_2018 is negative,N
+421593662,unit_change_2018 is negative,N
+321676977,unit_change_2018 is negative,N
+321727333,unit_change_2018 is negative,N
+421270957,unit_change_2018 is negative,N
+421569626,unit_change_2018 is negative,N
+520325050,unit_change_2018 is negative,N
+121868513,job_description contains both %RESID% AND %HOTEL%,N
+321546261,unit_change_2018 is negative,N
+421589515,unit_change_2018 is negative,N
+421513268,unit_change_2018 is negative,N
+123343881,unit_change_2018 is negative,N
+103559846,unit_change_2018 is negative,N
+421318229,unit_change_2018 is negative,N
+110368726,job_type= A1 and units_net < -50,N
+421579296,unit_change_2018 is negative,N
+123343863,unit_change_2018 is negative,N
+520328967,unit_change_2018 is negative,N
+102280586,top 10 units_prop A1,N
+220591198,unit_change_2018 is negative,N
+321088292,unit_change_2018 is negative,N
+520329500,unit_change_2018 is negative,N
+421523934,unit_change_2018 is negative,N
+520326120,unit_change_2018 is negative,N
+122822062,unit_change_2018 is negative,N
+321546305,unit_change_2018 is negative,N
+220650052,unit_change_2018 is negative,N
+402681175,job_type= DM and units_init > 19,N
+421566068,unit_change_2018 is negative,N
+421582834,unit_change_2018 is negative,N
+421559904,unit_change_2018 is negative,N
+122514859,unit_change_2018 is negative,N
+420605296,top 20 units_net A1,N
+321638091,unit_change_2018 is negative,N
+120869596,job_type= DM and units_init > 19,N
+321783469,unit_change_2018 is negative,N
+321817423,unit_change_2018 is negative,N
+321627218,unit_change_2018 is negative,N
+321656310,job_type= A1 and units_net < -50,N
+120560240,unit_change_2018 is negative,N
+321506713,unit_change_2018 is negative,N
+103236954,job_description contains both %RESID% AND %HOTEL%,N
+421378896,unit_change_2018 is negative,N
+301228525,job_type= DM and units_init > 19,N
+421590031,unit_change_2018 is negative,N
+321695135,unit_change_2018 is negative,N
+421575496,unit_change_2018 is negative,N
+121992013,unit_change_2018 is negative,N
+220014400,job_type= A1 and units_net < -50,N
+421572195,unit_change_2018 is negative,N
+520313795,unit_change_2018 is negative,N
+321697534,unit_change_2018 is negative,N
+220588718,unit_change_2018 is negative,N
+520316587,unit_change_2018 is negative,N
+120715501,unit_change_2018 is negative,N
+122881854,unit_change_2018 is negative,N
+102926933,job_type= DM and units_init > 19,N
+103916498,job_type= DM and units_init > 19,N
+420951713,unit_change_2018 is negative,N
+123389403,unit_change_2018 is negative,N
+320624080,unit_change_2018 is negative,N
+321316143,unit_change_2018 is negative,N
+421588222,unit_change_2018 is negative,N
+520323089,unit_change_2018 is negative,N
+320949417,unit_change_2018 is negative,N
+321542960,unit_change_2018 is negative,N
+421525193,unit_change_2018 is negative,N
+421592958,unit_change_2018 is negative,N
+321697428,unit_change_2018 is negative,N
+421587134,unit_change_2018 is negative,N
+520318488,unit_change_2018 is negative,N
+301505789,job_type= DM and units_init > 19,N
+321436451,unit_change_2018 is negative,N
+321500871,unit_change_2018 is negative,N
+421582825,unit_change_2018 is negative,N
+321701805,unit_change_2018 is negative,N
+104413403,job_description contains both %RESID% AND %HOTEL%,N
+321650076,unit_change_2018 is negative,N
+220631270,unit_change_2018 is negative,N
+321677280,unit_change_2018 is negative,N
+321694403,unit_change_2018 is negative,N
+421548294,unit_change_2018 is negative,N
+321381143,unit_change_2018 is negative,N
+321559309,unit_change_2018 is negative,N
+110416210,unit_change_2018 is negative,N
+120926061,job_type= A1 and units_net < -50,N
+110418174,job_type= A1 and units_net < -50,N
+301623474,job_type= DM and units_init > 19,N
+421548551,unit_change_2018 is negative,N
+122354647,unit_change_2018 is negative,N
+321695215,unit_change_2018 is negative,N
+302066993,job_type= DM and units_init > 19,N
+302253406,job_type= DM and units_init > 19,N
+321786670,unit_change_2018 is negative,N
+321626754,unit_change_2018 is negative,N
+220600981,unit_change_2018 is negative,N
+321572623,unit_change_2018 is negative,N
+321568674,top 10 units_prop A1,N
+321637314,unit_change_2018 is negative,N
+122541776,unit_change_2018 is negative,N
+220600847,unit_change_2018 is negative,N
+104813720,job_description contains both %RESID% AND %HOTEL%,N
+321626745,unit_change_2018 is negative,N
+122076010,unit_change_2018 is negative,N
+520315329,unit_change_2018 is negative,N
+520322017,unit_change_2018 is negative,N
+520331775,unit_change_2018 is negative,N
+321424589,unit_change_2018 is negative,N
+220610097,unit_change_2018 is negative,N
+321628164,unit_change_2018 is negative,N
+104608195,unit_change_2018 is negative,N
+320624703,unit_change_2018 is negative,N
+123343854,unit_change_2018 is negative,N
+121394295,job_description contains both %RESID% AND %HOTEL%,N
+320447842,top 10 units_prop A1,N
+321655838,unit_change_2018 is negative,N
+520323711,unit_change_2018 is negative,N
+104813711,job_description contains both %RESID% AND %HOTEL%,N
+421571070,unit_change_2018 is negative,N
+321703796,unit_change_2018 is negative,N
+321749863,unit_change_2018 is negative,N
+421587232,unit_change_2018 is negative,N
+520321438,unit_change_2018 is negative,N
+121330808,unit_change_2018 is negative,N
+321293079,unit_change_2018 is negative,N
+321431429,unit_change_2018 is negative,N
+421586732,unit_change_2018 is negative,N
+220611657,unit_change_2018 is negative,N
+321697473,unit_change_2018 is negative,N
+321785314,unit_change_2018 is negative,N
+120049964,unit_change_2018 is negative,N
+121749493,unit_change_2018 is negative,N
+110278468,top 20 units_net A1,N
+421592967,unit_change_2018 is negative,N
+321187023,unit_change_2018 is negative,N
+321688982,unit_change_2018 is negative,N
+123294924,unit_change_2018 is negative,N
+104112728,job_type= DM and units_init > 19,N
+302320904,job_type= DM and units_init > 19,N
+321692110,unit_change_2018 is negative,N
+421392175,unit_change_2018 is negative,N
+520277147,unit_change_2018 is negative,N
+121192896,unit_change_2018 is negative,N
+321750967,unit_change_2018 is negative,N
+421548677,unit_change_2018 is negative,N
+121324717,unit_change_2018 is negative,N
+220627418,unit_change_2018 is negative,N
+320783194,unit_change_2018 is negative,N
+321697366,unit_change_2018 is negative,N
+520324444,unit_change_2018 is negative,N
+520318497,unit_change_2018 is negative,N
+220650043,unit_change_2018 is negative,N
+520327824,unit_change_2018 is negative,N
+220638601,unit_change_2018 is negative,N
+421481042,unit_change_2018 is negative,N
+520312723,unit_change_2018 is negative,N
+301139499,job_description contains both %RESID% AND %HOTEL%,N
+220603666,unit_change_2018 is negative,N
+421544314,unit_change_2018 is negative,N
+520326228,unit_change_2018 is negative,N
+121689707,unit_change_2018 is negative,N
+321646368,unit_change_2018 is negative,N
+104278130,job_description contains both %RESID% AND %HOTEL%,N
+220607074,unit_change_2018 is negative,N
+520164893,unit_change_2018 is negative,N
+104930461,job_type= A1 and units_net < -50,N
+421057698,unit_change_2018 is negative,N
+421569699,unit_change_2018 is negative,N
+421593831,unit_change_2018 is negative,N
+301649973,unit_change_2018 is negative,N
+421518968,unit_change_2018 is negative,N
+520312741,unit_change_2018 is negative,N
+520320974,unit_change_2018 is negative,N
+321184115,unit_change_2018 is negative,N
+520320475,unit_change_2018 is negative,N
+321362538,unit_change_2018 is negative,N
+421591138,unit_change_2018 is negative,N
+122401560,unit_change_2018 is negative,N
+301568239,job_type= DM and units_init > 19,N
+321356108,unit_change_2018 is negative,N
+421488508,unit_change_2018 is negative,N
+520322482,unit_change_2018 is negative,N
+302008565,job_type= DM and units_init > 19,N
+421567628,unit_change_2018 is negative,N
+220626972,unit_change_2018 is negative,N
+421630328,unit_change_2018 is negative,N
+121830439,unit_change_2018 is negative,N
+421638981,unit_change_2018 is negative,N
+421548472,unit_change_2018 is negative,N
+220575900,unit_change_2018 is negative,N
+321148030,unit_change_2018 is negative,N
+321751742,unit_change_2018 is negative,N
+321411879,unit_change_2018 is negative,N
+421603679,unit_change_2018 is negative,N
+520323613,unit_change_2018 is negative,N
+321756890,unit_change_2018 is negative,N
+421560867,unit_change_2018 is negative,N
+122512414,unit_change_2018 is negative,N
+421548542,unit_change_2018 is negative,N
+121369429,job_type= DM and units_init > 19,N
+123031389,unit_change_2018 is negative,N
+220547451,unit_change_2018 is negative,N
+401639973,job_description contains both %RESID% AND %HOTEL%,N
+321562126,unit_change_2018 is negative,N
+122363539,unit_change_2018 is negative,N
+520327904,unit_change_2018 is negative,N
+220638308,unit_change_2018 is negative,N
+520326772,unit_change_2018 is negative,N
+104937678,job_type= DM and units_init > 19,N
+321521402,unit_change_2018 is negative,N
+122420040,unit_change_2018 is negative,N
+321553323,unit_change_2018 is negative,N
+421594206,unit_change_2018 is negative,N
+122043500,unit_change_2018 is negative,N
+520336093,unit_change_2018 is negative,N
+321637332,unit_change_2018 is negative,N
+520330160,unit_change_2018 is negative,N
+121115738,unit_change_2018 is negative,N
+421537135,unit_change_2018 is negative,N
+310123773,unit_change_2018 is negative,N
+321638082,unit_change_2018 is negative,N
+520328958,unit_change_2018 is negative,N
+321508640,unit_change_2018 is negative,N
+321638545,unit_change_2018 is negative,N
+421332800,unit_change_2018 is negative,N
+421592985,unit_change_2018 is negative,N
+520310501,unit_change_2018 is negative,N
+520330883,unit_change_2018 is negative,N
+421341220,unit_change_2018 is negative,N
+421465159,unit_change_2018 is negative,N
+110017151,unit_change_2018 is negative,N
+321704937,unit_change_2018 is negative,N
+421521856,unit_change_2018 is negative,N
+302140546,unit_change_2018 is negative,N
+321679796,unit_change_2018 is negative,N
+104934083,job_type= DM and units_init > 19,N
+220580388,unit_change_2018 is negative,N
+220627800,unit_change_2018 is negative,N
+421548659,unit_change_2018 is negative,N
+220527598,unit_change_2018 is negative,N
+320205309,unit_change_2018 is negative,N
+321795205,unit_change_2018 is negative,N
+520329494,unit_change_2018 is negative,N
+421487411,unit_change_2018 is negative,N
+421575450,unit_change_2018 is negative,N
+220602541,unit_change_2018 is negative,N
+220614084,unit_change_2018 is negative,N
+520321429,unit_change_2018 is negative,N
+321562439,unit_change_2018 is negative,N
+421581611,unit_change_2018 is negative,N
+520319441,unit_change_2018 is negative,N
+123051179,unit_change_2018 is negative,N
+321779615,unit_change_2018 is negative,N
+123165859,unit_change_2018 is negative,N
+421581835,unit_change_2018 is negative,N
+102780545,job_type= DM and units_init > 19,N
+421262555,unit_change_2018 is negative,N
+421552581,unit_change_2018 is negative,N
+120392173,unit_change_2018 is negative,N
+123111248,unit_change_2018 is negative,N
+321008440,unit_change_2018 is negative,N
+421590497,unit_change_2018 is negative,N
+421051809,unit_change_2018 is negative,N
+321628716,unit_change_2018 is negative,N
+210033747,unit_change_2018 is negative,N
+421555702,unit_change_2018 is negative,N
+122349404,unit_change_2018 is negative,N
+321405537,unit_change_2018 is negative,N
+321505634,unit_change_2018 is negative,N
+321560663,unit_change_2018 is negative,N
+421585984,unit_change_2018 is negative,N
+321452897,unit_change_2018 is negative,N
+520277156,unit_change_2018 is negative,N
+321625087,unit_change_2018 is negative,N
+321672310,unit_change_2018 is negative,N
+321750958,unit_change_2018 is negative,N
+520326594,unit_change_2018 is negative,N
+520276479,unit_change_2018 is negative,N
+102999980,job_description contains both %RESID% AND %HOTEL%,N
+200766821,job_description contains both %RESID% AND %HOTEL%,N
+123547634,job_type= DM and units_init > 19,N
+421587063,unit_change_2018 is negative,N
+121184556,unit_change_2018 is negative,N
+321697419,unit_change_2018 is negative,N
+421560992,unit_change_2018 is negative,N
+321614044,unit_change_2018 is negative,N
+421613098,unit_change_2018 is negative,N
+123547643,job_type= DM and units_init > 19,N
+104296218,job_type= DM and units_init > 19,N
+110125962,job_type= A1 and units_net < -50,N
+121617759,unit_change_2018 is negative,N
+321671071,unit_change_2018 is negative,N
+520316596,unit_change_2018 is negative,N
+104934074,job_type= DM and units_init > 19,N
+302229693,job_type= DM and units_init > 19,N
+320985074,unit_change_2018 is negative,N
+320969519,unit_change_2018 is negative,N
+421578448,unit_change_2018 is negative,N
+321546332,unit_change_2018 is negative,N
+321653821,unit_change_2018 is negative,N
+122734639,unit_change_2018 is negative,N
+122849944,unit_change_2018 is negative,N
+421575851,unit_change_2018 is negative,N
+220652844,unit_change_2018 is negative,N
+421420279,unit_change_2018 is negative,N
+320576462,unit_change_2018 is negative,N
+121123569,unit_change_2018 is negative,N
+520318157,unit_change_2018 is negative,N
+321633461,unit_change_2018 is negative,N
+321192909,unit_change_2018 is negative,N
+301963276,job_type= DM and units_init > 19,N
+520311476,unit_change_2018 is negative,N
+520317283,unit_change_2018 is negative,N
+320576925,job_description contains both %RESID% AND %HOTEL%,N
+421488401,unit_change_2018 is negative,N
+321646787,unit_change_2018 is negative,N
+421610000,unit_change_2018 is negative,N
+220550936,unit_change_2018 is negative,N
+520307365,unit_change_2018 is negative,N
+520324710,unit_change_2018 is negative,N
+321675512,unit_change_2018 is negative,N
+321547037,unit_change_2018 is negative,N
+421420901,unit_change_2018 is negative,N
+320626462,unit_change_2018 is negative,N
+421587116,unit_change_2018 is negative,N
+321727351,unit_change_2018 is negative,N
+320915300,unit_change_2018 is negative,N
+421548631,unit_change_2018 is negative,N
+421591726,unit_change_2018 is negative,N
+421648248,unit_change_2018 is negative,N
+321380359,unit_change_2018 is negative,N
+421417256,unit_change_2018 is negative,N
+520302949,unit_change_2018 is negative,N
+220616778,unit_change_2018 is negative,N
+321655678,unit_change_2018 is negative,N
+421417354,unit_change_2018 is negative,N
+302344443,job_type= DM and units_init > 19,N
+421436431,unit_change_2018 is negative,N
+421463641,unit_change_2018 is negative,N
+320124441,unit_change_2018 is negative,N
+123058797,unit_change_2018 is negative,N
+421548524,unit_change_2018 is negative,N
+421635573,unit_change_2018 is negative,N
+520328672,unit_change_2018 is negative,N
+321641023,unit_change_2018 is negative,N
+520319487,unit_change_2018 is negative,N
+520329939,unit_change_2018 is negative,N
+520323640,unit_change_2018 is negative,N
+321571303,unit_change_2018 is negative,N
+321794830,unit_change_2018 is negative,N
+321671026,unit_change_2018 is negative,N
+310176261,unit_change_2018 is negative,N
+520274854,unit_change_2018 is negative,N
+321749890,unit_change_2018 is negative,N
+421365855,unit_change_2018 is negative,N
+421593083,unit_change_2018 is negative,N
+102926915,job_type= DM and units_init > 19,N
+321766843,unit_change_2018 is negative,N
+121471326,unit_change_2018 is negative,N
+321697482,unit_change_2018 is negative,N
+321738802,unit_change_2018 is negative,N
+110450752,top 20 units_net A1,N
+321546341,unit_change_2018 is negative,N
+220577098,unit_change_2018 is negative,N
+104294096,job_type= DM and units_init > 19,N
+321535157,unit_change_2018 is negative,N
+321794858,unit_change_2018 is negative,N
+421634342,unit_change_2018 is negative,N
+520324701,unit_change_2018 is negative,N
+421594215,unit_change_2018 is negative,N
+321432829,unit_change_2018 is negative,N
+321528600,unit_change_2018 is negative,N
+110435413,job_type= DM and units_init > 19,N
+220626990,unit_change_2018 is negative,N
+220550829,unit_change_2018 is negative,N
+302085268,job_type= DM and units_init > 19,N
+421548748,unit_change_2018 is negative,N
+421576538,unit_change_2018 is negative,N
+321571296,unit_change_2018 is negative,N
+321697605,unit_change_2018 is negative,N
+104177472,top 10 units_prop A1,N
+321234231,unit_change_2018 is negative,N
+110285334,job_description contains both %RESID% AND %HOTEL%,N
+421548695,unit_change_2018 is negative,N
+321738795,unit_change_2018 is negative,N
+520312956,unit_change_2018 is negative,N
+520312732,unit_change_2018 is negative,N
+301953759,job_type= DM and units_init > 19,N
+520325737,unit_change_2018 is negative,N
+421474568,unit_change_2018 is negative,N
+121900158,unit_change_2018 is negative,N
+301568248,job_type= DM and units_init > 19,N
+123131020,unit_change_2018 is negative,N
+220620040,unit_change_2018 is negative,N
+321718361,unit_change_2018 is negative,N
+321703705,unit_change_2018 is negative,N
+321544879,unit_change_2018 is negative,N
+321646992,unit_change_2018 is negative,N
+321288496,unit_change_2018 is negative,N
+321633700,unit_change_2018 is negative,N
+321667175,unit_change_2018 is negative,N
+321251033,unit_change_2018 is negative,N
+421548409,unit_change_2018 is negative,N
+520326790,unit_change_2018 is negative,N
+421552858,unit_change_2018 is negative,N
+321459863,unit_change_2018 is negative,N
+122284802,unit_change_2018 is negative,N
+200797156,job_type= DM and units_init > 19,N
+421271938,unit_change_2018 is negative,N
+421587278,unit_change_2018 is negative,N
+520318521,unit_change_2018 is negative,N
+120162386,unit_change_2018 is negative,N
+121961243,unit_change_2018 is negative,N
+321251006,unit_change_2018 is negative,N
+520317407,unit_change_2018 is negative,N
+421548686,unit_change_2018 is negative,N
+321786000,unit_change_2018 is negative,N
+123131011,unit_change_2018 is negative,N
+410111230,job_description contains both %RESID% AND %HOTEL%,N
+421560876,unit_change_2018 is negative,N
+520320457,unit_change_2018 is negative,N
+520330838,unit_change_2018 is negative,N
+321374776,unit_change_2018 is negative,N
+421437699,unit_change_2018 is negative,N
+321727878,unit_change_2018 is negative,N
+520320448,unit_change_2018 is negative,N
+421548622,unit_change_2018 is negative,N
+520328707,unit_change_2018 is negative,N
+220547709,unit_change_2018 is negative,N
+520331757,unit_change_2018 is negative,N
+104934065,job_type= DM and units_init > 19,N
+122357056,unit_change_2018 is negative,N
+321641041,unit_change_2018 is negative,N
+421538410,unit_change_2018 is negative,N
+321795893,unit_change_2018 is negative,N
+320295284,unit_change_2018 is negative,N
+421612801,unit_change_2018 is negative,N
+122934735,unit_change_2018 is negative,N
+421548640,unit_change_2018 is negative,N
+200773378,job_type= DM and units_init > 19,N
+520295788,unit_change_2018 is negative,N
+520326781,unit_change_2018 is negative,N
+421584510,unit_change_2018 is negative,N
+421419968,unit_change_2018 is negative,N
+102828585,top 10 units_prop A1,N
+220630271,unit_change_2018 is negative,N
+321509300,unit_change_2018 is negative,N
+302197655,job_type= DM and units_init > 19,N
+220614093,unit_change_2018 is negative,N
+121561283,unit_change_2018 is negative,N
+220620059,unit_change_2018 is negative,N
+321615409,unit_change_2018 is negative,N
+421436011,unit_change_2018 is negative,N
+302387682,job_type= DM and units_init > 19,N
+220640965,unit_change_2018 is negative,N
+301963285,job_type= DM and units_init > 19,N
+520336253,unit_change_2018 is negative,N
+120841928,job_type= A1 and units_net < -50,N
+520302921,unit_change_2018 is negative,N
+320578344,unit_change_2018 is negative,N
+321676931,unit_change_2018 is negative,N
+421580792,unit_change_2018 is negative,N
+520312787,unit_change_2018 is negative,N
+321584200,unit_change_2018 is negative,N
+103397370,unit_change_2018 is negative,N
+121358627,unit_change_2018 is negative,N
+121185671,unit_change_2018 is negative,N
+321701823,unit_change_2018 is negative,N
+520331392,unit_change_2018 is negative,N
+302319694,unit_change_2018 is negative,N
+122925120,unit_change_2018 is negative,N
+520326530,unit_change_2018 is negative,N
+421590308,unit_change_2018 is negative,N
+520285619,unit_change_2018 is negative,N
+321752242,unit_change_2018 is negative,N
+320625640,unit_change_2018 is negative,N
+421548490,unit_change_2018 is negative,N
+320576346,unit_change_2018 is negative,N
+421408792,unit_change_2018 is negative,N
+104881530,job_type= DM and units_init > 19,N
+421599354,unit_change_2018 is negative,N
+421593092,unit_change_2018 is negative,N
+120077380,job_type= DM and units_init > 19,N
+320915809,unit_change_2018 is negative,N
+421569939,unit_change_2018 is negative,N
+321628725,unit_change_2018 is negative,N
+104343266,unit_change_2018 is negative,N
+421596491,unit_change_2018 is negative,N
+321562457,unit_change_2018 is negative,N
+421489062,unit_change_2018 is negative,N
+421478993,unit_change_2018 is negative,N
+302157573,job_type= DM and units_init > 19,N
+421548285,unit_change_2018 is negative,N
+104945507,job_type= DM and units_init > 19,N
+421544742,unit_change_2018 is negative,N
+421619118,unit_change_2018 is negative,N
+104945516,job_type= DM and units_init > 19,N
+421518272,unit_change_2018 is negative,N
+103731115,unit_change_2018 is negative,N
+420295932,job_type= DM and units_init > 19,N
+103507466,job_description contains both %RESID% AND %HOTEL%,N
+220582929,unit_change_2018 is negative,N
+123113120,unit_change_2018 is negative,N
+302363412,unit_change_2018 is negative,N
+321562420,unit_change_2018 is negative,N
+201106588,job_type= DM and units_init > 19,N
+520315310,unit_change_2018 is negative,N
+321697491,unit_change_2018 is negative,N
+520307230,unit_change_2018 is negative,N
+310070017,unit_change_2018 is negative,N
+321628173,unit_change_2018 is negative,N
+421047352,unit_change_2018 is negative,N
+421355624,unit_change_2018 is negative,N
+421570455,unit_change_2018 is negative,N
+321646359,unit_change_2018 is negative,N
+321675905,unit_change_2018 is negative,N
+302085286,job_type= DM and units_init > 19,N
+220582910,unit_change_2018 is negative,N
+321744895,unit_change_2018 is negative,N
+420603421,unit_change_2018 is negative,N
+220635089,unit_change_2018 is negative,N
+421555711,unit_change_2018 is negative,N
+321572446,unit_change_2018 is negative,N
+220627819,unit_change_2018 is negative,N
+421590601,unit_change_2018 is negative,N
+421582978,unit_change_2018 is negative,N
+421383791,unit_change_2018 is negative,N
+421607363,unit_change_2018 is negative,N
+321677299,unit_change_2018 is negative,N
+421347741,unit_change_2018 is negative,N
+421575325,unit_change_2018 is negative,N
+421341239,unit_change_2018 is negative,N
+200766527,job_description contains both %RESID% AND %HOTEL%,N
+421586304,unit_change_2018 is negative,N
+421596981,unit_change_2018 is negative,N
+321482258,unit_change_2018 is negative,N
+122725033,unit_change_2018 is negative,N
+120929763,unit_change_2018 is negative,N
+421600565,unit_change_2018 is negative,N
+520319398,unit_change_2018 is negative,N
+220614075,unit_change_2018 is negative,N
+220625722,unit_change_2018 is negative,N
+320968850,unit_change_2018 is negative,N
+321197469,unit_change_2018 is negative,N
+321571232,unit_change_2018 is negative,N
+210086315,job_type= DM and units_init > 19,N
+103907284,unit_change_2018 is negative,N
+220425154,unit_change_2018 is negative,N
+122927985,unit_change_2018 is negative,N
+302015913,job_type= DM and units_init > 19,N
+321581748,unit_change_2018 is negative,N
+321779535,unit_change_2018 is negative,N
+421548711,unit_change_2018 is negative,N
+321474855,unit_change_2018 is negative,N
+421570286,unit_change_2018 is negative,N
+421552732,unit_change_2018 is negative,N
+121048053,job_description contains both %RESID% AND %HOTEL%,N
+421581167,unit_change_2018 is negative,N
+520331409,unit_change_2018 is negative,N
+120918533,unit_change_2018 is negative,N
+321691433,unit_change_2018 is negative,N
+220627409,unit_change_2018 is negative,N
+121560765,unit_change_2018 is negative,N
+321498090,unit_change_2018 is negative,N
+321687055,unit_change_2018 is negative,N
+421603893,unit_change_2018 is negative,N
+321699408,unit_change_2018 is negative,N
+220650230,unit_change_2018 is negative,N
+520336173,unit_change_2018 is negative,N
+420865246,unit_change_2018 is negative,N
+421579651,unit_change_2018 is negative,N
+520317559,unit_change_2018 is negative,N
+421548276,unit_change_2018 is negative,N
+122523821,unit_change_2018 is negative,N
+103261514,unit_change_2018 is negative,N
+321794821,unit_change_2018 is negative,N
+520320983,unit_change_2018 is negative,N
+122260668,unit_change_2018 is negative,N
+321633693,unit_change_2018 is negative,N
+520319575,unit_change_2018 is negative,N
+520329047,unit_change_2018 is negative,N
+520331150,unit_change_2018 is negative,N
+321535166,unit_change_2018 is negative,N
+421051818,unit_change_2018 is negative,N
+321701832,unit_change_2018 is negative,N
+321637298,unit_change_2018 is negative,N
+321723328,unit_change_2018 is negative,N
+320981452,unit_change_2018 is negative,N
+321697446,unit_change_2018 is negative,N
+321751751,unit_change_2018 is negative,N
+520328949,unit_change_2018 is negative,N
+421412144,unit_change_2018 is negative,N
+220575919,unit_change_2018 is negative,N
+421418996,unit_change_2018 is negative,N
+421595134,unit_change_2018 is negative,N
+321751733,unit_change_2018 is negative,N
+321320833,unit_change_2018 is negative,N
+321684842,unit_change_2018 is negative,N
+321131360,unit_change_2018 is negative,N
+220627837,unit_change_2018 is negative,N
+320587726,unit_change_2018 is negative,N
+520318451,unit_change_2018 is negative,N
+421601163,unit_change_2018 is negative,N
+121206729,job_description contains both %RESID% AND %HOTEL%,
+123847392,job_type= A1 and units_net < -50,
+123864130,job_description contains both %RESID% AND %HOTEL%,
+123515847,job_type= DM and units_init > 19,
+210180490,job_description contains both %RESID% AND %HOTEL%,
+121206667,job_type= A1 and units_net < -50,
+420666363,job_description contains both %RESID% AND %HOTEL%,
+123847392,job_description contains both %RESID% AND %HOTEL%,
+321976698,job_type= DM and units_init > 19,
+120392422,job_type= A1 and units_net < -50,
+120413374,job_type= A1 and units_net < -50,
+122430155,job_type= A1 and units_net < -50,
+122418302,job_type= A1 and units_net < -50,
+122671607,job_type= A1 and units_net < -50,
+420902072,job_type= A1 and units_net < -50,
+121169234,job_type= A1 and units_net < -50,
+110352449,job_type= A1 and units_net < -50,
+123602627,job_type= A1 and units_net < -50,
+121889475,job_type= A1 and units_net < -50,
+121329393,job_type= A1 and units_net < -50,
+122909610,job_type= A1 and units_net < -50,
+121582689,job_type= A1 and units_net < -50,
+123210818,job_type= A1 and units_net < -50,
+320374304,job_type= A1 and units_net < -50,
+122456840,job_type= A1 and units_net < -50,
+110410591,top 20 units_net A1,
+120939440,job_type= A1 and units_net < -50,
+122222282,job_type= A1 and units_net < -50,
+121326298,job_type= A1 and units_net < -50,
+120921930,job_type= A1 and units_net < -50,
+123119160,job_type= A1 and units_net < -50,
+122273002,job_type= A1 and units_net < -50,
+120743106,job_type= A1 and units_net < -50,
+120028424,job_type= A1 and units_net < -50,
+121101823,job_type= A1 and units_net < -50,
+121994057,job_type= A1 and units_net < -50,
+120671950,job_type= A1 and units_net < -50,
+121021544,job_type= A1 and units_net < -50,
+121203704,job_type= A1 and units_net < -50,
+120375977,job_type= A1 and units_net < -50,
+121331139,job_type= A1 and units_net < -50,
+120307872,job_type= A1 and units_net < -50,
+122163504,job_type= A1 and units_net < -50,
+321049307,job_type= A1 and units_net < -50,
+320374288,job_type= A1 and units_net < -50,
+120090356,job_type= A1 and units_net < -50,
+122201839,job_type= A1 and units_net < -50,
+122988320,job_type= A1 and units_net < -50,
+122753582,job_type= A1 and units_net < -50,
+110465871,job_type= A1 and units_net < -50,
+122682105,job_type= A1 and units_net < -50,
+121190406,job_type= A1 and units_net < -50,
+120876702,job_type= A1 and units_net < -50,
+120403964,job_type= A1 and units_net < -50,
+120262036,job_type= A1 and units_net < -50,
+120518154,job_type= A1 and units_net < -50,
+121838609,top 20 units_net A1,
+110410591,job_type= A1 and units_net < -50,
+320914285,job_type= A1 and units_net < -50,
+121586266,job_type= A1 and units_net < -50,
+122388479,job_type= A1 and units_net < -50,
+220360311,job_type= A1 and units_net < -50,
+122900138,job_type= A1 and units_net < -50,
+121838609,job_type= A1 and units_net < -50,
+220485669,job_type= A1 and units_net < -50,
+121324780,job_type= A1 and units_net < -50,
+122211864,job_type= A1 and units_net < -50,
+104135810,job_type= A1 and units_net < -50,
+121186821,top 10 units_prop Alteration,
