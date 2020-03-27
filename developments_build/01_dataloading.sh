@@ -9,7 +9,7 @@ docker run --rm\
             -v `pwd`:/home/developments_build\
             -w /home/developments_build\
             --env-file .env\
-            sptkl/cook:latest bash -c "python3 python/dataloading.py"
+            sptkl/cook:latest bash -c "python3 python/small_dataloading.py; python/large_dataloading.py"
 
 psql $BUILD_ENGINE -f sql/preprocessing.sql
 
