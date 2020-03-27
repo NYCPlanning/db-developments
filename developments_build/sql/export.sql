@@ -15,9 +15,9 @@
 DROP TABLE IF EXISTS dev_export;
 SELECT * INTO dev_export
 FROM developments_hny
-WHERE ((co_earliest_effectivedate::date >= '2010-01-01' AND co_earliest_effectivedate::date <=  '2020-01-01')
-OR (co_earliest_effectivedate IS NULL AND status_q::date >= '2010-01-01' AND status_q::date <=  '2020-01-01')
-OR (co_earliest_effectivedate IS NULL AND status_q IS NULL AND status_a::date >= '2010-01-01' AND status_a::date <=  '2020-01-01'))
+WHERE ((co_earliest_effectivedate::date >= '2010-01-01' AND co_earliest_effectivedate::date <=  :'CAPTURE_DATE')
+OR (co_earliest_effectivedate IS NULL AND status_q::date >= '2010-01-01' AND status_q::date <=  :'CAPTURE_DATE')
+OR (co_earliest_effectivedate IS NULL AND status_q IS NULL AND status_a::date >= '2010-01-01' AND status_a::date <=  :'CAPTURE_DATE'))
 AND x_outlier IS DISTINCT FROM 'true';
 */
 
@@ -357,7 +357,7 @@ SELECT
 	x_geomsource,
 	x_dcpedited,
 	-- x_reason,
-	'2019Q4',
+	:'VERSION',
 	x_outlier
 FROM developments_hny;
 
@@ -414,14 +414,14 @@ DROP TABLE IF EXISTS devdb_export;
 SELECT * INTO devdb_export
 FROM developments_export
 WHERE ((Date_Complete::date >= '2010-01-01' 
-		AND Date_Complete::date <=  '2020-01-01')
+		AND Date_Complete::date <=  :'CAPTURE_DATE')
 	OR (Date_Complete IS NULL 
 		AND Date_Permittd::date >= '2010-01-01' 
-		AND Date_Permittd::date <=  '2020-01-01')
+		AND Date_Permittd::date <=  :'CAPTURE_DATE')
 	OR (Date_Complete IS NULL 
 		AND Date_Permittd IS NULL 
 		AND Date_Filed::date >= '2010-01-01' 
-		AND Date_Filed::date <=  '2020-01-01'))
+		AND Date_Filed::date <=  :'CAPTURE_DATE'))
 AND x_outlier IS DISTINCT FROM 'true';
 
 -- output the housingDB
@@ -429,14 +429,14 @@ DROP TABLE IF EXISTS housing_export;
 SELECT * INTO housing_export
 FROM developments_export
 WHERE ((Date_Complete::date >= '2010-01-01' 
-		AND Date_Complete::date <=  '2020-01-01')
+		AND Date_Complete::date <=  :'CAPTURE_DATE')
 	OR (Date_Complete IS NULL 
 		AND Date_Permittd::date >= '2010-01-01' 
-		AND Date_Permittd::date <=  '2020-01-01')
+		AND Date_Permittd::date <=  :'CAPTURE_DATE')
 	OR (Date_Complete IS NULL 
 		AND Date_Permittd IS NULL 
 		AND Date_Filed::date >= '2010-01-01' 
-		AND Date_Filed::date <=  '2020-01-01'))
+		AND Date_Filed::date <=  :'CAPTURE_DATE'))
 AND Occ_Category = 'Residential'
 AND x_outlier IS DISTINCT FROM 'true';
 

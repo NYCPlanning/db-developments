@@ -20,13 +20,11 @@ DROP TABLE IF EXISTS dev_qc_clipped;
 DROP TABLE IF EXISTS dev_qc_water;
 DROP TABLE IF EXISTS dev_qc_taxlot;
 DROP TABLE IF EXISTS dev_qc_unclipped;
-
 CREATE TABLE dev_qc_clipped AS (
 SELECT a.job_number||a.status_date AS id
 FROM dev_export a, dcp_ntaboundaries b
 WHERE ST_Within(a.geom,b.geom)
 );
-
 CREATE TABLE dev_qc_water AS (
 SELECT 'in water' as type, a.* 
 FROM dev_export a
@@ -34,14 +32,12 @@ LEFT JOIN dev_qc_clipped b
 ON job_number||status_date = b.id
 WHERE b.id IS NULL
 AND geom IS NOT NULL);
-
 DROP TABLE IF EXISTS dev_qc_clipped;
 CREATE TABLE dev_qc_clipped AS (
 SELECT a.job_number||a.status_date AS id
 FROM dev_export a, dcp_mappluto b
 WHERE ST_Within(a.geom,b.geom)
 );
-
 CREATE TABLE dev_qc_taxlot AS (
 SELECT 'outside taxlot' as type, a.*
 FROM dev_export a
@@ -52,7 +48,6 @@ AND geom IS NOT NULL
 AND job_number||status_date NOT IN (
 SELECT job_number||status_date FROM dev_qc_water)
 );
-
 CREATE TABLE dev_qc_unclipped AS (
 	SELECT * FROM dev_qc_water
 	UNION
