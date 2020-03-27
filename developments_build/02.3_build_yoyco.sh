@@ -2,7 +2,7 @@
 source config.sh
 
 START=$(date +%s);
-echo '=== Build yearly_unitchange table ==='
+echo 'Build yearly_unitchange table...'
 psql $BUILD_ENGINE -f sql/devdb_yoyco.sql
 
 docker run --rm\

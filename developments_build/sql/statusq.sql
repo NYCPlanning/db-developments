@@ -1,6 +1,6 @@
 -- populate the status q field
 -- date of the oldest issuance date for that job number in dob_permitissuance
-WITH minissuancedate as (
+WITH minissuacedate as (
 	SELECT jobnum, min(issuancedate::date) as minissuancedate
 	FROM dob_permitissuance
 	WHERE jobdocnum = '01' 
@@ -10,7 +10,7 @@ WITH minissuancedate as (
 
 UPDATE developments a
 SET status_q = b.minissuancedate
-FROM minissuancedate b
+FROM minissuacedate b
 WHERE a.job_number = b.jobnum;
 
 -- populate the year_permit field with the year of the status q date
