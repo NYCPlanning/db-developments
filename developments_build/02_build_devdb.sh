@@ -80,3 +80,20 @@ echo 'Populating DCP data flags'
 psql $BUILD_ENGINE -f sql/x_inactive.sql
 psql $BUILD_ENGINE -f sql/x_mixeduse.sql
 # psql $BUILD_ENGINE -f sql/x_outlier.sql
+
+echo 'Geocoding dev-db...'
+# geocoding ...
+docker run --rm\
+    -v $(pwd):/developments_build\
+    -w /developments_build\
+    -e BUILD_ENGINE=$BUILD_ENGINE\
+    -d sptkl/docker-geosupport:latest bash -c "python3 python/geocode.py"
+
+psql $BUILD_ENGINE -f sql/geo_merge.sql
+psql $BUILD_ENGINE -f sql/geoaddress.sql
+psql $BUILD_ENGINE -f sql/geombbl.sql
+psql $BUILD_ENGINE -f sql/latlong.sql
+psql $BUILD_ENGINE -f sql/spatialjoins.sql
+psql $BUILD_ENGINE -f sql/dedupe_job_number.sql
+psql $BUILD_ENGINE -f sql/dropmillionbin.sql
+psql $BUILD_ENGINE -f sql/pluto_merge.sql
