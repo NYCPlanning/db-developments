@@ -87,7 +87,8 @@ docker run --rm\
     -v $(pwd):/developments_build\
     -w /developments_build\
     -e BUILD_ENGINE=$BUILD_ENGINE\
-    -d sptkl/docker-geosupport:latest bash -c "python3 python/geocode.py"
+    sptkl/docker-geosupport:latest bash -c "
+        python3 python/geocode.py"
 
 psql $BUILD_ENGINE -f sql/geo_merge.sql
 psql $BUILD_ENGINE -f sql/geoaddress.sql

@@ -4,9 +4,9 @@ source config.sh
 echo 'Geocoding hny...'
 docker run --rm\
     -v $(pwd):/developments_build\
-    -w /home/developments_build\
+    -w /developments_build\
     -e BUILD_ENGINE=$BUILD_ENGINE\
-    -d sptkl/docker-geosupport:latest bash -c "
+    sptkl/docker-geosupport:latest bash -c "
         python3 python/geocode_hny.py"
 
 echo 'starting to build HNY database'
