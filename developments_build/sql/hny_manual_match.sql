@@ -55,28 +55,24 @@ AND CONCAT(a.hny_id,a.job_number) NOT IN (
 AND a.hny_id IS NOT NULL
 ;
 
-VACUUM ANALYZE hny_job_lookup;
-
 -- update dob_type is NULL using developments_hny
-WITH tmp AS(
-		SELECT job_number, COUNT(*) FROM developments_hny
-		GROUP BY job_number
-		HAVING COUNT(*) = 1
-	),
-    _type AS(
-	SELECT job_number, job_type FROM developments_hny
-	WHERE job_number IN(
-	 	SELECT job_number FROM tmp)
-)
 UPDATE hny_job_lookup l
-SET dob_type = (CASE WHEN l.dob_type IS NULL THEN job_type
-					 ELSE l.dob_type
+SET dob_type = (CASE 
+                    WHEN l.dob_type IS NULL THEN job_type
+					ELSE l.dob_type
 				END)				
-FROM _type t
-WHERE l.job_number = t.job_number
-;
-
-VACUUM ANALYZE hny_job_lookup;
+FROM (
+	SELECT job_number, job_type 
+	FROM developments_hny
+	WHERE job_number IN(
+		SELECT job_number FROM (
+			SELECT job_number, COUNT(*) 
+			FROM developments_hny
+			GROUP BY job_number
+			HAVING COUNT(*) = 1) a
+	)
+) t
+WHERE l.job_number = t.job_number;
 
 -- update dob_type format in lookup table
 UPDATE hny_job_lookup
