@@ -1,13 +1,13 @@
 #!/bin/bash
 source config.sh
 
+echo 'Build yearly_unitchange table...'
+psql $BUILD_ENGINE -f sql/devdb_yoyco.sql
+
 docker run --rm\
     -v $(pwd):/developments_build\
     -w /developments_build\
-    -e EDM_DATA=$EDM_DATA\
-    -e RECIPE_ENGINE=$RECIPE_ENGINE\
     -e BUILD_ENGINE=$BUILD_ENGINE\
     sptkl/cook:latest bash -c "
-        python3 python/small_dataloading.py"
-
-psql $BUILD_ENGINE -f sql/preprocessing.sql
+        python3 python/yoy_table.py; 
+        python3 python/yoy_table_corr.py"
