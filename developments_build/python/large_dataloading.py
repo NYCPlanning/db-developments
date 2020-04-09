@@ -34,6 +34,7 @@ small_tables = ['housing_input_lookup_occupancy',
                 'hpd_hny_units_by_building',
                 'hpd_hny_units_by_project',
                 'housing_input_hny']
+                
 def dob_cofos_append():
     df = pd.read_sql("SELECT * FROM dob_cofos.append", RECIPE_ENGINE)
     df.to_sql('dob_cofos_append', BUILD_ENGINE, if_exists='replace', chunksize=2000, index=False)

@@ -2,11 +2,6 @@
 source config.sh
 source ./url_parse.sh $BUILD_ENGINE
 
-apt update 
-apt install -y curl zip
-# apt install -y curl zip python3-dev python3-pip
-# pip3 install sqlalchemy psycopg2-binary pandas numpy
-
 DATE=$(date "+%Y-%m-%d")
 mkdir -p output
 
@@ -68,13 +63,9 @@ mkdir -p output/qc_ct &&
 # Export to Spaces
 zip -r output.zip output
 
-curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
-chmod +x mc
-
-./mc config host add spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
-./mc rm -r --force spaces/edm-publishing/db-developments/latest
-./mc rm -r --force spaces/edm-publishing/db-developments/$DATE
-./mc cp -r output spaces/edm-publishing/db-developments/latest
-./mc cp -r output spaces/edm-publishing/db-developments/$DATE
-./mc cp output.zip spaces/edm-publishing/db-developments/latest
-./mc cp output.zip spaces/edm-publishing/db-developments/$DATE
+mc rm -r --force spaces/edm-publishing/db-developments/latest
+mc rm -r --force spaces/edm-publishing/db-developments/$DATE
+mc cp -r output spaces/edm-publishing/db-developments/latest
+mc cp -r output spaces/edm-publishing/db-developments/$DATE
+mc cp output.zip spaces/edm-publishing/db-developments/latest
+mc cp output.zip spaces/edm-publishing/db-developments/$DATE
