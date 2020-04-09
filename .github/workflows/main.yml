@@ -1,110 +1,16 @@
-name: CI
+name: Build
 on: [push]
 jobs:
   skip:
     name: Build and test
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, '[build]')"
     steps:
-      - run: echo "${{ github.event.head_commit.message }}"
-  _01_dataloading:
-    name: dataloading - manual inputs & spatial boundries
+      - run: echo "${{ github.event.head_commit.message }}"    
+  Build:
+    name: Building ...
     needs: skip
-    container:
-      image: sptkl/cook:latest
-    runs-on: self-hosted
-    env:
-      RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
-      BUILD_ENGINE: ${{ secrets.BUILD_ENGINE }}
-      EDM_DATA: ${{ secrets.EDM_DATA }}
-    steps:
-      - uses: actions/checkout@v2
-      - name: dataloading ..
-        working-directory: developments_build
-        shell: bash
-        run: |
-          psql $BUILD_ENGINE -f sql/drop_idx.sql
-          python3 python/small_dataloading.py
-          psql $BUILD_ENGINE -f sql/preprocessing.sql
-  _02_1_build_devdb:
-    name: build part 1
-    needs: _01_dataloading
-    container: 
-      image: mdillon/postgis:latest
-    runs-on: self-hosted
-    env:
-      RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
-      BUILD_ENGINE: ${{ secrets.BUILD_ENGINE }}
-      EDM_DATA: ${{ secrets.EDM_DATA }}
-    steps:
-      - uses: actions/checkout@v2
-      - name: 02.1_build_devdb
-        working-directory: developments_build
-        shell: bash
-        run: |
-          ./02.1_build_devdb.sh
-  _02_2_geocoding:
-    name: geocoding
-    needs: _02_1_build_devdb
-    container: 
-      image: sptkl/docker-geosupport:latest
-    runs-on: self-hosted
-    env:
-      RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
-      BUILD_ENGINE: ${{ secrets.BUILD_ENGINE }}
-      EDM_DATA: ${{ secrets.EDM_DATA }}
-    steps:
-      - uses: actions/checkout@v2
-      - name: geocoding ... 
-        working-directory: developments_build
-        shell: bash
-        run: |
-          python3 python/geocode.py
-          psql $BUILD_ENGINE -f sql/geo_merge.sql
-          psql $BUILD_ENGINE -f sql/geoaddress.sql
-          psql $BUILD_ENGINE -f sql/geombbl.sql
-          # psql $BUILD_ENGINE -f sql/export.sql
-          psql $BUILD_ENGINE -f sql/latlong.sql
-          psql $BUILD_ENGINE -f sql/spatialjoins.sql
-          psql $BUILD_ENGINE -f sql/dedupe_job_number.sql
-          psql $BUILD_ENGINE -f sql/dropmillionbin.sql
-          psql $BUILD_ENGINE -f sql/pluto_merge.sql
-      - name: build_yoyco ... 
-        working-directory: developments_build
-        shell: bash
-        run: |
-          psql $BUILD_ENGINE -f sql/devdb_yoyco.sql
-          python3 python/yoy_table.py
-          python3 python/yoy_table_corr.py
-      - name: build_hny ... 
-        working-directory: developments_build
-        shell: bash
-        run: |
-          python3 python/geocode_hny.py
-          echo 'starting to build HNY database'
-          psql $BUILD_ENGINE -f sql/dob_hny_create.sql
-          psql $BUILD_ENGINE -f sql/hny_create.sql
-          psql $BUILD_ENGINE -f sql/hny_id.sql
-          psql $BUILD_ENGINE -f sql/hny_job_lookup.sql
-          psql $BUILD_ENGINE -f sql/hny_res_nb_match.sql
-          psql $BUILD_ENGINE -f sql/hny_a1_nonres_match.sql
-          psql $BUILD_ENGINE -f sql/hny_manual_geomerge.sql
-          psql $BUILD_ENGINE -f sql/hny_manual_match.sql
-          psql $BUILD_ENGINE -f sql/hny_job_relat.sql
-          psql $BUILD_ENGINE -f sql/hny_many_to_many_qc.sql
-          psql $BUILD_ENGINE -f sql/hny_dob_match.sql
-          psql $BUILD_ENGINE -f sql/dob_hny_id.sql
-          psql $BUILD_ENGINE -f sql/dob_affordable_units.sql
-      - name: aggregate census tracts
-        working-directory: developments_build
-        shell: bash
-        run: python3 python/aggregate_ct.py
-  _03_export_qaqc_archive:
-    name: export and archive
-    needs: _02_2_geocoding
-    container: 
-      image: mdillon/postgis:latest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     env:
       RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
       BUILD_ENGINE: ${{ secrets.BUILD_ENGINE }}
@@ -114,10 +20,52 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - uses: actions/checkout@v2
-      - name: 02.1_build_devdb
-        working-directory: developments_build
-        shell: bash
+      - name: install dependencies ...
         run: |
-          ./03_export.sh
-          ./04_qaqc.sh
-          # ./05_archive.sh
+          sudo apt update
+          sudo apt install -y curl zip
+
+          sudo tee /etc/apt/sources.list.d/pgdg.list <<END
+          deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+          END
+
+          # get the signing key and import it
+          curl -O https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          sudo apt-key add ACCC4CF8.asc
+
+          sudo apt update
+          sudo apt install -y postgresql-client-11
+          sudo apt autoremove
+
+          curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x mc
+          sudo mv ./mc /usr/bin
+          mc config host add spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
+
+      - name: 1. dataloading ..
+        working-directory: developments_build
+        run: ./01_dataloading.sh
+
+      - name: 2. build dev_db ...
+        working-directory: developments_build
+        run: ./02_build_devdb.sh
+
+      - name: 3. build yoy ...
+        working-directory: developments_build
+        run: ./03_build_yoyco.sh
+
+      - name: 4. build hny ...
+        working-directory: developments_build
+        run: ./04_build_hny.sh
+
+      - name: 5. export ...
+        working-directory: developments_build
+        run: ./05_export.sh
+
+      - name: 6. qaqc ...
+        working-directory: developments_build
+        run: ./06_qaqc.sh
+
+      - name: 7. archive ...
+        working-directory: developments_build
+        run: ./07_archive.sh

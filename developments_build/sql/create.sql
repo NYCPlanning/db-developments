@@ -84,7 +84,6 @@ CREATE TABLE developments (
 	x_geomsource text,
 	x_reason text,
 	latitude text,
-	longitude text	
+	longitude text,
+	geom geometry(Geometry,4326)
 );
--- add a geometry column
-SELECT AddGeometryColumn ('public','developments','geom',4326,'Geometry',2);

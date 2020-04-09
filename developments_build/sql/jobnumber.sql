@@ -100,7 +100,7 @@ SELECT
 	housenumber,
 	streetname,
 	bin,
-	lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0'),
+	LEFT(bin, 1)||lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0'),
 	borough,
 	specialactionstatus,
 	latitude,
@@ -108,3 +108,8 @@ SELECT
 FROM dob_jobapplications
 WHERE jobdocnumber = '01' 
 	AND (jobtype = 'A1' OR jobtype = 'DM' OR jobtype = 'NB');
+
+-- formating bbl
+UPDATE developments a
+SET bbl = trim(trailing '0' FROM bbl::text)
+WHERE length(bbl)>10;

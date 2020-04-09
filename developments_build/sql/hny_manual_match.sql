@@ -56,23 +56,23 @@ AND a.hny_id IS NOT NULL
 ;
 
 -- update dob_type is NULL using developments_hny
-WITH type AS(
-	WITH tmp AS(
-		SELECT job_number, COUNT(*) FROM developments_hny
-		GROUP BY job_number
-		HAVING COUNT(*) = 1
-	)
-	SELECT job_number, job_type FROM developments_hny
-	WHERE job_number IN(
-	 	SELECT job_number FROM tmp)
-)
 UPDATE hny_job_lookup l
-SET dob_type = (CASE WHEN l.dob_type IS NULL THEN job_type
-					 ELSE l.dob_type
+SET dob_type = (CASE 
+                    WHEN l.dob_type IS NULL THEN job_type
+					ELSE l.dob_type
 				END)				
-FROM type t
-WHERE l.job_number = t.job_number
-;
+FROM (
+	SELECT job_number, job_type 
+	FROM developments_hny
+	WHERE job_number IN(
+		SELECT job_number FROM (
+			SELECT job_number, COUNT(*) 
+			FROM developments_hny
+			GROUP BY job_number
+			HAVING COUNT(*) = 1) a
+	)
+) t
+WHERE l.job_number = t.job_number;
 
 -- update dob_type format in lookup table
 UPDATE hny_job_lookup
