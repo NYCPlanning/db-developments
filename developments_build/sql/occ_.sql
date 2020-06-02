@@ -1,114 +1,189 @@
--- populate the occupancy code fields using the housing_input_lookup_occupancy lookup table
--- initial 
--- post 2008
-UPDATE developments a
-SET occ_init = b.dcpclassificationnew
-FROM housing_input_lookup_occupancy b
-WHERE a.occ_init = b.doboccupancycode2008
-	AND (right(status_a,4))::numeric >= 2008;
--- pre 2008
-UPDATE developments a
-SET occ_init = b.dcpclassificationnew
-FROM housing_input_lookup_occupancy b
-WHERE a.occ_init = b.doboccupancycode1968
-	AND (right(status_a,4))::numeric < 2008;
--- no date filter 2008
-UPDATE developments a
-SET occ_init = b.dcpclassificationnew
-FROM housing_input_lookup_occupancy b
-WHERE a.occ_init = b.doboccupancycode2008;
--- no date filter 1968
-UPDATE developments a
-SET occ_init = b.dcpclassificationnew
-FROM housing_input_lookup_occupancy b
-WHERE a.occ_init = b.doboccupancycode1968;
+/*
+DESCRIPTION:
+    This script creates and recodes occupancy code for devdb
 
--- proposed 
--- post 2008
-UPDATE developments a
-SET occ_prop = b.dcpclassificationnew
-FROM housing_input_lookup_occupancy b
-WHERE a.occ_prop = b.doboccupancycode2008
-	AND (right(status_a,4))::numeric >= 2008;
--- pre 2008
-UPDATE developments a
-SET occ_prop = b.dcpclassificationnew
-FROM housing_input_lookup_occupancy b
-WHERE a.occ_prop = b.doboccupancycode1968
-	AND (right(status_a,4))::numeric < 2008;
--- no date filter 2008
-UPDATE developments a
-SET occ_prop = b.dcpclassificationnew
-FROM housing_input_lookup_occupancy b
-WHERE a.occ_prop = b.doboccupancycode2008;
--- no date filter 1968
-UPDATE developments a
-SET occ_prop = b.dcpclassificationnew
-FROM housing_input_lookup_occupancy b
-WHERE a.occ_prop = b.doboccupancycode1968;
+    occ_init 
+        1. recoding using housing_input_lookup_occupancy
+        2. Identify Garage/Miscellaneous jobs
 
--- mark records as Empty Lots
-UPDATE developments
-SET occ_init = 'Empty Lot'
-WHERE job_type = 'New Building';
+    occ_prop
+        1. recoding using housing_input_lookup_occupancy
+        2. Identify Garage/Miscellaneous jobs
+        
+    occ_category
+        1. assign 'Residential' or 'Other' absed 
+        on text search on "occ_init" and "occ_prop"
 
-UPDATE developments
-SET occ_prop = 'Empty Lot'
-WHERE job_type = 'Demolition';
+INPUTS:
 
--- Set occ_init = 'Garage/Miscellaneous' AND occ_prop = 'Garage/Miscellaneous'
--- Where job_type is Demolition or Alteration
--- AND address contains REAR or where job_description contains GARAGE 
-UPDATE developments
-SET occ_init = 'Garage/Miscellaneous',
-	occ_prop = 'Garage/Miscellaneous'
-WHERE (job_type = 'Alteration'
-	AND (upper(job_description) LIKE '%GARAGE%' OR upper(address) LIKE '%REAR%') 
-	AND (units_net::numeric = 0 OR units_net::numeric IS NULL));
-UPDATE developments
-SET occ_init = 'Garage/Miscellaneous'
-WHERE (job_type = 'Demolition' 
-	AND (upper(job_description) LIKE '%GARAGE%' OR upper(address) LIKE '%REAR%')); 
--- Set occ_prop = 'Garage/Miscellaneous'
--- Where job_type = New Building
--- job_description contains '%GARAGE%' and does NOT contain any of the following: %Res%, %Dwell%, %house%,%home%, %apart%, %family%
-UPDATE developments
-SET occ_prop = 'Garage/Miscellaneous'
-WHERE (job_type = 'New Building' 
-	AND (upper(job_description) LIKE '%GARAGE%' 
-		AND upper(job_description) NOT LIKE '%RES%'
-		AND upper(job_description) NOT LIKE '%DWELL%'
-		AND upper(job_description) NOT LIKE '%HOUSE%'
-		AND upper(job_description) NOT LIKE '%HOME%'
-		AND upper(job_description) NOT LIKE '%APART%'
-		AND upper(job_description) NOT LIKE '%FAMILY%'));
+    INIT_devdb (
+        job_number, 
+        job_type,
+        job_description,
+        status_a,
+        _occ_init,
+        _occ_prop,
+        _units_prop, 
+        address
+    )
 
--- Whenthere are multiple new building jobs that share the same address and net units
--- if 1 does not mention garage, change occ_prop to garage for records where job decription contains garage
-WITH nongaragejobs AS (
-	SELECT address, job_type, units_prop, job_description
-	FROM developments
-	WHERE upper(job_description) NOT LIKE '%GARAGE%'
-	AND job_type = 'New Building'
-	AND occ_prop IS DISTINCT FROM 'Garage/Miscellaneous')
-UPDATE developments a 
-SET occ_prop = 'Garage/Miscellaneous'
-FROM nongaragejobs b
-WHERE a.address = b.address
-	AND a.job_type = b.job_type
-	AND a.units_prop = b.units_prop
-	AND upper(a.job_description) LIKE '%GARAGE%'
-	AND occ_prop IS DISTINCT FROM 'Garage/Miscellaneous';
+    housing_input_lookup_occupancy (
+        doboccupancycode2008,
+        doboccupancycode1968,
+        dcpclassificationnew
+    )
 
--- category
--- set to Residential where exiting or proposed occupany is Residential
-UPDATE developments a
-SET occ_category = 'Residential'
-WHERE upper(occ_init) LIKE '%RESIDENTIAL%' OR upper(occ_prop) LIKE '%RESIDENTIAL%'
-OR upper(occ_init) LIKE '%ASSISTED%LIVING%' OR upper(occ_prop) LIKE '%ASSISTED%LIVING%'
-AND a.occ_category IS NULL;
+OUTPUTS:
 
--- otherwise set to other
-UPDATE developments
-SET occ_category = 'Other'
-WHERE occ_category IS NULL;
+    CREATE TABLE OCC_devdb (
+        job_number text, 
+        occ_init text,
+        occ_prop text,
+        occ_category text
+    );
+
+*/
+
+DROP TABLE IF EXISTS OCC_devdb;
+WITH 
+OCC_init_translate as (
+	SELECT 
+		DISTINCT a.job_number, 
+		(CASE 
+			WHEN a.job_type = 'New Building'
+				THEN 'Empty Lot'
+			WHEN right(status_a,4)::numeric >= 2008
+				THEN coalesce(occ_init08, occ_init68)
+			WHEN right(status_a,4)::numeric < 2008
+				THEN coalesce(occ_init68, occ_init08)
+			ELSE NULL
+		END) as occ_init
+	FROM (
+		SELECT
+			a.*,
+			b.dcpclassificationnew as occ_init68
+		FROM (
+			SELECT
+				a.job_number, 
+				a.job_type,
+				a.status_a,
+				a._occ_init,
+				b.dcpclassificationnew as occ_init08
+			FROM INIT_devdb a
+			LEFT join housing_input_lookup_occupancy b
+			ON a._occ_init = b.doboccupancycode2008) a
+		JOIN housing_input_lookup_occupancy b
+		ON a._occ_init = b.doboccupancycode1968
+	) a
+),
+OCC_prop_translate as (
+	SELECT 
+		DISTINCT a.job_number, 
+		(CASE
+			WHEN a.job_type = 'Demolition'
+				THEN 'Empty Lot'
+			WHEN right(status_a,4)::numeric >= 2008
+				THEN coalesce(occ_prop08, occ_prop68)
+			WHEN right(status_a,4)::numeric < 2008
+				THEN coalesce(occ_prop68, occ_prop08)
+			ELSE NULL
+		END) as occ_prop
+	FROM (
+		SELECT 
+			a.*, 
+			b.dcpclassificationnew as occ_prop68
+		FROM (
+			SELECT 
+				a.job_number,
+				a.job_type,
+				a.status_a, 
+				a._occ_prop,
+				b.dcpclassificationnew as occ_prop08
+			FROM INIT_devdb a
+			LEFT join housing_input_lookup_occupancy b
+			ON a._occ_prop = b.doboccupancycode2008) a
+		JOIN housing_input_lookup_occupancy b
+		ON a._occ_prop = b.doboccupancycode1968
+	) a
+), 
+OCC_init_garage as (
+	SELECT
+		DISTINCT job_number,
+		'Garage/Miscellaneous' as occ_init
+	FROM INIT_devdb 
+	WHERE job_type = 'Alteration|Demolition'
+	AND (job_description ~* 'GARAGE' 
+		 	OR address ~* 'REAR')
+),
+OCC_prop_garage as (
+	SELECT 
+		DISTINCT job_number,
+		'Garage/Miscellaneous' as occ_prop
+	FROM (
+		-- Alteration jobs with "garage" in job_description 
+		-- or rear in address are labeled as "Garage/Miscellaneous"
+		SELECT job_number
+		FROM INIT_devdb 
+		WHERE job_type = 'Alteration'
+		AND (job_description ~* 'GARAGE' OR address ~* 'REAR')
+		UNION
+
+		-- New Building jobs with job_description that mention "garage"
+		-- but not any other keywords that indicates residential units
+		-- are labeled as "Garage/Miscellaneous"
+		SELECT job_number
+		FROM INIT_devdb
+		WHERE job_type = 'New Building'
+		AND job_description ~* 'GARAGE'
+		AND job_description !~* 'RES|DWELL|HOUSE|HOME|APART|FAMILY'
+		UNION
+
+
+		-- For any address that has any new building jobs with 
+		-- "Garage" in job_description, only label the jobs with 
+		-- "Garage" in job_description as "Garage/Miscellaneous"
+		SELECT job_number
+		FROM INIT_devdb
+		WHERE address||'-'||_units_prop::text in (
+			SELECT DISTINCT address||'-'||_units_prop::text
+			FROM INIT_devdb
+			WHERE job_type = 'New Building'
+			AND job_description !~* 'garage'
+		) AND job_description ~* 'garage'
+	) a
+),
+OCC_init_prop as (
+	SELECT DISTINCT a.job_number, a.occ_init, b.occ_prop
+	FROM (
+		SELECT a.job_number, b.occ_init
+		FROM INIT_devdb a
+		LEFT JOIN (
+			SELECT job_number, occ_init FROM OCC_init_garage
+			UNION
+			SELECT job_number, occ_init FROM OCC_init_translate
+			WHERE job_number not in (SELECT job_number FROM OCC_init_garage)
+		) b
+		ON a.job_number = b.job_number
+	) a
+	LEFT JOIN (
+		SELECT job_number, occ_prop FROM OCC_prop_garage
+		UNION
+		SELECT job_number, occ_prop FROM OCC_prop_translate
+		WHERE job_number not in (SELECT job_number FROM OCC_prop_garage)
+	) b
+	ON a.job_number = b.job_number
+)
+SELECT 
+	DISTINCT job_number,
+	occ_init,
+	occ_prop, 
+	(CASE 
+		WHEN occ_init ~* 'RESIDENTIAL' 
+			OR occ_prop ~* 'RESIDENTIAL'
+			OR upper(occ_init) LIKE '%ASSISTED%LIVING%' 
+			OR upper(occ_prop) LIKE '%ASSISTED%LIVING%'
+			THEN 'Residential'
+		ELSE 'Other'
+	END) as occ_category
+INTO OCC_devdb
+FROM OCC_init_prop;

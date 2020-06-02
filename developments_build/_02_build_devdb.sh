@@ -4,9 +4,26 @@ source config.sh
 echo "Starting to build Developments DB"
 psql $BUILD_ENGINE -f sql/create.sql
 
+# populate job application data
+# psql $BUILD_ENGINE -f sql/jobnumber.sql
+
+# Remove administrative jobs 
+# psql $BUILD_ENGINE -f sql/adminjobs.sql
+
+# Formating occ_init, occ_prop, units_prop, boro, 
+# stories_init, zoningsft_init, zoningsft_prop
+# psql $BUILD_ENGINE -f sql/clean.sql
+
 # Incorporate housing_input_research table (removing records)
 psql $BUILD_ENGINE -f sql/housing_input_reasearch.sql
 echo 'Transforming data attributes to DCP values'
+# remove extra spaces from address number and street field
+# populate the address field.
+# psql $BUILD_ENGINE -f sql/address.sql
+
+# Assign jobtype
+# A1 -> Alteration| DM -> Demolition | NB -> new building
+# psql $BUILD_ENGINE -f sql/jobtype.sql
 
 # populate the occupancy code fields using the 
 # housing_input_lookup_occupancy lookup table
