@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS INIT_devdb;
 WITH
 -- identify admin jobs
 JOBNUMBER_admin_jobs as (
-	select jobnumber
+	select distinct jobnumber
 	from dob_jobapplications
 	WHERE upper(jobdescription) LIKE '%NO WORK%'
 	OR ((upper(jobdescription) LIKE '%ADMINISTRATIVE%'
@@ -13,14 +13,14 @@ JOBNUMBER_admin_jobs as (
 ),
 -- identify relevant_jobs
 JOBNUMBER_relevant as (
-	select jobnumber
+	select distinct jobnumber
 	from dob_jobapplications
 	where 
 		jobnumber not in (select jobnumber from JOBNUMBER_admin_jobs)
 		AND jobdocnumber = '01' 
 		AND jobtype ~* 'A1|DM|NB'
 ) SELECT 
-	jobnumber as job_number,
+	distinct jobnumber as job_number,
 
     -- Job Type recoding
 	(CASE 
@@ -66,8 +66,16 @@ JOBNUMBER_relevant as (
 		ELSE proposeddwellingunits::numeric
     END) as _units_prop,
 
+	-- mixuse flag
+	(CASE WHEN jobdescription ~* 'MIX'
+		OR (jobdescription ~* 'RESID' 
+			AND jobdescription ~* 'COMM|HOTEL|RETAIL')
+		THEN 'Mixed Use'
+		ELSE NULL
+	END) as x_mixeduse,
+
 	-- one to one mappings
-	jobstatusdesc as status,
+	jobstatusdesc as _status,
 	latestactiondate as status_date,
 	prefilingdate as status_a,
 	fullypaid as status_d,
@@ -102,7 +110,7 @@ JOBNUMBER_relevant as (
 	cluster as TractHomes,
 	trim(housenumber) as address_house,
 	trim(streetname) as address_street,
-    trim(housenumber)||' '||trim(streetname) as address,
+	trim(housenumber)||' '||trim(streetname) as address,
 	bin as bin,
 	LEFT(bin, 1)||lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0') as bbl,
 	INITCAP(borough) as boro,

@@ -5,7 +5,7 @@ INSERT INTO housing_input_research (
 SELECT 
     job_number, 
     'remove' as field
-FROM developments
+FROM INIT_devdb
 WHERE UPPER(job_description) LIKE '%BIS%TEST%' 
     OR UPPER(job_description) LIKE '% TEST %'
 AND job_number NOT IN(
@@ -15,7 +15,7 @@ AND job_number NOT IN(
     WHERE field = 'remove'
 );
 
-DELETE FROM developments a
+DELETE FROM INIT_devdb a
 USING housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'remove';

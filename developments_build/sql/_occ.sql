@@ -9,39 +9,38 @@ DESCRIPTION:
     occ_prop
         1. recoding using housing_input_lookup_occupancy
         2. Identify Garage/Miscellaneous jobs
-        
+
     occ_category
         1. assign 'Residential' or 'Other' absed 
         on text search on "occ_init" and "occ_prop"
 
+	DEPENDS ON:
+		create.sql
+
 INPUTS:
-
     INIT_devdb (
-        job_number, 
-        job_type,
-        job_description,
-        status_a,
-        _occ_init,
-        _occ_prop,
-        _units_prop, 
-        address
+        job_number text, 
+        job_type text,
+        job_description text,
+        status_a text,
+        _occ_init text,
+        _occ_prop text,
+        _units_prop numeric, 
+        address text
     )
-
     housing_input_lookup_occupancy (
-        doboccupancycode2008,
-        doboccupancycode1968,
-        dcpclassificationnew
+        doboccupancycode2008 text,
+        doboccupancycode1968 text,
+        dcpclassificationnew text
     )
 
 OUTPUTS:
-
-    CREATE TABLE OCC_devdb (
+    OCC_devdb (
         job_number text, 
         occ_init text,
         occ_prop text,
         occ_category text
-    );
-
+    )
 */
 
 DROP TABLE IF EXISTS OCC_devdb;
@@ -176,7 +175,7 @@ OCC_init_prop as (
 SELECT 
 	DISTINCT job_number,
 	occ_init,
-	occ_prop, 
+	occ_prop,
 	(CASE 
 		WHEN occ_init ~* 'RESIDENTIAL' 
 			OR occ_prop ~* 'RESIDENTIAL'
