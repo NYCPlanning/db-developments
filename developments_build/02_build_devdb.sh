@@ -5,12 +5,17 @@ echo "
     Starting to build Developments DB
 "
 psql $BUILD_ENGINE -f sql/create_devdb.sql
-psql $BUILD_ENGINE -f sql/create_devco.sql
 
 echo "
     Removing records with 'BIS TEST' in job description
 "
 psql $BUILD_ENGINE -f sql/research_removal.sql
+
+echo "
+    Create CO fields, effectivedate, co_earliest_effectivedate date,
+    year_complete, co_latest_effectivedate, co_latest_units, co_latest_certtype
+"
+psql $BUILD_ENGINE -f sql/_co.sql
 
 echo "
     Creating OCC fields, occ_init, occ_prop, occ_category

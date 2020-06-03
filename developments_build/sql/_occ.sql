@@ -41,6 +41,9 @@ OUTPUTS:
         occ_prop text,
         occ_category text
     )
+
+IN PREVIOUS VERSION: 
+    occ_.sql
 */
 
 DROP TABLE IF EXISTS OCC_devdb;

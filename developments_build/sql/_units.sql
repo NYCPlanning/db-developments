@@ -33,6 +33,10 @@ OUTPUTS:
 		units_prop numeric,
 		units_net numeric
 	)
+
+IN PREVIOUS VERSION: 
+    units_.sql
+	units_net.sql
 */
 
 DROP TABLE IF EXISTS UNITS_devdb;

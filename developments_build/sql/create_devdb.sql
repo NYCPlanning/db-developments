@@ -1,3 +1,79 @@
+/*
+DESCRIPTION:
+	Initial field mapping and prelimilary data cleaning
+
+INPUTS: 
+	dob_jobapplications
+
+OUTPUTS:
+	INIT_devdb (
+		job_number text,
+		job_type text,
+		job_description text,
+		_occ_init text,
+		_occ_prop text,
+		occ_category text,
+		stories_init numeric,
+		stories_prop text,
+		zoningsft_init numeric,
+		zoningsft_prop numeric,
+		_units_init numeric,
+		_units_prop numeric,
+		x_mixeduse text,
+		status text,
+		status_date text,
+		status_a text,
+		status_d text,
+		status_p text,
+		status_r text,
+		status_x text,
+		zoningdist1 text,
+		zoningdist2 text,
+		zoningdist3 text,
+		specialdist1 text,
+		specialdist2 text,
+		landmark text,
+		cityowned text,
+		owner_type text,
+		owner_nonprof text,
+		owner_firstnm text,
+		owner_lastnm text,
+		owner_biznm text,
+		owner_address text,
+		owner_zipcode text,
+		owner_phone text,
+		height_init text,
+		height_prop text,
+		constructnsf text,
+		enlrg_horiz text,
+		enlrg_vert text,
+		enlargementsf text,
+		costestimate text,
+		loftboardcert text,
+		edesignation text,
+		curbcut text,
+		tracthomes text,
+		address_house text,
+		address_street text,
+		address text,
+		bin text,
+		bbl text,
+		boro text,
+		x_withdrawal text,
+		latitude double precision,
+		longitude double precision,
+		geom geometry
+	)
+	
+IN PREVIOUS VERSION: 
+    create.sql
+    jobnumber.sql
+	adminjobs.sql
+	clean.sql
+	address.sql
+	jobtype.sql
+	x_mixeduse.sql
+*/
 DROP TABLE IF EXISTS INIT_devdb;
 WITH
 -- identify admin jobs
