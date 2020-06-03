@@ -23,6 +23,10 @@ function urlparse {
     BUILD_DB="$(echo $url | grep / | cut -d/ -f2-)"
 }
 
+function dispaly {
+  echo -e "\e[92m\e[1m$@\e[21m\e[0m
+  "
+}
 # Setting Environmental Variables
 set_env .env version.env
 DATE=$(date "+%Y-%m-%d")
