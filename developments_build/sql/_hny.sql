@@ -176,6 +176,7 @@ WITH hny AS (
 	FROM best_matches bm;
 
 -- Logic to assign matches
+
 WITH 
 	-- Find matches that are one-to-one
 	one_to_one AS (SELECT job_number, 
@@ -192,11 +193,36 @@ WITH
 							'Multiple' AS hny_id,
 							job_type,
 							occ_category,
-							SUM(all_counted_units::INT) AS all_counted_units,
-							SUM(total_units::INT) AS total_units 
-					FROM hny_developments_matches m
+							SUM(all_counted_units::INT)::text AS all_counted_units,
+							SUM(total_units::INT)::text AS total_units 
+					FROM hny_developments_matches
 					WHERE one_dev_to_many_hny = 1
 					AND one_hny_to_many_dev = 0
-					GROUP BY job_number, job_type, occ_category)
-;
+					GROUP BY job_number, job_type, occ_category),
+	-- For multiple hny to one dev, take the one with the lowest job_number
+	many_to_one AS (SELECT t1.job_number, t1.hny_id, t2.job_type, t2.occ_category,
+							t2.all_counted_units, t2.total_units
+					 FROM
+						(SELECT MIN(job_number::INT)::text AS job_number, hny_id
+							 FROM hny_developments_matches
+							 WHERE one_dev_to_many_hny = 0
+							 AND one_hny_to_many_dev = 1
+							 GROUP BY hny_id) AS t1
+						LEFT JOIN
+						(SELECT job_number, job_type, occ_category, 
+								all_counted_units, total_units
+							FROM hny_developments_matches
+							WHERE one_dev_to_many_hny = 0
+							AND one_hny_to_many_dev = 1) AS t2
+						ON t1.job_number = t2.job_number),
+    -- Combine into a single look-up table to append hny columns to developments database					
+	dev_hny_lookup AS(					
+			SELECT * FROM one_to_one
+			UNION
+			SELECT * FROM one_to_many
+			UNION
+			SELECT * FROM many_to_one)
+
+SELECT * FROM dev_hny_lookup;
+
 -- Apply manual research
