@@ -144,10 +144,10 @@ WITH hny AS (
 					   FROM all_matches
 					   GROUP BY hny_id
 					) AS t1 
-					RIGHT JOIN all_matches AS t2 
+					JOIN all_matches AS t2 
 					ON t2.hny_id = t1.hny_id 
 					AND t2.match_priority = t1.match_priority),
-                    
+
 	-- Find many-hny-to-one-developments
 	many_developments AS (SELECT hny_id, count(*)
 				FROM best_matches
