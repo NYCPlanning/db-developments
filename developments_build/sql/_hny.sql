@@ -54,6 +54,7 @@ WITH hny AS (
         AND h.geo_bin !='' AND h.geo_bin IS NOT NULL
         AND h.geo_bbl !='' AND h.geo_bbl IS NOT NULL
         AND d.status <> 'Withdrawn'
+        AND d.job_type <> 'Demolition'
     ),
 
     -- Find all matches on BBL, but where BIN does not match
@@ -72,6 +73,7 @@ WITH hny AS (
         AND h.geo_bin !='' AND h.geo_bin IS NOT NULL
         AND h.geo_bbl !='' AND h.geo_bbl IS NOT NULL
         AND d.status <> 'Withdrawn'
+        AND d.job_type <> 'Demolition'
     ),
 
     -- Find spatial matches where BIN and BBL don't match
@@ -90,6 +92,7 @@ WITH hny AS (
             AND ABS(h.total_units::NUMERIC - d.units_prop::NUMERIC) <=5
         AND h.geom IS NOT NULL AND d.geom IS NOT NULL
         AND d.status <> 'Withdrawn'
+        AND d.job_type <> 'Demolition'
     ),
     /** Combine the three methods of matching into a hny-developments lookup, 
         assigning priority by match method and development type.
@@ -115,8 +118,7 @@ WITH hny AS (
                 WHEN match_method = 'Spatial' THEN 3
                 END)
             WHEN (job_type = 'Alteration'
-                OR occ_category != 'Residential'
-                AND job_type != 'Demolition')
+                OR occ_category <> 'Residential')
             THEN (CASE
                 WHEN match_method = 'BINandBBL' THEN 4
                 WHEN match_method = 'BBLONLY' THEN 5
