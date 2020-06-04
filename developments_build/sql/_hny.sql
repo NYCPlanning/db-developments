@@ -135,7 +135,9 @@ WITH hny AS (
 		        UNION 
 		        SELECT * FROM spatial_match) a), 
   
-	-- For each hny record, find the highest-priority match(es)
+	/** For each hny record, find the highest-priority match(es). 
+    This will either be the best match, or multiple matches 
+    at the same priority-level. **/
 	best_matches AS (SELECT t1.hny_id, t1.match_priority, 
 							t2.job_number, t2.job_type, 
 							t2.occ_category
@@ -170,8 +172,31 @@ WITH hny AS (
 									WHERE count > 1) THEN 1
 			ELSE 0
 		END) AS one_dev_to_many_hny
+    INTO hny_developments_matches
 	FROM best_matches bm;
 
 -- Logic to assign matches
-
+WITH 
+	-- Find matches that are one-to-one
+	one_to_one AS (SELECT job_number, 
+							hny_id,
+							job_type,
+							occ_category,
+							all_counted_units,
+							total_units
+					FROM hny_developments_matches 
+					WHERE one_dev_to_many_hny = 0
+					AND one_hny_to_many_dev = 0),
+	-- For one dev to many hny, sum the units for all hny matches
+	one_to_many AS (SELECT job_number, 
+							'Multiple' AS hny_id,
+							job_type,
+							occ_category,
+							SUM(all_counted_units::INT) AS all_counted_units,
+							SUM(total_units::INT) AS total_units 
+					FROM hny_developments_matches m
+					WHERE one_dev_to_many_hny = 1
+					AND one_hny_to_many_dev = 0
+					GROUP BY job_number, job_type, occ_category)
+;
 -- Apply manual research
