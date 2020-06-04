@@ -1,6 +1,6 @@
 /*
 DESCRIPTION:
-	Initial field mapping and prelimilary data cleaning
+	1. Initial field mapping and prelimilary data cleaning
 
 INPUTS: 
 	dob_jobapplications
@@ -59,10 +59,7 @@ OUTPUTS:
 		bin text,
 		bbl text,
 		boro text,
-		x_withdrawal text,
-		latitude double precision,
-		longitude double precision,
-		geom geometry
+		x_withdrawal text
 	)
 	
 IN PREVIOUS VERSION: 
@@ -74,11 +71,11 @@ IN PREVIOUS VERSION:
 	jobtype.sql
 	x_mixeduse.sql
 */
-DROP TABLE IF EXISTS INIT_devdb;
+DROP TABLE IF EXISTS _INIT_devdb;
 WITH
 -- identify admin jobs
 JOBNUMBER_admin_jobs as (
-	select distinct jobnumber
+	select jobnumber
 	from dob_jobapplications
 	WHERE upper(jobdescription) LIKE '%NO WORK%'
 	OR ((upper(jobdescription) LIKE '%ADMINISTRATIVE%'
@@ -89,14 +86,15 @@ JOBNUMBER_admin_jobs as (
 ),
 -- identify relevant_jobs
 JOBNUMBER_relevant as (
-	select distinct jobnumber
+	select jobnumber
 	from dob_jobapplications
 	where 
 		jobnumber not in (select jobnumber from JOBNUMBER_admin_jobs)
 		AND jobdocnumber = '01' 
 		AND jobtype ~* 'A1|DM|NB'
-) SELECT 
-	distinct jobnumber as job_number,
+) SELECT
+	ogc_fid as uid,
+	jobnumber as job_number,
 
     -- Job Type recoding
 	(CASE 
@@ -152,7 +150,7 @@ JOBNUMBER_relevant as (
 
 	-- one to one mappings
 	jobstatusdesc as _status,
-	latestactiondate as status_date,
+	latestactiondate::date as status_date,
 	prefilingdate as status_a,
 	fullypaid as status_d,
 	approved as status_p,
@@ -190,10 +188,10 @@ JOBNUMBER_relevant as (
 	bin as bin,
 	LEFT(bin, 1)||lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0') as bbl,
 	INITCAP(borough) as boro,
-	specialactionstatus as x_withdrawal,
-	latitude as latitude,
-	longitude as longitude,
-	ST_SetSRID(ST_Point(longitude, latitude),4326) as geom
-INTO INIT_devdb
+	specialactionstatus as x_withdrawal
+	-- latitude as latitude,
+	-- longitude as longitude,
+	-- ST_SetSRID(ST_Point(longitude, latitude),4326) as geom
+INTO _INIT_devdb
 FROM dob_jobapplications
 WHERE jobnumber in (select jobnumber from JOBNUMBER_relevant);

@@ -81,7 +81,7 @@ FROM (
         'C- CO' as co_latest_certtype
     FROM DATES_co
     WHERE job_number in (
-        SELECT DISTINCT job_number 
+        SELECT DISTINCT job_number
         FROM MULTI_co_jobs)
     UNION
     SELECT 

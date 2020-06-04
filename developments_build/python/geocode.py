@@ -37,50 +37,49 @@ def geocode(input):
 
 def parse_output(geo):
     return dict(
-                # Normalized address: 
-                sname = geo.get('First Street Name Normalized', ''),
-                hnum = geo.get('House Number - Display Format', ''),
-                boro = geo.get('First Borough Name', ''),
-                
-                # longitude and latitude of lot center
-                lat = geo.get('Latitude', ''),
-                lon = geo.get('Longitude', ''),
-                
-                # Some sample administrative areas: 
-                BIN = geo.get('Building Identification Number (BIN) of Input Address or NAP',''),
-                BBL = geo.get('BOROUGH BLOCK LOT (BBL)', {}).get('BOROUGH BLOCK LOT (BBL)', '',),
-                bcode = geo.get('BOROUGH BLOCK LOT (BBL)', {}).get('Borough Code', '',),
-                cd = geo.get('COMMUNITY DISTRICT', {}).get('COMMUNITY DISTRICT', ''),
-                ct = geo.get('2010 Census Tract', ''),
-                cblock = geo.get('2010 Census Block', ''),
-                ctract = geo.get('2010 Census Tract', ''),
-                council = geo.get('City Council District', ''),
-                csd = geo.get('Community School District', ''),
-                policeprct = geo.get('Police Precinct', ''),
-                zipcode = geo.get('ZIP Code', ''), 
-                nta = geo.get('Neighborhood Tabulation Area (NTA)', ''),
-                ntan = geo.get('NTA Name', ''),
+        # Normalized address: 
+        geo_address_street = geo.get('First Street Name Normalized', ''),
+        geo_address_house = geo.get('House Number - Display Format', ''),
+        
+        # longitude and latitude of lot center
+        latitude = geo.get('Latitude', ''),
+        longitude = geo.get('Longitude', ''),
+        
+        # Some sample administrative areas: 
+        geo_bin = geo.get('Building Identification Number (BIN) of Input Address or NAP',''),
+        geo_bbl = geo.get('BOROUGH BLOCK LOT (BBL)', {})\
+                    .get('BOROUGH BLOCK LOT (BBL)', '',),
+        geo_boro = geo.get('BOROUGH BLOCK LOT (BBL)', {})\
+                    .get('Borough Code', '',),
+        geo_cd = geo.get('COMMUNITY DISTRICT', {})\
+                    .get('COMMUNITY DISTRICT', ''),
+        geo_censustract2010 = geo.get('2010 Census Tract', ''),
+        geo_censusblock2010 = geo.get('2010 Census Block', ''),
+        geo_council = geo.get('City Council District', ''),
+        geo_csd = geo.get('Community School District', ''),
+        geo_policeprct = geo.get('Police Precinct', ''),
+        geo_zipcode = geo.get('ZIP Code', ''), 
+        geo_ntacode2010 = geo.get('Neighborhood Tabulation Area (NTA)', ''),
 
-                # the return codes and messaged are for diagnostic puposes
-                GRC = geo.get('Geosupport Return Code (GRC)', ''),
-                GRC2 = geo.get('Geosupport Return Code 2 (GRC 2)', ''),
-                msg = geo.get('Message', 'msg err'),
-                msg2 = geo.get('Message 2', 'msg2 err'),
-            )
+        # the return codes and messaged are for diagnostic puposes
+        GRC = geo.get('Geosupport Return Code (GRC)', ''),
+        GRC2 = geo.get('Geosupport Return Code 2 (GRC 2)', ''),
+        msg = geo.get('Message', 'msg err'),
+        msg2 = geo.get('Message 2', 'msg2 err')
+    )
 
 if __name__ == '__main__':
-    # connect to postgres db
+    # connect to BUILD_ENGINE
     engine = create_engine(os.environ['BUILD_ENGINE'])
 
-    # read in housing table
-    df = pd.read_sql("SELECT job_number, job_number||status_date AS uid, address_house, address_street, boro,\
-                        co_earliest_effectivedate, status_q, status_a, x_outlier\
-                                      FROM developments;", engine)
-
-    #get the row number
-    df = df.rename(columns={'address_house':'house_number', 
-                            'address_street':'street_name',
-                            'boro':'borough'})
+    df = pd.read_sql('''
+        SELECT 
+            distinct job_number||status_date AS uid, 
+            address_house as house_number,
+            address_street as street_name, 
+            boro as borough
+        FROM _INIT_devdb
+    ''', engine)
 
     records = df.to_dict('records')
     
@@ -89,5 +88,5 @@ if __name__ == '__main__':
     with Pool(processes=cpu_count()) as pool:
         it = pool.map(geocode, records, 10000)
     
-    print('geocoding finished, dumping tp postgres ...')
-    exporter(df=pd.DataFrame(it), table_name='development_tmp', con=engine)
+    print('geocoding finished, dumping GEO_devdb postgres ...')
+    exporter(df=pd.DataFrame(it), table_name='GEO_devdb', con=engine)

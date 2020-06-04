@@ -1,6 +1,6 @@
 #!/bin/bash
-#!/bin/bash
 
+# Setting environmental variables
 function set_env {
   for envfile in $@
   do
@@ -11,6 +11,7 @@ function set_env {
   done
 }
 
+# Parsing database url
 function urlparse {
     proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
     url=$(echo $1 | sed -e s,$proto,,g)
@@ -23,10 +24,13 @@ function urlparse {
     BUILD_DB="$(echo $url | grep / | cut -d/ -f2-)"
 }
 
+# Pretty print messages
 function dispaly {
-  echo -e "\e[92m\e[1m$@\e[21m\e[0m
+  echo -e "
+  \e[92m\e[1m$@\e[21m\e[0m
   "
 }
+
 # Setting Environmental Variables
 set_env .env version.env
 DATE=$(date "+%Y-%m-%d")

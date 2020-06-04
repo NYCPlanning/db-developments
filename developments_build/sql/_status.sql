@@ -8,7 +8,8 @@ INPUTS:
         job_type,
         _status,
         x_withdrawal,
-        status_p
+        status_p,
+        address
     )
 
     STATUS_Q_devdb (
@@ -64,19 +65,13 @@ INPUT_devdb as (
         b.units_net - a.co_latest_units as units_complete_diff
     FROM (
         SELECT 
-            a.job_number,
-            a.job_type,
-            a._status,
-            a.x_withdrawal,
-            a.status_p,
-            a.status_q,
-            a.year_complete,
+            a.*,
             b.co_earliest_effectivedate,
             b.co_latest_certtype, 
             b.co_latest_units::numeric
         FROM (
-            SELECT 
-                a.*, 
+            SELECT
+                a.*,
                 b.status_q,
                 b.year_complete
             FROM INIT_devdb a
@@ -95,6 +90,8 @@ STATUS_translate as (
         a.year_complete,
         a.units_net,
         a.co_latest_units,
+        a.status_date,
+        a.address,
         (CASE
             WHEN a.job_type = 'New Building'
                 AND a.co_latest_certtype = 'T- TCO'
@@ -126,8 +123,12 @@ STATUS_translate as (
 DRAFT_STATUS_devdb as (
     SELECT
         job_number,
+        job_type,
         status,
         status_q,
+        status_date::date,
+        units_net,
+        address,
         -- update year_compelte based on job_type and status
         (CASE
             WHEN job_type = 'Demolition'
@@ -162,6 +163,18 @@ SELECT
     year_complete,
     units_complete,
     units_incomplete,
+    units_net,
+    address,
+    (CASE 
+        WHEN (CURRENT_DATE - status_date)/365 >= 2 
+            AND status = 'In progress (last plan disapproved)'
+            THEN 'Inactive'
+        WHEN (CURRENT_DATE - status_date)/365 >= 3 
+            AND status in ('Filed', 'In progress')
+            THEN 'Inactive'
+        WHEN status = 'Withdrawn'
+            THEN 'Inactive'
+    END) as x_inactive,
     NULL as x_dcpedited,
     NULL as x_reason
 INTO STATUS_devdb
@@ -180,7 +193,7 @@ FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'units_complete'
 AND (a.units_complete=b.old_value::numeric 
-    OR (a.units_complete IS NULL 
+    OR (a.units_complete IS NULL
         AND b.old_value IS NULL));
 
 UPDATE STATUS_devdb a
