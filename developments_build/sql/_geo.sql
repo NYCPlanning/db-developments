@@ -1,4 +1,61 @@
 /*
+DESCRIPTION:
+    1. Merging _INIT_devdb with GEO_devdb to INIT_devdb
+    2. Deduplicating INIT_devdb that share the same 
+        job_number, note that in the end product, 
+        job_number will be the unique identifier.
+    3. Corrections: remove records by bbl and job_number
+
+INPUTS: 
+    _INIT_devdb (
+        * uid,
+        ...
+    )
+
+    GEO_devdb (
+        * uid,
+        ...
+    )
+
+    housing_input_research (
+        * job_number
+    )
+
+    dof_dtm (
+        * bbl,
+        geom
+    )
+
+    dcp_mappluto (
+        * bbl,
+        geom
+    )
+
+OUTPUT 
+    INIT_devdb (
+        _INIT_devdb.*,
+        geo_bbl text,
+        geo_bin text,
+        geo_address_house text,
+        geo_address_street text,
+        geo_address text,
+        geo_zipcode text,
+        geo_boro text,
+        geo_cd text,
+        geo_council text,
+        geo_ntacode2010 text,
+        geo_censusblock2010 text,
+        geo_censustract2010 text,
+        geo_csd text,
+        geo_policeprct text,
+        geo_latitude double precision,
+        geo_longitude double precision,
+        latitude double precision,
+        longitude double precision,
+        geom geometry,
+        x_geomsource text
+    )
+
 IN PREVIOUS VERSION: 
     geo_merge.sql
     geoaddress.sql
@@ -33,10 +90,11 @@ DRAFT as (
         b.longitude::double precision as geo_longitude
 	FROM _INIT_devdb a
 	LEFT JOIN GEO_devdb b
-	ON a.job_number||a.status_date::text = b.uid
+	ON a.uid = b.uid::integer
 ),
 GEOM_geosupport as (
     SELECT
+        uid,
         job_number,
 		bbl,
         geo_bbl,
@@ -47,6 +105,7 @@ GEOM_geosupport as (
 ),
 GEOM_mappluto as (
     SELECT
+        a.uid,
         a.job_number,
 		a.bbl,
         a.geo_bbl,
@@ -64,6 +123,7 @@ GEOM_mappluto as (
 ),
 GEOM_mappluto_dob as (
 	SELECT
+        a.uid,
         a.job_number,
 		a.bbl,
         a.geo_bbl,
@@ -79,8 +139,16 @@ GEOM_mappluto_dob as (
     LEFT JOIN dcp_mappluto b
     ON a.bbl = b.bbl::bigint::text
 ),
+DTM as (
+    SELECT 
+        bbl, 
+        ST_Union(geom) as geom
+    FROM dof_dtm
+    GROUP BY bbl
+),
 GEOM_dtm_dob as (
 	SELECT
+        a.uid,
         a.job_number,
 		a.bbl,
         a.geo_bbl,
@@ -92,8 +160,8 @@ GEOM_dtm_dob as (
 		 		AND b.geom IS NOT NULL 
 		 		THEN 'BBL DOB DTM'
 		END) as x_geomsource
-    FROM GEOM_mappluto a
-    LEFT JOIN dof_dtm b
+    FROM GEOM_mappluto_dob a
+    LEFT JOIN DTM b
     ON a.bbl = b.bbl::bigint::text
 )
 SELECT
@@ -105,13 +173,19 @@ SELECT
 INTO INIT_devdb
 FROM DRAFT a
 LEFT JOIN GEOM_dtm_dob b
-ON a.job_number = b.job_number;
+ON a.uid = b.uid;
 
--- For any records that share an identical job_number and BBL, 
--- keep only the record with the most recent date_lastupdt 
--- value and remove the older record(s).
+/*
+DEDUPLICATION
+
+For any records that share an identical job_number and BBL, 
+keep only the record with the most recent date_lastupdt 
+value and remove the older record(s). After this step, job_number
+in INIT_devdb will be the uid
+
+*/
 WITH latest_records AS (
-	SELECT 
+	SELECT
         job_number, 
         geo_bbl, 
         MAX(status_date) AS date_lastupdt
@@ -127,8 +201,10 @@ AND a.status_date != b.date_lastupdt;
 
 /* 
 CORRECTIONS
+
     job_number (removal)
     bbl (removal)
+
 */
 INSERT INTO housing_input_research 
     (job_number, field)
@@ -154,7 +230,7 @@ AND b.field = 'bbl'
 AND a.geo_bbl = b.old_value
 AND b.new_value IS NULL;
 
--- longitude latitude geom
+-- -- longitude latitude geom
 -- UPDATE INIT_devdb a
 -- SET latitude = b.new_value::double precision,
 -- 	x_dcpedited = 'Edited',

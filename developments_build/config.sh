@@ -11,6 +11,15 @@ function set_env {
   done
 }
 
+function count {
+  psql -d $BUILD_ENGINE -At -c "SELECT count(*) FROM $1;" | 
+  while read -a count; do
+  echo -e "
+  \e[33m$1: $count records\e[0m
+  "
+  done
+}
+
 # Parsing database url
 function urlparse {
     proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"

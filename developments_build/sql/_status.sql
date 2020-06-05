@@ -180,11 +180,27 @@ SELECT
 INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
 
+-- WITH completejobs AS (
+-- 	SELECT address, job_type, status_date, status
+-- 	FROM developments
+-- 	WHERE units_net::numeric > 0
+-- 	AND status LIKE 'Complete%')
+-- UPDATE developments a 
+-- SET x_inactive = TRUE
+-- FROM completejobs b
+-- WHERE a.address = b.address
+-- 	AND a.job_type = b.job_type
+-- 	AND a.status NOT LIKE 'Complete%'
+-- 	AND a.status_date::date < b.status_date::date
+-- 	AND a.status <> 'Withdrawn'
+--   	AND a.occ_prop <> 'Garage/Miscellaneous';
+
 /* 
 CORRECTIONS
     units_complete
     units_incomplete
 */
+
 UPDATE STATUS_devdb a
 SET units_complete = TRIM(b.new_value)::numeric,
 	x_dcpedited = TRUE,

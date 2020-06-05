@@ -74,7 +74,7 @@ if __name__ == '__main__':
 
     df = pd.read_sql('''
         SELECT 
-            distinct job_number||status_date AS uid, 
+            distinct uid, 
             address_house as house_number,
             address_street as street_name, 
             boro as borough

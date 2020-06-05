@@ -7,6 +7,7 @@ INPUTS:
 
 OUTPUTS:
 	INIT_devdb (
+		uid text,
 		job_number text,
 		job_type text,
 		job_description text,
@@ -75,7 +76,7 @@ DROP TABLE IF EXISTS _INIT_devdb;
 WITH
 -- identify admin jobs
 JOBNUMBER_admin_jobs as (
-	select jobnumber
+	select ogc_fid
 	from dob_jobapplications
 	WHERE upper(jobdescription) LIKE '%NO WORK%'
 	OR ((upper(jobdescription) LIKE '%ADMINISTRATIVE%'
@@ -86,11 +87,11 @@ JOBNUMBER_admin_jobs as (
 ),
 -- identify relevant_jobs
 JOBNUMBER_relevant as (
-	select jobnumber
+	select ogc_fid
 	from dob_jobapplications
 	where 
-		jobnumber not in (select jobnumber from JOBNUMBER_admin_jobs)
-		AND jobdocnumber = '01' 
+		ogc_fid not in (select ogc_fid from JOBNUMBER_admin_jobs)
+		AND jobdocnumber = '01'
 		AND jobtype ~* 'A1|DM|NB'
 ) SELECT
 	ogc_fid as uid,
@@ -194,4 +195,4 @@ JOBNUMBER_relevant as (
 	-- ST_SetSRID(ST_Point(longitude, latitude),4326) as geom
 INTO _INIT_devdb
 FROM dob_jobapplications
-WHERE jobnumber in (select jobnumber from JOBNUMBER_relevant);
+WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
