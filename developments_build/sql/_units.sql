@@ -43,7 +43,7 @@ DROP TABLE IF EXISTS UNITS_devdb;
 WITH
 INIT_OCC_devdb as (
 	SELECT 
-		distinct a.job_number,
+		a.job_number,
 		a.job_type,
 		b.occ_prop,
 		b.occ_init,
@@ -56,7 +56,7 @@ INIT_OCC_devdb as (
 ),
 UNITS_init_prop as (
 	SELECT 
-		distinct job_number,
+		job_number,
 		job_type,
 		(CASE 
 			WHEN job_type='New Building' 

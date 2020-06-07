@@ -35,7 +35,7 @@ DRAFT_co as (
     SELECT
         jobnum as job_number, 
         effectivedate::date,
-        numofdwellingunits::numeric as co_latest_units,
+        numofdwellingunits::numeric as co_latest_units, 
         certificatetype as co_latest_certtype
     FROM dob_cofos
     WHERE jobnum IN (
@@ -51,29 +51,41 @@ DATES_co as (
     FROM ( 
         SELECT 
             job_number, 
-            min(effectivedate::date) AS co_earliest_effectivedate,
-            LEFT(min(effectivedate::date)::text,4) AS year_complete,
-            max(effectivedate::date) AS co_latest_effectivedate
+            min(effectivedate) AS co_earliest_effectivedate,
+            LEFT(min(effectivedate)::text,4) AS year_complete,
+            max(effectivedate) AS co_latest_effectivedate
         FROM DRAFT_co
         GROUP BY job_number
     ) a
     LEFT JOIN DRAFT_co b
     ON a.job_number=b.job_number
 ),
+CERTTYPE_UNITS_co as (
+    SELECT 
+		job_number,
+		effectivedate,
+		co_earliest_effectivedate,
+        year_complete,
+        co_latest_effectivedate,
+        co_latest_units,
+        co_latest_certtype
+    FROM DATES_co 
+    WHERE effectivedate = co_latest_effectivedate
+    ORDER BY job_number
+),
 MULTI_co_jobs as (
     SELECT 
         job_number
-	FROM DATES_co
+	FROM CERTTYPE_UNITS_co
 	WHERE co_latest_effectivedate = effectivedate
 	GROUP BY job_number
 	HAVING count(*) > 1
 )
-SELECT *
+SELECT DISTINCT *
 INTO CO_devdb
 FROM (
     SELECT 
         job_number,
-        effectivedate,
         co_earliest_effectivedate,
         year_complete,
         co_latest_effectivedate,
@@ -86,7 +98,6 @@ FROM (
     UNION
     SELECT 
 		job_number,
-		effectivedate,
 		co_earliest_effectivedate,
 		year_complete,
 		co_latest_effectivedate,

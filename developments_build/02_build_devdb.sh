@@ -2,7 +2,7 @@
 source config.sh
 
 dispaly "Starting to build Developments DB"
-psql $BUILD_ENGINE -f sql/create_devdb.sql
+psql $BUILD_ENGINE -f sql/devdb_create_init.sql
 count _INIT_devdb
 
 dispaly "Geocoding Developments DB, job_number||status_date as UID"
@@ -14,7 +14,7 @@ docker run --rm\
 count GEO_devdb
 
 dispaly "Merge _INIT_devdb, GEO_devdb -> INIT_devdb,
-# and remove records by job_number and BBL (using housing_input_research)"
+  and remove records by job_number and BBL (using housing_input_research)"
 psql $BUILD_ENGINE -f sql/_geo.sql
 count INIT_devdb
 
@@ -23,7 +23,7 @@ psql $BUILD_ENGINE -f sql/_pluto.sql
 count PLUTO_devdb
 
 dispaly "Create CO fields, effectivedate, co_earliest_effectivedate date,
-year_complete, co_latest_effectivedate, co_latest_units, co_latest_certtype"
+  year_complete, co_latest_effectivedate, co_latest_units, co_latest_certtype"
 psql $BUILD_ENGINE -f sql/_co.sql
 count CO_devdb
 
@@ -39,5 +39,9 @@ dispaly "Creating status_q field, year_complete and year_permit"
 psql $BUILD_ENGINE -f sql/_status_q.sql
 count STATUS_Q_devdb
 
-dispaly "Creating status field, year_complete and x_inactive, x_dcpedited, x_reason"
+psql $BUILD_ENGINE -f sql/devdb_create_mid.sql
+count MID_devdb
+
+dispaly "Creating status field, year_complete and 
+  x_inactive, x_dcpedited, x_reason"
 psql $BUILD_ENGINE -f sql/_status.sql

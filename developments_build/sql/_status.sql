@@ -53,35 +53,6 @@ IN PREVIOUS VERSION:
 */
 DROP TABLE IF EXISTS STATUS_devdb;
 WITH
-INPUT_devdb as (
-    SELECT
-        a.*,
-        b.units_net,
-        (CASE 
-            WHEN b.units_net != 0 
-                THEN a.co_latest_units/b.units_net
-            ELSE NULL
-        END) as units_complete_pct,
-        b.units_net - a.co_latest_units as units_complete_diff
-    FROM (
-        SELECT 
-            a.*,
-            b.co_earliest_effectivedate,
-            b.co_latest_certtype, 
-            b.co_latest_units::numeric
-        FROM (
-            SELECT
-                a.*,
-                b.status_q,
-                b.year_complete
-            FROM INIT_devdb a
-            LEFT JOIN STATUS_Q_devdb b
-            ON a.job_number = b.job_number
-        ) a LEFT JOIN CO_devdb b
-        ON a.job_number = b.job_number
-    ) a LEFT JOIN UNITS_devdb b
-    ON a.job_number = b.job_number
-),
 STATUS_translate as (
     SELECT 
         a.job_number,
@@ -116,7 +87,7 @@ STATUS_translate as (
 
             ELSE b.dcpstatus 
         END) as status
-    FROM INPUT_devdb a
+    FROM MID_devdb a
     LEFT JOIN housing_input_lookup_status b
     ON a._status = b.dobstatus
 ),

@@ -47,5 +47,5 @@ SELECT
     END) as year_complete
 INTO STATUS_Q_devdb
 FROM INIT_devdb a
-JOIN STATUS_Q_create b
+LEFT JOIN STATUS_Q_create b
 ON a.job_number = b.job_number

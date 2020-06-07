@@ -13,7 +13,6 @@ OUTPUTS:
 		job_description text,
 		_occ_init text,
 		_occ_prop text,
-		occ_category text,
 		stories_init numeric,
 		stories_prop text,
 		zoningsft_init numeric,
@@ -111,8 +110,6 @@ JOBNUMBER_relevant as (
     -- and proposedoccupancy (3 records affected)
 	replace(existingoccupancy, '.', '') as _occ_init, 
     replace(proposedoccupancy, '.', '') as _occ_prop,
-	NULL as occ_category,
-
     -- set 0 -> null for jobtype = A1 or DM
 	(CASE WHEN jobtype ~* 'A1|DM' 
         THEN nullif(existingnumstories, '0')::numeric
@@ -190,9 +187,8 @@ JOBNUMBER_relevant as (
 	LEFT(bin, 1)||lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0') as bbl,
 	INITCAP(borough) as boro,
 	specialactionstatus as x_withdrawal
-	-- latitude as latitude,
-	-- longitude as longitude,
-	-- ST_SetSRID(ST_Point(longitude, latitude),4326) as geom
+	latitude as dob_latitude,
+	longitude as dob_longitude,
 INTO _INIT_devdb
 FROM dob_jobapplications
 WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);

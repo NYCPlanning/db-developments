@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS OCC_devdb;
 WITH 
 OCC_init_translate as (
 	SELECT 
-		DISTINCT a.job_number, 
+		a.job_number, 
 		(CASE 
 			WHEN a.job_type = 'New Building'
 				THEN 'Empty Lot'
@@ -74,13 +74,13 @@ OCC_init_translate as (
 			FROM INIT_devdb a
 			LEFT join housing_input_lookup_occupancy b
 			ON a._occ_init = b.doboccupancycode2008) a
-		JOIN housing_input_lookup_occupancy b
+		LEFT JOIN housing_input_lookup_occupancy b
 		ON a._occ_init = b.doboccupancycode1968
 	) a
 ),
 OCC_prop_translate as (
 	SELECT 
-		DISTINCT a.job_number, 
+		a.job_number, 
 		(CASE
 			WHEN a.job_type = 'Demolition'
 				THEN 'Empty Lot'
@@ -104,13 +104,13 @@ OCC_prop_translate as (
 			FROM INIT_devdb a
 			LEFT join housing_input_lookup_occupancy b
 			ON a._occ_prop = b.doboccupancycode2008) a
-		JOIN housing_input_lookup_occupancy b
+		LEFT JOIN housing_input_lookup_occupancy b
 		ON a._occ_prop = b.doboccupancycode1968
 	) a
 ), 
 OCC_init_garage as (
 	SELECT
-		DISTINCT job_number,
+		job_number,
 		'Garage/Miscellaneous' as occ_init
 	FROM INIT_devdb 
 	WHERE job_type = 'Alteration|Demolition'
@@ -119,7 +119,7 @@ OCC_init_garage as (
 ),
 OCC_prop_garage as (
 	SELECT 
-		DISTINCT job_number,
+		job_number,
 		'Garage/Miscellaneous' as occ_prop
 	FROM (
 		-- Alteration jobs with "garage" in job_description 
@@ -155,7 +155,7 @@ OCC_prop_garage as (
 	) a
 ),
 OCC_init_prop as (
-	SELECT DISTINCT a.job_number, a.occ_init, b.occ_prop
+	SELECT a.job_number, a.occ_init, b.occ_prop
 	FROM (
 		SELECT a.job_number, b.occ_init
 		FROM INIT_devdb a
@@ -176,7 +176,7 @@ OCC_init_prop as (
 	ON a.job_number = b.job_number
 )
 SELECT 
-	DISTINCT job_number,
+	job_number,
 	occ_init,
 	occ_prop,
 	(CASE 
