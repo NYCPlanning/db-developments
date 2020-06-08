@@ -160,7 +160,7 @@ WITH hny AS (
 				FROM best_matches
 				GROUP BY job_number)	
 
-	-- Add relationship flags
+	-- Add relationship flags. Note that a 1 in both means many-to-many.
 	SELECT bm.*,
 		(CASE 
 			WHEN hny_id IN (SELECT DISTINCT hny_id FROM many_developments
@@ -197,7 +197,6 @@ WITH
 							SUM(total_units::int)::text AS total_units 
 					FROM hny_developments_matches
 					WHERE one_dev_to_many_hny = 1
-					AND one_hny_to_many_dev = 0
 					GROUP BY job_number, job_type, occ_category),
 	-- For multiple dev to one hny, assign units to the one with the lowest job_number
 	-- Begin by creating a table only containing data for the minimum job_number per hny
