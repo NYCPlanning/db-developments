@@ -202,8 +202,7 @@ WITH
 	-- Begin by creating a table only containing data for the minimum job_number per hny
 	min_job_number_per_hny AS (SELECT MIN(job_number::INT)::text AS job_number, hny_id
 							 FROM hny_developments_matches
-							 WHERE one_dev_to_many_hny = 0
-							 AND one_hny_to_many_dev = 1
+							 WHERE one_hny_to_many_dev = 1
 							 GROUP BY hny_id),
 	many_to_one AS (SELECT a.job_number,
 							/** hny_id has to be set to "Multiple" for many-to-many cases, 
