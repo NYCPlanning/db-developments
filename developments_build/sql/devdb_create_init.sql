@@ -187,8 +187,6 @@ JOBNUMBER_relevant as (
 	LEFT(bin, 1)||lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0') as bbl,
 	INITCAP(borough) as boro,
 	specialactionstatus as x_withdrawal
-	latitude as dob_latitude,
-	longitude as dob_longitude,
 INTO _INIT_devdb
 FROM dob_jobapplications
 WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);

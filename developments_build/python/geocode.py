@@ -89,4 +89,4 @@ if __name__ == '__main__':
         it = pool.map(geocode, records, 10000)
     
     print('geocoding finished, dumping GEO_devdb postgres ...')
-    exporter(df=pd.DataFrame(it), table_name='GEO_devdb', con=engine)
+    exporter(df=pd.DataFrame(it), table_name='_GEO_devdb', con=engine)

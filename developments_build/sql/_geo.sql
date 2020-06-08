@@ -32,8 +32,9 @@ INPUTS:
     )
 
 OUTPUT 
-    INIT_devdb (
-        _INIT_devdb.*,
+    GEO_devdb (
+        uid,
+        job_number
         geo_bbl text,
         geo_bin text,
         geo_address_house text,
@@ -64,11 +65,15 @@ IN PREVIOUS VERSION:
     dedupe_job_number.sql
     dropmillionbin.sql
 */
-DROP TABLE IF EXISTS INIT_devdb;
+DROP TABLE IF EXISTS GEO_devdb;
 WITH
 DRAFT as (
     SELECT
-        a.*,
+        a.uid,
+        a.job_number,
+		a.bbl,
+        a.status_date,
+        a.job_description,
         b.geo_bbl,
         NULLIF(RIGHT(b.geo_bin,6),'000000') as geo_bin,
         b.geo_address_house,
@@ -89,7 +94,7 @@ DRAFT as (
         b.latitude::double precision as geo_latitude,
         b.longitude::double precision as geo_longitude
 	FROM _INIT_devdb a
-	LEFT JOIN GEO_devdb b
+	LEFT JOIN _GEO_devdb b
 	ON a.uid = b.uid::integer
 ),
 GEOM_geosupport as (
@@ -98,6 +103,8 @@ GEOM_geosupport as (
         job_number,
 		bbl,
         geo_bbl,
+        status_date,
+        job_description,
         ST_SetSRID(ST_Point(geo_longitude,geo_latitude),4326) as geom,
         (CASE WHEN geo_longitude IS NOT NULL 
 		 THEN 'Lat/Long geosupport' END) as x_geomsource
@@ -109,6 +116,8 @@ GEOM_mappluto as (
         a.job_number,
 		a.bbl,
         a.geo_bbl,
+        a.status_date,
+        a.job_description,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
 		 	WHEN a.x_geomsource IS NOT NULL 
@@ -127,6 +136,8 @@ GEOM_mappluto_dob as (
         a.job_number,
 		a.bbl,
         a.geo_bbl,
+        a.status_date,
+        a.job_description,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
 		 	WHEN a.x_geomsource IS NOT NULL 
@@ -152,6 +163,8 @@ GEOM_dtm_dob as (
         a.job_number,
 		a.bbl,
         a.geo_bbl,
+        a.status_date,
+        a.job_description,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
 		 	WHEN a.x_geomsource IS NOT NULL 
@@ -169,91 +182,64 @@ SELECT
     ST_Y(b.geom) as latitude,
     ST_X(b.geom) as longitude,
     b.geom,
-    b.x_geomsource
-INTO INIT_devdb
+    b.x_geomsource,
+    NULL as x_dcpedited,
+    NULL as x_reason
+INTO GEO_devdb
 FROM DRAFT a
 LEFT JOIN GEOM_dtm_dob b
 ON a.uid = b.uid;
 
-/*
-DEDUPLICATION
-
-For any records that share an identical job_number and BBL, 
-keep only the record with the most recent date_lastupdt 
-value and remove the older record(s). After this step, job_number
-in INIT_devdb will be the uid
-
-*/
-WITH latest_records AS (
-	SELECT
-        job_number, 
-        geo_bbl, 
-        MAX(status_date) AS date_lastupdt
-	FROM INIT_devdb
-	GROUP BY job_number, geo_bbl
-	HAVING COUNT(*)>1
-)
-DELETE FROM INIT_devdb a
-USING latest_records b
-WHERE a.job_number = b.job_number
-AND a.geo_bbl = b.geo_bbl
-AND a.status_date != b.date_lastupdt;
-
 /* 
 CORRECTIONS
 
-    job_number (removal)
-    bbl (removal)
-
+    longitude
+    latitude
+    geom
+    
 */
-INSERT INTO housing_input_research 
-    (job_number, field)
-SELECT 
-    job_number, 'remove' as field
-FROM INIT_devdb
-WHERE UPPER(job_description) LIKE '%BIS%TEST%' 
-    OR UPPER(job_description) LIKE '% TEST %'
-AND job_number NOT IN(
-    SELECT DISTINCT job_number
-    FROM housing_input_research
-    WHERE field = 'remove');
-
-DELETE FROM INIT_devdb a
-USING housing_input_research b
+WITH LONLAT_corrections as (
+    SELECT 
+        a.job_number,
+        coalesce(a.reason, b.reason) as reason,
+        ST_SetSRID(ST_MakePoint(a.old_lon, b.old_lat), 4326) as old_geom,
+        ST_SetSRID(ST_MakePoint(a.new_lon, b.new_lat), 4326) as new_geom
+    FROM (
+        SELECT 
+            job_number,
+            reason,
+            old_value::double precision as old_lon, 
+            new_value::double precision as new_lon
+        FROM housing_input_research
+        WHERE field = 'longitude'
+    ) a LEFT JOIN (
+        SELECT 
+            job_number, 
+            reason,
+            old_value::double precision as old_lat, 
+            new_value::double precision as new_lat
+        FROM housing_input_research
+        WHERE field = 'latitude'
+    ) b ON a.job_number = b.job_number
+),
+GEOM_corrections as (
+    SELECT 
+        a.job_number,
+        a.old_geom,
+        a.new_geom,
+        a.reason,
+        st_distance(a.new_geom, b.geom) as distance
+    FROM LONLAT_corrections a
+    LEFT JOIN GEO_devdb b
+    ON a.job_number = b.job_number
+)
+UPDATE GEO_devdb a
+SET latitude = ST_Y(b.new_geom),
+    longitude = ST_X(b.new_geom),
+    geom = b.new_geom,
+	x_dcpedited = 'Edited',
+	x_reason = b.reason,
+    x_geomsource = 'Lat/Long DCP'
+FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
-AND b.field = 'remove';
-
-DELETE FROM INIT_devdb a
-USING housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'bbl'
-AND a.geo_bbl = b.old_value
-AND b.new_value IS NULL;
-
--- -- longitude latitude geom
--- UPDATE INIT_devdb a
--- SET latitude = b.new_value::double precision,
--- 	x_dcpedited = 'Edited',
--- 	x_reason = b.reason
--- FROM housing_input_research b
--- WHERE a.job_number=b.job_number
--- AND b.field = 'latitude'
--- AND ((a.job_number IN (SELECT job_number FROM dev_qc_unclipped)) 
--- 	OR ((a.latitude IS NULL OR a.latitude = '') AND b.new_value IS NOT NULL)
--- 	OR (ROUND(b.old_value::numeric,8) = ROUND(a.latitude::numeric,8)));
-
--- UPDATE INIT_devdb a
--- SET longitude = b.new_value::double precision,
--- 	x_dcpedited = 'Edited',
--- 	x_reason = b.reason,
--- 	x_geomsource = 'Lat/Long DCP'
--- FROM housing_input_research b
--- WHERE a.job_number=b.job_number
--- AND b.field = 'longitude'
--- AND ((a.job_number IN (SELECT job_number FROM dev_qc_unclipped)) 
--- 	OR ((a.longitude IS NULL OR a.longitude = '') AND b.new_value IS NOT NULL) 
--- 	OR (ROUND(b.old_value::numeric,8) = ROUND(a.longitude::numeric,8)));
-
--- UPDATE INIT_devdb
--- SET geom = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)
--- WHERE x_geomsource = 'Lat/Long DCP';
+AND (b.distance < 10 OR a.geom IS NULL);

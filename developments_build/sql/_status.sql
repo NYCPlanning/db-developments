@@ -63,6 +63,7 @@ STATUS_translate as (
         a.co_latest_units,
         a.status_date,
         a.address,
+        a.occ_prop,
         (CASE
             WHEN a.job_type = 'New Building'
                 AND a.co_latest_certtype = 'T- TCO'
@@ -100,6 +101,7 @@ DRAFT_STATUS_devdb as (
         status_date::date,
         units_net,
         address,
+        occ_prop,
         -- update year_compelte based on job_type and status
         (CASE
             WHEN job_type = 'Demolition'
@@ -129,13 +131,16 @@ DRAFT_STATUS_devdb as (
 )
 SELECT
     job_number,
+    job_type,
     status,
+    status_date,
     status_q,
     year_complete,
     units_complete,
     units_incomplete,
     units_net,
     address,
+    occ_prop,
     (CASE 
         WHEN (CURRENT_DATE - status_date)/365 >= 2 
             AND status = 'In progress (last plan disapproved)'
@@ -151,20 +156,20 @@ SELECT
 INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
 
--- WITH completejobs AS (
--- 	SELECT address, job_type, status_date, status
--- 	FROM developments
--- 	WHERE units_net::numeric > 0
--- 	AND status LIKE 'Complete%')
--- UPDATE developments a 
--- SET x_inactive = TRUE
--- FROM completejobs b
--- WHERE a.address = b.address
--- 	AND a.job_type = b.job_type
--- 	AND a.status NOT LIKE 'Complete%'
--- 	AND a.status_date::date < b.status_date::date
--- 	AND a.status <> 'Withdrawn'
---   	AND a.occ_prop <> 'Garage/Miscellaneous';
+WITH completejobs AS (
+	SELECT address, job_type, status_date, status
+	FROM STATUS_devdb
+	WHERE units_net::numeric > 0
+	AND status LIKE 'Complete%')
+UPDATE STATUS_devdb a 
+SET x_inactive = 'Inactive'
+FROM completejobs b
+WHERE a.address = b.address
+	AND a.job_type = b.job_type
+	AND a.status NOT LIKE 'Complete%'
+	AND a.status_date::date < b.status_date::date
+	AND a.status <> 'Withdrawn'
+  	AND a.occ_prop <> 'Garage/Miscellaneous';
 
 /* 
 CORRECTIONS
@@ -174,7 +179,7 @@ CORRECTIONS
 
 UPDATE STATUS_devdb a
 SET units_complete = TRIM(b.new_value)::numeric,
-	x_dcpedited = TRUE,
+	x_dcpedited = 'Edited',
 	x_reason = b.reason
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
@@ -185,7 +190,7 @@ AND (a.units_complete=b.old_value::numeric
 
 UPDATE STATUS_devdb a
 SET units_incomplete = TRIM(b.new_value)::numeric,
-	x_dcpedited = TRUE,
+	x_dcpedited = 'Edited',
 	x_reason = b.reason
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
