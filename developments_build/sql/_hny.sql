@@ -200,24 +200,43 @@ WITH
 					AND one_hny_to_many_dev = 0
 					GROUP BY job_number, job_type, occ_category),
 	-- For multiple dev to one hny, assign units to the one with the lowest job_number
+	-- Begin by creating a table only containing data for the minimum job_number per hny
 	min_job_number_per_hny AS (SELECT MIN(job_number::INT)::text AS job_number, hny_id
 							 FROM hny_developments_matches
 							 WHERE one_dev_to_many_hny = 0
 							 AND one_hny_to_many_dev = 1
 							 GROUP BY hny_id),
 	many_to_one AS (SELECT a.job_number,
-		                    a.hny_id,
+							-- hny_id has to be set to "Multiple" for many-to-many cases, else it comes from hny_developments_matches
+							(CASE WHEN one_hny_to_many_dev = 1 
+									AND one_dev_to_many_hny = 1 
+									THEN 'Multiple' 
+								ELSE a.hny_id END) AS hny_id,
 							a.job_type,
-                            a.occ_category,
+							a.occ_category,
+							-- Only populate all_counted_units for the minimum job_number per hny record
 							(CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
-									THEN a.all_counted_units
+									-- If this is a many-to-many, need to get summed all_counted_units data from one_to_many
+									THEN CASE WHEN a.job_number IN (SELECT job_number FROM one_to_many)
+											THEN (SELECT all_counted_units 
+													FROM one_to_many b 
+													WHERE a.job_number = b.job_number)
+											ELSE a.all_counted_units
+										END
 									ELSE NULL
 							END) AS all_counted_units,
+							-- Only populate total_units for the minimum job_number per hny record
 							(CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
-									THEN a.total_units
+									-- If this is a many-to-many, need to get summed total_units data from one_to_many
+									THEN CASE WHEN a.job_number IN (SELECT job_number FROM one_to_many)
+											THEN (SELECT all_counted_units 
+													FROM one_to_many b 
+													WHERE a.job_number = b.job_number)
+											ELSE a.total_units
+										END
 									ELSE NULL
 							END) AS total_units
-					FROM hny_developments_matches a, min_job_number_per_hny b
+					FROM hny_developments_matches a
 					WHERE one_hny_to_many_dev = 1),
     -- Combine into a single look-up table to append hny columns to developments database					
 	dev_hny_lookup AS(					
