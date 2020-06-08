@@ -230,7 +230,7 @@ WITH
 									/** If this is a many-to-many, need to get 
                                         summed total_units data from one_to_many **/
 									THEN CASE WHEN a.job_number IN (SELECT job_number FROM one_to_many)
-											THEN (SELECT all_counted_units 
+											THEN (SELECT total_units 
 													FROM one_to_many b 
 													WHERE a.job_number = b.job_number)
 											ELSE a.total_units
