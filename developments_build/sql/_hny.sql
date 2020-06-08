@@ -206,7 +206,8 @@ WITH
 							 AND one_hny_to_many_dev = 1
 							 GROUP BY hny_id),
 	many_to_one AS (SELECT a.job_number,
-							-- hny_id has to be set to "Multiple" for many-to-many cases, else it comes from hny_developments_matches
+							/** hny_id has to be set to "Multiple" for many-to-many cases, 
+                              else it comes from hny_developments_matches **/
 							(CASE WHEN one_hny_to_many_dev = 1 
 									AND one_dev_to_many_hny = 1 
 									THEN 'Multiple' 
@@ -215,7 +216,8 @@ WITH
 							a.occ_category,
 							-- Only populate all_counted_units for the minimum job_number per hny record
 							(CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
-									-- If this is a many-to-many, need to get summed all_counted_units data from one_to_many
+									/** If this is a many-to-many, need to get summed 
+                                    all_counted_units data from one_to_many **/
 									THEN CASE WHEN a.job_number IN (SELECT job_number FROM one_to_many)
 											THEN (SELECT all_counted_units 
 													FROM one_to_many b 
@@ -226,7 +228,8 @@ WITH
 							END) AS all_counted_units,
 							-- Only populate total_units for the minimum job_number per hny record
 							(CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
-									-- If this is a many-to-many, need to get summed total_units data from one_to_many
+									/** If this is a many-to-many, need to get 
+                                        summed total_units data from one_to_many **/
 									THEN CASE WHEN a.job_number IN (SELECT job_number FROM one_to_many)
 											THEN (SELECT all_counted_units 
 													FROM one_to_many b 
