@@ -193,28 +193,31 @@ WITH
 							'Multiple' AS hny_id,
 							job_type,
 							occ_category,
-							SUM(all_counted_units::INT)::text AS all_counted_units,
-							SUM(total_units::INT)::text AS total_units 
+							SUM(all_counted_units::int)::text AS all_counted_units,
+							SUM(total_units::int)::text AS total_units 
 					FROM hny_developments_matches
 					WHERE one_dev_to_many_hny = 1
 					AND one_hny_to_many_dev = 0
 					GROUP BY job_number, job_type, occ_category),
-	-- For multiple hny to one dev, take the one with the lowest job_number
-	many_to_one AS (SELECT t1.job_number, t1.hny_id, t2.job_type, t2.occ_category,
-							t2.all_counted_units, t2.total_units
-					 FROM
-						(SELECT MIN(job_number::INT)::text AS job_number, hny_id
+	-- For multiple dev to one hny, assign units to the one with the lowest job_number
+	min_job_number_per_hny AS (SELECT MIN(job_number::INT)::text AS job_number, hny_id
 							 FROM hny_developments_matches
 							 WHERE one_dev_to_many_hny = 0
 							 AND one_hny_to_many_dev = 1
-							 GROUP BY hny_id) AS t1
-						LEFT JOIN
-						(SELECT job_number, job_type, occ_category, 
-								all_counted_units, total_units
-							FROM hny_developments_matches
-							WHERE one_dev_to_many_hny = 0
-							AND one_hny_to_many_dev = 1) AS t2
-						ON t1.job_number = t2.job_number),
+							 GROUP BY hny_id),
+	many_to_one AS (SELECT a.job_number,
+		a.hny_id,
+							a.job_type,
+							(CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
+									THEN a.all_counted_units
+									ELSE NULL
+							END) AS all_counted_units,
+							(CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
+									THEN a.total_units
+									ELSE NULL
+							END) AS total_units
+					FROM hny_developments_matches a, min_job_number_per_hny b
+					WHERE one_hny_to_many_dev = 1),
     -- Combine into a single look-up table to append hny columns to developments database					
 	dev_hny_lookup AS(					
 			SELECT * FROM one_to_one
@@ -226,3 +229,14 @@ WITH
 SELECT * FROM dev_hny_lookup;
 
 -- Apply manual research
+WITH
+    many_to_many AS (SELECT job_number, 
+							hny_id,
+							job_type,
+							occ_category,
+							all_counted_units,
+							total_units
+					FROM hny_developments_matches 
+					WHERE one_dev_to_many_hny = 1
+					AND one_hny_to_many_dev = 1)
+
