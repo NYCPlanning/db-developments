@@ -206,8 +206,9 @@ WITH
 							 AND one_hny_to_many_dev = 1
 							 GROUP BY hny_id),
 	many_to_one AS (SELECT a.job_number,
-		a.hny_id,
+		                    a.hny_id,
 							a.job_type,
+                            a.occ_category,
 							(CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
 									THEN a.all_counted_units
 									ELSE NULL
