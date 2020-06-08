@@ -243,20 +243,10 @@ WITH
 			SELECT * FROM one_to_one
 			UNION
 			SELECT * FROM one_to_many
+                -- Many-to-many cases are also in many_to_one table
+				WHERE job_number||hny_id NOT IN (SELECT job_number||hny_id FROM many_to_one)
 			UNION
 			SELECT * FROM many_to_one)
 
 SELECT * FROM dev_hny_lookup;
-
--- Apply manual research
-WITH
-    many_to_many AS (SELECT job_number, 
-							hny_id,
-							job_type,
-							occ_category,
-							all_counted_units,
-							total_units
-					FROM hny_developments_matches 
-					WHERE one_dev_to_many_hny = 1
-					AND one_hny_to_many_dev = 1)
 
