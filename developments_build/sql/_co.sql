@@ -16,13 +16,12 @@ INPUTS:
 
 OUTPUTS:
     CO_devdb (
-        job_number text,
-        effectivedate date,
+        job_number character varying,
         co_earliest_effectivedate date,
-        year_complete text,
         co_latest_effectivedate date,
         co_latest_units numeric,
-        co_latest_certtype text
+        co_latest_certtype character varying,
+        year_complete text
     )
 
 IN PREVIOUS VERSION: 

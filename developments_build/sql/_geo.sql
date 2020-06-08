@@ -1,10 +1,7 @@
 /*
 DESCRIPTION:
-    1. Merging _INIT_devdb with GEO_devdb to INIT_devdb
-    2. Deduplicating INIT_devdb that share the same 
-        job_number, note that in the end product, 
-        job_number will be the unique identifier.
-    3. Corrections: remove records by bbl and job_number
+    1. Assigning missing geoms for _GEO_devdb and create GEO_devdb
+    2. Apply research corrections on (longitude, latitude, geom)
 
 INPUTS: 
     _INIT_devdb (
@@ -12,7 +9,7 @@ INPUTS:
         ...
     )
 
-    GEO_devdb (
+    _GEO_devdb (
         * uid,
         ...
     )
@@ -33,7 +30,7 @@ INPUTS:
 
 OUTPUT 
     GEO_devdb (
-        uid,
+        * uid,
         job_number
         geo_bbl text,
         geo_bin text,

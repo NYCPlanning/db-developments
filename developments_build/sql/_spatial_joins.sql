@@ -1,5 +1,113 @@
 /*
-Fill NULLs in GEO_devdb through spatial join
+DESCRIPTION:
+    1. Fill spatial boundry NULLs in GEO_devdb through spatial join
+    and create SPATIAL_devdb. Note that SPATIAL_devdb is the 
+    consolidated table for all spatial attributes 
+
+        _GEO_devdb -> GEO_devdb -> SPATIAL_devdb
+
+    2. Merge SPATIAL_devdb with _INIT_devdb and create INIT_devdb.
+
+        SPATIAL_devdb + _INIT_devdb -> INIT_devdb
+
+    3. remove records using job_number and bbl 
+    in housing_input_research 
+
+INPUTS: 
+    GEO_devdb
+    dcp_cdboundaries
+    dcp_ntaboundaries
+    dcp_censusblocks
+    dcp_censustracts
+    dcp_school_districts
+    dcp_boroboundaries_wi
+    dcp_councildistricts
+    dcp_mappluto
+    doitt_buildingfootprints
+    doitt_zipcodeboundaries
+
+OUTPUTS:
+    SPATIAL_devdb (
+        same schema as GEO_devdb
+    )
+    
+    INIT_devdb (
+        uid integer,
+        job_number character varying,
+        job_type character varying,
+        job_description character varying,
+        _occ_init text,
+        _occ_prop text,
+        stories_init numeric,
+        stories_prop character varying,
+        zoningsft_init numeric,
+        zoningsft_prop numeric,
+        _units_init numeric,
+        _units_prop numeric,
+        x_mixeduse text,
+        _status character varying,
+        status_date date,
+        status_a character varying,
+        status_d character varying,
+        status_p character varying,
+        status_r character varying,
+        status_x character varying,
+        zoningdist1 character varying,
+        zoningdist2 character varying,
+        zoningdist3 character varying,
+        specialdist1 character varying,
+        specialdist2 character varying,
+        landmark character varying,
+        cityowned character varying,
+        owner_type character varying,
+        owner_nonprof character varying,
+        owner_firstnm character varying,
+        owner_lastnm character varying,
+        owner_biznm character varying,
+        owner_address character varying,
+        owner_zipcode character varying,
+        owner_phone character varying,
+        height_init character varying,
+        height_prop character varying,
+        constructnsf character varying,
+        enlrg_horiz character varying,
+        enlrg_vert character varying,
+        enlargementsf character varying,
+        costestimate character varying,
+        loftboardcert character varying,
+        edesignation character varying,
+        curbcut character varying,
+        tracthomes character varying,
+        address_house text,
+        address_street text,
+        address text,
+        bin character varying,
+        bbl text,
+        boro text,
+        x_withdrawal character varying,
+        geo_bbl text,
+        geo_bin text,
+        geo_address_house text,
+        geo_address_street text,
+        geo_address text,
+        geo_zipcode text,
+        geo_boro text,
+        geo_cd text,
+        geo_council text,
+        geo_ntacode2010 text,
+        geo_censusblock2010 text,
+        geo_censustract2010 text,
+        geo_csd text,
+        geo_policeprct text,
+        geo_latitude double precision,
+        geo_longitude double precision,
+        latitude double precision,
+        longitude double precision,
+        geom geometry,
+        x_geomsource text,
+        x_dcpedited text,
+        x_reason text
+    )
 */
 DROP TABLE IF EXISTS SPATIAL_devdb;
 WITH

@@ -3,30 +3,21 @@ DESCRIPTION:
     This script is created to assign/recode the field "status" 
     
 INPUTS:
-    INIT_devdb (
-        job_number,
-        job_type,
-        _status,
-        x_withdrawal,
-        status_p,
-        address
-    )
-
-    STATUS_Q_devdb (
-        job_number,
-        status_q,
-        year_complete
-    )
-
-    UNITS_devdb (
-        job_number,
-        units_net
-    )
-
-    CO_devdb (
-        job_number,
-        co_earliest_effectivedate,
-        co_latest_units
+    MID_devdb (
+        * job_number,
+        job_type character varying,
+        status_date date,
+        status_p date,
+        status_q date,
+        _status text,
+        year_complete text,
+        co_latest_units numeric,
+        co_latest_certtype text,
+        units_complete numeric,
+        units_incomplete numeric,
+        units_net numeric,
+        address text,
+        occ_prop text,
     )
 
     housing_input_lookup_status (
@@ -36,12 +27,18 @@ INPUTS:
 
 OUTPUTS:
     STATUS_devdb (
-        job_number text,
-        status text,
+        * job_number character varying,
+        job_type character varying,
+        status character varying,
+        status_date date,
         status_q date,
         year_complete text,
         units_complete numeric,
         units_incomplete numeric,
+        units_net numeric,
+        address text,
+        occ_prop text,
+        x_inactive text,
         x_dcpedited text,
         x_reason text
     )
