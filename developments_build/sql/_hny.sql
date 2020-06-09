@@ -330,7 +330,7 @@ WITH
         WHERE one_hny_to_many_dev = 1),
 
     -- Combine into a single look-up table					
-	dev_hny_lookup AS(					
+	HNY_lookup AS(					
 			SELECT * FROM one_to_one
 			UNION
 			SELECT * FROM one_to_many
@@ -348,7 +348,7 @@ SELECT a.*,
         b.all_hny_units
 INTO HNY_devdb
 FROM developments_hny a
-JOIN dev_hny_lookup b
+JOIN HNY_lookup b
 ON a.job_number = b.job_number;
 
 /* 
