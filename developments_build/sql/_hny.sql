@@ -28,11 +28,15 @@ DESCRIPTION:
         highest-priority matches, assign flags to indicate one_hny_to_many_dev
         and/or one_dev_to_many_hny.
     5) Resolve the one-to-many, many-to-one, and many-to-many cases in HNY_matches
-        in order to merge HNY_matches with devdb
+        in order to create HNY_lookup
         a) One-to-one matches get assigned directly
         b) For one devdb to many hny, sum the total_units and all_counted_units for all hny rows
         c) For multiple devdb to one hny, assign units to the one with the lowest job_number.
             Remaining matches are retained, but get NULLs in the unit fields.
+    6) Merge  devdb with HNY_lookup
+        JOIN KEY: job_number
+    7) Apply corrections
+    
 INPUTS: 
     hpd_hny_units_by_building (
         ogc_fid,
@@ -79,14 +83,26 @@ OUTPUTS:
     ),
 
     HNY_devdb (
+        * job_number,
         hny_id,
-        job_number,
-        match_priority,
-        job_type,
-        occ_category,
-        all_counted_units,
-		total_units
+        affortable_units,
+		all_hny_units,
+        ...
     )
+
+IN PREVIOUS VERSION: 
+    hny_create.sql
+    hny_id.sql
+    hny_job_lookup.sql
+    hny_res_nb_match.sql
+    hny_a1_nonres_match.sql
+    hny_manual_geomerge.sql
+    hny_manual_match.sql
+    hny_job_relate.sql
+    hny_many_to_many.sql
+    hny_dob_match.sql
+    dob_hny_id.sql
+    dob_affordable_units.sql
 */
 
 -- 1) Merge with geocoding results and create a unique ID
@@ -318,14 +334,19 @@ WITH
 			SELECT * FROM one_to_one
 			UNION
 			SELECT * FROM one_to_many
-                -- Many-to-many cases are also in many_to_one table
+                -- Many-to-many cases are further resolved in many_to_one table, so don't include
 				WHERE job_number||hny_id NOT IN (SELECT job_number||hny_id FROM many_to_one)
 			UNION
 			SELECT * FROM many_to_one)
-SELECT * 
-INTO HNY_lookup
-FROM dev_hny_lookup;
 
 /* 
 5) MERGE WITH devdb  
 */
+SELECT a.*, 
+        b.hny_id,
+        b.affordable_units,
+        b.all_hny_units
+INTO HNY_devdb
+FROM developments_hny a
+JOIN dev_hny_lookup b
+ON a.job_number = b.job_number;
