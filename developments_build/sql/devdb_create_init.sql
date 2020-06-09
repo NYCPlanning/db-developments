@@ -93,6 +93,7 @@ JOBNUMBER_relevant as (
 		AND jobdocnumber = '01'
 		AND jobtype ~* 'A1|DM|NB'
 ) SELECT
+	distinct
 	ogc_fid as uid,
 	jobnumber as job_number,
 

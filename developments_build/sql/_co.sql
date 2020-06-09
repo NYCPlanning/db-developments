@@ -30,6 +30,12 @@ IN PREVIOUS VERSION:
 */
 DROP TABLE IF EXISTS CO_devdb;
 WITH 
+ORDER_certtype as (
+	SELECT *,
+	(CASE WHEN certificatetype = 'T- TCO' THEN 2
+	 WHEN certificatetype = 'C- CO' THEN 1 END) as certorder
+	FROM dob_cofos
+),
 ORDER_co as (
     SELECT
         jobnum as job_number, 
@@ -38,14 +44,14 @@ ORDER_co as (
         certificatetype as certtype,
 		ROW_NUMBER() OVER (
 			PARTITION BY jobnum
-			ORDER BY effectivedate::date DESC) as latest,
+			ORDER BY effectivedate::date DESC, certorder ASC) as latest,
 		ROW_NUMBER() OVER (
 			PARTITION BY jobnum
 			ORDER BY effectivedate::date ASC) as earliest,
 		DENSE_RANK() OVER (
 			PARTITION BY jobnum
 			ORDER BY effectivedate::date DESC) as multi
-    FROM dob_cofos
+    FROM ORDER_certtype
     WHERE jobnum IN (
         SELECT DISTINCT job_number
         FROM INIT_devdb)

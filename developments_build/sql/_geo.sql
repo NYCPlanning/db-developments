@@ -66,6 +66,7 @@ DROP TABLE IF EXISTS GEO_devdb;
 WITH
 DRAFT as (
     SELECT
+        distinct
         a.uid,
         a.job_number,
 		a.bbl,

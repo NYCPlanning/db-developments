@@ -1,31 +1,31 @@
 #!/bin/bash
 source config.sh
 
-dispaly "Starting to build Developments DB"
-psql $BUILD_ENGINE -f sql/devdb_create_init.sql
-count _INIT_devdb
+# dispaly "Starting to build Developments DB"
+# psql $BUILD_ENGINE -f sql/devdb_create_init.sql
+# count _INIT_devdb
 
-dispaly "Geocoding Developments DB"
-docker run --rm\
-    -v $(pwd):/src\
-    -w /src\
-    -e BUILD_ENGINE=$BUILD_ENGINE\
-    sptkl/docker-geosupport:latest python3 python/geocode.py
-count _GEO_devdb
+# dispaly "Geocoding Developments DB"
+# docker run --rm\
+#     -v $(pwd):/src\
+#     -w /src\
+#     -e BUILD_ENGINE=$BUILD_ENGINE\
+#     sptkl/docker-geosupport:latest python3 python/geocode.py
+# count _GEO_devdb
 
-dispaly "Assign geoms to _GEO_devdb and create GEO_devdb"
-psql $BUILD_ENGINE -f sql/_geo.sql
-count GEO_devdb
+# dispaly "Assign geoms to _GEO_devdb and create GEO_devdb"
+# psql $BUILD_ENGINE -f sql/_geo.sql
+# count GEO_devdb
 
-dispaly "Fill NULLs spatial boundries in GEO_devdb through spatial joins. 
-   This is the consolidated spatial attributes table"
-psql $BUILD_ENGINE -f sql/_spatial_joins.sql
-count SPATIAL_devdb
-count INIT_devdb
+# dispaly "Fill NULLs spatial boundries in GEO_devdb through spatial joins. 
+#   This is the consolidated spatial attributes table"
+# psql $BUILD_ENGINE -f sql/_spatial_joins.sql
+# count SPATIAL_devdb
+# count INIT_devdb
 
-dispaly "Adding on PLUTO columns"
-psql $BUILD_ENGINE -f sql/_pluto.sql
-count PLUTO_devdb
+# dispaly "Adding on PLUTO columns"
+# psql $BUILD_ENGINE -f sql/_pluto.sql
+# count PLUTO_devdb
 
 dispaly "Create CO fields, effectivedate, co_earliest_effectivedate date,
   year_complete, co_latest_effectivedate, co_latest_units, co_latest_certtype"

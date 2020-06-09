@@ -32,59 +32,7 @@ OUTPUTS:
     )
     
     INIT_devdb (
-        uid integer,
-        job_number character varying,
-        job_type character varying,
-        job_description character varying,
-        _occ_init text,
-        _occ_prop text,
-        stories_init numeric,
-        stories_prop character varying,
-        zoningsft_init numeric,
-        zoningsft_prop numeric,
-        _units_init numeric,
-        _units_prop numeric,
-        x_mixeduse text,
-        _status character varying,
-        status_date date,
-        status_a character varying,
-        status_d character varying,
-        status_p character varying,
-        status_r character varying,
-        status_x character varying,
-        zoningdist1 character varying,
-        zoningdist2 character varying,
-        zoningdist3 character varying,
-        specialdist1 character varying,
-        specialdist2 character varying,
-        landmark character varying,
-        cityowned character varying,
-        owner_type character varying,
-        owner_nonprof character varying,
-        owner_firstnm character varying,
-        owner_lastnm character varying,
-        owner_biznm character varying,
-        owner_address character varying,
-        owner_zipcode character varying,
-        owner_phone character varying,
-        height_init character varying,
-        height_prop character varying,
-        constructnsf character varying,
-        enlrg_horiz character varying,
-        enlrg_vert character varying,
-        enlargementsf character varying,
-        costestimate character varying,
-        loftboardcert character varying,
-        edesignation character varying,
-        curbcut character varying,
-        tracthomes character varying,
-        address_house text,
-        address_street text,
-        address text,
-        bin character varying,
-        bbl text,
-        boro text,
-        x_withdrawal character varying,
+        _INIT_devdb.*,
         geo_bbl text,
         geo_bin text,
         geo_address_house text,
@@ -194,6 +142,7 @@ ZIP_join as (
     ON ST_Within(a.geom,b.geom)
 )
 SELECT
+    distinct
     a.uid,
 
     -- geo_bbl
@@ -287,6 +236,7 @@ Merging spatial attribute table to the Main attribute table
 */
 DROP TABLE IF EXISTS INIT_devdb;
 SELECT
+    distinct
     b.*,
     a.geo_bbl,
     a.geo_bin,
