@@ -101,8 +101,6 @@ GEOM_geosupport as (
         job_number,
 		bbl,
         geo_bbl,
-        status_date,
-        job_description,
         ST_SetSRID(ST_Point(geo_longitude,geo_latitude),4326) as geom,
         (CASE WHEN geo_longitude IS NOT NULL 
 		 THEN 'Lat/Long geosupport' END) as x_geomsource
@@ -114,8 +112,6 @@ GEOM_mappluto as (
         a.job_number,
 		a.bbl,
         a.geo_bbl,
-        a.status_date,
-        a.job_description,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
 		 	WHEN a.x_geomsource IS NOT NULL 
@@ -134,8 +130,6 @@ GEOM_mappluto_dob as (
         a.job_number,
 		a.bbl,
         a.geo_bbl,
-        a.status_date,
-        a.job_description,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
 		 	WHEN a.x_geomsource IS NOT NULL 
@@ -161,8 +155,6 @@ GEOM_dtm_dob as (
         a.job_number,
 		a.bbl,
         a.geo_bbl,
-        a.status_date,
-        a.job_description,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
 		 	WHEN a.x_geomsource IS NOT NULL 
@@ -235,7 +227,7 @@ UPDATE GEO_devdb a
 SET latitude = ST_Y(b.new_geom),
     longitude = ST_X(b.new_geom),
     geom = b.new_geom,
-	x_dcpedited = 'Edited',
+	x_dcpedited = coalesce(x_dcpedited, '')||'geom-',
 	x_reason = b.reason,
     x_geomsource = 'Lat/Long DCP'
 FROM GEOM_corrections b

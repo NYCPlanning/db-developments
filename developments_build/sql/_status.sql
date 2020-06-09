@@ -17,7 +17,7 @@ INPUTS:
         units_incomplete numeric,
         units_net numeric,
         address text,
-        occ_prop text,
+        occ_prop text
     )
 
     housing_input_lookup_status (
@@ -176,7 +176,7 @@ CORRECTIONS
 
 UPDATE STATUS_devdb a
 SET units_complete = TRIM(b.new_value)::numeric,
-	x_dcpedited = 'Edited',
+	x_dcpedited = coalesce(x_dcpedited, '')||'units_complete-',
 	x_reason = b.reason
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
@@ -187,7 +187,7 @@ AND (a.units_complete=b.old_value::numeric
 
 UPDATE STATUS_devdb a
 SET units_incomplete = TRIM(b.new_value)::numeric,
-	x_dcpedited = 'Edited',
+	x_dcpedited = coalesce(x_dcpedited, '')||'units_incomplete-',
 	x_reason = b.reason
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
