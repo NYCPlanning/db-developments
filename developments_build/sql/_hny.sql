@@ -36,7 +36,7 @@ DESCRIPTION:
     6) Merge  devdb with HNY_lookup
         JOIN KEY: job_number
     7) Apply corrections
-    
+
 INPUTS: 
     hpd_hny_units_by_building (
         ogc_fid,
@@ -260,7 +260,7 @@ WITH hny AS (
 	FROM best_matches bm;
 
 /* 
-4) ASSIGN MATCHES   
+5) ASSIGN MATCHES   
 */
 
 WITH 
@@ -340,7 +340,7 @@ WITH
 			SELECT * FROM many_to_one)
 
 /* 
-5) MERGE WITH devdb  
+6) MERGE WITH devdb  
 */
 SELECT a.*, 
         b.hny_id,
@@ -350,3 +350,43 @@ INTO HNY_devdb
 FROM developments_hny a
 JOIN dev_hny_lookup b
 ON a.job_number = b.job_number;
+
+/* 
+7) CORRECTIONS
+    hny_id
+    affordable_units
+    all_hny_units
+*/
+
+UPDATE HNY_devdb a
+SET hny_id = b.new_value,
+	x_dcpedited = 'Edited',
+	x_reason = b.reason
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'hny_id'
+AND (a.hny_id=b.old_value 
+    OR (a.hny_id IS NULL
+        AND b.old_value IS NULL));
+
+UPDATE HNY_devdb a
+SET affordable_units = TRIM(b.new_value)::numeric,
+	x_dcpedited = 'Edited',
+	x_reason = b.reason
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'affordable_units'
+AND (a.affordable_units::numeric=b.old_value::numeric 
+    OR (a.affordable_units IS NULL
+        AND b.old_value IS NULL));
+
+UPDATE HNY_devdb a
+SET all_hny_units = TRIM(b.new_value)::numeric,
+	x_dcpedited = 'Edited',
+	x_reason = b.reason
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'all_hny_units'
+AND (a.all_hny_units::numeric=b.old_value::numeric 
+    OR (a.all_hny_units IS NULL
+        AND b.old_value IS NULL));
