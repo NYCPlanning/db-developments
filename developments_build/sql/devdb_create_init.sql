@@ -183,9 +183,17 @@ JOBNUMBER_relevant as (
 	littlee as eDesignation,
 	curbcut as CurbCut,
 	cluster as TractHomes,
-	trim(housenumber) as address_house,
+	regexp_replace(
+		regexp_replace(
+			trim(housenumber), 
+			'GAR|REAR|GARAGE', '', 'g'), 
+		'(^|)0*', '', '') as address_house,
 	trim(streetname) as address_street,
-	trim(housenumber)||' '||trim(streetname) as address,
+	regexp_replace(
+		regexp_replace(
+			trim(housenumber), 
+			'GAR|REAR|GARAGE', '', 'g'), 
+		'(^|)0*', '', '')||' '||trim(streetname) as address,
 	bin as bin,
 	LEFT(bin, 1)||lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0') as bbl,
 	INITCAP(borough) as boro,
