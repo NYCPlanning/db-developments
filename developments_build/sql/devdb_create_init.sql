@@ -195,7 +195,6 @@ WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
 DROP TABLE IF EXISTS CORR_devdb;
 SELECT
 	job_number,
-	NULL as field, 
 	'' as x_dcpedited,
 	'' as x_reason
 INTO CORR_devdb
