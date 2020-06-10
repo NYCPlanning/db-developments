@@ -6,17 +6,20 @@ SET occ_init = b.dcpclassificationnew
 FROM housing_input_lookup_occupancy b
 WHERE a.occ_init = b.doboccupancycode2008
 	AND (right(status_a,4))::numeric >= 2008;
+
 -- pre 2008
 UPDATE developments a
 SET occ_init = b.dcpclassificationnew
 FROM housing_input_lookup_occupancy b
 WHERE a.occ_init = b.doboccupancycode1968
 	AND (right(status_a,4))::numeric < 2008;
+
 -- no date filter 2008
 UPDATE developments a
 SET occ_init = b.dcpclassificationnew
 FROM housing_input_lookup_occupancy b
 WHERE a.occ_init = b.doboccupancycode2008;
+
 -- no date filter 1968
 UPDATE developments a
 SET occ_init = b.dcpclassificationnew
@@ -30,17 +33,20 @@ SET occ_prop = b.dcpclassificationnew
 FROM housing_input_lookup_occupancy b
 WHERE a.occ_prop = b.doboccupancycode2008
 	AND (right(status_a,4))::numeric >= 2008;
+
 -- pre 2008
 UPDATE developments a
 SET occ_prop = b.dcpclassificationnew
 FROM housing_input_lookup_occupancy b
 WHERE a.occ_prop = b.doboccupancycode1968
 	AND (right(status_a,4))::numeric < 2008;
+
 -- no date filter 2008
 UPDATE developments a
 SET occ_prop = b.dcpclassificationnew
 FROM housing_input_lookup_occupancy b
 WHERE a.occ_prop = b.doboccupancycode2008;
+
 -- no date filter 1968
 UPDATE developments a
 SET occ_prop = b.dcpclassificationnew
@@ -65,6 +71,7 @@ SET occ_init = 'Garage/Miscellaneous',
 WHERE (job_type = 'Alteration'
 	AND (upper(job_description) LIKE '%GARAGE%' OR upper(address) LIKE '%REAR%') 
 	AND (units_net::numeric = 0 OR units_net::numeric IS NULL));
+
 UPDATE developments
 SET occ_init = 'Garage/Miscellaneous'
 WHERE (job_type = 'Demolition' 
@@ -83,7 +90,7 @@ WHERE (job_type = 'New Building'
 		AND upper(job_description) NOT LIKE '%APART%'
 		AND upper(job_description) NOT LIKE '%FAMILY%'));
 
--- Whenthere are multiple new building jobs that share the same address and net units
+-- When there are multiple new building jobs that share the same address and net units
 -- if 1 does not mention garage, change occ_prop to garage for records where job decription contains garage
 WITH nongaragejobs AS (
 	SELECT address, job_type, units_prop, job_description
