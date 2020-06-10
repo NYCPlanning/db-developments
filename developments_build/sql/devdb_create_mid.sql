@@ -86,9 +86,9 @@ JOIN_co as (
 JOIN_units as (
     SELECT
         a.*,
+        b.units_net,
         b.units_init,
         b.units_prop,
-        b.units_net,
         (CASE
             WHEN b.units_net != 0 
                 THEN a.co_latest_units/b.units_net

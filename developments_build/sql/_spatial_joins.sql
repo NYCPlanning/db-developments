@@ -52,9 +52,7 @@ OUTPUTS:
         latitude double precision,
         longitude double precision,
         geom geometry,
-        x_geomsource text,
-        x_dcpedited text,
-        x_reason text
+        x_geomsource text
     )
 */
 DROP TABLE IF EXISTS SPATIAL_devdb;
@@ -223,9 +221,7 @@ SELECT
     a.latitude,
     a.longitude,
     a.geom,
-    x_geomsource,
-    x_dcpedited,
-    x_reason
+    x_geomsource
 INTO SPATIAL_devdb
 FROM GEO_devdb a
 LEFT JOIN ZIP_join b
@@ -257,9 +253,7 @@ SELECT
     a.latitude,
     a.longitude,
     a.geom,
-    a.x_geomsource,
-    a.x_dcpedited,
-	a.x_reason
+    a.x_geomsource
 INTO INIT_devdb
 FROM SPATIAL_devdb a
 LEFT JOIN _INIT_devdb b

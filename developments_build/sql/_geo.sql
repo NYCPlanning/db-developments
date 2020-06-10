@@ -172,9 +172,7 @@ SELECT
     ST_Y(b.geom) as latitude,
     ST_X(b.geom) as longitude,
     b.geom,
-    b.x_geomsource,
-    NULL as x_dcpedited,
-    NULL as x_reason
+    b.x_geomsource
 INTO GEO_devdb
 FROM DRAFT a
 LEFT JOIN GEOM_dtm_dob b
@@ -227,9 +225,23 @@ UPDATE GEO_devdb a
 SET latitude = ST_Y(b.new_geom),
     longitude = ST_X(b.new_geom),
     geom = b.new_geom,
-	x_dcpedited = coalesce(x_dcpedited, '')||'geom-',
-	x_reason = b.reason,
     x_geomsource = 'Lat/Long DCP'
 FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
 AND (b.distance < 10 OR a.geom IS NULL);
+
+WITH CORR_target as (
+    SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+    AND a.job_number in (
+        SELECT distinct job_number
+        FROM GEO_devdb 
+        WHERE x_geomsource = 'Lat/Long DCP')
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/geom/',
+	x_reason = x_reason||'/geom:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;

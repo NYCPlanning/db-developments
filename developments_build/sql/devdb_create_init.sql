@@ -1,7 +1,7 @@
 /*
 DESCRIPTION:
 	1. Initial field mapping and prelimilary data cleaning
-
+	2. Apply corrections on stories_prop, bin, bbl, x_mixeduse
 INPUTS: 
 	dob_jobapplications
 
@@ -117,7 +117,7 @@ JOBNUMBER_relevant as (
 		ELSE existingnumstories::numeric
     END) as stories_init,
 
-	proposednumstories as stories_prop,
+	proposednumstories::numeric as stories_prop,
 
     -- set 0 -> null for jobtype = A1 or DM\
 	(CASE WHEN jobtype ~* 'A1|DM' 
@@ -191,3 +191,119 @@ JOBNUMBER_relevant as (
 INTO _INIT_devdb
 FROM dob_jobapplications
 WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
+
+DROP TABLE IF EXISTS CORR_devdb;
+SELECT
+	job_number,
+	NULL as field, 
+	'' as x_dcpedited,
+	'' as x_reason
+INTO CORR_devdb
+FROM _INIT_devdb;
+
+/*
+CORRECTIONS: 
+	stories_prop
+	x_mixeduse
+	bin
+	bbl
+*/
+-- stories_prop
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'stories_prop'
+	AND (a.stories_prop=b.old_value::numeric 
+		OR (a.stories_prop IS NULL 
+			AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/stories_prop/',
+	x_reason = x_reason||'/stories_prop:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET stories_prop = b.new_value::numeric
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/stories_prop/');
+
+-- x_mixeduse
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'x_mixeduse'
+	AND (upper(a.x_mixeduse)=upper(b.old_value) 
+		OR (a.x_mixeduse IS NULL 
+		AND (b.old_value IS NULL OR b.old_value = 'false')))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/x_mixeduse/',
+	x_reason = x_reason||'/x_mixeduse:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET x_mixeduse = b.new_value
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/x_mixeduse/');
+
+-- bbl
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'bbl'
+	AND a.bbl IS NULL AND b.old_value IS NOT NULL
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/bbl/',
+	x_reason = x_reason||'/bbl:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET bbl = b.new_value
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/bbl/');
+
+-- bin
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'bin'
+	AND a.bbl IS NULL AND b.old_value IS NOT NULL
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/bin/',
+	x_reason = x_reason||'/bin:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET bin = b.new_value
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/bin/');

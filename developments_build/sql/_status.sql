@@ -147,9 +147,7 @@ SELECT
             THEN 'Inactive'
         WHEN status = 'Withdrawn'
             THEN 'Inactive'
-    END) as x_inactive,
-    NULL as x_dcpedited,
-    NULL as x_reason
+    END) as x_inactive
 INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
 
@@ -172,26 +170,86 @@ WHERE a.address = b.address
 CORRECTIONS
     units_complete
     units_incomplete
+    x_inactive
 */
+-- units_complete
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM STATUS_devdb a, housing_input_research b	
+	WHERE a.job_number=b.job_number
+    AND b.field = 'units_complete'
+    AND (a.units_complete=b.old_value::numeric 
+        OR (a.units_complete IS NULL
+            AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/units_complete/',
+	x_reason = x_reason||'/units_complete:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
 
 UPDATE STATUS_devdb a
-SET units_complete = TRIM(b.new_value)::numeric,
-	x_dcpedited = coalesce(x_dcpedited, '')||'units_complete-',
-	x_reason = b.reason
+SET units_complete = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'units_complete'
-AND (a.units_complete=b.old_value::numeric 
-    OR (a.units_complete IS NULL
-        AND b.old_value IS NULL));
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/units_complete/');
+        
+-- units_incomplete
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM STATUS_devdb a, housing_input_research b	
+	WHERE a.job_number=b.job_number
+    AND b.field = 'units_incomplete'
+    AND (a.units_incomplete=b.old_value::numeric 
+        OR (a.units_incomplete IS NULL
+            AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/units_complete/',
+	x_reason = x_reason||'/units_complete:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
 
 UPDATE STATUS_devdb a
-SET units_incomplete = TRIM(b.new_value)::numeric,
-	x_dcpedited = coalesce(x_dcpedited, '')||'units_incomplete-',
-	x_reason = b.reason
+SET units_incomplete = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'units_incomplete'
-AND (a.units_incomplete::numeric=b.old_value::numeric 
-    OR (a.units_incomplete IS NULL
-        AND b.old_value IS NULL));
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/units_incomplete/');
+
+-- x_inactive
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM STATUS_devdb a, housing_input_research b	
+	WHERE a.job_number=b.job_number
+    AND b.field = 'x_inactive'
+    AND (upper(a.x_inactive)=upper(b.old_value) 
+        OR (a.x_inactive IS NULL 
+            AND (b.old_value IS NULL 
+            OR b.old_value = 'false')))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/x_inactive/',
+	x_reason = x_reason||'/x_inactive:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE STATUS_devdb a
+SET x_inactive = trim(b.new_value)
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'x_inactive'
+AND a.job_number in (
+	SELECT DISTINCT job_number
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/x_inactive/');

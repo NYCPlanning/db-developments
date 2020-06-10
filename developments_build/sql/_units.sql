@@ -1,15 +1,9 @@
 /*
 DESCRIPTION:
     This script assigns units fields for devdb
-
-    units_init 
-
-    units_prop
-
-    units_net   
-
-	DEPENDS ON:
-		 _occ.sql
+	1. Assign units_init and units_prop
+	2. Apply corrections to units_init and units_prop
+	3. Assign units_net
 
 INPUTS: 
 	INIT_devdb (
@@ -39,7 +33,7 @@ IN PREVIOUS VERSION:
 	units_net.sql
 */
 
-DROP TABLE IF EXISTS UNITS_devdb;
+DROP TABLE IF EXISTS _UNITS_devdb;
 WITH
 INIT_OCC_devdb as (
 	SELECT 
@@ -84,6 +78,78 @@ SELECT
 	distinct job_number,
 	units_init,
 	units_prop,
+	job_type
+INTO _UNITS_devdb
+FROM UNITS_init_prop;
+
+/*
+CORRECTIONS
+
+*/
+-- units_init
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _UNITS_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'units_init'
+	AND (a.units_init=b.old_value::numeric 
+		OR (a.units_init IS NULL 
+			AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/units_init/',
+	x_reason = x_reason||'/units_init:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _UNITS_devdb a
+SET units_init = b.new_value::numeric
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'units_init'
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/units_init/');
+
+-- units_prop
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _UNITS_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'units_prop'
+	AND (a.units_prop=b.old_value::numeric 
+		OR (a.units_prop IS NULL 
+		AND b.old_value IS NULL))
+	AND a.job_number NOT IN (
+		SELECT job_number 
+		FROM housing_input_research 
+		WHERE field = 'units_prop_res')
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/units_prop/',
+	x_reason = x_reason||'/units_prop:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _UNITS_devdb a
+SET units_prop = b.new_value::numeric
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'units_prop'
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/units_prop/');
+
+/*
+ASSIGN units_net
+*/
+DROP TABLE IF EXISTS UNITS_devdb;
+SELECT 
+	*,
 	(CASE
 		WHEN job_type = 'Demolition' 
 			THEN units_init * -1
@@ -96,4 +162,4 @@ SELECT
 		ELSE NULL
 	END) as units_net
 INTO UNITS_devdb
-FROM UNITS_init_prop;
+FROM _UNITS_devdb;

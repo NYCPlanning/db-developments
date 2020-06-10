@@ -27,25 +27,25 @@ source config.sh
 # psql $BUILD_ENGINE -f sql/_pluto.sql
 # count PLUTO_devdb
 
-dispaly "Create CO fields, effectivedate, co_earliest_effectivedate date,
-  year_complete, co_latest_effectivedate, co_latest_units, co_latest_certtype"
-psql $BUILD_ENGINE -f sql/_co.sql
-count CO_devdb
+# dispaly "Create CO fields, effectivedate, co_earliest_effectivedate date,
+#   year_complete, co_latest_effectivedate, co_latest_units, co_latest_certtype"
+# psql $BUILD_ENGINE -f sql/_co.sql
+# count CO_devdb
 
-dispaly "Creating OCC fields, occ_init, occ_prop, occ_category"
-psql $BUILD_ENGINE -f sql/_occ.sql
-count OCC_devdb
+# dispaly "Creating OCC fields, occ_init, occ_prop, occ_category"
+# psql $BUILD_ENGINE -f sql/_occ.sql
+# count OCC_devdb
 
-dispaly "Creating UNITS fields, units_init, units_prop, units_net"
-psql $BUILD_ENGINE -f sql/_units.sql
-count UNITS_devdb
+# dispaly "Creating UNITS fields, units_init, units_prop, units_net"
+# psql $BUILD_ENGINE -f sql/_units.sql
+# count UNITS_devdb
 
-dispaly "Creating status_q field, year_complete and year_permit"
-psql $BUILD_ENGINE -f sql/_status_q.sql
-count STATUS_Q_devdb
+# dispaly "Creating status_q field, year_complete and year_permit"
+# psql $BUILD_ENGINE -f sql/_status_q.sql
+# count STATUS_Q_devdb
 
-psql $BUILD_ENGINE -f sql/devdb_create_mid.sql
-count MID_devdb
+# psql $BUILD_ENGINE -f sql/devdb_create_mid.sql
+# count MID_devdb
 
 dispaly "Creating status field, year_complete and 
   x_inactive, x_dcpedited, x_reason"
