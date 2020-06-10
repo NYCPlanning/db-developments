@@ -222,7 +222,8 @@ WITH hny AS (
 		        SELECT * FROM spatial_match) a), 
   
 -- 4) Find the highest-priority match(es) and determine relationships
-	best_matches AS (SELECT t1.hny_id, t1.match_priority, 
+	-- First find highest priority match(es) for each hny_id
+	best_matches_by_hny AS (SELECT t1.hny_id, t1.match_priority, 
 							t2.job_number, t2.job_type, 
 							t2.occ_category, t2.total_units,
                             t2.all_counted_units
@@ -235,15 +236,29 @@ WITH hny AS (
 					ON t2.hny_id = t1.hny_id 
 					AND t2.match_priority = t1.match_priority),
 
-	-- Find cases of many-hny-to-one-devdb
+	-- Then find highest priority match(es) for each job_number			
+	best_matches AS (SELECT t2.hny_id, t1.match_priority, 
+							t1.job_number, t2.job_type, 
+							t2.occ_category, t2.total_units,
+                            t2.all_counted_units
+					FROM (
+					   SELECT job_number, MIN(match_priority) AS match_priority
+					   FROM best_matches_by_hny
+					   GROUP BY job_number
+					) AS t1 
+					JOIN best_matches_by_hny AS t2 
+					ON t2.job_number = t1.job_number 
+					AND t2.match_priority = t1.match_priority),
+
+	-- Find cases of many-hny-to-one-devdb, after having filtered to highest priority
 	many_developments AS (SELECT hny_id, count(*)
 				FROM best_matches
 				GROUP BY hny_id),
 				
-	-- Find cases of many-devdb-to-one-hny
-	many_hny AS (SELECT job_number, count(*)
-				FROM best_matches
-				GROUP BY job_number)	
+	-- Find cases of many-devdb-to-one-hny, after having filtered to highest priority
+	many_hny AS (SELECT a.job_number, count(*)
+				FROM best_matches a
+				GROUP BY a.job_number)	
 
 	/** Add relationship flags and create HNY_matches. 
         A '1' in both flags means a many-to-many relationship. **/
