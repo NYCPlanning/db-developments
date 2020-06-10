@@ -264,7 +264,7 @@ WITH hny AS (
 /* 
 5) ASSIGN MATCHES   
 */
-
+DROP TABLE IF EXISTS HNY_devdb;
 WITH 
 	-- a) Extract one-to-one matches
 	one_to_one AS (SELECT job_number, 
@@ -272,7 +272,9 @@ WITH
 							job_type,
 							occ_category,
 							all_counted_units AS affordable_units,
-							total_units AS all_hny_units
+							total_units AS all_hny_units,
+                            one_dev_to_many_hny,
+                            one_hny_to_many_dev
 					FROM HNY_matches 
 					WHERE one_dev_to_many_hny = 0
 					AND one_hny_to_many_dev = 0),
@@ -283,10 +285,12 @@ WITH
 							job_type,
 							occ_category,
 							SUM(all_counted_units::int)::text AS affordable_units,
-							SUM(total_units::int)::text AS all_hny_units 
+							SUM(total_units::int)::text AS all_hny_units,
+                            one_dev_to_many_hny,
+                            one_hny_to_many_dev
 					FROM HNY_matches
 					WHERE one_dev_to_many_hny = 1
-					GROUP BY job_number, job_type, occ_category),
+					GROUP BY job_number, job_type, occ_category, one_dev_to_many_hny, one_hny_to_many_dev),
 
 	-- c) For multiple dev to one hny, assign units to the one with the lowest job_number
 	-- Find the minimum job_number per hny in HNY_matches
@@ -327,7 +331,9 @@ WITH
                             ELSE a.total_units
                         END
                     ELSE NULL
-            END) AS all_hny_units
+            END) AS all_hny_units,
+            one_dev_to_many_hny,
+            one_hny_to_many_dev
         FROM HNY_matches a
         WHERE one_hny_to_many_dev = 1),
 
@@ -347,7 +353,14 @@ WITH
 SELECT a.*, 
         b.hny_id,
         b.affordable_units,
-        b.all_hny_units
+        b.all_hny_units,
+        (CASE 
+            WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 0 THEN 'one-to-one'
+            WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 1 THEN 'one-to-many'
+            WHEN one_dev_to_many_hny = 1 AND one_hny_to_many_dev = 0 THEN 'many-to-one'
+            WHEN one_dev_to_many_hny = 1 AND one_hny_to_many_dev = 1 THEN 'many-to-many'
+            ELSE NULL
+        END) AS hny_jobrelate
 INTO HNY_devdb
 FROM developments_hny a
 JOIN HNY_lookup b
@@ -358,6 +371,7 @@ ON a.job_number = b.job_number;
     hny_id
     affordable_units
     all_hny_units
+    hny_jobrelate
 */
 
 UPDATE HNY_devdb a
@@ -391,4 +405,15 @@ WHERE a.job_number=b.job_number
 AND b.field = 'all_hny_units'
 AND (a.all_hny_units::numeric=b.old_value::numeric 
     OR (a.all_hny_units IS NULL
+        AND b.old_value IS NULL));
+
+UPDATE HNY_devdb a
+SET hny_jobrelate = b.new_value,
+	x_dcpedited = 'Edited',
+	x_reason = b.reason
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'hny_jobrelate'
+AND (a.hny_jobrelate=b.old_value 
+    OR (a.hny_jobrelate IS NULL
         AND b.old_value IS NULL));
