@@ -105,6 +105,7 @@ IN PREVIOUS VERSION:
     dob_affordable_units.sql
 */
 
+DROP TABLE IF EXISTS HNY_matches;
 -- 1) Merge with geocoding results and create a unique ID
 WITH hny AS (
         SELECT md5(CAST((a.project_id,
@@ -223,7 +224,8 @@ WITH hny AS (
 -- 4) Find the highest-priority match(es) and determine relationships
 	best_matches AS (SELECT t1.hny_id, t1.match_priority, 
 							t2.job_number, t2.job_type, 
-							t2.occ_category
+							t2.occ_category, t2.total_units,
+                            t2.all_counted_units
 					FROM (
 					   SELECT hny_id, MIN(match_priority) AS match_priority
 					   FROM all_matches
