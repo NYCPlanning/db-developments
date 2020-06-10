@@ -87,3 +87,4 @@ CREATE TABLE developments (
 	longitude text,
 	geom geometry(Geometry,4326)
 );
+

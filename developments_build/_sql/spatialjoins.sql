@@ -6,7 +6,7 @@ UPDATE developments a
 	WHERE ST_Within(a.geom,b.geom)
 	AND a.geom IS NOT NULL
 	AND (a.geo_cd IS NULL 
-		OR a.geo_cd = '' 
+		OR a.geo_cd = ''
 		OR a.x_geomsource = 'Lat/Long DCP');
 -- nta
 UPDATE developments a
