@@ -4,6 +4,7 @@ SET geom = ST_SetSRID(ST_MakePoint(a.longitude::double precision, a.latitude::do
 	x_geomsource = 'Lat/Long geosupport'
 WHERE a.geom IS NULL
 AND a.longitude IS NOT NULL AND a.longitude <> '' AND a.geo_bbl IS NOT NULL;
+
 -- set the geometry to be the center of the lot using mappluto
 UPDATE developments a
 SET geom = ST_Centroid(b.geom),

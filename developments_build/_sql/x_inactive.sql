@@ -36,7 +36,7 @@ WHERE a.address = b.address
 	AND a.status_date::date < b.status_date::date
 	AND a.status <> 'Withdrawn'
   	AND a.occ_prop <> 'Garage/Miscellaneous';
-  	
+
 -- set NULL records to false
 UPDATE developments
 	SET x_inactive = 'Inactive'
