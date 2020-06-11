@@ -61,6 +61,7 @@ STATUS_translate as (
         a.status_date,
         a.address,
         a.occ_prop,
+        a.co_earliest_effectivedate,
         (CASE
             WHEN a.job_type = 'New Building'
                 AND a.co_latest_certtype = 'T- TCO'
@@ -99,6 +100,7 @@ DRAFT_STATUS_devdb as (
         units_net,
         address,
         occ_prop,
+        co_earliest_effectivedate,
         -- update year_compelte based on job_type and status
         (CASE
             WHEN job_type = 'Demolition'
@@ -138,15 +140,20 @@ SELECT
     units_net,
     address,
     occ_prop,
-    (CASE 
-        WHEN (CURRENT_DATE - status_date)/365 >= 2 
-            AND status = 'In progress (last plan disapproved)'
-            THEN 'Inactive'
-        WHEN (CURRENT_DATE - status_date)/365 >= 3 
-            AND status in ('Filed', 'In progress')
-            THEN 'Inactive'
-        WHEN status = 'Withdrawn'
-            THEN 'Inactive'
+    co_earliest_effectivedate,
+    (CASE
+        WHEN co_earliest_effectivedate IS NOT NULL 
+            THEN NULL
+        ELSE (CASE 
+            WHEN (CURRENT_DATE - status_date)/365 >= 2 
+                AND status = 'In progress (last plan disapproved)'
+                THEN 'Inactive'
+            WHEN (CURRENT_DATE - status_date)/365 >= 3 
+                AND status in ('Filed', 'In progress')
+                THEN 'Inactive'
+            WHEN status = 'Withdrawn'
+                THEN 'Inactive'
+        END)
     END) as x_inactive
 INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
