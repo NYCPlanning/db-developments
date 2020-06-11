@@ -68,26 +68,26 @@ STATUS_translate as (
                     (a.units_complete_pct < 0.8 AND a.units_net >= 20) OR 
                     (a.units_complete_diff >= 5 AND a.units_net BETWEEN 5 AND 19)
                 )
-                THEN 'Partial complete'
+                THEN '4. Partial Complete'
 
             WHEN a.job_type = 'Demolition' 
-                AND b.dcpstatus IN ('Complete','Permit issued') 
-                THEN 'Complete (demolition)'
+                AND b.status IN ('5. Complete','3. Permited') 
+                THEN '5. Complete'
 
             WHEN a.x_withdrawal IN ('W', 'C')
-                THEN 'Withdrawn'
+                THEN '9. Withdrawn'
 
             WHEN status_p IS NOT NULL
-                THEN 'In progress'
+                THEN '2. Plan Examination'
 
             WHEN status_q IS NOT NULL
-                THEN 'Permit issued'
+                THEN '3. Permited'
 
-            ELSE b.dcpstatus 
+            ELSE b.status 
         END) as status
     FROM MID_devdb a
-    LEFT JOIN housing_input_lookup_status b
-    ON a._status = b.dobstatus
+    LEFT JOIN status_lookup b
+    ON a._status = b.dob_status
 ),
 DRAFT_STATUS_devdb as (
     SELECT
