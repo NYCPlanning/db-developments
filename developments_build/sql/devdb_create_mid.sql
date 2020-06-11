@@ -28,6 +28,10 @@ INPUTS:
         * job_number,
         units_init,
         units_prop,
+        hotel_init,
+	    hotel_prop,
+	    otherb_init,
+	    otherb_prop,
         units_net
     )
 
@@ -48,6 +52,10 @@ OUTPUTS:
         co_latest_units,
         units_init,
         units_prop,
+        hotel_init,
+	    hotel_prop,
+	    otherb_init,
+	    otherb_prop,
         units_net,
         units_complete_diff,
         occ_init,
@@ -89,6 +97,10 @@ JOIN_units as (
         b.units_net,
         b.units_init,
         b.units_prop,
+        b.hotel_init,
+	    b.hotel_prop,
+	    b.otherb_init,
+	    b.otherb_prop,
         (CASE
             WHEN b.units_net != 0 
                 THEN a.co_latest_units/b.units_net
