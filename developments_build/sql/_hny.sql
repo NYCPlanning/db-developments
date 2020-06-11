@@ -58,18 +58,18 @@ INPUTS:
 
     )
 
-    developments_hny (
+    MID_devdb (
         * job_number,
+        status
         occ_init,
         occ_prop,
         occ_category,
-        status,
         units_prop,
         geo_bin,
         geo_bbl,
         ...
     )
-    In refactored workflow, this table should be MID_devdb
+
     
 OUTPUTS: 
     HNY_matches (
@@ -108,11 +108,7 @@ IN PREVIOUS VERSION:
 DROP TABLE IF EXISTS HNY_matches;
 -- 1) Merge with geocoding results and create a unique ID
 WITH hny AS (
-        SELECT md5(CAST((a.project_id,
-                       a.number,
-                       a.street,
-                       b.geo_bin,
-                       b.geo_bbl) AS text)) as hny_id,
+        SELECT project_id||'/'||COALESCE(building_id, '') as hny_id,
                 a.*, 
                 b.geo_bbl, 
                 b.geo_bin, 
@@ -130,7 +126,6 @@ WITH hny AS (
         WHERE a.reporting_construction_type = 'New Construction'
         AND a.project_name <> 'CONFIDENTIAL'),
 
-
 -- 2) Find matches using the three different methods
 
     -- a) Find all matches on both BIN and BBL
@@ -144,13 +139,13 @@ WITH hny AS (
             h.all_counted_units,
             'BINandBBL' AS match_method
         FROM hny h
-        JOIN developments_hny d
+        JOIN MID_devdb d
         ON h.geo_bbl = d.geo_bbl 
             AND h.geo_bin = d.geo_bin
             AND ABS(h.total_units::NUMERIC - d.units_prop::NUMERIC) <=5
         AND h.geo_bin IS NOT NULL
         AND h.geo_bbl IS NOT NULL
-        AND d.status <> 'Withdrawn'
+        AND d.status <> '9. Withdrawn'
         AND d.job_type <> 'Demolition'
     ),
 
@@ -165,12 +160,12 @@ WITH hny AS (
             h.all_counted_units,
             'BBLONLY' AS match_method
         FROM hny h
-        JOIN developments_hny d
+        JOIN MID_devdb d
         ON h.geo_bbl = d.geo_bbl 
             AND (h.geo_bin <> d.geo_bin OR h.geo_bin IS NULL OR d.geo_bin IS NULL)
             AND ABS(h.total_units::NUMERIC - d.units_prop::NUMERIC) <=5
         AND h.geo_bbl IS NOT NULL
-        AND d.status <> 'Withdrawn'
+        AND d.status <> '9. Withdrawn'
         AND d.job_type <> 'Demolition'
     ),
 
@@ -185,13 +180,13 @@ WITH hny AS (
             h.all_counted_units,
             'Spatial' AS match_method
         FROM hny h
-        JOIN developments_hny d
+        JOIN MID_devdb d
         ON ST_DWithin(h.geom::geography, d.geom::geography, 5)
             AND (h.geo_bbl <> d.geo_bbl OR h.geo_bbl IS NULL OR d.geo_bbl IS NULL)
             AND (h.geo_bin <> d.geo_bin OR h.geo_bin IS NULL OR d.geo_bin IS NULL)
             AND ABS(h.total_units::NUMERIC - d.units_prop::NUMERIC) <=5
         AND h.geom IS NOT NULL AND d.geom IS NOT NULL
-        AND d.status <> 'Withdrawn'
+        AND d.status <> '9. Withdrawn'
         AND d.job_type <> 'Demolition'
     ),
 
@@ -377,7 +372,7 @@ SELECT a.*,
             ELSE NULL
         END) AS hny_jobrelate
 INTO HNY_devdb
-FROM developments_hny a
+FROM MID_devdb a
 JOIN HNY_lookup b
 ON a.job_number = b.job_number;
 
