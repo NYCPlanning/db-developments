@@ -179,11 +179,14 @@ JOBNUMBER_relevant as (
 	proposedheight as Height_Prop,
 	totalconstructionfloorarea as ConstructnSF,
 
-	(CASE WHEN horizontalenlrgmt = 'Y' THEN 'Yes'
-		ELSE NULL END) as Enlrg_Horiz,
-
-	(CASE WHEN verticalenlrgmt = 'Y' THEN 'Yes'
-		ELSE NULL END) as Enlrg_Vert,
+	(CASE 
+		WHEN (horizontalenlrgmt = 'Y' AND verticalenlrgmt <> 'Y') 
+			THEN 'Enlrg_Horiz'
+		WHEN (horizontalenlrgmt <> 'Y' AND verticalenlrgmt = 'Y') 
+			THEN 'Enlrg_Vert'
+		WHEN (horizontalenlrgmt = 'Y' AND verticalenlrgmt = 'Y') 
+			THEN 'Enlrg_Horiz and Enlrg_Vert'
+	END)  as enlargement,
 
 	enlargementsqfootage as EnlargementSF,
 	initialcost as CostEstimate,
