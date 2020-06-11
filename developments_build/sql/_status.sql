@@ -11,6 +11,7 @@ INPUTS:
         status_q date,
         _status text,
         year_complete text,
+        quarter_complete text,
         co_latest_units numeric,
         co_latest_certtype text,
         units_complete numeric,
@@ -33,6 +34,7 @@ OUTPUTS:
         status_date date,
         status_q date,
         year_complete text,
+        quarter_complete text,
         units_complete numeric,
         units_incomplete numeric,
         units_net numeric,
@@ -56,6 +58,7 @@ STATUS_translate as (
         a.job_type,
         a.status_q,
         a.year_complete,
+        a.quarter_complete,
         a.units_net,
         a.co_latest_units,
         a.status_date,
@@ -99,13 +102,21 @@ DRAFT_STATUS_devdb as (
         units_net,
         address,
         occ_prop,
-        -- update year_compelte based on job_type and status
+        -- update year_compelete based on job_type and status
         (CASE
             WHEN job_type = 'Demolition'
-                OR status = '9. Withdrawn'
+                OR status NOT IN ('4. Partial Complete', '5. Complete')
                 THEN NULL
             ELSE year_complete
         END) as year_complete,
+
+        -- update quarter_compelete based on job_type and status
+        (CASE
+            WHEN job_type = 'Demolition'
+                OR status NOT IN ('4. Partial Complete', '5. Complete')
+                THEN NULL
+            ELSE quarter_complete
+        END) as quarter_complete,
 
         -- Assign units_complete based on status
         (CASE
