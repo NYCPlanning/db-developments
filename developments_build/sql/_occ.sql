@@ -10,22 +10,18 @@ INPUTS:
     INIT_devdb (
         job_number text, 
         job_type text,
-        job_description text,
-        status_a text,
         _occ_init text,
         _occ_prop text,
-        _units_prop numeric, 
-        address text
     )
-    housing_input_lookup_occupancy (
-        doboccupancycode2008 text,
-        doboccupancycode1968 text,
-        dcpclassificationnew text
-    )
+    
+	occ_lookup (
+		* dob_occ text,
+		occ text
+	)
 
 OUTPUTS:
     OCC_devdb (
-        job_number text, 
+        * job_number text, 
         occ_init text,
         occ_prop text,
         occ_category text
