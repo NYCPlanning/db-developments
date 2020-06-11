@@ -122,11 +122,16 @@ JOIN_occ as (
         a.*,
         b.occ_init,
         b.occ_prop,
-        b.occ_category
+        (CASE WHEN hotel_init IS NOT NULL
+            OR hotel_prop IS NOT NULL
+            OR otherb_init IS NOT NULL
+            OR otherb_prop IS NOT NULL
+            THEN 'Residential'
+        ELSE b.occ_category END) as occ_category
     FROM JOIN_units a
     LEFT JOIN OCC_devdb b
     ON a.job_number = b.job_number
-) 
+)
 SELECT *
 INTO MID_devdb
 FROM JOIN_occ;
