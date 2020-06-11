@@ -25,6 +25,10 @@ OUTPUTS:
 		job_number text, 
 		units_init numeric,
 		units_prop numeric,
+		hotel_init numeric,
+		hotel_prop numeric,
+		otherb_init numeric,
+		otherb_prop numeric,
 		units_net numeric
 	)
 
@@ -48,6 +52,52 @@ INIT_OCC_devdb as (
 	LEFT JOIN OCC_devdb b
 	ON a.job_number = b.job_number
 ),
+
+-- Take manually-created class B and hotel unit fields from corrections file
+UNITS_hotel_init AS (
+	SELECT a.*, b.hotel_init
+		FROM INIT_OCC_devdb a
+		LEFT JOIN
+		(SELECT job_number, new_value::numeric as hotel_init
+		FROM housing_input_research
+		WHERE field = 'hotel_init'
+		AND old_value IS NULL) b
+		ON a.job_number = b.job_number
+),
+
+UNITS_hotel_prop AS (
+	SELECT a.*, b.hotel_prop 
+		FROM UNITS_hotel_init a
+		LEFT JOIN
+		(SELECT job_number, new_value::numeric as hotel_prop
+		FROM housing_input_research
+		WHERE field = 'hotel_prop'
+		AND old_value IS NULL) b
+		ON a.job_number = b.job_number
+),
+
+UNITS_classb_init AS (
+	SELECT a.*, b.otherb_init
+		FROM UNITS_hotel_prop a
+		LEFT JOIN
+		(SELECT job_number, new_value::numeric as otherb_init
+		FROM housing_input_research
+		WHERE field = 'otherb_init'
+		AND old_value IS NULL) b
+		ON a.job_number = b.job_number
+),
+
+UNITS_classb_prop AS (
+	SELECT a.*, b.otherb_prop
+		FROM UNITS_classb_init a
+		LEFT JOIN
+		(SELECT job_number, new_value::numeric as otherb_prop
+		FROM housing_input_research
+		WHERE field = 'otherb_prop'
+		AND old_value IS NULL) b
+		ON a.job_number = b.job_number
+),
+
 UNITS_init_prop as (
 	SELECT 
 		job_number,
@@ -71,13 +121,22 @@ UNITS_init_prop as (
 				AND x_mixeduse is null
 				then 0
 			ELSE _units_prop
-		END) as units_prop
-	FROM INIT_OCC_devdb
+		END) as units_prop,
+		hotel_init,
+		hotel_prop,
+		otherb_init,
+		otherb_prop
+	FROM UNITS_classb_prop
 )
+
 SELECT 
 	distinct job_number,
 	units_init,
 	units_prop,
+	hotel_init,
+	hotel_prop,
+	otherb_init,
+	otherb_prop,
 	job_type
 INTO _UNITS_devdb
 FROM UNITS_init_prop;
