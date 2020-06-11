@@ -2,6 +2,7 @@
 source config.sh
 
 dispaly "Starting to build Developments DB"
+psql $BUILD_ENGINE -f sql/_lookup.sql
 psql $BUILD_ENGINE -f sql/devdb_create_init.sql
 count _INIT_devdb
 
@@ -33,7 +34,6 @@ psql $BUILD_ENGINE -f sql/_co.sql
 count CO_devdb
 
 dispaly "Creating OCC fields, occ_init, occ_prop, occ_category"
-psql $BUILD_ENGINE -f sql/create_occ_lookup.sql
 psql $BUILD_ENGINE -f sql/_occ.sql
 count OCC_devdb
 
