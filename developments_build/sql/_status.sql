@@ -105,7 +105,7 @@ DRAFT_STATUS_devdb as (
         -- update year_compelete based on job_type and status
         (CASE
             WHEN job_type = 'Demolition'
-                OR status NOT IN ('4. Partial Complete', '5. Complete')
+                OR status = '9. Withdrawn'
                 THEN NULL
             ELSE year_complete
         END) as year_complete,
@@ -129,7 +129,7 @@ DRAFT_STATUS_devdb as (
 
         -- Assing units_incomplete
         (CASE
-            WHEN status = '5. Complete'  
+            WHEN status = '5. Complete' 
                 THEN NULL
             WHEN status = '4. Partial Complete'
                 THEN units_net-co_latest_units
@@ -151,12 +151,12 @@ SELECT
     occ_prop,
     (CASE 
         WHEN (CURRENT_DATE - status_date)/365 >= 2 
-            AND status = 'In progress (last plan disapproved)'
+            AND status = '2. Plan Examination'
             THEN 'Inactive'
         WHEN (CURRENT_DATE - status_date)/365 >= 3 
-            AND status in ('Filed', 'In progress')
+            AND status in ('1. Filed', '2. Plan Examination')
             THEN 'Inactive'
-        WHEN status = 'Withdrawn'
+        WHEN status = '9. Withdrawn'
             THEN 'Inactive'
     END) as x_inactive
 INTO STATUS_devdb
@@ -166,15 +166,15 @@ WITH completejobs AS (
 	SELECT address, job_type, status_date, status
 	FROM STATUS_devdb
 	WHERE units_net::numeric > 0
-	AND status LIKE 'Complete%')
+	AND status = '5. Complete')
 UPDATE STATUS_devdb a 
 SET x_inactive = 'Inactive'
 FROM completejobs b
 WHERE a.address = b.address
 	AND a.job_type = b.job_type
-	AND a.status NOT LIKE 'Complete%'
+	AND a.status != '5. Complete'
 	AND a.status_date::date < b.status_date::date
-	AND a.status <> 'Withdrawn'
+	AND a.status <> '9. Withdrawn'
   	AND a.occ_prop <> 'Garage/Miscellaneous';
 
 /* 
