@@ -1,3 +1,18 @@
+/*
+DESCRIPTION: 
+    create lookup tables for occ codes, status codes
+    
+OUTPUTS:
+    occ_lookup (
+        dob_occ text,
+        occ text
+    )
+
+    status_lookup (
+        dob_status text,
+        status text
+    )
+*/
 DROP TABLE IF EXISTS occ_lookup;
 CREATE TABLE occ_lookup(
     dob_occ text,
@@ -52,3 +67,54 @@ VALUES
 ('S-1', 'Storage: Moderate Hazard (S-1)'),
 ('S-2', 'Storage: Low Hazard (S-2)'),
 ('U', 'Miscellaneous (U)');
+
+DROP TABLE IF EXISTS status_lookup;
+CREATE TABLE status_lookup(
+    dob_status text,
+    status text
+); 
+
+INSERT INTO status_lookup(dob_status, status)
+VALUES
+('A', '1. Filed'),
+('A/P ENTIRE', '1. Filed'),
+('AP-NPE', '1. Filed'),
+('APPLICATION ASSIGNED TO PLAN EXAMINER', '1. Filed'),
+('APPLICATION PROCESSED - ENTIRE', '1. Filed'),
+('APPLICATION PROCESSED - NO PLAN EXAM', '1. Filed'),
+('APPLICATION PROCESSED-PART-NO PAYMENT', '1. Filed'),
+('APPLICATION PROCESSED - PAYMENT ONLY', '1. Filed'),
+('A/P TO D.E.A.R', '1. Filed'),
+('A/P UNPAID', '1. Filed'),
+('ASSIGNED TO P/E', '1. Filed'),
+('B', '1. Filed'),
+('C', '1. Filed'),
+('D', '1. Filed'),
+('E', '1. Filed'),
+('F', '1. Filed'),
+('G', '1. Filed'),
+('PRE-FILED', '1. Filed'),
+('PRE-FILING', '1. Filed'),
+('APPROVED', '2. Plan Examination'),
+('H', '2. Plan Examination'),
+('J', '2. Plan Examination'),
+('K', '2. Plan Examination'),
+('P', '2. Plan Examination'),
+('P/E DISAPPROVED', '2. Plan Examination'),
+('P/E IN PROCESS', '2. Plan Examination'),
+('P/E PARTIAL APRV', '2. Plan Examination'),
+('PLAN EXAM - APPROVED', '2. Plan Examination'),
+('PLAN EXAM - DISAPPROVED', '2. Plan Examination'),
+('PLAN EXAM - IN PROCESS', '2. Plan Examination'),
+('PLAN EXAM - PARTIAL APPROVAL', '2. Plan Examination'),
+('PERMITE-ENTIRE', '3. Permitted'),
+('PERMIT ISSUED - ENTIRE JOB/WORK', '3. Permitted'),
+('PERMIT ISSUED - PARTIAL JOB', '3. Permitted'),
+('PERMIT-PARTIAL', '3. Permitted'),
+('Q', '3. Permitted'),
+('R', '3. Permitted'),
+('SIGNED OFF', '5. Complete'),
+('U', '5. Complete'),
+('X', '5. Complete'),
+('3', '9. Withdrawn'),
+('SUSPENDED', '9. Withdrawn');
