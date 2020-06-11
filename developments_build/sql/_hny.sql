@@ -108,7 +108,8 @@ IN PREVIOUS VERSION:
 DROP TABLE IF EXISTS HNY_matches;
 -- 1) Merge with geocoding results and create a unique ID
 WITH hny AS (
-        SELECT project_id||'/'||COALESCE(building_id, '') as hny_id,
+        SELECT a.project_id||'/'||COALESCE(a.building_id, '') as hny_id,
+                a.project_id as hny_project_id,
                 a.*, 
                 b.geo_bbl, 
                 b.geo_bin, 
@@ -132,6 +133,7 @@ WITH hny AS (
     bin_bbl_match AS(
         SELECT 
             h.hny_id,
+            h.hny_project_id,
             d.job_number,
             d.job_type,
             d.occ_category,
@@ -153,6 +155,7 @@ WITH hny AS (
     bbl_match AS (
         SELECT 
             h.hny_id,
+            h.hny_project_id,
             d.job_number,
             d.job_type,
             d.occ_category,
@@ -173,6 +176,7 @@ WITH hny AS (
     spatial_match AS (
         SELECT 
             h.hny_id,
+            h.hny_project_id,
             d.job_number,
             d.job_type,
             d.occ_category,
@@ -218,21 +222,21 @@ WITH hny AS (
   
 -- 4) Find the highest-priority match(es) and determine relationships
 	-- First find highest priority match(es) for each hny_id
-	best_matches_by_hny AS (SELECT t1.hny_id, t1.match_priority, 
+	best_matches_by_hny AS (SELECT t1.hny_id, t1.hny_project_id, t1.match_priority, 
 							t2.job_number, t2.job_type, 
 							t2.occ_category, t2.total_units,
                             t2.all_counted_units
 					FROM (
-					   SELECT hny_id, MIN(match_priority) AS match_priority
+					   SELECT hny_id, hny_project_id, MIN(match_priority) AS match_priority
 					   FROM all_matches
-					   GROUP BY hny_id
+					   GROUP BY hny_id, hny_project_id
 					) AS t1 
 					JOIN all_matches AS t2 
 					ON t2.hny_id = t1.hny_id 
 					AND t2.match_priority = t1.match_priority),
 
 	-- Then find highest priority match(es) for each job_number			
-	best_matches AS (SELECT t2.hny_id, t1.match_priority, 
+	best_matches AS (SELECT t2.hny_id, t2.hny_project_id, t1.match_priority, 
 							t1.job_number, t2.job_type, 
 							t2.occ_category, t2.total_units,
                             t2.all_counted_units
