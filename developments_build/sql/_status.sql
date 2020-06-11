@@ -105,7 +105,7 @@ DRAFT_STATUS_devdb as (
         -- update year_compelete based on job_type and status
         (CASE
             WHEN job_type = 'Demolition'
-                OR status = '9. Withdrawn'
+                OR status NOT IN ('4. Partial Complete', '5. Complete')
                 THEN NULL
             ELSE year_complete
         END) as year_complete,
