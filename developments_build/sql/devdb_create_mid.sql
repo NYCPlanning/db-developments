@@ -70,7 +70,10 @@ JOIN_status_q as (
     SELECT
         a.*,
         b.status_q,
-        b.year_complete as year_complete_A1_NB
+        b.year_permit,
+        b.quarter_permit,
+        b.year_complete as year_complete_A1_NB,
+        b.quarter_complete as quarter_complete_A1_NB
     FROM INIT_devdb a
     LEFT JOIN STATUS_Q_devdb b
     ON a.job_number = b.job_number
@@ -84,8 +87,11 @@ JOIN_co as (
         (CASE WHEN a.job_type = 'Demolition'
             THEN b.year_complete 
         ELSE a.year_complete_A1_NB END) as year_complete,
+        (CASE WHEN a.job_type = 'Demolition'
+            THEN b.quarter_complete 
+        ELSE a.quarter_complete_A1_NB END) as quarter_complete,
         b.co_earliest_effectivedate,
-        b.co_latest_certtype, 
+        b.co_latest_certtype,
         b.co_latest_units::numeric
     FROM JOIN_status_q a
     LEFT JOIN CO_devdb b
