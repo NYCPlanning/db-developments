@@ -122,7 +122,7 @@ DRAFT_STATUS_devdb as (
         (CASE
             WHEN status = '5. Complete' 
                 THEN units_net
-            WHEN status = '4. Partial complete' 
+            WHEN status = '4. Partial Complete' 
                 THEN co_latest_units
             ELSE NULL
         END) as units_complete,
@@ -131,7 +131,7 @@ DRAFT_STATUS_devdb as (
         (CASE
             WHEN status = '5. Complete'  
                 THEN NULL
-            WHEN status = '4. Partial complete'
+            WHEN status = '4. Partial Complete'
                 THEN units_net-co_latest_units
             ELSE units_net
         END) units_incomplete
