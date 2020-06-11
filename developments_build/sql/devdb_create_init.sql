@@ -161,7 +161,10 @@ JOBNUMBER_relevant as (
 	zoningdist3 as ZoningDist3,
 	specialdistrict1 as SpecialDist1,
 	specialdistrict2 as SpecialDist2,
-	landmarked as Landmark,
+
+	(CASE WHEN landmarked = 'Y' THEN 'Yes'
+		ELSE NULL END) as Landmark,
+
 	cityowned as CityOwned,
 	ownertype as Owner_Type,
 	nonprofit as Owner_NonProf,
@@ -175,13 +178,26 @@ JOBNUMBER_relevant as (
 	existingheight as Height_Init,
 	proposedheight as Height_Prop,
 	totalconstructionfloorarea as ConstructnSF,
-	horizontalenlrgmt as Enlrg_Horiz,
-	verticalenlrgmt as Enlrg_Vert,
+
+	(CASE WHEN horizontalenlrgmt = 'Y' THEN 'Yes'
+		ELSE NULL END) as Enlrg_Horiz,
+
+	(CASE WHEN verticalenlrgmt = 'Y' THEN 'Yes'
+		ELSE NULL END) as Enlrg_Vert,
+
 	enlargementsqfootage as EnlargementSF,
 	initialcost as CostEstimate,
-	loftboard as LoftBoardCert,
-	littlee as eDesignation,
-	curbcut as CurbCut,
+
+	(CASE WHEN loftboard = 'Y' THEN 'Yes'
+		ELSE NULL END) as LoftBoardCert,
+
+	(CASE WHEN littlee = 'Y' THEN 'Yes'
+		WHEN littlee = 'H' THEN 'Yes'
+		ELSE NULL END) as eDesignation,
+
+	(CASE WHEN curbcut = 'X' THEN 'Yes'
+		ELSE NULL END) as CurbCut,
+		
 	cluster as TractHomes,
 	regexp_replace(
 		regexp_replace(
