@@ -46,7 +46,8 @@ OUTPUTS:
     MID_devdb (
         * job_number,
         status_q,
-        year_complete,
+        _year_complete,
+        _quarter_complete,
         co_earliest_effectivedate,
         co_latest_certtype, 
         co_latest_units,
@@ -86,10 +87,10 @@ JOIN_co as (
         -- year that the demolition was permitted
         (CASE WHEN a.job_type = 'Demolition'
             THEN b.year_complete 
-        ELSE a.year_complete_A1_NB END) as year_complete,
+        ELSE a.year_complete_A1_NB END) as _year_complete,
         (CASE WHEN a.job_type = 'Demolition'
             THEN b.quarter_complete 
-        ELSE a.quarter_complete_A1_NB END) as quarter_complete,
+        ELSE a.quarter_complete_A1_NB END) as _quarter_complete,
         b.co_earliest_effectivedate,
         b.co_latest_certtype,
         b.co_latest_units::numeric
