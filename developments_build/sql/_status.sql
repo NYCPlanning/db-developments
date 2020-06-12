@@ -3,7 +3,7 @@ DESCRIPTION:
     This script is created to assign/recode the field "status" 
     
 INPUTS:
-    MID_devdb (
+    _MID_devdb (
         * job_number,
         job_type character varying,
         status_date date,
@@ -88,7 +88,7 @@ STATUS_translate as (
 
             ELSE b.status 
         END) as status
-    FROM MID_devdb a
+    FROM _MID_devdb a
     LEFT JOIN status_lookup b
     ON a._status = b.dob_status
 ),
