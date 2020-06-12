@@ -22,7 +22,9 @@ OUTPUTS:
         job_number text,
         status_q date,
         year_permit text,
-        year_complete text
+        quarter_permit text,
+        _year_complete text,
+        _quarter_complete text
     )
 
 */
@@ -40,11 +42,22 @@ STATUS_Q_create as (
 SELECT 
     a.job_number,
     b.status_q,
-    LEFT(b.status_q::text,4) as year_permit,
+    -- year_permit
+    extract(year from b.status_q)::text as year_permit,
+    -- quarter_permit
+    extract(year from b.status_q)::text||'Q'
+        ||EXTRACT(QUARTER FROM b.status_q)::text as quarter_permit,
+    -- year_complete
     (CASE WHEN job_type = 'Demolition'
-        THEN LEFT(b.status_q::text,4)
+        THEN extract(year from b.status_q)::text
         ELSE NULL
-    END) as year_complete
+    END) as _year_complete,
+    -- quarter_complete
+    (CASE WHEN job_type = 'Demolition'
+        THEN extract(year from b.status_q)::text||'Q'
+            ||EXTRACT(QUARTER FROM b.status_q)::text
+        ELSE NULL
+    END) as _quarter_complete
 INTO STATUS_Q_devdb
 FROM INIT_devdb a
 LEFT JOIN STATUS_Q_create b
