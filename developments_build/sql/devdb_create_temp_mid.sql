@@ -13,12 +13,14 @@ INPUTS:
     STATUS_Q_devdb (
         * job_number,
         status_q,
-        year_complete
+        _year_complete,
+        _quarter_complete
     )
 
     CO_devdb (
         * job_number,
-        year_complete,
+        _year_complete,
+        _quarter_complete,
         co_earliest_effectivedate,
         co_latest_certtype, 
         co_latest_units
@@ -73,8 +75,8 @@ JOIN_status_q as (
         b.status_q,
         b.year_permit,
         b.quarter_permit,
-        b.year_complete as year_complete_A1_NB,
-        b.quarter_complete as quarter_complete_A1_NB
+        b._year_complete as year_complete_A1_NB,
+        b._quarter_complete as quarter_complete_A1_NB
     FROM INIT_devdb a
     LEFT JOIN STATUS_Q_devdb b
     ON a.job_number = b.job_number
@@ -86,10 +88,10 @@ JOIN_co as (
         -- first certificate of occupancy issuance. For demolitions, this is the 
         -- year that the demolition was permitted
         (CASE WHEN a.job_type = 'Demolition'
-            THEN b.year_complete 
+            THEN b._year_complete 
         ELSE a.year_complete_A1_NB END) as _year_complete,
         (CASE WHEN a.job_type = 'Demolition'
-            THEN b.quarter_complete 
+            THEN b._quarter_complete 
         ELSE a.quarter_complete_A1_NB END) as _quarter_complete,
         b.co_earliest_effectivedate,
         b.co_latest_certtype,
