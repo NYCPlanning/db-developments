@@ -2,6 +2,17 @@
 source config.sh
 
 dispaly "Starting to build Developments DB"
+psql $BUILD_ENGINE -c "
+  CREATE OR REPLACE FUNCTION is_date(s varchar) 
+  RETURNS boolean AS \$\$
+    BEGIN
+      perform s::date;
+      RETURN true;
+    exception WHEN others THEN
+      RETURN false;
+    END;
+  \$\$ LANGUAGE plpgsql;
+"
 psql $BUILD_ENGINE -f sql/_lookup.sql
 psql $BUILD_ENGINE -f sql/_init.sql
 count _INIT_devdb
