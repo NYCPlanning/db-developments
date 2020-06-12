@@ -23,7 +23,8 @@ OUTPUTS:
         status_q date,
         year_permit text,
         quarter_permit text,
-        year_complete text
+        _year_complete text,
+        _quarter_complete text
     )
 
 */
@@ -50,13 +51,13 @@ SELECT
     (CASE WHEN job_type = 'Demolition'
         THEN extract(year from b.status_q)::text
         ELSE NULL
-    END) as year_complete,
+    END) as _year_complete,
     -- quarter_complete
     (CASE WHEN job_type = 'Demolition'
         THEN extract(year from b.status_q)::text||'Q'
             ||EXTRACT(QUARTER FROM b.status_q)::text
         ELSE NULL
-    END) as quarter_complete
+    END) as _quarter_complete
 INTO STATUS_Q_devdb
 FROM INIT_devdb a
 LEFT JOIN STATUS_Q_create b
