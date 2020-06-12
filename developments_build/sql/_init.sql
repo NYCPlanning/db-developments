@@ -270,15 +270,11 @@ JOBNUMBER_relevant as (
 		
 	cluster as TractHomes,
 	regexp_replace(
-		regexp_replace(
-			trim(housenumber), 
-			'GAR|REAR|GARAGE', '', 'g'), 
+		trim(housenumber), 
 		'(^|)0*', '', '') as address_house,
 	trim(streetname) as address_street,
 	regexp_replace(
-		regexp_replace(
-			trim(housenumber), 
-			'GAR|REAR|GARAGE', '', 'g'), 
+		trim(housenumber), 
 		'(^|)0*', '', '')||' '||trim(streetname) as address,
 	bin as bin,
 	LEFT(bin, 1)||lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0') as bbl,
