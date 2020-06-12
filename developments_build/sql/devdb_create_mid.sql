@@ -39,7 +39,7 @@ OUTPUTS:
 */
 DROP TABLE IF EXISTS MID_devdb;
 WITH
-JOIN_STATUS_devdb as (
+JOIN_STATUS_devdb as 
     SELECT
         a.*,
         b.status,
