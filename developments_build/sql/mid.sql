@@ -39,7 +39,7 @@ OUTPUTS:
 */
 DROP TABLE IF EXISTS MID_devdb;
 WITH
-JOIN_STATUS_devdb as 
+JOIN_STATUS_devdb as (
     SELECT
         a.*,
         b.status,
@@ -47,14 +47,11 @@ JOIN_STATUS_devdb as
         b.quarter_complete,
         b.units_complete,
         b.units_incomplete,
-        b.x_inactive,
-        b.x_dcpedited,
-        b.x_reason
+        b.x_inactive
     FROM _MID_devdb a
     LEFT JOIN STATUS_devdb b
     ON a.job_number = b.job_number
-) 
-
+)
 SELECT *
 INTO MID_devdb
 FROM JOIN_STATUS_devdb;
