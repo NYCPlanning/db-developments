@@ -74,6 +74,87 @@ IN PREVIOUS VERSION:
 */
 DROP TABLE IF EXISTS _INIT_devdb;
 WITH
+-- identify invalid dates
+JOBNUMBER_invalid_dates AS (
+	(SELECT jobnumber as job_number, prefilingdate as value, 'status_a' as date_field
+	FROM dob_jobapplications
+		-- invalid months
+		WHERE (SPLIT_PART(prefilingdate, '/', 1)::numeric>12 
+			OR SPLIT_PART(prefilingdate, '/', 1)::numeric<1)
+		-- invalid days
+		OR (SPLIT_PART(prefilingdate, '/', 2)::numeric<1)
+		OR (SPLIT_PART(prefilingdate, '/', 2)::numeric>31)
+		OR (SPLIT_PART(prefilingdate, '/', 2)::numeric>30 
+			AND SPLIT_PART(prefilingdate, '/', 1)::numeric 
+			IN (4, 6, 9, 11))
+		OR (SPLIT_PART(prefilingdate, '/', 2)::numeric>29
+			AND SPLIT_PART(prefilingdate, '/', 1)::numeric = 2)
+		-- invalid years
+		OR SPLIT_PART(prefilingdate, '/', 2)::numeric<1)
+	UNION
+	(SELECT jobnumber as job_number, fullypaid as value, 'status_d' as date_field
+	FROM dob_jobapplications
+		-- invalid months
+		WHERE (SPLIT_PART(fullypaid, '/', 1)::numeric>12 
+			OR SPLIT_PART(fullypaid, '/', 1)::numeric<1)
+		-- invalid days
+		OR (SPLIT_PART(fullypaid, '/', 2)::numeric<1)
+		OR (SPLIT_PART(fullypaid, '/', 2)::numeric>31)
+		OR (SPLIT_PART(fullypaid, '/', 2)::numeric>30 
+			AND SPLIT_PART(fullypaid, '/', 1)::numeric 
+			IN (4, 6, 9, 11))
+		OR (SPLIT_PART(fullypaid, '/', 2)::numeric>29 
+			AND SPLIT_PART(fullypaid, '/', 1)::numeric = 2)
+		-- invalid years
+		OR SPLIT_PART(fullypaid, '/', 2)::numeric<1)
+	UNION
+	(SELECT jobnumber as job_number, approved as value, 'status_p' as date_field
+	FROM dob_jobapplications
+		-- invalid months
+		WHERE (SPLIT_PART(approved, '/', 1)::numeric>12 
+			OR SPLIT_PART(approved, '/', 1)::numeric<1)
+		-- invalid days
+		OR (SPLIT_PART(approved, '/', 2)::numeric<1)
+		OR (SPLIT_PART(approved, '/', 2)::numeric>31)
+		OR (SPLIT_PART(approved, '/', 2)::numeric>30 
+			AND SPLIT_PART(approved, '/', 1)::numeric 
+			IN (4, 6, 9, 11))
+		OR (SPLIT_PART(approved, '/', 2)::numeric>29 
+			AND SPLIT_PART(approved, '/', 1)::numeric = 2)
+		-- invalid years
+		OR SPLIT_PART(approved, '/', 2)::numeric<1)
+	UNION
+	(SELECT jobnumber as job_number, fullypermitted as value, 'status_r' as date_field
+	FROM dob_jobapplications
+		-- invalid months
+		WHERE (SPLIT_PART(fullypermitted, '/', 1)::numeric>12 
+			OR SPLIT_PART(fullypermitted, '/', 1)::numeric<1)
+		-- invalid days
+		OR (SPLIT_PART(fullypermitted, '/', 2)::numeric<1)
+		OR (SPLIT_PART(fullypermitted, '/', 2)::numeric>31)
+		OR (SPLIT_PART(fullypermitted, '/', 2)::numeric>30 
+			AND SPLIT_PART(fullypermitted, '/', 1)::numeric 
+			IN (4, 6, 9, 11))
+		OR (SPLIT_PART(fullypermitted, '/', 2)::numeric>29 
+			AND SPLIT_PART(fullypermitted, '/', 1)::numeric = 2)
+		-- invalid years
+		OR SPLIT_PART(fullypermitted, '/', 2)::numeric<1)
+	UNION
+	(SELECT jobnumber as job_number, signoffdate as date, 'status_x' as date_field
+	FROM dob_jobapplications
+		-- invalid months
+		WHERE (SPLIT_PART(signoffdate, '/', 1)::numeric>12 
+			OR SPLIT_PART(signoffdate, '/', 1)::numeric<1)
+		-- invalid days
+		OR (SPLIT_PART(signoffdate, '/', 2)::numeric<1)
+		OR (SPLIT_PART(signoffdate, '/', 2)::numeric>31)
+		OR (SPLIT_PART(signoffdate, '/', 2)::numeric>30 
+			AND SPLIT_PART(signoffdate, '/', 1)::numeric 
+			IN (4, 6, 9, 11))
+		OR (SPLIT_PART(signoffdate, '/', 2)::numeric>29 
+			AND SPLIT_PART(signoffdate, '/', 1)::numeric = 2)
+		-- invalid years
+		OR SPLIT_PART(signoffdate, '/', 2)::numeric<1)),
 -- identify admin jobs
 JOBNUMBER_admin_jobs as (
 	select ogc_fid
@@ -151,11 +232,37 @@ JOBNUMBER_relevant as (
 	-- one to one mappings
 	jobstatusdesc as _status,
 	latestactiondate::date as status_date,
-	prefilingdate::date as status_a,
-	fullypaid::date as status_d,
-	approved::date as status_p,
-	fullypermitted::date as status_r,
-	signoffdate::date as status_x,
+
+	(CASE 
+		WHEN jobnumber in (SELECT job_number 
+							FROM JOBNUMBER_invalid_dates 
+							WHERE date_field = 'status_a') THEN NULL
+		ELSE prefilingdate::date END) as status_a,
+
+	(CASE 
+		WHEN jobnumber in (SELECT job_number 
+							FROM JOBNUMBER_invalid_dates 
+							WHERE date_field = 'status_d') THEN NULL
+		ELSE fullypaid::date END) as status_d,
+
+	(CASE 
+		WHEN jobnumber in (SELECT job_number 
+							FROM JOBNUMBER_invalid_dates 
+							WHERE date_field = 'status_p') THEN NULL
+		ELSE approved::date END) as status_p,
+
+	(CASE 
+		WHEN jobnumber in (SELECT job_number 
+							FROM JOBNUMBER_invalid_dates 
+							WHERE date_field = 'status_r') THEN NULL
+		ELSE fullypermitted::date END) as status_r,
+
+	(CASE 
+		WHEN jobnumber in (SELECT job_number 
+							FROM JOBNUMBER_invalid_dates 
+							WHERE date_field = 'status_x') THEN NULL
+		ELSE signoffdate::date END) as status_x,
+
 	zoningdist1 as ZoningDist1,
 	zoningdist2 as ZoningDist2,
 	zoningdist3 as ZoningDist3,
