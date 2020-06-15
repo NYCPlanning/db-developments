@@ -12,15 +12,15 @@ INPUTS:
 
     STATUS_Q_devdb (
         * job_number,
-        status_q,
-        _year_complete,
-        _quarter_complete
+        date_permittd,
+        _complete_year,
+        _complete_qrtr
     )
 
     CO_devdb (
         * job_number,
-        _year_complete,
-        _quarter_complete,
+        _complete_year,
+        _complete_qrtr,
         co_earliest_effectivedate,
         co_latest_certtype, 
         co_latest_units
@@ -47,9 +47,9 @@ INPUTS:
 OUTPUTS: 
     _MID_devdb (
         * job_number,
-        status_q,
-        _year_complete,
-        _quarter_complete,
+        date_permittd,
+        _complete_year,
+        _complete_qrtr,
         co_earliest_effectivedate,
         co_latest_certtype, 
         co_latest_units,
@@ -69,14 +69,14 @@ OUTPUTS:
 */
 DROP TABLE IF EXISTS _MID_devdb;
 WITH
-JOIN_status_q as (
+JOIN_date_permittd as (
     SELECT
         a.*,
-        b.status_q,
-        b.year_permit,
-        b.quarter_permit,
-        b._year_complete as year_complete_A1_NB,
-        b._quarter_complete as quarter_complete_A1_NB
+        b.date_permittd,
+        b.permit_year,
+        b.permit_qrtr,
+        b._complete_year as complete_year_A1_NB,
+        b._complete_qrtr as complete_qrtr_A1_NB
     FROM INIT_devdb a
     LEFT JOIN STATUS_Q_devdb b
     ON a.job_number = b.job_number
@@ -88,15 +88,15 @@ JOIN_co as (
         -- first certificate of occupancy issuance. For demolitions, this is the 
         -- year that the demolition was permitted
         (CASE WHEN a.job_type = 'Demolition'
-            THEN b._year_complete 
-        ELSE a.year_complete_A1_NB END) as _year_complete,
+            THEN b._complete_year 
+        ELSE a.complete_year_A1_NB END) as _complete_year,
         (CASE WHEN a.job_type = 'Demolition'
-            THEN b._quarter_complete 
-        ELSE a.quarter_complete_A1_NB END) as _quarter_complete,
+            THEN b._complete_qrtr 
+        ELSE a.complete_qrtr_A1_NB END) as _complete_qrtr,
         b.co_earliest_effectivedate,
         b.co_latest_certtype,
         b.co_latest_units::numeric
-    FROM JOIN_status_q a
+    FROM JOIN_date_permittd a
     LEFT JOIN CO_devdb b
     ON a.job_number = b.job_number
 ),

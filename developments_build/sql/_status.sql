@@ -6,12 +6,12 @@ INPUTS:
     _MID_devdb (
         * job_number,
         job_type character varying,
-        status_date date,
-        status_p date,
-        status_q date,
+        date_lastupdt date,
+        date_statusp date,
+        date_permittd date,
         _status text,
-        _year_complete text,
-        _quarter_complete text,
+        _complete_year text,
+        _complete_qrtr text,
         co_latest_units numeric,
         co_latest_certtype text,
         units_complete numeric,
@@ -31,10 +31,10 @@ OUTPUTS:
         * job_number character varying,
         job_type character varying,
         status character varying,
-        status_date date,
-        status_q date,
-        year_complete text,
-        quarter_complete text,
+        date_lastupdt date,
+        date_permittd date,
+        complete_year text,
+        complete_qrtr text,
         units_complete numeric,
         units_incomplete numeric,
         units_net numeric,
@@ -56,12 +56,12 @@ STATUS_translate as (
     SELECT 
         a.job_number,
         a.job_type,
-        a.status_q,
-        a._year_complete,
-        a._quarter_complete,
+        a.date_permittd,
+        a._complete_year,
+        a._complete_qrtr,
         a.units_net,
         a.co_latest_units,
-        a.status_date,
+        a.date_lastupdt,
         a.address,
         a.occ_prop,
         (CASE
@@ -80,10 +80,10 @@ STATUS_translate as (
             WHEN a.x_withdrawal IN ('W', 'C')
                 THEN '9. Withdrawn'
 
-            WHEN status_p IS NOT NULL
+            WHEN date_statusp IS NOT NULL
                 THEN '2. Plan Examination'
 
-            WHEN status_q IS NOT NULL
+            WHEN date_permittd IS NOT NULL
                 THEN '3. Permited'
 
             ELSE b.status 
@@ -97,8 +97,8 @@ DRAFT_STATUS_devdb as (
         job_number,
         job_type,
         status,
-        status_q,
-        status_date::date,
+        date_permittd,
+        date_lastupdt::date,
         units_net,
         address,
         occ_prop,
@@ -107,16 +107,16 @@ DRAFT_STATUS_devdb as (
             WHEN job_type = 'Demolition'
                 OR status NOT IN ('4. Partial Complete', '5. Complete')
                 THEN NULL
-            ELSE _year_complete
-        END) as year_complete,
+            ELSE _complete_year
+        END) as complete_year,
 
-        -- update quarter_complete based on job_type and status
+        -- update complete_qrtr based on job_type and status
         (CASE
             WHEN job_type = 'Demolition'
                 OR status NOT IN ('4. Partial Complete', '5. Complete')
                 THEN NULL
-            ELSE _quarter_complete
-        END) as quarter_complete,
+            ELSE _complete_qrtr
+        END) as complete_qrtr,
 
         -- Assign units_complete based on status
         (CASE
@@ -141,20 +141,20 @@ SELECT
     job_number,
     job_type,
     status,
-    status_date,
-    status_q,
-    year_complete,
-    quarter_complete,
+    date_lastupdt,
+    date_permittd,
+    complete_year,
+    complete_qrtr,
     units_complete,
     units_incomplete,
     units_net,
     address,
     occ_prop,
     (CASE 
-        WHEN (CURRENT_DATE - status_date)/365 >= 2 
+        WHEN (CURRENT_DATE - date_lastupdt)/365 >= 2 
             AND status = '2. Plan Examination'
             THEN 'Inactive'
-        WHEN (CURRENT_DATE - status_date)/365 >= 3 
+        WHEN (CURRENT_DATE - date_lastupdt)/365 >= 3 
             AND status in ('1. Filed', '2. Plan Examination')
             THEN 'Inactive'
         WHEN status = '9. Withdrawn'
@@ -164,7 +164,7 @@ INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
 
 WITH completejobs AS (
-	SELECT address, job_type, status_date, status
+	SELECT address, job_type, date_lastupdt, status
 	FROM STATUS_devdb
 	WHERE units_net::numeric > 0
 	AND status = '5. Complete')
@@ -174,7 +174,7 @@ FROM completejobs b
 WHERE a.address = b.address
 	AND a.job_type = b.job_type
 	AND a.status <> '5. Complete'
-	AND a.status_date::date < b.status_date::date
+	AND a.date_lastupdt::date < b.date_lastupdt::date
 	AND a.status <> '9. Withdrawn'
   	AND a.occ_prop <> 'Garage/Miscellaneous';
 
