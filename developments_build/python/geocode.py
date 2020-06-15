@@ -53,14 +53,18 @@ def parse_output(geo):
                     .get('Borough Code', '',),
         geo_cd = geo.get('COMMUNITY DISTRICT', {})\
                     .get('COMMUNITY DISTRICT', ''),
+        geo_puma = geo.get('PUMA Code', ''),
+        geo_firedivision=geo.get('Fire Division', ''),
+        geo_firebattalion=geo.get('Fire Battalion', ''),
+        geo_firecompany=geo.get("Fire Company Type", "")\
+                        + geo.get("Fire Company Number", ""),
         geo_censustract2010 = geo.get('2010 Census Tract', ''),
         geo_censusblock2010 = geo.get('2010 Census Block', ''),
         geo_council = geo.get('City Council District', ''),
         geo_csd = geo.get('Community School District', ''),
         geo_policeprct = geo.get('Police Precinct', ''),
         geo_zipcode = geo.get('ZIP Code', ''), 
-        geo_ntacode2010 = geo.get('Neighborhood Tabulation Area (NTA)', ''),
-
+        geo_ntacode2010 = geo.get('Neighborhood Tabulation Area (NTA)', ''),        
         # the return codes and messaged are for diagnostic puposes
         GRC = geo.get('Geosupport Return Code (GRC)', ''),
         GRC2 = geo.get('Geosupport Return Code 2 (GRC 2)', ''),

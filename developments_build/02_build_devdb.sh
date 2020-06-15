@@ -2,7 +2,7 @@
 source config.sh
 
 # dispaly "Starting to build Developments DB"
-# psql $BUILD_ENGINE -f sql/_function.sql
+psql $BUILD_ENGINE -f sql/_function.sql
 # psql $BUILD_ENGINE -f sql/_lookup.sql
 # psql $BUILD_ENGINE -f sql/_init.sql
 # count _INIT_devdb
@@ -22,7 +22,6 @@ source config.sh
 # dispaly "Fill NULLs spatial boundries in GEO_devdb through spatial joins. 
 #   This is the consolidated spatial attributes table"
 # psql $BUILD_ENGINE -f sql/_spatial.sql
-# psql $BUILD_ENGINE -f sql/spatial.sql
 # count SPATIAL_devdb
 # count INIT_devdb
 
