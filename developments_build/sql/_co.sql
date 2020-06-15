@@ -21,8 +21,8 @@ OUTPUTS:
         co_latest_effectivedate date,
         co_latest_units numeric,
         co_latest_certtype character varying,
-        _year_complete text,
-        _quarter_complete text
+        _complete_year text,
+        _complete_qrtr text
     )
 
 IN PREVIOUS VERSION: 
@@ -81,7 +81,7 @@ SELECT
     co_latest_effectivedate,
     co_latest_units,
     co_latest_certtype,
-    extract(year from co_earliest_effectivedate)::text as _year_complete,
-    year_quater(co_earliest_effectivedate) as _quarter_complete
+    extract(year from co_earliest_effectivedate)::text as _complete_year,
+    year_quater(co_earliest_effectivedate) as _complete_qrtr
 INTO CO_devdb
 FROM DRAFT_co;
