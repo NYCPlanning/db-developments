@@ -85,7 +85,7 @@ OUTPUTS:
     HNY_devdb (
         * job_number,
         hny_id,
-        affortable_units,
+        units_hnyaff,
 		all_hny_units,
         ...
     )
@@ -327,7 +327,7 @@ WITH
 	-- a) Extract one-to-one matches
 	one_to_one AS (SELECT job_number, 
 							hny_id,
-							all_counted_units AS affordable_units,
+							all_counted_units AS units_hnyaff,
 							total_units AS all_hny_units,
                             one_dev_to_many_hny,
                             one_hny_to_many_dev
@@ -338,7 +338,7 @@ WITH
 	-- b) For one dev to many hny, group by job_number and sum unit fields
 	one_to_many AS (SELECT job_number, 
 							'Multiple' AS hny_id,
-							SUM(all_counted_units::int)::text AS affordable_units,
+							SUM(all_counted_units::int)::text AS units_hnyaff,
 							SUM(total_units::int)::text AS all_hny_units,
                             one_dev_to_many_hny,
                             one_hny_to_many_dev
@@ -362,17 +362,17 @@ WITH
                     AND one_dev_to_many_hny = 1 
                     THEN 'Multiple' 
                 ELSE a.hny_id END) AS hny_id,
-            -- Only populate affordable_units for the minimum job_number per hny record
+            -- Only populate units_hnyaff for the minimum job_number per hny record
             (CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
-                    -- If this is a many-to-many match, get summed affordable_units from one_to_many
+                    -- If this is a many-to-many match, get summed units_hnyaff from one_to_many
                     THEN CASE WHEN a.job_number IN (SELECT job_number FROM one_to_many)
-                            THEN (SELECT affordable_units 
+                            THEN (SELECT units_hnyaff 
                                     FROM one_to_many b 
                                     WHERE a.job_number = b.job_number)
                             ELSE a.all_counted_units
                         END
                     ELSE NULL
-            END) AS affordable_units,
+            END) AS units_hnyaff,
             -- Only populate all_hny_units for the minimum job_number per hny record
             (CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
                     -- If this is a many-to-many, get summed all_hny_units data from one_to_many
@@ -403,7 +403,7 @@ WITH
 -- 7) MERGE WITH devdb  
 SELECT a.*, 
         b.hny_id,
-        b.affordable_units,
+        b.units_hnyaff,
         b.all_hny_units,
         (CASE 
             WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 0 THEN 'one-to-one'
