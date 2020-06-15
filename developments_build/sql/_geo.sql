@@ -70,7 +70,7 @@ DRAFT as (
         a.uid,
         a.job_number,
 		a.bbl,
-        a.status_date,
+        a.date_lastupdt,
         a.job_description,
         b.geo_bbl,
         NULLIF(RIGHT(b.geo_bin,6),'000000') as geo_bin,
