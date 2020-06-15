@@ -2,7 +2,7 @@
 source config.sh
 
 # dispaly "Starting to build Developments DB"
-psql $BUILD_ENGINE -f sql/_function.sql
+# psql $BUILD_ENGINE -f sql/_function.sql
 # psql $BUILD_ENGINE -f sql/_lookup.sql
 # psql $BUILD_ENGINE -f sql/_init.sql
 # count _INIT_devdb
