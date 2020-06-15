@@ -21,12 +21,12 @@ OUTPUTS:
 		_units_prop numeric,
 		x_mixeduse text,
 		status text,
-		status_date text,
-		status_a text,
-		status_d text,
-		status_p text,
-		status_r text,
-		status_x text,
+		date_lastupdt text,
+		date_filed text,
+		date_statusd text,
+		date_statusp text,
+		date_statusr text,
+		date_statusx text,
 		zoningdist1 text,
 		zoningdist2 text,
 		zoningdist3 text,
@@ -78,39 +78,40 @@ WITH
 JOBNUMBER_invalid_dates AS (
 	(SELECT jobnumber as job_number, 
 			latestactiondate as value, 
-			'status_date' as date_field
+			'date_lastupdt' as date_field
 	FROM dob_jobapplications
 	WHERE NOT is_date(latestactiondate))
 	UNION
 	(SELECT jobnumber as job_number, 
 			prefilingdate as value, 
-			'status_a' as date_field
+			'date_filed' as date_field
 	FROM dob_jobapplications
 	WHERE NOT is_date(prefilingdate))
 	UNION
 	(SELECT jobnumber as job_number, 
 			fullypaid as value, 
-			'status_d' as date_field
+			'date_statusd' as date_field
 	FROM dob_jobapplications
 	WHERE NOT is_date(fullypaid))
 	UNION
 	(SELECT jobnumber as job_number, 
 			approved as value, 
-			'status_p' as date_field
+			'date_statusp' as date_field
 	FROM dob_jobapplications
 	WHERE NOT is_date(approved))
 	UNION
 	(SELECT jobnumber as job_number, 
 			fullypermitted as value, 
-			'status_r' as date_field
+			'date_statusr' as date_field
 	FROM dob_jobapplications
 	WHERE NOT is_date(fullypermitted))
 	UNION
 	(SELECT jobnumber as job_number, 
 			signoffdate as date, 
-			'status_x' as date_field
+			'date_statusx' as date_field
 	FROM dob_jobapplications
 	WHERE NOT is_date(signoffdate))),
+
 -- identify admin jobs
 JOBNUMBER_admin_jobs as (
 	select ogc_fid
@@ -190,38 +191,38 @@ JOBNUMBER_relevant as (
 	(CASE 
 		WHEN jobnumber in (SELECT job_number 
 							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'status_date') THEN NULL
-		ELSE latestactiondate::date END) as status_date,
+							WHERE date_field = 'date_lastupdt') THEN NULL
+		ELSE latestactiondate::date END) as date_lastupdt,
 
 	(CASE 
 		WHEN jobnumber in (SELECT job_number 
 							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'status_a') THEN NULL
-		ELSE prefilingdate::date END) as status_a,
+							WHERE date_field = 'date_filed') THEN NULL
+		ELSE prefilingdate::date END) as date_filed,
 
 	(CASE 
 		WHEN jobnumber in (SELECT job_number 
 							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'status_d') THEN NULL
-		ELSE fullypaid::date END) as status_d,
+							WHERE date_field = 'date_statusd') THEN NULL
+		ELSE fullypaid::date END) as date_statusd,
 
 	(CASE 
 		WHEN jobnumber in (SELECT job_number 
 							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'status_p') THEN NULL
-		ELSE approved::date END) as status_p,
+							WHERE date_field = 'date_statusp') THEN NULL
+		ELSE approved::date END) as date_statusp,
 
 	(CASE 
 		WHEN jobnumber in (SELECT job_number 
 							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'status_r') THEN NULL
-		ELSE fullypermitted::date END) as status_r,
+							WHERE date_field = 'date_statusr') THEN NULL
+		ELSE fullypermitted::date END) as date_statusr,
 
 	(CASE 
 		WHEN jobnumber in (SELECT job_number 
 							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'status_x') THEN NULL
-		ELSE signoffdate::date END) as status_x,
+							WHERE date_field = 'date_statusx') THEN NULL
+		ELSE signoffdate::date END) as date_statusx,
 
 	zoningdist1 as ZoningDist1,
 	zoningdist2 as ZoningDist2,
