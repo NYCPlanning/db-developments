@@ -16,27 +16,27 @@ OUTPUTS:
         same schema as GEO_devdb
     )
 */
--- DROP TABLE IF EXISTS _SPATIAL_devdb;
--- SELECT 
---     uid,
---     get_cd(geom) as geo_cd,
---     get_nta(geom) as geo_ntacode2010,
---     get_cb(geom) as geo_censusblock2010,
---     get_ct(geom) as geo_censustract2010,
---     get_csd(geom) as geo_csd,
---     get_boro(geom) as geo_boro,
---     get_council(geom) as geo_council,
---     get_bbl(geom) as geo_bbl,
---     get_zipcode(geom) as geo_zipcode,
---     get_policeprct(geom) as geo_policeprct,
---     get_firecompany(geom) as geo_firecompany,
---     get_firebattalion(geom) as geo_firebattalion,
---     get_firedivision(geom) as geo_firedivision,
---     get_puma(geom) as geo_puma,
---     get_bin(geom) as geo_bin,
---     get_base_bbl(geom) as base_bbl
--- INTO _SPATIAL_devdb
--- FROM GEO_devdb;
+DROP TABLE IF EXISTS _SPATIAL_devdb;
+SELECT 
+    uid,
+    get_cd(geom) as geo_cd,
+    get_nta(geom) as geo_ntacode2010,
+    get_cb(geom) as geo_censusblock2010,
+    get_ct(geom) as geo_censustract2010,
+    get_csd(geom) as geo_csd,
+    get_boro(geom) as geo_boro,
+    get_council(geom) as geo_council,
+    get_bbl(geom) as geo_bbl,
+    get_zipcode(geom) as geo_zipcode,
+    get_policeprct(geom) as geo_policeprct,
+    get_firecompany(geom) as geo_firecompany,
+    get_firebattalion(geom) as geo_firebattalion,
+    get_firedivision(geom) as geo_firedivision,
+    get_puma(geom) as geo_puma,
+    get_bin(geom) as geo_bin,
+    get_base_bbl(geom) as base_bbl
+INTO _SPATIAL_devdb
+FROM GEO_devdb;
 
 DROP TABLE IF EXISTS SPATIAL_devdb;
 SELECT
