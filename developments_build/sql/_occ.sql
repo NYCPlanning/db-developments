@@ -24,7 +24,8 @@ OUTPUTS:
         * job_number text, 
         occ_init text,
         occ_prop text,
-        occ_category text
+        resid_flag text,
+        nonres_flag text
     )
 
 IN PREVIOUS VERSION: 
@@ -168,12 +169,12 @@ SELECT
 	occ_init,
 	occ_prop, 
 	occ_category as resid_flag,
-	flag_nonresid(
+	flag_nonres(
 		occ_category,
 		job_description,
 		occ_init,
 		occ_prop
-	) as nonresid
+	) as nonres_flag
 INTO OCC_devdb
 FROM __OCC_devdb;
 DROP TABLE IF EXISTS __OCC_devdb;

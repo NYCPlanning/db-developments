@@ -231,7 +231,7 @@ CREATE OR REPLACE FUNCTION get_base_bbl(
   $$ LANGUAGE sql;
 
 
-CREATE OR REPLACE FUNCTION flag_nonresid(
+CREATE OR REPLACE FUNCTION flag_nonres(
     _resid_flag varchar,
     _job_description varchar,
     _occ_init varchar,

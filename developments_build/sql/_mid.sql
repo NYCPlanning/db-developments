@@ -63,7 +63,8 @@ OUTPUTS:
         units_complete_diff,
         occ_init,
         occ_prop,
-        occ_category
+        resid_flag,
+        nonres_flag
         ...
     )
 */
@@ -125,7 +126,8 @@ JOIN_occ as (
         a.*,
         b.occ_init,
         b.occ_prop,
-        b.occ_category
+        b.resid_flag,
+        b.nonres_flag
     FROM JOIN_units a
     LEFT JOIN OCC_devdb b
     ON a.job_number = b.job_number
