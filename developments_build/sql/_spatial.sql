@@ -4,110 +4,176 @@ DESCRIPTION:
     and create SPATIAL_devdb. Note that SPATIAL_devdb is the 
     consolidated table for all spatial attributes 
 
-        _GEO_devdb -> GEO_devdb -> SPATIAL_devdb
+        _GEO_devdb -> GEO_devdb -> _SPATIAL_devdb
+        _SPATIAL_devdb + GEO_devdb -> SPATIAL_devdb
 
 INPUTS: 
     GEO_devdb
-    dcp_cdboundaries
-    dcp_ntaboundaries
-    dcp_censusblocks
-    dcp_censustracts
-    dcp_school_districts
-    dcp_boroboundaries_wi
-    dcp_councildistricts
-    dcp_mappluto
-    doitt_buildingfootprints
-    doitt_zipcodeboundaries
+    _SPATIAL_devdb
 
 OUTPUTS:
-    _SPATIAL_devdb (
+    SPATIAL_devdb (
         same schema as GEO_devdb
     )
 */
 DROP TABLE IF EXISTS _SPATIAL_devdb;
-WITH
-CD_join as (
-    SELECT 
-        a.uid,
-        b.borocd as geo_cd,
-        a.geom
-    FROM GEO_devdb a
-    LEFT JOIN dcp_cdboundaries b
-    ON ST_Within(a.geom,b.geom)
-),
-NTA_join as (
-    SELECT 
-        a.*,
-        b.ntacode as geo_ntacode2010
-    FROM CD_join a
-    LEFT JOIN dcp_ntaboundaries b
-    ON ST_Within(a.geom,b.geom)
-),
-CB_join as (
-    SELECT 
-        a.*,
-        b.cb2010 as geo_censusblock2010
-    FROM NTA_join a
-    LEFT JOIN dcp_censusblocks b
-    ON ST_Within(a.geom,b.geom)
-),
-CT_join as (
-    SELECT 
-        a.*,
-        b.ct2010 as geo_censustract2010
-    FROM CB_join a
-    LEFT JOIN dcp_censustracts b
-    ON ST_Within(a.geom,b.geom)
-),
-CSD_join as (
-    SELECT 
-        a.*,
-        lpad(b.schooldist::text,2,'0') as geo_csd
-    FROM CT_join a
-    LEFT JOIN dcp_school_districts b
-    ON ST_Within(a.geom,b.geom)
-),
-BORO_join as (
-    SELECT 
-        a.*,
-        b.borocode as geo_boro
-    FROM CSD_join a
-    LEFT JOIN dcp_boroboundaries_wi b
-    ON ST_Within(a.geom,b.geom)
-),
-COUNCIL_join as (
-    SELECT 
-        a.*,
-        lpad(b.coundist::text,2,'0') as geo_council
-    FROM BORO_join a
-    LEFT JOIN dcp_councildistricts b
-    ON ST_Within(a.geom,b.geom)
-),
-BBL_join as (
-    SELECT 
-        a.*,
-        b.bbl::bigint::text as geo_bbl
-    FROM COUNCIL_join a
-    LEFT JOIN dcp_mappluto b
-    ON ST_Within(a.geom,b.geom)
-),
-BIN_join as (
-    SELECT 
-        a.*,
-        b.bin as geo_bin,
-        b.base_bbl as base_bbl
-    FROM BBL_join a
-    LEFT JOIN doitt_buildingfootprints b
-    ON ST_Within(a.geom,b.geom)
-),
-ZIP_join as (
-    SELECT 
-        a.*,
-        b.zipcode as geo_zipcode
-    FROM BIN_join a
-    LEFT JOIN doitt_zipcodeboundaries b
-    ON ST_Within(a.geom,b.geom)
-)
-SELECT * 
+SELECT 
+    uid,
+    get_cd(geom) as geo_cd,
+    get_nta(geom) as geo_ntacode2010,
+    get_cb(geom) as geo_censusblock2010,
+    get_ct(geom) as geo_censustract2010,
+    get_csd(geom) as geo_csd,
+    get_boro(geom) as geo_boro,
+    get_council(geom) as geo_council,
+    get_bbl(geom) as geo_bbl,
+    get_zipcode(geom) as geo_zipcode,
+    get_policeprct(geom) as geo_policeprct,
+    get_firecompany(geom) as geo_firecompany,
+    get_firebattalion(geom) as geo_firebattalion,
+    get_firedivision(geom) as geo_firedivision,
+    get_puma(geom) as geo_puma,
+    get_bin(geom) as geo_bin,
+    get_base_bbl(geom) as base_bbl
 INTO _SPATIAL_devdb
-FROM ZIP_join;
+FROM GEO_devdb;
+
+DROP TABLE IF EXISTS SPATIAL_devdb;
+SELECT
+    distinct
+    a.uid,
+
+    -- geo_bbl
+    (CASE WHEN a.geo_bbl IS NULL
+        OR a.geo_bbl ~ '^0' OR a.geo_bbl = ''
+        OR a.mode = 'tpad'
+        THEN b.geo_bbl
+    ELSE a.geo_bbl END) as geo_bbl, 
+
+    -- geo_bin
+    (CASE WHEN (CASE WHEN a.geo_bbl IS NULL
+        OR a.geo_bbl ~ '^0' OR a.geo_bbl = ''
+        OR a.mode = 'tpad'
+        THEN b.geo_bbl
+    ELSE a.geo_bbl END) = b.base_bbl
+        AND (a.geo_bin IS NULL 
+            OR a.geo_bin = '' 
+            OR a.geo_bin::NUMERIC%1000000=0)
+            OR a.mode = 'tpad'
+        AND b.base_bbl IS NOT NULL
+        THEN b.geo_bin
+    ELSE a.geo_bin END) as geo_bin,
+
+    a.geo_address_house,
+    a.geo_address_street,
+    a.geo_address,
+
+    -- geo_zipcode
+    (CASE WHEN a.geo_zipcode IS NULL 
+        OR a.geo_zipcode = ''
+        OR a.mode = 'tpad'
+        THEN b.geo_zipcode
+    ELSE a.geo_zipcode END) as geo_zipcode, 
+
+    -- geo_boro
+    (CASE WHEN a.geo_boro IS NULL 
+        OR a.geo_boro = '0'
+        OR a.mode = 'tpad'
+        THEN b.geo_boro::text
+    ELSE a.geo_boro END) as geo_boro,
+
+    -- geo_cd
+    (CASE WHEN a.geo_cd IS NULL 
+		OR a.geo_cd = ''
+        OR a.mode = 'tpad'
+        THEN b.geo_cd::text
+    ELSE a.geo_cd END) as geo_cd,
+
+    -- geo_council
+    (CASE WHEN a.geo_council IS NULL 
+		OR a.geo_council = ''
+        OR a.mode = 'tpad'
+        THEN b.geo_council 
+    ELSE a.geo_council END) as geo_council,
+
+    -- geo_ntacode2010
+    (CASE WHEN a.geo_ntacode2010 IS NULL 
+		OR a.geo_ntacode2010 = ''
+        OR a.mode = 'tpad'
+        THEN b.geo_ntacode2010 
+    ELSE a.geo_ntacode2010 END) as geo_ntacode2010,
+
+    (CASE WHEN a.geo_ntacode2010 IS NULL 
+		OR a.geo_ntacode2010 = ''
+        OR a.mode = 'tpad'
+        THEN nta_translate(b.geo_ntacode2010)
+    ELSE nta_translate(a.geo_ntacode2010) END) as geo_ntaname2010,
+
+    -- geo_censusblock2010
+    (CASE WHEN a.geo_censusblock2010 IS NULL 
+		OR a.geo_censusblock2010 = '' 
+		OR a.geo_censustract2010 = '000000' 
+        OR a.mode = 'tpad'
+        THEN b.geo_censusblock2010
+    ELSE a.geo_censusblock2010 END) as geo_censusblock2010, 
+
+    -- geo_censustract2010
+   (CASE WHEN a.geo_censustract2010 IS NULL 
+		OR a.geo_censustract2010 = '' 
+		OR a.geo_censustract2010 = '000000'
+        OR a.mode = 'tpad' 
+        THEN b.geo_censustract2010
+    ELSE a.geo_censustract2010 END) as geo_censustract2010, 
+   
+    -- geo_csd
+    (CASE WHEN a.geo_csd IS NULL 
+		OR a.geo_csd = '' 
+        OR a.mode = 'tpad'
+        THEN b.geo_csd
+    ELSE a.geo_csd END) as geo_csd, 
+
+    -- geo_policeprct
+    (CASE WHEN a.geo_policeprct IS NULL 
+		OR a.geo_policeprct = '' 
+        OR a.mode = 'tpad'
+        THEN b.geo_policeprct
+    ELSE a.geo_policeprct END) as geo_policeprct, 
+
+    -- geo_firedivision
+    (CASE WHEN a.geo_firedivision IS NULL 
+		OR a.geo_firedivision = '' 
+        OR a.mode = 'tpad'
+        THEN b.geo_firedivision
+    ELSE a.geo_firedivision END) as geo_firedivision, 
+
+    -- geo_firebattalion
+    (CASE WHEN a.geo_firebattalion IS NULL 
+		OR a.geo_firebattalion = '' 
+        OR a.mode = 'tpad'
+        THEN b.geo_firebattalion
+    ELSE a.geo_firebattalion END) as geo_firebattalion, 
+
+    -- geo_firecompany
+    (CASE WHEN a.geo_firecompany IS NULL 
+		OR a.geo_firecompany = '' 
+        OR a.mode = 'tpad'
+        THEN b.geo_firecompany
+    ELSE a.geo_firecompany END) as geo_firecompany, 
+
+    -- geo_puma
+    (CASE WHEN a.geo_puma IS NULL 
+		OR a.geo_puma = '' 
+        OR a.mode = 'tpad'
+        THEN b.geo_puma
+    ELSE a.geo_firecompany END) as geo_puma, 
+
+    a.geo_latitude,
+    a.geo_longitude,
+    a.latitude,
+    a.longitude,
+    a.geom,
+    x_geomsource
+INTO SPATIAL_devdb
+FROM GEO_devdb a
+LEFT JOIN _SPATIAL_devdb b
+ON a.uid = b.uid;

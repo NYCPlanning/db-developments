@@ -24,7 +24,8 @@ OUTPUTS:
         * job_number text, 
         occ_init text,
         occ_prop text,
-        occ_category text
+        resid_flag text,
+        nonres_flag text
     )
 
 IN PREVIOUS VERSION: 
@@ -32,39 +33,13 @@ IN PREVIOUS VERSION:
 */
 
 DROP TABLE IF EXISTS _OCC_devdb;
-WITH 
-OCC_init as (
-	SELECT 
-		a.job_number, 
-		(CASE 
-			WHEN a.job_type = 'New Building'
-				THEN 'Empty Site'
-			ELSE b.occ
-		END) as occ_init
-	FROM INIT_devdb a
-	LEFT JOIN occ_lookup b
-	ON a._occ_init = b.dob_occ
-),
-OCC_prop as (
-	SELECT 
-		a.job_number,
-		(CASE 
-			WHEN a.job_type = 'New Building'
-				THEN 'Empty Site'
-			ELSE b.occ
-		END) as occ_prop
-	FROM INIT_devdb a
-	LEFT JOIN occ_lookup b
-	ON a._occ_prop = b.dob_occ
-)
 SELECT 
-	a.job_number,
-	a.occ_init,
-	b.occ_prop
+	job_number,
+	job_description, 
+	occ_translate(_occ_init, job_type) as occ_init,
+	occ_translate(_occ_prop, job_type)  as occ_prop
 INTO _OCC_devdb
-FROM OCC_init a
-LEFT JOIN OCC_prop b
-ON a.job_number = b.job_number;
+FROM INIT_devdb;
 
 /*
 CORRECTIONS
@@ -75,7 +50,8 @@ CORRECTIONS
 -- occ_init
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _OCC_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'occ_init'
@@ -84,8 +60,11 @@ WITH CORR_target as (
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/occ_init/',
-	x_reason = x_reason||'/occ_init:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited,'occ_init'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'occ_init', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -96,12 +75,13 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/occ_init/');
+	WHERE 'occ_init'=any(x_dcpedited));
 
 -- occ_prop
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _OCC_devdb a, housing_input_research b	
 	WHERE a.job_number=b.job_number
 	AND b.field = 'occ_prop'
@@ -110,8 +90,11 @@ WITH CORR_target as (
 		AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/occ_prop/',
-	x_reason = x_reason||'/occ_prop:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited,'occ_prop'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'occ_prop', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -123,13 +106,13 @@ AND b.field = 'occ_prop'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/occ_prop/');
+	WHERE 'occ_prop'=any(x_dcpedited));
 
 /*
 Assign occ_category after corrections on 
 occ_init and occ_prop
 */
-DROP TABLE IF EXISTS OCC_devdb;
+DROP TABLE IF EXISTS __OCC_devdb;
 SELECT 
 	*,
 	(CASE 
@@ -138,9 +121,9 @@ SELECT
 			OR upper(occ_init) LIKE '%ASSISTED%LIVING%' 
 			OR upper(occ_prop) LIKE '%ASSISTED%LIVING%'
 			THEN 'Residential'
-		ELSE 'Other'
+		ELSE NULL
 	END) as occ_category
-INTO OCC_devdb
+INTO __OCC_devdb
 FROM _OCC_devdb;
 
 /*
@@ -151,8 +134,9 @@ CORRECTIONS
 -- occ_category
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
-	FROM OCC_devdb a, housing_input_research b	
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
+	FROM __OCC_devdb a, housing_input_research b	
 	WHERE a.job_number=b.job_number
 	AND b.field = 'occ_category'
 	AND (a.occ_category=b.old_value 
@@ -160,17 +144,37 @@ WITH CORR_target as (
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/occ_category/',
-	x_reason = x_reason||'/occ_category:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited,'occ_category'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'occ_category', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
-UPDATE OCC_devdb a
-SET occ_category = TRIM(b.new_value)
+UPDATE __OCC_devdb a
+SET occ_category = NULLIF(TRIM(b.new_value), 'Other')
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'occ_category'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/occ_category/');
+	WHERE 'occ_category'=any(x_dcpedited));
+
+-- Assign Nonresid flag
+DROP TABLE IF EXISTS OCC_devdb;
+SELECT
+	job_number,
+	occ_init,
+	occ_prop, 
+	occ_category as resid_flag,
+	flag_nonres(
+		occ_category,
+		job_description,
+		occ_init,
+		occ_prop
+	) as nonres_flag
+INTO OCC_devdb
+FROM __OCC_devdb;
+DROP TABLE IF EXISTS __OCC_devdb;
