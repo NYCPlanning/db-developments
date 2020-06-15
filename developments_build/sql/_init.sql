@@ -143,7 +143,8 @@ JOBNUMBER_relevant as (
 		ELSE jobtype
 	END ) as job_type,
 
-	jobdescription as job_description,
+	(CASE WHEN jobdescription !~ '[a-zA-Z]'
+	THEN NULL ELSE jobdescription END) as job_description,
 
     -- removing '.' for existingoccupancy 
     -- and proposedoccupancy (3 records affected)
@@ -232,9 +233,12 @@ JOBNUMBER_relevant as (
 	(CASE WHEN landmarked = 'Y' THEN 'Yes'
 		ELSE NULL END) as Landmark,
 
-	cityowned as CityOwned,
-	ownertype as Owner_Type,
-	nonprofit as Owner_NonProf,
+	ownership_translate(
+		cityowned,
+		ownertype,
+		nonprofit
+	) as ownership,
+	
 	ownerfirstname as Owner_FirstNm,
 	ownerlastname as Owner_LastNm,
 	ownerfirstname||', '||ownerlastname as owner_name,
@@ -287,8 +291,8 @@ WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
 DROP TABLE IF EXISTS CORR_devdb;
 SELECT
 	job_number,
-	'' as x_dcpedited,
-	'' as x_reason
+	array[]::text[] as x_dcpedited,
+	array[]::json[] as x_reason
 INTO CORR_devdb
 FROM _INIT_devdb;
 
@@ -302,7 +306,8 @@ CORRECTIONS:
 -- stories_prop
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'stories_prop'
@@ -311,8 +316,11 @@ WITH CORR_target as (
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/stories_prop/',
-	x_reason = x_reason||'/stories_prop:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'stories_prop'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'stories_prop', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -323,12 +331,13 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/stories_prop/');
+	WHERE 'stories_prop'=any(x_dcpedited));
 
 -- x_mixeduse
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'x_mixeduse'
@@ -337,8 +346,11 @@ WITH CORR_target as (
 		AND (b.old_value IS NULL OR b.old_value = 'false')))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/x_mixeduse/',
-	x_reason = x_reason||'/x_mixeduse:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'x_mixeduse'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'x_mixeduse', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -349,20 +361,24 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/x_mixeduse/');
+	WHERE 'x_mixeduse'=any(x_dcpedited));
 
 -- bbl
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'bbl'
 	AND a.bbl IS NULL AND b.old_value IS NOT NULL
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/bbl/',
-	x_reason = x_reason||'/bbl:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'bbl'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'bbl', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -373,20 +389,24 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/bbl/');
+	WHERE 'bbl'=any(x_dcpedited));
 
 -- bin
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'bin'
 	AND a.bbl IS NULL AND b.old_value IS NOT NULL
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/bin/',
-	x_reason = x_reason||'/bin:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'bin'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'bin', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -397,4 +417,4 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/bin/');
+	WHERE 'bin'=any(x_dcpedited));
