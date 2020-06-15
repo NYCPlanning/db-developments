@@ -2,17 +2,7 @@
 source config.sh
 
 dispaly "Starting to build Developments DB"
-psql $BUILD_ENGINE -c "
-  CREATE OR REPLACE FUNCTION is_date(s varchar) 
-  RETURNS boolean AS \$\$
-    BEGIN
-      perform s::date;
-      RETURN true;
-    exception WHEN others THEN
-      RETURN false;
-    END;
-  \$\$ LANGUAGE plpgsql;
-"
+psql $BUILD_ENGINE -f sql/_function.sql
 psql $BUILD_ENGINE -f sql/_lookup.sql
 psql $BUILD_ENGINE -f sql/_init.sql
 count _INIT_devdb
@@ -32,7 +22,6 @@ count GEO_devdb
 dispaly "Fill NULLs spatial boundries in GEO_devdb through spatial joins. 
   This is the consolidated spatial attributes table"
 psql $BUILD_ENGINE -f sql/_spatial.sql
-psql $BUILD_ENGINE -f sql/spatial.sql
 count SPATIAL_devdb
 count INIT_devdb
 

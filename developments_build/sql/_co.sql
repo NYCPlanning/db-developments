@@ -48,10 +48,7 @@ ORDER_co as (
 			ORDER BY effectivedate::date DESC, certorder ASC) as latest,
 		ROW_NUMBER() OVER (
 			PARTITION BY jobnum
-			ORDER BY effectivedate::date ASC) as earliest,
-		DENSE_RANK() OVER (
-			PARTITION BY jobnum
-			ORDER BY effectivedate::date DESC) as multi
+			ORDER BY effectivedate::date ASC) as earliest
     FROM ORDER_certtype
     WHERE jobnum IN (
         SELECT DISTINCT job_number
@@ -85,7 +82,6 @@ SELECT
     co_latest_units,
     co_latest_certtype,
     extract(year from co_earliest_effectivedate)::text as _complete_year,
-    extract(year from co_earliest_effectivedate)::text||'Q'
-        ||EXTRACT(QUARTER FROM co_earliest_effectivedate)::text as _complete_qrtr
+    year_quater(co_earliest_effectivedate) as _complete_qrtr
 INTO CO_devdb
 FROM DRAFT_co;
