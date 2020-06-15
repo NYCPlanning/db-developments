@@ -373,8 +373,11 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/date_lastupdt/',
-	x_reason = x_reason||'/date_lastupdt:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'date_lastupdt'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'date_lastupdt', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -385,7 +388,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/date_lastupdt/');
+	WHERE 'date_lastupdt'=any(x_dcpedited));
 
 -- date_filed
 WITH CORR_target as (
@@ -397,8 +400,11 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/date_filed/',
-	x_reason = x_reason||'/date_filed:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'date_filed'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'date_filed', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -409,7 +415,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/date_filed/');
+	WHERE 'date_filed'=any(x_dcpedited));
 
 -- date_statusd
 WITH CORR_target as (
@@ -421,8 +427,11 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/date_statusd/',
-	x_reason = x_reason||'/date_statusd:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'date_statusd'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'date_statusd', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -433,7 +442,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/date_statusd/');
+	WHERE 'date_statusd'=any(x_dcpedited));
 
 -- date_statusp
 WITH CORR_target as (
@@ -445,8 +454,11 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/date_statusp/',
-	x_reason = x_reason||'/date_statusp:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'date_statusp'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'date_statusp', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -457,7 +469,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/date_statusp/');
+	WHERE 'date_statusp'=any(x_dcpedited));
 
 -- date_statusr
 WITH CORR_target as (
@@ -469,8 +481,11 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/date_statusr/',
-	x_reason = x_reason||'/date_statusr:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'date_statusr'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'date_statusr', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -481,7 +496,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/date_statusr/');
+	WHERE 'date_statusr'=any(x_dcpedited));
 
 -- date_statusx
 WITH CORR_target as (
@@ -493,8 +508,11 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/date_statusx/',
-	x_reason = x_reason||'/date_statusx:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'date_statusx'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'date_statusx', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -505,7 +523,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/date_statusx/');
+	WHERE 'date_statusx'=any(x_dcpedited));
 
 /** QAQC
 	invalid_date_lastupdt
