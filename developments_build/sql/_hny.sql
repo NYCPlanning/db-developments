@@ -24,18 +24,18 @@ DESCRIPTION:
             6: Alteration or non-residential non-demolition matched spatially
     4) Create HNY_matches:
         For each hny_id, find the highest-priority match(es). This will either be the best 
-        match, or multiple matches at the same priority-level. Depending on the number of 
-        highest-priority matches, assign flags to indicate one_hny_to_many_dev
-        and/or one_dev_to_many_hny.
-    5) Resolve the one-to-many, many-to-one, and many-to-many cases in HNY_matches
+        match, or multiple matches at the same priority-level. Add/remove matches using 
+        CORR_hny_matches.
+    5) Assign flags to indicate one_hny_to_many_dev and/or one_dev_to_many_hny.
+    6) Resolve the one-to-many, many-to-one, and many-to-many cases in HNY_matches
         in order to create HNY_lookup
         a) One-to-one matches get assigned directly
         b) For one devdb to many hny, sum the total_units and all_counted_units for all hny rows
         c) For multiple devdb to one hny, assign units to the one with the lowest job_number.
             Remaining matches are retained, but get NULLs in the unit fields.
-    6) Merge  devdb with HNY_lookup
+    7) Merge  devdb with HNY_lookup
         JOIN KEY: job_number
-    7) Apply corrections
+
 
 INPUTS: 
     hpd_hny_units_by_building (
@@ -85,7 +85,7 @@ OUTPUTS:
     HNY_devdb (
         * job_number,
         hny_id,
-        affortable_units,
+        units_hnyaff,
 		all_hny_units,
         ...
     )
@@ -105,7 +105,7 @@ IN PREVIOUS VERSION:
     dob_affordable_units.sql
 */
 
-DROP TABLE IF EXISTS HNY_matches;
+DROP TABLE IF EXISTS HNY_geo;
 -- 1) Merge with geocoding results and create a unique ID
 WITH hny AS (
         SELECT a.project_id||'/'||COALESCE(a.building_id, '') as hny_id,
@@ -125,8 +125,14 @@ WITH hny AS (
         JOIN hny_geocode_results b
         ON a.ogc_fid::text = b.uid
         WHERE a.reporting_construction_type = 'New Construction'
-        AND a.project_name <> 'CONFIDENTIAL'),
+        AND a.project_name <> 'CONFIDENTIAL')
 
+SELECT * 
+INTO HNY_geo
+FROM hny;
+
+DROP TABLE IF EXISTS HNY_matches;
+WITH
 -- 2) Find matches using the three different methods
 
     -- a) Find all matches on both BIN and BBL
@@ -140,7 +146,7 @@ WITH hny AS (
             h.total_units,
             h.all_counted_units,
             'BINandBBL' AS match_method
-        FROM hny h
+        FROM HNY_geo h
         JOIN MID_devdb d
         ON h.geo_bbl = d.geo_bbl 
             AND h.geo_bin = d.geo_bin
@@ -162,7 +168,7 @@ WITH hny AS (
             h.total_units,
             h.all_counted_units,
             'BBLONLY' AS match_method
-        FROM hny h
+        FROM HNY_geo h
         JOIN MID_devdb d
         ON h.geo_bbl = d.geo_bbl 
             AND (h.geo_bin <> d.geo_bin OR h.geo_bin IS NULL OR d.geo_bin IS NULL)
@@ -183,7 +189,7 @@ WITH hny AS (
             h.total_units,
             h.all_counted_units,
             'Spatial' AS match_method
-        FROM hny h
+        FROM HNY_geo h
         JOIN MID_devdb d
         ON ST_DWithin(h.geom::geography, d.geom::geography, 5)
             AND (h.geo_bbl <> d.geo_bbl OR h.geo_bbl IS NULL OR d.geo_bbl IS NULL)
@@ -220,7 +226,7 @@ WITH hny AS (
 		        UNION 
 		        SELECT * FROM spatial_match) a), 
   
--- 4) Find the highest-priority match(es) and determine relationships
+-- 4) Find the highest-priority match(es) and apply corrections
 	-- First find highest priority match(es) for each hny_id
 	best_matches_by_hny AS (SELECT t1.hny_id, t1.hny_project_id, t1.match_priority, 
 							t2.job_number, t2.job_type, 
@@ -247,21 +253,64 @@ WITH hny AS (
 					) AS t1 
 					JOIN best_matches_by_hny AS t2 
 					ON t2.job_number = t1.job_number 
-					AND t2.match_priority = t1.match_priority),
+					AND t2.match_priority = t1.match_priority)
+SELECT hny_id, hny_project_id, job_number, total_units, all_counted_units
+INTO HNY_matches
+FROM best_matches;
 
+-- Apply corrections to add or remove matches
+DELETE FROM HNY_matches
+WHERE hny_id||job_number
+IN (SELECT hny_id||job_number 
+    FROM CORR_hny_matches
+    WHERE action='remove')
+AND hny_id||job_number
+IN (SELECT hny_id||job_number 
+    FROM HNY_matches);
+
+INSERT INTO HNY_matches(hny_id, hny_project_id, job_number, total_units, all_counted_units)
+SELECT a.hny_id, 
+        a.hny_project_id, 
+        a.job_number,
+        b.total_units,
+        b.all_counted_units
+FROM CORR_hny_matches a
+JOIN HNY_geo b
+ON a.hny_id = b.hny_id
+WHERE a.hny_id||a.job_number
+IN (SELECT hny_id||job_number 
+    FROM CORR_hny_matches
+    WHERE action='add')
+AND a.hny_id||a.job_number
+NOT IN (SELECT hny_id||job_number 
+    FROM HNY_matches);
+    
+-- Output unmatched hny records for manual research
+DROP TABLE IF EXISTS HNY_no_match;
+WITH 
+unmatched AS (
+    SELECT * FROM HNY_geo
+    WHERE hny_id NOT IN (SELECT DISTINCT hny_id FROM HNY_matches))
+SELECT *
+INTO HNY_no_match
+FROM unmatched;
+
+-- 5) Identify relationships between devdb records and hny records
+DROP TABLE IF EXISTS HNY_devdb;
+WITH 
 	-- Find cases of many-hny-to-one-devdb, after having filtered to highest priority
 	many_developments AS (SELECT hny_id, count(*)
-				FROM best_matches
+				FROM HNY_matches
 				GROUP BY hny_id),
 				
 	-- Find cases of many-devdb-to-one-hny, after having filtered to highest priority
 	many_hny AS (SELECT a.job_number, count(*)
-				FROM best_matches a
-				GROUP BY a.job_number)	
+				FROM HNY_matches a
+				GROUP BY a.job_number),	
 
-	/** Add relationship flags and create HNY_matches. 
-        A '1' in both flags means a many-to-many relationship. **/
-	SELECT bm.*,
+	-- Add relationship flags, where '1' in both flags means a many-to-many relationship
+    RELATEFLAGS_hny_matches AS
+    (SELECT m.*,
 		(CASE 
 			WHEN hny_id IN (SELECT DISTINCT hny_id FROM many_developments
 									WHERE count > 1) THEN 1
@@ -272,45 +321,36 @@ WITH hny AS (
 									WHERE count > 1) THEN 1
 			ELSE 0
 		END) AS one_dev_to_many_hny
-    INTO HNY_matches
-	FROM best_matches bm;
+    FROM HNY_matches m),
 
-/* 
-5) ASSIGN MATCHES   
-*/
-DROP TABLE IF EXISTS HNY_devdb;
-WITH 
+-- 6) ASSIGN MATCHES   
 	-- a) Extract one-to-one matches
 	one_to_one AS (SELECT job_number, 
 							hny_id,
-							job_type,
-							occ_category,
-							all_counted_units AS affordable_units,
+							all_counted_units AS units_hnyaff,
 							total_units AS all_hny_units,
                             one_dev_to_many_hny,
                             one_hny_to_many_dev
-					FROM HNY_matches 
+					FROM RELATEFLAGS_hny_matches 
 					WHERE one_dev_to_many_hny = 0
 					AND one_hny_to_many_dev = 0),
 
 	-- b) For one dev to many hny, group by job_number and sum unit fields
 	one_to_many AS (SELECT job_number, 
 							'Multiple' AS hny_id,
-							job_type,
-							occ_category,
-							SUM(all_counted_units::int)::text AS affordable_units,
+							SUM(all_counted_units::int)::text AS units_hnyaff,
 							SUM(total_units::int)::text AS all_hny_units,
                             one_dev_to_many_hny,
                             one_hny_to_many_dev
-					FROM HNY_matches
+					FROM RELATEFLAGS_hny_matches
 					WHERE one_dev_to_many_hny = 1
-					GROUP BY job_number, job_type, occ_category, one_dev_to_many_hny, one_hny_to_many_dev),
+					GROUP BY job_number, one_dev_to_many_hny, one_hny_to_many_dev),
 
 	-- c) For multiple dev to one hny, assign units to the one with the lowest job_number
-	-- Find the minimum job_number per hny in HNY_matches
+	-- Find the minimum job_number per hny in RELATEFLAGS_hny_matches
 	min_job_number_per_hny AS 
         (SELECT MIN(job_number::INT)::text AS job_number, hny_id
-            FROM HNY_matches
+            FROM RELATEFLAGS_hny_matches
             WHERE one_hny_to_many_dev = 1
             GROUP BY hny_id),
 
@@ -322,19 +362,17 @@ WITH
                     AND one_dev_to_many_hny = 1 
                     THEN 'Multiple' 
                 ELSE a.hny_id END) AS hny_id,
-            a.job_type,
-            a.occ_category,
-            -- Only populate affordable_units for the minimum job_number per hny record
+            -- Only populate units_hnyaff for the minimum job_number per hny record
             (CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
-                    -- If this is a many-to-many match, get summed affordable_units from one_to_many
+                    -- If this is a many-to-many match, get summed units_hnyaff from one_to_many
                     THEN CASE WHEN a.job_number IN (SELECT job_number FROM one_to_many)
-                            THEN (SELECT affordable_units 
+                            THEN (SELECT units_hnyaff 
                                     FROM one_to_many b 
                                     WHERE a.job_number = b.job_number)
                             ELSE a.all_counted_units
                         END
                     ELSE NULL
-            END) AS affordable_units,
+            END) AS units_hnyaff,
             -- Only populate all_hny_units for the minimum job_number per hny record
             (CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
                     -- If this is a many-to-many, get summed all_hny_units data from one_to_many
@@ -348,7 +386,7 @@ WITH
             END) AS all_hny_units,
             one_dev_to_many_hny,
             one_hny_to_many_dev
-        FROM HNY_matches a
+        FROM RELATEFLAGS_hny_matches a
         WHERE one_hny_to_many_dev = 1),
 
     -- Combine into a single look-up table					
@@ -361,12 +399,11 @@ WITH
 			UNION
 			SELECT * FROM many_to_one)
 
-/* 
-6) MERGE WITH devdb  
-*/
+
+-- 7) MERGE WITH devdb  
 SELECT a.*, 
         b.hny_id,
-        b.affordable_units,
+        b.units_hnyaff,
         b.all_hny_units,
         (CASE 
             WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 0 THEN 'one-to-one'
@@ -380,54 +417,4 @@ FROM MID_devdb a
 JOIN HNY_lookup b
 ON a.job_number = b.job_number;
 
-/* 
-7) CORRECTIONS
-    hny_id
-    affordable_units
-    all_hny_units
-    hny_jobrelate
-*/
 
-UPDATE HNY_devdb a
-SET hny_id = b.new_value,
-	x_dcpedited = 'Edited',
-	x_reason = b.reason
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'hny_id'
-AND (a.hny_id=b.old_value 
-    OR (a.hny_id IS NULL
-        AND b.old_value IS NULL));
-
-UPDATE HNY_devdb a
-SET affordable_units = TRIM(b.new_value)::numeric,
-	x_dcpedited = 'Edited',
-	x_reason = b.reason
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'affordable_units'
-AND (a.affordable_units::numeric=b.old_value::numeric 
-    OR (a.affordable_units IS NULL
-        AND b.old_value IS NULL));
-
-UPDATE HNY_devdb a
-SET all_hny_units = TRIM(b.new_value)::numeric,
-	x_dcpedited = 'Edited',
-	x_reason = b.reason
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'all_hny_units'
-AND (a.all_hny_units::numeric=b.old_value::numeric 
-    OR (a.all_hny_units IS NULL
-        AND b.old_value IS NULL));
-
-UPDATE HNY_devdb a
-SET hny_jobrelate = b.new_value,
-	x_dcpedited = 'Edited',
-	x_reason = b.reason
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'hny_jobrelate'
-AND (a.hny_jobrelate=b.old_value 
-    OR (a.hny_jobrelate IS NULL
-        AND b.old_value IS NULL));
