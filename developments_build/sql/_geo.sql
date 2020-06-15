@@ -69,9 +69,9 @@ DRAFT as (
         distinct
         a.uid,
         a.job_number,
-		a.bbl,
+		    a.bbl,
         a.bin,
-        a.status_date,
+        a.date_lastupdt,
         a.job_description,
         b.geo_bbl,
         NULLIF(RIGHT(b.geo_bin,6),'000000') as geo_bin,
@@ -117,7 +117,7 @@ GEOM_bin_bldgfootprints as (
     SELECT
         a.uid,
         a.job_number,
-		a.bbl,
+		    a.bbl,
         a.bin,
         a.geo_bbl,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
@@ -143,14 +143,14 @@ GEOM_bbl_bldgfootprints as (
 	SELECT
         a.uid,
         a.job_number,
-		a.bbl,
+		    a.bbl,
         a.bin,
         a.geo_bbl,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
-		 	WHEN a.x_geomsource IS NOT NULL 
-		 		THEN a.x_geomsource 
-		 	WHEN a.geom IS NULL 
+          WHEN a.x_geomsource IS NOT NULL 
+            THEN a.x_geomsource 
+          WHEN a.geom IS NULL 
 		 		AND b.geom IS NOT NULL 
 		 		THEN 'BBL DOB buildingfootprints'
 		END) as x_geomsource
@@ -162,14 +162,14 @@ GEOM_geo_bbl_mappluto as (
     SELECT
         a.uid,
         a.job_number,
-		a.bbl,
+		    a.bbl,
         a.bin,
         a.geo_bbl,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
-		 	WHEN a.x_geomsource IS NOT NULL 
-		 		THEN a.x_geomsource 
-		 	WHEN a.geom IS NULL 
+          WHEN a.x_geomsource IS NOT NULL 
+            THEN a.x_geomsource 
+          WHEN a.geom IS NULL 
 		 		AND b.geom IS NOT NULL 
 		 		THEN 'BBL geosupport MapPLUTO'
 		END) as x_geomsource
@@ -181,14 +181,14 @@ GEOM_dob_bbl_mappluto as (
 	SELECT
         a.uid,
         a.job_number,
-		a.bbl,
+		    a.bbl,
         a.bin,
         a.geo_bbl,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
-		 	WHEN a.x_geomsource IS NOT NULL 
-		 		THEN a.x_geomsource 
-		 	WHEN a.geom IS NULL 
+          WHEN a.x_geomsource IS NOT NULL 
+            THEN a.x_geomsource 
+          WHEN a.geom IS NULL 
 		 		AND b.geom IS NOT NULL 
 		 		THEN 'BBL DOB MapPLUTO'
 		END) as x_geomsource
@@ -204,19 +204,19 @@ DTM as (
     GROUP BY bbl
 ),
 GEOM_dtm_dob as (
-	SELECT
-        a.uid,
-        a.job_number,
-		a.bbl,
-        a.geo_bbl,
-        coalesce(a.geom, ST_Centroid(b.geom)) as geom,
-        (CASE 
-		 	WHEN a.x_geomsource IS NOT NULL 
-		 		THEN a.x_geomsource 
-		 	WHEN a.geom IS NULL 
-		 		AND b.geom IS NOT NULL 
-		 		THEN 'BBL DOB DTM'
-		END) as x_geomsource
+    SELECT
+      a.uid,
+      a.job_number,
+      a.bbl,
+      a.geo_bbl,
+      coalesce(a.geom, ST_Centroid(b.geom)) as geom,
+      (CASE 
+        WHEN a.x_geomsource IS NOT NULL 
+          THEN a.x_geomsource 
+        WHEN a.geom IS NULL 
+          AND b.geom IS NOT NULL 
+          THEN 'BBL DOB DTM'
+    END) as x_geomsource
     FROM GEOM_dob_bbl_mappluto a
     LEFT JOIN DTM b
     ON a.bbl = b.bbl::bigint::text
