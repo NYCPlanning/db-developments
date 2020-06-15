@@ -5,6 +5,7 @@ dispaly "Starting to build Developments DB"
 psql $BUILD_ENGINE -f sql/_function.sql
 psql $BUILD_ENGINE -f sql/_lookup.sql
 psql $BUILD_ENGINE -f sql/_init.sql
+psql $BUILD_ENGINE -f sql/qaqc_init.sql
 count _INIT_devdb
 
 dispaly "Geocoding Developments DB"
@@ -23,6 +24,7 @@ dispaly "Fill NULLs spatial boundries in GEO_devdb through spatial joins.
   This is the consolidated spatial attributes table"
 psql $BUILD_ENGINE -f sql/_spatial.sql
 count SPATIAL_devdb
+psql $BUILD_ENGINE -f sql/init.sql
 count INIT_devdb
 
 dispaly "Adding on PLUTO columns"
