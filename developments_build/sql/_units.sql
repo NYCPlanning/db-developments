@@ -148,7 +148,8 @@ CORRECTIONS
 -- units_init
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'units_init'
@@ -157,8 +158,11 @@ WITH CORR_target as (
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/units_init/',
-	x_reason = x_reason||'/units_init:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'units_init'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'units_init', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -170,16 +174,17 @@ AND b.field = 'units_init'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/units_init/');
+	WHERE 'units_init'=any(x_dcpedited));
 
 -- units_prop
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _UNITS_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
+	WHERE a.job_number = b.job_number
 	AND b.field = 'units_prop'
-	AND (a.units_prop=b.old_value::numeric 
+	AND (a.units_prop = b.old_value::numeric 
 		OR (a.units_prop IS NULL 
 		AND b.old_value IS NULL))
 	AND a.job_number NOT IN (
@@ -188,8 +193,11 @@ WITH CORR_target as (
 		WHERE field = 'units_prop_res')
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/units_prop/',
-	x_reason = x_reason||'/units_prop:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'units_prop'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'units_prop', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -201,13 +209,13 @@ AND b.field = 'units_prop'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/units_prop/');
+	WHERE 'units_prop'=any(x_dcpedited));
 
 /*
 ASSIGN units_net
 */
 DROP TABLE IF EXISTS UNITS_devdb;
-SELECT 
+SELECT
 	*,
 	(CASE
 		WHEN job_type = 'Demolition' 

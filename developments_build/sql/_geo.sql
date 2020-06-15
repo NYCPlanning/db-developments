@@ -232,7 +232,8 @@ AND (b.distance < 10 OR a.geom IS NULL);
 
 WITH CORR_target as (
     SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
     AND a.job_number in (
@@ -241,7 +242,10 @@ WITH CORR_target as (
         WHERE x_geomsource = 'Lat/Long DCP')
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/geom/',
-	x_reason = x_reason||'/geom:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'geom'),
+	x_reason = array_append(x_reason, json_build_object(
+		'geom', 'x_mixeduse', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;

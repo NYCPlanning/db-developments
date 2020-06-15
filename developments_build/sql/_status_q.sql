@@ -45,8 +45,7 @@ SELECT
     -- year_permit
     extract(year from b.status_q)::text as year_permit,
     -- quarter_permit
-    extract(year from b.status_q)::text||'Q'
-        ||EXTRACT(QUARTER FROM b.status_q)::text as quarter_permit,
+    year_quater(b.status_q) as quarter_permit,
     -- year_complete
     (CASE WHEN job_type = 'Demolition'
         THEN extract(year from b.status_q)::text
@@ -54,8 +53,7 @@ SELECT
     END) as _year_complete,
     -- quarter_complete
     (CASE WHEN job_type = 'Demolition'
-        THEN extract(year from b.status_q)::text||'Q'
-            ||EXTRACT(QUARTER FROM b.status_q)::text
+        THEN year_quater(b.status_q)
         ELSE NULL
     END) as _quarter_complete
 INTO STATUS_Q_devdb
