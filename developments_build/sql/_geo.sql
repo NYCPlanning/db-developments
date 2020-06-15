@@ -89,8 +89,13 @@ DRAFT as (
         b.geo_censustract2010,
         b.geo_csd,
         b.geo_policeprct,
+        b.geo_puma,
+        b.geo_firedivision,
+        b.geo_firebattalion,
+        b.geo_firecompany,
         b.latitude::double precision as geo_latitude,
-        b.longitude::double precision as geo_longitude
+        b.longitude::double precision as geo_longitude,
+        b.mode
 	FROM _INIT_devdb a
 	LEFT JOIN _GEO_devdb b
 	ON a.uid = b.uid::integer

@@ -128,7 +128,7 @@ CREATE OR REPLACE FUNCTION get_nta(
     RETURNS varchar AS $$
       SELECT b.ntacode::varchar
       FROM dcp_ntaboundaries b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_cd(
@@ -149,6 +149,60 @@ CREATE OR REPLACE FUNCTION get_cd(
       WHERE ST_Within(_geom, b.geom)
   $$ LANGUAGE sql;
 
+CREATE OR REPLACE FUNCTION get_policeprct(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.precinct::varchar
+      FROM dcp_policeprecincts b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_schooldist(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.schooldist::varchar
+      FROM dcp_school_districts b
+      WHERE ST_Within(_geom, b.geom)
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_firecompany(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.firecotype||lpad(b.fireconum::varchar, 3, '0')
+      FROM dcp_firecompanies b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_firebattalion(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.firebn::varchar
+      FROM dcp_firecompanies b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_firedivision(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.firediv::varchar
+      FROM dcp_firecompanies b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_puma(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.puma::varchar
+      FROM dcp_puma b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
+  
 CREATE OR REPLACE FUNCTION get_bin(
     _geom geometry
   ) 
