@@ -126,7 +126,7 @@ WITH hny AS (
         ON a.ogc_fid::text = b.uid
         WHERE a.reporting_construction_type = 'New Construction'
         AND a.project_name <> 'CONFIDENTIAL')
-        
+
 SELECT * 
 INTO HNY_geo
 FROM hny;
@@ -286,6 +286,7 @@ NOT IN (SELECT hny_id||job_number
     FROM HNY_matches);
     
 -- Output unmatched hny records for manual research
+DROP TABLE IF EXISTS HNY_no_match;
 WITH 
 unmatched AS (
     SELECT * FROM HNY_geo
@@ -320,7 +321,7 @@ WITH
 									WHERE count > 1) THEN 1
 			ELSE 0
 		END) AS one_dev_to_many_hny
-    FROM HNY_matches m)
+    FROM HNY_matches m),
 
 -- 6) ASSIGN MATCHES   
 	-- a) Extract one-to-one matches
