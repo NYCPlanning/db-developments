@@ -43,9 +43,9 @@ SELECT
     a.job_number,
     b.date_permittd,
     -- year_permit
-    extract(year from b.status_q)::text as permit_year,
+    extract(year from b.date_permittd)::text as permit_year,
     -- quarter_permit
-    year_quater(b.status_q) as permit_qrtr,
+    year_quater(b.date_permittd) as permit_qrtr,
     -- year_complete
     (CASE WHEN job_type = 'Demolition'
         THEN extract(year from b.date_permittd)::text
