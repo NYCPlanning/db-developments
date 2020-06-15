@@ -1,7 +1,8 @@
 /*
 DESCRIPTION:
 	1. Initial field mapping and prelimilary data cleaning
-	2. Apply corrections on stories_prop, bin, bbl, x_mixeduse
+	2. Apply corrections on stories_prop, bin, bbl, x_mixeduse, and date fields
+	3. QAQC check for invalid dates
 INPUTS: 
 	dob_jobapplications
 
@@ -72,46 +73,9 @@ IN PREVIOUS VERSION:
 	jobtype.sql
 	x_mixeduse.sql
 */
+
 DROP TABLE IF EXISTS _INIT_devdb;
 WITH
--- identify invalid dates
-JOBNUMBER_invalid_dates AS (
-	(SELECT jobnumber as job_number, 
-			latestactiondate as value, 
-			'date_lastupdt' as date_field
-	FROM dob_jobapplications
-	WHERE NOT is_date(latestactiondate))
-	UNION
-	(SELECT jobnumber as job_number, 
-			prefilingdate as value, 
-			'date_filed' as date_field
-	FROM dob_jobapplications
-	WHERE NOT is_date(prefilingdate))
-	UNION
-	(SELECT jobnumber as job_number, 
-			fullypaid as value, 
-			'date_statusd' as date_field
-	FROM dob_jobapplications
-	WHERE NOT is_date(fullypaid))
-	UNION
-	(SELECT jobnumber as job_number, 
-			approved as value, 
-			'date_statusp' as date_field
-	FROM dob_jobapplications
-	WHERE NOT is_date(approved))
-	UNION
-	(SELECT jobnumber as job_number, 
-			fullypermitted as value, 
-			'date_statusr' as date_field
-	FROM dob_jobapplications
-	WHERE NOT is_date(fullypermitted))
-	UNION
-	(SELECT jobnumber as job_number, 
-			signoffdate as date, 
-			'date_statusx' as date_field
-	FROM dob_jobapplications
-	WHERE NOT is_date(signoffdate))),
-
 -- identify admin jobs
 JOBNUMBER_admin_jobs as (
 	select ogc_fid
@@ -188,42 +152,12 @@ JOBNUMBER_relevant as (
 
 	-- one to one mappings
 	jobstatusdesc as _status,
-	(CASE 
-		WHEN jobnumber in (SELECT job_number 
-							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'date_lastupdt') THEN NULL
-		ELSE latestactiondate::date END) as date_lastupdt,
-
-	(CASE 
-		WHEN jobnumber in (SELECT job_number 
-							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'date_filed') THEN NULL
-		ELSE prefilingdate::date END) as date_filed,
-
-	(CASE 
-		WHEN jobnumber in (SELECT job_number 
-							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'date_statusd') THEN NULL
-		ELSE fullypaid::date END) as date_statusd,
-
-	(CASE 
-		WHEN jobnumber in (SELECT job_number 
-							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'date_statusp') THEN NULL
-		ELSE approved::date END) as date_statusp,
-
-	(CASE 
-		WHEN jobnumber in (SELECT job_number 
-							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'date_statusr') THEN NULL
-		ELSE fullypermitted::date END) as date_statusr,
-
-	(CASE 
-		WHEN jobnumber in (SELECT job_number 
-							FROM JOBNUMBER_invalid_dates 
-							WHERE date_field = 'date_statusx') THEN NULL
-		ELSE signoffdate::date END) as date_statusx,
-
+	latestactiondate as date_lastupdt,
+	prefilingdate as date_filed,
+	fullypaid as date_statusd,
+	approved as date_statusp,
+	fullypermitted as date_statusr,
+	signoffdate as date_statusx,
 	zoningdist1 as ZoningDist1,
 	zoningdist2 as ZoningDist2,
 	zoningdist3 as ZoningDist3,
@@ -299,6 +233,12 @@ CORRECTIONS:
 	x_mixeduse
 	bin
 	bbl
+	date_lastupdt
+	date_filed
+	date_statusd
+	date_statusp
+	date_statusr
+	date_statusx
 */
 -- stories_prop
 WITH CORR_target as (
@@ -399,3 +339,230 @@ AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
 	WHERE x_dcpedited ~* '/bin/');
+
+-- date_lastupdt
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'date_lastupdt'
+	AND (a.date_lastupdt::text = b.old_value::text
+		OR (a.date_lastupdt IS NULL
+			AND b.old_value IS NULL))
+	AND is_date(b.new_value)
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/date_lastupdt/',
+	x_reason = x_reason||'/date_lastupdt:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET date_lastupdt = b.new_value
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/date_lastupdt/');
+
+-- date_filed
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'date_filed'
+	AND (a.date_filed::text = b.old_value::text
+		OR (a.date_filed IS NULL
+			AND b.old_value IS NULL))
+	AND is_date(b.new_value)
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/date_filed/',
+	x_reason = x_reason||'/date_filed:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET date_filed = b.new_value
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/date_filed/');
+
+-- date_statusd
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'date_statusd'
+	AND (a.date_statusd::text = b.old_value::text
+		OR (a.date_statusd IS NULL 
+			AND b.old_value IS NULL))
+	AND is_date(b.new_value)
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/date_statusd/',
+	x_reason = x_reason||'/date_statusd:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET date_statusd = b.new_value
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/date_statusd/');
+
+-- date_statusp
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'date_statusp'
+	AND (a.date_statusp::text = b.old_value::text
+		OR (a.date_statusp IS NULL
+			AND b.old_value IS NULL))
+	AND is_date(b.new_value)
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/date_statusp/',
+	x_reason = x_reason||'/date_statusp:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET date_statusp = b.new_value
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/date_statusp/');
+
+-- date_statusr
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'date_statusr'
+	AND (a.date_statusr::text = b.old_value::text
+		OR (a.date_statusr IS NULL
+			AND b.old_value IS NULL))
+	AND is_date(b.new_value)
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/date_statusr/',
+	x_reason = x_reason||'/date_statusr:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET date_statusr = b.new_value
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/date_statusr/');
+
+-- date_statusx
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason
+	FROM _INIT_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'date_statusx'
+	AND (a.date_statusx::text = b.old_value::text
+		OR (a.date_statusx IS NULL
+			AND b.old_value IS NULL))
+	AND is_date(b.new_value)
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = x_dcpedited||'/date_statusx/',
+	x_reason = x_reason||'/date_statusx:'||b.reason
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _INIT_devdb a
+SET date_statusx = b.new_value
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE x_dcpedited ~* '/date_statusx/');
+
+/** QAQC
+	invalid_date_lastupdt
+	invalid_date_filed
+	invalid_date_statusd
+	invalid_date_statusp
+	invalid_date_statusr
+	invalid_date_statusx
+**/
+
+
+DROP TABLE IF EXISTS _QAQC_devdb;
+WITH
+-- identify invalid dates in input data
+JOBNUMBER_invalid_dates AS (
+	SELECT job_number,
+		 (CASE WHEN is_date(date_lastupdt) 
+		 		OR date_lastupdt IS NULL THEN 0
+		 	ELSE 1 END) as invalid_date_lastupdt,
+		 (CASE WHEN is_date(date_filed) 
+		 		OR date_filed IS NULL THEN 0
+		 	ELSE 1 END) as invalid_date_filed,
+		 (CASE WHEN is_date(date_statusd) 
+		 		OR date_statusd IS NULL THEN 0
+		 	ELSE 1 END) as invalid_date_statusd,
+		 (CASE WHEN is_date(date_statusp) 
+		 		OR date_statusp IS NULL THEN 0
+		 	ELSE 1 END) as invalid_date_statusp,
+		 (CASE WHEN is_date(date_statusr)
+		 		OR date_statusr IS NULL THEN 0
+		 	ELSE 1 END) as invalid_date_statusr,
+		 (CASE WHEN is_date(date_statusx)
+		 		OR date_statusx IS NULL THEN 0
+		 	ELSE 1 END) as invalid_date_statusx
+		FROM _INIT_devdb )
+SELECT *
+INTO _QAQC_devdb
+FROM JOBNUMBER_invalid_dates;
+
+-- Format dates in _INIT_devdb where valid
+UPDATE _INIT_devdb
+SET date_lastupdt = CASE WHEN job_number in (SELECT job_number 
+							FROM _QAQC_devdb 
+							WHERE invalid_date_lastupdt = 1) THEN NULL
+					ELSE date_lastupdt::date END),
+	date_filed = CASE WHEN job_number in (SELECT job_number 
+							FROM _QAQC_devdb 
+							WHERE invalid_date_filed = 1) THEN NULL
+					ELSE date_filed::date END),
+	date_statusd = CASE WHEN job_number in (SELECT job_number 
+							FROM _QAQC_devdb 
+							WHERE invalid_date_statusd = 1) THEN NULL
+					ELSE date_statusd::date END),
+	date_statusp = CASE WHEN job_number in (SELECT job_number 
+							FROM _QAQC_devdb 
+							WHERE invalid_date_statusp = 1) THEN NULL
+					ELSE date_statusp::date END),
+	date_statusr = CASE WHEN job_number in (SELECT job_number 
+							FROM _QAQC_devdb 
+							WHERE invalid_date_statusr = 1) THEN NULL
+					ELSE date_statusr::date END),
+	date_statusx = CASE WHEN job_number in (SELECT job_number 
+							FROM _QAQC_devdb 
+							WHERE invalid_date_statusx = 1) THEN NULL
+					ELSE date_statusx::date END);
