@@ -20,6 +20,15 @@ CREATE OR REPLACE FUNCTION status_translate(
     where dob_status = _status
 $$ LANGUAGE sql;
 
+CREATE OR REPLACE FUNCTION nta_translate(
+	_nta varchar
+) 
+  RETURNS varchar AS $$
+  	select ntaname 
+    from dcp_ntaboundaries 
+    where ntacode = _nta
+$$ LANGUAGE sql;
+
 CREATE OR REPLACE FUNCTION ownership_translate(
 	_cityowned varchar,
   _ownertype varchar,
