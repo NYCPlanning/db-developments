@@ -103,6 +103,12 @@ SELECT
         THEN b.geo_ntacode2010 
     ELSE a.geo_ntacode2010 END) as geo_ntacode2010,
 
+    (CASE WHEN a.geo_ntacode2010 IS NULL 
+		OR a.geo_ntacode2010 = ''
+        OR a.mode = 'tpad'
+        THEN nta_translate(b.geo_ntacode2010)
+    ELSE nta_translate(a.geo_ntacode2010) END) as geo_ntaname2010,
+
     -- geo_censusblock2010
     (CASE WHEN a.geo_censusblock2010 IS NULL 
 		OR a.geo_censusblock2010 = '' 
