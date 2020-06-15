@@ -74,7 +74,8 @@ STATUS_translate as (
                 THEN '4. Partial Complete'
 
             WHEN a.job_type = 'Demolition' 
-                AND b.status IN ('5. Complete','3. Permited') 
+                AND status_translate(a._status)
+                    IN ('5. Complete','3. Permited') 
                 THEN '5. Complete'
 
             WHEN a.x_withdrawal IN ('W', 'C')
@@ -86,11 +87,9 @@ STATUS_translate as (
             WHEN date_permittd IS NOT NULL
                 THEN '3. Permited'
 
-            ELSE b.status 
+            ELSE status_translate(a._status)
         END) as status
     FROM _MID_devdb a
-    LEFT JOIN status_lookup b
-    ON a._status = b.dob_status
 ),
 DRAFT_STATUS_devdb as (
     SELECT
@@ -187,7 +186,8 @@ CORRECTIONS
 -- units_complete
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+        b.edited_date
 	FROM STATUS_devdb a, housing_input_research b	
 	WHERE a.job_number=b.job_number
     AND b.field = 'units_complete'
@@ -196,8 +196,11 @@ WITH CORR_target as (
             AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/units_complete/',
-	x_reason = x_reason||'/units_complete:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'units_complete'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'units_complete', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -209,12 +212,13 @@ AND b.field = 'units_complete'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/units_complete/');
+	WHERE 'units_complete'=any(x_dcpedited));
         
 -- units_incomplete
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+        b.edited_date
 	FROM STATUS_devdb a, housing_input_research b	
 	WHERE a.job_number=b.job_number
     AND b.field = 'units_incomplete'
@@ -223,8 +227,11 @@ WITH CORR_target as (
             AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/units_complete/',
-	x_reason = x_reason||'/units_complete:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited,'units_incomplete'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'units_incomplete', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -236,12 +243,13 @@ AND b.field = 'units_incomplete'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/units_incomplete/');
+	WHERE 'units_incomplete'=any(x_dcpedited));
 
 -- x_inactive
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+        b.edited_date
 	FROM STATUS_devdb a, housing_input_research b	
 	WHERE a.job_number=b.job_number
     AND b.field = 'x_inactive'
@@ -251,8 +259,11 @@ WITH CORR_target as (
             OR b.old_value = 'false')))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = x_dcpedited||'/x_inactive/',
-	x_reason = x_reason||'/x_inactive:'||b.reason
+SET x_dcpedited = array_append(x_dcpedited, 'x_inactive'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'x_inactive', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -264,4 +275,4 @@ AND b.field = 'x_inactive'
 AND a.job_number in (
 	SELECT DISTINCT job_number
 	FROM CORR_devdb
-	WHERE x_dcpedited ~* '/x_inactive/');
+	WHERE 'x_inactive'=any(x_dcpedited));

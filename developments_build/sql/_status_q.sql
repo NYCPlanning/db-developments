@@ -42,20 +42,18 @@ STATUS_Q_create as (
 SELECT 
     a.job_number,
     b.date_permittd,
-    -- permit_year
+    -- year_permit
     extract(year from b.date_permittd)::text as permit_year,
-    -- permit_qrtr
-    extract(year from b.date_permittd)::text||'Q'
-        ||EXTRACT(QUARTER FROM b.date_permittd)::text as permit_qrtr,
-    -- complete_year
+    -- quarter_permit
+    year_quater(b.date_permittd) as permit_qrtr,
+    -- year_complete
     (CASE WHEN job_type = 'Demolition'
         THEN extract(year from b.date_permittd)::text
         ELSE NULL
     END) as _complete_year,
     -- complete_qrtr
     (CASE WHEN job_type = 'Demolition'
-        THEN extract(year from b.date_permittd)::text||'Q'
-            ||EXTRACT(QUARTER FROM b.date_permittd)::text
+        THEN year_quater(b.date_permittd)
         ELSE NULL
     END) as _complete_qrtr
 INTO STATUS_Q_devdb
