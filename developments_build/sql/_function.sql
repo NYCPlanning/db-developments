@@ -229,3 +229,67 @@ CREATE OR REPLACE FUNCTION get_base_bbl(
       FROM doitt_buildingfootprints b
       WHERE ST_Within(_geom, b.geom)
   $$ LANGUAGE sql;
+
+
+CREATE OR REPLACE FUNCTION flag_nonresid(
+    _resid_flag varchar,
+    _job_description varchar,
+    _occ_init varchar,
+    _occ_prop varchar
+  ) 
+    RETURNS varchar AS $$     
+    SELECT
+    (CASE 
+        WHEN _resid_flag IS NULL
+          OR _job_description ~* concat(
+            'commer|retail|office|mixed|use|mixed-use|mixeduse|store|shop','|',
+            'cultur|fitness|gym|service|eating|drink|grocery|market|restau','|',
+            'food|cafeteria|cabaret|leisure|entertainment|industrial|manufact','|',
+            'warehouse|wholesale|fabric|utility|auto|storage|factor|barn|sound','|',
+            'stage|communit|facility|theater|theatre|club|stadium|repair|assembl','|',
+            'pavilion|arcade|educat|elementary|school|academy|training|library','|',
+            'museum|institut|daycare|day|care|worship|church|synago|religio|hotel','|',
+            'motel|transient|health|hospital|classro|clinic|medical|doctor|ambula','|',
+            'treatment|diagnos|station|dental|public|tech|science|studies|bank','|',
+            'exercise|dancing|dance|gallery|bowling|mercant|veterina|beauty|salon'
+          ) OR concat(
+                coalesce(_occ_init, ''), ' ', 
+                coalesce(_occ_prop, '')
+              ) ~* concat(
+            'Assembly: Eating & Drinking (A-2)','|', 
+            'Assembly: Eating & Drinking (F-4)','|', 
+            'Assembly: Indoor Sports (A-4)','|', 
+            'Assembly: Museums (F-3)','|', 
+            'Assembly: Other (A-3)','|', 
+            'Assembly: Other (PUB)','|', 
+            'Assembly: Outdoors (A-5)','|', 
+            'Assembly: Theaters, Churches(A-1)','|', 
+            'Assembly: Theaters, Churches (F-1A)','|', 
+            'Assembly: Theaters, Churches (F-1B)','|', 
+            'Commercial: Not Specified (COM)','|', 
+            'Commercial: Offices (B)','|', 
+            'Commercial: Retail (C)','|', 
+            'Commercial: Retail (M)','|', 
+            'Educational (G)','|', 
+            'Industrial: High Hazard (A)','|', 
+            'Industrial: High Hazard (H-3)','|', 
+            'Industrial: High Hazard (H-4)','|', 
+            'Industrial: High Hazard (H-5)','|', 
+            'Industrial: Low Hazard (D-2)','|', 
+            'Industrial: Moderate Hazard (D-1)','|', 
+            'Industrial: Moderate Hazard (F-1)','|', 
+            'Institutional: Day Care (I-4)','|', 
+            'Miscellaneous (K)','|', 
+            'Miscellaneous (U)','|', 
+            'Storage: Low Hazard (B-2)','|', 
+            'Storage: Low Hazard (S-2)','|', 
+            'Storage: Moderate Hazard (B-1)','|', 
+            'Storage: Moderate Hazard (S-1)','|', 
+            'Unknown (E)','|', 
+            'Unknown (F-2)','|', 
+            'Unknown (H-1)','|', 
+            'Unknown (H-2)'
+          ) THEN 'Non-Residential'
+        ELSE NULL
+    END)
+  $$ LANGUAGE sql;

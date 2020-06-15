@@ -33,7 +33,8 @@ IN PREVIOUS VERSION:
 
 DROP TABLE IF EXISTS _OCC_devdb;
 SELECT 
-	job_number, 
+	job_number,
+	job_description, 
 	occ_translate(_occ_init, job_type) as occ_init,
 	occ_translate(_occ_prop, job_type)  as occ_prop
 INTO _OCC_devdb
@@ -110,7 +111,7 @@ AND a.job_number in (
 Assign occ_category after corrections on 
 occ_init and occ_prop
 */
-DROP TABLE IF EXISTS OCC_devdb;
+DROP TABLE IF EXISTS __OCC_devdb;
 SELECT 
 	*,
 	(CASE 
@@ -119,9 +120,9 @@ SELECT
 			OR upper(occ_init) LIKE '%ASSISTED%LIVING%' 
 			OR upper(occ_prop) LIKE '%ASSISTED%LIVING%'
 			THEN 'Residential'
-		ELSE 'Other'
+		ELSE NULL
 	END) as occ_category
-INTO OCC_devdb
+INTO __OCC_devdb
 FROM _OCC_devdb;
 
 /*
@@ -134,7 +135,7 @@ WITH CORR_target as (
 	SELECT a.job_number, 
 		COALESCE(b.reason, 'NA') as reason,
 		b.edited_date
-	FROM OCC_devdb a, housing_input_research b	
+	FROM __OCC_devdb a, housing_input_research b	
 	WHERE a.job_number=b.job_number
 	AND b.field = 'occ_category'
 	AND (a.occ_category=b.old_value 
@@ -150,8 +151,8 @@ SET x_dcpedited = array_append(x_dcpedited,'occ_category'),
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
-UPDATE OCC_devdb a
-SET occ_category = TRIM(b.new_value)
+UPDATE __OCC_devdb a
+SET occ_category = NULLIF(TRIM(b.new_value), 'Other')
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'occ_category'
@@ -159,3 +160,20 @@ AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
 	WHERE 'occ_category'=any(x_dcpedited));
+
+-- Assign Nonresid flag
+DROP TABLE IF EXISTS OCC_devdb;
+SELECT
+	job_number,
+	occ_init,
+	occ_prop, 
+	occ_category as resid_flag,
+	flag_nonresid(
+		occ_category,
+		job_description,
+		occ_init,
+		occ_prop
+	) as nonresid
+INTO OCC_devdb
+FROM __OCC_devdb;
+DROP TABLE IF EXISTS __OCC_devdb;
