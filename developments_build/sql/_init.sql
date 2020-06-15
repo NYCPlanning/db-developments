@@ -374,9 +374,6 @@ WITH CORR_target as (
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_filed'
-	AND (a.date_filed::text = b.old_value::text
-		OR (a.date_filed IS NULL
-			AND b.old_value IS NULL))
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
@@ -401,9 +398,6 @@ WITH CORR_target as (
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_statusd'
-	AND (a.date_statusd::text = b.old_value::text
-		OR (a.date_statusd IS NULL 
-			AND b.old_value IS NULL))
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
@@ -428,9 +422,6 @@ WITH CORR_target as (
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_statusp'
-	AND (a.date_statusp::text = b.old_value::text
-		OR (a.date_statusp IS NULL
-			AND b.old_value IS NULL))
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
@@ -455,9 +446,6 @@ WITH CORR_target as (
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_statusr'
-	AND (a.date_statusr::text = b.old_value::text
-		OR (a.date_statusr IS NULL
-			AND b.old_value IS NULL))
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
@@ -482,9 +470,6 @@ WITH CORR_target as (
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_statusx'
-	AND (a.date_statusx::text = b.old_value::text
-		OR (a.date_statusx IS NULL
-			AND b.old_value IS NULL))
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
