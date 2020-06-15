@@ -78,7 +78,7 @@ LEFT JOIN _INIT_devdb b
 ON a.uid = b.uid;
 
 -- Format dates in INIT_devdb where valid
-UPDATE _INIT_devdb
+UPDATE INIT_devdb
 SET date_lastupdt = CASE WHEN job_number in (SELECT job_number 
 							FROM _QAQC_devdb 
 							WHERE invalid_date_lastupdt = 1) THEN NULL
