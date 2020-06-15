@@ -13,8 +13,8 @@ INPUTS:
     STATUS_devdb (
         * job_number,
         status character varying,
-        year_complete text,
-        quarter_complete text,
+        complete_year text,
+        complete_qrtr text,
         units_complete numeric,
         units_incomplete numeric,
         x_inactive text,
@@ -27,8 +27,8 @@ OUTPUTS:
     MID_STATUS_devdb (
         * job_number,
         status character varying,
-        year_complete text,
-        quarter_complete text,
+        complete_year text,
+        complete_qrtr text,
         units_complete numeric,
         units_incomplete numeric,
         x_inactive text,
@@ -43,8 +43,8 @@ JOIN_STATUS_devdb as (
     SELECT
         a.*,
         b.status,
-        b.year_complete,
-        b.quarter_complete,
+        b.complete_year,
+        b.complete_qrtr,
         b.units_complete,
         b.units_incomplete,
         b.x_inactive
