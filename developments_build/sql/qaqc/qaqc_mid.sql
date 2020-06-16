@@ -1,11 +1,17 @@
 /** QAQC
-    units_init_null
-	units_init_null
-    dup_equal_units
-    dup_diff_units
-    b_nonres_with_units
-	units_res_accessory
-	b_likely_occ_desc
+    UNITS:
+        units_init_null
+	    units_init_null
+        dup_equal_units
+        dup_diff_units
+    OCC:
+        b_nonres_with_units
+	    units_res_accessory
+	    b_likely_occ_desc
+    CO:
+        units_co_prop_mismatch TODO
+    STATUS:
+        z_incomp_tract_home TODO
 **/
 
 DROP TABLE IF EXISTS MID_qaqc;
