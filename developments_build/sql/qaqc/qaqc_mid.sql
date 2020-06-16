@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS MID_qaqc;
 WITH
 JOBNUMBER_null_init AS(
     SELECT job_number
-    FROM UNITS_devdb
+    FROM MID_devdb
     WHERE
     job_type IN ('Demolition' , 'Alteration') 
     AND resid_flag = 'Residential' 
@@ -26,7 +26,7 @@ JOBNUMBER_null_init AS(
 
 JOBNUMBER_null_prop AS(
     SELECT job_number
-    FROM UNITS_devdb
+    FROM MID_devdb
     WHERE
     job_type IN ('New Building' , 'Alteration' 
     AND resid_flag = 'Residential' 
@@ -121,4 +121,4 @@ SELECT a.*,
 	END) as b_likely_occ_desc
     
 INTO MID_qaqc
-FROM STATUS_qaqc a;
+FROM UNITS_qaqc a;
