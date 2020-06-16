@@ -153,7 +153,7 @@ SELECT
     address,
     occ_proposed,
     (CASE 
-        WHEN co_earliest_effectivedate IS NOT NULL 
+        WHEN date_complete IS NOT NULL 
             THEN NULL
         WHEN (CURRENT_DATE - date_lastupdt)/365 >= 2 
             AND job_status = '2. Plan Examination'
@@ -171,7 +171,7 @@ WITH completejobs AS (
 	SELECT address, job_type, date_lastupdt, job_status
 	FROM STATUS_devdb
 	WHERE classa_net::numeric > 0
-	AND status = '5. Complete')
+	AND job_status = '5. Complete')
 UPDATE STATUS_devdb a 
 SET job_inactive = 'Inactive'
 FROM completejobs b
