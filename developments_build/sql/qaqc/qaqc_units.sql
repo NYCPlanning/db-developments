@@ -1,6 +1,4 @@
 /** QAQC
-	units_init_null
-	units_init_null
     b_large_alt_reduction
     outlier_nb_500plus
     outlier_demo_20plus
@@ -10,21 +8,6 @@
 
 DROP TABLE IF EXISTS UNITS_qaqc;
 WITH 
-JOBNUMBER_null_init AS(
-    SELECT job_number
-    FROM UNITS_devdb
-    WHERE
-    job_type IN ('Demolition' , 'Alteration') 
-    AND resid_flag = 'Residential' 
-    AND units_init IS NULL),
-
-JOBNUMBER_null_prop AS(
-    SELECT job_number
-    FROM UNITS_devdb
-    WHERE
-    job_type IN ('New Building' , 'Alteration' 
-    AND resid_flag = 'Residential' 
-    AND units_prop IS NULL),   
 
 JOBNUMBER_large_alt AS(
     SELECT job_number
@@ -69,14 +52,6 @@ JOBNUMBER_top_alt_dec AS(
 )
 
 SELECT a.*,
-    (CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_init) THEN 1
-	 	ELSE 0
-	END) as units_init_null,
-    (CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_prop) THEN 1
-	 	ELSE 0
-	END) as units_init_null,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_large_alt) THEN 1
 	 	ELSE 0
