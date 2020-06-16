@@ -11,17 +11,17 @@ OUTPUTS:
 		uid text,
 		job_number text,
 		job_type text,
-		job_description text,
-		_occ_init text,
-		_occ_prop text,
+		job_desc text,
+		_occ_initial text,
+		_occ_proposed text,
 		stories_init numeric,
 		stories_prop text,
 		zoningsft_init numeric,
 		zoningsft_prop numeric,
-		_units_init numeric,
-		_units_prop numeric,
+		_classa_init numeric,
+		_classa_prop numeric,
 		x_mixeduse text,
-		status text,
+		job_status text,
 		date_lastupdt text,
 		date_filed text,
 		date_statusd text,
@@ -55,7 +55,7 @@ OUTPUTS:
 		edesignation text,
 		curbcut text,
 		tracthomes text,
-		address_house text,
+		address_numbr text,
 		address_street text,
 		address text,
 		bin text,
@@ -109,12 +109,12 @@ JOBNUMBER_relevant as (
 	END ) as job_type,
 
 	(CASE WHEN jobdescription !~ '[a-zA-Z]'
-	THEN NULL ELSE jobdescription END) as job_description,
+	THEN NULL ELSE jobdescription END) as job_desc,
 
     -- removing '.' for existingoccupancy 
     -- and proposedoccupancy (3 records affected)
-	replace(existingoccupancy, '.', '') as _occ_init, 
-    replace(proposedoccupancy, '.', '') as _occ_prop,
+	replace(existingoccupancy, '.', '') as _occ_initial, 
+    replace(proposedoccupancy, '.', '') as _occ_proposed,
     -- set 0 -> null for jobtype = A1 or DM
 	(CASE WHEN jobtype ~* 'A1|DM' 
         THEN nullif(existingnumstories, '0')::numeric
@@ -135,13 +135,13 @@ JOBNUMBER_relevant as (
 		ELSE proposedzoningsqft::numeric 
     END) as zoningsft_prop,
 
-	existingdwellingunits::numeric as _units_init,
+	existingdwellingunits::numeric as _classa_init,
 
     -- if proposeddwellingunits is not a number then null
 	(CASE WHEN proposeddwellingunits ~ '[^0-9]' 
         THEN NULL
 		ELSE proposeddwellingunits::numeric
-    END) as _units_prop,
+    END) as _classa_prop,
 
 	-- mixuse flag
 	(CASE WHEN jobdescription ~* 'MIX'
@@ -152,7 +152,7 @@ JOBNUMBER_relevant as (
 	END) as x_mixeduse,
 
 	-- one to one mappings
-	jobstatusdesc as _status,
+	jobstatusdesc as _job_status,
 	latestactiondate as date_lastupdt,
 	prefilingdate as date_filed,
 	fullypaid as date_statusd,
@@ -210,7 +210,7 @@ JOBNUMBER_relevant as (
 	cluster as TractHomes,
 	regexp_replace(
 		trim(housenumber), 
-		'(^|)0*', '', '') as address_house,
+		'(^|)0*', '', '') as address_numbr,
 	trim(streetname) as address_street,
 	regexp_replace(
 		trim(housenumber), 

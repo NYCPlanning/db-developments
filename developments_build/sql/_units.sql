@@ -1,35 +1,35 @@
 /*
 DESCRIPTION:
     This script assigns units fields for devdb
-	1. Assign units_init and units_prop
-	2. Apply corrections to units_init and units_prop
-	3. Assign units_net
+	1. Assign classa_init and classa_prop
+	2. Apply corrections to classa_init and classa_prop
+	3. Assign classa_net
 
 INPUTS: 
 	INIT_devdb (
 		job_number text,
 		job_type text,
-		_units_init numeric,
-		_units_prop numeric,
+		_classa_init numeric,
+		_classa_prop numeric,
 		x_mixeduse text
 	)
 
 	OCC_devdb (
 		job_number text,
-		occ_init text,
-		occ_prop text
+		occ_initial text,
+		occ_proposed text
 	)
 
 OUTPUTS:
 	UNITS_devdb (
 		job_number text, 
-		units_init numeric,
-		units_prop numeric,
+		classa_init numeric,
+		classa_prop numeric,
 		hotel_init numeric,
 		hotel_prop numeric,
 		otherb_init numeric,
 		otherb_prop numeric,
-		units_net numeric
+		classa_net numeric
 	)
 
 IN PREVIOUS VERSION: 
@@ -43,10 +43,10 @@ INIT_OCC_devdb as (
 	SELECT 
 		a.job_number,
 		a.job_type,
-		b.occ_prop,
-		b.occ_init,
-		a._units_init,
-		a._units_prop,
+		b.occ_proposed,
+		b.occ_initial,
+		a._classa_init,
+		a._classa_prop,
 		a.x_mixeduse
 	FROM INIT_devdb a
 	LEFT JOIN OCC_devdb b
@@ -104,24 +104,24 @@ UNITS_init_prop as (
 		job_type,
 		(CASE 
 			WHEN job_type='New Building' 
-				then nullif(_units_init, 0) 
+				then nullif(_classa_init, 0) 
 			WHEN job_type='Alteration' 
-				AND occ_init ~* 'hotel'
-				AND occ_prop ~* 'Residential|Assisted'
+				AND occ_initial ~* 'hotel'
+				AND occ_proposed ~* 'Residential|Assisted'
 				AND x_mixeduse is null
 				then 0
-			ELSE _units_init
-		END) as units_init, 
+			ELSE _classa_init
+		END) as classa_init, 
 		(CASE
 			WHEN job_type='Demolition' 
-				then nullif(_units_prop, 0) 
+				then nullif(_classa_prop, 0) 
 			WHEN job_type='Alteration' 
-				AND occ_init ~* 'hotel'
-				AND occ_prop ~* 'Residential|Assisted'
+				AND occ_initial ~* 'hotel'
+				AND occ_proposed ~* 'Residential|Assisted'
 				AND x_mixeduse is null
 				then 0
-			ELSE _units_prop
-		END) as units_prop,
+			ELSE _classa_prop
+		END) as classa_prop,
 		hotel_init,
 		hotel_prop,
 		otherb_init,
@@ -131,8 +131,8 @@ UNITS_init_prop as (
 
 SELECT 
 	distinct job_number,
-	units_init,
-	units_prop,
+	classa_init,
+	classa_prop,
 	hotel_init,
 	hotel_prop,
 	otherb_init,
@@ -145,47 +145,47 @@ FROM UNITS_init_prop;
 CORRECTIONS
 
 */
--- units_init
+-- classa_init
 WITH CORR_target as (
 	SELECT a.job_number, 
 		COALESCE(b.reason, 'NA') as reason,
 		b.edited_date
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
-	AND b.field = 'units_init'
-	AND (a.units_init=b.old_value::numeric 
-		OR (a.units_init IS NULL 
+	AND b.field = 'classa_init'
+	AND (a.classa_init=b.old_value::numeric 
+		OR (a.classa_init IS NULL 
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'units_init'),
+SET x_dcpedited = array_append(x_dcpedited, 'classa_init'),
 	x_reason = array_append(x_reason, json_build_object(
-		'field', 'units_init', 'reason', b.reason, 
+		'field', 'classa_init', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE _UNITS_devdb a
-SET units_init = b.new_value::numeric
+SET classa_init = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
-AND b.field = 'units_init'
+AND b.field = 'classa_init'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'units_init'=any(x_dcpedited));
+	WHERE 'classa_init'=any(x_dcpedited));
 
--- units_prop
+-- classa_prop
 WITH CORR_target as (
 	SELECT a.job_number, 
 		COALESCE(b.reason, 'NA') as reason,
 		b.edited_date
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number = b.job_number
-	AND b.field = 'units_prop'
-	AND (a.units_prop = b.old_value::numeric 
-		OR (a.units_prop IS NULL 
+	AND b.field = 'classa_prop'
+	AND (a.classa_prop = b.old_value::numeric 
+		OR (a.classa_prop IS NULL 
 		AND b.old_value IS NULL))
 	AND a.job_number NOT IN (
 		SELECT job_number 
@@ -193,40 +193,40 @@ WITH CORR_target as (
 		WHERE field = 'units_prop_res')
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'units_prop'),
+SET x_dcpedited = array_append(x_dcpedited, 'classa_prop'),
 	x_reason = array_append(x_reason, json_build_object(
-		'field', 'units_prop', 'reason', b.reason, 
+		'field', 'classa_prop', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE _UNITS_devdb a
-SET units_prop = b.new_value::numeric
+SET classa_prop = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
-AND b.field = 'units_prop'
+AND b.field = 'classa_prop'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'units_prop'=any(x_dcpedited));
+	WHERE 'classa_prop'=any(x_dcpedited));
 
 /*
-ASSIGN units_net
+ASSIGN classa_net
 */
 DROP TABLE IF EXISTS UNITS_devdb;
 SELECT
 	*,
 	(CASE
 		WHEN job_type = 'Demolition' 
-			THEN units_init * -1
+			THEN classa_init * -1
 		WHEN job_type = 'New Building' 
-			THEN units_prop
+			THEN classa_prop
 		WHEN job_type = 'Alteration' 
-			AND units_init IS NOT NULL 
-			AND units_prop IS NOT NULL 
-			THEN units_prop - units_init
+			AND classa_init IS NOT NULL 
+			AND classa_prop IS NOT NULL 
+			THEN classa_prop - classa_init
 		ELSE NULL
-	END) as units_net
+	END) as classa_net
 INTO UNITS_devdb
 FROM _UNITS_devdb;

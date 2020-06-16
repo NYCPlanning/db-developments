@@ -1,6 +1,6 @@
 /*
 DESCRIPTION:
-    This script is created to assign/recode the field "status" 
+    This script is created to assign/recode the field "job_status" 
     
 INPUTS:
     _MID_devdb (
@@ -9,16 +9,16 @@ INPUTS:
         date_lastupdt date,
         date_statusp date,
         date_permittd date,
-        _status text,
+        _job_status text,
         _complete_year text,
         _complete_qrtr text,
         co_latest_units numeric,
         co_latest_certtype text,
-        units_complete numeric,
-        units_incomplete numeric,
-        units_net numeric,
+        classa_complt numeric,
+        classa_incmpl numeric,
+        classa_net numeric,
         address text,
-        occ_prop text
+        occ_proposed text
     )
 
     housing_input_lookup_status (
@@ -30,16 +30,16 @@ OUTPUTS:
     STATUS_devdb (
         * job_number character varying,
         job_type character varying,
-        status character varying,
+        job_status character varying,
         date_lastupdt date,
         date_permittd date,
         complete_year text,
         complete_qrtr text,
-        units_complete numeric,
-        units_incomplete numeric,
-        units_net numeric,
+        classa_complt numeric,
+        classa_incmpl numeric,
+        classa_net numeric,
         address text,
-        occ_prop text,
+        occ_proposed text,
         x_inactive text,
         x_dcpedited text,
         x_reason text
@@ -59,22 +59,24 @@ STATUS_translate as (
         a.date_permittd,
         a._complete_year,
         a._complete_qrtr,
-        a.units_net,
+        a.classa_net,
         a.co_latest_units,
         a.date_lastupdt,
         a.address,
-        a.occ_prop,
+        a.occ_proposed,
+        a.date_complete,
+
         (CASE
             WHEN a.job_type = 'New Building'
                 AND a.co_latest_certtype = 'T- TCO'
                 AND (
-                    (a.units_complete_pct < 0.8 AND a.units_net >= 20) OR 
-                    (a.units_complete_diff >= 5 AND a.units_net BETWEEN 5 AND 19)
+                    (a.classa_complt_pct < 0.8 AND a.classa_net >= 20) OR 
+                    (a.classa_complt_diff >= 5 AND a.classa_net BETWEEN 5 AND 19)
                 )
                 THEN '4. Partial Complete'
 
             WHEN a.job_type = 'Demolition' 
-                AND status_translate(a._status)
+                AND status_translate(a._job_status)
                     IN ('5. Complete','3. Permited') 
                 THEN '5. Complete'
 
@@ -87,192 +89,195 @@ STATUS_translate as (
             WHEN date_permittd IS NOT NULL
                 THEN '3. Permited'
 
-            ELSE status_translate(a._status)
-        END) as status
+            ELSE status_translate(a._job_status)
+        END) as job_status
     FROM _MID_devdb a
 ),
 DRAFT_STATUS_devdb as (
     SELECT
         job_number,
         job_type,
-        status,
+        job_status,
         date_permittd,
         date_lastupdt::date,
-        units_net,
+        classa_net,
         address,
-        occ_prop,
+        occ_proposed,
+        date_complete,
         -- update year_compelete based on job_type and status
         (CASE
             WHEN job_type = 'Demolition'
-                OR status NOT IN ('4. Partial Complete', '5. Complete')
+                OR job_status NOT IN ('4. Partial Complete', '5. Complete')
                 THEN NULL
             ELSE _complete_year
         END) as complete_year,
 
-        -- update complete_qrtr based on job_type and status
+        -- update complete_qrtr based on job_type and job_status
         (CASE
             WHEN job_type = 'Demolition'
-                OR status NOT IN ('4. Partial Complete', '5. Complete')
+                OR job_status NOT IN ('4. Partial Complete', '5. Complete')
                 THEN NULL
             ELSE _complete_qrtr
         END) as complete_qrtr,
 
-        -- Assign units_complete based on status
+        -- Assign classa_complt based on job_status
         (CASE
-            WHEN status = '5. Complete' 
-                THEN units_net
-            WHEN status = '4. Partial Complete' 
+            WHEN job_status = '5. Complete' 
+                THEN classa_net
+            WHEN job_status = '4. Partial Complete' 
                 THEN co_latest_units
             ELSE NULL
-        END) as units_complete,
+        END) as classa_complt,
 
-        -- Assing units_incomplete
+        -- Assing classa_incmpl
         (CASE
-            WHEN status = '5. Complete' 
+            WHEN job_status = '5. Complete' 
                 THEN NULL
-            WHEN status = '4. Partial Complete'
-                THEN units_net-co_latest_units
-            ELSE units_net
-        END) units_incomplete
+            WHEN job_status = '4. Partial Complete'
+                THEN classa_net-co_latest_units
+            ELSE classa_net
+        END) classa_incmpl
     FROM STATUS_translate
 )
 SELECT
     job_number,
     job_type,
-    status,
+    job_status,
     date_lastupdt,
     date_permittd,
     complete_year,
     complete_qrtr,
-    units_complete,
-    units_incomplete,
-    units_net,
+    classa_complt,
+    classa_incmpl,
+    classa_net,
     address,
-    occ_prop,
+    occ_proposed,
     (CASE 
+        WHEN date_complete IS NOT NULL 
+            THEN NULL
         WHEN (CURRENT_DATE - date_lastupdt)/365 >= 2 
-            AND status = '2. Plan Examination'
+            AND job_status = '2. Plan Examination'
             THEN 'Inactive'
         WHEN (CURRENT_DATE - date_lastupdt)/365 >= 3 
-            AND status in ('1. Filed', '2. Plan Examination')
+            AND job_status in ('1. Filed', '2. Plan Examination')
             THEN 'Inactive'
-        WHEN status = '9. Withdrawn'
+        WHEN job_status = '9. Withdrawn'
             THEN 'Inactive'
-    END) as x_inactive
+    END) as job_inactive
 INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
 
 WITH completejobs AS (
-	SELECT address, job_type, date_lastupdt, status
+	SELECT address, job_type, date_lastupdt, job_status
 	FROM STATUS_devdb
-	WHERE units_net::numeric > 0
-	AND status = '5. Complete')
+	WHERE classa_net::numeric > 0
+	AND job_status = '5. Complete')
 UPDATE STATUS_devdb a 
-SET x_inactive = 'Inactive'
+SET job_inactive = 'Inactive'
 FROM completejobs b
 WHERE a.address = b.address
 	AND a.job_type = b.job_type
-	AND a.status <> '5. Complete'
+	AND a.job_status <> '5. Complete'
 	AND a.date_lastupdt::date < b.date_lastupdt::date
-	AND a.status <> '9. Withdrawn'
-  	AND a.occ_prop <> 'Garage/Miscellaneous';
+	AND a.job_status <> '9. Withdrawn'
+  	AND a.occ_proposed <> 'Garage/Miscellaneous';
 
 /* 
 CORRECTIONS
-    units_complete
-    units_incomplete
+    classa_complt
+    classa_incmpl
     x_inactive
 */
--- units_complete
+-- classa_complt
 WITH CORR_target as (
 	SELECT a.job_number, 
 		COALESCE(b.reason, 'NA') as reason,
         b.edited_date
 	FROM STATUS_devdb a, housing_input_research b	
 	WHERE a.job_number=b.job_number
-    AND b.field = 'units_complete'
-    AND (a.units_complete=b.old_value::numeric 
-        OR (a.units_complete IS NULL
+    AND b.field = 'classa_complt'
+    AND (a.classa_complt=b.old_value::numeric 
+        OR (a.classa_complt IS NULL
             AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'units_complete'),
+SET x_dcpedited = array_append(x_dcpedited, 'classa_complt'),
 	x_reason = array_append(x_reason, json_build_object(
-		'field', 'units_complete', 'reason', b.reason, 
+		'field', 'classa_complt', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE STATUS_devdb a
-SET units_complete = b.new_value::numeric
+SET classa_complt = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
-AND b.field = 'units_complete'
+AND b.field = 'classa_complt'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'units_complete'=any(x_dcpedited));
+	WHERE 'classa_complt'=any(x_dcpedited));
         
--- units_incomplete
+-- classa_incmpl
 WITH CORR_target as (
 	SELECT a.job_number, 
 		COALESCE(b.reason, 'NA') as reason,
         b.edited_date
 	FROM STATUS_devdb a, housing_input_research b	
 	WHERE a.job_number=b.job_number
-    AND b.field = 'units_incomplete'
-    AND (a.units_incomplete=b.old_value::numeric 
-        OR (a.units_incomplete IS NULL
+    AND b.field = 'classa_incmpl'
+    AND (a.classa_incmpl=b.old_value::numeric 
+        OR (a.classa_incmpl IS NULL
             AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited,'units_incomplete'),
+SET x_dcpedited = array_append(x_dcpedited,'classa_incmpl'),
 	x_reason = array_append(x_reason, json_build_object(
-		'field', 'units_incomplete', 'reason', b.reason, 
+		'field', 'classa_incmpl', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE STATUS_devdb a
-SET units_incomplete = b.new_value::numeric
+SET classa_incmpl = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
-AND b.field = 'units_incomplete'
+AND b.field = 'classa_incmpl'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'units_incomplete'=any(x_dcpedited));
+	WHERE 'classa_incmpl'=any(x_dcpedited));
 
--- x_inactive
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-        b.edited_date
-	FROM STATUS_devdb a, housing_input_research b	
-	WHERE a.job_number=b.job_number
-    AND b.field = 'x_inactive'
-    AND (upper(a.x_inactive)=upper(b.old_value) 
-        OR (a.x_inactive IS NULL 
-            AND (b.old_value IS NULL 
-            OR b.old_value = 'false')))
-)
-UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'x_inactive'),
-	x_reason = array_append(x_reason, json_build_object(
-		'field', 'x_inactive', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- -- x_inactive
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+--         b.edited_date
+-- 	FROM STATUS_devdb a, housing_input_research b	
+-- 	WHERE a.job_number=b.job_number
+--     AND b.field = 'x_inactive'
+--     AND (upper(a.x_inactive)=upper(b.old_value) 
+--         OR (a.x_inactive IS NULL 
+--             AND (b.old_value IS NULL 
+--             OR b.old_value = 'false')))
+-- )
+-- UPDATE CORR_devdb a
+-- SET x_dcpedited = array_append(x_dcpedited, 'x_inactive'),
+-- 	x_reason = array_append(x_reason, json_build_object(
+-- 		'field', 'x_inactive', 'reason', b.reason, 
+-- 		'edited_date', b.edited_date
+-- 	))
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
 
-UPDATE STATUS_devdb a
-SET x_inactive = trim(b.new_value)
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'x_inactive'
-AND a.job_number in (
-	SELECT DISTINCT job_number
-	FROM CORR_devdb
-	WHERE 'x_inactive'=any(x_dcpedited));
+-- UPDATE STATUS_devdb a
+-- SET x_inactive = trim(b.new_value)
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND b.field = 'x_inactive'
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number
+-- 	FROM CORR_devdb
+-- 	WHERE 'x_inactive'=any(x_dcpedited));
