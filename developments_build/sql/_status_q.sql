@@ -6,7 +6,7 @@ INPUTS:
     INIT_devdb (
         job_number,
         job_type,
-        _status,
+        _job_status,
         x_withdrawal,
         date_statusp,
         date_permittd
