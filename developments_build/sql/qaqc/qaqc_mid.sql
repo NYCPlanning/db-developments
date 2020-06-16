@@ -22,15 +22,15 @@ JOBNUMBER_null_init AS(
     WHERE
     job_type IN ('Demolition' , 'Alteration') 
     AND resid_flag = 'Residential' 
-    AND units_init IS NULL),
+    AND classa_init IS NULL),
 
 JOBNUMBER_null_prop AS(
     SELECT job_number
     FROM MID_devdb
     WHERE
-    job_type IN ('New Building' , 'Alteration' 
+    job_type IN ('New Building' , 'Alteration') 
     AND resid_flag = 'Residential' 
-    AND units_prop IS NULL),   
+    AND classa_prop IS NULL),   
 
 JOBNUMBER_dup_equal_units AS (
     SELECT a.job_number
@@ -98,7 +98,7 @@ SELECT a.*,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_prop) THEN 1
 	 	ELSE 0
-	END) as units_init_null,
+	END) as units_prop_null,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_dup_equal_units) THEN 1
 	 	ELSE 0
