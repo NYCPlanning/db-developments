@@ -69,7 +69,7 @@ DRAFT as (
         distinct
         a.uid,
         a.job_number,
-		    a.bbl,
+		a.bbl,
         a.bin,
         a.date_lastupdt,
         a.job_description,
@@ -94,8 +94,10 @@ DRAFT as (
         b.geo_firedivision,
         b.geo_firebattalion,
         b.geo_firecompany,
-        b.latitude::double precision as geo_latitude,
-        b.longitude::double precision as geo_longitude,
+        (CASE WHEN b.mode = 'tpad' then NULL 
+        ELSE b.latitude::double precision END) as geo_latitude,
+        (CASE WHEN b.mode = 'tpad' then NULL 
+        ELSE b.longitude::double precision END) as geo_longitude,
         b.mode
 	FROM _INIT_devdb a
 	LEFT JOIN _GEO_devdb b
@@ -106,20 +108,22 @@ GEOM_geosupport as (
         uid,
         job_number,
 		bbl,
-        geo_bbl,
         bin,
+        geo_bbl,
+        geo_bin,
         ST_SetSRID(ST_Point(geo_longitude,geo_latitude),4326) as geom,
         (CASE WHEN geo_longitude IS NOT NULL 
 		 THEN 'Lat/Long geosupport' END) as x_geomsource
     FROM DRAFT
 ),
-GEOM_bin_bldgfootprints as (
+GEOM_dob_bin_bldgfootprints as (
     SELECT
         a.uid,
         a.job_number,
-		    a.bbl,
+		a.bbl,
         a.bin,
         a.geo_bbl,
+        a.geo_bin,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
 		 	WHEN a.x_geomsource IS NOT NULL 
@@ -132,37 +136,31 @@ GEOM_bin_bldgfootprints as (
     LEFT JOIN doitt_buildingfootprints b
     ON a.bin::text = b.bin::text
 ),
-bbl_bldgfootprint as (
-    SELECT 
-        base_bbl::bigint::text as bbl, 
-        ST_Union(geom) as geom
-    FROM doitt_buildingfootprints
-    GROUP BY base_bbl
-),
-GEOM_bbl_bldgfootprints as (
+GEOM_geo_bin_bldgfootprints as (
 	SELECT
         a.uid,
         a.job_number,
-		    a.bbl,
+		a.bbl,
         a.bin,
         a.geo_bbl,
+        a.geo_bin,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
           WHEN a.x_geomsource IS NOT NULL 
             THEN a.x_geomsource 
           WHEN a.geom IS NULL 
 		 		AND b.geom IS NOT NULL 
-		 		THEN 'BBL DOB buildingfootprints'
+		 		THEN 'BIN DCP geosupport'
 		END) as x_geomsource
-    FROM GEOM_bin_bldgfootprints a
-    LEFT JOIN bbl_bldgfootprint b
-    ON a.bbl = b.bbl
+    FROM GEOM_dob_bin_bldgfootprints a
+    LEFT JOIN doitt_buildingfootprints b
+    ON a.geo_bin = b.bin
 ),
 GEOM_geo_bbl_mappluto as (
     SELECT
         a.uid,
         a.job_number,
-		    a.bbl,
+		a.bbl,
         a.bin,
         a.geo_bbl,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
@@ -173,7 +171,7 @@ GEOM_geo_bbl_mappluto as (
 		 		AND b.geom IS NOT NULL 
 		 		THEN 'BBL geosupport MapPLUTO'
 		END) as x_geomsource
-    FROM GEOM_bbl_bldgfootprints a
+    FROM GEOM_geo_bin_bldgfootprints a
     LEFT JOIN dcp_mappluto b
     ON a.geo_bbl = b.bbl::bigint::text
 ),
@@ -203,7 +201,7 @@ DTM as (
     FROM dof_dtm
     GROUP BY bbl
 ),
-GEOM_dtm_dob as (
+GEOM_dob_bbl_dtm as (
     SELECT
       a.uid,
       a.job_number,
@@ -220,6 +218,24 @@ GEOM_dtm_dob as (
     FROM GEOM_dob_bbl_mappluto a
     LEFT JOIN DTM b
     ON a.bbl = b.bbl::bigint::text
+),
+GEOM_geo_bbl_dtm as (
+    SELECT
+      a.uid,
+      a.job_number,
+      a.bbl,
+      a.geo_bbl,
+      coalesce(a.geom, ST_Centroid(b.geom)) as geom,
+      (CASE 
+        WHEN a.x_geomsource IS NOT NULL 
+          THEN a.x_geomsource 
+        WHEN a.geom IS NULL 
+          AND b.geom IS NOT NULL 
+          THEN 'BBL DOB DTM'
+    END) as x_geomsource
+    FROM GEOM_dob_bbl_dtm a
+    LEFT JOIN DTM b
+    ON a.geo_bbl = b.bbl::bigint::text
 )
 SELECT
     a.*,
@@ -229,7 +245,7 @@ SELECT
     b.x_geomsource
 INTO GEO_devdb
 FROM DRAFT a
-LEFT JOIN GEOM_dtm_dob b
+LEFT JOIN GEOM_geo_bbl_dtm b
 ON a.uid = b.uid;
 
 /* 
