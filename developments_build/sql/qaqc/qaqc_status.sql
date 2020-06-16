@@ -20,4 +20,4 @@ SELECT a.*,
 	 	ELSE 0
 	END) as z_inactive_with_update
 INTO STATUS_qaqc
-FROM MID_qaqc a;
+FROM UNITS_qaqc a;
