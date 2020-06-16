@@ -78,4 +78,4 @@ SELECT a.*,
 	END) as greatest_alt_net_dec
 
 INTO UNITS_qaqc
-FROM OCC_qaqc a;
+FROM _INIT_qaqc a;
