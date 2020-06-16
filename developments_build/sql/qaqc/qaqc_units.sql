@@ -68,28 +68,6 @@ JOBNUMBER_top_alt_dec AS(
     job_type = 'Alteration'
     ORDER BY classa_net ASC
     LIMIT 20
-),
--- Need bbl
-JOBNUMBER_dup_equal_units AS (
-    SELECT a.job_number
-    FROM UNITS_devdb a 
-    JOIN UNITS_devdb b 
-    ON a.job_type = b.job_type
-    AND a.bbl = b.bbl
-    AND a.address = b.address
-    AND a.classa_net = b.classa_net
-    AND a.job_number <> b.job_number
-),
-
-JOBNUMBER_dup_diff_units AS (
-    SELECT a.job_number
-    FROM UNITS_devdb a 
-    JOIN UNITS_devdb b 
-    ON a.job_type = b.job_type
-    AND a.bbl = b.bbl
-    AND a.address = b.address
-    AND a.classa_net <> b.classa_net
-    AND a.job_number <> b.job_number
 )
 
 SELECT a.*,
@@ -124,15 +102,7 @@ SELECT a.*,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_top_alt_dec) THEN 1
 	 	ELSE 0
-	END) as greatest_alt_net_dec,
-    (CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_dup_equal_units) THEN 1
-	 	ELSE 0
-	END) as dup_equal_units,
-    (CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_dup_diff_units) THEN 1
-	 	ELSE 0
-	END) as dup_diff_units
+	END) as greatest_alt_net_dec
 
 INTO UNITS_qaqc
 FROM INIT_qaqc a;
