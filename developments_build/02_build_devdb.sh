@@ -5,7 +5,7 @@ dispaly "Starting to build Developments DB"
 psql $BUILD_ENGINE -f sql/_function.sql
 psql $BUILD_ENGINE -f sql/_lookup.sql
 psql $BUILD_ENGINE -f sql/_init.sql
-psql $BUILD_ENGINE -f sql/qaqc_init.sql
+psql $BUILD_ENGINE -f sql/qaqc/qaqc_init.sql
 count _INIT_devdb
 
 dispaly "Geocoding Developments DB"
@@ -42,6 +42,7 @@ count OCC_devdb
 
 dispaly "Creating UNITS fields, units_init, units_prop, units_net"
 psql $BUILD_ENGINE -f sql/_units.sql
+psql $BUILD_ENGINE -f sql/qaqc/qaqc_units.sql
 count UNITS_devdb
 
 dispaly "Creating status_q field, year_complete and year_permit"
@@ -54,5 +55,7 @@ count _MID_devdb
 dispaly "Creating status field, year_complete and 
   x_inactive, x_dcpedited, x_reason"
 psql $BUILD_ENGINE -f sql/_status.sql
+psql $BUILD_ENGINE -f CAPTURE_DATE_PREV=$(CAPTURE_DATE_PREV) sql/qaqc/qaqc_status.sql
 psql $BUILD_ENGINE -f sql/mid.sql
+psql $BUILD_ENGINE -f sql/qaqc/qaqc_mid.sql
 count MID_devdb
