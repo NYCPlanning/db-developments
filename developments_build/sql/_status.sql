@@ -75,9 +75,8 @@ STATUS_translate as (
                 )
                 THEN '4. Partial Complete'
 
-            WHEN a.job_type = 'Demolition' 
-                AND status_translate(a._job_status)
-                    IN ('5. Complete','3. Permited') 
+            WHEN a.job_type = 'Demolition'
+                AND date_statusx IS NOT NULL
                 THEN '5. Complete'
 
             WHEN a.x_withdrawal IN ('W', 'C')
