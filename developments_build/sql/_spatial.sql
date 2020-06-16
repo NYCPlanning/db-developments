@@ -64,7 +64,7 @@ SELECT
         THEN b.geo_bin
     ELSE a.geo_bin END) as geo_bin,
 
-    a.geo_address_house,
+    a.geo_address_numbr,
     a.geo_address_street,
     a.geo_address,
 
@@ -172,7 +172,7 @@ SELECT
     a.latitude,
     a.longitude,
     a.geom,
-    x_geomsource
+    geomsource
 INTO SPATIAL_devdb
 FROM GEO_devdb a
 LEFT JOIN _SPATIAL_devdb b
