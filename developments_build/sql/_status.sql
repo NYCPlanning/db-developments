@@ -64,6 +64,8 @@ STATUS_translate as (
         a.date_lastupdt,
         a.address,
         a.occ_proposed,
+        a.date_complete,
+
         (CASE
             WHEN a.job_type = 'New Building'
                 AND a.co_latest_certtype = 'T- TCO'
@@ -101,7 +103,8 @@ DRAFT_STATUS_devdb as (
         classa_net,
         address,
         occ_proposed,
-        -- update year_compelete based on job_type and job_status
+        date_complete,
+        -- update year_compelete based on job_type and status
         (CASE
             WHEN job_type = 'Demolition'
                 OR job_status NOT IN ('4. Partial Complete', '5. Complete')
@@ -150,6 +153,8 @@ SELECT
     address,
     occ_proposed,
     (CASE 
+        WHEN co_earliest_effectivedate IS NOT NULL 
+            THEN NULL
         WHEN (CURRENT_DATE - date_lastupdt)/365 >= 2 
             AND job_status = '2. Plan Examination'
             THEN 'Inactive'
@@ -158,7 +163,7 @@ SELECT
             THEN 'Inactive'
         WHEN job_status = '9. Withdrawn'
             THEN 'Inactive'
-    END) as x_inactive
+    END) as job_inactive
 INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
 
@@ -168,7 +173,7 @@ WITH completejobs AS (
 	WHERE classa_net::numeric > 0
 	AND status = '5. Complete')
 UPDATE STATUS_devdb a 
-SET x_inactive = 'Inactive'
+SET job_inactive = 'Inactive'
 FROM completejobs b
 WHERE a.address = b.address
 	AND a.job_type = b.job_type
@@ -245,34 +250,34 @@ AND a.job_number in (
 	FROM CORR_devdb
 	WHERE 'classa_incmpl'=any(x_dcpedited));
 
--- x_inactive
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-        b.edited_date
-	FROM STATUS_devdb a, housing_input_research b	
-	WHERE a.job_number=b.job_number
-    AND b.field = 'x_inactive'
-    AND (upper(a.x_inactive)=upper(b.old_value) 
-        OR (a.x_inactive IS NULL 
-            AND (b.old_value IS NULL 
-            OR b.old_value = 'false')))
-)
-UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'x_inactive'),
-	x_reason = array_append(x_reason, json_build_object(
-		'field', 'x_inactive', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- -- x_inactive
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+--         b.edited_date
+-- 	FROM STATUS_devdb a, housing_input_research b	
+-- 	WHERE a.job_number=b.job_number
+--     AND b.field = 'x_inactive'
+--     AND (upper(a.x_inactive)=upper(b.old_value) 
+--         OR (a.x_inactive IS NULL 
+--             AND (b.old_value IS NULL 
+--             OR b.old_value = 'false')))
+-- )
+-- UPDATE CORR_devdb a
+-- SET x_dcpedited = array_append(x_dcpedited, 'x_inactive'),
+-- 	x_reason = array_append(x_reason, json_build_object(
+-- 		'field', 'x_inactive', 'reason', b.reason, 
+-- 		'edited_date', b.edited_date
+-- 	))
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
 
-UPDATE STATUS_devdb a
-SET x_inactive = trim(b.new_value)
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'x_inactive'
-AND a.job_number in (
-	SELECT DISTINCT job_number
-	FROM CORR_devdb
-	WHERE 'x_inactive'=any(x_dcpedited));
+-- UPDATE STATUS_devdb a
+-- SET x_inactive = trim(b.new_value)
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND b.field = 'x_inactive'
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number
+-- 	FROM CORR_devdb
+-- 	WHERE 'x_inactive'=any(x_dcpedited));
