@@ -47,7 +47,7 @@ JOIN_STATUS_devdb as (
         b.complete_qrtr,
         b.units_complete,
         b.units_incomplete,
-        b.x_inactive
+        b.job_inactive
     FROM _MID_devdb a
     LEFT JOIN STATUS_devdb b
     ON a.job_number = b.job_number
