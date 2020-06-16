@@ -9,9 +9,9 @@
 	    units_res_accessory
 	    b_likely_occ_desc
     CO:
-        units_co_prop_mismatch TODO
+        units_co_prop_mismatch
     STATUS:
-        z_incomp_tract_home TODO
+        z_incomp_tract_home
 **/
 
 DROP TABLE IF EXISTS MID_qaqc;
@@ -88,6 +88,20 @@ JOBNUMBER_b_likely AS (
                           'Homeless|Shelter|Group quarter|Beds', '|',
                           'Convent|Monastery|Accommodation|Harassment', '|',
                           'CNH|Settlement|Halfway|Nursing home|Assisted|')
+),
+
+JOBNUMBER_co_prop_mismatch AS (
+    SELECT job_number
+    FROM MID_devdb
+    WHERE job_type = 'New Building' 
+    AND classa_net_complt::numeric - classa_prop::numeric > 50
+),
+
+JOBNUMBER_incomplete_tract AS (
+    SELECT job_number
+    FROM MID_devdb
+    WHERE tracthome = 'Y'
+    AND job_status LIKE 'Complete'
 )
 
 SELECT a.*,
@@ -118,7 +132,16 @@ SELECT a.*,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_b_likely) THEN 1
 	 	ELSE 0
-	END) as b_likely_occ_desc
+	END) as b_likely_occ_desc,
+    (CASE 
+	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_co_prop_mismatch) THEN 1
+	 	ELSE 0
+	END) as units_co_prop_mismatch,
+    (CASE 
+	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_co_prop_mismatch) THEN 1
+	 	ELSE 0
+	END) as z_incomp_tract_home
+
     
 INTO MID_qaqc
-FROM UNITS_qaqc a;
+FROM STATUS_qaqc a;
