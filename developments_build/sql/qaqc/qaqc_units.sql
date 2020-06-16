@@ -9,9 +9,9 @@
     dup_equal_units
     dup_diff_units
 **/
+DROP TABLE IF EXISTS UNITS_qaqc;
 
 WITH 
-
 JOBNUMBER_null_init AS(
     SELECT job_number
     FROM UNITS_devdb
@@ -105,4 +105,4 @@ SELECT a.*,
 	END) as greatest_alt_net_dec
 
 INTO UNITS_qaqc
-FROM INIT_qaqc a;
+FROM OCC_qaqc a;
