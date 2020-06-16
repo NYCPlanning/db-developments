@@ -5,10 +5,11 @@
 	invalid_date_statusp
 	invalid_date_statusr
 	invalid_date_statusx
+	bistest
 **/
 
 
-DROP TABLE IF EXISTS _QAQC_devdb;
+DROP TABLE IF EXISTS _INIT_QAQC_devdb;
 WITH
 -- identify invalid dates in input data
 JOBNUMBER_invalid_dates AS (
@@ -31,7 +32,20 @@ JOBNUMBER_invalid_dates AS (
 		 (CASE WHEN is_date(date_statusx)
 		 		OR date_statusx IS NULL THEN 0
 		 	ELSE 1 END) as invalid_date_statusx
-		FROM _INIT_devdb )
-SELECT *
-INTO _QAQC_devdb
-FROM JOBNUMBER_invalid_dates;
+		FROM _INIT_devdb ),
+
+-- Find test records
+JOBNUMBER_test AS(
+	SELECT job_number FROM _INIT_devdb
+	WHERE UPPER(job_description) LIKE '%BIS%TEST%' 
+    	OR UPPER(job_description) LIKE '% TEST %'
+)
+
+SELECT a.*
+	(CASE 
+	 	WHEN job_number IN (SELECT job_number FROM JOBNUMBER_test) THEN 1
+	 	ELSE 0
+	END) as bistest
+INTO _INIT_QAQC_devdb
+FROM JOBNUMBER_invalid_dates
+;
