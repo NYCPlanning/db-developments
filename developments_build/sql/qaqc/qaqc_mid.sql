@@ -1,4 +1,6 @@
 /** QAQC
+    units_init_null
+	units_init_null
     dup_equal_units
     dup_diff_units
     b_nonres_with_units
@@ -8,6 +10,22 @@
 
 DROP TABLE IF EXISTS MID_qaqc;
 WITH
+JOBNUMBER_null_init AS(
+    SELECT job_number
+    FROM UNITS_devdb
+    WHERE
+    job_type IN ('Demolition' , 'Alteration') 
+    AND resid_flag = 'Residential' 
+    AND units_init IS NULL),
+
+JOBNUMBER_null_prop AS(
+    SELECT job_number
+    FROM UNITS_devdb
+    WHERE
+    job_type IN ('New Building' , 'Alteration' 
+    AND resid_flag = 'Residential' 
+    AND units_prop IS NULL),   
+
 JOBNUMBER_dup_equal_units AS (
     SELECT a.job_number
     FROM MID_devdb a 
@@ -67,6 +85,14 @@ JOBNUMBER_b_likely AS (
 )
 
 SELECT a.*,
+    (CASE 
+	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_init) THEN 1
+	 	ELSE 0
+	END) as units_init_null,
+    (CASE 
+	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_prop) THEN 1
+	 	ELSE 0
+	END) as units_init_null,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_dup_equal_units) THEN 1
 	 	ELSE 0
