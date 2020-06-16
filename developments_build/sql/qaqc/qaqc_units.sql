@@ -1,11 +1,11 @@
 /** QAQC
-	null_classa_initial
-	null_classa_proposed
-    large_alt_reduction
-    large_nb
-    large_demo
-    greatest_alt_net_inc
-    greatest_alt_net_dec
+	units_init_null
+	units_init_null
+    b_large_alt_reduction
+    outlier_nb_500plus
+    outlier_demo_20plus
+    outlier_top_alt_increase
+    outlier_top_alt_decrease
     dup_equal_units
     dup_diff_units
 **/
@@ -96,31 +96,31 @@ SELECT a.*,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_init) THEN 1
 	 	ELSE 0
-	END) as null_classa_initial,
+	END) as units_init_null,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_prop) THEN 1
 	 	ELSE 0
-	END) as null_classa_proposed,
+	END) as units_init_null,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_large_alt) THEN 1
 	 	ELSE 0
-	END) as large_alt_reduction,
+	END) as b_large_alt_reduction,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_large_nb) THEN 1
 	 	ELSE 0
-	END) as large_nb,
+	END) as outlier_nb_500plus,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_large_demo) THEN 1
 	 	ELSE 0
-	END) as large_demo,
+	END) as outlier_demo_20plus,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_top_alt_inc) THEN 1
 	 	ELSE 0
-	END) as greatest_alt_net_inc,
+	END) as outlier_top_alt_increase,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_top_alt_dec) THEN 1
 	 	ELSE 0
-	END) as greatest_alt_net_dec,
+	END) as outlier_top_alt_decrease,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_top_alt_dec) THEN 1
 	 	ELSE 0
@@ -133,6 +133,6 @@ SELECT a.*,
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_dup_diff_units) THEN 1
 	 	ELSE 0
 	END) as dup_diff_units
-    
+
 INTO UNITS_qaqc
 FROM INIT_qaqc a;
