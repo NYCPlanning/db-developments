@@ -9,7 +9,7 @@
 **/
 
 
-DROP TABLE IF EXISTS _INIT_QAQC_devdb;
+DROP TABLE IF EXISTS _INIT_qaqc;
 WITH
 -- identify invalid dates in input data
 JOBNUMBER_invalid_dates AS (
@@ -46,6 +46,6 @@ SELECT a.*
 	 	WHEN job_number IN (SELECT job_number FROM JOBNUMBER_test) THEN 1
 	 	ELSE 0
 	END) as bistest
-INTO _INIT_QAQC_devdb
+INTO _INIT_qaqc
 FROM JOBNUMBER_invalid_dates
 ;
