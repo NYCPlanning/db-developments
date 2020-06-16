@@ -363,7 +363,8 @@ AND a.job_number in (
 -- date_lastupdt
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_lastupdt'
@@ -393,7 +394,8 @@ AND a.job_number in (
 -- date_filed
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_filed'
@@ -420,7 +422,8 @@ AND a.job_number in (
 -- date_statusd
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_statusd'
@@ -447,7 +450,8 @@ AND a.job_number in (
 -- date_statusp
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_statusp'
@@ -474,7 +478,8 @@ AND a.job_number in (
 -- date_statusr
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_statusr'
@@ -501,7 +506,8 @@ AND a.job_number in (
 -- date_statusx
 WITH CORR_target as (
 	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
 	FROM _INIT_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'date_statusx'
