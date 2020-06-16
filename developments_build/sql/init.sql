@@ -34,7 +34,7 @@ OUTPUTS:
         _INIT_devdb.*,
         geo_bbl text,
         geo_bin text,
-        geo_address_house text,
+        geo_address_numbr text,
         geo_address_street text,
         geo_address text,
         geo_zipcode text,
@@ -51,7 +51,7 @@ OUTPUTS:
         latitude double precision,
         longitude double precision,
         geom geometry,
-        x_geomsource text
+        geomsource text
     )
 */
 /*
@@ -63,7 +63,7 @@ SELECT
     b.*,
     a.geo_bbl,
     a.geo_bin,
-    a.geo_address_house,
+    a.geo_address_numbr,
     a.geo_address_street,
     a.geo_address,
     a.geo_zipcode,
@@ -80,7 +80,7 @@ SELECT
     a.latitude,
     a.longitude,
     a.geom,
-    a.x_geomsource
+    a.geomsource
 INTO INIT_devdb
 FROM SPATIAL_devdb a
 LEFT JOIN _INIT_devdb b
@@ -149,8 +149,8 @@ INSERT INTO housing_input_research
 SELECT 
     job_number, 'remove' as field
 FROM INIT_devdb
-WHERE UPPER(job_description) LIKE '%BIS%TEST%' 
-    OR UPPER(job_description) LIKE '% TEST %'
+WHERE UPPER(job_desc) LIKE '%BIS%TEST%' 
+    OR UPPER(job_desc) LIKE '% TEST %'
 AND job_number NOT IN(
     SELECT DISTINCT job_number
     FROM housing_input_research
