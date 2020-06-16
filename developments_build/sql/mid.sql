@@ -12,11 +12,11 @@ INPUTS:
 
     STATUS_devdb (
         * job_number,
-        status character varying,
+        job_status character varying,
         complete_year text,
         complete_qrtr text,
-        units_complete numeric,
-        units_incomplete numeric,
+        classa_complt numeric,
+        classa_incmpl numeric,
         x_inactive text,
         x_dcpedited text,
         x_reason text
@@ -26,11 +26,11 @@ INPUTS:
 OUTPUTS: 
     MID_STATUS_devdb (
         * job_number,
-        status character varying,
+        job_status character varying,
         complete_year text,
         complete_qrtr text,
-        units_complete numeric,
-        units_incomplete numeric,
+        classa_complt numeric,
+        classa_incmpl numeric,
         x_inactive text,
         x_dcpedited text,
         x_reason text
@@ -42,11 +42,11 @@ WITH
 JOIN_STATUS_devdb as (
     SELECT
         a.*,
-        b.status,
+        b.job_status,
         b.complete_year,
         b.complete_qrtr,
-        b.units_complete,
-        b.units_incomplete,
+        b.classa_complt,
+        b.classa_incmpl,
         b.x_inactive
     FROM _MID_devdb a
     LEFT JOIN STATUS_devdb b
