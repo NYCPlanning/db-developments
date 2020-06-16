@@ -6,11 +6,9 @@
     outlier_demo_20plus
     outlier_top_alt_increase
     outlier_top_alt_decrease
-    dup_equal_units
-    dup_diff_units
 **/
-DROP TABLE IF EXISTS UNITS_qaqc;
 
+DROP TABLE IF EXISTS UNITS_qaqc;
 WITH 
 JOBNUMBER_null_init AS(
     SELECT job_number
