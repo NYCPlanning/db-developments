@@ -9,7 +9,7 @@ DESCRIPTION:
         a) JOIN KEY: geo_bin, geo_bbl
         b) JOIN KEY: geo_bbl
         c) SPATIAL JOIN: geom
-        For all three, hny.units_total must be within 5 units dev_db.units_prop.
+        For all three, hny.units_total must be within 5 units dev_db.classa_prop.
         The devdb record cannot be a demolition.
     3) Combine unique matched found by the three methods into the table all_matches, 
         assigning priority by match method and development type.
@@ -60,11 +60,11 @@ INPUTS:
 
     MID_devdb (
         * job_number,
-        status
-        occ_init,
-        occ_prop,
-        occ_category,
-        units_prop,
+        job_status
+        occ_initial,
+        occ_proposed,
+        resid_flag,
+        classa_prop,
         geo_bin,
         geo_bbl,
         ...
@@ -77,7 +77,7 @@ OUTPUTS:
         job_number,
         match_priority,
         job_type,
-        occ_category,
+        resid_flag,
         all_counted_units,
 		total_units
     ),
@@ -85,7 +85,7 @@ OUTPUTS:
     HNY_devdb (
         * job_number,
         hny_id,
-        units_hnyaff,
+        classa_hnyaff,
 		all_hny_units,
         ...
     )
@@ -142,7 +142,7 @@ WITH
             h.hny_project_id,
             d.job_number,
             d.job_type,
-            d.occ_category,
+            d.resid_flag,
             h.total_units,
             h.all_counted_units,
             'BINandBBL' AS match_method
@@ -150,10 +150,10 @@ WITH
         JOIN MID_devdb d
         ON h.geo_bbl = d.geo_bbl 
             AND h.geo_bin = d.geo_bin
-            AND ABS(h.total_units::NUMERIC - d.units_prop::NUMERIC) <=5
+            AND ABS(h.total_units::NUMERIC - d.classa_prop::NUMERIC) <=5
         AND h.geo_bin IS NOT NULL
         AND h.geo_bbl IS NOT NULL
-        AND d.status <> '9. Withdrawn'
+        AND d.job_status <> '9. Withdrawn'
         AND d.job_type <> 'Demolition'
     ),
 
@@ -164,7 +164,7 @@ WITH
             h.hny_project_id,
             d.job_number,
             d.job_type,
-            d.occ_category,
+            d.resid_flag,
             h.total_units,
             h.all_counted_units,
             'BBLONLY' AS match_method
@@ -172,9 +172,9 @@ WITH
         JOIN MID_devdb d
         ON h.geo_bbl = d.geo_bbl 
             AND (h.geo_bin <> d.geo_bin OR h.geo_bin IS NULL OR d.geo_bin IS NULL)
-            AND ABS(h.total_units::NUMERIC - d.units_prop::NUMERIC) <=5
+            AND ABS(h.total_units::NUMERIC - d.classa_prop::NUMERIC) <=5
         AND h.geo_bbl IS NOT NULL
-        AND d.status <> '9. Withdrawn'
+        AND d.job_status <> '9. Withdrawn'
         AND d.job_type <> 'Demolition'
     ),
 
@@ -185,7 +185,7 @@ WITH
             h.hny_project_id,
             d.job_number,
             d.job_type,
-            d.occ_category,
+            d.resid_flag,
             h.total_units,
             h.all_counted_units,
             'Spatial' AS match_method
@@ -194,9 +194,9 @@ WITH
         ON ST_DWithin(h.geom::geography, d.geom::geography, 5)
             AND (h.geo_bbl <> d.geo_bbl OR h.geo_bbl IS NULL OR d.geo_bbl IS NULL)
             AND (h.geo_bin <> d.geo_bin OR h.geo_bin IS NULL OR d.geo_bin IS NULL)
-            AND ABS(h.total_units::NUMERIC - d.units_prop::NUMERIC) <=5
+            AND ABS(h.total_units::NUMERIC - d.classa_prop::NUMERIC) <=5
         AND h.geom IS NOT NULL AND d.geom IS NOT NULL
-        AND d.status <> '9. Withdrawn'
+        AND d.job_status <> '9. Withdrawn'
         AND d.job_type <> 'Demolition'
     ),
 
@@ -205,14 +205,14 @@ WITH
         SELECT a.*,
         (CASE 
             WHEN (job_type = 'New Building'
-                AND occ_category = 'Residential')
+                AND resid_flag = 'Residential')
             THEN (CASE
                 WHEN match_method = 'BINandBBL' THEN 1
                 WHEN match_method = 'BBLONLY' THEN 2
                 WHEN match_method = 'Spatial' THEN 3
                 END)
             WHEN (job_type = 'Alteration'
-                OR occ_category <> 'Residential')
+                OR resid_flag <> 'Residential')
             THEN (CASE
                 WHEN match_method = 'BINandBBL' THEN 4
                 WHEN match_method = 'BBLONLY' THEN 5
@@ -230,7 +230,7 @@ WITH
 	-- First find highest priority match(es) for each hny_id
 	best_matches_by_hny AS (SELECT t1.hny_id, t1.hny_project_id, t1.match_priority, 
 							t2.job_number, t2.job_type, 
-							t2.occ_category, t2.total_units,
+							t2.resid_flag, t2.total_units,
                             t2.all_counted_units
 					FROM (
 					   SELECT hny_id, hny_project_id, MIN(match_priority) AS match_priority
@@ -244,7 +244,7 @@ WITH
 	-- Then find highest priority match(es) for each job_number			
 	best_matches AS (SELECT t2.hny_id, t2.hny_project_id, t1.match_priority, 
 							t1.job_number, t2.job_type, 
-							t2.occ_category, t2.total_units,
+							t2.resid_flag, t2.total_units,
                             t2.all_counted_units
 					FROM (
 					   SELECT job_number, MIN(match_priority) AS match_priority
@@ -327,7 +327,7 @@ WITH
 	-- a) Extract one-to-one matches
 	one_to_one AS (SELECT job_number, 
 							hny_id,
-							all_counted_units AS units_hnyaff,
+							all_counted_units AS classa_hnyaff,
 							total_units AS all_hny_units,
                             one_dev_to_many_hny,
                             one_hny_to_many_dev
@@ -338,7 +338,7 @@ WITH
 	-- b) For one dev to many hny, group by job_number and sum unit fields
 	one_to_many AS (SELECT job_number, 
 							'Multiple' AS hny_id,
-							SUM(all_counted_units::int)::text AS units_hnyaff,
+							SUM(all_counted_units::int)::text AS classa_hnyaff,
 							SUM(total_units::int)::text AS all_hny_units,
                             one_dev_to_many_hny,
                             one_hny_to_many_dev
@@ -362,17 +362,17 @@ WITH
                     AND one_dev_to_many_hny = 1 
                     THEN 'Multiple' 
                 ELSE a.hny_id END) AS hny_id,
-            -- Only populate units_hnyaff for the minimum job_number per hny record
+            -- Only populate classa_hnyaff for the minimum job_number per hny record
             (CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
-                    -- If this is a many-to-many match, get summed units_hnyaff from one_to_many
+                    -- If this is a many-to-many match, get summed classa_hnyaff from one_to_many
                     THEN CASE WHEN a.job_number IN (SELECT job_number FROM one_to_many)
-                            THEN (SELECT units_hnyaff 
+                            THEN (SELECT classa_hnyaff 
                                     FROM one_to_many b 
                                     WHERE a.job_number = b.job_number)
                             ELSE a.all_counted_units
                         END
                     ELSE NULL
-            END) AS units_hnyaff,
+            END) AS classa_hnyaff,
             -- Only populate all_hny_units for the minimum job_number per hny record
             (CASE WHEN a.job_number||a.hny_id IN (SELECT job_number||hny_id FROM min_job_number_per_hny) 
                     -- If this is a many-to-many, get summed all_hny_units data from one_to_many
@@ -403,7 +403,7 @@ WITH
 -- 7) MERGE WITH devdb  
 SELECT a.*, 
         b.hny_id,
-        b.units_hnyaff,
+        b.classa_hnyaff,
         b.all_hny_units,
         (CASE 
             WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 0 THEN 'one-to-one'
