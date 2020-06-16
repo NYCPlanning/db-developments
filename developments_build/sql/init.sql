@@ -19,6 +19,15 @@ INPUTS:
         ...
     )
 
+    _INIT_qaqc (
+        invalid_date_lastupdt,
+	    invalid_date_filed,
+	    invalid_date_statusd,
+	    invalid_date_statusp,
+	    invalid_date_statusr,
+	    invalid_date_statusx
+    )
+
 OUTPUTS:
     
     INIT_devdb (
@@ -80,27 +89,27 @@ ON a.uid = b.uid;
 -- Format dates in INIT_devdb where valid
 UPDATE INIT_devdb
 SET date_lastupdt = CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_QAQC_devdb 
+							FROM _INIT_qaqc 
 							WHERE invalid_date_lastupdt = 1) THEN NULL
 					ELSE date_lastupdt::date END),
 	date_filed = CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_QAQC_devdb 
+							FROM _INIT_qaqc 
 							WHERE invalid_date_filed = 1) THEN NULL
 					ELSE date_filed::date END),
 	date_statusd = CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_QAQC_devdb 
+							FROM _INIT_qaqc 
 							WHERE invalid_date_statusd = 1) THEN NULL
 					ELSE date_statusd::date END),
 	date_statusp = CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_QAQC_devdb 
+							FROM _INIT_qaqc 
 							WHERE invalid_date_statusp = 1) THEN NULL
 					ELSE date_statusp::date END),
 	date_statusr = CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_QAQC_devdb 
+							FROM _INIT_qaqc 
 							WHERE invalid_date_statusr = 1) THEN NULL
 					ELSE date_statusr::date END),
 	date_statusx = CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_QAQC_devdb 
+							FROM _INIT_qaqc 
 							WHERE invalid_date_statusx = 1) THEN NULL
 					ELSE date_statusx::date END);
 
