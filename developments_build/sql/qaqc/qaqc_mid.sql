@@ -94,13 +94,13 @@ JOBNUMBER_co_prop_mismatch AS (
     SELECT job_number
     FROM MID_devdb
     WHERE job_type = 'New Building' 
-    AND classa_net_complt::numeric - classa_prop::numeric > 50
+    AND classa_complt::numeric - classa_prop::numeric > 50
 ),
 
 JOBNUMBER_incomplete_tract AS (
     SELECT job_number
     FROM MID_devdb
-    WHERE tracthome = 'Y'
+    WHERE tracthomes = 'Y'
     AND job_status LIKE 'Complete'
 )
 
