@@ -18,11 +18,6 @@ INPUTS:
         * job_number
     )
 
-    dof_dtm (
-        * bbl,
-        geom
-    )
-
     dcp_mappluto (
         * bbl,
         geom
@@ -34,7 +29,7 @@ OUTPUT
         job_number
         geo_bbl text,
         geo_bin text,
-        geo_address_house text,
+        geo_address_numbr text,
         geo_address_street text,
         geo_address text,
         geo_zipcode text,
@@ -51,7 +46,7 @@ OUTPUT
         latitude double precision,
         longitude double precision,
         geom geometry,
-        x_geomsource text
+        geomsource text
     )
 
 IN PREVIOUS VERSION: 
@@ -72,13 +67,13 @@ DRAFT as (
 		    a.bbl,
         a.bin,
         a.date_lastupdt,
-        a.job_description,
+        a.job_desc,
         b.geo_bbl,
         NULLIF(RIGHT(b.geo_bin,6),'000000') as geo_bin,
-        b.geo_address_house,
+        b.geo_address_numbr,
         b.geo_address_street,
         concat(
-            trim(b.geo_address_house),' ',
+            trim(b.geo_address_numbr),' ',
             trim(b.geo_address_street)
         )as geo_address,
         b.geo_zipcode,
@@ -94,8 +89,10 @@ DRAFT as (
         b.geo_firedivision,
         b.geo_firebattalion,
         b.geo_firecompany,
-        b.latitude::double precision as geo_latitude,
-        b.longitude::double precision as geo_longitude,
+        (CASE WHEN b.mode = 'tpad' then NULL 
+        ELSE b.latitude::double precision END) as geo_latitude,
+        (CASE WHEN b.mode = 'tpad' then NULL 
+        ELSE b.longitude::double precision END) as geo_longitude,
         b.mode
 	FROM _INIT_devdb a
 	LEFT JOIN _GEO_devdb b
@@ -106,76 +103,53 @@ GEOM_geosupport as (
         uid,
         job_number,
 		bbl,
-        geo_bbl,
         bin,
+        geo_bbl,
+        geo_bin,
         ST_SetSRID(ST_Point(geo_longitude,geo_latitude),4326) as geom,
         (CASE WHEN geo_longitude IS NOT NULL 
-		 THEN 'Lat/Long geosupport' END) as x_geomsource
+		 THEN 'Lat/Long geosupport' END) as geomsource
     FROM DRAFT
 ),
-GEOM_bin_bldgfootprints as (
+GEOM_dob_bin_bldgfootprints as (
     SELECT
         a.uid,
         a.job_number,
-		    a.bbl,
+		a.bbl,
         a.bin,
         a.geo_bbl,
+        a.geo_bin,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
-		 	WHEN a.x_geomsource IS NOT NULL 
-		 		THEN a.x_geomsource 
+		 	WHEN a.geomsource IS NOT NULL 
+		 		THEN a.geomsource 
 		 	WHEN a.geom IS NULL 
 		 		AND b.geom IS NOT NULL 
 		 		THEN 'BIN DOB buildingfootprints'
-		END) as x_geomsource
+		END) as geomsource
     FROM GEOM_geosupport a
     LEFT JOIN doitt_buildingfootprints b
     ON a.bin::text = b.bin::text
 ),
-bbl_bldgfootprint as (
-    SELECT 
-        base_bbl::bigint::text as bbl, 
-        ST_Union(geom) as geom
-    FROM doitt_buildingfootprints
-    GROUP BY base_bbl
-),
-GEOM_bbl_bldgfootprints as (
+GEOM_geo_bin_bldgfootprints as (
 	SELECT
         a.uid,
         a.job_number,
-		    a.bbl,
+		a.bbl,
         a.bin,
         a.geo_bbl,
+        a.geo_bin,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
-          WHEN a.x_geomsource IS NOT NULL 
-            THEN a.x_geomsource 
+          WHEN a.geomsource IS NOT NULL 
+            THEN a.geomsource 
           WHEN a.geom IS NULL 
 		 		AND b.geom IS NOT NULL 
-		 		THEN 'BBL DOB buildingfootprints'
-		END) as x_geomsource
-    FROM GEOM_bin_bldgfootprints a
-    LEFT JOIN bbl_bldgfootprint b
-    ON a.bbl = b.bbl
-),
-GEOM_geo_bbl_mappluto as (
-    SELECT
-        a.uid,
-        a.job_number,
-		    a.bbl,
-        a.bin,
-        a.geo_bbl,
-        coalesce(a.geom, ST_Centroid(b.geom)) as geom,
-        (CASE 
-          WHEN a.x_geomsource IS NOT NULL 
-            THEN a.x_geomsource 
-          WHEN a.geom IS NULL 
-		 		AND b.geom IS NOT NULL 
-		 		THEN 'BBL geosupport MapPLUTO'
-		END) as x_geomsource
-    FROM GEOM_bbl_bldgfootprints a
-    LEFT JOIN dcp_mappluto b
-    ON a.geo_bbl = b.bbl::bigint::text
+		 		THEN 'BIN DCP geosupport'
+		END) as geomsource
+    FROM GEOM_dob_bin_bldgfootprints a
+    LEFT JOIN doitt_buildingfootprints b
+    ON a.geo_bin = b.bin
 ),
 GEOM_dob_bbl_mappluto as (
 	SELECT
@@ -186,39 +160,14 @@ GEOM_dob_bbl_mappluto as (
         a.geo_bbl,
         coalesce(a.geom, ST_Centroid(b.geom)) as geom,
         (CASE 
-          WHEN a.x_geomsource IS NOT NULL 
-            THEN a.x_geomsource 
+          WHEN a.geomsource IS NOT NULL 
+            THEN a.geomsource 
           WHEN a.geom IS NULL 
 		 		AND b.geom IS NOT NULL 
 		 		THEN 'BBL DOB MapPLUTO'
-		END) as x_geomsource
-    FROM GEOM_geo_bbl_mappluto a
+		END) as geomsource
+    FROM GEOM_geo_bin_bldgfootprints a
     LEFT JOIN dcp_mappluto b
-    ON a.bbl = b.bbl::bigint::text
-),
-DTM as (
-    SELECT 
-        bbl, 
-        ST_Union(geom) as geom
-    FROM dof_dtm
-    GROUP BY bbl
-),
-GEOM_dtm_dob as (
-    SELECT
-      a.uid,
-      a.job_number,
-      a.bbl,
-      a.geo_bbl,
-      coalesce(a.geom, ST_Centroid(b.geom)) as geom,
-      (CASE 
-        WHEN a.x_geomsource IS NOT NULL 
-          THEN a.x_geomsource 
-        WHEN a.geom IS NULL 
-          AND b.geom IS NOT NULL 
-          THEN 'BBL DOB DTM'
-    END) as x_geomsource
-    FROM GEOM_dob_bbl_mappluto a
-    LEFT JOIN DTM b
     ON a.bbl = b.bbl::bigint::text
 )
 SELECT
@@ -226,10 +175,10 @@ SELECT
     ST_Y(b.geom) as latitude,
     ST_X(b.geom) as longitude,
     b.geom,
-    b.x_geomsource
+    b.geomsource
 INTO GEO_devdb
 FROM DRAFT a
-LEFT JOIN GEOM_dtm_dob b
+LEFT JOIN GEOM_dob_bbl_mappluto b
 ON a.uid = b.uid;
 
 /* 
@@ -279,7 +228,7 @@ UPDATE GEO_devdb a
 SET latitude = ST_Y(b.new_geom),
     longitude = ST_X(b.new_geom),
     geom = b.new_geom,
-    x_geomsource = 'Lat/Long DCP'
+    geomsource = 'Lat/Long DCP'
 FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
 AND (b.distance < 10 OR a.geom IS NULL);
@@ -293,7 +242,7 @@ WITH CORR_target as (
     AND a.job_number in (
         SELECT distinct job_number
         FROM GEO_devdb 
-        WHERE x_geomsource = 'Lat/Long DCP')
+        WHERE geomsource = 'Lat/Long DCP')
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'geom'),
