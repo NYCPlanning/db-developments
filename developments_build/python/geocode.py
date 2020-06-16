@@ -39,7 +39,7 @@ def parse_output(geo):
     return dict(
         # Normalized address: 
         geo_address_street = geo.get('First Street Name Normalized', ''),
-        geo_address_house = geo.get('House Number - Display Format', ''),
+        geo_address_numbr = geo.get('House Number - Display Format', ''),
         
         # longitude and latitude of lot center
         latitude = geo.get('Latitude', ''),
@@ -79,7 +79,7 @@ if __name__ == '__main__':
     df = pd.read_sql('''
         SELECT 
             distinct uid, 
-            address_house as house_number,
+            address_numbr as house_number,
             address_street as street_name, 
             boro as borough
         FROM _INIT_devdb
