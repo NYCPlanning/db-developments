@@ -156,25 +156,6 @@ GEOM_geo_bin_bldgfootprints as (
     LEFT JOIN doitt_buildingfootprints b
     ON a.geo_bin = b.bin
 ),
-GEOM_geo_bbl_mappluto as (
-    SELECT
-        a.uid,
-        a.job_number,
-		a.bbl,
-        a.bin,
-        a.geo_bbl,
-        coalesce(a.geom, ST_Centroid(b.geom)) as geom,
-        (CASE 
-          WHEN a.x_geomsource IS NOT NULL 
-            THEN a.x_geomsource 
-          WHEN a.geom IS NULL 
-		 		AND b.geom IS NOT NULL 
-		 		THEN 'BBL geosupport MapPLUTO'
-		END) as x_geomsource
-    FROM GEOM_geo_bin_bldgfootprints a
-    LEFT JOIN dcp_mappluto b
-    ON a.geo_bbl = b.bbl::bigint::text
-),
 GEOM_dob_bbl_mappluto as (
 	SELECT
         a.uid,
@@ -190,7 +171,7 @@ GEOM_dob_bbl_mappluto as (
 		 		AND b.geom IS NOT NULL 
 		 		THEN 'BBL DOB MapPLUTO'
 		END) as x_geomsource
-    FROM GEOM_geo_bbl_mappluto a
+    FROM GEOM_geo_bin_bldgfootprints a
     LEFT JOIN dcp_mappluto b
     ON a.bbl = b.bbl::bigint::text
 ),
