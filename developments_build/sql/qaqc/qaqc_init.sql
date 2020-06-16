@@ -37,15 +37,15 @@ JOBNUMBER_invalid_dates AS (
 -- Find test records
 JOBNUMBER_test AS(
 	SELECT job_number FROM _INIT_devdb
-	WHERE UPPER(job_description) LIKE '%BIS%TEST%' 
-    	OR UPPER(job_description) LIKE '% TEST %'
+	WHERE UPPER(job_desc) LIKE '%BIS%TEST%' 
+    	OR UPPER(job_desc) LIKE '% TEST %'
 )
 
-SELECT a.*
+SELECT a.*,
 	(CASE 
 	 	WHEN job_number IN (SELECT job_number FROM JOBNUMBER_test) THEN 1
 	 	ELSE 0
 	END) as bistest
 INTO _INIT_qaqc
-FROM JOBNUMBER_invalid_dates
+FROM JOBNUMBER_invalid_dates a
 ;
