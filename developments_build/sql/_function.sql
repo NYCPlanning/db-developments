@@ -234,7 +234,7 @@ CREATE OR REPLACE FUNCTION get_schoolelmntry(
     _geom geometry
   ) 
     RETURNS varchar AS $$
-      SELECT b.initials||b.zoned_dist
+      SELECT b.esid_no::varchar
       FROM doe_eszones b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
@@ -244,7 +244,7 @@ CREATE OR REPLACE FUNCTION get_schoolmiddle(
     _geom geometry
   ) 
     RETURNS varchar AS $$
-      SELECT b.initials||b.zoned_dist
+      SELECT b.msid_no::varchar
       FROM doe_mszones b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
