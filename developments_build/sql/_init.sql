@@ -1,7 +1,7 @@
 /*
 DESCRIPTION:
 	1. Initial field mapping and prelimilary data cleaning
-	2. Apply corrections on stories_prop, bin, bbl, x_mixeduse, and date fields
+	2. Apply corrections on stories_prop, bin, bbl, and date fields
 	3. QAQC check for invalid dates
 INPUTS: 
 	dob_jobapplications
@@ -20,7 +20,6 @@ OUTPUTS:
 		zoningsft_prop numeric,
 		_classa_init numeric,
 		_classa_prop numeric,
-		x_mixeduse text,
 		job_status text,
 		date_lastupdt text,
 		date_filed text,
@@ -37,8 +36,6 @@ OUTPUTS:
 		cityowned text,
 		owner_type text,
 		owner_nonprof text,
-		owner_firstnm text,
-		owner_lastnm text,
 		owner_name text,
 		owner_biznm text,
 		owner_address text,
@@ -143,14 +140,6 @@ JOBNUMBER_relevant as (
 		ELSE proposeddwellingunits::numeric
     END) as _classa_prop,
 
-	-- mixuse flag
-	(CASE WHEN jobdescription ~* 'MIX'
-		OR (jobdescription ~* 'RESID' 
-			AND jobdescription ~* 'COMM|HOTEL|RETAIL')
-		THEN 'Mixed Use'
-		ELSE NULL
-	END) as x_mixeduse,
-
 	-- one to one mappings
 	jobstatusdesc as _job_status,
 	latestactiondate as date_lastupdt,
@@ -174,8 +163,6 @@ JOBNUMBER_relevant as (
 		nonprofit
 	) as ownership,
 	
-	ownerfirstname as Owner_FirstNm,
-	ownerlastname as Owner_LastNm,
 	ownerfirstname||', '||ownerlastname as owner_name,
 	ownerbusinessname as Owner_BizNm,
 	ownerhousestreetname as Owner_Address,
@@ -227,14 +214,13 @@ DROP TABLE IF EXISTS CORR_devdb;
 SELECT
 	job_number,
 	array[]::text[] as x_dcpedited,
-	array[]::json[] as x_reason
+	array[]::json[] as dcpeditfields
 INTO CORR_devdb
 FROM _INIT_devdb;
 
 /*
 CORRECTIONS: 
 	stories_prop
-	x_mixeduse
 	bin
 	bbl
 	date_lastupdt
@@ -258,7 +244,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'stories_prop'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'stories_prop', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -274,35 +260,6 @@ AND a.job_number in (
 	FROM CORR_devdb
 	WHERE 'stories_prop'=any(x_dcpedited));
 
--- x_mixeduse
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'x_mixeduse'
-	AND (upper(a.x_mixeduse)=upper(b.old_value) 
-		OR (a.x_mixeduse IS NULL 
-		AND (b.old_value IS NULL OR b.old_value = 'false')))
-)
-UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'x_mixeduse'),
-	x_reason = array_append(x_reason, json_build_object(
-		'field', 'x_mixeduse', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE _INIT_devdb a
-SET x_mixeduse = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'x_mixeduse'=any(x_dcpedited));
 
 -- bbl
 WITH CORR_target as (
@@ -316,7 +273,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'bbl'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'bbl', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -344,7 +301,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'bin'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'bin', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -375,7 +332,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'date_lastupdt'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'date_lastupdt', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -403,7 +360,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'date_filed'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'date_filed', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -431,7 +388,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'date_statusd'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'date_statusd', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -459,7 +416,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'date_statusp'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'date_statusp', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -487,7 +444,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'date_statusr'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'date_statusr', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -515,7 +472,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'date_statusx'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'date_statusx', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
