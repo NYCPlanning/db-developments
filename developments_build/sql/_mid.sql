@@ -41,7 +41,8 @@ INPUTS:
         * job_number,
         occ_initial,
         occ_proposed,
-        resid_flag
+        resid_flag,
+        nonres_flag
     )
 
 OUTPUTS: 
@@ -116,7 +117,16 @@ JOIN_units as (
                 THEN a.co_latest_units/b.classa_net
             ELSE NULL
         END) as classa_complt_pct,
-        b.classa_net - a.co_latest_units as classa_complt_diff
+        b.classa_net - a.co_latest_units as classa_complt_diff,
+        (CASE 
+            WHEN hotel_init IS NOT NULL
+                OR hotel_prop IS NOT NULL
+                OR otherb_init IS NOT NULL
+                OR otherb_prop IS NOT NULL
+                OR classa_init IS NOT NULL 
+                OR classa_prop IS NOT NULL
+                THEN 'Residential' 
+        END) as resid_flag
     FROM JOIN_co a
     LEFT JOIN UNITS_devdb b
     ON a.job_number = b.job_number
@@ -126,8 +136,12 @@ JOIN_occ as (
         a.*,
         b.occ_initial,
         b.occ_proposed,
-        b.resid_flag,
-        b.nonres_flag
+        flag_nonres(
+            a.resid_flag,
+            a.job_desc,
+            b.occ_initial,
+            b.occ_proposed
+        ) as nonres_flag
     FROM JOIN_units a
     LEFT JOIN OCC_devdb b
     ON a.job_number = b.job_number
@@ -135,3 +149,39 @@ JOIN_occ as (
 SELECT *
 INTO _MID_devdb
 FROM JOIN_occ;
+
+
+/*
+CORRECTIONS
+    resid_flag
+*/
+
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
+	FROM _MID_devdb a, housing_input_research b	
+	WHERE a.job_number=b.job_number
+	AND b.field = 'resid_flag'
+	AND (a.resid_flag=b.old_value 
+		OR (a.resid_flag IS NULL 
+			AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = array_append(x_dcpedited,'resid_flag'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'resid_flag', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _MID_devdb a
+SET resid_flag = NULLIF(TRIM(b.new_value), 'Other')
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'resid_flag'
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE 'resid_flag'=any(x_dcpedited));
