@@ -1,7 +1,7 @@
 /*
 DESCRIPTION:
 	1. Initial field mapping and prelimilary data cleaning
-	2. Apply corrections on stories_prop, bin, bbl, x_mixeduse, and date fields
+	2. Apply corrections on stories_prop, bin, bbl, and date fields
 	3. QAQC check for invalid dates
 INPUTS: 
 	dob_jobapplications
@@ -20,7 +20,6 @@ OUTPUTS:
 		zoningsft_prop numeric,
 		_classa_init numeric,
 		_classa_prop numeric,
-		x_mixeduse text,
 		job_status text,
 		date_lastupdt text,
 		date_filed text,
@@ -37,8 +36,6 @@ OUTPUTS:
 		cityowned text,
 		owner_type text,
 		owner_nonprof text,
-		owner_firstnm text,
-		owner_lastnm text,
 		owner_name text,
 		owner_biznm text,
 		owner_address text,
@@ -224,7 +221,6 @@ FROM _INIT_devdb;
 /*
 CORRECTIONS: 
 	stories_prop
-	x_mixeduse
 	bin
 	bbl
 	date_lastupdt
