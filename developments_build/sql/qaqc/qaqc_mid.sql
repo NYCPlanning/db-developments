@@ -26,7 +26,7 @@ JOBNUMBER_dup_equal_units AS (
     AND a.geo_bbl = b.geo_bbl
     AND a.address = b.address
     AND a.classa_net = b.classa_net
-    AND a.job_number <> b.job_number
+    AND a.job_number < b.job_number
 ),
 
 JOBNUMBER_dup_diff_units AS (
@@ -38,16 +38,19 @@ JOBNUMBER_dup_diff_units AS (
     AND a.geo_bbl = b.geo_bbl
     AND a.address = b.address
     AND a.classa_net <> b.classa_net
-    AND a.job_number <> b.job_number
+    AND a.job_number < b.job_number
 ),
 
 
 MATCHES_dup_diff_equal_units AS (
-    SELECT a.job_number as job_number_a, a.equal_units_match as job_number_b, 1 as equal_units
+    SELECT a.job_number as job_number_a, a.equal_units_match as job_number_b, 1 as equal_units,
+    a.geo_bbl, a.address
     FROM JOBNUMBER_dup_equal_units a
     UNION
-    SELECT b.job_number as job_number_b, b.diff_units_match as job_number_b, 0 as equal_units
+    SELECT b.job_number as job_number_b, b.diff_units_match as job_number_b, 0 as equal_units,
+    b.geo_bbl, b.address
     FROM JOBNUMBER_dup_diff_units b
+    ORDER BY job_number_a
 )
 
 SELECT *
