@@ -41,7 +41,8 @@ INPUTS:
         * job_number,
         occ_initial,
         occ_proposed,
-        resid_flag
+        resid_flag,
+        nonres_flag
     )
 
 OUTPUTS: 
