@@ -264,35 +264,6 @@ AND a.job_number in (
 	FROM CORR_devdb
 	WHERE 'stories_prop'=any(x_dcpedited));
 
--- x_mixeduse
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'x_mixeduse'
-	AND (upper(a.x_mixeduse)=upper(b.old_value) 
-		OR (a.x_mixeduse IS NULL 
-		AND (b.old_value IS NULL OR b.old_value = 'false')))
-)
-UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'x_mixeduse'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'x_mixeduse', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE _INIT_devdb a
-SET x_mixeduse = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'x_mixeduse'=any(x_dcpedited));
 
 -- bbl
 WITH CORR_target as (

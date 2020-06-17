@@ -246,8 +246,8 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'geom'),
-	x_reason = array_append(x_reason, json_build_object(
-		'geom', 'x_mixeduse', 'reason', b.reason, 
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
+		'field', 'geom', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
 FROM CORR_target b
