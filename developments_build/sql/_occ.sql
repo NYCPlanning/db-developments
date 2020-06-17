@@ -61,7 +61,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited,'occ_initial'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'occ_initial', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -91,7 +91,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited,'occ_proposed'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'occ_proposed', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -145,7 +145,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited,'occ_category'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'occ_category', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
