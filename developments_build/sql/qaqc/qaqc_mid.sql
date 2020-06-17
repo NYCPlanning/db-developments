@@ -78,15 +78,41 @@ MATCHES_dup_diff_equal_units AS (
     ON a.job_number = b.job_number
 ),
 
+BBL_join AS (
+    SELECT 
+		a.job_number, 
+		a.job_type, 
+		a.bin, 
+		a.bbl, 
+		a.geom, 
+		b.geom as bbl_geom
+    FROM (
+		SELECT * 
+		FROM MID_devdb 
+		WHERE job_type ~* 'Demolition|New Building'
+	) a
+    JOIN dcp_mappluto b
+    ON a.bbl = b.bbl::bigint::text
+),
+
+DEMO AS (
+	SELECT * 
+	FROM BBL_join
+	WHERE job_type = 'Demolition'
+),
+
+NB AS (
+	SELECT * 
+	FROM BBL_join
+	WHERE job_type = 'New Building'
+),
+
 JOBNUMBER_dem_nb_overlap AS (
     SELECT a.job_number, 
     	b.job_number as dem_nb_overlap
-    FROM MID_devdb a 
-    JOIN MID_devdb b 
-    ON a.bbl = b.bbl
-    AND a.bin = b.bin
-    AND a.job_type = 'Demolition'
-    AND b.job_type = 'New Building'
+    FROM DEMO a, NB b
+	WHERE LEFT(a.bbl, 6)::numeric = LEFT(b.bbl, 6)::numeric
+	AND (ST_Within(a.geom, b.bbl_geom) OR ST_Within(b.geom, a.bbl_geom))
 ),
 
 MATCHES_dem_nb_overlap AS (
