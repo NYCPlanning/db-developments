@@ -40,7 +40,7 @@ OUTPUTS:
         classa_net numeric,
         address text,
         occ_proposed text,
-        x_inactive text,
+        job_inactive text,
         x_dcpedited text,
         x_reason text
     )
@@ -185,7 +185,7 @@ WHERE a.address = b.address
 CORRECTIONS
     classa_complt
     classa_incmpl
-    x_inactive
+    job_inactive
 */
 -- classa_complt
 WITH CORR_target as (
@@ -249,34 +249,34 @@ AND a.job_number in (
 	FROM CORR_devdb
 	WHERE 'classa_incmpl'=any(x_dcpedited));
 
--- -- x_inactive
--- WITH CORR_target as (
--- 	SELECT a.job_number, 
--- 		COALESCE(b.reason, 'NA') as reason,
---         b.edited_date
--- 	FROM STATUS_devdb a, housing_input_research b	
--- 	WHERE a.job_number=b.job_number
---     AND b.field = 'x_inactive'
---     AND (upper(a.x_inactive)=upper(b.old_value) 
---         OR (a.x_inactive IS NULL 
---             AND (b.old_value IS NULL 
---             OR b.old_value = 'false')))
--- )
--- UPDATE CORR_devdb a
--- SET x_dcpedited = array_append(x_dcpedited, 'x_inactive'),
--- 	x_reason = array_append(x_reason, json_build_object(
--- 		'field', 'x_inactive', 'reason', b.reason, 
--- 		'edited_date', b.edited_date
--- 	))
--- FROM CORR_target b
--- WHERE a.job_number=b.job_number;
+-- job_inactive
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason,
+        b.edited_date
+	FROM STATUS_devdb a, housing_input_research b	
+	WHERE a.job_number=b.job_number
+    AND b.field = 'job_inactive'
+    AND (upper(a.job_inactive)=upper(b.old_value) 
+        OR (a.job_inactive IS NULL 
+            AND (b.old_value IS NULL 
+            OR b.old_value = 'false')))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = array_append(x_dcpedited, 'job_inactive'),
+	x_reason = array_append(x_reason, json_build_object(
+		'field', 'job_inactive', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
 
--- UPDATE STATUS_devdb a
--- SET x_inactive = trim(b.new_value)
--- FROM housing_input_research b
--- WHERE a.job_number=b.job_number
--- AND b.field = 'x_inactive'
--- AND a.job_number in (
--- 	SELECT DISTINCT job_number
--- 	FROM CORR_devdb
--- 	WHERE 'x_inactive'=any(x_dcpedited));
+UPDATE STATUS_devdb a
+SET job_inactive = trim(b.new_value)
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'job_inactive'
+AND a.job_number in (
+	SELECT DISTINCT job_number
+	FROM CORR_devdb
+	WHERE 'job_inactive'=any(x_dcpedited));
