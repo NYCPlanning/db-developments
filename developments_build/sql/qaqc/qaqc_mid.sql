@@ -16,6 +16,12 @@
 
 DROP TABLE IF EXISTS MID_qaqc;
 WITH
+
+JOBNUMBER_all AS(
+	SELECT DISTINCT job_number
+	FROM MID_devdb
+),
+
 JOBNUMBER_null_init AS(
     SELECT job_number
     FROM MID_devdb
@@ -33,7 +39,7 @@ JOBNUMBER_null_prop AS(
     AND classa_prop IS NULL),   
 
 JOBNUMBER_dup_equal_units AS (
-    SELECT a.job_number
+    SELECT a.job_number, b.job_number as dup_equal_units
     FROM MID_devdb a 
     JOIN MID_devdb b 
     ON a.job_type = b.job_type
@@ -44,7 +50,7 @@ JOBNUMBER_dup_equal_units AS (
 ),
 
 JOBNUMBER_dup_diff_units AS (
-    SELECT a.job_number
+    SELECT a.job_number, b.job_number as dup_diff_units
     FROM MID_devdb a 
     JOIN MID_devdb b 
     ON a.job_type = b.job_type
@@ -53,6 +59,22 @@ JOBNUMBER_dup_diff_units AS (
     AND a.classa_net <> b.classa_net
     AND a.job_number <> b.job_number
 ),
+
+MATCHES_dup_equal_units AS (
+    SELECT a.job_number, b.dup_equal_units
+    FROM JOBNUMBER_all a
+    LEFT JOIN JOBNUMBER_dup_equal_units b
+    ON a.job_number = b.job_number
+),
+
+
+MATCHES_dup_diff_equal_units AS (
+    SELECT a.job_number, a.dup_equal_units, b.dup_diff_units
+    FROM MATCHES_dup_equal_units a
+    LEFT JOIN JOBNUMBER_dup_diff_units b
+    ON a.job_number = b.job_number
+),
+
 
 JOBNUMBER_nonres_units AS (
 	SELECT job_number 
@@ -113,14 +135,8 @@ SELECT a.*,
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_prop) THEN 1
 	 	ELSE 0
 	END) as units_prop_null,
-    (CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_dup_equal_units) THEN 1
-	 	ELSE 0
-	END) as dup_equal_units,
-    (CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_dup_diff_units) THEN 1
-	 	ELSE 0
-	END) as dup_diff_units,
+    b.dup_equal_units,
+    b.dup_diff_units,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_nonres_units) THEN 1
 	 	ELSE 0
@@ -143,5 +159,7 @@ SELECT a.*,
 	END) as z_incomp_tract_home
 
     
-INTO MID_qaqc
-FROM STATUS_qaqc a;
+INTO MID_devdb
+FROM STATUS_qaqc a
+JOIN MATCHES_dup_diff_equal_units b
+ON a.job_number = b.job_number;
