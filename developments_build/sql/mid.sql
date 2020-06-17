@@ -19,7 +19,7 @@ INPUTS:
         classa_incmpl numeric,
         x_inactive text,
         x_dcpedited text,
-        x_reason text
+        dcpeditfields text
     )
 
 
@@ -33,7 +33,7 @@ OUTPUTS:
         classa_incmpl numeric,
         x_inactive text,
         x_dcpedited text,
-        x_reason text
+        dcpeditfields text
         ...
     )
 */
