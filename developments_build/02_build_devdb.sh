@@ -55,7 +55,7 @@ count _MID_devdb
 dispaly "Creating status field, year_complete and 
   x_inactive, x_dcpedited, x_reason"
 psql $BUILD_ENGINE -f sql/_status.sql
-psql $BUILD_ENGINE -f CAPTURE_DATE_PREV=$(CAPTURE_DATE_PREV) sql/qaqc/qaqc_status.sql
+psql $BUILD_ENGINE -f CAPTURE_DATE_PREV=$CAPTURE_DATE_PREV sql/qaqc/qaqc_status.sql
 psql $BUILD_ENGINE -f sql/mid.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_mid.sql
 count MID_devdb
