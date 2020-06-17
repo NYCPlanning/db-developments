@@ -256,7 +256,7 @@ WITH CORR_target as (
         b.edited_date
 	FROM STATUS_devdb a, housing_input_research b	
 	WHERE a.job_number=b.job_number
-    AND b.field = 'inactive_job'
+    AND b.field = 'job_inactive'
     AND (upper(a.job_inactive)=upper(b.old_value) 
         OR (a.job_inactive IS NULL 
             AND (b.old_value IS NULL 
