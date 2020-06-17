@@ -42,7 +42,7 @@ OUTPUTS:
         occ_proposed text,
         job_inactive text,
         x_dcpedited text,
-        x_reason text
+        dcpeditfields text
     )
 
 IN PREVIOUS VERSION: 
@@ -201,7 +201,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'classa_complt'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'classa_complt', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -232,7 +232,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited,'classa_incmpl'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'classa_incmpl', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -264,7 +264,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'job_inactive'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'job_inactive', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
