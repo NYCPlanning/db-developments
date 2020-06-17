@@ -15,10 +15,10 @@
     STATUS:
         z_incomp_tract_home
 **/
-DROP TABLE IF EXISTS MATCHES_dup_diff_equal_units;
+DROP TABLE IF EXISTS DUP_diff_job_number;
 WITH
 JOBNUMBER_dup_equal_units AS (
-    SELECT a.job_number, b.job_number as dup_equal_units
+    SELECT a.job_number, b.job_number as equal_units_match
     FROM MID_devdb a 
     JOIN MID_devdb b 
     ON a.job_type = b.job_type
@@ -29,7 +29,7 @@ JOBNUMBER_dup_equal_units AS (
 ),
 
 JOBNUMBER_dup_diff_units AS (
-    SELECT a.job_number, b.job_number as dup_diff_units
+    SELECT a.job_number, b.job_number as diff_units_match
     FROM MID_devdb a 
     JOIN MID_devdb b 
     ON a.job_type = b.job_type
@@ -41,10 +41,11 @@ JOBNUMBER_dup_diff_units AS (
 
 
 MATCHES_dup_diff_equal_units AS (
-    SELECT a.job_number, a.dup_equal_units, b.dup_diff_units
+    SELECT a.job_number as job_number_a, a.equal_units_match as job_number_b, 1 as equal_units
     FROM JOBNUMBER_dup_equal_units a
-    FULL OUTER JOIN JOBNUMBER_dup_diff_units b
-    ON a.job_number = b.job_number
+    UNION
+    SELECT b.job_number as job_number_b, b.diff_units_match as job_number_b, 0 as equal_units
+    FROM JOBNUMBER_dup_diff_units b
 )
 
 SELECT *
@@ -54,8 +55,8 @@ FROM MATCHES_dup_diff_equal_units;
 DROP TABLE IF EXISTS MATCH_dem_nb;
 WITH
 JOBNUMBER_dem_nb_overlap AS (
-    SELECT a.job_number as dem_job_number, 
-    	b.job_number as nb_job_number
+    SELECT a.job_number as job_number_dem, 
+    	b.job_number as job_number_nb
     FROM MID_devdb a
 	JOIN MID_devdb b 
 	ON a.geo_bbl = b.geo_bbl
@@ -66,6 +67,7 @@ JOBNUMBER_dem_nb_overlap AS (
 SELECT *
 INTO MATCH_dem_nb
 FROM JOBNUMBER_dem_nb_overlap;
+
 
 
 DROP TABLE IF EXISTS MID_qaqc;
@@ -153,11 +155,11 @@ SELECT a.*,
 	 	ELSE 0
 	END) as units_prop_null,
 	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM DUP_diff_job_number WHERE dup_equal_units IS NOT NULL) THEN 1
+	 	WHEN a.job_number IN (SELECT job_number FROM DUP_diff_job_number WHERE equal_units=1) THEN 1
 	 	ELSE 0
 	END) as dup_equal_units,
 	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM DUP_diff_job_number WHERE dup_diff_units IS NOT NULL) THEN 1
+	 	WHEN a.job_number IN (SELECT job_number FROM DUP_diff_job_number WHERE equal_units=0) THEN 1
 	 	ELSE 0
 	END) as dup_diff_units,
 	(CASE 
@@ -181,8 +183,8 @@ SELECT a.*,
 	 	ELSE 0
 	END) as z_incomp_tract_home,
 	(CASE 
-	 	WHEN a.job_number IN (SELECT dem_job_number FROM MATCH_dem_nb) THEN 1
-	 	WHEN a.job_number IN (SELECT nb_job_number FROM MATCH_dem_nb) THEN 1
+	 	WHEN a.job_number IN (SELECT job_number_dem FROM MATCH_dem_nb) THEN 1
+	 	WHEN a.job_number IN (SELECT job_number_nb FROM MATCH_dem_nb) THEN 1
 	 	ELSE 0
 	END) as dem_nb_overlap
 	
