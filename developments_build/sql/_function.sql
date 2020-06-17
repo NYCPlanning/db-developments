@@ -72,7 +72,7 @@ CREATE OR REPLACE FUNCTION get_zipcode(
     RETURNS varchar AS $$
       SELECT b.zipcode::varchar
       FROM doitt_zipcodeboundaries b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_bbl(
@@ -81,7 +81,7 @@ CREATE OR REPLACE FUNCTION get_bbl(
     RETURNS varchar AS $$
       SELECT b.bbl::bigint::text
       FROM dcp_mappluto b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 
@@ -91,7 +91,7 @@ CREATE OR REPLACE FUNCTION get_council(
     RETURNS varchar AS $$
       SELECT lpad(b.coundist::text,2,'0')
       FROM dcp_councildistricts b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 
@@ -101,7 +101,7 @@ CREATE OR REPLACE FUNCTION get_boro(
     RETURNS varchar AS $$
       SELECT b.borocode::varchar
       FROM dcp_boroboundaries_wi b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_csd(
@@ -110,7 +110,7 @@ CREATE OR REPLACE FUNCTION get_csd(
     RETURNS varchar AS $$
       SELECT  lpad(b.schooldist::text,2,'0')
       FROM dcp_school_districts b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_ct(
@@ -119,7 +119,7 @@ CREATE OR REPLACE FUNCTION get_ct(
     RETURNS varchar AS $$
       SELECT b.ct2010::varchar
       FROM dcp_censustracts b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_cb(
@@ -128,7 +128,7 @@ CREATE OR REPLACE FUNCTION get_cb(
     RETURNS varchar AS $$
       SELECT b.cb2010::varchar
       FROM dcp_censusblocks b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_nta(
@@ -146,7 +146,7 @@ CREATE OR REPLACE FUNCTION get_cd(
     RETURNS varchar AS $$
       SELECT b.borocd::varchar
       FROM dcp_cdboundaries b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_cd(
@@ -155,7 +155,7 @@ CREATE OR REPLACE FUNCTION get_cd(
     RETURNS varchar AS $$
       SELECT b.borocd::varchar
       FROM dcp_cdboundaries b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_policeprct(
@@ -173,7 +173,7 @@ CREATE OR REPLACE FUNCTION get_schooldist(
     RETURNS varchar AS $$
       SELECT b.schooldist::varchar
       FROM dcp_school_districts b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_firecompany(
@@ -218,7 +218,7 @@ CREATE OR REPLACE FUNCTION get_bin(
     RETURNS varchar AS $$
       SELECT b.bin::varchar
       FROM doitt_buildingfootprints b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_base_bbl(
@@ -227,7 +227,7 @@ CREATE OR REPLACE FUNCTION get_base_bbl(
     RETURNS varchar AS $$
       SELECT b.base_bbl::varchar
       FROM doitt_buildingfootprints b
-      WHERE ST_Within(_geom, b.geom)
+      WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 

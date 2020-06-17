@@ -40,7 +40,14 @@ function dispaly {
   "
 }
 
+function export_csv {
+    mkdir -p output
+    psql $BUILD_ENGINE -c "\COPY (
+        SELECT * FROM $1
+    ) TO stdout DELIMITER ',' CSV HEADER;" > output/$1.csv
+
+}
+
 # Setting Environmental Variables
 set_env .env version.env
 DATE=$(date "+%Y-%m-%d")
-
