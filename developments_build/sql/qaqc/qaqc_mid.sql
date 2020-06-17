@@ -18,22 +18,24 @@
 DROP TABLE IF EXISTS DUP_diff_job_number;
 WITH
 JOBNUMBER_dup_equal_units AS (
-    SELECT a.job_number, b.job_number as equal_units_match
+    SELECT a.job_number, b.job_number as equal_units_match,
+    	a.geo_bbl, a.address
     FROM MID_devdb a 
     JOIN MID_devdb b 
     ON a.job_type = b.job_type
-    AND a.bbl = b.bbl
+    AND a.geo_bbl = b.geo_bbl
     AND a.address = b.address
     AND a.classa_net = b.classa_net
     AND a.job_number <> b.job_number
 ),
 
 JOBNUMBER_dup_diff_units AS (
-    SELECT a.job_number, b.job_number as diff_units_match
+    SELECT a.job_number, b.job_number as diff_units_match,
+    a.geo_bbl, a.address
     FROM MID_devdb a 
     JOIN MID_devdb b 
     ON a.job_type = b.job_type
-    AND a.bbl = b.bbl
+    AND a.geo_bbl = b.geo_bbl
     AND a.address = b.address
     AND a.classa_net <> b.classa_net
     AND a.job_number <> b.job_number
@@ -56,7 +58,8 @@ DROP TABLE IF EXISTS MATCH_dem_nb;
 WITH
 JOBNUMBER_dem_nb_overlap AS (
     SELECT a.job_number as job_number_dem, 
-    	b.job_number as job_number_nb
+    	b.job_number as job_number_nb,
+    	a.geo_bbl
     FROM MID_devdb a
 	JOIN MID_devdb b 
 	ON a.geo_bbl = b.geo_bbl
@@ -67,7 +70,6 @@ JOBNUMBER_dem_nb_overlap AS (
 SELECT *
 INTO MATCH_dem_nb
 FROM JOBNUMBER_dem_nb_overlap;
-
 
 
 DROP TABLE IF EXISTS MID_qaqc;
