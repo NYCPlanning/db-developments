@@ -34,7 +34,10 @@ SELECT
     get_firedivision(geom) as geo_firedivision,
     get_puma(geom) as geo_puma,
     get_bin(geom) as geo_bin,
-    get_base_bbl(geom) as base_bbl
+    get_base_bbl(geom) as base_bbl,
+    get_schoolelmntry(geom) as geo_schoolelmntry,
+    get_schoolmiddle(geom) as geo_schoolmiddle,
+    get_schoolsubdist(geom) as geo_schoolsubdist
 INTO _SPATIAL_devdb
 FROM GEO_devdb;
 
@@ -166,7 +169,9 @@ SELECT
         OR a.mode = 'tpad'
         THEN b.geo_puma
     ELSE a.geo_firecompany END) as geo_puma, 
-
+    b.geo_schoolelmntry,
+    b.geo_schoolmiddle,
+    b.geo_schoolsubdist,
     a.geo_latitude,
     a.geo_longitude,
     a.latitude,
