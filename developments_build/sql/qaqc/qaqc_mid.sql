@@ -125,9 +125,8 @@ JOBNUMBER_accessory AS (
 JOBNUMBER_b_likely AS (
     SELECT job_number
     FROM MID_devdb
-    WHERE (job_type = 'Alteration' 
-            AND (occ_initial LIKE '%Residential%' AND occ_proposed LIKE '%Hotel%') 
-            OR (occ_initial LIKE '%Hotel%' AND occ_proposed LIKE '%Residential%'))
+    WHERE occ_initial ~* 'hotel|assisted|incapacitated|restrained'
+	OR occ_proposed ~* 'hotel|assisted|incapacitated|restrained'
     OR job_desc ~* CONCAT('Hotel|Motel|Boarding|Hoste|Lodge|UG 5', '|',
                           'Group 5|Grp 5|Class B|SRO|Single room', '|',
                           'Furnished|Rooming unit|Dorm|Transient', '|',
