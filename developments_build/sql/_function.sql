@@ -230,6 +230,33 @@ CREATE OR REPLACE FUNCTION get_base_bbl(
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
+CREATE OR REPLACE FUNCTION get_schoolelmntry(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.esid_no::varchar
+      FROM doe_eszones b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
+
+
+CREATE OR REPLACE FUNCTION get_schoolmiddle(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.msid_no::varchar
+      FROM doe_mszones b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_schoolsubdist(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.district||'-'||b.subdistrict
+      FROM doe_school_subdistricts b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION flag_nonres(
     _resid_flag varchar,

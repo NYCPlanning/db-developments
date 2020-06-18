@@ -10,8 +10,7 @@ INPUTS:
 		job_number text,
 		job_type text,
 		_classa_init numeric,
-		_classa_prop numeric,
-		x_mixeduse text
+		_classa_prop numeric
 	)
 
 	OCC_devdb (
@@ -46,8 +45,7 @@ INIT_OCC_devdb as (
 		b.occ_proposed,
 		b.occ_initial,
 		a._classa_init,
-		a._classa_prop,
-		a.x_mixeduse
+		a._classa_prop
 	FROM INIT_devdb a
 	LEFT JOIN OCC_devdb b
 	ON a.job_number = b.job_number
@@ -104,22 +102,12 @@ UNITS_init_prop as (
 		job_type,
 		(CASE 
 			WHEN job_type='New Building' 
-				then nullif(_classa_init, 0) 
-			WHEN job_type='Alteration' 
-				AND occ_initial ~* 'hotel'
-				AND occ_proposed ~* 'Residential|Assisted'
-				AND x_mixeduse is null
-				then 0
+				THEN nullif(_classa_init, 0) 
 			ELSE _classa_init
 		END) as classa_init, 
 		(CASE
 			WHEN job_type='Demolition' 
-				then nullif(_classa_prop, 0) 
-			WHEN job_type='Alteration' 
-				AND occ_initial ~* 'hotel'
-				AND occ_proposed ~* 'Residential|Assisted'
-				AND x_mixeduse is null
-				then 0
+				THEN nullif(_classa_prop, 0) 
 			ELSE _classa_prop
 		END) as classa_prop,
 		hotel_init,
@@ -159,7 +147,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'classa_init'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'classa_init', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
@@ -194,7 +182,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'classa_prop'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'classa_prop', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
