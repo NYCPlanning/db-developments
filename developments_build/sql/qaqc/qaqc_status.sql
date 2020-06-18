@@ -7,7 +7,7 @@ WITH
 JOBNUMBER_inactive_update AS(
     SELECT job_number
     FROM STATUS_devdb
-    WHERE date_lastupdt > :CAPTURE_DATE_PREV::date
+    WHERE date_lastupdt > :'CAPTURE_DATE_PREV'::date
     AND job_number IN (SELECT job_number
         FROM housing_input_research
         WHERE field = 'job_inactive'
