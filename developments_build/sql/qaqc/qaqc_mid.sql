@@ -4,8 +4,8 @@
     UNITS:
         units_init_null
 	    units_init_null
-        dup_equal_units
-        dup_diff_units
+        dup_equal_units -> dup_bbl_address_units
+        dup_diff_units -> dup_bbl_address
     OCC:
         b_nonres_with_units
 	    units_res_accessory
@@ -15,74 +15,50 @@
     STATUS:
         z_incomp_tract_home
 **/
-DROP TABLE IF EXISTS DUP_diff_job_number;
-WITH
-JOBNUMBER_dup_equal_units AS (
-    SELECT a.job_number, b.job_number as equal_units_match,
-    	a.geo_bbl, a.address
-    FROM MID_devdb a 
-    JOIN MID_devdb b 
-    ON a.job_type = b.job_type
-    AND a.geo_bbl = b.geo_bbl
-    AND a.address = b.address
-    AND a.classa_net = b.classa_net
-    AND a.job_number < b.job_number
-),
-
-JOBNUMBER_dup_diff_units AS (
-    SELECT a.job_number, b.job_number as diff_units_match,
-    a.geo_bbl, a.address
-    FROM MID_devdb a 
-    JOIN MID_devdb b 
-    ON a.job_type = b.job_type
-    AND a.geo_bbl = b.geo_bbl
-    AND a.address = b.address
-    AND a.classa_net <> b.classa_net
-    AND a.job_number < b.job_number
-),
-
-
-MATCHES_dup_diff_equal_units AS (
-    SELECT a.job_number as job_number_a, a.equal_units_match as job_number_b, 1 as equal_units,
-    a.geo_bbl, a.address
-    FROM JOBNUMBER_dup_equal_units a
-    UNION
-    SELECT b.job_number as job_number_b, b.diff_units_match as job_number_b, 0 as equal_units,
-    b.geo_bbl, b.address
-    FROM JOBNUMBER_dup_diff_units b
-    ORDER BY job_number_a
-)
-
-SELECT *
-INTO DUP_diff_job_number
-FROM MATCHES_dup_diff_equal_units;
-
-DROP TABLE IF EXISTS MATCH_dem_nb;
-WITH
-JOBNUMBER_dem_nb_overlap AS (
-    SELECT a.job_number as job_number_dem, 
-    	b.job_number as job_number_nb,
-    	a.geo_bbl
-    FROM MID_devdb a
-	JOIN MID_devdb b 
-	ON a.geo_bbl = b.geo_bbl
-	WHERE a.job_type = 'Demolition'
-	AND b.job_type = 'New Building'
-)
-
-SELECT *
-INTO MATCH_dem_nb
-FROM JOBNUMBER_dem_nb_overlap;
-
-
 DROP TABLE IF EXISTS MID_qaqc;
 WITH
 
-JOBNUMBER_all AS(
-	SELECT DISTINCT job_number
+BBL_ADDRESS_groups AS (
+	SELECT geo_bbl, address
 	FROM MID_devdb
+	WHERE job_inactive IS NULL
+	AND geo_bbl IS NOT NULL
+	AND address IS NOT NULL
+	GROUP BY geo_bbl, address 
+	HAVING COUNT(*) > 1
 ),
 
+BBL_ADDRESS_UNIT_groups AS (
+	SELECT geo_bbl, address, classa_net
+	FROM MID_devdb
+	WHERE job_inactive IS NULL
+	AND geo_bbl IS NOT NULL
+	AND address IS NOT NULL
+	AND classa_net IS NOT NULL
+	GROUP BY geo_bbl, address, classa_net
+	HAVING COUNT(*) > 1
+),
+
+
+JOBNUMBER_duplicates AS(
+	SELECT job_number,
+	
+			CASE WHEN geo_bbl||address||classa_net
+				IN (SELECT geo_bbl||address||classa_net 
+					FROM BBL_ADDRESS_UNIT_groups)
+				THEN  geo_bbl||' : '||address||' : '||classa_net
+				ELSE NULL
+			END as dup_bbl_address_units,
+			
+			CASE WHEN geo_bbl||address
+				IN (SELECT geo_bbl||address 
+					FROM BBL_ADDRESS_groups)
+				THEN geo_bbl||' : '||address
+				ELSE NULL
+			END as dup_bbl_address
+			
+	FROM MID_devdb a
+),
 
 JOBNUMBER_null_init AS(
     SELECT job_number
@@ -98,7 +74,7 @@ JOBNUMBER_null_prop AS(
     WHERE
     job_type IN ('New Building' , 'Alteration') 
     AND resid_flag = 'Residential' 
-    AND classa_prop IS NULL),   
+    AND classa_prop IS NULL), 
 
 JOBNUMBER_nonres_units AS (
 	SELECT job_number 
@@ -148,50 +124,47 @@ JOBNUMBER_incomplete_tract AS (
     FROM MID_devdb
     WHERE tracthomes = 'Y'
     AND job_status LIKE 'Complete'
-)
+),
 
-SELECT a.*,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_init) THEN 1
-	 	ELSE 0
-	END) as units_init_null,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_prop) THEN 1
-	 	ELSE 0
-	END) as units_prop_null,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM DUP_diff_job_number WHERE equal_units=1) THEN 1
-	 	ELSE 0
-	END) as dup_equal_units,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM DUP_diff_job_number WHERE equal_units=0) THEN 1
-	 	ELSE 0
-	END) as dup_diff_units,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_nonres_units) THEN 1
-	 	ELSE 0
-	END) as b_nonres_with_units,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_accessory) THEN 1
-	 	ELSE 0
-	END) as units_res_accessory,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_b_likely) THEN 1
-	 	ELSE 0
-	END) as b_likely_occ_desc,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_co_prop_mismatch) THEN 1
-	 	ELSE 0
-	END) as units_co_prop_mismatch,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_co_prop_mismatch) THEN 1
-	 	ELSE 0
-	END) as z_incomp_tract_home,
-	(CASE 
-	 	WHEN a.job_number IN (SELECT job_number_dem FROM MATCH_dem_nb) THEN 1
-	 	WHEN a.job_number IN (SELECT job_number_nb FROM MATCH_dem_nb) THEN 1
-	 	ELSE 0
-	END) as dem_nb_overlap
-	
+_MID_qaqc AS (
+	SELECT a.*,
+		(CASE 
+			WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_init) THEN 1
+			ELSE 0
+		END) as units_init_null,
+		(CASE 
+			WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_null_prop) THEN 1
+			ELSE 0
+		END) as units_prop_null,
+		(CASE 
+			WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_nonres_units) THEN 1
+			ELSE 0
+		END) as b_nonres_with_units,
+		(CASE 
+			WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_accessory) THEN 1
+			ELSE 0
+		END) as units_res_accessory,
+		(CASE 
+			WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_b_likely) THEN 1
+			ELSE 0
+		END) as b_likely_occ_desc,
+		(CASE 
+			WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_co_prop_mismatch) THEN 1
+			ELSE 0
+		END) as units_co_prop_mismatch,
+		(CASE 
+			WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_co_prop_mismatch) THEN 1
+			ELSE 0
+		END) as z_incomp_tract_home,
+		(CASE 
+			WHEN a.job_number IN (SELECT job_number_dem FROM MATCH_dem_nb) THEN 1
+			WHEN a.job_number IN (SELECT job_number_nb FROM MATCH_dem_nb) THEN 1
+			ELSE 0
+		END) as dem_nb_overlap
+	FROM STATUS_qaqc a)	
+
+SELECT a.*, b.dup_bbl_address, b.dup_bbl_address_units
 INTO MID_qaqc
-FROM STATUS_qaqc a;
+FROM _MID_qaqc a
+JOIN JOBNUMBER_duplicates b 
+ON a.job_number = b.job_number;
