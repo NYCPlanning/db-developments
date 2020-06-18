@@ -34,13 +34,24 @@ function urlparse {
 }
 
 # Pretty print messages
-function dispaly {
+function display {
   echo -e "
   \e[92m\e[1m$@\e[21m\e[0m
   "
 }
 
+function export_csv {
+    mkdir -p output
+    psql $BUILD_ENGINE -c "\COPY (
+        SELECT * FROM $1
+    ) TO stdout DELIMITER ',' CSV HEADER;" > output/$1.csv
+
+}
+
+function imports_csv {
+   cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN DELIMITER ',' CSV HEADER;"
+}
+
 # Setting Environmental Variables
 set_env .env version.env
 DATE=$(date "+%Y-%m-%d")
-
