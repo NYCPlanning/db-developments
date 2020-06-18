@@ -34,7 +34,7 @@ function urlparse {
 }
 
 # Pretty print messages
-function dispaly {
+function display {
   echo -e "
   \e[92m\e[1m$@\e[21m\e[0m
   "
@@ -46,6 +46,10 @@ function export_csv {
         SELECT * FROM $1
     ) TO stdout DELIMITER ',' CSV HEADER;" > output/$1.csv
 
+}
+
+function imports_csv {
+   cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN DELIMITER ',' CSV HEADER;"
 }
 
 # Setting Environmental Variables
