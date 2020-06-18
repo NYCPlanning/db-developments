@@ -96,7 +96,7 @@ DRAFT as (
         b.mode
 	FROM _INIT_devdb a
 	LEFT JOIN _GEO_devdb b
-	ON a.uid = b.uid::integer
+	ON a.uid = b.uid
 ),
 GEOM_geosupport as (
     SELECT
@@ -119,12 +119,12 @@ GEOM_dob_bin_bldgfootprints as (
         a.bin,
         a.geo_bbl,
         a.geo_bin,
-        coalesce(a.geom, ST_Centroid(b.geom)) as geom,
+        coalesce(a.geom, ST_Centroid(b.wkb_geometry)) as geom,
         (CASE 
 		 	WHEN a.geomsource IS NOT NULL 
 		 		THEN a.geomsource 
 		 	WHEN a.geom IS NULL 
-		 		AND b.geom IS NOT NULL 
+		 		AND b.wkb_geometry IS NOT NULL 
 		 		THEN 'BIN DOB buildingfootprints'
 		END) as geomsource
     FROM GEOM_geosupport a
@@ -139,12 +139,12 @@ GEOM_geo_bin_bldgfootprints as (
         a.bin,
         a.geo_bbl,
         a.geo_bin,
-        coalesce(a.geom, ST_Centroid(b.geom)) as geom,
+        coalesce(a.geom, ST_Centroid(b.wkb_geometry)) as geom,
         (CASE 
           WHEN a.geomsource IS NOT NULL 
             THEN a.geomsource 
           WHEN a.geom IS NULL 
-		 		AND b.geom IS NOT NULL 
+		 		AND b.wkb_geometry IS NOT NULL 
 		 		THEN 'BIN DCP geosupport'
 		END) as geomsource
     FROM GEOM_dob_bin_bldgfootprints a
@@ -158,17 +158,17 @@ GEOM_dob_bbl_mappluto as (
 		    a.bbl,
         a.bin,
         a.geo_bbl,
-        coalesce(a.geom, ST_Centroid(b.geom)) as geom,
+        coalesce(a.geom, ST_Centroid(b.wkb_geometry)) as geom,
         (CASE 
           WHEN a.geomsource IS NOT NULL 
             THEN a.geomsource 
           WHEN a.geom IS NULL 
-		 		AND b.geom IS NOT NULL 
+		 		AND b.wkb_geometry IS NOT NULL 
 		 		THEN 'BBL DOB MapPLUTO'
 		END) as geomsource
     FROM GEOM_geo_bin_bldgfootprints a
     LEFT JOIN dcp_mappluto b
-    ON a.bbl = b.bbl::bigint::text
+    ON a.bbl = b.bbl::numeric::bigint::text
 )
 SELECT
     a.*,
