@@ -16,6 +16,7 @@ def ETL(table):
 
 
 tables = [
+    "dcp_mappluto",
     "doitt_buildingfootprints",
     "doitt_buildingfootprints_historical",
     "doitt_zipcodeboundaries",
@@ -177,4 +178,3 @@ if __name__ == "__main__":
     dob_cofos()
     dob_jobapplications()
     dob_permitissuance()
-    dcp_mappluto()
