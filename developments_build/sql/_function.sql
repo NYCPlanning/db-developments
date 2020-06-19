@@ -6,7 +6,7 @@ CREATE OR REPLACE FUNCTION occ_translate(
   RETURNS varchar AS $$
   	SELECT (CASE 
         WHEN job_type = 'New Building' THEN 'Empty Site'
-        ELSE (select occ from occ_lookup where dob_occ = _occ)
+        ELSE (select occ from lookup_occ where dob_occ = _occ)
     END);
 $$ LANGUAGE sql;
 
@@ -16,7 +16,7 @@ CREATE OR REPLACE FUNCTION status_translate(
 ) 
   RETURNS varchar AS $$
   	select status 
-    from status_lookup 
+    from lookup_status 
     where dob_status = _status
 $$ LANGUAGE sql;
 
@@ -36,7 +36,7 @@ CREATE OR REPLACE FUNCTION ownership_translate(
 ) 
   RETURNS varchar AS $$
   	select ownership 
-    from ownership_lookup 
+    from lookup_ownership
     where COALESCE(_cityowned, 'NULL') = COALESCE(cityowned, 'NULL')
     AND COALESCE(_ownertype, 'NULL') = COALESCE(ownertype, 'NULL')
     AND COALESCE(_nonprofit, 'NULL') = COALESCE(nonprofit, 'NULL')

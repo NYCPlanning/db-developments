@@ -16,12 +16,8 @@ def ETL(table):
 
 
 tables = [
-    "dof_dtm",
     "doitt_buildingfootprints",
     "doitt_zipcodeboundaries",
-    "housing_input_lookup_occupancy",
-    "housing_input_lookup_status",
-    "housing_input_research",
     "dcp_ntaboundaries",
     "dcp_cdboundaries",
     "dcp_censusblocks",
@@ -35,10 +31,8 @@ tables = [
     "doe_eszones",
     "doe_mszones",
     "dcp_policeprecincts",
-    "housing_input_hny_job_manual",
     "hpd_hny_units_by_building",
-    "hpd_hny_units_by_project",
-    "housing_input_hny",
+    "hpd_hny_units_by_project"
 ]
 
 
