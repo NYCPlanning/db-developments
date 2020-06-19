@@ -94,5 +94,6 @@ display "Creating HNY fields: hny_id,
 psql $BUILD_ENGINE -f sql/_hny.sql
 count HNY_devdb
 
-display "Formattting QAQC table"
+display "Creating FINAL_devdb and formatted QAQC table"
+psql $BUILD_ENGINE -v VERSION=$VERSION  -f sql/final.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_final.sql

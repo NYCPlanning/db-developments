@@ -192,7 +192,7 @@ SELECT
     geomsource,
     hny_id,
     hny_jobrelate,
-    '19Q4 refactor' as version
+    :'VERSION' as version
 
 INTO FINAL_devdb
 FROM JOIN_HNY_PLUTO_devdb;
