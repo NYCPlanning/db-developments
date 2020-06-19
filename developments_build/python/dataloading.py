@@ -16,12 +16,10 @@ def ETL(table):
 
 
 tables = [
-    "dof_dtm",
+    "dcp_mappluto",
     "doitt_buildingfootprints",
+    "doitt_buildingfootprints_historical",
     "doitt_zipcodeboundaries",
-    "housing_input_lookup_occupancy",
-    "housing_input_lookup_status",
-    "housing_input_research",
     "dcp_ntaboundaries",
     "dcp_cdboundaries",
     "dcp_censusblocks",
@@ -35,10 +33,8 @@ tables = [
     "doe_eszones",
     "doe_mszones",
     "dcp_policeprecincts",
-    "housing_input_hny_job_manual",
     "hpd_hny_units_by_building",
-    "hpd_hny_units_by_project",
-    "housing_input_hny",
+    "hpd_hny_units_by_project"
 ]
 
 
@@ -71,7 +67,6 @@ def dcp_mappluto():
             b.pfirm15_fl,
             b.wkb_geometry
         FROM dcp_mappluto.latest b
-        LIMIT 100
         """,
         recipe_engine,
     )
@@ -183,4 +178,3 @@ if __name__ == "__main__":
     dob_cofos()
     dob_jobapplications()
     dob_permitissuance()
-    dcp_mappluto()

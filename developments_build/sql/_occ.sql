@@ -14,7 +14,7 @@ INPUTS:
         _occ_proposed text,
     )
     
-	occ_lookup (
+	lookup_occ (
 		* dob_occ text,
 		occ text
 	)

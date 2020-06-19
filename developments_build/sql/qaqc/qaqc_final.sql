@@ -3,7 +3,8 @@ Alphabetize QAQC table for export
 */
 
 DROP TABLE IF EXISTS FINAL_qaqc;
-SELECT job_number,
+SELECT  
+        job_number,
         b_large_alt_reduction,
         b_likely_occ_desc,
         b_nonres_with_units,
