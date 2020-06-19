@@ -17,6 +17,7 @@ def ETL(table):
 
 tables = [
     "doitt_buildingfootprints",
+    "doitt_buildingfootprints_historical",
     "doitt_zipcodeboundaries",
     "dcp_ntaboundaries",
     "dcp_cdboundaries",

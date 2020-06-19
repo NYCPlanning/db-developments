@@ -99,7 +99,7 @@ DRAFT as (
 	ON a.uid = b.uid
 ),
 GEOM_geosupport as (
-    SELECT
+    SELECT distinct
         uid,
         job_number,
 		bbl,
@@ -112,7 +112,7 @@ GEOM_geosupport as (
     FROM DRAFT
 ),
 GEOM_dob_bin_bldgfootprints as (
-    SELECT
+    SELECT distinct
         a.uid,
         a.job_number,
 		a.bbl,
@@ -132,7 +132,7 @@ GEOM_dob_bin_bldgfootprints as (
     ON a.bin::text = b.bin::text
 ),
 GEOM_geo_bin_bldgfootprints as (
-	SELECT
+	SELECT distinct
         a.uid,
         a.job_number,
 		a.bbl,
@@ -144,18 +144,18 @@ GEOM_geo_bin_bldgfootprints as (
           WHEN a.geomsource IS NOT NULL 
             THEN a.geomsource 
           WHEN a.geom IS NULL 
-		 		AND b.wkb_geometry IS NOT NULL 
-		 		THEN 'BIN DCP geosupport'
+            AND b.wkb_geometry IS NOT NULL 
+            THEN 'BIN DCP geosupport'
 		END) as geomsource
     FROM GEOM_dob_bin_bldgfootprints a
     LEFT JOIN doitt_buildingfootprints b
     ON a.geo_bin = b.bin
 ),
 GEOM_dob_bbl_mappluto as (
-	SELECT
+	SELECT distinct
         a.uid,
         a.job_number,
-		    a.bbl,
+		a.bbl,
         a.bin,
         a.geo_bbl,
         coalesce(a.geom, ST_Centroid(b.wkb_geometry)) as geom,
@@ -169,16 +169,39 @@ GEOM_dob_bbl_mappluto as (
     FROM GEOM_geo_bin_bldgfootprints a
     LEFT JOIN dcp_mappluto b
     ON a.bbl = b.bbl::numeric::bigint::text
+), 
+buildingfootprints_historical as (
+    SELECT 
+        bin, 
+        ST_Union(wkb_geometry) as wkb_geometry
+    FROM doitt_buildingfootprints_historical
+    GROUP BY bin
+),
+GEOM_dob_bin_bldgfp_historical as (
+    SELECT distinct
+        a.uid,
+        a.job_number,
+        coalesce(a.geom, ST_Centroid(b.wkb_geometry)) as geom,
+        (CASE 
+		 	WHEN a.geomsource IS NOT NULL 
+		 		THEN a.geomsource 
+		 	WHEN a.geom IS NULL 
+		 		AND b.wkb_geometry IS NOT NULL 
+		 		THEN 'BIN DOB buildingfootprints (historical)'
+		END) as geomsource
+    FROM GEOM_dob_bbl_mappluto a
+    LEFT JOIN buildingfootprints_historical b
+    ON a.bin::text = b.bin::text
 )
 SELECT
-    a.*,
+    distinct a.*,
     ST_Y(b.geom) as latitude,
     ST_X(b.geom) as longitude,
     b.geom,
     b.geomsource
 INTO GEO_devdb
 FROM DRAFT a
-LEFT JOIN GEOM_dob_bbl_mappluto b
+LEFT JOIN GEOM_dob_bin_bldgfp_historical b
 ON a.uid = b.uid;
 
 /* 
