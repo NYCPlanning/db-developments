@@ -1,1 +1,0 @@
-DROP INDEX IF EXISTS developments_geom_geom_idx;
