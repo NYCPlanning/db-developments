@@ -87,6 +87,7 @@ OUTPUTS:
         hny_id,
         classa_hnyaff,
 		all_hny_units,
+        hny_jobrelate
         ...
     )
 
