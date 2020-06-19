@@ -20,6 +20,7 @@ INPUTS:
 
     PLUTO_dedb (
         * job_number
+        pluto_version,
         pluto_unitres,
 	    pluto_bldgsf,
 	    pluto_comsf,
@@ -61,6 +62,7 @@ JOIN_HNY_devdb as (
 JOIN_HNY_PLUTO_devdb as (
     SELECT
         a.*,
+        b.pluto_version,
 	    b.pluto_unitres,
 	    b.pluto_bldgsf,
 	    b.pluto_comsf,
@@ -83,8 +85,9 @@ JOIN_HNY_PLUTO_devdb as (
     LEFT JOIN PLUTO_devdb b
     ON a.job_number = b.job_number
 )
+
 -- Put columns in desired order
-SELECT (
+SELECT 
     job_number,
     job_type,
     resid_flag,
@@ -105,11 +108,11 @@ SELECT (
     hotel_prop,
     otherb_init,
     otherb_prop,
-    boro,
-    bin,
-    bbl,
+    geo_boro as boro,
+    geo_bin as bin,
+    geo_bbl as bbl,
     address_numbr,
-    address_st,
+    address_street as address_st,
     address,
     occ_initial,
     occ_proposed,
@@ -131,8 +134,8 @@ SELECT (
     stories_prop,
     height_init,
     height_prop,
-    zoningsf_init,
-    zoningsf_prop,
+    zoningsft_init as zoningsf_init,
+    zoningsft_prop as zoningsf_prop,
     constructnsf,
     enlargement,
     enlargementsf,
@@ -164,24 +167,24 @@ SELECT (
     pluto_bldgs,
     pluto_floors,
     pluto_version,
-    cenblock2010,
-    bctcb2010,
-    bct2010,
-    nta2010,
-    ntaname2010,
-    puma2010,
-    comunitydist,
-    councildist,
-    schoolsubdist,
-    schoolcommnty,
-    schoolelmntry,
-    schoolmiddle,
-    firecompany,
-    firebatttalion,
-    firedivision,
-    policeprecnct,
-    depdrainarea,
-    deppumpstatn,
+	geo_censusblock2010 as cenblock2010,
+	geo_boro||geo_censustract2010||geo_censusblock2010 as bctcb2010,
+	geo_boro||geo_censustract2010 as bct2010,
+	geo_ntacode2010 as nta2010,
+	geo_ntaname2010 as ntaname2010,
+	geo_puma as puma2010,
+	geo_cd as comunitydist,
+	geo_council as councildist,
+	geo_schoolsubdist as schoolsubdist,
+	geo_csd as schoolcommnty,
+	geo_schoolelmntry as schoolelmntry,
+	geo_schoolmiddle as schoolmiddle,
+	geo_firecompany as firecompany,
+	geo_firebattalion as firebatttalion,
+	geo_firedivision as firedivision,
+	geo_policeprct as policeprecnct,
+--    depdrainarea,
+--    deppumpstatn,
     pluto_firm07,
     pluto_pfirm15,
     latitude,
@@ -189,7 +192,7 @@ SELECT (
     geomsource,
     hny_id,
     hny_jobrelate,
-    '19Q4' as version
-)
-INTO MID_devdb
+    '19Q4 refactor' as version
+
+INTO FINAL_devdb
 FROM JOIN_HNY_PLUTO_devdb;
