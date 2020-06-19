@@ -66,7 +66,6 @@ def dcp_mappluto():
             b.pfirm15_fl,
             b.wkb_geometry
         FROM dcp_mappluto.latest b
-        LIMIT 100
         """,
         recipe_engine,
     )
