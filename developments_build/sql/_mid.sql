@@ -169,7 +169,7 @@ WITH CORR_target as (
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited,'resid_flag'),
-	x_reason = array_append(x_reason, json_build_object(
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
 		'field', 'resid_flag', 'reason', b.reason, 
 		'edited_date', b.edited_date
 	))
