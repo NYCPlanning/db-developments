@@ -402,7 +402,7 @@ WITH
 
 
 -- 7) MERGE WITH devdb  
-SELECT a.*, 
+SELECT a.job_number, 
         b.hny_id,
         b.classa_hnyaff,
         b.all_hny_units,
