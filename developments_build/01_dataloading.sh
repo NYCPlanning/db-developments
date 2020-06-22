@@ -47,13 +47,32 @@ psql $BUILD_ENGINE -c "
         hny_id text
     );
 
+    DROP TABLE IF EXISTS census_units10;
+    CREATE TABLE census_units10 (
+        CenBlock10 text,
+        CenTract10 text,
+        NTA10 text,
+        PUMA10 text,
+        CenUnits10 numeric
+    );
+
+    DROP TABLE IF EXISTS census_units10adj;
+    CREATE TABLE census_units10adj (
+        BCT2010 text,
+        CenTract10 text,
+        NTA10 text,
+        PUMA10 text,
+        CenUnits10Adj numeric
+    );
+
 "
 
 imports_csv lookup_occ &
 imports_csv lookup_status &
 imports_csv lookup_ownership &
 imports_csv housing_input_research &
-imports_csv housing_input_hny 
+imports_csv census_units10 &
+imports_csv census_units10adj 
 
 
 wait 
