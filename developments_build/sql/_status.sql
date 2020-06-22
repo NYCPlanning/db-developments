@@ -86,7 +86,7 @@ STATUS_translate as (
                 THEN '2. Plan Examination'
 
             WHEN date_permittd IS NOT NULL
-                THEN '3. Permited'
+                THEN '3. Permitted'
 
             ELSE status_translate(a._job_status)
         END) as job_status
