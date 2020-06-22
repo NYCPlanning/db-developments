@@ -18,6 +18,11 @@ function count {
   \e[33m$1: $count records\e[0m
   "
   done
+
+  ddl=$(psql -At $BUILD_ENGINE -c "SELECT get_DDL('$1') as DDL;")
+  echo -e "
+  \e[33m$ddl\e[0m
+  "
 }
 
 # Parsing database url
