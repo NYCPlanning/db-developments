@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 source config.sh
 
 display "Starting to build Developments DB"
