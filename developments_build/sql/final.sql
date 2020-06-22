@@ -134,8 +134,6 @@ SELECT
     stories_prop,
     height_init,
     height_prop,
-    zoningsft_init as zoningsf_init,
-    zoningsft_prop as zoningsf_prop,
     constructnsf,
     enlargement,
     enlargementsf,
