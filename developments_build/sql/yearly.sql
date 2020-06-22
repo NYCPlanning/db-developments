@@ -63,11 +63,10 @@ DATES_complete_jobs AS (
         nta2010,
         ntaname2010,
         puma2010,
-        CASE WHEN job_status = '5. Complete' 
-                THEN date_complete::date
-            ELSE NULL END as reference_date,
+        complete_year,
+        date_complete
         classa_net
-        FROM FINAL_devdb
+    FROM FINAL_devdb
 ),
 
 INCOMPLETE_jobs AS (
@@ -110,52 +109,40 @@ SELECT job_number,
         nta2010,
         ntaname2010,
         puma2010,
-        CASE WHEN reference_date > '2010-03-31'::date
-            AND reference_date < '2011-01-01'::date
+        CASE WHEN complete_year = '2010' AND date_complete > '2010-03-31'::date
             THEN classa_net
             ELSE NULL END AS comp2010ap,
-        CASE WHEN reference_date > '2009-12-31'::date
-            AND reference_date < '2010-04-01'::date
+        CASE WHEN complete_year = '2010' 
             THEN classa_net
             ELSE NULL END AS comp2010,
-        CASE WHEN reference_date > '2010-12-31'::date
-            AND reference_date < '2012-01-01'::date
+        CASE WHEN complete_year = '2011'
             THEN classa_net
             ELSE NULL END AS comp2011,
-        CASE WHEN reference_date > '2011-12-31'::date
-            AND reference_date < '2013-01-01'::date
+        CASE WHEN complete_year = '2012'
             THEN classa_net
             ELSE NULL END AS comp2012,
-        CASE WHEN reference_date > '2012-12-31'::date
-            AND reference_date < '2014-01-01'::date
+        CASE WHEN complete_year = '2013'
             THEN classa_net
             ELSE NULL END AS comp2013,
-        CASE WHEN reference_date > '2013-12-31'::date
-            AND reference_date < '2015-01-01'::date
+        CASE WHEN complete_year = '2014'
             THEN classa_net
             ELSE NULL END AS comp2014,
-        CASE WHEN reference_date > '2014-12-31'::date
-            AND reference_date < '2016-01-01'::date
+        CASE WHEN complete_year = '2015'
             THEN classa_net
             ELSE NULL END AS comp2015,
-        CASE WHEN reference_date > '2015-12-31'::date
-            AND reference_date < '2017-01-01'::date
+        CASE WHEN complete_year = '2016'
             THEN classa_net
             ELSE NULL END AS comp2016,
-        CASE WHEN reference_date > '2016-12-31'::date
-            AND reference_date < '2018-01-01'::date
+        CASE WHEN complete_year = '2017'
             THEN classa_net
             ELSE NULL END AS comp2017,
-        CASE WHEN reference_date > '2017-12-31'::date
-            AND reference_date < '2019-01-01'::date
+        CASE WHEN complete_year = '2018'
             THEN classa_net
             ELSE NULL END AS comp2018,
-        CASE WHEN reference_date > '2018-12-31'::date
-            AND reference_date < '2020-01-01'::date
+        CASE WHEN complete_year = '2019'
             THEN classa_net
             ELSE NULL END AS comp2019,
-        CASE WHEN reference_date > '2019-12-31'::date
-            AND reference_date < '2020-07-01'::date
+        CASE WHEN complete_year = '2020' AND date_complete < '2020-07-01'::date
             THEN classa_net
             ELSE NULL END AS comp2020q2,
         incmpfiled,
