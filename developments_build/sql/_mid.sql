@@ -77,8 +77,8 @@ JOIN_date_permittd as (
         b.date_permittd,
         b.permit_year,
         b.permit_qrtr,
-        b._complete_year as complete_year_A1_NB,
-        b._complete_qrtr as complete_qrtr_A1_NB
+        b._complete_year as complete_year_demo,
+        b._complete_qrtr as complete_qrtr_demo
     FROM INIT_devdb a
     LEFT JOIN STATUS_Q_devdb b
     ON a.job_number = b.job_number
@@ -90,11 +90,11 @@ JOIN_co as (
         -- first certificate of occupancy issuance. For demolitions, this is the 
         -- year that the demolition was permitted
         (CASE WHEN a.job_type = 'Demolition'
-            THEN b._complete_year 
-        ELSE a.complete_year_A1_NB END) as _complete_year,
+            THEN a.complete_year_demo 
+        ELSE b._complete_year END) as _complete_year,
         (CASE WHEN a.job_type = 'Demolition'
-            THEN b._complete_qrtr 
-        ELSE a.complete_qrtr_A1_NB END) as _complete_qrtr,
+            THEN a.complete_qrtr_demo 
+        ELSE b._complete_qrtr END) as _complete_qrtr,
         b.date_complete,
         b.co_latest_certtype,
         b.co_latest_units::numeric
