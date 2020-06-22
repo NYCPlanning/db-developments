@@ -237,12 +237,13 @@ WITH LONLAT_corrections as (
     ) b ON a.job_number = b.job_number
 ),
 GEOM_corrections as (
-    SELECT 
+    SELECT
         a.job_number,
         a.old_geom,
         a.new_geom,
         a.reason,
-        st_distance(a.new_geom, b.geom) as distance
+        st_distance(a.new_geom, b.geom) as distance,
+        get_bbl(b.geom) as bbl
     FROM LONLAT_corrections a
     LEFT JOIN GEO_devdb b
     ON a.job_number = b.job_number
@@ -254,7 +255,7 @@ SET latitude = ST_Y(b.new_geom),
     geomsource = 'Lat/Long DCP'
 FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
-AND (b.distance < 10 OR a.geom IS NULL);
+AND (b.distance < 10 AND b.bbl IS NULL);
 
 WITH CORR_target as (
     SELECT a.job_number, 
