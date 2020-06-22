@@ -16,6 +16,7 @@ def ETL(table):
 
 
 tables = [
+    "council_members",
     "dcp_mappluto",
     "doitt_buildingfootprints",
     "doitt_buildingfootprints_historical",
