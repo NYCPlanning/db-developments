@@ -204,7 +204,12 @@ JOBNUMBER_relevant as (
 		'(^|)0*', '', '')||' '||trim(streetname) as address,
 	bin as bin,
 	LEFT(bin, 1)||lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0') as bbl,
-	INITCAP(borough) as boro,
+	CASE WHEN borough ~* 'Manhattan' THEN '1'
+		WHEN borough ~* 'Bronx' THEN '2'
+		WHEN borough ~* 'Brooklyn' THEN '3'
+		WHEN borough ~* 'Queens' THEN '4'
+		WHEN borough ~* 'Staten Island' THEN '5' 
+		END as boro,
 	specialactionstatus as x_withdrawal
 INTO _INIT_devdb
 FROM dob_jobapplications
