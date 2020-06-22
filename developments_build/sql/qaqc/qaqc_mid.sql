@@ -19,23 +19,21 @@ DROP TABLE IF EXISTS MID_qaqc;
 WITH
 
 BBL_ADDRESS_groups AS (
-	SELECT geo_bbl, address
+	SELECT COALESCE(geo_bbl, 'NULL BBL') as geo_bbl, address
 	FROM MID_devdb
 	WHERE job_inactive IS NULL
-	AND geo_bbl IS NOT NULL
 	AND address IS NOT NULL
-	GROUP BY geo_bbl, address 
+	GROUP BY COALESCE(geo_bbl, 'NULL BBL'), address 
 	HAVING COUNT(*) > 1
 ),
 
 BBL_ADDRESS_UNIT_groups AS (
-	SELECT geo_bbl, address, classa_net
+	SELECT COALESCE(geo_bbl, 'NULL BBL') as geo_bbl, address, classa_net
 	FROM MID_devdb
 	WHERE job_inactive IS NULL
-	AND geo_bbl IS NOT NULL
 	AND address IS NOT NULL
 	AND classa_net IS NOT NULL
-	GROUP BY geo_bbl, address, classa_net
+	GROUP BY COALESCE(geo_bbl, 'NULL BBL'), address, classa_net
 	HAVING COUNT(*) > 1
 ),
 
@@ -46,14 +44,14 @@ JOBNUMBER_duplicates AS(
 			CASE WHEN geo_bbl||address||classa_net
 				IN (SELECT geo_bbl||address||classa_net 
 					FROM BBL_ADDRESS_UNIT_groups)
-				THEN  geo_bbl||' : '||address||' : '||classa_net
+				THEN  COALESCE(geo_bbl, 'NULL BBL')||' : '||address||' : '||classa_net
 				ELSE NULL
 			END as dup_bbl_address_units,
 			
 			CASE WHEN geo_bbl||address
 				IN (SELECT geo_bbl||address 
 					FROM BBL_ADDRESS_groups)
-				THEN geo_bbl||' : '||address
+				THEN COALESCE(geo_bbl, 'NULL BBL')||' : '||address
 				ELSE NULL
 			END as dup_bbl_address
 			
