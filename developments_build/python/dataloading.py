@@ -16,6 +16,7 @@ def ETL(table):
 
 
 tables = [
+    "council_members",
     "dcp_mappluto",
     "doitt_buildingfootprints",
     "doitt_buildingfootprints_historical",
@@ -167,10 +168,6 @@ def dob_cofos():
     exporter(df=df, table_name="dob_cofos", con=build_engine)
     del df
 
-
-# def old_developments():
-#     importer = Importer(EDM_DATA, BUILD_ENGINE)
-#     importer.import_table(schema_name='developments', version="2019/09/10")
 
 if __name__ == "__main__":
     with Pool(processes=cpu_count()) as pool:
