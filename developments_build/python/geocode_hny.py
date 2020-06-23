@@ -17,17 +17,11 @@ def geocode(input):
     borough = input.pop("borough")
 
     try:
-        geo1 = g["AP"](
+        geo = g["1B"](
             street_name=sname, house_number=hnum, borough=borough, mode="regular"
         )
-        geo2 = g["1B"](
-            street_name=sname, house_number=hnum, borough=borough, mode="regular"
-        )
-        geo2.pop("Longitude")
-        geo2.pop("Latitude")
-        geo = {**geo1, **geo2}
         geo = parse_output(geo)
-        geo.update(dict(uid=uid, mode="regular", func="AP+1B", status="success"))
+        geo.update(dict(uid=uid, mode="regular", func="1B", status="success"))
         return geo
     except GeosupportError:
         try:
