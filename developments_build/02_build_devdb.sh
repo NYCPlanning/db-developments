@@ -97,6 +97,7 @@ psql $BUILD_ENGINE\
 display "Comining _MID_devdb with STATUS_devdb to create MID_devdb"
 psql $BUILD_ENGINE -f sql/mid.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_mid.sql
+psql $BUILD_ENGINE -f sql/qaqc/qaqc_geo.sql
 count MID_devdb
 
 display "Creating HNY fields: 

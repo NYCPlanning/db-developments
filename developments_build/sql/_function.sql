@@ -258,6 +258,19 @@ CREATE OR REPLACE FUNCTION get_schoolsubdist(
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
+DROP TABLE IF EXISTS dof_shoreline_subdivide;
+select ST_SubDivide(wkb_geometry, 100) as wkb_geometry 
+into dof_shoreline_subdivide
+FROM dof_shoreline;
+
+CREATE OR REPLACE FUNCTION in_water(
+    _geom geometry
+  ) 
+    RETURNS boolean AS $$
+      SELECT ST_Within(_geom, b.wkb_geometry) 
+      FROM dof_shoreline_subdivide b 
+  $$ LANGUAGE sql;
+
 CREATE OR REPLACE FUNCTION flag_nonres(
     _resid_flag varchar,
     _job_description varchar,
