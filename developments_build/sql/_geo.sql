@@ -153,7 +153,7 @@ GEOM_geosupport as (
             THEN a.geomsource 
           WHEN a.geom IS NULL 
             AND a.geo_longitude IS NOT NULL 
-            THEN 'Lat/Long geosupport'
+            THEN 'Lat/Lon geosupport'
 		END) as geomsource
     FROM GEOM_dob_bin_bldgfootprints a
 ),
@@ -198,6 +198,25 @@ GEOM_dob_bin_bldgfp_historical as (
     FROM GEOM_dob_bbl_mappluto a
     LEFT JOIN buildingfootprints_historical b
     ON a.bin::text = b.bin::text
+),
+GEOM_dob_latlon as (
+    SELECT distinct
+        a.uid,
+        a.job_number,
+        coalesce(
+            a.geom, 
+            b.dob_geom
+        ) as geom,
+        (CASE 
+		 	WHEN a.geomsource IS NOT NULL 
+		 		THEN a.geomsource 
+		 	WHEN a.geom IS NULL 
+		 		AND b.dob_geom IS NOT NULL 
+		 		THEN 'Lat/Lon DOB'
+		END) as geomsource
+    FROM GEOM_dob_bin_bldgfp_historical a
+    LEFT JOIN _INIT_devdb b
+    ON a.job_number = b.job_number
 )
 SELECT
     distinct a.*,
@@ -207,7 +226,7 @@ SELECT
     b.geomsource
 INTO GEO_devdb
 FROM DRAFT a
-LEFT JOIN GEOM_dob_bin_bldgfp_historical b
+LEFT JOIN GEOM_dob_latlon b
 ON a.uid = b.uid;
 
 /* 

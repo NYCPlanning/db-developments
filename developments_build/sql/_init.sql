@@ -210,7 +210,10 @@ JOBNUMBER_relevant as (
 		WHEN borough ~* 'Queens' THEN '4'
 		WHEN borough ~* 'Staten Island' THEN '5' 
 		END as boro,
-	specialactionstatus as x_withdrawal
+	specialactionstatus as x_withdrawal,
+	ST_SetSRID(ST_Point(
+		longitude::double precision,
+		latitude::double precision),4326) as dob_geom
 INTO _INIT_devdb
 FROM dob_jobapplications
 WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
