@@ -1,0 +1,49 @@
+name: Weekly Run
+
+on:
+  push:
+    branches: dev
+  schedule:
+    - cron: '0 9 * * MON'
+
+jobs:
+  skip:
+    name: Build and test
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '[weekly]')"
+    steps:
+      - run: echo "${{ github.event.head_commit.message }}"    
+  Build:
+    name: Building ...
+    needs: skip
+    runs-on: ubuntu-latest
+    env:
+      RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
+      BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
+      EDM_DATA: ${{ secrets.EDM_DATA }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dependencies ...
+        run: |
+          sudo apt update
+          sudo apt install -y curl zip
+
+          sudo tee /etc/apt/sources.list.d/pgdg.list <<END
+          deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+          END
+
+          # get the signing key and import it
+          curl -O https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          sudo apt-key add ACCC4CF8.asc
+
+          sudo apt update
+          sudo apt install -y postgresql-client-11
+          sudo apt autoremove
+
+      - name: 1. dataloading ..
+        working-directory: developments_build
+        run: ./01_dataloading.sh
+
+      - name: 2. build dev_db ...
+        working-directory: developments_build
+        run: ./02_build_devdb.sh
