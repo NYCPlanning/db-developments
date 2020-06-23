@@ -16,6 +16,7 @@ def ETL(table):
 
 
 tables = [
+    "dof_shoreline",
     "council_members",
     "dcp_mappluto",
     "doitt_buildingfootprints",
