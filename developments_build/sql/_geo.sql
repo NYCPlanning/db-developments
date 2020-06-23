@@ -277,7 +277,7 @@ UPDATE GEO_devdb a
 SET latitude = ST_Y(b.new_geom),
     longitude = ST_X(b.new_geom),
     geom = b.new_geom,
-    geomsource = 'Lat/Long DCP'
+    geomsource = 'Lat/Lon DCP'
 FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
 AND (b.distance < 10 AND b.bbl IS NULL);
@@ -291,7 +291,7 @@ WITH CORR_target as (
     AND a.job_number in (
         SELECT distinct job_number
         FROM GEO_devdb 
-        WHERE geomsource = 'Lat/Long DCP')
+        WHERE geomsource = 'Lat/Lon DCP')
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'geom'),
