@@ -89,27 +89,12 @@ DRAFT as (
         b.geo_firedivision,
         b.geo_firebattalion,
         b.geo_firecompany,
-        (CASE WHEN b.mode = 'tpad' then NULL 
-        ELSE b.latitude::double precision END) as geo_latitude,
-        (CASE WHEN b.mode = 'tpad' then NULL 
-        ELSE b.longitude::double precision END) as geo_longitude,
+        b.latitude::double precision as geo_latitude,
+        b.longitude::double precision as geo_longitude,
         b.mode
 	FROM _INIT_devdb a
 	LEFT JOIN _GEO_devdb b
 	ON a.uid = b.uid
-),
-GEOM_geosupport as (
-    SELECT distinct
-        uid,
-        job_number,
-		bbl,
-        bin,
-        geo_bbl,
-        geo_bin,
-        ST_SetSRID(ST_Point(geo_longitude,geo_latitude),4326) as geom,
-        (CASE WHEN geo_longitude IS NOT NULL 
-		 THEN 'Lat/Long geosupport' END) as geomsource
-    FROM DRAFT
 ),
 GEOM_dob_bin_bldgfootprints as (
     SELECT distinct
@@ -119,15 +104,13 @@ GEOM_dob_bin_bldgfootprints as (
         a.bin,
         a.geo_bbl,
         a.geo_bin,
-        coalesce(a.geom, ST_Centroid(b.wkb_geometry)) as geom,
-        (CASE 
-		 	WHEN a.geomsource IS NOT NULL 
-		 		THEN a.geomsource 
-		 	WHEN a.geom IS NULL 
-		 		AND b.wkb_geometry IS NOT NULL 
-		 		THEN 'BIN DOB buildingfootprints'
-		END) as geomsource
-    FROM GEOM_geosupport a
+        a.geo_latitude,
+        a.geo_longitude,
+        ST_Centroid(b.wkb_geometry) as geom,
+        (CASE WHEN b.wkb_geometry IS NOT NULL 
+		 	THEN 'BIN DOB buildingfootprints' 
+        END) as geomsource
+    FROM DRAFT a
     LEFT JOIN doitt_buildingfootprints b
     ON a.bin::text = b.bin::text
 ),
@@ -139,6 +122,8 @@ GEOM_geo_bin_bldgfootprints as (
         a.bin,
         a.geo_bbl,
         a.geo_bin,
+        a.geo_latitude,
+        a.geo_longitude,
         coalesce(a.geom, ST_Centroid(b.wkb_geometry)) as geom,
         (CASE 
           WHEN a.geomsource IS NOT NULL 
@@ -150,6 +135,27 @@ GEOM_geo_bin_bldgfootprints as (
     FROM GEOM_dob_bin_bldgfootprints a
     LEFT JOIN doitt_buildingfootprints b
     ON a.geo_bin = b.bin
+),
+GEOM_geosupport as (
+    SELECT distinct
+        a.uid,
+        a.job_number,
+		a.bbl,
+        a.bin,
+        a.geo_bbl,
+        a.geo_bin,
+        coalesce(
+            a.geom, 
+            ST_SetSRID(ST_Point(a.geo_longitude,a.geo_latitude),4326)
+        ) as geom,
+        (CASE 
+          WHEN a.geomsource IS NOT NULL 
+            THEN a.geomsource 
+          WHEN a.geom IS NULL 
+            AND a.geo_longitude IS NOT NULL 
+            THEN 'Lat/Lon geosupport'
+		END) as geomsource
+    FROM GEOM_dob_bin_bldgfootprints a
 ),
 GEOM_dob_bbl_mappluto as (
 	SELECT distinct
@@ -166,7 +172,7 @@ GEOM_dob_bbl_mappluto as (
 		 		AND b.wkb_geometry IS NOT NULL 
 		 		THEN 'BBL DOB MapPLUTO'
 		END) as geomsource
-    FROM GEOM_geo_bin_bldgfootprints a
+    FROM GEOM_geosupport a
     LEFT JOIN dcp_mappluto b
     ON a.bbl = b.bbl::numeric::bigint::text
 ), 
@@ -192,6 +198,25 @@ GEOM_dob_bin_bldgfp_historical as (
     FROM GEOM_dob_bbl_mappluto a
     LEFT JOIN buildingfootprints_historical b
     ON a.bin::text = b.bin::text
+),
+GEOM_dob_latlon as (
+    SELECT distinct
+        a.uid,
+        a.job_number,
+        coalesce(
+            a.geom, 
+            b.dob_geom
+        ) as geom,
+        (CASE 
+		 	WHEN a.geomsource IS NOT NULL 
+		 		THEN a.geomsource 
+		 	WHEN a.geom IS NULL 
+		 		AND b.dob_geom IS NOT NULL 
+		 		THEN 'Lat/Lon DOB'
+		END) as geomsource
+    FROM GEOM_dob_bin_bldgfp_historical a
+    LEFT JOIN _INIT_devdb b
+    ON a.job_number = b.job_number
 )
 SELECT
     distinct a.*,
@@ -201,7 +226,7 @@ SELECT
     b.geomsource
 INTO GEO_devdb
 FROM DRAFT a
-LEFT JOIN GEOM_dob_bin_bldgfp_historical b
+LEFT JOIN GEOM_dob_latlon b
 ON a.uid = b.uid;
 
 /* 
@@ -252,7 +277,7 @@ UPDATE GEO_devdb a
 SET latitude = ST_Y(b.new_geom),
     longitude = ST_X(b.new_geom),
     geom = b.new_geom,
-    geomsource = 'Lat/Long DCP'
+    geomsource = 'Lat/Lon DCP'
 FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
 AND (b.distance < 10 AND b.bbl IS NULL);
@@ -266,7 +291,7 @@ WITH CORR_target as (
     AND a.job_number in (
         SELECT distinct job_number
         FROM GEO_devdb 
-        WHERE geomsource = 'Lat/Long DCP')
+        WHERE geomsource = 'Lat/Lon DCP')
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'geom'),
