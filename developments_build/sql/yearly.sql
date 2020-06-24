@@ -64,9 +64,10 @@ DATES_complete_jobs AS (
         ntaname2010,
         puma2010,
         complete_year,
-        date_complete
+        date_complete,
         classa_net
     FROM FINAL_devdb
+    WHERE job_status LIKE '5%'
 ),
 
 INCOMPLETE_jobs AS (
@@ -98,7 +99,7 @@ INCOMPLETE_jobs AS (
 DATES_join AS (
     SELECT a.*, b.incmpfiled, b.incmpprgrs, b.incmprmtd, b.incmpwtdrn, b.inactive
     FROM DATES_complete_jobs a 
-    JOIN INCOMPLETE_jobs b 
+    FULL OUTER JOIN INCOMPLETE_jobs b 
     ON a.job_number = b.job_number
 )
 
