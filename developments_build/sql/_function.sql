@@ -272,7 +272,6 @@ CREATE OR REPLACE FUNCTION in_water(
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION flag_nonres(
-    _resid_flag varchar,
     _job_description varchar,
     _occ_init varchar,
     _occ_prop varchar
@@ -280,8 +279,7 @@ CREATE OR REPLACE FUNCTION flag_nonres(
     RETURNS varchar AS $$     
     SELECT
     (CASE 
-        WHEN _resid_flag IS NULL
-          OR _job_description ~* concat(
+          WHEN _job_description ~* concat(
             'commer|retail|office|mixed|use|mixed-use|mixeduse|store|shop','|',
             'cultur|fitness|gym|service|eating|drink|grocery|market|restau','|',
             'food|cafeteria|cabaret|leisure|entertainment|industrial|manufact','|',
