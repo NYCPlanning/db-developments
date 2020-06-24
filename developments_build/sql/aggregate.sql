@@ -9,6 +9,9 @@ bctcb2010_aggregate AS (
         centract10,
         nta2010,
         ntaname2010,
+        --puma2010,
+        --comunitydist,
+        --councildist,
         SUM(comp2010ap) as comp2010ap,
         SUM(comp2010) as comp2010,
         SUM(comp2011) as comp2011,
@@ -34,10 +37,13 @@ bctcb2010_aggregate AS (
         bct2010,
         centract10,
         nta2010,
-        ntaname2010),
+        ntaname2010
+        --puma2010,
+        --comunitydist,
+        --councildist
+        ),
 CENSUS_bctcb2010 AS (
-    SELECT a.*, 
-            b.puma10, 
+    SELECT a.*,  
             b.cenunits10, 
             COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10, 0) as total20q2
     FROM bctcb2010_aggregate a 
@@ -62,6 +68,9 @@ bct2010_aggregate AS (
         centract10,
         nta2010,
         ntaname2010,
+        --puma2010,
+        --comunitydist,
+        --councildist,
         SUM(comp2010ap) as comp2010ap,
         SUM(comp2010) as comp2010,
         SUM(comp2011) as comp2011,
@@ -85,7 +94,11 @@ bct2010_aggregate AS (
         bct2010,
         centract10,
         nta2010,
-        ntaname2010),
+        ntaname2010
+        --puma2010,
+        --comunitydist,
+        --councildist
+        ),
 CENSUS_bct2010 AS (
     SELECT a.*,  
             b.cenunits10, 
@@ -96,7 +109,6 @@ CENSUS_bct2010 AS (
 ),
 CENSUS_adj_bct2010 AS(
     SELECT a.*,
-    		b.puma10, 
             b.cenunits10adj,
             COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10adj, 0) as total20q2adj
     FROM CENSUS_bct2010 a 
@@ -195,3 +207,103 @@ FROM _AGGREGATE_tract
 GROUP BY boro,
         nta2010,
         ntaname2010;
+
+/**
+-- Create AGGREGATE_puma
+DROP TABLE IF EXISTS AGGREGATE_puma;
+SELECT boro,
+    puma2010,
+    SUM(comp2010ap) as comp2010ap,
+    SUM(comp2010) as comp2010,
+    SUM(comp2011) as comp2011,
+    SUM(comp2012) as comp2012,
+    SUM(comp2013) as comp2013,
+    SUM(comp2014) as comp2014,
+    SUM(comp2015) as comp2015,
+    SUM(comp2016) as comp2016,
+    SUM(comp2017) as comp2017,
+    SUM(comp2018) as comp2018,
+    SUM(comp2019) as comp2019,
+    SUM(comp2020q2) as comp2020q2,
+    SUM(incmpfiled) as incmpfiled,
+    SUM(incmpprgrs) as incmpprgrs,
+    SUM(incmprmtd) as incmprmtd,
+    SUM(incmpwtdrn) as incmpwtdrn,
+    SUM(inactive) as inactive,
+    SUM(cenunits10) as cenunits10,
+    SUM(cenunits10adj) as cenunits10adj,
+    SUM(total20q2) as total20q2,
+    SUM(total20q2adj) as total20q2adj
+INTO AGGREGATE_puma
+FROM _AGGREGATE_tract
+GROUP BY boro,
+        puma2010;
+**/
+
+/**
+-- Create AGGREGATE_comunitydist
+DROP TABLE IF EXISTS AGGREGATE_comunitydist;
+SELECT boro,
+    comunitydist,
+    SUM(comp2010ap) as comp2010ap,
+    SUM(comp2010) as comp2010,
+    SUM(comp2011) as comp2011,
+    SUM(comp2012) as comp2012,
+    SUM(comp2013) as comp2013,
+    SUM(comp2014) as comp2014,
+    SUM(comp2015) as comp2015,
+    SUM(comp2016) as comp2016,
+    SUM(comp2017) as comp2017,
+    SUM(comp2018) as comp2018,
+    SUM(comp2019) as comp2019,
+    SUM(comp2020q2) as comp2020q2,
+    SUM(incmpfiled) as incmpfiled,
+    SUM(incmpprgrs) as incmpprgrs,
+    SUM(incmprmtd) as incmprmtd,
+    SUM(incmpwtdrn) as incmpwtdrn,
+    SUM(inactive) as inactive,
+    SUM(cenunits10) as cenunits10,
+    SUM(cenunits10adj) as cenunits10adj,
+    SUM(total20q2) as total20q2,
+    SUM(total20q2adj) as total20q2adj
+INTO AGGREGATE_comunitydist
+FROM _AGGREGATE_tract
+GROUP BY boro,
+        comunitydist;
+**/
+
+/**
+-- Create AGGREGATE_councildist
+DROP TABLE IF EXISTS AGGREGATE_councildist;
+SELECT a.boro,
+    a.councildist,
+    b.councilmbr,
+    SUM(a.comp2010ap) as comp2010ap,
+    SUM(a.comp2010) as comp2010,
+    SUM(a.comp2011) as comp2011,
+    SUM(a.comp2012) as comp2012,
+    SUM(a.comp2013) as comp2013,
+    SUM(a.comp2014) as comp2014,
+    SUM(a.comp2015) as comp2015,
+    SUM(a.comp2016) as comp2016,
+    SUM(a.comp2017) as comp2017,
+    SUM(a.comp2018) as comp2018,
+    SUM(a.comp2019) as comp2019,
+    SUM(a.comp2020q2) as comp2020q2,
+    SUM(a.incmpfiled) as incmpfiled,
+    SUM(a.incmpprgrs) as incmpprgrs,
+    SUM(a.incmprmtd) as incmprmtd,
+    SUM(a.incmpwtdrn) as incmpwtdrn,
+    SUM(a.inactive) as inactive,
+    SUM(a.cenunits10) as cenunits10,
+    SUM(a.cenunits10adj) as cenunits10adj,
+    SUM(a.total20q2) as total20q2,
+    SUM(a.total20q2adj) as total20q2adj
+INTO AGGREGATE_councildist
+FROM _AGGREGATE_block a
+JOIN council_member b
+ON a.councildist = b.councildist
+GROUP BY a.boro,
+        a.councildist
+        b.councilmbr;
+**/
