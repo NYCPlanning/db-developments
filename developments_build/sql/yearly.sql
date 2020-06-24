@@ -102,6 +102,9 @@ SELECT a.job_number,
         CASE WHEN a.complete_year = '2020' AND a.date_complete < '2020-07-01'::date
             THEN classa_net
             ELSE NULL END AS comp2020q2,
+        CASE WHEN a.date_complete > '2010-03-31'::date AND a.date_complete < '2020-07-01'::date
+            THEN a.classa_net
+            ELSE NULL END AS since_cen10,
         CASE WHEN a.job_status = '1. Filed Application'
                 AND a.job_inactive IS NULL
             THEN  a.classa_net 
