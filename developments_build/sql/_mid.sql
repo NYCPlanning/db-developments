@@ -21,7 +21,7 @@ INPUTS:
         * job_number,
         _complete_year,
         _complete_qrtr,
-        date_complete,
+        _date_complete,
         co_latest_certtype, 
         co_latest_units
     )
@@ -49,8 +49,8 @@ OUTPUTS:
     _MID_devdb (
         * job_number,
         date_permittd,
-        _complete_year,
-        _complete_qrtr,
+        complete_year,
+        complete_qrtr,
         date_complete,
         co_latest_certtype, 
         co_latest_units,
@@ -77,8 +77,8 @@ JOIN_date_permittd as (
         b.date_permittd,
         b.permit_year,
         b.permit_qrtr,
-        b._complete_year as complete_year_demo,
-        b._complete_qrtr as complete_qrtr_demo
+        b._complete_year as complete_year_statusq,
+        b._complete_qrtr as complete_qrtr_statusq
     FROM INIT_devdb a
     LEFT JOIN STATUS_Q_devdb b
     ON a.job_number = b.job_number
@@ -90,12 +90,23 @@ JOIN_co as (
         -- first certificate of occupancy issuance. For demolitions, this is the 
         -- year that the demolition was permitted
         (CASE WHEN a.job_type = 'Demolition'
-            THEN a.complete_year_demo 
-        ELSE b._complete_year END) as _complete_year,
+            THEN CASE WHEN a.date_statusx IS NOT NULL 
+                THEN a.complete_year_statusq
+            ELSE NULL END
+        ELSE b._complete_year END) as complete_year,
+
         (CASE WHEN a.job_type = 'Demolition'
-            THEN a.complete_qrtr_demo 
-        ELSE b._complete_qrtr END) as _complete_qrtr,
-        b.date_complete,
+            THEN CASE WHEN a.date_statusx IS NOT NULL
+                THEN a.complete_qrtr_statusq
+            ELSE NULL END
+        ELSE b._complete_qrtr END) as complete_qrtr,
+
+        (CASE WHEN a.job_type = 'Demolition'
+            THEN CASE WHEN a.date_statusx IS NOT NULL
+                THEN a.date_permittd
+            ELSE NULL END
+        ELSE b._date_complete END) as date_complete,
+
         b.co_latest_certtype,
         b.co_latest_units::numeric
     FROM JOIN_date_permittd a
