@@ -10,8 +10,8 @@ INPUTS:
         date_statusp date,
         date_permittd date,
         _job_status text,
-        _complete_year text,
-        _complete_qrtr text,
+        complete_year text,
+        complete_qrtr text,
         co_latest_units numeric,
         co_latest_certtype text,
         classa_complt numeric,
@@ -52,91 +52,42 @@ IN PREVIOUS VERSION:
 */
 DROP TABLE IF EXISTS STATUS_devdb;
 WITH
-STATUS_translate as (
-    SELECT 
-        a.job_number,
-        a.job_type,
-        a.date_permittd,
-        a._complete_year,
-        a._complete_qrtr,
-        a.classa_net,
-        a.co_latest_units,
-        a.date_lastupdt,
-        a.address,
-        a.occ_proposed,
-        a.date_complete,
-
-        (CASE
-            WHEN a.job_type = 'New Building'
-                AND a.co_latest_certtype = 'T- TCO'
-                AND (
-                    (a.classa_complt_pct < 0.8 AND a.classa_net >= 20) OR 
-                    (a.classa_complt_diff >= 5 AND a.classa_net BETWEEN 5 AND 19)
-                )
-                THEN '4. Partial Complete'
-
-            WHEN a.job_type = 'Demolition'
-                AND date_statusx IS NOT NULL
-                THEN '5. Complete'
-
-            WHEN a.x_withdrawal IN ('W', 'C')
-                THEN '9. Withdrawn'
-
-            WHEN date_statusp IS NOT NULL
-                THEN '2. Plan Examination'
-
-            WHEN date_permittd IS NOT NULL
-                THEN '3. Permitted'
-
-            ELSE status_translate(a._job_status)
-        END) as job_status
-    FROM _MID_devdb a
-),
 DRAFT_STATUS_devdb as (
     SELECT
-        job_number,
-        job_type,
-        job_status,
-        date_permittd,
-        date_lastupdt::date,
-        classa_net,
-        address,
-        occ_proposed,
-        date_complete,
-        -- update year_compelete based on job_type and status
-        (CASE
-            WHEN job_type = 'Demolition'
-                OR job_status NOT IN ('4. Partial Complete', '5. Complete')
-                THEN NULL
-            ELSE _complete_year
-        END) as complete_year,
-
-        -- update complete_qrtr based on job_type and job_status
-        (CASE
-            WHEN job_type = 'Demolition'
-                OR job_status NOT IN ('4. Partial Complete', '5. Complete')
-                THEN NULL
-            ELSE _complete_qrtr
-        END) as complete_qrtr,
-
-        -- Assign classa_complt based on job_status
-        (CASE
-            WHEN job_status = '5. Complete' 
-                THEN classa_net
-            WHEN job_status = '4. Partial Complete' 
-                THEN co_latest_units
+        a.job_number,
+        a.job_type,
+        CASE
+            WHEN a.x_withdrawal IN ('W', 'C')
+                        THEN '9. Withdrawn'
+            WHEN a.job_type = 'New Building'
+                        AND a.co_latest_certtype = 'T- TCO'
+                        AND (
+                            (a.classa_complt_pct < 0.8 AND a.classa_net >= 20) OR 
+                            (a.classa_complt_diff >= 5 AND a.classa_net BETWEEN 5 AND 19)
+                        )
+                        THEN '4. Partially Completed Construction'
+            WHEN a.date_complete IS NOT NULL THEN '5. Completed Construction'
+            WHEN a.date_statusr IS NOT NULL THEN '3. Permitted for Construction'
+            WHEN a.date_permittd IS NOT NULL THEN '3. Permitted for Construction'
+            WHEN a.date_statusp IS NOT NULL THEN '2. Approved Application'
+            WHEN b.assigned IS NOT NULL THEN '1. Filed Application'
+            WHEN a.date_statusd IS NOT NULL THEN '1. Filed Application'
+            WHEN b.paid IS NOT NULL THEN '1. Filed Application'
+            WHEN a.date_filed IS NOT NULL THEN '1. Filed Application'	
             ELSE NULL
-        END) as classa_complt,
-
-        -- Assing classa_incmpl
-        (CASE
-            WHEN job_status = '5. Complete' 
-                THEN NULL
-            WHEN job_status = '4. Partial Complete'
-                THEN classa_net-co_latest_units
-            ELSE classa_net
-        END) classa_incmpl
-    FROM STATUS_translate
+        END as job_status,
+        a.date_permittd,
+        a.date_lastupdt::date,
+        a.classa_net,
+        a.address,
+        a.co_latest_units,
+        a.occ_proposed,
+        a.date_complete,
+        a.complete_year,
+        a.complete_qrtr
+    FROM _MID_devdb a
+    JOIN dob_jobapplications b
+    ON a.job_number::int = b.jobnumber::int
 )
 SELECT
     job_number,
@@ -146,8 +97,25 @@ SELECT
     date_permittd,
     complete_year,
     complete_qrtr,
-    classa_complt,
-    classa_incmpl,
+
+    -- Assign classa_complt based on job_status
+    (CASE
+        WHEN job_status = '5. Completed Construction' 
+            THEN classa_net
+        WHEN job_status = '4. Partially Completed Construction' 
+            THEN co_latest_units
+        ELSE NULL
+    END) as classa_complt,
+
+    -- Assing classa_incmpl
+    (CASE
+        WHEN job_status = '5. Completed Construction' 
+            THEN NULL
+        WHEN job_status = '4. Partially Completed Construction'
+            THEN classa_net-co_latest_units
+        ELSE classa_net
+    END) as classa_incmpl,
+
     classa_net,
     address,
     occ_proposed,
@@ -155,10 +123,10 @@ SELECT
         WHEN date_complete IS NOT NULL 
             THEN NULL
         WHEN (CURRENT_DATE - date_lastupdt)/365 >= 2 
-            AND job_status = '2. Plan Examination'
+            AND job_status = '2. Approved Application'
             THEN 'Inactive'
         WHEN (CURRENT_DATE - date_lastupdt)/365 >= 3 
-            AND job_status in ('1. Filed', '2. Plan Examination')
+            AND job_status in ('1. Filed Application', '2. Approved Application')
             THEN 'Inactive'
         WHEN job_status = '9. Withdrawn'
             THEN 'Inactive'
@@ -170,16 +138,15 @@ WITH completejobs AS (
 	SELECT address, job_type, date_lastupdt, job_status
 	FROM STATUS_devdb
 	WHERE classa_net::numeric > 0
-	AND job_status = '5. Complete')
+	AND job_status = '5. Completed Construction')
 UPDATE STATUS_devdb a 
 SET job_inactive = 'Inactive'
 FROM completejobs b
 WHERE a.address = b.address
 	AND a.job_type = b.job_type
-	AND a.job_status <> '5. Complete'
+	AND a.job_status <> '5. Completed Construction'
 	AND a.date_lastupdt::date < b.date_lastupdt::date
-	AND a.job_status <> '9. Withdrawn'
-  	AND a.occ_proposed <> 'Garage/Miscellaneous';
+	AND a.job_status <> '9. Withdrawn';
 
 /* 
 CORRECTIONS
