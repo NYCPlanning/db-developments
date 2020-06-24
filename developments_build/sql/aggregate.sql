@@ -40,7 +40,7 @@ CENSUS_bctcb2010 AS (
     SELECT a.*, b.cenunits10
     FROM bctcb2010_aggregate a 
     JOIN census_units10  b
-    ON a.centract10 = b.centract10
+    ON a.cenblock10 = b.cenblock10
 )
 SELECT *
 INTO AGGREGATE_block
