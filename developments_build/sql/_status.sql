@@ -10,8 +10,8 @@ INPUTS:
         date_statusp date,
         date_permittd date,
         _job_status text,
-        _complete_year text,
-        _complete_qrtr text,
+        complete_year text,
+        complete_qrtr text,
         co_latest_units numeric,
         co_latest_certtype text,
         classa_complt numeric,
@@ -84,8 +84,8 @@ DRAFT_STATUS_devdb as (
         a.co_latest_units,
         a.occ_proposed,
         a.date_complete,
-        a._complete_year,
-        a._complete_qrtr
+        a.complete_year,
+        a.complete_qrtr
     FROM _MID_devdb a
     JOIN dob_jobapplications b
     ON a.job_number::int = b.jobnumber::int
@@ -96,8 +96,8 @@ SELECT
     job_status,
     date_lastupdt,
     date_permittd,
-    _complete_year as complete_year,
-    _complete_qrtr as complete_qrtr,
+    complete_year,
+    complete_qrtr,
 
     -- Assign classa_complt based on job_status
     (CASE
