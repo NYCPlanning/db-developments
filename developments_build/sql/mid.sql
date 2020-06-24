@@ -43,8 +43,6 @@ JOIN_STATUS_devdb as (
     SELECT
         a.*,
         b.job_status,
-        b.complete_year,
-        b.complete_qrtr,
         b.classa_complt,
         b.classa_incmpl,
         b.job_inactive
