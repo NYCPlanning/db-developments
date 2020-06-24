@@ -60,7 +60,6 @@ bct2010_aggregate AS (
         centract10,
         nta2010,
         ntaname2010,
-        puma2010,
         SUM(comp2010ap) as comp2010ap,
         SUM(comp2010) as comp2010,
         SUM(comp2011) as comp2011,
@@ -83,8 +82,7 @@ bct2010_aggregate AS (
         bct2010,
         centract10,
         nta2010,
-        ntaname2010,
-        puma2010),
+        ntaname2010),
 CENSUS_bct2010 AS (
     SELECT a.*, b.cenunits10
     FROM bct2010_aggregate a 
