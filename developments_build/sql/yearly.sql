@@ -19,6 +19,10 @@ INPUTS:
         puma2010
     )
 
+    LOOKUP_fips(
+        boro,
+        fips_boro
+    )
 
 OUTPUTS:
     YEARLY_devdb (
