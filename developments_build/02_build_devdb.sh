@@ -83,8 +83,6 @@ display "Creating status fields:
       job_status,
       date_lastupdt,
       date_permittd,
-      complete_year,
-      complete_qrtr,
       classa_complt,
       classa_incmpl,
       job_inactive"
