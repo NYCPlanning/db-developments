@@ -16,7 +16,9 @@ INPUTS:
         bct2010,
         nta2010,
         ntaname2010,
-        puma2010
+        puma2010,
+        comunitydist,
+        councildist
     )
 
     LOOKUP_fips(
@@ -33,6 +35,8 @@ OUTPUTS:
         nta2010,
         ntaname2010,
         puma2010,
+        comunitydist,
+        councildist,
         comp2010ap,
         comp2010,
         comp2011,
@@ -66,6 +70,8 @@ SELECT a.job_number,
         a.nta2010,
         a.ntaname2010,
         a.puma2010,
+        a.comunitydist,
+        a.councildist,
         CASE WHEN a.complete_year = '2010' AND a.date_complete > '2010-03-31'::date
             THEN a.classa_net
             ELSE NULL END AS comp2010ap,
