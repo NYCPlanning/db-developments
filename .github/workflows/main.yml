@@ -54,18 +54,10 @@ jobs:
         working-directory: developments_build
         run: ./03_build_yoyco.sh
 
-      - name: 4. build hny ...
+      - name: 4. export ...
         working-directory: developments_build
-        run: ./04_build_hny.sh
+        run: ./04_export.sh
 
-      - name: 5. export ...
+      - name: 5. archive ...
         working-directory: developments_build
-        run: ./05_export.sh
-
-      - name: 6. qaqc ...
-        working-directory: developments_build
-        run: ./06_qaqc.sh
-
-      - name: 7. archive ...
-        working-directory: developments_build
-        run: ./07_archive.sh
+        run: ./05_archive.sh

@@ -45,16 +45,30 @@ function display {
   "
 }
 
-function export_csv {
-    mkdir -p output
-    psql $BUILD_ENGINE -c "\COPY (
-        SELECT * FROM $1
-    ) TO stdout DELIMITER ',' CSV HEADER;" > output/$1.csv
+function CSV_export {
+  psql $BUILD_ENGINE  -c "\COPY (
+    SELECT * FROM $@
+  ) TO STDOUT DELIMITER ',' CSV HEADER;" > $@.csv
+}
 
+function Upload {
+  mc rm -r --force spaces/edm-publishing/db-developments/$@
+  mc cp -r output spaces/edm-publishing/db-developments/$@
 }
 
 function imports_csv {
    cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN DELIMITER ',' CSV HEADER;"
+}
+
+function archive {
+    echo "archiving $1 -> $2"
+    pg_dump -t $1 $BUILD_ENGINE -O -c | psql $EDM_DATA
+    psql $EDM_DATA -c "CREATE SCHEMA IF NOT EXISTS $2;";
+    psql $EDM_DATA -c "ALTER TABLE $1 SET SCHEMA $2;";
+    psql $EDM_DATA -c "DROP VIEW IF EXISTS $2.latest;";
+    psql $EDM_DATA -c "DROP TABLE IF EXISTS $2.\"$DATE\";";
+    psql $EDM_DATA -c "ALTER TABLE $2.$1 RENAME TO \"$DATE\";";
+    psql $EDM_DATA -c "CREATE VIEW $2.latest AS (SELECT '$DATE' as v, * FROM $2.\"$DATE\");"
 }
 
 # Setting Environmental Variables
