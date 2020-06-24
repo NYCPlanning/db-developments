@@ -126,7 +126,7 @@ SELECT
             AND job_status = '2. Approved Application'
             THEN 'Inactive'
         WHEN (CURRENT_DATE - date_lastupdt)/365 >= 3 
-            AND job_status in ('1. Filed Application', '2. Approved Application')
+            AND job_status = '1. Filed Application'
             THEN 'Inactive'
         WHEN job_status = '9. Withdrawn'
             THEN 'Inactive'
@@ -145,8 +145,7 @@ FROM completejobs b
 WHERE a.address = b.address
 	AND a.job_type = b.job_type
 	AND a.job_status <> '5. Completed Construction'
-	AND a.date_lastupdt::date < b.date_lastupdt::date
-	AND a.job_status <> '9. Withdrawn';
+	AND a.date_lastupdt::date < b.date_lastupdt::date;
 
 /* 
 CORRECTIONS
