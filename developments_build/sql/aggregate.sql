@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS AGGREGATE_block;
 WITH
 bctcb2010_aggregate AS (
     SELECT 
@@ -45,6 +46,7 @@ SELECT *
 INTO AGGREGATE_block
 FROM CENSUS_bctcb2010;
 
+DROP TABLE IF EXISTS AGGREGATE_tract;
 WITH
 CENSUS_by_tract AS (
     SELECT centract10, SUM(cenunits10) as cenunits10
@@ -85,12 +87,12 @@ bct2010_aggregate AS (
         puma2010),
 CENSUS_bct2010 AS (
     SELECT a.*, b.cenunits10
-    FROM CENSUS_by_tract a 
+    FROM bct2010_aggregate a 
     JOIN census_units10  b
     ON a.centract10 = b.centract10
 ),
 CENSUS_adj_bct2010 AS(
-    ELECT a.*, b.cenunits10adj
+    SELECT a.*, b.cenunits10adj
     FROM CENSUS_bct2010 a 
     JOIN census_units10adj  b
     ON a.centract10 = b.centract10
