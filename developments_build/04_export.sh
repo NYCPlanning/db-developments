@@ -3,7 +3,7 @@ source config.sh
 
 display "Generate output tables"
 psql $BUILD_ENGINE\
-    -v VERSION=$VERSION\ 
+    -v VERSION=$VERSION\
     -v CAPTURE_DATE=$CAPTURE_DATE\
     -f sql/_export.sql
 
