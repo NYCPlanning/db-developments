@@ -20,15 +20,6 @@ CREATE OR REPLACE FUNCTION status_translate(
     where dob_status = _status
 $$ LANGUAGE sql;
 
-CREATE OR REPLACE FUNCTION nta_translate(
-	_nta varchar
-) 
-  RETURNS varchar AS $$
-  	select distinct ntaname 
-    from lookup_nta 
-    where nta = _nta
-$$ LANGUAGE sql;
-
 CREATE OR REPLACE FUNCTION ownership_translate(
 	_cityowned varchar,
   _ownertype varchar,
@@ -129,33 +120,6 @@ CREATE OR REPLACE FUNCTION get_cb(
       SELECT b.cb2010::varchar
       FROM dcp_censusblocks b
       WHERE ST_Within(_geom, b.wkb_geometry)
-  $$ LANGUAGE sql;
-
-CREATE OR REPLACE FUNCTION get_nta(
-    boroct varchar
-  ) 
-    RETURNS varchar AS $$
-      SELECT nta
-      FROM lookup_nta
-      WHERE boro||ct2010 = boroct
-  $$ LANGUAGE sql;
-
-CREATE OR REPLACE FUNCTION get_ntaname(
-    boroct varchar
-  ) 
-    RETURNS varchar AS $$
-      SELECT ntaname
-      FROM lookup_nta
-      WHERE boro||ct2010 = boroct
-  $$ LANGUAGE sql;
-
-CREATE OR REPLACE FUNCTION get_puma(
-    boroct varchar
-  ) 
-    RETURNS varchar AS $$
-      SELECT puma
-      FROM lookup_nta
-      WHERE boro||ct2010 = boroct
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_cd(
