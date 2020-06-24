@@ -17,7 +17,7 @@ INPUTS:
 OUTPUTS:
     CO_devdb (
         job_number character varying,
-        date_complete date,
+        _date_complete date,
         co_latest_effectivedate date,
         co_latest_units numeric,
         co_latest_certtype character varying,
@@ -57,7 +57,7 @@ ORDER_co as (
 DRAFT_co as (
 	SELECT
 		a.*,
-		b.date_complete
+		b._date_complete
 	FROM (
 		SELECT
 			job_number, 
@@ -70,18 +70,18 @@ DRAFT_co as (
 	LEFT JOIN (
 		SELECT 
 			job_number, 
-			effectivedate as date_complete
+			effectivedate as _date_complete
 		FROM ORDER_co
 		WHERE earliest = 1
 	) b ON a.job_number = b.job_number
 )
 SELECT 
     job_number,
-    date_complete,
+    _date_complete,
     co_latest_effectivedate,
     co_latest_units,
     co_latest_certtype,
-    extract(year from date_complete)::text as _complete_year,
-    year_quater(date_complete) as _complete_qrtr
+    extract(year from _date_complete)::text as _complete_year,
+    year_quater(_date_complete) as _complete_qrtr
 INTO CO_devdb
 FROM DRAFT_co;
