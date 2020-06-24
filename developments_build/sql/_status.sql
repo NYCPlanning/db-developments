@@ -67,7 +67,6 @@ DRAFT_STATUS_devdb as (
                         )
                         THEN '4. Partially Completed Construction'
             WHEN a.date_complete IS NOT NULL THEN '5. Completed Construction'
-            WHEN a.date_statusx IS NOT NULL AND job_type = 'Demolition' THEN '5. Completed Construction'
             WHEN a.date_statusr IS NOT NULL THEN '3. Permitted for Construction'
             WHEN a.date_permittd IS NOT NULL THEN '3. Permitted for Construction'
             WHEN a.date_statusp IS NOT NULL THEN '2. Approved Application'

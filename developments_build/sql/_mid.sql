@@ -86,9 +86,9 @@ JOIN_date_permittd as (
 JOIN_co as (
     SELECT 
         a.*,
-        -- For new buildings and alterations, this is defined as the year of the 
-        -- first certificate of occupancy issuance. For demolitions, this is the 
-        -- year that the demolition was permitted
+        /** Complete dates for non-demolitions come from CO (_date_complete). For
+            demolitions, complete dates are status Q date (date_permittd)
+            when the record has a status X date, and NULL otherwise **/
         (CASE WHEN a.job_type = 'Demolition'
             THEN CASE WHEN a.date_statusx IS NOT NULL 
                 THEN a.complete_year_statusq
