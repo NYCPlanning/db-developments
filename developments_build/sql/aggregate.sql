@@ -9,7 +9,6 @@ bctcb2010_aggregate AS (
         centract10,
         nta2010,
         ntaname2010,
-        puma2010,
         SUM(comp2010ap) as comp2010ap,
         SUM(comp2010) as comp2010,
         SUM(comp2011) as comp2011,
@@ -34,10 +33,9 @@ bctcb2010_aggregate AS (
         bct2010,
         centract10,
         nta2010,
-        ntaname2010,
-        puma2010),
+        ntaname2010),
 CENSUS_bctcb2010 AS (
-    SELECT a.*, b.cenunits10
+    SELECT a.*, b.puma10, b.cenunits10
     FROM bctcb2010_aggregate a 
     JOIN census_units10  b
     ON a.cenblock10 = b.cenblock10
@@ -86,11 +84,11 @@ bct2010_aggregate AS (
 CENSUS_bct2010 AS (
     SELECT a.*, b.cenunits10
     FROM bct2010_aggregate a 
-    JOIN census_units10  b
+    JOIN CENSUS_by_tract  b
     ON a.centract10 = b.centract10
 ),
 CENSUS_adj_bct2010 AS(
-    SELECT a.*, b.cenunits10adj
+    SELECT a.*, b.puma10, b.cenunits10adj
     FROM CENSUS_bct2010 a 
     JOIN census_units10adj  b
     ON a.centract10 = b.centract10
