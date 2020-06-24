@@ -53,56 +53,6 @@ OUTPUTS:
 
 
 DROP TABLE IF EXISTS YEARLY_devdb;
-WITH
-DATES_complete_jobs AS (
-    SELECT
-        job_number,
-        boro,
-        bctcb2010,
-        bct2010,
-        nta2010,
-        ntaname2010,
-        puma2010,
-        complete_year,
-        date_complete,
-        classa_net
-    FROM FINAL_devdb
-    WHERE job_status LIKE '5%'
-),
-
-INCOMPLETE_jobs AS (
-    SELECT
-        job_number,
-        CASE WHEN job_status LIKE '1%'
-                AND job_inactive IS NULL
-            THEN  classa_net 
-            ELSE NULL END as incmpfiled, 
-        CASE WHEN job_status = '2%'
-                AND job_inactive IS NULL
-            THEN  classa_net 
-            ELSE NULL END as incmpprgrs, 
-        CASE WHEN job_status = '3%'
-                AND job_inactive IS NULL
-            THEN  classa_net 
-            ELSE NULL END as incmprmtd, 
-        CASE WHEN job_status = '9%'
-                AND job_inactive IS NULL
-            THEN  classa_net 
-            ELSE NULL END as incmpwtdrn, 
-        CASE WHEN job_status <> '9. Withdrawn'
-                AND job_inactive = 'Inactive'
-            THEN  classa_net 
-            ELSE NULL END as inactive
-    FROM FINAL_devdb
-),
-
-DATES_join AS (
-    SELECT a.*, b.incmpfiled, b.incmpprgrs, b.incmprmtd, b.incmpwtdrn, b.inactive
-    FROM DATES_complete_jobs a 
-    FULL OUTER JOIN INCOMPLETE_jobs b 
-    ON a.job_number = b.job_number
-)
-
 SELECT job_number,
         boro,
         bctcb2010,
@@ -146,15 +96,25 @@ SELECT job_number,
         CASE WHEN complete_year = '2020' AND date_complete < '2020-07-01'::date
             THEN classa_net
             ELSE NULL END AS comp2020q2,
-        incmpfiled,
-        incmpprgrs,
-        incmprmtd,
-        incmpwtdrn,
-        inactive
+        CASE WHEN job_status = '1. Filed Application'
+                AND job_inactive IS NULL
+            THEN  classa_net 
+            ELSE NULL END as incmpfiled, 
+        CASE WHEN job_status = '2. Approved Application'
+                AND job_inactive IS NULL
+            THEN  classa_net 
+            ELSE NULL END as incmpprgrs, 
+        CASE WHEN job_status = '3. Permitted for Construction'
+                AND job_inactive IS NULL
+            THEN  classa_net 
+            ELSE NULL END as incmprmtd, 
+        CASE WHEN job_status = '9. Withdrawn'
+                AND job_inactive IS NULL
+            THEN  classa_net 
+            ELSE NULL END as incmpwtdrn, 
+        CASE WHEN job_status <> '9. Withdrawn'
+                AND job_inactive = 'Inactive'
+            THEN  classa_net 
+            ELSE NULL END as inactive
 INTO YEARLY_devdb
-FROM DATES_join;
-
-    
-
-
-    
+FROM FINAL_devdb;
