@@ -148,7 +148,6 @@ JOIN_occ as (
         b.occ_initial,
         b.occ_proposed,
         flag_nonres(
-            a.resid_flag,
             a.job_desc,
             b.occ_initial,
             b.occ_proposed

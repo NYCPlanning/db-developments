@@ -24,9 +24,9 @@ CREATE OR REPLACE FUNCTION nta_translate(
 	_nta varchar
 ) 
   RETURNS varchar AS $$
-  	select ntaname 
-    from dcp_ntaboundaries 
-    where ntacode = _nta
+  	select distinct ntaname 
+    from lookup_nta 
+    where nta = _nta
 $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION ownership_translate(
@@ -56,7 +56,7 @@ CREATE OR REPLACE FUNCTION is_date(
 $$ LANGUAGE plpgsql;
 
 -- year quater function
-CREATE OR REPLACE FUNCTION year_quater(
+CREATE OR REPLACE FUNCTION year_quarter(
 	_date date
 ) 
   RETURNS varchar AS $$
@@ -132,12 +132,30 @@ CREATE OR REPLACE FUNCTION get_cb(
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_nta(
-    _geom geometry
+    boroct varchar
   ) 
     RETURNS varchar AS $$
-      SELECT b.ntacode::varchar
-      FROM dcp_ntaboundaries b
-      WHERE ST_Within(_geom, b.wkb_geometry)
+      SELECT nta
+      FROM lookup_nta
+      WHERE boro||ct2010 = boroct
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_ntaname(
+    boroct varchar
+  ) 
+    RETURNS varchar AS $$
+      SELECT ntaname
+      FROM lookup_nta
+      WHERE boro||ct2010 = boroct
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_puma(
+    boroct varchar
+  ) 
+    RETURNS varchar AS $$
+      SELECT puma
+      FROM lookup_nta
+      WHERE boro||ct2010 = boroct
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_cd(
@@ -202,15 +220,6 @@ CREATE OR REPLACE FUNCTION get_firedivision(
       FROM dcp_firecompanies b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
-
-CREATE OR REPLACE FUNCTION get_puma(
-    _geom geometry
-  ) 
-    RETURNS varchar AS $$
-      SELECT b.puma::varchar
-      FROM dcp_puma b
-      WHERE ST_Within(_geom, b.wkb_geometry)
-  $$ LANGUAGE sql;
   
 CREATE OR REPLACE FUNCTION get_bin(
     _geom geometry
@@ -272,7 +281,6 @@ CREATE OR REPLACE FUNCTION in_water(
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION flag_nonres(
-    _resid_flag varchar,
     _job_description varchar,
     _occ_init varchar,
     _occ_prop varchar
@@ -280,8 +288,7 @@ CREATE OR REPLACE FUNCTION flag_nonres(
     RETURNS varchar AS $$     
     SELECT
     (CASE 
-        WHEN _resid_flag IS NULL
-          OR _job_description ~* concat(
+        WHEN _job_description ~* concat(
             'commer|retail|office|mixed|use|mixed-use|mixeduse|store|shop','|',
             'cultur|fitness|gym|service|eating|drink|grocery|market|restau','|',
             'food|cafeteria|cabaret|leisure|entertainment|industrial|manufact','|',
