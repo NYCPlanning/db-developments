@@ -282,7 +282,7 @@ GROUP BY councildist
 DRAFT as (
 SELECT a.boro,
     a.councildist,
-    b.name,
+    b.name as councilmbr,
     SUM(a.comp2010ap) as comp2010ap,
     SUM(a.comp2010) as comp2010,
     SUM(a.comp2011) as comp2011,
