@@ -237,6 +237,7 @@ bctcb2010_aggregate AS (
         nta2010,
         ntaname2010,
         puma2010,
+        pumaname10,
         comunitydist,
         councildist
         ),
@@ -295,6 +296,7 @@ bct2010_aggregate AS (
         nta2010,
         ntaname2010,
         puma2010,
+        pumaname10,
         comunitydist,
         councildist
         ),
