@@ -82,6 +82,6 @@ SELECT
     co_latest_units,
     co_latest_certtype,
     extract(year from _date_complete)::text as _complete_year,
-    year_quater(_date_complete) as _complete_qrtr
+    year_quarter(_date_complete) as _complete_qrtr
 INTO CO_devdb
 FROM DRAFT_co;
