@@ -70,6 +70,11 @@ INPUTS:
         ...
     )
 
+    CORR_hny_matches (
+        job_number text,
+		hny_id text,
+		hny_project_id text,
+		action text)
     
 OUTPUTS: 
     HNY_matches (
@@ -105,6 +110,11 @@ IN PREVIOUS VERSION:
     dob_hny_id.sql
     dob_affordable_units.sql
 */
+
+CREATE TABLE IF NOT EXISTS CORR_hny_matches (job_number text,
+								            hny_id text,
+								            hny_project_id text,
+								            action text);
 
 DROP TABLE IF EXISTS HNY_geo;
 -- 1) Merge with geocoding results and create a unique ID
