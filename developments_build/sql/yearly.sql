@@ -21,9 +21,10 @@ INPUTS:
         councildist
     )
 
-    LOOKUP_fips(
+    LOOKUP_geo(
         boro,
-        fips_boro
+        fips_boro,
+        pumaname
     )
 
 OUTPUTS:
@@ -35,6 +36,7 @@ OUTPUTS:
         nta2010,
         ntaname2010,
         puma2010,
+        pumaname10,
         comunitydist,
         councildist,
         comp2010ap,
@@ -70,6 +72,7 @@ SELECT a.job_number,
         a.nta2010,
         a.ntaname2010,
         a.puma2010,
+        b.pumaname as pumaname10,
         a.comunitydist,
         a.councildist,
         CASE WHEN a.complete_year = '2010' AND a.date_complete > '2010-03-31'::date
@@ -133,5 +136,5 @@ SELECT a.job_number,
             ELSE NULL END as inactive
 INTO YEARLY_devdb
 FROM FINAL_devdb a
-JOIN LOOKUP_fips b
-ON a.boro = b.boro;
+JOIN LOOKUP_geo b
+ON a.boro = b.borocode;
