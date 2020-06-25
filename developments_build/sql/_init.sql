@@ -163,7 +163,7 @@ JOBNUMBER_relevant as (
 		nonprofit
 	) as ownership,
 	
-	ownerfirstname||', '||ownerlastname as owner_name,
+	ownerlastname||', '||ownerfirstname as owner_name,
 	ownerbusinessname as Owner_BizNm,
 	ownerhousestreetname as Owner_Address,
 	zip as Owner_ZipCode,
