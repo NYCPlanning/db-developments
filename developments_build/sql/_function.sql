@@ -252,7 +252,7 @@ CREATE OR REPLACE FUNCTION flag_nonres(
     RETURNS varchar AS $$     
     SELECT
     (CASE 
-        WHEN _job_description ~* concat(
+          WHEN _job_description ~* concat(
             'commer|retail|office|mixed|use|mixed-use|mixeduse|store|shop','|',
             'cultur|fitness|gym|service|eating|drink|grocery|market|restau','|',
             'food|cafeteria|cabaret|leisure|entertainment|industrial|manufact','|',
