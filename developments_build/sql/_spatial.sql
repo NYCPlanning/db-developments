@@ -167,7 +167,7 @@ SELECT
     b.nta as geo_ntacode2010,
     b.ntaname as geo_ntaname2010,
     b.puma as geo_puma
---INTO SPATIAL_devdb
+INTO SPATIAL_devdb
 FROM DRAFT_spatial a
 LEFT JOIN lookup_nta b
 ON a.geo_boro||a.geo_censustract2010 = b.borocode||b.ct2010;
