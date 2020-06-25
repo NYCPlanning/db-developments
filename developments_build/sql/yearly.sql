@@ -138,4 +138,4 @@ SELECT a.job_number,
 INTO YEARLY_devdb
 FROM FINAL_devdb a
 LEFT JOIN LOOKUP_geo b
-ON a.bct2010 = b.borocode||b.centract10;
+ON a.bct2010 = b.borocode||b.ct2010;
