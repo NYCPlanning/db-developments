@@ -20,9 +20,7 @@ OUTPUTS:
         _date_complete date,
         co_latest_effectivedate date,
         co_latest_units numeric,
-        co_latest_certtype character varying,
-        _complete_year text,
-        _complete_qrtr text
+        co_latest_certtype character varying
     )
 
 IN PREVIOUS VERSION: 
@@ -80,8 +78,6 @@ SELECT
     _date_complete,
     co_latest_effectivedate,
     co_latest_units,
-    co_latest_certtype,
-    extract(year from _date_complete)::text as _complete_year,
-    year_quarter(_date_complete) as _complete_qrtr
+    co_latest_certtype
 INTO CO_devdb
 FROM DRAFT_co;
