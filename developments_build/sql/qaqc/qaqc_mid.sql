@@ -15,6 +15,24 @@
     STATUS:
         z_incomp_tract_home
 **/
+
+DROP TABLE IF EXISTS MATCH_dem_nb;
+WITH
+JOBNUMBER_dem_nb_overlap AS (
+    SELECT a.job_number as job_number_dem, 
+    	b.job_number as job_number_nb,
+    	a.geo_bbl
+    FROM MID_devdb a
+	JOIN MID_devdb b 
+	ON a.geo_bbl = b.geo_bbl
+	WHERE a.job_type = 'Demolition'
+	AND b.job_type = 'New Building'
+)
+
+SELECT *
+INTO MATCH_dem_nb
+FROM JOBNUMBER_dem_nb_overlap;
+
 DROP TABLE IF EXISTS MID_qaqc;
 WITH
 
