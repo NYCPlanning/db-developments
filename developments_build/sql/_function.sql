@@ -20,15 +20,6 @@ CREATE OR REPLACE FUNCTION status_translate(
     where dob_status = _status
 $$ LANGUAGE sql;
 
-CREATE OR REPLACE FUNCTION nta_translate(
-	_nta varchar
-) 
-  RETURNS varchar AS $$
-  	select ntaname 
-    from dcp_ntaboundaries 
-    where ntacode = _nta
-$$ LANGUAGE sql;
-
 CREATE OR REPLACE FUNCTION ownership_translate(
 	_cityowned varchar,
   _ownertype varchar,
@@ -56,7 +47,7 @@ CREATE OR REPLACE FUNCTION is_date(
 $$ LANGUAGE plpgsql;
 
 -- year quater function
-CREATE OR REPLACE FUNCTION year_quater(
+CREATE OR REPLACE FUNCTION year_quarter(
 	_date date
 ) 
   RETURNS varchar AS $$
@@ -131,15 +122,6 @@ CREATE OR REPLACE FUNCTION get_cb(
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
-CREATE OR REPLACE FUNCTION get_nta(
-    _geom geometry
-  ) 
-    RETURNS varchar AS $$
-      SELECT b.ntacode::varchar
-      FROM dcp_ntaboundaries b
-      WHERE ST_Within(_geom, b.wkb_geometry)
-  $$ LANGUAGE sql;
-
 CREATE OR REPLACE FUNCTION get_cd(
     _geom geometry
   ) 
@@ -200,15 +182,6 @@ CREATE OR REPLACE FUNCTION get_firedivision(
     RETURNS varchar AS $$
       SELECT b.firediv::varchar
       FROM dcp_firecompanies b
-      WHERE ST_Within(_geom, b.wkb_geometry)
-  $$ LANGUAGE sql;
-
-CREATE OR REPLACE FUNCTION get_puma(
-    _geom geometry
-  ) 
-    RETURNS varchar AS $$
-      SELECT b.puma::varchar
-      FROM dcp_puma b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
   
