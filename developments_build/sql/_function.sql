@@ -10,16 +10,6 @@ CREATE OR REPLACE FUNCTION occ_translate(
     END);
 $$ LANGUAGE sql;
 
--- occ_translation function
-CREATE OR REPLACE FUNCTION status_translate(
-	_status varchar
-) 
-  RETURNS varchar AS $$
-  	select status 
-    from lookup_status 
-    where dob_status = _status
-$$ LANGUAGE sql;
-
 CREATE OR REPLACE FUNCTION ownership_translate(
 	_cityowned varchar,
   _ownertype varchar,
@@ -46,7 +36,7 @@ CREATE OR REPLACE FUNCTION is_date(
     END;
 $$ LANGUAGE plpgsql;
 
--- year quater function
+-- year quarter function
 CREATE OR REPLACE FUNCTION year_quarter(
 	_date date
 ) 
@@ -119,15 +109,6 @@ CREATE OR REPLACE FUNCTION get_cb(
     RETURNS varchar AS $$
       SELECT b.cb2010::varchar
       FROM dcp_censusblocks b
-      WHERE ST_Within(_geom, b.wkb_geometry)
-  $$ LANGUAGE sql;
-
-CREATE OR REPLACE FUNCTION get_cd(
-    _geom geometry
-  ) 
-    RETURNS varchar AS $$
-      SELECT b.borocd::varchar
-      FROM dcp_cdboundaries b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
