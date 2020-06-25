@@ -1,3 +1,88 @@
+/*
+DESCRIPTION:
+    Creates six aggregate tables, containing unit counts
+    summed over different geographies, with completions grouped by year.
+    
+INPUTS:
+    YEARLY_devdb (
+        * job_number,
+        boro,
+        bctcb2010,
+        bct2010,
+        nta2010,
+        ntaname2010,
+        puma2010,
+        pumaname10,
+        comunitydist,
+        councildist,
+        comp2010ap,
+        comp2010,
+        comp2011,
+        comp2012,
+        comp2013,
+        comp2014,
+        comp2015,
+        comp2016,
+        comp2017,
+        comp2018,
+        comp2019,
+        comp2020,
+        comp2020q2,
+        incmpfiled,
+        incmpprgrs,
+        incmprmtd,
+        incmpwtdrn,
+        inactive
+    )
+
+    council_members(
+        
+    )
+
+    census_units10 (
+
+    )
+
+    census_units10adj(
+
+    )
+
+OUTPUTS:
+    _AGGREGATE_block (
+        
+    ),
+
+    _AGGREGATE_tract(
+
+    ),
+
+    AGGREGATE_block (
+        
+    ),
+
+    AGGREGATE_tract (
+        
+    ),
+
+    AGGREGATE_nta (
+        
+    ),
+
+    AGGREGATE_puma (
+        
+    ),
+
+    AGGREGATE_comunitydist (
+        
+    ),
+
+    AGGREGATE_councildist (
+        
+    ),
+
+*/
+
+
 DROP TABLE IF EXISTS _AGGREGATE_block;
 WITH
 bctcb2010_aggregate AS (
@@ -10,6 +95,7 @@ bctcb2010_aggregate AS (
         nta2010,
         ntaname2010,
         puma2010,
+        pumaname10,
         comunitydist,
         councildist,
         SUM(comp2010ap) as comp2010ap,
@@ -69,6 +155,7 @@ bct2010_aggregate AS (
         nta2010,
         ntaname2010,
         puma2010,
+        pumaname10,
         comunitydist,
         councildist,
         SUM(comp2010ap) as comp2010ap,
@@ -212,6 +299,7 @@ GROUP BY boro,
 DROP TABLE IF EXISTS AGGREGATE_puma;
 SELECT boro,
     puma2010,
+    pumaname10,
     SUM(comp2010ap) as comp2010ap,
     SUM(comp2010) as comp2010,
     SUM(comp2011) as comp2011,
@@ -236,7 +324,8 @@ SELECT boro,
 INTO AGGREGATE_puma
 FROM _AGGREGATE_tract
 GROUP BY boro,
-        puma2010;
+        puma2010,
+        pumaname10;
 
 -- Create AGGREGATE_comunitydist
 DROP TABLE IF EXISTS AGGREGATE_comunitydist;
