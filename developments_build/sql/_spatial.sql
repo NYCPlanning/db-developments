@@ -163,11 +163,11 @@ LEFT JOIN _SPATIAL_devdb b
 ON a.uid = b.uid
 )
 SELECT
-    *,
-    nta as geo_ntacode2010,
-    ntaname as geo_ntaname2010,
-    puma as geo_puma
-INTO SPATIAL_devdb
+    a.*,
+    b.nta as geo_ntacode2010,
+    b.ntaname as geo_ntaname2010,
+    b.puma as geo_puma
+--INTO SPATIAL_devdb
 FROM DRAFT_spatial a
 LEFT JOIN lookup_nta b
-ON a.geo_boro||a.geo_censustract2010 = b.boro||b.ct2010;
+ON a.geo_boro||a.geo_censustract2010 = b.borocode||b.ct2010;
