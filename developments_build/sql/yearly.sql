@@ -136,5 +136,5 @@ SELECT a.job_number,
             ELSE NULL END as inactive
 INTO YEARLY_devdb
 FROM FINAL_devdb a
-JOIN LOOKUP_geo b
-ON a.boro = b.borocode;
+LEFT JOIN LOOKUP_geo b
+ON a.bct2010 = b.borocode||b.centract10;
