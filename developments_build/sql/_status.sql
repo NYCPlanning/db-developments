@@ -122,10 +122,10 @@ SELECT
     (CASE 
         WHEN date_complete IS NOT NULL 
             THEN NULL
-        WHEN (CURRENT_DATE - date_lastupdt)/365 >= 2 
+        WHEN (:'CAPTURE_DATE'::date - date_lastupdt)/365 >= 2 
             AND job_status = '2. Approved Application'
             THEN 'Inactive'
-        WHEN (CURRENT_DATE - date_lastupdt)/365 >= 3 
+        WHEN (:'CAPTURE_DATE'::date - date_lastupdt)/365 >= 3 
             AND job_status = '1. Filed Application'
             THEN 'Inactive'
         WHEN job_status = '9. Withdrawn'
