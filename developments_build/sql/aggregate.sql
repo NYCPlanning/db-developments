@@ -28,57 +28,169 @@ INPUTS:
         comp2019,
         comp2020,
         comp2020q2,
+        since_cen10,
         incmpfiled,
         incmpprgrs,
         incmprmtd,
         incmpwtdrn,
         inactive
-    )
+    ),
 
     council_members(
-        
-    )
+        * district
+        name
+    ),
 
     census_units10 (
-
-    )
+        * cenblock10,
+        cenunits10
+    ),
 
     census_units10adj(
-
+        * centract10,
+        cenunits10adj
     )
 
 OUTPUTS:
     _AGGREGATE_block (
-        
+        boro,
+        * bctcb2010,
+        bct2010,
+        nta2010,
+        ntaname2010,
+        puma2010,
+        pumaname10,
+        comunitydist,
+        councildist,
+        comp2010ap,
+        comp2010,
+        comp2011,
+        comp2012,
+        comp2013,
+        comp2014,
+        comp2015,
+        comp2016,
+        comp2017,
+        comp2018,
+        comp2019,
+        comp2020,
+        comp2020q2,
+        incmpfiled,
+        incmpprgrs,
+        incmprmtd,
+        incmpwtdrn,
+        inactive,
+        cenunits10,
+        total20q2
     ),
 
     _AGGREGATE_tract(
-
+        boro,
+        * bct2010,
+        nta2010,
+        ntaname2010,
+        puma2010,
+        pumaname10,
+        comunitydist,
+        councildist,
+        comp2010ap,
+        comp2010,
+        comp2011,
+        comp2012,
+        comp2013,
+        comp2014,
+        comp2015,
+        comp2016,
+        comp2017,
+        comp2018,
+        comp2019,
+        comp2020,
+        comp2020q2,
+        incmpfiled,
+        incmpprgrs,
+        incmprmtd,
+        incmpwtdrn,
+        inactive,
+        cenunits10,
+        total20q2,
+        cenunits10adj,
+        total20q2adj
     ),
 
     AGGREGATE_block (
-        
+        boro,
+        bctcb2010,
+        cenblock10,
+        comp2010ap,
+        comp2010,
+        ...
+        cenunits10,
+        total20q2
     ),
 
     AGGREGATE_tract (
-        
+        boro,
+        bct2010,
+        centract10,
+        comp2010ap,
+        comp2010,
+        ...
+        cenunits10,
+        total20q2,
+        cenunits10adj,
+        total20q2adj
     ),
 
     AGGREGATE_nta (
-        
+        boro,
+        nta2010,
+        ntaname10,
+        comp2010ap,
+        comp2010,
+        ...
+        cenunits10,
+        total20q2,
+        cenunits10adj,
+        total20q2adj
     ),
 
     AGGREGATE_puma (
-        
+        boro,
+        puma2010,
+        pumaname10,
+        comp2010ap,
+        comp2010,
+        ...
+        cenunits10,
+        total20q2,
+        cenunits10adj,
+        total20q2adj
     ),
 
     AGGREGATE_comunitydist (
-        
+        boro,
+        comunitydist,
+        comp2010ap,
+        comp2010,
+        ...
+        cenunits10,
+        total20q2,
+        cenunits10adj,
+        total20q2adj
     ),
 
     AGGREGATE_councildist (
-        
-    ),
+        boro,
+        councildist,
+        councilmbr,
+        comp2010ap,
+        comp2010,
+        ...
+        cenunits10,
+        total20q2,
+        cenunits10adj,
+        total20q2adj
+    )
 
 */
 
