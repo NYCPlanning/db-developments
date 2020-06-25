@@ -87,7 +87,10 @@ display "Creating status fields:
       classa_incmpl,
       job_inactive"
 
-psql $BUILD_ENGINE -f sql/_status.sql
+psql $BUILD_ENGINE\
+  -v CAPTURE_DATE=$CAPTURE_DATE\
+  -f sql/_status.sql
+  
 psql $BUILD_ENGINE\
   -v CAPTURE_DATE_PREV=$CAPTURE_DATE_PREV\
   -f sql/qaqc/qaqc_status.sql
