@@ -13,8 +13,8 @@ INPUTS:
         ntaname2010,
         puma2010,
         pumaname10,
-        comunitydist,
-        councildist,
+        commntydst,
+        councildst,
         comp2010ap,
         comp2010,
         comp2011,
@@ -60,8 +60,8 @@ OUTPUTS:
         ntaname2010,
         puma2010,
         pumaname10,
-        comunitydist,
-        councildist,
+        commntydst,
+        councildst,
         comp2010ap,
         comp2010,
         comp2011,
@@ -91,8 +91,8 @@ OUTPUTS:
         ntaname2010,
         puma2010,
         pumaname10,
-        comunitydist,
-        councildist,
+        commntydst,
+        councildst,
         comp2010ap,
         comp2010,
         comp2011,
@@ -167,9 +167,9 @@ OUTPUTS:
         total20q2adj
     ),
 
-    AGGREGATE_comunitydist (
+    AGGREGATE_commntydst (
         boro,
-        comunitydist,
+        commntydst,
         comp2010ap,
         comp2010,
         ...
@@ -179,9 +179,9 @@ OUTPUTS:
         total20q2adj
     ),
 
-    AGGREGATE_councildist (
+    AGGREGATE_councildst (
         boro,
-        councildist,
+        councildst,
         councilmbr,
         comp2010ap,
         comp2010,
@@ -208,8 +208,8 @@ bctcb2010_aggregate AS (
         ntaname2010,
         puma2010,
         pumaname10,
-        comunitydist,
-        councildist,
+        commntydst,
+        councildst,
         SUM(comp2010ap) as comp2010ap,
         SUM(comp2010) as comp2010,
         SUM(comp2011) as comp2011,
@@ -238,8 +238,8 @@ bctcb2010_aggregate AS (
         ntaname2010,
         puma2010,
         pumaname10,
-        comunitydist,
-        councildist
+        commntydst,
+        councildst
         ),
 CENSUS_bctcb2010 AS (
     SELECT a.*,  
@@ -269,8 +269,8 @@ bct2010_aggregate AS (
         ntaname2010,
         puma2010,
         pumaname10,
-        comunitydist,
-        councildist,
+        commntydst,
+        councildst,
         SUM(comp2010ap) as comp2010ap,
         SUM(comp2010) as comp2010,
         SUM(comp2011) as comp2011,
@@ -297,8 +297,8 @@ bct2010_aggregate AS (
         ntaname2010,
         puma2010,
         pumaname10,
-        comunitydist,
-        councildist
+        commntydst,
+        councildst
         ),
 CENSUS_bct2010 AS (
     SELECT a.*,  
@@ -441,10 +441,10 @@ GROUP BY boro,
         puma2010,
         pumaname10;
 
--- Create AGGREGATE_comunitydist
-DROP TABLE IF EXISTS AGGREGATE_comunitydist;
+-- Create AGGREGATE_commntydst
+DROP TABLE IF EXISTS AGGREGATE_commntydst;
 SELECT boro,
-    comunitydist,
+    commntydst,
     SUM(comp2010ap) as comp2010ap,
     SUM(comp2010) as comp2010,
     SUM(comp2011) as comp2011,
@@ -466,25 +466,25 @@ SELECT boro,
     SUM(cenunits10adj) as cenunits10adj,
     SUM(total20q2) as total20q2,
     SUM(total20q2adj) as total20q2adj
-INTO AGGREGATE_comunitydist
+INTO AGGREGATE_commntydst
 FROM _AGGREGATE_tract
 GROUP BY boro,
-        comunitydist;
+        commntydst;
 
--- Create AGGREGATE_councildist
-DROP TABLE IF EXISTS AGGREGATE_councildist;
+-- Create AGGREGATE_councildst
+DROP TABLE IF EXISTS AGGREGATE_councildst;
 WITH 
 ADJ as (
 SELECT 
-    councildist,
+    councildst,
     SUM(cenunits10adj) as cenunits10adj,
     SUM(total20q2adj) as total20q2adj
 FROM _AGGREGATE_tract
-GROUP BY councildist
+GROUP BY councildst
 ),
 DRAFT as (
 SELECT a.boro,
-    a.councildist,
+    a.councildst,
     b.name as councilmbr,
     SUM(a.comp2010ap) as comp2010ap,
     SUM(a.comp2010) as comp2010,
@@ -507,14 +507,14 @@ SELECT a.boro,
     SUM(a.total20q2) as total20q2
 FROM _AGGREGATE_block a
 JOIN council_members b
-ON a.councildist = b.district
-GROUP BY a.boro, a.councildist, b.name
+ON a.councildst = b.district
+GROUP BY a.boro, a.councildst, b.name
 )
 SELECT 
     a.*,
     b.cenunits10adj,
     b.total20q2adj
-INTO AGGREGATE_councildist
+INTO AGGREGATE_councildst
 FROM DRAFT a 
 JOIN ADJ b
-ON a.councildist = b.councildist;
+ON a.councildst = b.councildst;
