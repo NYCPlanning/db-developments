@@ -9,8 +9,8 @@ INPUTS:
 	INIT_devdb (
 		job_number text,
 		job_type text,
-		_classa_init numeric,
-		_classa_prop numeric
+		classa_init numeric,
+		classa_prop numeric
 	)
 
 	OCC_devdb (
@@ -44,8 +44,8 @@ INIT_OCC_devdb as (
 		a.job_type,
 		b.occ_proposed,
 		b.occ_initial,
-		a._classa_init,
-		a._classa_prop
+		a.classa_init,
+		a.classa_prop
 	FROM INIT_devdb a
 	LEFT JOIN OCC_devdb b
 	ON a.job_number = b.job_number
@@ -94,40 +94,19 @@ UNITS_classb_prop AS (
 		WHERE field = 'otherb_prop'
 		AND old_value IS NULL) b
 		ON a.job_number = b.job_number
-),
-
-UNITS_init_prop as (
-	SELECT 
-		job_number,
-		job_type,
-		(CASE 
-			WHEN job_type='New Building' 
-				THEN nullif(_classa_init, 0) 
-			ELSE _classa_init
-		END) as classa_init, 
-		(CASE
-			WHEN job_type='Demolition' 
-				THEN nullif(_classa_prop, 0) 
-			ELSE _classa_prop
-		END) as classa_prop,
-		hotel_init,
-		hotel_prop,
-		otherb_init,
-		otherb_prop
-	FROM UNITS_classb_prop
 )
-
 SELECT 
-	distinct job_number,
+	distinct 
+	job_number,
+	job_type,
 	classa_init,
 	classa_prop,
 	hotel_init,
 	hotel_prop,
 	otherb_init,
-	otherb_prop,
-	job_type
+	otherb_prop
 INTO _UNITS_devdb
-FROM UNITS_init_prop;
+FROM UNITS_classb_prop;
 
 /*
 CORRECTIONS
