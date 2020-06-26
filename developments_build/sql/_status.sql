@@ -116,6 +116,8 @@ SELECT
         ELSE classa_net
     END) as classa_incmpl,
 
+    classa_init,
+    classa_prop,
     classa_net,
     address,
     occ_proposed,
@@ -141,8 +143,8 @@ FROM DRAFT_STATUS_devdb;
 WITH completejobs AS (
 	SELECT address, job_type, date_lastupdt, job_status
 	FROM STATUS_devdb
-	WHERE classa_init::numeric > 0
-    AND classa_prop::numeric > 0
+	WHERE classa_init IS NOT NULL
+    AND classa_prop IS NOT NULL
 	AND job_status IN ('4. Partially Completed Construction', '5. Completed Construction'))
 UPDATE STATUS_devdb a 
 SET job_inactive = 'Inactive'
