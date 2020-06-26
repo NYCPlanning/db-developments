@@ -346,7 +346,8 @@ SELECT boro,
     cenunits10,
     total20q2
 INTO AGGREGATE_block
-FROM _AGGREGATE_block;
+FROM _AGGREGATE_block
+ORDER BY bctcb2010;
 
 -- Create AGGREGATE_tract
 DROP TABLE IF EXISTS AGGREGATE_tract;
@@ -375,7 +376,8 @@ SELECT boro,
     total20q2,
     total20q2adj
 INTO AGGREGATE_tract
-FROM _AGGREGATE_tract;
+FROM _AGGREGATE_tract
+ORDER BY bct2010;
 
 -- Create AGGREGATE_nta
 DROP TABLE IF EXISTS AGGREGATE_nta;
@@ -407,7 +409,8 @@ INTO AGGREGATE_nta
 FROM _AGGREGATE_tract
 GROUP BY boro,
         nta2010,
-        ntaname2010;
+        ntaname2010
+ORDER BY nta2010;
 
 -- Create AGGREGATE_puma
 DROP TABLE IF EXISTS AGGREGATE_puma;
@@ -439,7 +442,8 @@ INTO AGGREGATE_puma
 FROM _AGGREGATE_tract
 GROUP BY boro,
         puma2010,
-        pumaname10;
+        pumaname10
+ORDER BY puma2010;
 
 -- Create AGGREGATE_commntydst
 DROP TABLE IF EXISTS AGGREGATE_commntydst;
@@ -469,7 +473,8 @@ SELECT boro,
 INTO AGGREGATE_commntydst
 FROM _AGGREGATE_tract
 GROUP BY boro,
-        commntydst;
+        commntydst
+ORDER BY commntydst;
 
 -- Create AGGREGATE_councildst
 DROP TABLE IF EXISTS AGGREGATE_councildst;
@@ -483,7 +488,7 @@ FROM _AGGREGATE_tract
 GROUP BY councildst
 ),
 DRAFT as (
-SELECT a.boro,
+SELECT 
     a.councildst,
     b.name as councilmbr,
     SUM(a.comp2010ap) as comp2010ap,
@@ -508,7 +513,8 @@ SELECT a.boro,
 FROM _AGGREGATE_block a
 JOIN council_members b
 ON a.councildst = b.district
-GROUP BY a.boro, a.councildst, b.name
+GROUP BY a.councildst, b.name
+ORDER BY councildst
 )
 SELECT 
     a.*,
