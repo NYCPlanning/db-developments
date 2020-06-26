@@ -78,6 +78,8 @@ DRAFT_STATUS_devdb as (
         END as job_status,
         a.date_permittd,
         a.date_lastupdt::date,
+        a.classa_init,
+        a.classa_prop,
         a.classa_net,
         a.address,
         a.co_latest_units,
@@ -102,32 +104,39 @@ SELECT
     classa_net,
     address,
     occ_proposed,
+    -- Set inactive flag
     (CASE 
+        -- A date_complete indicates not inactive
         WHEN date_complete IS NOT NULL 
             THEN NULL
-        WHEN (:'CAPTURE_DATE'::date - date_lastupdt)/365 >= 2 
-            AND job_status = '2. Approved Application'
-            THEN 'Inactive'
+        -- Jobs not (partially) complete that haven't been updated in 3 years
         WHEN (:'CAPTURE_DATE'::date - date_lastupdt)/365 >= 3 
-            AND job_status = '1. Filed Application'
+            AND job_status IN ('1. Filed Application', 
+                                '2. Approved Application', 
+                                '3. Permitted for Construction')
             THEN 'Inactive'
+        -- All withdrawn jobs are inactive
         WHEN job_status = '9. Withdrawn'
             THEN 'Inactive'
     END) as job_inactive
 INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
 
+-- Jobs matching with a newer, (partially) complete job get set to inactive
 WITH completejobs AS (
-	SELECT address, job_type, date_lastupdt, job_status
+	SELECT address, job_type, date_lastupdt, job_status, classa_init, classa_prop
 	FROM STATUS_devdb
-	WHERE classa_net::numeric > 0
-	AND job_status = '5. Completed Construction')
+	WHERE classa_init IS NOT NULL
+    AND classa_prop IS NOT NULL
+	AND job_status IN ('4. Partially Completed Construction', '5. Completed Construction'))
 UPDATE STATUS_devdb a 
 SET job_inactive = 'Inactive'
 FROM completejobs b
-WHERE a.address = b.address
+WHERE a.job_status IN ('1. Filed Application', '2. Approved Application', '3. Permitted for Construction')
 	AND a.job_type = b.job_type
-	AND a.job_status <> '5. Completed Construction'
+    AND a.address = b.address
+    AND a.classa_init = b.classa_init
+    AND a.classa_prop = b.classa_prop
 	AND a.date_lastupdt::date < b.date_lastupdt::date;
 
 /* 
