@@ -99,27 +99,8 @@ SELECT
     date_permittd,
     complete_year,
     complete_qrtr,
-
-    -- Assign classa_complt based on job_status
-    (CASE
-        WHEN job_status = '5. Completed Construction' 
-            THEN classa_net
-        WHEN job_status = '4. Partially Completed Construction' 
-            THEN co_latest_units
-        ELSE NULL
-    END) as classa_complt,
-
-    -- Assing classa_incmpl
-    (CASE
-        WHEN job_status = '5. Completed Construction' 
-            THEN NULL
-        WHEN job_status = '4. Partially Completed Construction'
-            THEN classa_net-co_latest_units
-        ELSE classa_net
-    END) as classa_incmpl,
-
-    classa_init,
-    classa_prop,
+    co_latest_units as classa_complt,
+    classa_net-coalesce(co_latest_units,0) as classa_incmpl
     classa_net,
     address,
     occ_proposed,
