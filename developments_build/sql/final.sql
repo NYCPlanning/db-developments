@@ -178,7 +178,7 @@ SELECT
 	geo_schoolelmntry as schoolelmntry,
 	geo_schoolmiddle as schoolmiddle,
 	geo_firecompany as firecompany,
-	geo_firebattalion as firebatttalion,
+	geo_firebattalion as FireBattalion,
 	geo_firedivision as firedivision,
 	geo_policeprct as policeprecnct,
 --    depdrainarea,
@@ -190,7 +190,6 @@ SELECT
     geomsource,
     hny_id,
     hny_jobrelate,
-    :'VERSION' as version,
-    geom
+    :'VERSION' as version
 INTO FINAL_devdb
 FROM JOIN_HNY_PLUTO_devdb;

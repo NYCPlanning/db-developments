@@ -13,10 +13,10 @@ mkdir -p output
 
     display "Export Devdb and HousingDB"
     CSV_export EXPORT_housing &
-    SHP_export EXPORT_housing &
+    SHP_export SHP_housing &
 
     CSV_export EXPORT_devdb &
-    SHP_export EXPORT_devdb &
+    SHP_export SHP_devdb &
 
     display "Export no geom records for Devdb and HousingDB"
     psql $BUILD_ENGINE  -c "\COPY (
