@@ -53,10 +53,10 @@ OUTPUTS:
         comp2020,
         comp2020q2,
         since_cen10,
-        incmpfiled,
-        incmpprgrs,
-        incmprmtd,
-        incmpwtdrn,
+        filed,
+        approved,
+        permitted,
+        withdrawn,
         inactive
     )
 
@@ -118,19 +118,19 @@ SELECT a.job_number,
         CASE WHEN a.job_status = '1. Filed Application'
                 AND a.job_inactive IS NULL
             THEN  a.classa_net 
-            ELSE NULL END as incmpfiled, 
+            ELSE NULL END as filed, 
         CASE WHEN a.job_status = '2. Approved Application'
                 AND a.job_inactive IS NULL
             THEN  a.classa_net 
-            ELSE NULL END as incmpprgrs, 
+            ELSE NULL END as approved, 
         CASE WHEN a.job_status = '3. Permitted for Construction'
                 AND a.job_inactive IS NULL
             THEN  a.classa_net 
-            ELSE NULL END as incmprmtd, 
+            ELSE NULL END as permitted, 
         CASE WHEN a.job_status = '9. Withdrawn'
                 AND a.job_inactive IS NULL
             THEN  a.classa_net 
-            ELSE NULL END as incmpwtdrn, 
+            ELSE NULL END as withdrawn, 
         CASE WHEN a.job_status <> '9. Withdrawn'
                 AND a.job_inactive = 'Inactive'
             THEN  a.classa_net 
