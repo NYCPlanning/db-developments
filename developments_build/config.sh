@@ -77,8 +77,9 @@ function archive {
 
 function SHP_export {
   urlparse $BUILD_ENGINE
-  mkdir -p output/$@ &&
-    (cd output/$@
+  mkdir -p $@ &&
+    (
+      cd $@
       ogr2ogr -progress -f "ESRI Shapefile" $@.shp \
           PG:"host=$BUILD_HOST user=$BUILD_USER port=$BUILD_PORT dbname=$BUILD_DB password=$BUILD_PWD" \
           -nlt POINT $@
