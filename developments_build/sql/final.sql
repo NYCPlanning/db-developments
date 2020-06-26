@@ -190,7 +190,7 @@ SELECT
     geomsource,
     hny_id,
     hny_jobrelate,
-    :'VERSION' as version
-
+    :'VERSION' as version,
+    geom
 INTO FINAL_devdb
 FROM JOIN_HNY_PLUTO_devdb;

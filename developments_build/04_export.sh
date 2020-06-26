@@ -42,6 +42,8 @@ mkdir -p output
 
 )
 
+zip -r output/output.zip output
+
 Upload latest &
 Upload $VERSION &
 Upload $DATE
