@@ -112,13 +112,18 @@ JOBNUMBER_relevant as (
     -- and proposedoccupancy (3 records affected)
 	replace(existingoccupancy, '.', '') as _occ_initial, 
     replace(proposedoccupancy, '.', '') as _occ_proposed,
+	
     -- set 0 -> null for jobtype = A1 or DM
 	(CASE WHEN jobtype ~* 'A1|DM' 
         THEN nullif(existingnumstories, '0')::numeric
-		ELSE existingnumstories::numeric
+		ELSE NULL
     END) as stories_init,
 
-	proposednumstories::numeric as stories_prop,
+	-- set 0 -> null for jobtype = A1 or NB
+	(CASE WHEN jobtype ~* 'A1|NB' 
+        THEN nullif(proposednumstories, '0')::numeric
+		ELSE NULL
+    END) as stories_prop,
 
     -- set 0 -> null for jobtype = A1 or DM\
 	(CASE WHEN jobtype ~* 'A1|DM' 
