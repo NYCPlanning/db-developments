@@ -78,6 +78,8 @@ DRAFT_STATUS_devdb as (
         END as job_status,
         a.date_permittd,
         a.date_lastupdt::date,
+        a.classa_init,
+        a.classa_prop,
         a.classa_net,
         a.address,
         a.co_latest_units,
@@ -141,7 +143,7 @@ FROM DRAFT_STATUS_devdb;
 
 -- Jobs matching with a newer, (partially) complete job get set to inactive
 WITH completejobs AS (
-	SELECT address, job_type, date_lastupdt, job_status
+	SELECT address, job_type, date_lastupdt, job_status, classa_init, classa_prop
 	FROM STATUS_devdb
 	WHERE classa_init IS NOT NULL
     AND classa_prop IS NOT NULL
