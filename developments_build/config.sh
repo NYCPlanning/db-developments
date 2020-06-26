@@ -11,6 +11,10 @@ function set_env {
   done
 }
 
+# Setting Environmental Variables
+set_env .env version.env
+DATE=$(date "+%Y-%m-%d")
+
 function count {
   psql -d $BUILD_ENGINE -At -c "SELECT count(*) FROM $1;" | 
   while read -a count; do
@@ -71,6 +75,15 @@ function archive {
     psql $EDM_DATA -c "CREATE VIEW $2.latest AS (SELECT '$DATE' as v, * FROM $2.\"$DATE\");"
 }
 
-# Setting Environmental Variables
-set_env .env version.env
-DATE=$(date "+%Y-%m-%d")
+function SHP_export {
+  urlparse $BUILD_ENGINE
+  mkdir -p output/$@ &&
+    (cd output/$@
+      ogr2ogr -progress -f "ESRI Shapefile" $@.shp \
+          PG:"host=$BUILD_HOST user=$BUILD_USER port=$BUILD_PORT dbname=$BUILD_DB password=$BUILD_PWD" \
+          -nlt POINT $@
+        rm -f $@.zip
+        zip $@.zip *
+        ls | grep -v $@.zip | xargs rm
+      )
+}
