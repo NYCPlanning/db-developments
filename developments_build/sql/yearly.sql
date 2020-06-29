@@ -67,10 +67,10 @@ DROP TABLE IF EXISTS YEARLY_devdb;
 SELECT a.job_number,
         b.boro,
         b.borocode,
-        a.bctcb2010,
-        b.fips_boro||RIGHT(a.bctcb2010, 10) as cenblock10,
-        a.bct2010,
-        b.fips_boro||RIGHT(a.bct2010, 6) as centract10,
+        b.bctcb2010,
+        a.cenblock10,
+        b.bct2010,
+        a.centract10,
         b.nta as nta2010,
         b.ntaname as ntaname2010,
         b.puma as puma2010,
@@ -138,5 +138,5 @@ SELECT a.job_number,
             ELSE NULL END as inactive
 INTO YEARLY_devdb
 FROM FINAL_devdb a
-LEFT JOIN LOOKUP_geo b
-ON a.bct2010 = b.borocode||b.ct2010;
+RIGHT JOIN LOOKUP_geo b
+ON a.bctcb2010 = b.bctcb2010;
