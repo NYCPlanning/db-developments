@@ -99,6 +99,8 @@ SELECT
     complete_qrtr,
     greatest(classa_net, co_latest_units) as classa_complt,
     classa_net-coalesce(co_latest_units,0) as classa_incmpl,
+    classa_init,
+    classa_prop,
     classa_net,
     address,
     occ_proposed,
