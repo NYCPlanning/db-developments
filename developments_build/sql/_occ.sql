@@ -23,9 +23,7 @@ OUTPUTS:
     OCC_devdb (
         * job_number text, 
         occ_initial text,
-        occ_proposed text,
-        resid_flag text,
-        nonres_flag text
+        occ_proposed text
     )
 
 IN PREVIOUS VERSION: 
