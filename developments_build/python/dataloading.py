@@ -35,7 +35,7 @@ tables = [
     "dcp_policeprecincts",
     "hpd_hny_units_by_building",
     "hpd_hny_units_by_project",
-    "housing_input_hny_job_manual"
+    "housing_input_hny_job_manual",
 ]
 
 

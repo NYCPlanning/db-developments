@@ -175,8 +175,15 @@ JOBNUMBER_relevant as (
 	ownerhousestreetname as Owner_Address,
 	zip as Owner_ZipCode,
 	ownerphone as Owner_Phone,
-	existingheight as Height_Init,
-	proposedheight as Height_Prop,
+
+	(CASE WHEN jobtype ~* 'A1|DM' 
+		THEN NULLIF(existingheight, '0')
+	END)::numeric as Height_Init,
+
+	(CASE WHEN jobtype ~* 'A1|NB' 
+		THEN NULLIF(proposedheight, '0')
+	END)::numeric as Height_Prop,
+
 	totalconstructionfloorarea as ConstructnSF,
 
 	(CASE 
