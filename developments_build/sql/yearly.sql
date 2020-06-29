@@ -75,8 +75,8 @@ SELECT a.job_number,
         b.ntaname as ntaname2010,
         b.puma as puma2010,
         b.pumaname as pumaname10,
-        a.comunitydist as commntydst,
-        a.councildist as councildst,
+        b.comunitydist as commntydst,
+        b.councildist as councildst,
         CASE WHEN a.complete_year = '2010' AND a.date_complete > '2010-03-31'::date
             THEN a.classa_net
             ELSE NULL END AS comp2010ap,
