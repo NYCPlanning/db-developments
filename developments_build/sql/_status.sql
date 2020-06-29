@@ -59,12 +59,10 @@ DRAFT_STATUS_devdb as (
         CASE
             WHEN a.x_withdrawal IN ('W', 'C')
                         THEN '9. Withdrawn'
-            WHEN a.job_type = 'New Building'
+            WHEN a.job_type IN ('New Building', 'Alteration')
                         AND a.co_latest_certtype = 'T- TCO'
-                        AND (
-                            (a.classa_complt_pct < 0.8 AND a.classa_net >= 20) OR 
-                            (a.classa_complt_diff >= 5 AND a.classa_net BETWEEN 5 AND 19)
-                        )
+                        AND a.classa_complt_pct < 0.8 
+                        AND a.classa_net >= 20
                         THEN '4. Partially Completed Construction'
             WHEN a.date_complete IS NOT NULL THEN '5. Completed Construction'
             WHEN a.date_statusr IS NOT NULL THEN '3. Permitted for Construction'
