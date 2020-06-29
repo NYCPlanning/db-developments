@@ -101,8 +101,6 @@ JOIN_units as (
         extract(year from date_complete)::text as complete_year,
         year_quarter(date_complete) as complete_qrtr,
         b.classa_net,
-        b.classa_init,
-        b.classa_prop,
         b.hotel_init,
 	    b.hotel_prop,
 	    b.otherb_init,
@@ -118,8 +116,8 @@ JOIN_units as (
                 OR hotel_prop IS NOT NULL
                 OR otherb_init IS NOT NULL
                 OR otherb_prop IS NOT NULL
-                OR classa_init IS NOT NULL 
-                OR classa_prop IS NOT NULL
+                OR a.classa_init IS NOT NULL 
+                OR a.classa_prop IS NOT NULL
                 THEN 'Residential' 
         END) as resid_flag
     FROM JOIN_co a
@@ -132,7 +130,7 @@ JOIN_occ as (
         b.occ_initial,
         b.occ_proposed,
         flag_nonres(
-            b.resid_flag,
+            a.resid_flag,
             a.job_desc,
             b.occ_initial,
             b.occ_proposed
