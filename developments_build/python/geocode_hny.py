@@ -80,7 +80,6 @@ if __name__ == "__main__":
 
     records = df.to_dict("records")
 
-
     print("Geocoding HNY...")
     # Multiprocess
     with Pool(processes=cpu_count()) as pool:
