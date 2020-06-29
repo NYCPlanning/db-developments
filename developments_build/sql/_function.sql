@@ -226,6 +226,7 @@ CREATE OR REPLACE FUNCTION in_water(
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION flag_nonres(
+    _resid_flag varchar,
     _job_description varchar,
     _occ_init varchar,
     _occ_prop varchar
@@ -281,7 +282,8 @@ CREATE OR REPLACE FUNCTION flag_nonres(
             'Unknown (F-2)','|', 
             'Unknown (H-1)','|', 
             'Unknown (H-2)'
-          ) THEN 'Non-Residential'
+          ) OR _resid_flag IS NULL
+          THEN 'Non-Residential'
         ELSE NULL
     END)
   $$ LANGUAGE sql;
