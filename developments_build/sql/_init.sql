@@ -18,8 +18,8 @@ OUTPUTS:
 		stories_prop text,
 		zoningsft_init numeric,
 		zoningsft_prop numeric,
-		_classa_init numeric,
-		_classa_prop numeric,
+		classa_init numeric,
+		classa_prop numeric,
 		job_status text,
 		date_lastupdt text,
 		date_filed text,
@@ -137,13 +137,15 @@ JOBNUMBER_relevant as (
 		ELSE proposedzoningsqft::numeric 
     END) as zoningsft_prop,
 
-	existingdwellingunits::numeric as _classa_init,
+	(CASE WHEN jobtype ~* 'NB' THEN 0 
+		ELSE existingdwellingunits::numeric
+	END) as classa_init,
 
     -- if proposeddwellingunits is not a number then null
-	(CASE WHEN proposeddwellingunits ~ '[^0-9]' 
-        THEN NULL
-		ELSE proposeddwellingunits::numeric
-    END) as _classa_prop,
+	(CASE WHEN jobtype ~* 'DM' THEN 0
+		ELSE (CASE WHEN proposeddwellingunits ~ '[^0-9]' THEN NULL
+			ELSE proposeddwellingunits::numeric END)
+	END) as classa_prop,
 
 	-- one to one mappings
 	jobstatusdesc as _job_status,
