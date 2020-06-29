@@ -38,9 +38,7 @@ INPUTS:
     OCC_devdb (
         * job_number,
         occ_initial,
-        occ_proposed,
-        resid_flag,
-        nonres_flag
+        occ_proposed
     )
 
 OUTPUTS: 
@@ -134,6 +132,7 @@ JOIN_occ as (
         b.occ_initial,
         b.occ_proposed,
         flag_nonres(
+            b.resid_flag,
             a.job_desc,
             b.occ_initial,
             b.occ_proposed
