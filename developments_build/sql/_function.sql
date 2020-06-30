@@ -1,5 +1,5 @@
--- occ_translation function
-CREATE OR REPLACE FUNCTION occ_translate(
+-- occ_translation functions
+CREATE OR REPLACE FUNCTION occ_init_translate(
 	_occ varchar,
 	job_type varchar
 ) 
@@ -8,6 +8,14 @@ CREATE OR REPLACE FUNCTION occ_translate(
         WHEN job_type = 'New Building' THEN 'Empty Site'
         ELSE (select occ from lookup_occ where dob_occ = _occ)
     END);
+$$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION occ_prop_translate(
+	_occ varchar
+) 
+  RETURNS varchar AS $$
+  	SELECT occ FROM lookup_occ WHERE dob_occ = _occ
+    ;
 $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION ownership_translate(
