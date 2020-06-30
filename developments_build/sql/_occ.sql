@@ -33,8 +33,10 @@ IN PREVIOUS VERSION:
 DROP TABLE IF EXISTS OCC_devdb;
 SELECT 
 	job_number,
-	occ_init_translate(_occ_initial, job_type) as occ_initial,
-	occ_prop_translate(_occ_proposed)  as occ_proposed
+	(CASE WHEN job_type = 'New Building' THEN 'Empty Site'
+		ELSE occ_translate(_occ_initial) 
+	END) as occ_initial,
+	occ_translate(_occ_proposed)  as occ_proposed
 INTO OCC_devdb
 FROM INIT_devdb;
 
