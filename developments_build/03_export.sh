@@ -20,8 +20,8 @@ mkdir -p output
 
     display "Export 6 aggregate tables"
     CSV_export aggregate_block &
-    CSV_export aggregate_comunitydist &
-    CSV_export aggregate_councildist &
+    CSV_export aggregate_commntydst &
+    CSV_export aggregate_councildst &
     CSV_export aggregate_nta &
     CSV_export aggregate_puma &
     CSV_export aggregate_tract 
