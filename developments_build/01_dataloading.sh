@@ -65,6 +65,17 @@ psql $BUILD_ENGINE -c "
         CenUnits10Adj numeric
     );
 
+    DROP TABLE IF EXISTS lookup_geo;
+    CREATE TABLE lookup_geo (
+        boro text,
+        fips_boro text,
+        borocode text,
+        ct2010 text,
+        puma text,
+        nta text,
+        ntaname text,
+        pumaname text
+    );
 "
 
 imports_csv lookup_occ &
@@ -72,7 +83,8 @@ imports_csv lookup_status &
 imports_csv lookup_ownership &
 imports_csv housing_input_research &
 imports_csv census_units10 &
-imports_csv census_units10adj 
+imports_csv census_units10adj &
+imports_csv lookup_geo
 
 
 wait 

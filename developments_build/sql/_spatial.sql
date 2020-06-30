@@ -20,7 +20,6 @@ DROP TABLE IF EXISTS _SPATIAL_devdb;
 SELECT 
     uid,
     get_cd(geom) as geo_cd,
-    get_nta(geom) as geo_ntacode2010,
     get_cb(geom) as geo_censusblock2010,
     get_ct(geom) as geo_censustract2010,
     get_csd(geom) as geo_csd,
@@ -32,7 +31,6 @@ SELECT
     get_firecompany(geom) as geo_firecompany,
     get_firebattalion(geom) as geo_firebattalion,
     get_firedivision(geom) as geo_firedivision,
-    get_puma(geom) as geo_puma,
     get_bin(geom) as geo_bin,
     get_base_bbl(geom) as base_bbl,
     get_schoolelmntry(geom) as geo_schoolelmntry,
@@ -42,6 +40,7 @@ INTO _SPATIAL_devdb
 FROM GEO_devdb;
 
 DROP TABLE IF EXISTS SPATIAL_devdb;
+WITH DRAFT_spatial as (
 SELECT
     distinct
     a.uid,
@@ -99,19 +98,6 @@ SELECT
         THEN b.geo_council 
     ELSE a.geo_council END) as geo_council,
 
-    -- geo_ntacode2010
-    (CASE WHEN a.geo_ntacode2010 IS NULL 
-		OR a.geo_ntacode2010 = ''
-        OR a.mode = 'tpad'
-        THEN b.geo_ntacode2010 
-    ELSE a.geo_ntacode2010 END) as geo_ntacode2010,
-
-    (CASE WHEN a.geo_ntacode2010 IS NULL 
-		OR a.geo_ntacode2010 = ''
-        OR a.mode = 'tpad'
-        THEN nta_translate(b.geo_ntacode2010)
-    ELSE nta_translate(a.geo_ntacode2010) END) as geo_ntaname2010,
-
     -- geo_censusblock2010
     (CASE WHEN a.geo_censusblock2010 IS NULL 
 		OR a.geo_censusblock2010 = '' 
@@ -163,12 +149,6 @@ SELECT
         THEN b.geo_firecompany
     ELSE a.geo_firecompany END) as geo_firecompany, 
 
-    -- geo_puma
-    (CASE WHEN a.geo_puma IS NULL 
-		OR a.geo_puma = '' 
-        OR a.mode = 'tpad'
-        THEN b.geo_puma
-    ELSE a.geo_firecompany END) as geo_puma, 
     b.geo_schoolelmntry,
     b.geo_schoolmiddle,
     b.geo_schoolsubdist,
@@ -178,7 +158,16 @@ SELECT
     a.longitude,
     a.geom,
     geomsource
-INTO SPATIAL_devdb
 FROM GEO_devdb a
 LEFT JOIN _SPATIAL_devdb b
-ON a.uid = b.uid;
+ON a.uid = b.uid
+)
+SELECT
+    a.*,
+    b.nta as geo_ntacode2010,
+    b.ntaname as geo_ntaname2010,
+    b.puma as geo_puma
+INTO SPATIAL_devdb
+FROM DRAFT_spatial a
+LEFT JOIN lookup_geo b
+ON a.geo_boro||a.geo_censustract2010 = b.borocode||b.ct2010;

@@ -83,11 +83,12 @@ display "Creating status fields:
       job_status,
       date_lastupdt,
       date_permittd,
-      classa_complt,
-      classa_incmpl,
       job_inactive"
 
-psql $BUILD_ENGINE -f sql/_status.sql
+psql $BUILD_ENGINE\
+  -v CAPTURE_DATE=$CAPTURE_DATE\
+  -f sql/_status.sql
+  
 psql $BUILD_ENGINE\
   -v CAPTURE_DATE_PREV=$CAPTURE_DATE_PREV\
   -f sql/qaqc/qaqc_status.sql
@@ -109,3 +110,7 @@ count HNY_devdb
 display "Creating FINAL_devdb and formatted QAQC table"
 psql $BUILD_ENGINE -v VERSION=$VERSION  -f sql/final.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_final.sql
+
+display "Creating aggregate tables"
+psql $BUILD_ENGINE -f sql/yearly.sql
+psql $BUILD_ENGINE -f sql/aggregate.sql

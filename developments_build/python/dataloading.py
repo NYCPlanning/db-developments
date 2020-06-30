@@ -22,22 +22,18 @@ tables = [
     "doitt_buildingfootprints",
     "doitt_buildingfootprints_historical",
     "doitt_zipcodeboundaries",
-    "dcp_ntaboundaries",
     "dcp_cdboundaries",
     "dcp_censusblocks",
     "dcp_censustracts",
     "dcp_school_districts",
     "dcp_boroboundaries_wi",
     "dcp_councildistricts",
-    "dcp_puma",
     "dcp_firecompanies",
     "doe_school_subdistricts",
     "doe_eszones",
     "doe_mszones",
     "dcp_policeprecincts",
     "hpd_hny_units_by_building",
-    "hpd_hny_units_by_project",
-    "housing_input_hny_job_manual"
 ]
 
 

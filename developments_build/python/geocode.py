@@ -92,7 +92,7 @@ if __name__ == "__main__":
 
     records = df.to_dict("records")
     del df
-    
+
     print("geocoding begins here ...")
     # Multiprocess
     with Pool(processes=cpu_count()) as pool:

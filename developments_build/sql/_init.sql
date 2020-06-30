@@ -18,8 +18,8 @@ OUTPUTS:
 		stories_prop text,
 		zoningsft_init numeric,
 		zoningsft_prop numeric,
-		_classa_init numeric,
-		_classa_prop numeric,
+		classa_init numeric,
+		classa_prop numeric,
 		job_status text,
 		date_lastupdt text,
 		date_filed text,
@@ -112,13 +112,18 @@ JOBNUMBER_relevant as (
     -- and proposedoccupancy (3 records affected)
 	replace(existingoccupancy, '.', '') as _occ_initial, 
     replace(proposedoccupancy, '.', '') as _occ_proposed,
+	
     -- set 0 -> null for jobtype = A1 or DM
 	(CASE WHEN jobtype ~* 'A1|DM' 
         THEN nullif(existingnumstories, '0')::numeric
-		ELSE existingnumstories::numeric
+		ELSE NULL
     END) as stories_init,
 
-	proposednumstories::numeric as stories_prop,
+	-- set 0 -> null for jobtype = A1 or NB
+	(CASE WHEN jobtype ~* 'A1|NB' 
+        THEN nullif(proposednumstories, '0')::numeric
+		ELSE NULL
+    END) as stories_prop,
 
     -- set 0 -> null for jobtype = A1 or DM\
 	(CASE WHEN jobtype ~* 'A1|DM' 
@@ -132,13 +137,15 @@ JOBNUMBER_relevant as (
 		ELSE proposedzoningsqft::numeric 
     END) as zoningsft_prop,
 
-	existingdwellingunits::numeric as _classa_init,
+	(CASE WHEN jobtype ~* 'NB' THEN 0 
+		ELSE existingdwellingunits::numeric
+	END) as classa_init,
 
     -- if proposeddwellingunits is not a number then null
-	(CASE WHEN proposeddwellingunits ~ '[^0-9]' 
-        THEN NULL
-		ELSE proposeddwellingunits::numeric
-    END) as _classa_prop,
+	(CASE WHEN jobtype ~* 'DM' THEN 0
+		ELSE (CASE WHEN proposeddwellingunits ~ '[^0-9]' THEN NULL
+			ELSE proposeddwellingunits::numeric END)
+	END) as classa_prop,
 
 	-- one to one mappings
 	jobstatusdesc as _job_status,
@@ -163,22 +170,29 @@ JOBNUMBER_relevant as (
 		nonprofit
 	) as ownership,
 	
-	ownerfirstname||', '||ownerlastname as owner_name,
+	ownerlastname||', '||ownerfirstname as owner_name,
 	ownerbusinessname as Owner_BizNm,
 	ownerhousestreetname as Owner_Address,
 	zip as Owner_ZipCode,
 	ownerphone as Owner_Phone,
-	existingheight as Height_Init,
-	proposedheight as Height_Prop,
+
+	(CASE WHEN jobtype ~* 'A1|DM' 
+		THEN NULLIF(existingheight, '0')
+	END)::numeric as Height_Init,
+
+	(CASE WHEN jobtype ~* 'A1|NB' 
+		THEN NULLIF(proposedheight, '0')
+	END)::numeric as Height_Prop,
+
 	totalconstructionfloorarea as ConstructnSF,
 
 	(CASE 
 		WHEN (horizontalenlrgmt = 'Y' AND verticalenlrgmt <> 'Y') 
-			THEN 'Enlrg_Horiz'
+			THEN 'Horizontal'
 		WHEN (horizontalenlrgmt <> 'Y' AND verticalenlrgmt = 'Y') 
-			THEN 'Enlrg_Vert'
+			THEN 'Vertical'
 		WHEN (horizontalenlrgmt = 'Y' AND verticalenlrgmt = 'Y') 
-			THEN 'Enlrg_Horiz and Enlrg_Vert'
+			THEN 'Horizontal and Vertical'
 	END)  as enlargement,
 
 	enlargementsqfootage as EnlargementSF,

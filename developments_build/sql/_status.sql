@@ -14,8 +14,6 @@ INPUTS:
         complete_qrtr text,
         co_latest_units numeric,
         co_latest_certtype text,
-        classa_complt numeric,
-        classa_incmpl numeric,
         classa_net numeric,
         address text,
         occ_proposed text
@@ -35,8 +33,6 @@ OUTPUTS:
         date_permittd date,
         complete_year text,
         complete_qrtr text,
-        classa_complt numeric,
-        classa_incmpl numeric,
         classa_net numeric,
         address text,
         occ_proposed text,
@@ -59,12 +55,10 @@ DRAFT_STATUS_devdb as (
         CASE
             WHEN a.x_withdrawal IN ('W', 'C')
                         THEN '9. Withdrawn'
-            WHEN a.job_type = 'New Building'
+            WHEN a.job_type IN ('New Building', 'Alteration')
                         AND a.co_latest_certtype = 'T- TCO'
-                        AND (
-                            (a.classa_complt_pct < 0.8 AND a.classa_net >= 20) OR 
-                            (a.classa_complt_diff >= 5 AND a.classa_net BETWEEN 5 AND 19)
-                        )
+                        AND a.classa_complt_pct < 0.8 
+                        AND a.classa_net >= 20
                         THEN '4. Partially Completed Construction'
             WHEN a.date_complete IS NOT NULL THEN '5. Completed Construction'
             WHEN a.date_statusr IS NOT NULL THEN '3. Permitted for Construction'
@@ -78,9 +72,10 @@ DRAFT_STATUS_devdb as (
         END as job_status,
         a.date_permittd,
         a.date_lastupdt::date,
+        a.classa_init,
+        a.classa_prop,
         a.classa_net,
         a.address,
-        a.co_latest_units,
         a.occ_proposed,
         a.date_complete,
         a.complete_year,
@@ -97,124 +92,50 @@ SELECT
     date_permittd,
     complete_year,
     complete_qrtr,
-
-    -- Assign classa_complt based on job_status
-    (CASE
-        WHEN job_status = '5. Completed Construction' 
-            THEN classa_net
-        WHEN job_status = '4. Partially Completed Construction' 
-            THEN co_latest_units
-        ELSE NULL
-    END) as classa_complt,
-
-    -- Assing classa_incmpl
-    (CASE
-        WHEN job_status = '5. Completed Construction' 
-            THEN NULL
-        WHEN job_status = '4. Partially Completed Construction'
-            THEN classa_net-co_latest_units
-        ELSE classa_net
-    END) as classa_incmpl,
-
+    classa_init,
+    classa_prop,
     classa_net,
     address,
     occ_proposed,
+    -- Set inactive flag
     (CASE 
+        -- A date_complete indicates not inactive
         WHEN date_complete IS NOT NULL 
             THEN NULL
-        WHEN (CURRENT_DATE - date_lastupdt)/365 >= 2 
-            AND job_status = '2. Approved Application'
+        -- Jobs not (partially) complete that haven't been updated in 3 years
+        WHEN (:'CAPTURE_DATE'::date - date_lastupdt)/365 >= 3 
+            AND job_status IN ('1. Filed Application', 
+                                '2. Approved Application', 
+                                '3. Permitted for Construction')
             THEN 'Inactive'
-        WHEN (CURRENT_DATE - date_lastupdt)/365 >= 3 
-            AND job_status = '1. Filed Application'
-            THEN 'Inactive'
+        -- All withdrawn jobs are inactive
         WHEN job_status = '9. Withdrawn'
             THEN 'Inactive'
     END) as job_inactive
 INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
 
+-- Jobs matching with a newer, (partially) complete job get set to inactive
 WITH completejobs AS (
-	SELECT address, job_type, date_lastupdt, job_status
+	SELECT address, job_type, date_lastupdt, job_status, classa_init, classa_prop
 	FROM STATUS_devdb
-	WHERE classa_net::numeric > 0
-	AND job_status = '5. Completed Construction')
+	WHERE classa_init IS NOT NULL
+    AND classa_prop IS NOT NULL
+	AND job_status IN ('4. Partially Completed Construction', '5. Completed Construction'))
 UPDATE STATUS_devdb a 
 SET job_inactive = 'Inactive'
 FROM completejobs b
-WHERE a.address = b.address
+WHERE a.job_status IN ('1. Filed Application', '2. Approved Application', '3. Permitted for Construction')
 	AND a.job_type = b.job_type
-	AND a.job_status <> '5. Completed Construction'
+    AND a.address = b.address
+    AND a.classa_init = b.classa_init
+    AND a.classa_prop = b.classa_prop
 	AND a.date_lastupdt::date < b.date_lastupdt::date;
 
 /* 
 CORRECTIONS
-    classa_complt
-    classa_incmpl
     job_inactive
 */
--- classa_complt
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-        b.edited_date
-	FROM STATUS_devdb a, housing_input_research b	
-	WHERE a.job_number=b.job_number
-    AND b.field = 'classa_complt'
-    AND (a.classa_complt=b.old_value::numeric 
-        OR (a.classa_complt IS NULL
-            AND b.old_value IS NULL))
-)
-UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'classa_complt'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'classa_complt', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE STATUS_devdb a
-SET classa_complt = b.new_value::numeric
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'classa_complt'
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'classa_complt'=any(x_dcpedited));
-        
--- classa_incmpl
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-        b.edited_date
-	FROM STATUS_devdb a, housing_input_research b	
-	WHERE a.job_number=b.job_number
-    AND b.field = 'classa_incmpl'
-    AND (a.classa_incmpl=b.old_value::numeric 
-        OR (a.classa_incmpl IS NULL
-            AND b.old_value IS NULL))
-)
-UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited,'classa_incmpl'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'classa_incmpl', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE STATUS_devdb a
-SET classa_incmpl = b.new_value::numeric
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'classa_incmpl'
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'classa_incmpl'=any(x_dcpedited));
-
 -- job_inactive
 WITH CORR_target as (
 	SELECT a.job_number, 

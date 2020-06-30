@@ -42,8 +42,7 @@ def parse_output(geo):
         # Normalized address:
         geo_sname=geo.get("First Street Name Normalized", ""),
         geo_hnum=geo.get("House Number - Display Format", ""),
-        # boro = geo.get('First Borough Name', ''),
-        # longitude and latitude of lot center
+        # Longitude and latitude of lot center
         geo_latitude=geo.get("Latitude", ""),
         geo_longitude=geo.get("Longitude", ""),
         # Some sample administrative areas:
@@ -61,7 +60,7 @@ if __name__ == "__main__":
     engine = create_engine(os.environ["BUILD_ENGINE"])
 
     # read in housing table
-    df1 = pd.read_sql(
+    df = pd.read_sql(
         """
         SELECT * 
         FROM hpd_hny_units_by_building
@@ -71,35 +70,20 @@ if __name__ == "__main__":
         engine,
     )
 
-    df2 = pd.read_sql(
-        """
-        SELECT * 
-        FROM housing_input_hny_job_manual;
-        """,
-        engine,
-    )
-
     # get the row number
-    df1 = df1.rename(
+    df = df.rename(
         columns={
             "latitude_(internal)": "latitude_internal",
             "longitude_(internal)": "longitude_internal",
         }
     )
 
-    records1 = df1.to_dict("records")
-    records2 = df2.to_dict("records")
+    records = df.to_dict("records")
 
-    # records = geocode(records)
-
-    print("geocoding begins here ...")
+    print("Geocoding HNY...")
     # Multiprocess
     with Pool(processes=cpu_count()) as pool:
-        it1 = pool.map(geocode, records1, 10000)
+        it = pool.map(geocode, records, 10000)
 
-    with Pool(processes=cpu_count()) as pool:
-        it2 = pool.map(geocode, records2, 10000)
-
-    print("geocoding finished, dumping tp postgres ...")
-    exporter(df=pd.DataFrame(it1), table_name="hny_geocode_results", con=engine)
-    exporter(df=pd.DataFrame(it2), table_name="hny_manual_geocode_results", con=engine)
+    print("Geocoding finished, dumping to postgres ...")
+    exporter(df=pd.DataFrame(it), table_name="hny_geocode_results", con=engine)
