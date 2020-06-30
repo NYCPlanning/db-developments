@@ -83,8 +83,6 @@ display "Creating status fields:
       job_status,
       date_lastupdt,
       date_permittd,
-      classa_complt,
-      classa_incmpl,
       job_inactive"
 
 psql $BUILD_ENGINE\
