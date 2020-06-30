@@ -62,21 +62,20 @@ OUTPUTS:
 
 */
 
-
 DROP TABLE IF EXISTS YEARLY_devdb;
 SELECT a.job_number,
         b.boro,
         b.borocode,
         b.bctcb2010,
-        a.cenblock10,
+        b.fips_boro||b.ctcb2010 as cenblock10,
         b.bct2010,
-        a.centract10,
+        b.fips_boro||b.ct2010 as centract10,
         b.nta as nta2010,
         b.ntaname as ntaname2010,
         b.puma as puma2010,
         b.pumaname as pumaname10,
-        b.comunitydist as commntydst,
-        b.councildist as councildst,
+        b.commntydst,
+        b.councildst,
         CASE WHEN a.complete_year = '2010' AND a.date_complete > '2010-03-31'::date
             THEN a.classa_net
             ELSE NULL END AS comp2010ap,
