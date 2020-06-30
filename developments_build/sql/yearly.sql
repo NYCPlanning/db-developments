@@ -53,10 +53,10 @@ OUTPUTS:
         comp2020,
         comp2020q2,
         since_cen10,
-        incmpfiled,
-        incmpprgrs,
-        incmprmtd,
-        incmpwtdrn,
+        filed,
+        approved,
+        permitted,
+        withdrawn,
         inactive
     )
 
@@ -65,17 +65,18 @@ OUTPUTS:
 
 DROP TABLE IF EXISTS YEARLY_devdb;
 SELECT a.job_number,
-        a.boro,
-        a.bctcb2010,
-        b.fips_boro||RIGHT(a.bctcb2010, 10) as cenblock10,
-        a.bct2010,
-        b.fips_boro||RIGHT(a.bct2010, 6) as centract10,
-        a.nta2010,
-        a.ntaname2010,
-        a.puma2010,
+        b.boro,
+        b.borocode,
+        b.bctcb2010,
+        a.cenblock10,
+        b.bct2010,
+        a.centract10,
+        b.nta as nta2010,
+        b.ntaname as ntaname2010,
+        b.puma as puma2010,
         b.pumaname as pumaname10,
-        a.comunitydist,
-        a.councildist,
+        b.comunitydist as commntydst,
+        b.councildist as councildst,
         CASE WHEN a.complete_year = '2010' AND a.date_complete > '2010-03-31'::date
             THEN a.classa_net
             ELSE NULL END AS comp2010ap,
@@ -118,24 +119,24 @@ SELECT a.job_number,
         CASE WHEN a.job_status = '1. Filed Application'
                 AND a.job_inactive IS NULL
             THEN  a.classa_net 
-            ELSE NULL END as incmpfiled, 
+            ELSE NULL END as filed, 
         CASE WHEN a.job_status = '2. Approved Application'
                 AND a.job_inactive IS NULL
             THEN  a.classa_net 
-            ELSE NULL END as incmpprgrs, 
+            ELSE NULL END as approved, 
         CASE WHEN a.job_status = '3. Permitted for Construction'
                 AND a.job_inactive IS NULL
             THEN  a.classa_net 
-            ELSE NULL END as incmprmtd, 
+            ELSE NULL END as permitted, 
         CASE WHEN a.job_status = '9. Withdrawn'
                 AND a.job_inactive IS NULL
             THEN  a.classa_net 
-            ELSE NULL END as incmpwtdrn, 
+            ELSE NULL END as withdrawn, 
         CASE WHEN a.job_status <> '9. Withdrawn'
                 AND a.job_inactive = 'Inactive'
             THEN  a.classa_net 
             ELSE NULL END as inactive
 INTO YEARLY_devdb
 FROM FINAL_devdb a
-LEFT JOIN LOOKUP_geo b
-ON a.bct2010 = b.borocode||b.ct2010;
+RIGHT JOIN LOOKUP_geo b
+ON a.bctcb2010 = b.bctcb2010;
