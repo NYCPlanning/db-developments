@@ -85,8 +85,8 @@ JOBNUMBER_null_prop AS(
 JOBNUMBER_nonres_units AS (
 	SELECT job_number 
 	FROM MID_devdb
-	WHERE resid_flag IS NULL
-	AND (classa_prop <> 0 OR classa_init <> 0)
+	WHERE (occ_initial !~* 'residential' AND classa_init <> 0)
+	OR (occ_proposed !~* 'residential' AND classa_prop <> 0)
 ),
 JOBNUMBER_accessory AS (
 	SELECT job_number
