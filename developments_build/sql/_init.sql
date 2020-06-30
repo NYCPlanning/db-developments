@@ -188,11 +188,11 @@ JOBNUMBER_relevant as (
 
 	(CASE 
 		WHEN (horizontalenlrgmt = 'Y' AND verticalenlrgmt <> 'Y') 
-			THEN 'Enlrg_Horiz'
+			THEN 'Horizontal'
 		WHEN (horizontalenlrgmt <> 'Y' AND verticalenlrgmt = 'Y') 
-			THEN 'Enlrg_Vert'
+			THEN 'Vertical'
 		WHEN (horizontalenlrgmt = 'Y' AND verticalenlrgmt = 'Y') 
-			THEN 'Enlrg_Horiz and Enlrg_Vert'
+			THEN 'Horizontal and Vertica'
 	END)  as enlargement,
 
 	enlargementsqfootage as EnlargementSF,
