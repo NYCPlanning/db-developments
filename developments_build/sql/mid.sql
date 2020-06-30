@@ -15,8 +15,6 @@ INPUTS:
         job_status character varying,
         complete_year text,
         complete_qrtr text,
-        classa_complt numeric,
-        classa_incmpl numeric,
         x_inactive text,
         x_dcpedited text,
         dcpeditfields text
@@ -29,8 +27,6 @@ OUTPUTS:
         job_status character varying,
         complete_year text,
         complete_qrtr text,
-        classa_complt numeric,
-        classa_incmpl numeric,
         x_inactive text,
         x_dcpedited text,
         dcpeditfields text
@@ -43,8 +39,6 @@ JOIN_STATUS_devdb as (
     SELECT
         a.*,
         b.job_status,
-        b.classa_complt,
-        b.classa_incmpl,
         b.job_inactive
     FROM _MID_devdb a
     LEFT JOIN STATUS_devdb b
