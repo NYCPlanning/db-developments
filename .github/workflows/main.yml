@@ -4,7 +4,7 @@ jobs:
   skip:
     name: Build and test
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, '[build]')"
+    if: "contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[export]')"
     steps:
       - run: echo "${{ github.event.head_commit.message }}"    
   Build:
@@ -34,7 +34,7 @@ jobs:
           sudo apt-key add ACCC4CF8.asc
 
           sudo apt update
-          sudo apt install -y postgresql-client-11
+          sudo apt install -y postgresql-client-11 gdal-bin
           sudo apt autoremove
 
           curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
@@ -43,29 +43,19 @@ jobs:
           mc config host add spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
 
       - name: 1. dataloading ..
+        if: "! contains(github.event.head_commit.message, '[export]')"
         working-directory: developments_build
         run: ./01_dataloading.sh
 
       - name: 2. build dev_db ...
+        if: "! contains(github.event.head_commit.message, '[export]')"
         working-directory: developments_build
         run: ./02_build_devdb.sh
 
-      - name: 3. build yoy ...
+      - name: 3. export ...
         working-directory: developments_build
-        run: ./03_build_yoyco.sh
+        run: ./03_export.sh
 
-      - name: 4. build hny ...
+      - name: 4. archive ...
         working-directory: developments_build
-        run: ./04_build_hny.sh
-
-      - name: 5. export ...
-        working-directory: developments_build
-        run: ./05_export.sh
-
-      - name: 6. qaqc ...
-        working-directory: developments_build
-        run: ./06_qaqc.sh
-
-      - name: 7. archive ...
-        working-directory: developments_build
-        run: ./07_archive.sh
+        run: ./04_archive.sh
