@@ -14,8 +14,6 @@ INPUTS:
         complete_qrtr text,
         co_latest_units numeric,
         co_latest_certtype text,
-        classa_complt numeric,
-        classa_incmpl numeric,
         classa_net numeric,
         address text,
         occ_proposed text
@@ -35,8 +33,6 @@ OUTPUTS:
         date_permittd date,
         complete_year text,
         complete_qrtr text,
-        classa_complt numeric,
-        classa_incmpl numeric,
         classa_net numeric,
         address text,
         occ_proposed text,
@@ -80,7 +76,6 @@ DRAFT_STATUS_devdb as (
         a.classa_prop,
         a.classa_net,
         a.address,
-        a.co_latest_units,
         a.occ_proposed,
         a.date_complete,
         a.complete_year,
@@ -97,8 +92,6 @@ SELECT
     date_permittd,
     complete_year,
     complete_qrtr,
-    greatest(classa_net, co_latest_units) as classa_complt,
-    classa_net-coalesce(co_latest_units,0) as classa_incmpl,
     classa_init,
     classa_prop,
     classa_net,
@@ -141,72 +134,8 @@ WHERE a.job_status IN ('1. Filed Application', '2. Approved Application', '3. Pe
 
 /* 
 CORRECTIONS
-    classa_complt
-    classa_incmpl
     job_inactive
 */
--- classa_complt
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-        b.edited_date
-	FROM STATUS_devdb a, housing_input_research b	
-	WHERE a.job_number=b.job_number
-    AND b.field = 'classa_complt'
-    AND (a.classa_complt=b.old_value::numeric 
-        OR (a.classa_complt IS NULL
-            AND b.old_value IS NULL))
-)
-UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'classa_complt'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'classa_complt', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE STATUS_devdb a
-SET classa_complt = b.new_value::numeric
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'classa_complt'
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'classa_complt'=any(x_dcpedited));
-        
--- classa_incmpl
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-        b.edited_date
-	FROM STATUS_devdb a, housing_input_research b	
-	WHERE a.job_number=b.job_number
-    AND b.field = 'classa_incmpl'
-    AND (a.classa_incmpl=b.old_value::numeric 
-        OR (a.classa_incmpl IS NULL
-            AND b.old_value IS NULL))
-)
-UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited,'classa_incmpl'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'classa_incmpl', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE STATUS_devdb a
-SET classa_incmpl = b.new_value::numeric
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'classa_incmpl'
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'classa_incmpl'=any(x_dcpedited));
-
 -- job_inactive
 WITH CORR_target as (
 	SELECT a.job_number, 
