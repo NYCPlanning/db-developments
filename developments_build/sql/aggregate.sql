@@ -583,6 +583,6 @@ SELECT
 INTO AGGREGATE_councildst
 FROM _AGGREGATE_councildst a
 JOIN council_members b
-ON a.councildst = b.district
+ON a.councildst::int = b.district::int
 GROUP BY a.councildst, b.name
 ORDER BY councildst;
