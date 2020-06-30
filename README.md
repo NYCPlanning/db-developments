@@ -11,8 +11,8 @@ Shapefile | [SHP_devdb.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/d
 ### Aggregation Tables
 [block](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_block.csv) |
 [tract](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_tract.csv) |
-[comunitydist](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_comunitydist.csv) |
-[councildist](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_councildist.csv) |
+[commntydst](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_commntydst.csv) |
+[councildst](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_councildst.csv) |
 [NTA](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_nta.csv) |
 [PUMA](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_puma.csv)
 
