@@ -52,15 +52,10 @@ jobs:
         working-directory: developments_build
         run: ./02_build_devdb.sh
 
-      - name: 3. build yoy ...
-        if: "! contains(github.event.head_commit.message, '[export]')"
+      - name: 3. export ...
         working-directory: developments_build
-        run: ./03_build_yoyco.sh
+        run: ./03_export.sh
 
-      - name: 4. export ...
+      - name: 4. archive ...
         working-directory: developments_build
-        run: ./04_export.sh
-
-      - name: 5. archive ...
-        working-directory: developments_build
-        run: ./05_archive.sh
+        run: ./04_archive.sh

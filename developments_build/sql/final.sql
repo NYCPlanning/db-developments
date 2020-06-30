@@ -120,6 +120,7 @@ SELECT
     date_statusd,
     date_statusp,
     date_permittd,
+    date_statusr,
     date_statusx,
     date_lastupdt,
     date_complete,
