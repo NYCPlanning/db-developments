@@ -19,12 +19,10 @@ OUTPUTS:
 DROP TABLE IF EXISTS _SPATIAL_devdb;
 SELECT 
     uid,
-    get_cd(geom) as geo_cd,
     get_cb(geom) as geo_censusblock2010,
     get_ct(geom) as geo_censustract2010,
     get_csd(geom) as geo_csd,
     get_boro(geom) as geo_boro,
-    get_council(geom) as geo_council,
     get_bbl(geom) as geo_bbl,
     get_zipcode(geom) as geo_zipcode,
     get_policeprct(geom) as geo_policeprct,
@@ -83,20 +81,6 @@ SELECT
         OR a.mode = 'tpad'
         THEN b.geo_boro::text
     ELSE a.geo_boro END) as geo_boro,
-
-    -- geo_cd
-    (CASE WHEN a.geo_cd IS NULL 
-		OR a.geo_cd = ''
-        OR a.mode = 'tpad'
-        THEN b.geo_cd::text
-    ELSE a.geo_cd END) as geo_cd,
-
-    -- geo_council
-    (CASE WHEN a.geo_council IS NULL 
-		OR a.geo_council = ''
-        OR a.mode = 'tpad'
-        THEN b.geo_council 
-    ELSE a.geo_council END) as geo_council,
 
     -- geo_censusblock2010
     (CASE WHEN a.geo_censusblock2010 IS NULL 
@@ -166,7 +150,9 @@ SELECT
     a.*,
     b.nta as geo_ntacode2010,
     b.ntaname as geo_ntaname2010,
-    b.puma as geo_puma
+    b.puma as geo_puma,
+    b.councildst as geo_council,
+    b.commntydst as geo_cd
 INTO SPATIAL_devdb
 FROM DRAFT_spatial a
 LEFT JOIN lookup_geo b

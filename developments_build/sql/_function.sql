@@ -65,17 +65,6 @@ CREATE OR REPLACE FUNCTION get_bbl(
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
-
-CREATE OR REPLACE FUNCTION get_council(
-    _geom geometry
-  ) 
-    RETURNS varchar AS $$
-      SELECT lpad(b.coundist::text,2,'0')
-      FROM dcp_councildistricts b
-      WHERE ST_Within(_geom, b.wkb_geometry)
-  $$ LANGUAGE sql;
-
-
 CREATE OR REPLACE FUNCTION get_boro(
     _geom geometry
   ) 
@@ -109,15 +98,6 @@ CREATE OR REPLACE FUNCTION get_cb(
     RETURNS varchar AS $$
       SELECT b.cb2010::varchar
       FROM dcp_censusblocks b
-      WHERE ST_Within(_geom, b.wkb_geometry)
-  $$ LANGUAGE sql;
-
-CREATE OR REPLACE FUNCTION get_cd(
-    _geom geometry
-  ) 
-    RETURNS varchar AS $$
-      SELECT b.borocd::varchar
-      FROM dcp_cdboundaries b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
