@@ -24,7 +24,7 @@ INPUTS:
     LOOKUP_geo(
         boro,
         fips_boro,
-        pumaname
+        hed_pumaname
     )
 
 OUTPUTS:
@@ -73,7 +73,7 @@ SELECT a.job_number,
         a.nta2010,
         a.ntaname2010,
         a.puma2010,
-        b.pumaname as pumaname10,
+        b.hed_pumaname as pumaname10,
         a.comunitydist,
         a.councildist,
         CASE WHEN a.complete_year = '2010' AND a.date_complete > '2010-03-31'::date

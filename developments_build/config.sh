@@ -54,7 +54,7 @@ function export_csv {
 }
 
 function imports_csv {
-   cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN DELIMITER ',' CSV HEADER;"
+   cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN DELIMITER ',' CSV HEADER QUOTE '\"';"
 }
 
 # Setting Environmental Variables

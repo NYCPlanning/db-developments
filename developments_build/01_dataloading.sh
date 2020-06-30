@@ -68,13 +68,19 @@ psql $BUILD_ENGINE -c "
     DROP TABLE IF EXISTS lookup_geo;
     CREATE TABLE lookup_geo (
         boro text,
-        fips_boro text,
         borocode text,
+        fips_boro text,
+        ctcb2010 text,
         ct2010 text,
+        bctcb2010 text,
+        bct2010 text, 
         puma text,
         nta text,
         ntaname text,
-        pumaname text
+        pumaname text,
+        commntydst text,
+        councildst text,
+        hed_pumaname text
     );
 "
 
