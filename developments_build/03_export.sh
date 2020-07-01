@@ -31,7 +31,7 @@ mkdir -p output
     CSV_export HNY_no_match
     
     display "Export Corrections"
-    CSV_export CORR_hny_match &
+    CSV_export CORR_hny_matches &
     CSV_export housing_input_research
 
     wait
