@@ -84,8 +84,17 @@ JOIN_HNY_PLUTO_devdb as (
     FROM JOIN_HNY_devdb a
     LEFT JOIN PLUTO_devdb b
     ON a.job_number = b.job_number
+),
+JOIN_CORR_devdb as (
+    SELECT 
+        a.*, 
+        array_to_string(
+            b.dcpeditfields, E'/n', ''
+        ) as dcpeditfields
+    FROM JOIN_HNY_PLUTO_devdb a
+    LEFT JOIN CORR_devdb b
+    ON a.job_number = b.job_number
 )
-
 -- Put columns in desired order
 SELECT 
     job_number,
@@ -188,8 +197,9 @@ SELECT
     latitude,
     longitude,
     geomsource,
+    dcpeditfields,
     hny_id,
     hny_jobrelate,
     :'VERSION' as version
 INTO FINAL_devdb
-FROM JOIN_HNY_PLUTO_devdb;
+FROM JOIN_CORR_devdb;
