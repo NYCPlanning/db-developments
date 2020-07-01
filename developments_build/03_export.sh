@@ -25,6 +25,14 @@ mkdir -p output
     CSV_export aggregate_nta &
     CSV_export aggregate_puma &
     CSV_export aggregate_tract 
+    
+    display "Export QAQC Tables"
+    CSV_export FINAL_qaqc &
+    CSV_export HNY_no_match
+    
+    display "Export Corrections"
+    CSV_export CORR_hny_match &
+    CSV_export housing_input_research
 
     wait
     display "CSV Export Complete"
