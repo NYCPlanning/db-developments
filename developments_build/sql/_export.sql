@@ -121,7 +121,7 @@ SELECT
 	Latitude as "Latitude",
 	Longitude as "Longitude",
 	GeomSource as "GeomSource",
-	-- DCPEditFields as "DCPEdited",
+	DCPEditFields as "DCPEdited",
 	HNY_ID as "HNY_ID",
 	HNY_JobRelate as "HNY_Relate",
 	Version as "Version",

@@ -103,6 +103,8 @@ def dob_jobapplications():
             jobstatusdesc,
             latestactiondate,
             prefilingdate,
+            assigned,
+            paid,
             fullypaid,
             approved,
             fullypermitted,
