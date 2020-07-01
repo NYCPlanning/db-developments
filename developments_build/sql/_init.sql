@@ -234,6 +234,7 @@ WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
 
 DROP TABLE IF EXISTS CORR_devdb;
 SELECT
+	distinct
 	job_number,
 	array[]::text[] as x_dcpedited,
 	array[]::json[] as dcpeditfields
