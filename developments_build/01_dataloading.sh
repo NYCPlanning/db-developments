@@ -17,12 +17,6 @@ psql $BUILD_ENGINE -c "
         occ text
     ); 
 
-    DROP TABLE IF EXISTS lookup_status;
-    CREATE TABLE lookup_status(
-        dob_status text,
-        status text
-    );
-
     DROP TABLE IF EXISTS lookup_ownership;
     CREATE TABLE lookup_ownership (
         cityowned text,
@@ -68,18 +62,22 @@ psql $BUILD_ENGINE -c "
     DROP TABLE IF EXISTS lookup_geo;
     CREATE TABLE lookup_geo (
         boro text,
-        fips_boro text,
         borocode text,
+        fips_boro text,
+        ctcb2010 text,
         ct2010 text,
+        bctcb2010 text,
+        bct2010 text,
         puma text,
+        pumaname text,
         nta text,
         ntaname text,
-        pumaname text
+        commntydst text,
+        councildst text
     );
 "
 
 imports_csv lookup_occ &
-imports_csv lookup_status &
 imports_csv lookup_ownership &
 imports_csv housing_input_research &
 imports_csv census_units10 &
