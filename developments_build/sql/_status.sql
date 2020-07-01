@@ -85,6 +85,7 @@ DRAFT_STATUS_devdb as (
     ON a.job_number::int = b.jobnumber::int
 )
 SELECT
+    distinct
     job_number,
     job_type,
     job_status,
