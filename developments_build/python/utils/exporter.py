@@ -27,13 +27,13 @@ def exporter(df, table_name, con, sep="~", null=""):
     # export
     df = df.replace(sep, null, regex=True)
     df.to_csv(str_buffer, sep=sep, header=True, index=False)
+    del df
     str_buffer.seek(0)
 
     db_cursor.copy_expert(
         f"COPY {table_name} FROM STDIN WITH NULL AS '{null}' DELIMITER '{sep}' quote '\"' CSV HEADER",
         str_buffer,
     )
-
     db_cursor.connection.commit()
     str_buffer.close()
     db_cursor.close()
