@@ -425,7 +425,7 @@ SELECT a.job_number,
         END) AS hny_jobrelate
 INTO HNY_devdb
 FROM MID_devdb a
-JOIN HNY_lookup b
+LEFT JOIN HNY_lookup b
 ON a.job_number = b.job_number;
 
 
