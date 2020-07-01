@@ -87,6 +87,7 @@ JOIN_HNY_PLUTO_devdb as (
 ),
 JOIN_CORR_devdb as (
     SELECT 
+        distinct
         a.*, 
         array_to_string(
             b.dcpeditfields, E'/n', ''
