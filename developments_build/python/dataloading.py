@@ -229,13 +229,13 @@ def dob_cofos():
 
 
 if __name__ == "__main__":
-    # with Pool(processes=cpu_count()) as pool:
-    #     pool.map(ETL, tables)
+    with Pool(processes=cpu_count()) as pool:
+        pool.map(ETL, tables)
 
     # weekly or edm
     capture_date = os.environ.get("CAPTURE_DATE", "")
     mode = "edm" if not sys.argv[1] else sys.argv[1]
 
-    # dob_cofos()
+    dob_cofos()
     dob_jobapplications(mode, capture_date)
     dob_permitissuance(mode, capture_date)
