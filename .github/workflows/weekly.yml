@@ -1,8 +1,13 @@
 name: Weekly Run
 
 on:
+  push:
+    paths: 
+      - '.github/workflows/*'
+    branches: 
+      - 'dev'
   schedule:
-    - cron: '10 16 * * *'
+    - cron: '0 9 * * MON'
       
 jobs:
   Build:
