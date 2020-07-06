@@ -233,13 +233,17 @@ FROM dob_jobapplications
 WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
 
 DROP TABLE IF EXISTS CORR_devdb;
-SELECT
-	distinct
-	job_number,
+SELECT 
+	a.job_number,
 	array[]::text[] as x_dcpedited,
 	array[]::json[] as dcpeditfields
 INTO CORR_devdb
-FROM _INIT_devdb;
+FROM (
+	SELECT
+		distinct
+		job_number
+	FROM _INIT_devdb
+) a;
 
 /*
 CORRECTIONS: 
