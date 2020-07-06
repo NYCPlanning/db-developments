@@ -4,6 +4,7 @@ import os
 import pandas as pd
 from multiprocessing import Pool, cpu_count
 from utils.exporter import exporter
+import sys
 
 RECIPE_ENGINE = os.environ.get("RECIPE_ENGINE", "")
 BUILD_ENGINE = os.environ.get("BUILD_ENGINE", "")
@@ -79,13 +80,15 @@ def dcp_mappluto():
     del df
 
 
-def dob_jobapplications():
+def dob_jobapplications(mode, capture_date):
 
     recipe_engine = create_engine(RECIPE_ENGINE)
     build_engine = create_engine(BUILD_ENGINE)
-
+    condition = (
+        f"AND latestactiondate::date <= '{capture_date}'" if mode == "edm" else ""
+    )
     df = pd.read_sql(
-        """
+        f"""
         SELECT 
             ogc_fid,
             jobnumber,
@@ -147,6 +150,7 @@ def dob_jobapplications():
         FROM dob_jobapplications.latest
         WHERE jobdocnumber = '01'
 		AND jobtype ~* 'A1|DM|NB'
+        {condition}
         """,
         recipe_engine,
     )
@@ -155,12 +159,12 @@ def dob_jobapplications():
     del df
 
 
-def dob_permitissuance():
+def dob_permitissuance(mode, capture_date):
     recipe_engine = create_engine(RECIPE_ENGINE)
     build_engine = create_engine(BUILD_ENGINE)
-
+    condition = f"AND dobrundate::date <= '{capture_date}'" if mode == "edm" else ""
     df = pd.read_sql(
-        """
+        f"""
         SELECT 
             v,
             jobnum,
@@ -170,6 +174,7 @@ def dob_permitissuance():
         FROM dob_permitissuance.latest
         WHERE jobdocnum = '01'
         AND jobtype ~* 'A1|DM|NB'
+        {condition}
         """,
         recipe_engine,
     )
@@ -223,14 +228,14 @@ def dob_cofos():
     del df
 
 
-# def old_developments():
-#     importer = Importer(EDM_DATA, BUILD_ENGINE)
-#     importer.import_table(schema_name='developments', version="2019/09/10")
-
 if __name__ == "__main__":
-    with Pool(processes=cpu_count()) as pool:
-        pool.map(ETL, tables)
+    # with Pool(processes=cpu_count()) as pool:
+    #     pool.map(ETL, tables)
 
-    dob_cofos()
-    dob_jobapplications()
-    dob_permitissuance()
+    # weekly or edm
+    capture_date = os.environ.get("CAPTURE_DATE", "")
+    mode = "edm" if not sys.argv[1] else sys.argv[1]
+
+    # dob_cofos()
+    dob_jobapplications(mode, capture_date)
+    dob_permitissuance(mode, capture_date)

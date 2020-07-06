@@ -1,14 +1,18 @@
 #!/bin/bash
 source config.sh
 
+## Default mode is EDM
+MODE="${1:-edm}"
+
 docker run --rm\
     -v $(pwd):/developments_build\
     -w /developments_build\
     -e EDM_DATA=$EDM_DATA\
     -e RECIPE_ENGINE=$RECIPE_ENGINE\
     -e BUILD_ENGINE=$BUILD_ENGINE\
+    -e CAPTURE_DATE=$CAPTURE_DATE\
     nycplanning/cook:latest bash -c "
-        python3 python/dataloading.py"
+        python3 python/dataloading.py $MODE"
 
 psql $BUILD_ENGINE -c "
     DROP TABLE IF EXISTS lookup_occ;
