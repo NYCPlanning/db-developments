@@ -42,4 +42,37 @@ jobs:
 
       - name: 2. build dev_db ...
         working-directory: developments_build
-        run: ./02_build_devdb.sh
+        run: |
+          #!/bin/bash
+          source config.sh
+          psql $BUILD_ENGINE -f sql/_function.sql
+          psql $BUILD_ENGINE -f sql/_init.sql
+          
+          docker run --rm\
+              -v $(pwd):/src\
+              -w /src\
+              -e BUILD_ENGINE=$BUILD_ENGINE\
+              nycplanning/docker-geosupport:latest bash -c "
+                python3 python/geocode.py
+                python3 python/geocode_hny.py
+              "
+              
+          psql $BUILD_ENGINE -f sql/_geo.sql
+          psql $BUILD_ENGINE -f sql/_spatial.sql
+          psql $BUILD_ENGINE -f sql/init.sql
+          psql $BUILD_ENGINE -f sql/_pluto.sql
+          psql $BUILD_ENGINE -f sql/_co.sql
+          psql $BUILD_ENGINE -f sql/_occ.sql
+          psql $BUILD_ENGINE -f sql/_units.sql
+          psql $BUILD_ENGINE -f sql/_status_q.sql
+          psql $BUILD_ENGINE -f sql/_mid.sql
+          
+          psql $BUILD_ENGINE\
+            -v CAPTURE_DATE=$CAPTURE_DATE\
+            -f sql/_status.sql
+             
+          psql $BUILD_ENGINE -f sql/mid.sql
+          psql $BUILD_ENGINE -f sql/_hny.sql
+          psql $BUILD_ENGINE -v VERSION=$VERSION  -f sql/final.sql
+          psql $BUILD_ENGINE -f sql/yearly.sql
+          psql $BUILD_ENGINE -f sql/aggregate.sql
