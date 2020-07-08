@@ -88,3 +88,10 @@ function SHP_export {
         ls | grep -v $@.zip | xargs rm
       )
 }
+
+function makevalid {
+  psql $BUILD_ENGINE -c "
+      UPDATE $1
+      SET wkb_geometry = st_makevalid(wkb_geometry);
+  "
+}
