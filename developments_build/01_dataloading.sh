@@ -91,3 +91,29 @@ imports_csv lookup_geo
 
 wait 
 display "data loading is complete"
+
+ tables=(
+      "dof_shoreline" 
+      "dcp_mappluto"
+      "doitt_buildingfootprints"
+      "doitt_buildingfootprints_historical"
+      "doitt_zipcodeboundaries"
+      "dcp_cdboundaries"
+      "dcp_censusblocks"
+      "dcp_censustracts"
+      "dcp_school_districts"
+      "dcp_boroboundaries_wi"
+      "dcp_councildistricts"
+      "dcp_firecompanies"
+      "doe_school_subdistricts"
+      "doe_eszones"
+      "doe_mszones"
+      "dcp_policeprecincts"
+)
+for i in "${tables[@]}"
+do
+    makevalid $i &
+done
+
+wait 
+display "all geometries valid"
