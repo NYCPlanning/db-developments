@@ -156,4 +156,6 @@ SELECT
 INTO SPATIAL_devdb
 FROM DRAFT_spatial a
 LEFT JOIN lookup_geo b
-ON a.geo_boro||a.geo_censustract2010||a.geo_censusblock2010 = b.bctcb2010
+ON COALESCE(a.geo_boro, (select boro from _INIT_devdb where uid = a.uid))||
+    a.geo_censustract2010||
+    a.geo_censusblock2010 = b.bctcb2010;
