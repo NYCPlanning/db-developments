@@ -80,7 +80,7 @@ DRAFT as (
             trim(b.geo_address_street)
         )as geo_address,
         b.geo_zipcode,
-        b.geo_boro, 
+        COALESCE(b.geo_boro, a.boro) as geo_boro, 
         b.geo_cd,
         b.geo_council,
         b.geo_ntacode2010, 
