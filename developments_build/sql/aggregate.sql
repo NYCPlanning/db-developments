@@ -168,7 +168,6 @@ OUTPUTS:
     ),
 
     AGGREGATE_commntydst (
-        boro,
         commntydst,
         comp2010ap,
         comp2010,
@@ -180,7 +179,6 @@ OUTPUTS:
     ),
 
     AGGREGATE_councildst (
-        boro,
         councildst,
         councilmbr,
         comp2010ap,
@@ -255,7 +253,6 @@ DROP TABLE IF EXISTS _AGGREGATE_commntydst;
 WITH
 bctcb2010_aggregate AS (
     SELECT 
-        boro,
         cenblock10,
         commntydst,
         SUM(comp2010ap) as comp2010ap,
@@ -277,7 +274,7 @@ bctcb2010_aggregate AS (
         SUM(withdrawn) as withdrawn,
         SUM(inactive) as inactive
     FROM YEARLY_devdb
-    GROUP BY boro,
+    GROUP BY 
         cenblock10,
         commntydst
         ),
@@ -528,7 +525,7 @@ ORDER BY puma2010;
 
 -- Create AGGREGATE_commntydst
 DROP TABLE IF EXISTS AGGREGATE_commntydst;
-SELECT boro,
+SELECT
     commntydst,
     SUM(comp2010ap) as comp2010ap,
     SUM(comp2010) as comp2010,
@@ -551,7 +548,7 @@ SELECT boro,
     SUM(total20q2) as total20q2
 INTO AGGREGATE_commntydst
 FROM _AGGREGATE_commntydst
-GROUP BY boro,
+GROUP BY
 		commntydst
 ORDER BY commntydst;
 
