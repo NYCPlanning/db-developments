@@ -37,49 +37,6 @@ tables = [
     "hpd_hny_units_by_building",
 ]
 
-
-def dcp_mappluto():
-    recipe_engine = create_engine(RECIPE_ENGINE)
-    build_engine = create_engine(BUILD_ENGINE)
-
-    df = pd.read_sql(
-        """
-        SELECT 
-            b.version,
-            b.bbl::numeric::bigint::text,
-            b.unitsres,
-            b.bldgarea,
-            b.comarea,
-            b.officearea,
-            b.retailarea,
-            b.resarea,
-            b.yearbuilt,
-            b.yearalter1,
-            b.yearalter2,
-            b.bldgclass,
-            b.landuse,
-            b.ownertype,
-            b.ownername,
-            b.condono,
-            b.numbldgs,
-            b.numfloors,
-            b.firm07_fla,
-            b.pfirm15_fl,
-            b.wkb_geometry
-        FROM dcp_mappluto.latest b
-        """,
-        recipe_engine,
-    )
-    exporter(df=df, table_name="dcp_mappluto", sep="|", con=build_engine)
-    build_engine.execute(
-        """
-        ALTER TABLE dcp_mappluto 
-        ALTER COLUMN wkb_geometry TYPE Geometry USING ST_SetSRID(ST_GeomFromText(ST_AsText(wkb_geometry)), 4326);
-        """
-    )
-    del df
-
-
 def dob_jobapplications(mode, capture_date):
 
     recipe_engine = create_engine(RECIPE_ENGINE)
