@@ -191,17 +191,22 @@ CREATE OR REPLACE FUNCTION get_schoolsubdist(
 
 DROP TABLE IF EXISTS dof_shoreline_subdivide;
 DROP INDEX IF EXISTS dof_shoreline_subdivide_wkb_geometry_geom_idx;
-select st_makevalid(ST_SubDivide(wkb_geometry, 100)) as wkb_geometry 
-into dof_shoreline_subdivide
-FROM dof_shoreline;
+SELECT
+	ROW_NUMBER() OVER(order by wkb_geometry) as id,
+	st_makevalid(wkb_geometry) as wkb_geometry
+INTO dof_shoreline_subdivide
+FROM (
+  SELECT ST_SubDivide(wkb_geometry, 100) as wkb_geometry 
+  FROM dof_shoreline) a;
 CREATE INDEX dof_shoreline_subdivide_wkb_geometry_geom_idx ON dof_shoreline_subdivide USING GIST (wkb_geometry gist_geometry_ops_2d);
 
 CREATE OR REPLACE FUNCTION in_water(
     _geom geometry
   ) 
     RETURNS boolean AS $$
-      SELECT st_intersects(_geom, b.wkb_geometry)
+      SELECT id IS NOT NULL
       FROM dof_shoreline_subdivide b 
+      WHERE st_intersects(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION flag_nonres(
