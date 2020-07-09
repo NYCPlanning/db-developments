@@ -100,6 +100,9 @@ SELECT
     occ_proposed,
     -- Set inactive flag
     (CASE 
+        -- All withdrawn jobs are inactive
+        WHEN job_status = '9. Withdrawn'
+            THEN 'Inactive'
         -- A date_complete indicates not inactive
         WHEN date_complete IS NOT NULL 
             THEN NULL
@@ -108,9 +111,6 @@ SELECT
             AND job_status IN ('1. Filed Application', 
                                 '2. Approved Application', 
                                 '3. Permitted for Construction')
-            THEN 'Inactive'
-        -- All withdrawn jobs are inactive
-        WHEN job_status = '9. Withdrawn'
             THEN 'Inactive'
     END) as job_inactive
 INTO STATUS_devdb
