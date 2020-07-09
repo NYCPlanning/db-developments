@@ -75,8 +75,8 @@ CREATE OR REPLACE FUNCTION get_csd(
     _geom geometry
   ) 
     RETURNS varchar AS $$
-      SELECT  lpad(b.schooldist::text,2,'0')
-      FROM dcp_school_districts b
+      SELECT  coundist::varchar
+      FROM dcp_councildistricts b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
