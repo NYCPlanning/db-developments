@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS CORR_hny_matches (job_number text,
 DROP TABLE IF EXISTS HNY_geo;
 -- 1) Merge with geocoding results and create a unique ID
 WITH hny AS (
-        SELECT a.project_id||'/'||COALESCE(a.building_id, '') as hny_id,
+        SELECT a.project_id||'/'||COALESCE(LPAD(a.building_id, '0', 6), '') as hny_id,
                 a.project_id as hny_project_id,
                 a.*, 
                 b.geo_bbl, 
@@ -310,26 +310,26 @@ FROM unmatched;
 DROP TABLE IF EXISTS HNY_devdb;
 WITH 
 	-- Find cases of many-hny-to-one-devdb, after having filtered to highest priority
-	many_developments AS (SELECT hny_id, count(*)
+	many_developments AS (SELECT hny_id
 				FROM HNY_matches
-				GROUP BY hny_id),
+				GROUP BY hny_id
+                HAVING COUNT(*)>1),
 				
 	-- Find cases of many-devdb-to-one-hny, after having filtered to highest priority
-	many_hny AS (SELECT a.job_number, count(*)
+	many_hny AS (SELECT a.job_number
 				FROM HNY_matches a
-				GROUP BY a.job_number),	
+				GROUP BY a.job_number
+                HAVING COUNT(*)>1),	
 
 	-- Add relationship flags, where '1' in both flags means a many-to-many relationship
     RELATEFLAGS_hny_matches AS
     (SELECT m.*,
 		(CASE 
-			WHEN hny_id IN (SELECT DISTINCT hny_id FROM many_developments
-									WHERE count > 1) THEN 1
+			WHEN hny_id IN (SELECT DISTINCT hny_id FROM many_developments) THEN 1
 			ELSE 0 
 		END) AS one_hny_to_many_dev,
 		(CASE 
-			WHEN job_number IN (SELECT DISTINCT job_number FROM many_hny
-									WHERE count > 1) THEN 1
+			WHEN job_number IN (SELECT DISTINCT job_number FROM many_hny) THEN 1
 			ELSE 0
 		END) AS one_dev_to_many_hny
     FROM HNY_matches m),
