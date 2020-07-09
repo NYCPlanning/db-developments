@@ -190,7 +190,7 @@ CREATE OR REPLACE FUNCTION get_schoolsubdist(
   $$ LANGUAGE sql;
 
 DROP TABLE IF EXISTS dof_shoreline_subdivide;
-select ST_SubDivide(wkb_geometry, 100) as wkb_geometry 
+select st_makevalid(ST_SubDivide(wkb_geometry, 100)) as wkb_geometry 
 into dof_shoreline_subdivide
 FROM dof_shoreline;
 
@@ -198,7 +198,7 @@ CREATE OR REPLACE FUNCTION in_water(
     _geom geometry
   ) 
     RETURNS boolean AS $$
-      SELECT ST_Within(_geom, b.wkb_geometry) 
+      SELECT ST_Within(_geom, b.wkb_geometry)
       FROM dof_shoreline_subdivide b 
   $$ LANGUAGE sql;
 
