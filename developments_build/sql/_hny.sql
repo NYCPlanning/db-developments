@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS CORR_hny_matches (job_number text,
 DROP TABLE IF EXISTS HNY_geo;
 -- 1) Merge with geocoding results and create a unique ID
 WITH hny AS (
-        SELECT a.project_id||'/'||COALESCE(LPAD(a.building_id::text, '0', 6), '') as hny_id,
+        SELECT a.project_id||'/'||COALESCE(LPAD(a.building_id, 6, '0'), '') as hny_id,
                 a.project_id as hny_project_id,
                 a.*, 
                 b.geo_bbl, 
