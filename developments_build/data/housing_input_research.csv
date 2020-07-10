@@ -1319,7 +1319,6 @@ job_number,field,old_value,new_value,reason,edited_date
 120041374,hotel_prop,,,,1/28/2020
 120041374,classa_prop,,,,1/28/2020
 120057375,hotel_prop,,,mixed-use hotel-res,8/13/2019
-120057375,occ_category,,,mixed-use hotel-res,8/13/2019
 120057375,classa_prop,,,mixed-use hotel-res,8/13/2019
 120058025,occ_proposed,,,change occ_prop,8/13/2019
 120064312,hotel_prop,,,,1/28/2020
@@ -1406,7 +1405,6 @@ job_number,field,old_value,new_value,reason,edited_date
 120252421,hotel_prop,,,change occ_prop,8/13/2019
 120252421,occ_proposed,,,change occ_prop,8/13/2019
 120252421,classa_prop,,,change occ_prop,8/13/2019
-120258470,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 120260298,otherb_init,,,,1/31/2020
 120260298,classa_init,,,,1/31/2020
 120260305,otherb_init,,,,1/31/2020
@@ -1440,10 +1438,8 @@ job_number,field,old_value,new_value,reason,edited_date
 120296928,classa_init,,,change u_init,8/13/2019
 120297623,latitude,,,,1/30/2020
 120297623,longitude,,,,1/30/2020
-120297623,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 120297632,latitude,,,,1/30/2020
 120297632,longitude,,,,1/30/2020
-120297632,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 120303439,latitude,,,,1/22/2020
 120303439,longitude,,,,1/22/2020
 120304063,hotel_init,,,,1/28/2020
@@ -1554,16 +1550,11 @@ job_number,field,old_value,new_value,reason,edited_date
 120481825,longitude,,,,1/30/2020
 120481834,latitude,,,,1/30/2020
 120481834,longitude,,,,1/30/2020
-120481861,occ_category,,,Manual edit of demo with res units,2/27/2020
 120482316,latitude,,,,1/30/2020
 120482316,longitude,,,,1/30/2020
 120483912,hotel_prop,,,,1/28/2020
 120483912,classa_prop,,,,1/28/2020
-120492298,occ_category,,,Manual edit of demo with res units,2/27/2020
-120492305,occ_category,,,Manual edit of demo with res units,2/27/2020
 120497042,classa_init,,,change u_init,8/13/2019
-120504276,occ_category,,,Manual edit of demo with res units,2/27/2020
-120504301,occ_category,,,Manual edit of demo with res units,2/27/2020
 120504418,classa_prop,,,change u_prop,8/13/2019
 120513694,hotel_prop,,,,1/28/2020
 120513694,classa_prop,,,,1/28/2020
@@ -1586,7 +1577,6 @@ job_number,field,old_value,new_value,reason,edited_date
 120550457,hotel_prop,,,,2/3/2020
 120550457,classa_init,,,,2/3/2020
 120550457,classa_prop,,,,2/3/2020
-120550545,occ_category,,,Manual edit of demo with res units,2/27/2020
 120556941,occ_proposed,,,change occ_prop,8/13/2019
 120560240,otherb_init,,,,1/31/2020
 120560240,classa_init,,,,1/31/2020
@@ -1645,16 +1635,13 @@ job_number,field,old_value,new_value,reason,edited_date
 120631209,classa_prop,,,,2/3/2020
 120635802,otherb_init,,,,1/31/2020
 120635802,classa_init,,,,1/31/2020
-120635866,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 120646097,occ_initial,,,change occ_init,8/13/2019
 120649511,otherb_init,,,,1/31/2020
 120649511,classa_init,,,,1/31/2020
 120653131,latitude,,,,1/30/2020
 120653131,longitude,,,,1/30/2020
-120654782,occ_category,,,Manual edit of demo with res units,2/27/2020
 120663086,hotel_prop,,,mixed-use hotel-res,8/13/2019
 120842623,classa_prop,,,,1/28/2020
-120663086,occ_category,,,mixed-use hotel-res,8/13/2019
 120663086,classa_init,,,,2/18/2020
 120663086,classa_prop,,,mixed-use hotel-res,8/13/2019
 120665912,latitude,,,,1/30/2020
@@ -1713,7 +1700,6 @@ job_number,field,old_value,new_value,reason,edited_date
 120751864,classa_prop,,,,1/28/2020
 120766974,latitude,,,,1/30/2020
 120766974,longitude,,,,1/30/2020
-120766974,occ_category,,,Manual edit of demo with res units,2/27/2020
 120769329,occ_proposed,,,change occ_prop,8/13/2019
 120771218,hotel_prop,,,,1/28/2020
 120771218,classa_prop,,,,1/28/2020
@@ -1744,9 +1730,6 @@ job_number,field,old_value,new_value,reason,edited_date
 120824073,classa_prop,,,,1/28/2020
 120824082,otherb_init,,,,2/3/2020
 120824082,classa_init,,,,2/3/2020
-120836239,occ_category,,,Manual edit of demo with res units,2/27/2020
-120836248,occ_category,,,Manual edit of demo with res units,2/27/2020
-120836275,occ_category,,,Manual edit of demo with res units,2/27/2020
 120838549,occ_initial,,,change occ_init,8/13/2019
 120838745,classa_init,,,change u_init / change u_prop,8/13/2019
 120842623,hotel_init,,,,1/28/2020
@@ -1775,8 +1758,6 @@ job_number,field,old_value,new_value,reason,edited_date
 120893051,otherb_prop,,,,1/31/2020
 120893051,classa_init,,,,1/31/2020
 120893051,classa_prop,,,,1/31/2020
-120894764,occ_category,,,Manual edit of demo with res units,2/27/2020
-120894773,occ_category,,,Manual edit of demo with res units,2/27/2020
 120896334,otherb_init,,,,2/3/2020
 120896334,classa_init,,,,2/3/2020
 120900800,otherb_init,,,,1/28/2020
@@ -1785,7 +1766,6 @@ job_number,field,old_value,new_value,reason,edited_date
 120900800,classa_prop,,,,1/28/2020
 120902871,otherb_init,,,,1/31/2020
 120902871,classa_init,,,,1/31/2020
-120908508,occ_category,,,Manual edit of demo with res units,2/27/2020
 120909268,classa_init,,,change u_init,8/13/2019
 120921538,hotel_init,,,,1/28/2020
 120921538,classa_init,,,,1/28/2020
@@ -1868,11 +1848,9 @@ job_number,field,old_value,new_value,reason,edited_date
 121048053,hotel_prop,,,,1/31/2020
 121048053,occ_proposed,,,mixed-use hotel-res,8/13/2019
 121048053,classa_prop,,,,1/31/2020
-121060369,occ_category,,,Manual edit of demo with res units,2/27/2020
 121065827,hotel_prop,,,,1/31/2020
 121065827,classa_init,,,,1/31/2020
 121065827,classa_prop,,,,1/31/2020
-121067594,occ_category,,,Manual edit of demo with res units,2/27/2020
 121068888,otherb_init,,,,1/31/2020
 121068888,classa_init,,,,1/31/2020
 121074611,otherb_init,,,,2/3/2020
@@ -1883,7 +1861,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121090568,classa_init,,,change u_init,8/13/2019
 121090988,latitude,,,,1/30/2020
 121090988,longitude,,,,1/30/2020
-121090988,occ_category,,,Manual edit of demo with res units,2/27/2020
 121092094,hotel_prop,,,,1/28/2020
 121092094,classa_prop,,,,1/28/2020
 121092744,hotel_prop,,,,1/28/2020
@@ -1906,7 +1883,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121134414,hotel_prop,,,,1/28/2020
 121134414,classa_init,,,,1/28/2020
 121134414,classa_prop,,,,1/28/2020
-121136341,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 121137055,hotel_prop,,,,1/28/2020
 121137055,classa_prop,,,,1/28/2020
 121140238,hotel_prop,,,job related to units_.sql,2/21/2020
@@ -1926,7 +1902,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121158362,otherb_prop,,,,2/3/2020
 121158362,classa_init,,,,2/3/2020
 121158362,classa_prop,,,,2/3/2020
-121164284,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 121169234,hotel_init,,,job related to units_.sql,2/21/2020
 121169234,hotel_prop,,,job related to units_.sql,2/21/2020
 121169234,occ_initial,,,change occ_init,8/13/2019
@@ -1934,7 +1909,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121174255,otherb_init,,,,1/31/2020
 121174255,classa_init,,,,1/31/2020
 121175076,otherb_init,,,job related to units_.sql,2/21/2020
-121175094,occ_category,,,Manual edit of demo with res units,2/27/2020
 121176501,otherb_init,,,,1/31/2020
 121176501,classa_init,,,,1/31/2020
 121179107,otherb_init,,,,1/31/2020
@@ -2105,7 +2079,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121191245,classa_init,,,,1/31/2020
 121191245,classa_prop,,,,1/31/2020
 121191325,hotel_prop,,,mixed-use hotel-res,8/13/2019
-121191325,occ_category,,,mixed-use hotel-res,8/13/2019
 121191325,occ_proposed,,,mixed-use hotel-res,8/13/2019
 121191325,classa_prop,,,mixed-use hotel-res,8/13/2019
 121191361,otherb_prop,,,,1/28/2020
@@ -2254,7 +2227,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121235984,hotel_prop,,,,1/28/2020
 121235984,classa_prop,,,,1/28/2020
 121236484,hotel_prop,,,mixed-use hotel-res,8/13/2019
-121236484,occ_category,,,mixed-use hotel-res,8/13/2019
 121236484,occ_proposed,,,mixed-use hotel-res,8/13/2019
 121236484,classa_prop,,,mixed-use hotel-res,8/13/2019
 121236661,hotel_prop,,,,1/28/2020
@@ -2346,7 +2318,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121328937,classa_prop,,,,1/28/2020
 121329204,classa_init,,,change u_init,8/13/2019
 121329222,hotel_prop,,,mixed-use hotel-res,8/13/2019
-121329222,occ_category,,,mixed-use hotel-res,8/13/2019
 121329222,classa_prop,,,mixed-use hotel-res,8/13/2019
 121329268,hotel_prop,,,,1/31/2020
 121329268,classa_init,,,mixed-use hotel-res,8/13/2019
@@ -2357,7 +2328,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121329623,classa_prop,,,,1/28/2020
 121329730,classa_init,,,change u_init,8/13/2019
 121329927,hotel_init,,,,1/31/2020
-121329927,occ_category,,,change occ_init / change occ_prop,8/13/2019
 121329927,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 121329927,classa_init,,,,1/31/2020
 121329927,classa_prop,,,,1/31/2020
@@ -2385,7 +2355,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121338695,occ_proposed,,,change occ_prop,8/13/2019
 121359494,latitude,,,,1/30/2020
 121359494,longitude,,,,1/30/2020
-121388051,occ_category,,,Manual edit of demo with res units,2/27/2020
 121394295,hotel_prop,,,,1/28/2020
 121394295,classa_prop,,,,1/28/2020
 121394721,otherb_init,,,,1/31/2020
@@ -2399,30 +2368,24 @@ job_number,field,old_value,new_value,reason,edited_date
 121407833,classa_init,,,,2/3/2020
 121416814,otherb_init,,,,2/3/2020
 121416814,classa_init,,,,2/3/2020
-121418876,occ_category,,,Manual edit of demo with res units,2/27/2020
 121423478,occ_proposed,,,change occ_prop,8/13/2019
 121423913,otherb_init,,,,2/3/2020
 121423913,classa_init,,,,2/3/2020
 121444954,otherb_init,,,,1/31/2020
 121444954,classa_init,,,,1/31/2020
-121445196,occ_category,,,Manual edit of demo with res units,2/27/2020
 121447238,latitude,,,,1/30/2020
 121447238,longitude,,,,1/30/2020
-121447247,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 121447256,latitude,,,,1/30/2020
 121447256,longitude,,,,1/30/2020
-121453391,occ_category,,,Manual edit of demo with res units,2/27/2020
 121477543,latitude,,,,1/30/2020
 121477543,longitude,,,,1/30/2020
 121477598,latitude,,,,1/30/2020
 121477598,longitude,,,,1/30/2020
 121478267,classa_init,,,change u_init,8/13/2019
-121506833,occ_category,,,Manual edit of demo with res units,2/27/2020
 121508797,otherb_init,,,,1/31/2020
 121508797,classa_init,,,,1/31/2020
 121523477,occ_initial,,,change u_init / change occ_init,8/13/2019
 121523477,classa_init,,,change u_init / change occ_init,2/14/2020
-121523814,occ_category,,,Manual edit of demo with res units,2/27/2020
 121524733,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 121524733,occ_proposed,,,change occ_init / change occ_prop,8/13/2019
 121526474,classa_init,,,change u_init,8/13/2019
@@ -2436,16 +2399,13 @@ job_number,field,old_value,new_value,reason,edited_date
 121532252,hotel_prop,,,,1/31/2020
 121532252,classa_prop,,,change u_prop,8/13/2019
 121539567,classa_init,,,change u_init / change u_prop,8/13/2019
-121540886,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 121541910,latitude,,,,1/30/2020
 121541910,longitude,,,,1/30/2020
-121541910,occ_category,,,Manual edit of demo with res units,2/27/2020
 121544374,classa_init,,,,1/28/2020
 121544739,otherb_init,,,,2/3/2020
 121544739,classa_init,,,,2/3/2020
 121545729,otherb_init,,,,1/31/2020
 121545729,classa_init,,,,1/31/2020
-121549155,occ_category,,,Manual edit of demo with res units,2/27/2020
 121559456,otherb_init,,,,1/31/2020
 121559456,classa_init,,,,1/31/2020
 121574224,otherb_init,,,,2/3/2020
@@ -2470,15 +2430,10 @@ job_number,field,old_value,new_value,reason,edited_date
 121638601,classa_init,,,,1/31/2020
 121639726,otherb_init,,,,1/31/2020
 121639726,classa_init,,,,1/31/2020
-121660899,occ_category,,,Manual edit of demo with res units,2/27/2020
-121660906,occ_category,,,Manual edit of demo with res units,2/27/2020
-121660915,occ_category,,,Manual edit of demo with res units,2/27/2020
-121661148,occ_category,,,Manual edit of demo with res units,2/27/2020
 121666465,classa_init,,,change u_init,8/13/2019
 121666713,classa_init,,,change u_init / change u_prop,8/13/2019
 121668267,classa_init,,,change u_init,2/14/2020
 121668276,classa_init,,,change u_init,2/14/2020
-121676490,occ_category,,,Manual edit of demo with res units,2/27/2020
 121676604,classa_init,,,change u_init / change u_prop,8/13/2019
 121681787,hotel_init,,,,1/28/2020
 121681787,hotel_prop,,,,1/28/2020
@@ -2515,9 +2470,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121731322,classa_init,,,change u_init,8/13/2019
 121735532,otherb_init,,,,2/3/2020
 121735532,classa_init,,,,2/3/2020
-121744112,occ_category,,,Manual edit of demo with res units,2/27/2020
-121744121,occ_category,,,Manual edit of demo with res units,2/27/2020
-121744130,occ_category,,,Manual edit of demo with res units,2/27/2020
 121748207,occ_initial,,,change occ_init,8/13/2019
 121748207,otherb_init,,,,2/3/2020
 121748216,occ_initial,,,change occ_init,8/13/2019
@@ -2527,26 +2479,20 @@ job_number,field,old_value,new_value,reason,edited_date
 121748378,classa_init,,,,1/31/2020
 121749493,otherb_init,,,,1/31/2020
 121749493,classa_init,,,,1/31/2020
-121762510,occ_category,,,Manual edit of demo with res units,2/27/2020
-121762529,occ_category,,,Manual edit of demo with res units,2/27/2020
 121764411,otherb_init,,,,1/31/2020
 121764411,classa_init,,,,1/31/2020
 121773982,hotel_init,,,,1/28/2020
 121773982,hotel_prop,,,,1/28/2020
 121773982,classa_init,,,,1/28/2020
 121773982,classa_prop,,,,1/28/2020
-121775695,occ_category,,,Manual edit of demo with res units,2/27/2020
 121777014,otherb_init,,,,1/31/2020
 121777014,classa_init,,,,1/31/2020
 121789671,classa_init,,,change u_init / change u_prop,8/13/2019
 121789902,occ_proposed,,,change occ_prop,8/13/2019
-121799795,occ_category,,,Manual edit of demo with res units,2/27/2020
 121800131,otherb_init,,,,2/3/2020
 121800131,classa_init,,,,2/3/2020
 121802102,otherb_init,,,,2/3/2020
 121802102,classa_init,,,,2/3/2020
-121802718,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
-121802727,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 121806297,otherb_init,,,,1/31/2020
 121806297,classa_init,,,,1/31/2020
 121811236,classa_prop,,,change u_prop,8/13/2019
@@ -2583,7 +2529,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121889475,hotel_prop,,,job related to units_.sql,2/21/2020
 121889475,occ_proposed,,,change occ_prop,8/13/2019
 121889475,classa_init,,,job related to units_.sql,2/21/2020
-121890962,occ_category,,,Manual edit of demo with res units,2/27/2020
 121903681,otherb_init,,,,2/3/2020
 121903681,otherb_prop,,,,2/3/2020
 121903681,classa_init,,,,2/3/2020
@@ -2606,13 +2551,9 @@ job_number,field,old_value,new_value,reason,edited_date
 121929547,classa_init,,,,2/3/2020
 121934835,otherb_init,,,,2/3/2020
 121934835,classa_init,,,,2/3/2020
-121935111,occ_category,,,Manual edit of demo with res units,2/27/2020
 121937903,otherb_init,,,,2/3/2020
 121937903,classa_init,,,,2/3/2020
 121937903,classa_prop,,,,2/3/2020
-121941239,occ_category,,,Manual edit of demo with res units,2/27/2020
-121941248,occ_category,,,Manual edit of demo with res units,2/27/2020
-121942639,occ_category,,,Manual edit of demo with res units,2/27/2020
 121943308,occ_proposed,,,change occ_prop,8/13/2019
 121944227,classa_init,,,change u_init,8/13/2019
 121953494,hotel_init,,,,1/28/2020
@@ -2621,10 +2562,8 @@ job_number,field,old_value,new_value,reason,edited_date
 121953494,classa_prop,,,,1/28/2020
 121954750,bbl,,,Geocoding (add Lat/Long),8/13/2019
 121954750,bin,,,Geocoding (add Lat/Long),8/13/2019
-121955134,occ_category,,,Manual edit of demo with res units,2/27/2020
 121955928,latitude,,,,1/30/2020
 121955928,longitude,,,,1/30/2020
-121955946,occ_category,,,Manual edit of demo with res units,2/27/2020
 121958480,latitude,,,,1/30/2020
 121958480,longitude,,,,1/30/2020
 121961243,occ_initial,,,change occ_init / change occ_prop,8/13/2019
@@ -2641,7 +2580,6 @@ job_number,field,old_value,new_value,reason,edited_date
 121972106,classa_init,,,job related to units_.sql,2/19/2020
 121984781,otherb_init,,,,1/31/2020
 121984781,classa_init,,,,1/31/2020
-121986823,occ_category,,,Manual edit of demo with res units,2/27/2020
 121988331,hotel_init,,,,1/28/2020
 121988331,hotel_prop,,,,1/28/2020
 121988331,classa_init,,,,1/28/2020
@@ -2656,20 +2594,13 @@ job_number,field,old_value,new_value,reason,edited_date
 121998801,classa_init,,,change u_init / change u_prop,8/13/2019
 122008497,otherb_init,,,,2/3/2020
 122008497,classa_init,,,,2/3/2020
-122013392,occ_category,,,Manual edit of demo with res units,2/27/2020
-122013409,occ_category,,,Manual edit of demo with res units,2/27/2020
 122013908,hotel_prop,,,,1/28/2020
 122013908,classa_prop,,,,1/28/2020
-122017959,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122018333,occ_initial,,,change occ_init,8/13/2019
 122023032,classa_init,,,change u_init,2/14/2020
 122028279,occ_proposed,,,change occ_prop,8/13/2019
-122030872,occ_category,,,Manual edit of demo with res units,2/27/2020
 122034734,otherb_init,,,,1/31/2020
 122034734,classa_init,,,,1/31/2020
-122034832,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
-122036812,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
-122036821,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
 122040451,otherb_init,,,,2/3/2020
 122040451,classa_init,,,,2/3/2020
 122043733,otherb_init,,,,2/3/2020
@@ -2677,18 +2608,11 @@ job_number,field,old_value,new_value,reason,edited_date
 122043733,classa_init,,,,2/3/2020
 122043733,classa_prop,,,,2/3/2020
 122044297,occ_proposed,,,change occ_prop,8/13/2019
-122053874,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
-122056666,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
 122058030,hotel_prop,,,,1/28/2020
 122058030,classa_prop,,,,1/28/2020
 122062043,classa_init,,,change u_init / change u_prop,8/13/2019
 122070098,otherb_init,,,,1/31/2020
 122070098,classa_init,,,,1/31/2020
-122075002,occ_category,,,Manual edit of demo with res units,2/27/2020
-122075011,occ_category,,,Manual edit of demo with res units,2/27/2020
-122075716,occ_category,,,Manual edit of demo with res units,2/27/2020
-122077689,occ_category,,,Manual edit of demo with res units,2/27/2020
-122077867,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
 122087464,occ_proposed,,,change occ_prop,8/13/2019
 122089051,classa_init,,,change u_init / change u_prop,8/13/2019
 122090655,bbl,,,Geocoding (add Lat/Long),8/13/2019
@@ -2731,7 +2655,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122095302,longitude,,,,1/30/2020
 122100742,latitude,,,,1/30/2020
 122100742,longitude,,,,1/30/2020
-122103277,occ_category,,,Manual edit of demo with res units,2/27/2020
 122103455,occ_initial,,,change occ_init,8/13/2019
 122103455,otherb_init,,,,1/27/2020
 122103455,classa_prop,,,,1/27/2020
@@ -2739,7 +2662,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122109538,longitude,,,,1/30/2020
 122111927,otherb_init,,,,1/31/2020
 122111927,classa_init,,,,1/31/2020
-122121408,occ_category,,,Manual edit of demo with res units,2/27/2020
 122121612,occ_proposed,,,change occ_prop,8/13/2019
 122122586,hotel_prop,,,change u_prop,8/13/2019
 122122586,classa_prop,,,change u_prop,8/13/2019
@@ -2750,7 +2672,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122141725,otherb_init,,,,1/31/2020
 122141725,classa_init,,,,1/31/2020
 122143457,classa_init,,,change u_init,8/13/2019
-122144875,occ_category,,,Manual edit of demo with res units,2/27/2020
 122147694,hotel_prop,,,,1/28/2020
 122147694,classa_prop,,,,1/28/2020
 122153221,hotel_prop,,,,1/28/2020
@@ -2758,16 +2679,13 @@ job_number,field,old_value,new_value,reason,edited_date
 122153221,classa_prop,,,,1/28/2020
 122163504,occ_proposed,,,change occ_prop,8/13/2019
 122163504,classa_prop,,,job related to units_.sql,2/21/2020
-122164157,occ_category,,,Manual edit of demo with res units,2/27/2020
 122171041,classa_init,,,change u_init,8/13/2019
 122185376,occ_initial,,,change occ_init,8/13/2019
 122186473,otherb_init,,,,1/31/2020
 122186473,classa_init,,,,1/31/2020
 122186810,classa_init,,,change u_init,8/13/2019
-122199478,occ_category,,,Manual edit of demo with res units,2/27/2020
 122199682,otherb_init,,,,1/31/2020
 122199682,classa_init,,,,1/31/2020
-122200885,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
 122201839,hotel_init,,,job related to units_.sql,2/21/2020
 122201839,hotel_prop,,,job related to units_.sql,2/21/2020
 122201839,occ_initial,,,change occ_init,8/13/2019
@@ -2785,7 +2703,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122211864,otherb_init,,,job related to units_.sql,2/21/2020
 122211864,otherb_prop,,,job related to units_.sql,2/21/2020
 122211864,classa_init,,,job related to units_.sql,2/21/2020
-122214424,occ_category,,,Manual edit of demo with res units,2/27/2020
 122218563,otherb_init,,,,1/31/2020
 122218563,classa_init,,,,1/31/2020
 122221381,hotel_init,,,,2/3/2020
@@ -2805,7 +2722,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122231799,classa_init,,,change u_init,2/14/2020
 122232752,hotel_prop,,,,1/28/2020
 122232752,classa_prop,,,,1/28/2020
-122259670,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122272673,occ_initial,,,change occ_init,8/13/2019
 122273002,occ_proposed,,,change occ_prop,8/13/2019
 122273002,classa_prop,,,job related to units_.sql,2/21/2020
@@ -2813,14 +2729,9 @@ job_number,field,old_value,new_value,reason,edited_date
 122274591,longitude,,,,1/30/2020
 122278436,latitude,,,,1/30/2020
 122278436,longitude,,,,1/30/2020
-122278436,occ_category,,,Manual edit of demo with res units,2/27/2020
-122278463,occ_category,,,Manual edit of demo with res units,2/27/2020
-122278472,occ_category,,,Manual edit of demo with res units,2/27/2020
-122281930,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122281930,classa_init,,,change u_init,2/14/2020
 122284802,otherb_init,,,,2/3/2020
 122284802,classa_init,,,,2/3/2020
-122285160,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122285160,classa_init,,,change u_init,2/14/2020
 122285721,bbl,,,Geocoding (add Lat/Long),8/13/2019
 122285721,bin,,,Geocoding (add Lat/Long),8/13/2019
@@ -2856,7 +2767,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122285892,bin,,,Geocoding (add Lat/Long),8/13/2019
 122285909,bbl,,,Geocoding (add Lat/Long),8/13/2019
 122285909,bin,,,Geocoding (add Lat/Long),8/13/2019
-122329266,occ_category,,,Manual edit of demo with res units,2/27/2020
 122337550,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 122341126,otherb_init,,,,1/31/2020
 122341126,classa_init,,,,1/31/2020
@@ -2868,22 +2778,15 @@ job_number,field,old_value,new_value,reason,edited_date
 122353657,classa_init,,,,2/3/2020
 122354647,otherb_init,,,,1/31/2020
 122354647,classa_init,,,,1/31/2020
-122357056,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122358983,occ_category,,,Manual edit of demo with res units,2/27/2020
-122359018,occ_category,,,Manual edit of demo with res units,2/27/2020
 122362273,otherb_init,,,,1/31/2020
 122362273,classa_init,,,,1/31/2020
-122365546,occ_category,,,Manual edit of demo with res units,2/27/2020
 122365902,occ_proposed,,,change occ_prop,8/13/2019
-122369873,occ_category,,,Manual edit of demo with res units,2/27/2020
-122369908,occ_category,,,Manual edit of demo with res units,2/27/2020
 122369953,classa_init,,,change u_init,2/14/2020
 122375857,otherb_init,,,,1/31/2020
 122375857,classa_init,,,,1/31/2020
 122376213,occ_proposed,,,change occ_prop,8/13/2019
 122376213,otherb_prop,,,,1/28/2020
 122376213,classa_prop,,,,1/28/2020
-122376767,occ_category,,,Manual edit of demo with res units,2/27/2020
 122384375,otherb_init,,,,1/31/2020
 122384375,classa_init,,,,1/31/2020
 122387586,hotel_prop,,,,1/28/2020
@@ -2895,7 +2798,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122396040,classa_init,,,change u_init,8/13/2019
 122400240,otherb_init,,,,1/31/2020
 122400240,classa_init,,,,1/31/2020
-122401560,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122403504,classa_init,,,change u_init / change u_prop,8/13/2019
 122412585,otherb_init,,,,2/3/2020
 122412585,otherb_prop,,,,2/3/2020
@@ -2919,16 +2821,8 @@ job_number,field,old_value,new_value,reason,edited_date
 122430155,classa_init,,,job related to units_.sql,2/21/2020
 122430155,classa_prop,,,job related to units_.sql,2/21/2020
 122983174,classa_init,,,,1/31/2020
-122431350,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122431813,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122435757,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122438059,occ_category,,,Manual edit of demo with res units,2/27/2020
-122440402,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
-122442400,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
 122446424,otherb_init,,,,2/3/2020
 122446424,classa_init,,,,2/3/2020
-122736520,occ_category,,,Manual edit of demo with res units,2/27/2020
-122456243,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
 122456840,hotel_init,,,job related to units_.sql,2/21/2020
 122456840,hotel_prop,,,job related to units_.sql,2/21/2020
 122456840,occ_initial,,,change occ_init,8/13/2019
@@ -2940,8 +2834,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122465046,hotel_prop,,,,1/28/2020
 122465046,classa_init,,,,1/28/2020
 122465046,classa_prop,,,,1/28/2020
-122465126,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122470218,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122480500,classa_init,,,change u_init,8/13/2019
 122481741,classa_prop,,,,1/28/2020
 122483357,occ_initial,,,change occ_init,8/13/2019
@@ -2964,7 +2856,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122515215,classa_init,,,,12/1/2019
 122519042,occ_proposed,,,change occ_prop,8/13/2019
 122521556,hotel_prop,,,mixed-use hotel-res,8/13/2019
-122521556,occ_category,,,mixed-use hotel-res,8/13/2019
 122521556,classa_prop,,,mixed-use hotel-res,8/13/2019
 122523821,otherb_init,,,,2/3/2020
 122523821,classa_init,,,,2/3/2020
@@ -2972,13 +2863,9 @@ job_number,field,old_value,new_value,reason,edited_date
 122531055,classa_init,,,,1/31/2020
 122533623,latitude,,,,1/30/2020
 122533623,longitude,,,,1/30/2020
-122533641,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122535569,otherb_init,,,,2/3/2020
 122539556,otherb_init,,,,1/31/2020
 122539556,classa_init,,,,1/31/2020
-122542294,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122543505,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122545068,occ_category,,,Manual edit of demo with res units,2/27/2020
 122548001,classa_init,,,change u_init,8/13/2019
 122552497,occ_proposed,,,change occ_prop,8/13/2019
 122553753,hotel_init,,,,2/3/2020
@@ -2996,28 +2883,17 @@ job_number,field,old_value,new_value,reason,edited_date
 122608320,otherb_prop,,,,1/31/2020
 122608320,classa_init,,,,1/31/2020
 122608320,classa_prop,,,,1/31/2020
-122608721,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122608749,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122610638,job_inactive,,,Likely duplicate of job 122336846. Verify in 20Q2,1/31/2020
-122611726,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122611762,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 123026144,hotel_init,,,,2/3/2020
-122611771,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122613733,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122627835,hotel_init,,,,2/3/2020
 122627835,hotel_prop,,,,2/3/2020
 122627835,classa_init,,,,2/3/2020
 122627835,classa_prop,,,,2/3/2020
 122984832,otherb_init,,,,1/31/2020
-122629860,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122632277,otherb_init,,,,1/31/2020
 122632277,classa_init,,,,1/31/2020
-122635700,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122635719,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122636004,occ_proposed,,,change occ_prop,8/13/2019
-122638119,occ_category,,,Manual edit of demo with res units,2/27/2020
 122641640,hotel_init,,,,2/28/2020
-122641640,occ_category,,,Manual edit of demo with res units,2/27/2020
 122641640,classa_init,,,,2/28/2020
 122642701,occ_proposed,,,change occ_prop,8/13/2019
 122643201,occ_proposed,,,change occ_prop,8/13/2019
@@ -3027,13 +2903,10 @@ job_number,field,old_value,new_value,reason,edited_date
 122644353,classa_prop,,,,1/28/2020
 122656107,latitude,,,,1/22/2020
 122656107,longitude,,,,1/22/2020
-122659024,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122665286,otherb_init,,,,2/3/2020
 122665286,classa_init,,,,2/3/2020
-122665464,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 122668700,hotel_init,,,,1/28/2020
 122668700,hotel_prop,,,,1/28/2020
-122668700,occ_category,,,Change prop use/unit counts,8/13/2019
 122668700,occ_proposed,,,Change prop use/unit counts,8/13/2019
 122668700,classa_prop,,,,1/28/2020
 122671607,occ_initial,,,change occ_init,8/13/2019
@@ -3073,7 +2946,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122727175,classa_init,,,,1/31/2020
 122733603,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 122733603,occ_proposed,,,change occ_init / change occ_prop,8/13/2019
-122736539,occ_category,,,Manual edit of demo with res units,2/27/2020
 122745100,hotel_prop,,,,1/28/2020
 122745100,classa_prop,,,,1/28/2020
 122753582,occ_proposed,,,change occ_prop,8/13/2019
@@ -3082,11 +2954,8 @@ job_number,field,old_value,new_value,reason,edited_date
 122753822,occ_initial,,,change occ_init,8/13/2019
 122761582,occ_initial,,,change occ_init / change u_init,8/13/2019
 122761582,classa_init,,,change occ_init / change u_init,8/13/2019
-122765105,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-122765472,occ_category,,,Manual edit of demo with res units,2/27/2020
 122771562,latitude,,,,1/30/2020
 122771562,longitude,,,,1/30/2020
-122788288,occ_category,,,change occ_init,8/13/2019
 122788288,occ_initial,,,change occ_init,8/13/2019
 122793478,otherb_init,,,,1/31/2020
 122793478,classa_init,,,,1/31/2020
@@ -3098,7 +2967,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122798954,classa_prop,,,,1/31/2020
 122799640,occ_proposed,,,change occ_prop,8/13/2019
 122801682,classa_init,,,change u_init,2/14/2020
-122804082,occ_category,,,Manual edit of demo with res units,2/27/2020
 122808621,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 122808621,occ_proposed,,,change occ_init / change occ_prop,8/13/2019
 122808649,classa_init,,,change u_init,8/13/2019
@@ -3117,7 +2985,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122826996,otherb_init,,,,1/31/2020
 122826996,classa_init,,,,1/31/2020
 122829591,classa_init,,,change u_init,8/13/2019
-122830570,occ_category,,,Manual edit of demo with res units,2/27/2020
 122831178,classa_init,,,change u_init,8/13/2019
 122831418,otherb_init,,,,2/3/2020
 122831418,otherb_prop,,,,2/3/2020
@@ -3128,7 +2995,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122846126,classa_init,,,,1/31/2020
 122849944,otherb_init,,,,2/3/2020
 122849944,classa_init,,,,2/3/2020
-122859282,occ_category,,,Manual edit of demo with res units,2/27/2020
 122871213,hotel_init,,,,1/31/2020
 122871213,hotel_prop,,,,1/31/2020
 122871213,classa_init,,,,1/31/2020
@@ -3161,7 +3027,6 @@ job_number,field,old_value,new_value,reason,edited_date
 122901128,hotel_prop,,,,2/3/2020
 122901128,classa_init,,,,2/3/2020
 122901128,classa_prop,,,,2/3/2020
-122901878,occ_category,,,Manual edit of demo with res units,2/27/2020
 122906506,hotel_prop,,,,1/28/2020
 122909610,hotel_init,,,job related to units_.sql,2/21/2020
 122909610,hotel_prop,,,job related to units_.sql,2/21/2020
@@ -3248,14 +3113,9 @@ job_number,field,old_value,new_value,reason,edited_date
 123112041,classa_init,,,change u_init,8/13/2019
 123119160,classa_init,,,job related to units_.sql,2/21/2020
 123119160,classa_prop,,,job related to units_.sql,2/21/2020
-123131011,occ_category,,,Manual edit of demo with res units,2/27/2020
-123131020,occ_category,,,Manual edit of demo with res units,2/27/2020
-123131039,occ_category,,,Manual edit of demo with res units,2/27/2020
 123143614,occ_proposed,,,change occ_prop,8/13/2019
 123145701,otherb_init,,,,1/31/2020
 123145701,classa_init,,,,1/31/2020
-123149654,occ_category,,,Manual edit of demo with res units,2/27/2020
-123149725,occ_category,,,Manual edit of demo with res units,2/27/2020
 123157458,otherb_init,,,,1/31/2020
 123157458,classa_init,,,,1/31/2020
 123161158,otherb_init,,,,2/3/2020
@@ -3278,8 +3138,6 @@ job_number,field,old_value,new_value,reason,edited_date
 123190947,classa_init,,,,1/28/2020
 123190947,classa_prop,,,,1/28/2020
 123201971,occ_initial,,,change occ_init / change occ_prop,8/13/2019
-123202569,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-123202596,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 123203121,job_inactive,,,Likely duplicate of job 123756104. Verify in 20Q2,1/29/2020
 123203416,hotel_init,,,,1/28/2020
 123203416,hotel_prop,,,,1/28/2020
@@ -3301,7 +3159,6 @@ job_number,field,old_value,new_value,reason,edited_date
 123210818,classa_init,,,job related to units_.sql,2/21/2020
 123211194,otherb_init,,,,2/3/2020
 123211194,classa_init,,,,2/3/2020
-123214262,occ_category,,,Manual edit of demo with res units,2/27/2020
 123225517,otherb_init,,,,1/31/2020
 123225517,classa_init,,,,1/31/2020
 123226062,classa_init,,,change u_init,8/13/2019
@@ -3314,7 +3171,6 @@ job_number,field,old_value,new_value,reason,edited_date
 123274900,hotel_prop,,,,1/31/2020
 123274900,classa_init,,,,1/31/2020
 123274900,classa_prop,,,,1/31/2020
-123294924,occ_category,,,Manual edit of demo with res units,2/27/2020
 123301952,latitude,,,,1/22/2020
 123301952,longitude,,,,1/22/2020
 123303059,classa_prop,,,change u_prop,8/13/2019
@@ -3332,7 +3188,6 @@ job_number,field,old_value,new_value,reason,edited_date
 123331224,hotel_prop,,,,1/28/2020
 123331224,classa_prop,,,,1/28/2020
 123332615,occ_proposed,,,change occ_prop,8/13/2019
-123337139,occ_category,,,Manual edit of demo with res units,2/27/2020
 123337923,otherb_init,,,,2/3/2020
 123337923,classa_init,,,,2/3/2020
 123338389,otherb_init,,,,1/31/2020
@@ -3341,10 +3196,6 @@ job_number,field,old_value,new_value,reason,edited_date
 123338995,classa_init,,,,2/3/2020
 123342926,otherb_init,,,,2/3/2020
 123342926,classa_init,,,,2/3/2020
-123343854,occ_category,,,Manual edit of demo with res units,2/27/2020
-123343863,occ_category,,,Manual edit of demo with res units,2/27/2020
-123343872,occ_category,,,Manual edit of demo with res units,2/27/2020
-123343881,occ_category,,,Manual edit of demo with res units,2/27/2020
 123344087,otherb_init,,,,2/3/2020
 123355109,classa_prop,,,,1/31/2020
 123362226,classa_init,,,change u_init,8/13/2019
@@ -3372,14 +3223,12 @@ job_number,field,old_value,new_value,reason,edited_date
 123407508,classa_init,,,,1/31/2020
 123407508,classa_prop,,,,1/31/2020
 123410512,classa_prop,,,change u_prop,8/13/2019
-123416936,occ_category,,,Manual edit of demo with res units,2/27/2020
 123420226,otherb_init,,,,1/31/2020
 123420226,classa_init,,,,1/31/2020
 123420397,otherb_init,,,,2/3/2020
 123420397,classa_init,,,,2/3/2020
 123429575,otherb_init,,,,2/3/2020
 123429575,classa_init,,,,2/3/2020
-123432393,occ_category,,,Manual edit of demo with res units,2/27/2020
 123438146,classa_prop,,,change u_prop,8/13/2019
 123439680,classa_init,,,,1/31/2020
 123442621,latitude,,,,1/22/2020
@@ -3402,7 +3251,6 @@ job_number,field,old_value,new_value,reason,edited_date
 123518372,classa_init,,,,1/31/2020
 123520555,classa_init,,,,12/1/2019
 123521901,hotel_prop,,,mixed-use hotel-res,8/13/2019
-123521901,occ_category,,,mixed-use hotel-res,8/13/2019
 123521901,occ_proposed,,,mixed-use hotel-res,8/13/2019
 123521901,classa_init,,,mixed-use hotel-res,8/13/2019
 123521901,classa_prop,,,mixed-use hotel-res,8/13/2019
@@ -3415,12 +3263,8 @@ job_number,field,old_value,new_value,reason,edited_date
 123538564,otherb_init,,,,1/31/2020
 123538564,classa_init,,,,1/31/2020
 123539652,classa_init,,,,12/1/2019
-123545510,occ_category,,,Manual edit of demo with res units,2/27/2020
 123545618,latitude,,,,1/22/2020
 123545618,longitude,,,,1/22/2020
-123548606,occ_category,,,Manual edit of demo with res units,2/27/2020
-123548615,occ_category,,,Manual edit of demo with res units,2/27/2020
-123548624,occ_category,,,Manual edit of demo with res units,2/27/2020
 123550157,latitude,,,,1/22/2020
 123550157,longitude,,,,1/22/2020
 123552477,otherb_init,,,,1/31/2020
@@ -3429,15 +3273,11 @@ job_number,field,old_value,new_value,reason,edited_date
 123567158,hotel_prop,,,change u_prop,8/13/2019
 123567158,classa_init,,,change u_prop,2/14/2020
 123567158,classa_prop,,,change u_prop,8/13/2019
-123576479,occ_category,,,Manual edit of demo with res units,2/27/2020
 123582783,otherb_init,,,,1/28/2020
 123582783,otherb_prop,,,,1/28/2020
 123582783,classa_init,,,,1/28/2020
 123584399,otherb_init,,,,1/31/2020
 123584399,classa_init,,,,1/31/2020
-123588340,occ_category,,,Manual edit of demo with res units,2/27/2020
-123588359,occ_category,,,Manual edit of demo with res units,2/27/2020
-123588368,occ_category,,,Manual edit of demo with res units,2/27/2020
 123596849,hotel_prop,,,,1/28/2020
 123596849,classa_prop,,,,1/28/2020
 123602627,hotel_init,,,job related to units_.sql,2/21/2020
@@ -3446,9 +3286,6 @@ job_number,field,old_value,new_value,reason,edited_date
 123602627,classa_init,,,job related to units_.sql,2/21/2020
 123658611,otherb_init,,,,1/31/2020
 123658611,classa_init,,,,1/31/2020
-123661821,occ_category,,,Manual edit of demo with res units,2/27/2020
-123661830,occ_category,,,Manual edit of demo with res units,2/27/2020
-123672775,occ_category,,,Manual edit of demo with res units,2/27/2020
 123690568,otherb_init,,,job related to units_.sql,2/21/2020
 123690568,otherb_prop,,,job related to units_.sql,2/21/2020
 123690568,classa_init,,,,1/31/2020
@@ -3470,24 +3307,13 @@ job_number,field,old_value,new_value,reason,edited_date
 123741647,classa_init,,,,1/31/2020
 123756104,otherb_init,,,,1/31/2020
 123756104,classa_init,,,,1/31/2020
-123763793,occ_category,,,Manual edit of demo with res units,2/27/2020
-123763800,occ_category,,,Manual edit of demo with res units,2/27/2020
-123763819,occ_category,,,Manual edit of demo with res units,2/27/2020
-123763882,occ_category,,,Manual edit of demo with res units,2/27/2020
-123763891,occ_category,,,Manual edit of demo with res units,2/27/2020
-123763908,occ_category,,,Manual edit of demo with res units,2/27/2020
-123764239,occ_category,,,Manual edit of demo with res units,2/27/2020
-123764248,occ_category,,,Manual edit of demo with res units,2/27/2020
 123764952,otherb_init,,,,2/3/2020
 123764952,otherb_prop,,,,2/3/2020
 123764952,classa_prop,,,,2/3/2020
-123766594,occ_category,,,Manual edit of demo with res units,2/27/2020
 123790424,latitude,,,,1/30/2020
 123790424,longitude,,,,1/30/2020
 123790433,latitude,,,,1/30/2020
 123790433,longitude,,,,1/30/2020
-123792930,occ_category,,,Manual edit of demo with res units,2/27/2020
-123804277,occ_category,,,Manual edit of demo with res units,2/27/2020
 123819216,hotel_prop,,,,2/3/2020
 123819216,classa_prop,,,,2/3/2020
 123821882,otherb_init,,,,1/31/2020
@@ -3506,7 +3332,6 @@ job_number,field,old_value,new_value,reason,edited_date
 123864130,otherb_prop,,,,1/30/2020
 123869199,occ_initial,,,job related to units_.sql,2/21/2020
 123869199,classa_init,,,,1/28/2020
-123871462,occ_category,,,Manual edit of demo with res units,2/27/2020
 123871667,classa_prop,,,,1/28/2020
 123879570,otherb_init,,,,2/3/2020
 123879570,classa_init,,,,2/3/2020
@@ -3604,7 +3429,6 @@ job_number,field,old_value,new_value,reason,edited_date
 200613176,bin,,,Geocoding (add Lat/Long),8/13/2019
 200613531,bbl,,,Geocoding (add Lat/Long),8/13/2019
 200613531,bin,,,Geocoding (add Lat/Long),8/13/2019
-200616814,occ_category,,,change occ_prop,8/13/2019
 200616814,occ_proposed,,,change occ_prop,8/13/2019
 200616814,classa_init,,,,12/1/2019
 200616814,classa_prop,,,,12/1/2019
@@ -3677,7 +3501,6 @@ job_number,field,old_value,new_value,reason,edited_date
 200740911,bin,,,Geocoding (add Lat/Long),8/13/2019
 200740920,bin,,,Geocoding (add Lat/Long),8/13/2019
 200740939,bin,,,Geocoding (add Lat/Long),8/13/2019
-200745266,occ_category,,,"change occ_init, change occ_prop",8/13/2019
 200745266,occ_initial,,,"change occ_init, change occ_prop",8/13/2019
 200745266,occ_proposed,,,"change occ_init, change occ_prop",8/13/2019
 200753657,classa_init,,,change u_init,8/13/2019
@@ -3834,7 +3657,6 @@ job_number,field,old_value,new_value,reason,edited_date
 200854370,bin,,,Geocoding (add Lat/Long),8/13/2019
 200854389,bbl,,,Geocoding (add Lat/Long),8/13/2019
 200854389,bin,,,Geocoding (add Lat/Long),8/13/2019
-200857581,occ_category,,,change occ_prop,8/13/2019
 200857581,occ_proposed,,,change occ_prop,8/13/2019
 200858170,classa_init,,,,12/1/2019
 200858438,bbl,,,Geocoding (add Lat/Long),8/13/2019
@@ -3997,7 +3819,6 @@ job_number,field,old_value,new_value,reason,edited_date
 200977112,bbl,,,Geocoding (add Lat/Long),8/13/2019
 200977112,bin,,,Geocoding (add Lat/Long),8/13/2019
 200982357,occ_proposed,,,change occ_prop,8/13/2019
-200982687,occ_category,,,change occ_prop,8/13/2019
 200982687,occ_proposed,,,change occ_prop,8/13/2019
 200982687,classa_init,,,,12/1/2019
 200982687,classa_prop,,,,12/1/2019
@@ -4184,7 +4005,6 @@ job_number,field,old_value,new_value,reason,edited_date
 201070447,bin,,,Geocoding (add Lat/Long),8/13/2019
 201070456,bbl,,,Geocoding (add Lat/Long),8/13/2019
 201070456,bin,,,Geocoding (add Lat/Long),8/13/2019
-201070535,occ_category,,,"change occ_init, change occ_prop",8/13/2019
 201070535,occ_initial,,,"change occ_init, change occ_prop",8/13/2019
 201070535,occ_proposed,,,"change occ_init, change occ_prop",8/13/2019
 201071099,classa_init,,,change u_init,8/13/2019
@@ -4478,7 +4298,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220083353,classa_prop,,,,1/28/2020
 220098506,occ_proposed,,,change occ_prop,8/13/2019
 220103340,remove,,,,1/1/2020
-220103359,occ_category,,,"Edit of demo with res units using Logic: ""apartment""",2/27/2020
 220105339,occ_proposed,,,change occ_prop,8/13/2019
 220105339,otherb_prop,,,,1/28/2020
 220105339,classa_prop,,,,1/28/2020
@@ -4515,7 +4334,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220148757,classa_prop,,,,1/28/2020
 220149961,hotel_prop,,,,1/28/2020
 220149961,classa_prop,,,,1/28/2020
-220150413,occ_category,,,change occ_init / change occ_prop,8/13/2019
 220150413,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 220150841,occ_proposed,,,change occ_prop,8/13/2019
 220512121,classa_prop,,,,1/28/2020
@@ -4554,7 +4372,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220160108,occ_proposed,,,change occ_prop,8/13/2019
 220160242,occ_proposed,,,change occ_prop,8/13/2019
 220160698,job_inactive,,Inactive,identified as duplicate,8/13/2019
-220168262,occ_category,,,change occ_prop,8/13/2019
 220168262,occ_proposed,,,change occ_prop,8/13/2019
 220172471,latitude,,,,1/30/2020
 220172471,longitude,,,,1/30/2020
@@ -4562,7 +4379,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220173050,longitude,,,,1/30/2020
 220173336,latitude,,,,1/30/2020
 220173336,longitude,,,,1/30/2020
-220173595,occ_category,,,"Edit of demo with res units using Logic: ""home""",2/27/2020
 220174479,occ_proposed,,,change occ_prop,8/13/2019
 220176235,job_inactive,,Inactive,identified as duplicate,8/13/2019
 220178787,hotel_prop,,,,1/31/2020
@@ -4586,14 +4402,10 @@ job_number,field,old_value,new_value,reason,edited_date
 220210509,occ_proposed,,,change occ_prop,8/13/2019
 220211241,hotel_prop,,,,1/28/2020
 220211241,classa_prop,,,,1/28/2020
-220221383,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
-220225094,occ_category,,,Manual edit of demo with res units,2/27/2020
 220236509,latitude,,,,1/30/2020
 220236509,longitude,,,,1/30/2020
 220236545,latitude,,,,1/30/2020
 220236545,longitude,,,,1/30/2020
-220237205,occ_category,,,Manual edit of demo with res units,2/27/2020
-220242333,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 220247123,latitude,,,,1/22/2020
 220247123,longitude,,,,1/22/2020
 220247294,latitude,,,,1/30/2020
@@ -4620,7 +4432,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220343992,occ_proposed,,,change occ_prop,8/13/2019
 220345419,latitude,,,,1/30/2020
 220345419,longitude,,,,1/30/2020
-220345428,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 220345437,latitude,,,,1/30/2020
 220345437,longitude,,,,1/30/2020
 220347685,latitude,,,,1/30/2020
@@ -4645,7 +4456,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220356317,longitude,,,,1/30/2020
 220356335,latitude,,,,1/30/2020
 220356335,longitude,,,,1/30/2020
-220356335,occ_category,,,Manual edit of demo with res units,2/27/2020
 220360311,occ_proposed,,,change occ_prop,2/18/2020
 220360311,classa_init,,,job related to units_.sql,2/19/2020
 220360311,classa_prop,,,job related to units_.sql,2/19/2020
@@ -4684,7 +4494,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220426457,longitude,,,,1/30/2020
 220427189,occ_proposed,,,change occ_prop,8/13/2019
 220429221,occ_proposed,,,change occ_prop,8/13/2019
-220445089,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 220447639,hotel_prop,,,,1/31/2020
 220447639,classa_init,,,,1/31/2020
 220447639,classa_prop,,,,1/31/2020
@@ -4699,8 +4508,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220452418,latitude,,,,1/30/2020
 220452418,longitude,,,,1/30/2020
 220453168,job_inactive,,Inactive,identified as duplicate,8/13/2019
-220460178,occ_category,,,Manual edit of demo with res units,2/27/2020
-220460187,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 220462933,latitude,,,,1/30/2020
 220462933,longitude,,,,1/30/2020
 220465486,latitude,,,,1/30/2020
@@ -4736,8 +4543,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220485669,otherb_prop,,,job related to units_.sql,2/19/2020
 220485669,classa_init,,,job related to units_.sql,2/19/2020
 220485669,classa_prop,,,job related to units_.sql,2/19/2020
-220487774,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-220487783,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 220489442,occ_proposed,,,change occ_prop / change u_init,8/13/2019
 220489442,classa_init,,,change occ_prop / change u_init,8/13/2019
 220492633,job_inactive,,,Likely duplicate of job 220719970. Verify in 20Q2,1/29/2020
@@ -4792,7 +4597,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220550696,classa_prop,,,,1/31/2020
 220551793,hotel_prop,,,,1/28/2020
 220551793,classa_prop,,,,1/28/2020
-220552248,occ_category,,,Manual edit of demo with res units,2/27/2020
 220556976,hotel_prop,,,,1/28/2020
 220556976,otherb_init,,,,1/28/2020
 220556976,classa_init,,,,1/28/2020
@@ -4816,7 +4620,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220580379,job_inactive,,,Likely duplicate of job 220718980. Verify in 20Q2,1/30/2020
 220582028,hotel_prop,,,,1/28/2020
 220582028,classa_prop,,,,1/28/2020
-220582910,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 220583740,latitude,,,,1/30/2020
 220583740,longitude,,,,1/30/2020
 220585338,latitude,,,,1/30/2020
@@ -4828,11 +4631,7 @@ job_number,field,old_value,new_value,reason,edited_date
 220593882,classa_init,,,,1/31/2020
 220593882,classa_prop,,,,1/31/2020
 220603899,classa_prop,,,change u_prop,8/13/2019
-220604308,occ_category,,,Manual edit of demo with res units,2/27/2020
-220604317,occ_category,,,Manual edit of demo with res units,2/27/2020
 220604843,job_inactive,,,Likely duplicate of job 220696370. Verify in 20Q2,1/30/2020
-220607074,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
-220609303,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 220609385,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 220609385,occ_proposed,,,change occ_init / change occ_prop,8/13/2019
 220610480,latitude,,,,1/30/2020
@@ -4877,7 +4676,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220641072,classa_prop,,,,1/28/2020
 220644097,latitude,,,,1/30/2020
 220644097,longitude,,,,1/30/2020
-220646488,occ_category,,,change occ_prop,8/13/2019
 220646488,occ_proposed,,,change occ_prop,8/13/2019
 220647398,latitude,,,,1/30/2020
 220647398,longitude,,,,1/30/2020
@@ -4904,20 +4702,17 @@ job_number,field,old_value,new_value,reason,edited_date
 220652354,classa_prop,,,,1/28/2020
 220652354,job_inactive,,Inactive,identified as duplicate,8/13/2019
 220652666,occ_proposed,,,change occ_prop,8/13/2019
-220652684,occ_category,,,Manual edit of demo with res units,2/27/2020
 220652755,hotel_init,,,,1/28/2020
 220652755,hotel_prop,,,,1/28/2020
 220652755,classa_init,,,,1/28/2020
 220652755,classa_prop,,,,1/28/2020
 220653344,job_inactive,,,Likely duplicate of job 220653353. Verify in 20Q2,1/29/2020
-220656314,occ_category,,,Manual edit of demo with res units,2/27/2020
 220663075,latitude,,,,1/30/2020
 220663075,longitude,,,,1/30/2020
 220664074,otherb_init,,,,12/1/2019
 220664074,otherb_prop,,,,12/1/2019
 220664074,classa_init,,,,12/1/2019
 220664074,classa_prop,,,,12/1/2019
-220664895,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 220665082,otherb_prop,,,,1/28/2020
 220665082,classa_prop,,,,1/28/2020
 220665162,occ_proposed,,,change occ_prop,8/13/2019
@@ -4953,8 +4748,6 @@ job_number,field,old_value,new_value,reason,edited_date
 220712352,otherb_prop,,,job related to units_.sql,2/21/2020
 220712352,classa_init,,,job related to units_.sql,2/21/2020
 220712352,classa_prop,,,job related to units_.sql,2/21/2020
-220713985,occ_category,,,Manual edit of demo with res units,2/27/2020
-220713994,occ_category,,,Manual edit of demo with res units,2/27/2020
 220714270,latitude,,,,1/30/2020
 220714270,longitude,,,,1/30/2020
 220715956,latitude,,,,1/30/2020
@@ -5239,7 +5032,6 @@ job_number,field,old_value,new_value,reason,edited_date
 301344445,classa_init,,,change u_init,8/13/2019
 301345970,classa_init,,,"change u_init, change u_prop",8/13/2019
 301345970,classa_prop,,,"change u_init, change u_prop",8/13/2019
-301355548,occ_category,,,"change occ_init, change occ_prop",8/13/2019
 301355548,occ_initial,,,"change occ_init, change occ_prop",8/13/2019
 301355548,occ_proposed,,,"change occ_init, change occ_prop",8/13/2019
 301359027,classa_init,,,,12/1/2019
@@ -5266,7 +5058,6 @@ job_number,field,old_value,new_value,reason,edited_date
 301411924,classa_init,,,,12/1/2019
 301415387,classa_init,,,change u_init,8/13/2019
 301418605,occ_proposed,,,change occ_prop,8/13/2019
-301420184,occ_category,,,change occ_prop,8/13/2019
 301420184,occ_proposed,,,change occ_prop,8/13/2019
 301421049,classa_init,,,,1/27/2020
 301421959,classa_init,,,change u_init,8/13/2019
@@ -5355,7 +5146,6 @@ job_number,field,old_value,new_value,reason,edited_date
 301601318,bin,,,Geocoding (add Lat/Long),8/13/2019
 301602656,classa_init,,,change u_init,8/13/2019
 301605001,classa_init,,,,12/1/2019
-301606493,occ_category,,,"change occ_init, change occ_prop",8/13/2019
 301606493,occ_initial,,,"change occ_init, change occ_prop",8/13/2019
 301606493,occ_proposed,,,"change occ_init, change occ_prop",8/13/2019
 301623893,classa_init,,,,12/1/2019
@@ -5455,7 +5245,6 @@ job_number,field,old_value,new_value,reason,edited_date
 301774827,classa_init,,,change u_init,8/13/2019
 301775265,classa_init,,,,12/1/2019
 301775826,classa_init,,,,12/1/2019
-301776816,occ_category,,,change occ_prop,8/13/2019
 301776816,occ_proposed,,,change occ_prop,8/13/2019
 301778752,classa_init,,,,12/1/2019
 301781828,classa_init,,,change u_init,8/13/2019
@@ -5513,7 +5302,6 @@ job_number,field,old_value,new_value,reason,edited_date
 301865391,otherb_init,,,,1/31/2020
 301865391,classa_init,,,,1/31/2020
 301865747,classa_init,,,,12/1/2019
-301866700,occ_category,,,change occ_prop,8/13/2019
 301866700,occ_proposed,,,change occ_prop,8/13/2019
 301867772,classa_init,,,,12/1/2019
 301868762,classa_init,,,,12/1/2019
@@ -5534,7 +5322,6 @@ job_number,field,old_value,new_value,reason,edited_date
 301880490,bin,,,Geocoding (add Lat/Long),8/13/2019
 301880793,classa_init,,,,12/1/2019
 301882354,classa_init,,,,12/1/2019
-301882719,occ_category,,,"change occ_init, change occ_prop",8/13/2019
 301882719,occ_initial,,,"change occ_init, change occ_prop",8/13/2019
 301882719,occ_proposed,,,"change occ_init, change occ_prop",8/13/2019
 301883362,classa_init,,,,12/1/2019
@@ -5555,7 +5342,6 @@ job_number,field,old_value,new_value,reason,edited_date
 301894341,classa_init,,,change u_init,8/13/2019
 301897044,classa_init,,,,12/1/2019
 301897231,classa_init,,,,12/1/2019
-301904900,occ_category,,,change occ_init,8/13/2019
 301904900,occ_initial,,,change occ_init,8/13/2019
 301906301,classa_init,,,,12/1/2019
 301908345,classa_init,,,change u_init,8/13/2019
@@ -5577,7 +5363,6 @@ job_number,field,old_value,new_value,reason,edited_date
 301919878,classa_init,,,change u_init,8/13/2019
 301920090,classa_init,,,,12/1/2019
 301920802,classa_init,,,,1/27/2020
-301922310,occ_category,,,change occ_prop,8/13/2019
 301922310,occ_proposed,,,change occ_prop,8/13/2019
 301922668,bbl,,,Geocoding (add Lat/Long),8/13/2019
 301922668,bin,,,Geocoding (add Lat/Long),8/13/2019
@@ -5621,7 +5406,6 @@ job_number,field,old_value,new_value,reason,edited_date
 301949523,bbl,,,change BBL,8/13/2019
 301950592,classa_init,,,change u_init,8/13/2019
 301950958,classa_init,,,,1/27/2020
-301951092,occ_category,,,change occ_prop,8/13/2019
 301951092,occ_proposed,,,change occ_prop,8/13/2019
 301951430,classa_init,,,,1/27/2020
 301952386,classa_init,,,change u_init,8/13/2019
@@ -5754,7 +5538,6 @@ job_number,field,old_value,new_value,reason,edited_date
 302057725,bin,,,Geocoding (add Lat/Long),8/13/2019
 302057823,otherb_init,,,,1/31/2020
 302057823,classa_init,,,,1/31/2020
-302058010,occ_category,,,change occ_prop,8/13/2019
 302058010,occ_proposed,,,change occ_prop,8/13/2019
 302058010,classa_init,,,,12/1/2019
 302058010,classa_prop,,,,12/1/2019
@@ -6601,8 +6384,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320145179,longitude,,,,1/30/2020
 320145188,latitude,,,,1/30/2020
 320145188,longitude,,,,1/30/2020
-320149102,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-320149111,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 320150019,otherb_init,,,,2/3/2020
 320150019,classa_init,,,,2/3/2020
 320150769,classa_prop,,,change u_prop,8/13/2019
@@ -6611,15 +6392,12 @@ job_number,field,old_value,new_value,reason,edited_date
 320153846,otherb_init,,,,2/3/2020
 320153846,classa_init,,,,2/3/2020
 320156086,otherb_init,,,,2/3/2020
-320158967,occ_category,,,Manual edit of demo with res units,2/27/2020
-320161338,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 320161622,otherb_init,,,,1/31/2020
 320161622,classa_init,,,,1/31/2020
 320161793,classa_init,,,change u_init,8/13/2019
 320163997,otherb_init,,,,2/3/2020
 320163997,classa_init,,,,2/3/2020
 320166075,occ_proposed,,,change occ_prop,8/13/2019
-320169278,occ_category,,,Manual edit of demo with res units,2/27/2020
 320169410,latitude,,,,1/30/2020
 320169410,longitude,,,,1/30/2020
 320172683,latitude,,,,1/30/2020
@@ -6651,7 +6429,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320177296,longitude,,,,1/30/2020
 320177946,latitude,,,,1/30/2020
 320177946,longitude,,,,1/30/2020
-320177946,occ_category,,,Manual edit of demo with res units,2/27/2020
 320177955,latitude,,,,1/30/2020
 320177955,longitude,,,,1/30/2020
 320177964,latitude,,,,1/30/2020
@@ -6692,7 +6469,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320207851,occ_proposed,,,change occ_prop,8/13/2019
 320207851,classa_init,,,change occ_prop,8/13/2019
 320211846,classa_init,,,change u_init,8/13/2019
-320212060,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 320212337,job_inactive,,Inactive,change inactive flag,8/13/2019
 320212346,latitude,,,,1/30/2020
 320212346,longitude,,,,1/30/2020
@@ -6700,11 +6476,8 @@ job_number,field,old_value,new_value,reason,edited_date
 320212355,longitude,,,,1/30/2020
 320212364,latitude,,,,1/30/2020
 320212364,longitude,,,,1/30/2020
-320215325,occ_category,,,change occ_prop,8/13/2019
 320215325,occ_proposed,,,change occ_prop,8/13/2019
-320215334,occ_category,,,change occ_prop,8/13/2019
 320215334,occ_proposed,,,change occ_prop,8/13/2019
-320215343,occ_category,,,change occ_prop,8/13/2019
 320215343,occ_proposed,,,change occ_prop,8/13/2019
 320219296,occ_proposed,,,change occ_prop,8/13/2019
 320220603,latitude,,,,1/30/2020
@@ -6783,7 +6556,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320314496,classa_init,,,change u_init,8/13/2019
 320321362,classa_init,,,change u_init,8/13/2019
 320323226,occ_proposed,,,change occ_prop,8/13/2019
-320324528,occ_category,,,Manual edit of demo with res units,2/27/2020
 320328579,otherb_init,,,,2/3/2020
 320328579,classa_init,,,,2/3/2020
 320329845,occ_proposed,,,change occ_prop,8/13/2019
@@ -6907,12 +6679,9 @@ job_number,field,old_value,new_value,reason,edited_date
 320474232,occ_initial,,,change occ_prop,8/13/2019
 320474232,occ_proposed,,,change occ_prop,8/13/2019
 320474232,classa_init,,,change occ_prop,8/13/2019
-320475678,occ_category,,,Manual edit of demo with res units,2/27/2020
 320476882,classa_init,,,change u_init,8/13/2019
 320476944,otherb_init,,,,2/3/2020
 320476944,classa_init,,,,2/3/2020
-320481279,occ_category,,,Manual edit of demo with res units,2/27/2020
-320481288,occ_category,,,Manual edit of demo with res units,2/27/2020
 320490731,hotel_init,,,,1/31/2020
 320490731,hotel_prop,,,,1/31/2020
 320490731,classa_init,,,,1/31/2020
@@ -6939,7 +6708,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320508054,occ_proposed,,,change occ_prop,8/13/2019
 320509071,latitude,,,,1/30/2020
 320509071,longitude,,,,1/30/2020
-320511040,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 320512478,latitude,,,,1/30/2020
 320512478,longitude,,,,1/30/2020
 320512593,classa_init,,,change u_init,8/13/2019
@@ -6982,12 +6750,9 @@ job_number,field,old_value,new_value,reason,edited_date
 320528158,longitude,,,,1/30/2020
 320536997,classa_init,,,change u_init,8/13/2019
 320537282,classa_init,,,change u_init,2/14/2020
-320540875,occ_category,,,Manual edit of demo with res units,2/27/2020
 320542631,occ_proposed,,,change occ_prop,8/13/2019
 320544470,otherb_init,,,,1/31/2020
 320544470,classa_init,,,,1/31/2020
-320546012,occ_category,,,Manual edit of demo with res units,2/27/2020
-320546021,occ_category,,,Manual edit of demo with res units,2/27/2020
 320546058,latitude,,,,1/30/2020
 320546058,longitude,,,,1/30/2020
 320548234,occ_proposed,,,change occ_prop,8/13/2019
@@ -7031,7 +6796,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320583052,longitude,,,,1/30/2020
 320583114,latitude,,,,1/30/2020
 320583114,longitude,,,,1/30/2020
-320583891,occ_category,,,change occ_prop,8/13/2019
 320583891,occ_proposed,,,change occ_prop,8/13/2019
 320585130,occ_proposed,,,change occ_prop,8/13/2019
 320587744,otherb_init,,,,1/31/2020
@@ -7094,7 +6858,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320596869,classa_init,,,,1/31/2020
 320597412,classa_init,,,change u_init,8/13/2019
 320597546,classa_init,,,change u_init,8/13/2019
-320608213,occ_category,,,Manual edit of demo with res units,2/27/2020
 320611600,otherb_init,,,,1/31/2020
 320611600,classa_init,,,,1/31/2020
 320611771,hotel_prop,,,,1/28/2020
@@ -7209,7 +6972,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320749623,classa_prop,,,,1/28/2020
 320749874,otherb_init,,,,1/31/2020
 320749874,classa_init,,,,1/31/2020
-320760084,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 320760262,occ_proposed,,,change occ_prop,8/13/2019
 320762251,otherb_init,,,,1/31/2020
 320762251,classa_init,,,,1/31/2020
@@ -7222,7 +6984,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320770581,longitude,,,,1/30/2020
 320771107,classa_init,,,change u_init,8/13/2019
 320771116,classa_init,,,change u_init,8/13/2019
-320778912,occ_category,,,Manual edit of demo with res units,2/27/2020
 320783194,classa_prop,,,change u_prop,8/13/2019
 320787010,hotel_prop,,,,1/28/2020
 320787010,classa_prop,,,,1/28/2020
@@ -7232,11 +6993,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320808355,classa_init,,,,2/3/2020
 320811412,otherb_init,,,,2/3/2020
 320811412,classa_init,,,,2/3/2020
-320811751,occ_category,,,Manual edit of demo with res units,2/27/2020
-320811760,occ_category,,,Manual edit of demo with res units,2/27/2020
-320811804,occ_category,,,Manual edit of demo with res units,2/27/2020
-320811813,occ_category,,,Manual edit of demo with res units,2/27/2020
-320811822,occ_category,,,Manual edit of demo with res units,2/27/2020
 320812411,hotel_prop,,,,1/28/2020
 320812411,classa_prop,,,,1/28/2020
 320817700,latitude,,,,1/30/2020
@@ -7278,9 +7034,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320845635,classa_prop,,,,1/28/2020
 320847072,latitude,,,,1/30/2020
 320847072,longitude,,,,1/30/2020
-320848375,occ_category,,,Manual edit of demo with res units,2/27/2020
-320848384,occ_category,,,Manual edit of demo with res units,2/27/2020
-320848400,occ_category,,,Manual edit of demo with res units,2/27/2020
 320854232,classa_init,,,change u_init,8/13/2019
 320856748,latitude,,,,1/30/2020
 320856748,longitude,,,,1/30/2020
@@ -7289,7 +7042,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320861073,occ_proposed,,,change occ_prop,8/13/2019
 320862161,hotel_prop,,,,1/28/2020
 320862161,classa_prop,,,,1/28/2020
-320865729,occ_category,,,"Edit of demo with res units using Logic: ""dwelling""",2/27/2020
 320869039,hotel_prop,,,,1/28/2020
 320869039,classa_prop,,,,1/28/2020
 320869832,latitude,,,,1/30/2020
@@ -7300,7 +7052,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320881195,otherb_init,,,,2/3/2020
 320882728,latitude,,,,1/30/2020
 320882728,longitude,,,,1/30/2020
-320885707,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 320887974,occ_proposed,,,change occ_prop,8/13/2019
 320891166,classa_init,,,change u_init,2/14/2020
 320891175,latitude,,,,1/30/2020
@@ -7321,13 +7072,10 @@ job_number,field,old_value,new_value,reason,edited_date
 320894546,classa_prop,,,,1/28/2020
 320894662,classa_init,,,change u_init,8/13/2019
 320895992,classa_init,,,change u_init,8/13/2019
-320897151,occ_category,,,Manual edit of demo with res units,2/27/2020
-320897160,occ_category,,,Manual edit of demo with res units,2/27/2020
 320897614,latitude,,,,1/30/2020
 320897614,longitude,,,,1/30/2020
 320898169,otherb_init,,,,2/3/2020
 320898169,classa_init,,,,2/3/2020
-320898187,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 320898196,job_inactive,,,Likely duplicate of job 321903801. Verify in 20Q2,1/29/2020
 320898383,latitude,,,,1/30/2020
 320898383,longitude,,,,1/30/2020
@@ -7471,7 +7219,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320947927,longitude,,,,1/30/2020
 320948141,latitude,,,,1/30/2020
 320948141,longitude,,,,1/30/2020
-320954598,occ_category,,,Manual edit of demo with res units,2/27/2020
 320957167,classa_init,,,change u_init,8/13/2019
 320961429,classa_init,,,change u_init,8/13/2019
 320961438,classa_init,,,change u_init,8/13/2019
@@ -7489,7 +7236,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320967682,longitude,,,,1/30/2020
 320967691,latitude,,,,1/30/2020
 320967691,longitude,,,,1/30/2020
-320967897,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 320968191,hotel_prop,,,,1/28/2020
 320968191,classa_prop,,,,1/28/2020
 320968850,hotel_init,,,,1/31/2020
@@ -7499,10 +7245,6 @@ job_number,field,old_value,new_value,reason,edited_date
 320973773,occ_proposed,,,change occ_prop,8/13/2019
 320977314,otherb_prop,,,,1/28/2020
 320977314,classa_prop,,,,1/28/2020
-320978368,occ_category,,,Manual edit of demo with res units,2/27/2020
-320978377,occ_category,,,Manual edit of demo with res units,2/27/2020
-320978386,occ_category,,,Manual edit of demo with res units,2/27/2020
-320978395,occ_category,,,Manual edit of demo with res units,2/27/2020
 320979679,occ_initial,,,change u_prop,8/13/2019
 320979679,occ_proposed,,,change u_prop,8/13/2019
 320979679,classa_init,,,,1/27/2020
@@ -7536,8 +7278,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321015209,classa_init,,,Shed demolition - zero out units init,1/30/2020
 321022424,latitude,,,,1/30/2020
 321022424,longitude,,,,1/30/2020
-321024066,occ_category,,,Manual edit of demo with res units,2/27/2020
-321024075,occ_category,,,Manual edit of demo with res units,2/27/2020
 321027526,latitude,,,,1/30/2020
 321027526,longitude,,,,1/30/2020
 321027535,latitude,,,,1/30/2020
@@ -7550,8 +7290,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321037944,longitude,,,,1/30/2020
 321038961,otherb_init,,,,2/3/2020
 321038961,classa_init,,,,2/3/2020
-321040618,occ_category,,,Manual edit of demo with res units,2/27/2020
-321040627,occ_category,,,Manual edit of demo with res units,2/27/2020
 321041485,classa_init,,,change u_init,8/13/2019
 321041680,otherb_init,,,,2/3/2020
 321046159,otherb_init,,,,2/3/2020
@@ -7580,7 +7318,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321066573,longitude,,,,1/30/2020
 321066573,classa_prop,,,,1/28/2020
 321067180,hotel_init,,,,2/27/2020
-321067180,occ_category,,,Manual edit of demo with res units,2/27/2020
 321067180,classa_init,,,,2/27/2020
 321069838,otherb_init,,,,1/31/2020
 321069838,classa_init,,,,1/31/2020
@@ -7603,15 +7340,12 @@ job_number,field,old_value,new_value,reason,edited_date
 321086533,longitude,,,,1/30/2020
 321087364,latitude,,,,1/22/2020
 321087364,longitude,,,,1/22/2020
-321090261,occ_category,,,Manual edit of demo with res units,2/27/2020
 321090644,classa_init,,,Shed demolition - zero out units init,1/30/2020
-321091929,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321096005,occ_proposed,,,change occ_prop,8/13/2019
 321096522,classa_prop,,,change u_prop,8/13/2019
 321104791,classa_init,,,Shed demolition - zero out units init,1/30/2020
 321106423,otherb_init,,,,2/3/2020
 321106423,classa_init,,,,2/3/2020
-321107994,occ_category,,,Manual edit of demo with res units,2/27/2020
 321108788,latitude,,,,1/30/2020
 321108788,longitude,,,,1/30/2020
 321108797,latitude,,,,1/30/2020
@@ -7619,7 +7353,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321109420,occ_initial,,,change occ_init,8/13/2019
 321118713,latitude,,,,1/30/2020
 321118713,longitude,,,,1/30/2020
-321120684,occ_category,,,Manual edit of demo with res units,2/27/2020
 321122771,latitude,,,,1/30/2020
 321122771,longitude,,,,1/30/2020
 321123565,otherb_init,,,,2/3/2020
@@ -7637,9 +7370,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321138648,classa_init,,,,2/3/2020
 321139031,latitude,,,,1/22/2020
 321139031,longitude,,,,1/22/2020
-321139200,occ_category,,,Manual edit of demo with res units,2/27/2020
-321139219,occ_category,,,Manual edit of demo with res units,2/27/2020
-321139228,occ_category,,,Manual edit of demo with res units,2/27/2020
 321139460,otherb_init,,,,2/3/2020
 321139460,classa_init,,,,2/3/2020
 321142063,occ_initial,,,change occ_init,8/13/2019
@@ -7655,18 +7385,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321147246,classa_init,,,,1/31/2020
 321147255,otherb_init,,,,1/31/2020
 321147255,classa_init,,,,1/31/2020
-321149128,occ_category,,,Manual edit of demo with res units,2/27/2020
-321149137,occ_category,,,Manual edit of demo with res units,2/27/2020
-321149173,occ_category,,,Manual edit of demo with res units,2/27/2020
-321149976,occ_category,,,Manual edit of demo with res units,2/27/2020
-321149985,occ_category,,,Manual edit of demo with res units,2/27/2020
-321153318,occ_category,,,Manual edit of demo with res units,2/27/2020
-321153327,occ_category,,,Manual edit of demo with res units,2/27/2020
-321153336,occ_category,,,Manual edit of demo with res units,2/27/2020
-321154638,occ_category,,,Manual edit of demo with res units,2/27/2020
-321154647,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-321156020,occ_category,,,Manual edit of demo with res units,2/27/2020
-321157001,occ_category,,,Manual edit of demo with res units,2/27/2020
 321159072,otherb_init,,,,2/3/2020
 321159072,classa_init,,,,2/3/2020
 321159857,occ_proposed,,,change occ_prop,8/13/2019
@@ -7679,10 +7397,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321162781,longitude,,,,1/30/2020
 321162790,latitude,,,,1/30/2020
 321162790,longitude,,,,1/30/2020
-321163502,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
-321164315,occ_category,,,Manual edit of demo with res units,2/27/2020
-321164324,occ_category,,,Manual edit of demo with res units,2/27/2020
-321164333,occ_category,,,Manual edit of demo with res units,2/27/2020
 321166000,latitude,,,,1/30/2020
 321166000,longitude,,,,1/30/2020
 321166750,classa_init,,,change u_init,2/14/2020
@@ -7815,7 +7529,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321238692,classa_prop,,,,1/28/2020
 321239129,otherb_init,,,,2/3/2020
 321239129,classa_init,,,,2/3/2020
-321239370,occ_category,,,Manual edit of demo with res units,2/27/2020
 321239370,otherb_init,,,,2/27/2020
 321239370,classa_init,,,,2/27/2020
 321240821,latitude,,,,1/30/2020
@@ -7825,13 +7538,11 @@ job_number,field,old_value,new_value,reason,edited_date
 321242366,otherb_init,,,,1/31/2020
 321242366,classa_init,,,,1/31/2020
 321243016,classa_prop,,,,1/28/2020
-321246102,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321246861,otherb_init,,,,1/31/2020
 321246861,classa_init,,,,1/31/2020
 321248574,latitude,,,,1/30/2020
 321248574,longitude,,,,1/30/2020
 321253521,occ_proposed,,,change occ_prop,8/13/2019
-321257082,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 321259464,occ_proposed,,,change occ_prop,8/13/2019
 321264332,latitude,,,,1/30/2020
 321264332,longitude,,,,1/30/2020
@@ -7843,7 +7554,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321265938,classa_init,,,change u_init,8/13/2019
 321269845,latitude,,,,1/30/2020
 321269845,longitude,,,,1/30/2020
-321270940,occ_category,,,Manual edit of demo with res units,2/27/2020
 321273974,classa_prop,,,,1/28/2020
 321280751,hotel_prop,,,,1/28/2020
 321280751,classa_prop,,,,1/28/2020
@@ -7858,7 +7568,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321301649,occ_proposed,,,change occ_prop,8/13/2019
 321303068,latitude,,,,1/30/2020
 321303068,longitude,,,,1/30/2020
-321303255,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321303433,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 321303433,occ_proposed,,,change occ_init / change occ_prop,8/13/2019
 321305770,latitude,,,,1/30/2020
@@ -7868,10 +7577,7 @@ job_number,field,old_value,new_value,reason,edited_date
 321309972,longitude,,,,1/22/2020
 321314314,otherb_init,,,,2/3/2020
 321314314,classa_init,,,,2/3/2020
-321314957,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-321315929,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321316278,occ_proposed,,,change occ_prop,8/13/2019
-321318203,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321320904,otherb_init,,,,2/3/2020
 321321887,classa_prop,,,change u_prop,8/13/2019
 321322234,latitude,,,,1/30/2020
@@ -7879,12 +7585,10 @@ job_number,field,old_value,new_value,reason,edited_date
 321326267,occ_proposed,,,change occ_prop,8/13/2019
 321327444,otherb_init,,,,2/3/2020
 321327444,classa_init,,,,2/3/2020
-321353557,occ_category,,,Manual edit of demo with res units,2/27/2020
 321358785,occ_proposed,,,change occ_prop,8/13/2019
 321359908,otherb_init,,,,2/3/2020
 321359908,classa_init,,,,2/3/2020
 321362565,occ_proposed,,,change occ_prop,8/13/2019
-321369069,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321369167,occ_initial,,,change occ_init,8/13/2019
 321369657,occ_proposed,,,change occ_prop,8/13/2019
 321371895,occ_proposed,,,change occ_prop,8/13/2019
@@ -7927,7 +7631,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321387726,occ_proposed,,,job related to units_.sql,2/20/2020
 321387726,classa_prop,,,,1/28/2020
 321388011,occ_proposed,,,change occ_prop,8/13/2019
-321390632,occ_category,,,change occ_init,8/13/2019
 321390632,occ_initial,,,change occ_init,8/13/2019
 321393470,occ_initial,,,"change occ_init, change occ_prop, change u_init, change u_prop",8/13/2019
 321393470,occ_proposed,,,"change occ_init, change occ_prop, change u_init, change u_prop",8/13/2019
@@ -7944,7 +7647,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321403272,classa_init,,,change u_init,8/13/2019
 321403566,latitude,,,,1/30/2020
 321403566,longitude,,,,1/30/2020
-321405546,occ_category,,,Manual edit of demo with res units,2/27/2020
 321406563,job_inactive,,Inactive,identified as duplicate,8/13/2019
 321410905,otherb_init,,,,2/3/2020
 321413412,hotel_prop,,,,1/28/2020
@@ -7953,18 +7655,14 @@ job_number,field,old_value,new_value,reason,edited_date
 321413957,classa_prop,,,,1/28/2020
 321415321,latitude,,,,1/30/2020
 321415321,longitude,,,,1/30/2020
-321420814,occ_category,,,Manual edit of demo with res units,2/27/2020
-321420823,occ_category,,,Manual edit of demo with res units,2/27/2020
 321420850,latitude,,,,1/30/2020
 321420850,longitude,,,,1/30/2020
 321421920,otherb_init,,,,2/3/2020
 321421920,classa_init,,,,2/3/2020
 321425392,latitude,,,,1/30/2020
 321425392,longitude,,,,1/30/2020
-321426293,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321427817,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 321427817,occ_proposed,,,change occ_init / change occ_prop,8/13/2019
-321428718,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321431900,job_inactive,,Inactive,change inactive flag,8/13/2019
 321435719,otherb_prop,,,,1/28/2020
 321435719,classa_prop,,,,1/28/2020
@@ -7987,7 +7685,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321463135,job_inactive,,Inactive,identified as duplicate,8/13/2019
 321472072,classa_prop,,,change u_prop,8/13/2019
 321474524,classa_init,,,change u_init,8/13/2019
-321478502,occ_category,,,Manual edit of demo with res units,2/27/2020
 321478539,bbl,,,Geocoding (add Lat/Long),8/13/2019
 321478539,bin,,,Geocoding (add Lat/Long),8/13/2019
 321479002,otherb_init,,,,1/31/2020
@@ -8019,7 +7716,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321520341,latitude,,,,1/30/2020
 321520341,longitude,,,,1/30/2020
 321524524,occ_proposed,,,change occ_prop,8/13/2019
-321524962,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321529814,latitude,,,,1/30/2020
 321529814,longitude,,,,1/30/2020
 321531446,occ_proposed,,,change occ_prop,8/13/2019
@@ -8031,16 +7727,12 @@ job_number,field,old_value,new_value,reason,edited_date
 321538252,occ_proposed,,,change occ_prop,8/13/2019
 321546555,hotel_prop,,,,1/28/2020
 321546555,classa_prop,,,,1/28/2020
-321550736,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321551913,otherb_init,,,,2/3/2020
 321551913,classa_init,,,,2/3/2020
-321553984,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-321553993,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321555063,otherb_init,,,,1/31/2020
 321555063,otherb_prop,,,,1/31/2020
 321555063,classa_init,,,,1/31/2020
 321555063,classa_prop,,,,1/31/2020
-321556776,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321562475,occ_proposed,,,change occ_prop,8/13/2019
 321567997,latitude,,,,1/22/2020
 321567997,longitude,,,,1/22/2020
@@ -8130,14 +7822,11 @@ job_number,field,old_value,new_value,reason,edited_date
 321631748,occ_proposed,,,change occ_prop,8/13/2019
 321633336,otherb_init,,,,1/31/2020
 321633336,classa_init,,,,1/31/2020
-321633611,occ_category,,,Manual edit of demo with res units,2/27/2020
-321633620,occ_category,,,Manual edit of demo with res units,2/27/2020
 321637742,otherb_init,,,,2/3/2020
 321637742,classa_init,,,,2/3/2020
 321639027,otherb_init,,,,1/31/2020
 321639027,classa_init,,,,1/31/2020
 321639820,classa_init,,,change u_init,8/13/2019
-321641069,occ_category,,,Manual edit of demo with res units,2/27/2020
 321642273,hotel_prop,,,,1/28/2020
 321642273,classa_prop,,,,1/28/2020
 321642825,occ_proposed,,,change occ_prop,8/13/2019
@@ -8147,7 +7836,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321646910,classa_init,,,change u_init,8/13/2019
 321646974,job_inactive,,,Likely duplicate of job 321795517. Verify in 20Q2,1/30/2020
 321649169,occ_initial,,,change occ_init,8/13/2019
-321652760,occ_category,,,"Edit of demo with res units using Logic: ""family",2/27/2020
 321656310,hotel_init,,,,1/31/2020
 321656310,otherb_prop,,,,1/31/2020
 321656310,classa_init,,,,1/31/2020
@@ -8162,7 +7850,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321673952,classa_init,,,,1/31/2020
 321673952,classa_prop,,,,1/31/2020
 321679224,occ_initial,,,change occ_init,8/13/2019
-321679876,occ_category,,,Manual edit of demo with res units,2/27/2020
 321683415,occ_proposed,,,change occ_prop,8/13/2019
 321684049,classa_init,,,change u_init,8/13/2019
 321684744,otherb_init,,,,1/31/2020
@@ -8170,7 +7857,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321688991,latitude,,,,1/30/2020
 321688991,longitude,,,,1/30/2020
 321689339,occ_proposed,,,change occ_prop,8/13/2019
-321692129,occ_category,,,Manual edit of demo with res units,2/27/2020
 321695607,job_inactive,,Inactive,change inactive flag,8/13/2019
 321699523,otherb_init,,,,1/31/2020
 321699523,classa_init,,,,1/31/2020
@@ -8180,9 +7866,7 @@ job_number,field,old_value,new_value,reason,edited_date
 321702136,classa_prop,,,,1/28/2020
 321702644,classa_init,,,,1/28/2020
 321702644,classa_prop,,,,1/28/2020
-321703705,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321706551,classa_init,,,Shed demolition - zero out units init,1/30/2020
-321716791,occ_category,,,"Edit of demo with res units using Logic: ""family",2/27/2020
 321717157,occ_proposed,,,change occ_prop,8/13/2019
 321717479,latitude,,,,3/10/2020
 321717479,longitude,,,,3/10/2020
@@ -8190,7 +7874,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321718343,longitude,,,,1/30/2020
 321726771,job_inactive,,,Likely duplicate of job 321385719. Verify in 20Q2,1/31/2020
 321727887,classa_init,,,change u_init,8/13/2019
-321729938,occ_category,,,Manual edit of demo with res units,2/27/2020
 321732069,otherb_init,,,,1/31/2020
 321732069,classa_init,,,,1/31/2020
 321734352,latitude,,,,1/22/2020
@@ -8230,14 +7913,12 @@ job_number,field,old_value,new_value,reason,edited_date
 321754874,otherb_init,,,,2/3/2020
 321754874,classa_init,,,,2/3/2020
 321755285,classa_init,,,duplicate demo complete - zero out units init,1/30/2020
-321758175,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321763230,otherb_prop,,,,2/3/2020
 321763230,classa_prop,,,,2/3/2020
 321763980,otherb_init,,,,1/31/2020
 321763980,classa_init,,,,1/31/2020
 321764907,occ_proposed,,,change occ_prop,8/13/2019
 321769877,otherb_prop,,,,1/28/2020
-321770179,occ_category,,,Manual edit of demo with res units,2/27/2020
 321770945,classa_init,,,"change u_init, change u_prop",2/14/2020
 321770945,classa_prop,,,"change u_init, change u_prop",8/13/2019
 321772603,classa_init,,,change u_init,8/13/2019
@@ -8261,8 +7942,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321790371,classa_init,,,,2/3/2020
 321792930,job_inactive,,,Likely duplicate of job 321987668. Verify in 20Q2,1/30/2020
 321801476,classa_init,,,change u_init,8/13/2019
-321806612,occ_category,,,Manual edit of demo with res units,2/27/2020
-321806621,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321813524,latitude,,,,1/30/2020
 321813524,longitude,,,,1/30/2020
 321813846,otherb_prop,,,,2/3/2020
@@ -8286,7 +7965,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321816406,longitude,,,,1/30/2020
 321816424,latitude,,,,1/30/2020
 321816424,longitude,,,,1/30/2020
-321819332,occ_category,,,Manual edit of demo with res units,2/27/2020
 321819537,classa_init,,,change u_init,8/13/2019
 321821739,occ_proposed,,,change occ_prop,8/13/2019
 321827403,occ_proposed,,,change occ_prop,8/13/2019
@@ -8297,7 +7975,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321845492,otherb_init,,,,1/31/2020
 321845492,classa_init,,,,1/31/2020
 321845660,occ_proposed,,,change occ_prop,8/13/2019
-321846160,occ_category,,,Manual edit of demo with res units,2/27/2020
 321846525,latitude,,,,1/30/2020
 321846525,longitude,,,,1/30/2020
 321846543,latitude,,,,1/30/2020
@@ -8311,7 +7988,6 @@ job_number,field,old_value,new_value,reason,edited_date
 321904061,otherb_init,,,,1/31/2020
 321904061,classa_init,,,,1/31/2020
 321908263,classa_prop,,,change u_prop,8/13/2019
-321908833,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 321911678,latitude,,,,1/30/2020
 321911678,longitude,,,,1/30/2020
 321911687,latitude,,,,1/30/2020
@@ -8325,13 +8001,9 @@ job_number,field,old_value,new_value,reason,edited_date
 321916744,otherb_init,,,,2/3/2020
 321916744,classa_init,,,,2/3/2020
 321917654,classa_prop,,,,1/28/2020
-321917949,occ_category,,,Manual edit of demo with res units,2/27/2020
-321917958,occ_category,,,Manual edit of demo with res units,2/27/2020
 321921872,job_inactive,,,Likely duplicate of job 321921881. Verify in 20Q2,1/29/2020
-321927199,occ_category,,,Manual edit of demo with res units,2/27/2020
 321930194,classa_init,,,,1/28/2020
 321930345,classa_prop,,,,1/28/2020
-321930540,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 321930844,classa_init,,,,12/1/2019
 321930979,classa_init,,,change_units_init,2/14/2020
 321933208,otherb_init,,,,1/31/2020
@@ -8344,12 +8016,9 @@ job_number,field,old_value,new_value,reason,edited_date
 321941477,classa_init,,,,12/1/2019
 321947738,latitude,,,,1/30/2020
 321947738,longitude,,,,1/30/2020
-321948372,occ_category,,,Manual edit of demo with res units,2/27/2020
-321948381,occ_category,,,Manual edit of demo with res units,2/27/2020
 321952080,classa_init,,,change_units_init,2/14/2020
 321952099,classa_init,,,change_units_init,2/14/2020
 321956362,job_inactive,,,Likely duplicate of job 321956353. Verify in 20Q2,1/29/2020
-321956433,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 321958048,latitude,,,,1/30/2020
 321958048,longitude,,,,1/30/2020
 321958075,latitude,,,,1/30/2020
@@ -8392,17 +8061,12 @@ job_number,field,old_value,new_value,reason,edited_date
 321993517,otherb_prop,,,job related to units_.sql,2/21/2020
 321993517,classa_init,,,job related to units_.sql,2/21/2020
 321993517,classa_prop,,,job related to units_.sql,2/21/2020
-321995230,occ_category,,,Manual edit of demo with res units,2/27/2020
-321996961,occ_category,,,Manual edit of demo with res units,2/27/2020
-321996970,occ_category,,,Manual edit of demo with res units,2/27/2020
-321996989,occ_category,,,Manual edit of demo with res units,2/27/2020
 321999085,job_inactive,,,Likely duplicate of job 321596643. Verify in 20Q2,1/29/2020
 322000384,otherb_init,,,,2/3/2020
 322010925,classa_prop,,,,1/27/2020
 322013735,latitude,,,,1/30/2020
 322013735,longitude,,,,1/30/2020
 322014672,job_inactive,,,Likely duplicate of job 322014690. Verify in 20Q2,1/29/2020
-322014770,occ_category,,,Manual edit of demo with res units,2/27/2020
 322019828,hotel_prop,,,,1/28/2020
 322019828,classa_prop,,,,1/28/2020
 322020601,hotel_prop,,,,1/28/2020
@@ -8607,7 +8271,6 @@ job_number,field,old_value,new_value,reason,edited_date
 401270469,classa_init,,,,12/1/2019
 401272074,classa_init,,,,1/27/2020
 401277140,classa_init,,,,1/27/2020
-401277373,occ_category,,,change occ_prop,8/13/2019
 401277373,occ_proposed,,,change occ_prop,8/13/2019
 401287610,classa_init,,,,12/1/2019
 401287610,classa_prop,,,,12/1/2019
@@ -8625,7 +8288,6 @@ job_number,field,old_value,new_value,reason,edited_date
 401306653,classa_init,,,,12/1/2019
 401306751,classa_init,,,,12/1/2019
 401308848,classa_init,,,,12/1/2019
-401309918,occ_category,,,change occ_prop,8/13/2019
 401521457,classa_init,,,,12/1/2019
 401309918,occ_proposed,,,change occ_prop,8/13/2019
 401310719,classa_init,,,,12/1/2019
@@ -8682,7 +8344,6 @@ job_number,field,old_value,new_value,reason,edited_date
 401443087,classa_init,,,change u_init,8/13/2019
 401443728,classa_init,,,,12/1/2019
 401443862,classa_init,,,,12/1/2019
-401444326,occ_category,,,change occ_prop,8/13/2019
 401444326,occ_proposed,,,change occ_prop,8/13/2019
 401445897,classa_init,,,change u_init,8/13/2019
 401448279,classa_init,,,,1/27/2020
@@ -8784,7 +8445,6 @@ job_number,field,old_value,new_value,reason,edited_date
 401577557,classa_init,,,,1/27/2020
 401578896,bbl,,,Geocoding (add Lat/Long),8/13/2019
 401578896,bin,,,Geocoding (add Lat/Long),8/13/2019
-401579118,occ_category,,,change occ_prop,8/13/2019
 401579118,occ_proposed,,,change occ_prop,8/13/2019
 401579396,classa_init,,,change u_init,8/13/2019
 401580446,bbl,,,Geocoding (add Lat/Long),8/13/2019
@@ -8884,7 +8544,6 @@ job_number,field,old_value,new_value,reason,edited_date
 401741665,classa_init,,,,12/1/2019
 401742469,classa_init,,,,12/1/2019
 401743510,classa_init,,,,12/1/2019
-401744662,occ_category,,,change occ_prop,8/13/2019
 401744662,occ_proposed,,,change occ_prop,8/13/2019
 401746134,classa_init,,,,12/1/2019
 401747909,classa_init,,,,1/27/2020
@@ -9387,7 +9046,6 @@ job_number,field,old_value,new_value,reason,edited_date
 402177997,classa_prop,,,"change u_init, change u_prop",8/13/2019
 402178175,classa_init,,,,1/27/2020
 402178923,classa_init,,,change u_init,8/13/2019
-402179511,occ_category,,,change occ_prop,8/13/2019
 402179511,occ_proposed,,,change occ_prop,8/13/2019
 402179744,bbl,,,Geocoding (add Lat/Long),8/13/2019
 402179744,bin,,,Geocoding (add Lat/Long),8/13/2019
@@ -9426,7 +9084,6 @@ job_number,field,old_value,new_value,reason,edited_date
 402215820,bbl,,,Geocoding (add Lat/Long),8/13/2019
 402215839,bbl,,,Geocoding (add Lat/Long),8/13/2019
 402216320,classa_init,,,change u_init,8/13/2019
-402217123,occ_category,,,change occ_prop,8/13/2019
 402217123,occ_proposed,,,change occ_prop,8/13/2019
 402217579,bbl,,,Geocoding (add Lat/Long),8/13/2019
 402217588,bbl,,,Geocoding (add Lat/Long),8/13/2019
@@ -10550,7 +10207,6 @@ job_number,field,old_value,new_value,reason,edited_date
 410060605,classa_init,,,,12/1/2019
 410062079,classa_init,,,,12/1/2019
 410062649,hotel_prop,,,,1/28/2020
-410062649,occ_category,,,change occ_prop,8/13/2019
 410062649,occ_proposed,,,change occ_prop,8/13/2019
 410062649,classa_prop,,,,1/28/2020
 410063229,hotel_prop,,,,1/28/2020
@@ -10734,7 +10390,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420113451,hotel_prop,,,,1/28/2020
 420113451,classa_prop,,,,1/28/2020
 420114780,classa_init,,,duplicate demo complete - zero out units init,1/30/2020
-420116332,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 420126465,classa_prop,,,change u_prop,8/13/2019
 420130851,latitude,,,,1/30/2020
 420130851,longitude,,,,1/30/2020
@@ -10765,7 +10420,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420193392,classa_prop,,,change u_prop,8/13/2019
 420195032,latitude,,,,1/30/2020
 420195032,longitude,,,,1/30/2020
-420201150,occ_category,,,Manual edit of demo with res units,2/27/2020
 420202989,latitude,,,,1/22/2020
 420202989,longitude,,,,1/22/2020
 420202989,occ_proposed,,,change occ_prop,8/13/2019
@@ -10773,8 +10427,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420206814,longitude,,,,1/30/2020
 420206903,latitude,,,,1/30/2020
 420206903,longitude,,,,1/30/2020
-420209232,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
-420211915,occ_category,,,change occ_prop,8/13/2019
 420211915,occ_proposed,,,change occ_prop,8/13/2019
 420211915,classa_init,,,,12/1/2019
 420211915,classa_prop,,,,12/1/2019
@@ -10833,7 +10485,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420253013,latitude,,,,1/30/2020
 420253013,longitude,,,,1/30/2020
 420253246,classa_init,,,Shed demolition - zero out units init,1/30/2020
-420253503,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 420253950,latitude,,,,1/30/2020
 420253950,longitude,,,,1/30/2020
 420274955,classa_init,,,Pool demolition - zero out units init,1/30/2020
@@ -10841,7 +10492,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420278684,occ_proposed,,,change occ_prop,8/13/2019
 420279380,latitude,,,,1/30/2020
 420279380,longitude,,,,1/30/2020
-420284132,occ_category,,,Manual edit of demo with res units,2/27/2020
 420287166,classa_init,,,Shed demolition - zero out units init,1/30/2020
 420287308,latitude,,,,1/30/2020
 420287308,longitude,,,,1/30/2020
@@ -11006,7 +10656,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420543683,hotel_prop,,,,1/28/2020
 420543683,classa_prop,,,,1/28/2020
 420546396,hotel_prop,,,mixed-use hotel-res,8/13/2019
-420546396,occ_category,,,mixed-use hotel-res,8/13/2019
 420546396,classa_prop,,,mixed-use hotel-res,8/13/2019
 420547910,hotel_prop,,,,1/28/2020
 420547910,classa_prop,,,,1/28/2020
@@ -11088,7 +10737,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420625283,classa_prop,,,,1/28/2020
 420625470,latitude,,,,1/30/2020
 420625470,longitude,,,,1/30/2020
-420627343,occ_category,,,Manual edit of demo with res units,2/27/2020
 420634790,latitude,,,,1/30/2020
 420634790,longitude,,,,1/30/2020
 420636789,latitude,,,,1/30/2020
@@ -11238,7 +10886,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420666602,hotel_prop,,,,1/28/2020
 420666602,classa_prop,,,,1/28/2020
 420780827,classa_prop,,,,1/28/2020
-420783888,occ_category,,,change occ_prop,8/13/2019
 420783888,occ_proposed,,,change occ_prop,8/13/2019
 420787802,hotel_init,,,,2/3/2020
 420787802,hotel_prop,,,,2/3/2020
@@ -11290,7 +10937,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420830346,occ_proposed,,,change occ_prop,8/13/2019
 420831657,latitude,,,,1/30/2020
 420831657,longitude,,,,1/30/2020
-420831979,occ_category,,,Manual edit of demo with res units,2/27/2020
 420834716,latitude,,,,1/22/2020
 420834716,longitude,,,,1/22/2020
 420838909,occ_proposed,,,change occ_prop,8/13/2019
@@ -11308,7 +10954,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420859440,occ_proposed,,,change occ_prop,8/13/2019
 420865246,classa_prop,,,change u_prop,8/13/2019
 420867459,occ_initial,,,change occ_init,8/13/2019
-420867681,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 420871266,latitude,,,,1/30/2020
 420871266,longitude,,,,1/30/2020
 420871550,hotel_prop,,,,1/28/2020
@@ -11344,14 +10989,10 @@ job_number,field,old_value,new_value,reason,edited_date
 420892519,latitude,,,,1/30/2020
 420892519,longitude,,,,1/30/2020
 420893242,classa_init,,,Shed demolition - zero out units init,1/30/2020
-420893821,occ_category,,,Manual edit of demo with res units,2/27/2020
-420893830,occ_category,,,Manual edit of demo with res units,2/27/2020
 420893965,hotel_prop,,,,1/28/2020
 420893965,classa_prop,,,,1/28/2020
 420894474,classa_init,,,Garage demolition - zero out units init,1/30/2020
 420894820,occ_proposed,,,change occ_prop,8/13/2019
-420895534,occ_category,,,"Edit of demo with res units using Logic: ""dwelling""",2/27/2020
-420895696,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 420897514,latitude,,,,1/30/2020
 420897514,longitude,,,,1/30/2020
 420897523,latitude,,,,1/30/2020
@@ -11382,7 +11023,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420931772,classa_init,,,change u_init,8/13/2019
 420937419,latitude,,,,1/30/2020
 420937419,longitude,,,,1/30/2020
-420937650,occ_category,,,Manual edit of demo with res units,2/27/2020
 420938392,classa_init,,,Garage demolition - zero out units init,1/30/2020
 420938436,occ_proposed,,,change occ_prop,8/13/2019
 420940922,latitude,,,,1/22/2020
@@ -11400,13 +11040,10 @@ job_number,field,old_value,new_value,reason,edited_date
 420953622,longitude,,,,1/30/2020
 420955988,latitude,,,,1/30/2020
 420955988,longitude,,,,1/30/2020
-420955988,occ_category,,,Manual edit of demo with res units,2/27/2020
 420956166,latitude,,,,1/30/2020
 420956166,longitude,,,,1/30/2020
-420956166,occ_category,,,Manual edit of demo with res units,2/27/2020
 420956175,latitude,,,,1/30/2020
 420956175,longitude,,,,1/30/2020
-420956175,occ_category,,,Manual edit of demo with res units,2/27/2020
 420956193,latitude,,,,1/30/2020
 420956193,longitude,,,,1/30/2020
 420956433,occ_proposed,,,change occ_prop,8/13/2019
@@ -11441,7 +11078,6 @@ job_number,field,old_value,new_value,reason,edited_date
 420978213,longitude,,,,1/30/2020
 420978990,occ_proposed,,,change occ_prop,8/13/2019
 420979187,occ_proposed,,,change occ_prop,8/13/2019
-420979793,occ_category,,,Manual edit of demo with res units,2/27/2020
 420979926,hotel_prop,,,,2/3/2020
 420979926,classa_init,,,,2/3/2020
 420979926,classa_prop,,,,2/3/2020
@@ -11455,13 +11091,11 @@ job_number,field,old_value,new_value,reason,edited_date
 420986623,longitude,,,,1/30/2020
 420988658,latitude,,,,1/30/2020
 420988658,longitude,,,,1/30/2020
-420993223,occ_category,,,Manual edit of demo with res units,2/27/2020
 420995141,classa_init,,,change u_init,2/14/2020
 420995846,latitude,,,,1/30/2020
 420995846,longitude,,,,1/30/2020
 420996667,hotel_prop,,,,1/28/2020
 420996667,classa_prop,,,,1/28/2020
-420997434,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 420998077,latitude,,,,1/30/2020
 420998077,longitude,,,,1/30/2020
 420999352,hotel_prop,,,,1/28/2020
@@ -11479,7 +11113,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421004148,classa_prop,,,,1/28/2020
 421004175,hotel_prop,,,,1/28/2020
 421004175,classa_prop,,,,1/28/2020
-421006388,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 421009214,classa_prop,,,change u_prop,8/13/2019
 421009429,latitude,,,,1/30/2020
 421009429,longitude,,,,1/30/2020
@@ -11487,7 +11120,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421009438,longitude,,,,1/30/2020
 421009508,latitude,,,,1/30/2020
 421009508,longitude,,,,1/30/2020
-421010284,occ_category,,,Manual edit of demo with res units,2/27/2020
 421011871,hotel_init,,,,1/28/2020
 421011871,hotel_prop,,,,1/28/2020
 421011871,classa_init,,,,1/28/2020
@@ -11501,12 +11133,9 @@ job_number,field,old_value,new_value,reason,edited_date
 421018605,classa_prop,,,,1/28/2020
 421018963,hotel_prop,,,,1/28/2020
 421018963,classa_prop,,,,1/28/2020
-421021129,occ_category,,,Manual edit of demo with res units,2/27/2020
-421021227,occ_category,,,Manual edit of demo with res units,2/27/2020
 421022020,occ_proposed,,,change occ_prop,8/13/2019
 421025170,hotel_prop,,,,1/28/2020
 421025170,classa_prop,,,,1/28/2020
-421027686,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 421028685,latitude,,,,1/30/2020
 421028685,longitude,,,,1/30/2020
 421028845,latitude,,,,1/30/2020
@@ -11519,7 +11148,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421029318,longitude,,,,1/30/2020
 421029443,latitude,,,,1/30/2020
 421029443,longitude,,,,1/30/2020
-421029452,occ_category,,,"Manual edit of demo with res units, check unit count in 20Q2",2/27/2020
 421030896,hotel_prop,,,,1/28/2020
 421030896,classa_prop,,,,1/28/2020
 421031109,hotel_prop,,,,1/28/2020
@@ -11527,12 +11155,10 @@ job_number,field,old_value,new_value,reason,edited_date
 421034990,hotel_prop,,,,1/28/2020
 421034990,classa_init,,,,1/28/2020
 421034990,classa_prop,,,,1/28/2020
-421035702,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 421036122,latitude,,,,1/30/2020
 421036122,longitude,,,,1/30/2020
 421036177,occ_proposed,,,change occ_prop,8/13/2019
 421037899,occ_proposed,,,change occ_prop,8/13/2019
-421039334,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 421041544,occ_proposed,,,change occ_prop,8/13/2019
 421044738,classa_prop,,,change u_prop,8/13/2019
 421046950,latitude,,,,1/30/2020
@@ -11553,7 +11179,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421053763,classa_prop,,,,1/28/2020
 421055440,latitude,,,,1/30/2020
 421055440,longitude,,,,1/30/2020
-421055574,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 421056323,latitude,,,,1/30/2020
 421056323,longitude,,,,1/30/2020
 421056332,latitude,,,,1/30/2020
@@ -11580,16 +11205,12 @@ job_number,field,old_value,new_value,reason,edited_date
 421072181,classa_prop,,,,1/28/2020
 421078158,latitude,,,,1/30/2020
 421078158,longitude,,,,1/30/2020
-421082269,occ_category,,,Manual edit of demo with res units,2/27/2020
 421082447,latitude,,,,1/30/2020
 421082447,longitude,,,,1/30/2020
 421083918,occ_proposed,,,change occ_prop,8/13/2019
 421084114,hotel_prop,,,,1/28/2020
 421085499,latitude,,,,1/30/2020
 421085499,longitude,,,,1/30/2020
-421086997,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-421087004,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-421097725,occ_category,,,change occ_prop,8/13/2019
 421097725,occ_proposed,,,change occ_prop,8/13/2019
 421144210,latitude,,,,1/30/2020
 421144210,longitude,,,,1/30/2020
@@ -11636,9 +11257,7 @@ job_number,field,old_value,new_value,reason,edited_date
 421185933,classa_prop,,,,1/28/2020
 421188618,latitude,,,,1/30/2020
 421188618,longitude,,,,1/30/2020
-421189546,occ_category,,,Manual edit of demo with res units,2/27/2020
 421192667,occ_proposed,,,change occ_prop,8/13/2019
-421195968,occ_category,,,Manual edit of demo with res units,2/27/2020
 421195977,latitude,,,,1/30/2020
 421195977,longitude,,,,1/30/2020
 421195986,latitude,,,,1/30/2020
@@ -11652,15 +11271,12 @@ job_number,field,old_value,new_value,reason,edited_date
 421200658,classa_prop,,,,1/28/2020
 421200934,latitude,,,,1/30/2020
 421200934,longitude,,,,1/30/2020
-421201103,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 421201256,latitude,,,,1/30/2020
 421201256,longitude,,,,1/30/2020
 421201407,latitude,,,,1/30/2020
 421201407,longitude,,,,1/30/2020
 421203370,occ_proposed,,,change occ_prop,8/13/2019
 421204404,occ_proposed,,,change occ_prop,8/13/2019
-421204707,occ_category,,,Manual edit of demo with res units,2/27/2020
-421204716,occ_category,,,Manual edit of demo with res units,2/27/2020
 421209061,job_inactive,,,Likely duplicate of job 420663222. Verify in 20Q2,1/29/2020
 421211851,latitude,,,,1/30/2020
 421211851,longitude,,,,1/30/2020
@@ -11677,7 +11293,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421216696,classa_prop,,,,1/28/2020
 421217463,hotel_prop,,,,1/28/2020
 421217463,classa_prop,,,,1/28/2020
-421217926,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 421218809,occ_proposed,,,change occ_prop,8/13/2019
 421219657,latitude,,,,1/30/2020
 421219657,longitude,,,,1/30/2020
@@ -11739,10 +11354,8 @@ job_number,field,old_value,new_value,reason,edited_date
 421221332,longitude,,,,1/30/2020
 421221350,latitude,,,,1/30/2020
 421221350,longitude,,,,1/30/2020
-421225427,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 421226505,latitude,,,,1/30/2020
 421226505,longitude,,,,1/30/2020
-421227363,occ_category,,,Manual edit of demo with res units,2/27/2020
 421229548,classa_prop,,,,2/3/2020
 421229799,latitude,,,,1/30/2020
 421229799,longitude,,,,1/30/2020
@@ -11753,8 +11366,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421234079,latitude,,,,2/27/2020
 421234079,longitude,,,,2/27/2020
 421235185,classa_prop,,,,1/28/2020
-421240721,occ_category,,,Manual edit of demo with res units,2/27/2020
-421240730,occ_category,,,Manual edit of demo with res units,2/27/2020
 421241604,occ_proposed,,,change occ_prop,8/13/2019
 421246128,latitude,,,,1/30/2020
 421246128,longitude,,,,1/30/2020
@@ -11772,8 +11383,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421258285,longitude,,,,1/30/2020
 421258294,latitude,,,,1/30/2020
 421258294,longitude,,,,1/30/2020
-421259060,occ_category,,,Manual edit of demo with res units,2/27/2020
-421259088,occ_category,,,Manual edit of demo with res units,2/27/2020
 421260129,hotel_prop,,,,1/28/2020
 421260129,classa_prop,,,,1/28/2020
 421263554,latitude,,,,1/30/2020
@@ -11800,7 +11409,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421309532,classa_init,,,,2/3/2020
 421309532,classa_prop,,,,2/3/2020
 421315222,hotel_prop,,,mixed-use hotel-res ,8/13/2019
-421315222,occ_category,,,mixed-use hotel-res ,8/13/2019
 421315222,classa_prop,,,mixed-use hotel-res ,8/13/2019
 421317079,occ_proposed,,,change occ_prop,8/13/2019
 421317612,latitude,,,,1/30/2020
@@ -11809,7 +11417,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421324702,bbl,,,Geocoding (add Lat/Long),8/13/2019
 421324702,bin,,,Geocoding (add Lat/Long),8/13/2019
 421328236,hotel_prop,,,mixed-use hotel-res ,8/13/2019
-421328236,occ_category,,,mixed-use hotel-res ,8/13/2019
 421328236,occ_proposed,,,mixed-use hotel-res ,8/13/2019
 421328236,classa_prop,,,mixed-use hotel-res ,8/13/2019
 421328245,hotel_prop,,,,1/28/2020
@@ -11839,9 +11446,7 @@ job_number,field,old_value,new_value,reason,edited_date
 421351655,occ_proposed,,,change occ_prop,8/13/2019
 421351691,classa_init,,,duplicate demo complete - zero out units init,1/30/2020
 421351726,classa_init,,,duplicate demo complete - zero out units init,1/30/2020
-421354340,occ_category,,,Manual edit of demo with res units,2/27/2020
 421354992,classa_prop,,,change u_prop,8/13/2019
-421355937,occ_category,,,Manual edit of demo with res units,2/27/2020
 421360271,latitude,,,,1/22/2020
 421360271,longitude,,,,1/22/2020
 421361163,latitude,,,,1/30/2020
@@ -11866,20 +11471,14 @@ job_number,field,old_value,new_value,reason,edited_date
 421381766,job_inactive,,,Likely duplicate of job 421717440. Verify in 20Q2,1/29/2020
 421384004,bbl,,,Geocoding (add Lat/Long),8/13/2019
 421384004,bin,,,Geocoding (add Lat/Long),8/13/2019
-421384184,occ_category,,,"Edit of demo with res units using Logic: ""resid""",2/27/2020
 421388894,latitude,,,,1/22/2020
 421388894,longitude,,,,1/22/2020
 421389438,latitude,,,,1/30/2020
 421389438,longitude,,,,1/30/2020
 421389517,occ_proposed,,,change occ_prop,8/13/2019
-421389553,occ_category,,,Manual edit of demo with res units,2/27/2020
 421390998,bbl,,,change BBL,8/13/2019
 421391942,hotel_prop,,,,1/28/2020
 421391942,classa_prop,,,,1/28/2020
-421392264,occ_category,,,Manual edit of demo with res units,2/27/2020
-421392273,occ_category,,,Manual edit of demo with res units,2/27/2020
-421392308,occ_category,,,Manual edit of demo with res units,2/27/2020
-421393833,occ_category,,,Manual edit of demo with res units,2/27/2020
 421394468,job_inactive,,,Likely duplicate of job 421394477. Verify in 20Q2,1/29/2020
 421394967,latitude,,,,1/30/2020
 421394967,longitude,,,,1/30/2020
@@ -11893,14 +11492,12 @@ job_number,field,old_value,new_value,reason,edited_date
 421396260,classa_init,,,change occ_prop,8/13/2019
 421396830,job_inactive,,Inactive,identified as duplicate,8/13/2019
 421398259,classa_init,,,Shed demolition - zero out units init,1/30/2020
-421402397,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 421404527,latitude,,,,1/30/2020
 421404527,longitude,,,,1/30/2020
 421405189,latitude,,,,1/30/2020
 421405189,longitude,,,,1/30/2020
 421405214,latitude,,,,1/30/2020
 421405214,longitude,,,,1/30/2020
-421405580,occ_category,,,Manual edit of demo with res units,2/27/2020
 421405642,hotel_prop,,,,1/28/2020
 421405642,classa_prop,,,,1/28/2020
 421409050,latitude,,,,1/30/2020
@@ -11919,7 +11516,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421423775,longitude,,,,1/30/2020
 421423971,occ_proposed,,,change occ_prop,8/13/2019
 421426610,classa_init,,,change u_init,8/13/2019
-421426825,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 421426861,occ_proposed,,,change occ_prop,8/13/2019
 421427511,occ_proposed,,,change occ_prop / change inactive flag,8/13/2019
 421427511,job_inactive,,Inactive,change occ_prop / change inactive flag,8/13/2019
@@ -11999,7 +11595,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421476931,stories_prop,,,add prop_stories,8/13/2019
 421477333,occ_proposed,,,change occ_prop,8/13/2019
 421479126,classa_init,,,duplicate demo complete - zero out units init,1/30/2020
-421481042,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 421482470,occ_proposed,,,change occ_prop,8/13/2019
 421484049,occ_initial,,,change occ_prop,8/13/2019
 421485529,latitude,,,,1/30/2020
@@ -12118,8 +11713,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421587508,classa_prop,,,,2/3/2020
 421587713,latitude,,,,1/30/2020
 421587713,longitude,,,,1/30/2020
-421588847,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
-421588865,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 421590905,latitude,,,,1/30/2020
 421590905,longitude,,,,1/30/2020
 421593467,job_inactive,,,Likely duplicate of job 421736660. Verify in 20Q2,1/29/2020
@@ -12127,7 +11720,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421593582,classa_init,,,,1/31/2020
 421598248,classa_prop,,,,1/28/2020
 421599201,hotel_prop,,,mixed-use hotel-res,8/13/2019
-421599201,occ_category,,,mixed-use hotel-res,8/13/2019
 421599201,classa_prop,,,mixed-use hotel-res,8/13/2019
 421599737,hotel_prop,,,,1/28/2020
 421599737,occ_proposed,,,change occ_prop,8/13/2019
@@ -12153,7 +11745,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421617780,classa_prop,,,,1/28/2020
 421618280,hotel_prop,,,,1/28/2020
 421618280,classa_prop,,,,1/28/2020
-421619154,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 421621873,latitude,,,,1/30/2020
 421621873,longitude,,,,1/30/2020
 421621882,latitude,,,,1/30/2020
@@ -12175,7 +11766,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421628064,latitude,,,,1/30/2020
 421628064,longitude,,,,1/30/2020
 421628689,job_inactive,,,Likely duplicate of job 421633263. Verify in 20Q2,1/29/2020
-421631899,occ_category,,,Edit of demo with res units using Logic: Mixed Use flag,2/27/2020
 421632102,hotel_prop,,,,1/28/2020
 421632102,classa_prop,,,,1/28/2020
 421633432,latitude,,,,3/10/2020
@@ -12270,7 +11860,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421679133,longitude,,,,1/30/2020
 421680185,latitude,,,,1/30/2020
 421680185,longitude,,,,1/30/2020
-421680283,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 421680988,latitude,,,,1/30/2020
 421680988,longitude,,,,1/30/2020
 421681004,latitude,,,,1/30/2020
@@ -12367,7 +11956,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421778311,longitude,,,,1/30/2020
 421779800,classa_init,,,,1/31/2020
 421780371,classa_prop,,,,1/28/2020
-421780497,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 421793660,latitude,,,,1/30/2020
 421793660,longitude,,,,1/30/2020
 421797327,latitude,,,,1/30/2020
@@ -12381,7 +11969,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421797381,latitude,,,,1/30/2020
 421797381,longitude,,,,1/30/2020
 421938023,otherb_prop,,,,1/31/2020
-421858314,occ_category,,,change occ_prop,8/13/2019
 421858314,occ_proposed,,,change occ_prop,8/13/2019
 421883064,latitude,,,,1/30/2020
 421883064,longitude,,,,1/30/2020
@@ -12420,7 +12007,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421914593,longitude,,,,1/30/2020
 421915324,latitude,,,,1/30/2020
 421915324,longitude,,,,1/30/2020
-421917046,occ_category,,,"non-residential demo, change cassification",1/30/2020
 421917046,occ_initial,,,"non-residential demo, change cassification",1/30/2020
 421917046,classa_init,,,"non-residential demo, change cassification",1/30/2020
 421917144,latitude,,,,1/30/2020
@@ -12453,7 +12039,6 @@ job_number,field,old_value,new_value,reason,edited_date
 421929346,longitude,,,,1/22/2020
 421933705,latitude,,,,1/30/2020
 421933705,longitude,,,,1/30/2020
-421934090,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 421934456,latitude,,,,1/30/2020
 421934456,longitude,,,,1/30/2020
 421934465,latitude,,,,1/30/2020
@@ -12797,7 +12382,6 @@ job_number,field,old_value,new_value,reason,edited_date
 500503225,classa_init,,,,12/1/2019
 500504901,classa_init,,,,12/1/2019
 500504910,classa_init,,,,12/1/2019
-500505517,occ_category,,,change occ_prop,8/13/2019
 500505517,occ_proposed,,,change occ_prop,8/13/2019
 500507141,classa_init,,,,12/1/2019
 500507864,classa_init,,,,12/1/2019
@@ -12837,7 +12421,6 @@ job_number,field,old_value,new_value,reason,edited_date
 500585850,classa_init,,,,12/1/2019
 500586387,classa_init,,,,12/1/2019
 500586396,classa_init,,,,12/1/2019
-500593075,occ_category,,,change occ_prop,8/13/2019
 500593075,occ_proposed,,,change occ_prop,8/13/2019
 500593075,classa_init,,,,12/1/2019
 500593075,classa_prop,,,,12/1/2019
@@ -12950,7 +12533,6 @@ job_number,field,old_value,new_value,reason,edited_date
 500750172,classa_init,,,,12/1/2019
 500750877,classa_init,,,change u_init,8/13/2019
 500751484,classa_init,,,,12/1/2019
-500752606,occ_category,,,change occ_prop,8/13/2019
 500752606,occ_proposed,,,change occ_prop,8/13/2019
 500756158,classa_init,,,,12/1/2019
 500756265,classa_init,,,,12/1/2019
@@ -13206,7 +12788,6 @@ job_number,field,old_value,new_value,reason,edited_date
 510011238,classa_init,,,change u_init,8/13/2019
 510011452,classa_init,,,,12/1/2019
 510011871,classa_init,,,,12/1/2019
-510011942,occ_category,,,change occ_prop,8/13/2019
 510011942,occ_proposed,,,change occ_prop,8/13/2019
 510012567,classa_init,,,,12/1/2019
 510012709,classa_init,,,,12/1/2019
@@ -13304,7 +12885,6 @@ job_number,field,old_value,new_value,reason,edited_date
 520013912,bbl,,,change BBL,8/13/2019
 520013912,latitude,,,change BBL,8/13/2019
 520013912,longitude,,,change BBL,8/13/2019
-520015689,occ_category,,,change occ_prop,8/13/2019
 520018178,occ_initial,,,change occ_init / change occ_prop,8/13/2019
 520018178,occ_proposed,,,change occ_init / change occ_prop,8/13/2019
 520019006,bbl,,,change BBL,8/13/2019
@@ -13313,11 +12893,8 @@ job_number,field,old_value,new_value,reason,edited_date
 520019015,bbl,,,change BBL,8/13/2019
 520019015,latitude,,,change BBL,8/13/2019
 520019015,longitude,,,change BBL,8/13/2019
-520020619,occ_category,,,change occ_prop,8/13/2019
 520020619,occ_proposed,,,change occ_prop,8/13/2019
-520020628,occ_category,,,change occ_prop,8/13/2019
 520020628,occ_proposed,,,change occ_prop,8/13/2019
-520020717,occ_category,,,change occ_prop,8/13/2019
 520020717,occ_proposed,,,change occ_prop,8/13/2019
 520029665,classa_init,,,Pool demolition - zero out units init,1/30/2020
 520030127,latitude,,,,1/30/2020
@@ -13335,7 +12912,6 @@ job_number,field,old_value,new_value,reason,edited_date
 520035863,classa_init,,,Shed demolition - zero out units init,1/30/2020
 520036096,latitude,,,,1/30/2020
 520036096,longitude,,,,1/30/2020
-520037932,occ_category,,,Manual edit of demo with res units,2/27/2020
 520039459,latitude,,,,1/22/2020
 520039459,longitude,,,,1/22/2020
 520039592,classa_init,,,duplicate demo complete - zero out units init,1/30/2020
@@ -13392,11 +12968,9 @@ job_number,field,old_value,new_value,reason,edited_date
 520078317,occ_proposed,,,change occ_prop,8/13/2019
 520078317,otherb_prop,,,,2/13/2020
 520078317,classa_prop,,,,2/13/2020
-520080554,occ_category,,,change occ_prop,8/13/2019
 520080554,occ_proposed,,,change occ_prop,8/13/2019
 520085023,latitude,,,,1/30/2020
 520085023,longitude,,,,1/30/2020
-520086905,occ_category,,,Manual edit of demo with res units,2/27/2020
 520089813,latitude,,,,1/30/2020
 520089813,longitude,,,,1/30/2020
 520090035,occ_proposed,,,change occ_prop,8/13/2019
@@ -13538,9 +13112,7 @@ job_number,field,old_value,new_value,reason,edited_date
 520102317,longitude,,,,1/30/2020
 520102326,latitude,,,,1/30/2020
 520102326,longitude,,,,1/30/2020
-520103584,occ_category,,,change occ_prop,8/13/2019
 520103584,occ_proposed,,,change occ_prop,8/13/2019
-520103600,occ_category,,,change occ_prop,8/13/2019
 520103600,occ_proposed,,,change occ_prop,8/13/2019
 520104351,latitude,,,,1/30/2020
 520104351,longitude,,,,1/30/2020
@@ -13593,7 +13165,6 @@ job_number,field,old_value,new_value,reason,edited_date
 520147840,latitude,,,,1/30/2020
 520147840,longitude,,,,1/30/2020
 520148705,occ_proposed,,,change occ_prop,8/13/2019
-520160307,occ_category,,,Manual edit of demo with res units,2/27/2020
 520163796,classa_init,,,Shed demolition - zero out units init,1/30/2020
 520166301,latitude,,,,1/30/2020
 520166301,longitude,,,,1/30/2020
@@ -14162,8 +13733,6 @@ job_number,field,old_value,new_value,reason,edited_date
 520326102,job_inactive,,,Likely duplicate of job 520384469. Verify in 20Q2,1/30/2020
 520326923,latitude,,,,1/30/2020
 520326923,longitude,,,,1/30/2020
-520327174,occ_category,,,Manual edit of demo with res units,2/27/2020
-520327192,occ_category,,,Manual edit of demo with res units,2/27/2020
 520327520,classa_init,,,Pool demolition - zero out units init,1/30/2020
 520328789,occ_proposed,,,change occ_prop,8/13/2019
 520329216,latitude,,,,1/22/2020
@@ -14326,7 +13895,6 @@ job_number,field,old_value,new_value,reason,edited_date
 520361475,latitude,,,,1/30/2020
 520361475,longitude,,,,1/30/2020
 520361670,occ_proposed,,,change occ_prop,8/13/2019
-520363204,occ_category,,,Manual edit of demo with res units,2/27/2020
 520363213,latitude,,,,1/30/2020
 520363213,longitude,,,,1/30/2020
 520364686,latitude,,,,1/30/2020
@@ -14343,7 +13911,6 @@ job_number,field,old_value,new_value,reason,edited_date
 520366979,longitude,,,,1/30/2020
 520366997,latitude,,,,1/30/2020
 520366997,longitude,,,,1/30/2020
-520367077,occ_category,,,Manual edit of demo with res units,2/27/2020
 520367237,latitude,,,,1/30/2020
 520367237,longitude,,,,1/30/2020
 520367246,latitude,,,,1/30/2020
@@ -14392,7 +13959,6 @@ job_number,field,old_value,new_value,reason,edited_date
 520374238,longitude,,,,1/30/2020
 520374906,latitude,,,,1/22/2020
 520374906,longitude,,,,1/22/2020
-520374906,occ_category,,,"Edit of demo with res units using Logic: "" house""",2/27/2020
 520375040,classa_init,,,Shed demolition - zero out units init,1/30/2020
 520376593,latitude,,,,1/30/2020
 520376593,longitude,,,,1/30/2020
