@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS _INIT_qaqc;
 WITH
 -- identify invalid dates in input data
 JOBNUMBER_invalid_dates AS (
-	SELECT job_number,
+	SELECT DISTINCT job_number,
 		 (CASE WHEN is_date(date_lastupdt) 
 		 		OR date_lastupdt IS NULL THEN 0
 		 	ELSE 1 END) as invalid_date_lastupdt,
