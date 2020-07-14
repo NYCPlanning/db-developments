@@ -128,7 +128,6 @@ SELECT a.job_number,
             THEN  a.classa_net 
             ELSE NULL END as permitted, 
         CASE WHEN a.job_status = '9. Withdrawn'
-                AND a.job_inactive IS NULL
             THEN  a.classa_net 
             ELSE NULL END as withdrawn, 
         CASE WHEN a.job_status <> '9. Withdrawn'
