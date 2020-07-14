@@ -11,7 +11,6 @@ SELECT
     a.units_co_prop_mismatch,
     a.units_init_null,
     a.units_prop_null,
-    a.dem_nb_overlap,
     a.dup_bbl_address_units,
     a.units_res_accessory,
     a.dup_bbl_address,
@@ -29,7 +28,8 @@ SELECT
     a.outlier_nb_500plus,
     a.outlier_top_alt_increase,
     a.z_inactive_with_update,
-    a.z_incomp_tract_home
+    a.z_incomp_tract_home,
+    a.dem_nb_overlap
 INTO FINAL_qaqc
 FROM MID_qaqc a
 LEFT JOIN GEO_qaqc b
