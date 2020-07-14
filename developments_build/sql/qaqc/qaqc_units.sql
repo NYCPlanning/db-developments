@@ -3,7 +3,6 @@
     outlier_nb_500plus
     outlier_demo_20plus
     outlier_top_alt_increase
-    outlier_top_alt_decrease
 **/
 
 DROP TABLE IF EXISTS UNITS_qaqc;
@@ -67,15 +66,7 @@ SELECT a.*,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_top_alt_inc) THEN 1
 	 	ELSE 0
-	END) as outlier_top_alt_increase,
-    (CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_top_alt_dec) THEN 1
-	 	ELSE 0
-	END) as outlier_top_alt_decrease,
-    (CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_top_alt_dec) THEN 1
-	 	ELSE 0
-	END) as greatest_alt_net_dec
+	END) as outlier_top_alt_increase
 
 INTO UNITS_qaqc
 FROM _INIT_qaqc a;
