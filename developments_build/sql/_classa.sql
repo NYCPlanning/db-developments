@@ -51,8 +51,7 @@ SELECT
 	job_number,
 	job_type,
 	classa_init,
-	classa_prop,
-
+	classa_prop
 INTO _CLASSA_devdb
 FROM INIT_OCC_devdb;
 
