@@ -36,7 +36,7 @@ mkdir -p output
 
     wait
     display "CSV Export Complete"
-
+    echo "[$(date)] $VERSION" > version.txt
 )
 
 zip -r output/output.zip output
