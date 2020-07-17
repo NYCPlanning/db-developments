@@ -32,7 +32,7 @@ IN PREVIOUS VERSION:
 	units_net.sql
 */
 
-DROP TABLE IF EXISTS _UNITS_devdb;
+DROP TABLE IF EXISTS _CLASSA_devdb;
 WITH
 INIT_OCC_devdb as (
 	SELECT 
