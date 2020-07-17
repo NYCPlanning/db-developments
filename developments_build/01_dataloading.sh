@@ -79,6 +79,9 @@ psql $BUILD_ENGINE -c "
         commntydst text,
         councildst text
     );
+
+    UPDATE doe_school_subdistricts
+    SET wkb_geometry = st_multi(ST_CollectionExtract(wkb_geometry,3));
 "
 
 imports_csv lookup_occ &
@@ -87,7 +90,6 @@ imports_csv housing_input_research &
 imports_csv census_units10 &
 imports_csv census_units10adj &
 imports_csv lookup_geo
-
 
 wait 
 display "data loading is complete"
