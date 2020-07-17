@@ -11,7 +11,7 @@ on:
       
 jobs:
   Build:
-    name: Building ...
+    name: Build
     runs-on: ubuntu-latest
     env:
       RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}

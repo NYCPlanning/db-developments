@@ -79,9 +79,9 @@ psql $BUILD_ENGINE -c "
         commntydst text,
         councildst text
     );
-
-    UPDATE doe_school_subdistricts
-    SET wkb_geometry = st_multi(ST_CollectionExtract(wkb_geometry,3));
+    
+    UPDATE doe_school_subdistricts
+    SET wkb_geometry = st_multi(ST_CollectionExtract(wkb_geometry,3));
 "
 
 imports_csv lookup_occ &
