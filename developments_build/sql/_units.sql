@@ -52,6 +52,7 @@ INIT_OCC_devdb as (
 ),
 
 -- Take manually-created class B and hotel unit fields from corrections file
+-- Do not populate hotels or class B if class A is corrected
 UNITS_hotel_init AS (
 	SELECT a.*, b.hotel_init
 		FROM INIT_OCC_devdb a
@@ -59,7 +60,10 @@ UNITS_hotel_init AS (
 		(SELECT job_number, new_value::numeric as hotel_init
 		FROM housing_input_research
 		WHERE field = 'hotel_init'
-		AND old_value IS NULL) b
+		AND job_number NOT IN
+		(SELECT job_number 
+		FROM housing_input_research
+		WHERE field = 'classa_init')) b
 		ON a.job_number = b.job_number
 ),
 
@@ -70,7 +74,10 @@ UNITS_hotel_prop AS (
 		(SELECT job_number, new_value::numeric as hotel_prop
 		FROM housing_input_research
 		WHERE field = 'hotel_prop'
-		AND old_value IS NULL) b
+		AND job_number NOT IN
+		(SELECT job_number 
+		FROM housing_input_research
+		WHERE field = 'classa_prop')) b
 		ON a.job_number = b.job_number
 ),
 
@@ -81,7 +88,10 @@ UNITS_classb_init AS (
 		(SELECT job_number, new_value::numeric as otherb_init
 		FROM housing_input_research
 		WHERE field = 'otherb_init'
-		AND old_value IS NULL) b
+		AND job_number NOT IN
+		(SELECT job_number 
+		FROM housing_input_research
+		WHERE field = 'classa_init')) b
 		ON a.job_number = b.job_number
 ),
 
@@ -92,7 +102,10 @@ UNITS_classb_prop AS (
 		(SELECT job_number, new_value::numeric as otherb_prop
 		FROM housing_input_research
 		WHERE field = 'otherb_prop'
-		AND old_value IS NULL) b
+		AND job_number NOT IN
+		(SELECT job_number 
+		FROM housing_input_research
+		WHERE field = 'classa_prop')) b
 		ON a.job_number = b.job_number
 )
 SELECT 
