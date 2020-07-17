@@ -58,6 +58,7 @@ display "Creating UNITS fields: classa_init,
       otherb_init,
       otherb_prop,
       classa_net"
+psql $BUILD_ENGINE -f sql/_classa.sql
 psql $BUILD_ENGINE -f sql/_units.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_units.sql
 count UNITS_devdb
