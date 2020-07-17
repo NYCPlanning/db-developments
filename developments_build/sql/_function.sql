@@ -75,8 +75,8 @@ CREATE OR REPLACE FUNCTION get_csd(
     _geom geometry
   ) 
     RETURNS varchar AS $$
-      SELECT  lpad(b.schooldist::text,2,'0')
-      FROM dcp_school_districts b
+      SELECT  coundist::varchar
+      FROM dcp_councildistricts b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
@@ -190,16 +190,23 @@ CREATE OR REPLACE FUNCTION get_schoolsubdist(
   $$ LANGUAGE sql;
 
 DROP TABLE IF EXISTS dof_shoreline_subdivide;
-select ST_SubDivide(wkb_geometry, 100) as wkb_geometry 
-into dof_shoreline_subdivide
-FROM dof_shoreline;
+DROP INDEX IF EXISTS dof_shoreline_subdivide_wkb_geometry_geom_idx;
+SELECT
+	ROW_NUMBER() OVER(order by wkb_geometry) as id,
+	st_makevalid(wkb_geometry) as wkb_geometry
+INTO dof_shoreline_subdivide
+FROM (
+  SELECT ST_SubDivide(wkb_geometry, 100) as wkb_geometry 
+  FROM dof_shoreline) a;
+CREATE INDEX dof_shoreline_subdivide_wkb_geometry_geom_idx ON dof_shoreline_subdivide USING GIST (wkb_geometry gist_geometry_ops_2d);
 
 CREATE OR REPLACE FUNCTION in_water(
     _geom geometry
   ) 
     RETURNS boolean AS $$
-      SELECT ST_Within(_geom, b.wkb_geometry) 
+      SELECT id IS NOT NULL
       FROM dof_shoreline_subdivide b 
+      WHERE st_intersects(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION flag_nonres(

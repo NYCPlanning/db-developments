@@ -69,7 +69,10 @@ DRAFT as (
         a.date_lastupdt,
         a.job_desc,
         b.geo_bbl,
-        NULLIF(RIGHT(b.geo_bin,6),'000000') as geo_bin,
+        (CASE 
+            WHEN RIGHT(b.geo_bin,6) = '000000' THEN NULL
+            ELSE b.geo_bin
+        END) as geo_bin,
         b.geo_address_numbr,
         b.geo_address_street,
         concat(
@@ -77,7 +80,7 @@ DRAFT as (
             trim(b.geo_address_street)
         )as geo_address,
         b.geo_zipcode,
-        b.geo_boro, 
+        COALESCE(REPLACE(b.geo_boro,'0', LEFT(b.geo_bin, 1)), a.boro) as geo_boro, 
         b.geo_cd,
         b.geo_council,
         b.geo_ntacode2010, 

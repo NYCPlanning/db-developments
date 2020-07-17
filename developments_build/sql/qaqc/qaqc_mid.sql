@@ -107,12 +107,13 @@ JOBNUMBER_b_likely AS (
     FROM MID_devdb
     WHERE occ_initial ~* 'hotel|assisted|incapacitated|restrained'
 	OR occ_proposed ~* 'hotel|assisted|incapacitated|restrained'
-    OR job_desc ~* CONCAT('Hotel|Motel|Boarding|Hoste|Lodge|UG 5', '|',
-                          'Group 5|Grp 5|Class B|SRO|Single room', '|',
-                          'Furnished|Rooming unit|Dorm|Transient', '|',
-                          'Homeless|Shelter|Group quarter|Beds', '|',
-                          'Convent|Monastery|Accommodation|Harassment', '|',
-                          'CNH|Settlement|Halfway|Nursing home|Assisted|')
+    OR job_desc ~* CONCAT('Hotel|Motel|Boarding|Hostel|Lodge|UG 5', '|',
+                          'Group 5|Grp 5|Class B|Class ''b''|Class "b"', '|',
+                          'SRO |Single room|Furnished|Rooming unit', '|',
+						  'Dorm |Dorms |Dormitor|Transient|Homeless', '|',
+                          'Shelter|Group quarter|Beds|Convent|Monastery', '|',
+                          'Accommodation|Harassment|CNH|Settlement|Halfway', '|',
+                          'Nursing home|Assisted')
 ),
 JOBNUMBER_co_prop_mismatch AS (
     SELECT job_number, co_latest_certtype
