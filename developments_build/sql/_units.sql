@@ -38,7 +38,7 @@ IN PREVIOUS VERSION:
 	units_net.sql
 */
 
-DROP TABLE IF EXISTS _UNITS_devdb;
+DROP TABLE IF EXISTS UNITS_devdb;
 WITH
 CLASSA_init_corrected AS (
     SELECT job_number
