@@ -11,7 +11,7 @@ on:
       
 jobs:
   Build:
-    name: Build
+    name: Building ...
     runs-on: ubuntu-latest
     env:
       RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
@@ -45,6 +45,12 @@ jobs:
         shell: bash
         run: |
           source config.sh
+
+          psql $BUILD_ENGINE -c "
+            UPDATE doe_school_subdistricts
+            SET wkb_geometry = st_multi(ST_CollectionExtract(wkb_geometry,3));
+          "
+
           psql $BUILD_ENGINE -f sql/_function.sql
           psql $BUILD_ENGINE -f sql/_init.sql
           
