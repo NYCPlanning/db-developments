@@ -53,7 +53,7 @@ UNITS_hotel_init AS (
 	SELECT a.*, b.hotel_init
 		FROM INIT_OCC_devdb a
 		LEFT JOIN
-		(SELECT job_number, new_value::numeric as hotel_init
+		(SELECT job_number, old_value::numeric, new_value::numeric as hotel_init
 		FROM housing_input_research
 		WHERE field = 'hotel_init') b
 		ON a.job_number = b.job_number
@@ -64,7 +64,7 @@ UNITS_hotel_prop AS (
 	SELECT a.*, b.hotel_prop 
 		FROM UNITS_hotel_init a
 		LEFT JOIN
-		(SELECT job_number, new_value::numeric as hotel_prop
+		(SELECT job_number, old_value::numeric, new_value::numeric as hotel_prop
 		FROM housing_input_research
 		WHERE field = 'hotel_prop') b
 		ON a.job_number = b.job_number
@@ -75,7 +75,7 @@ UNITS_classb_init AS (
 	SELECT a.*, b.otherb_init
 		FROM UNITS_hotel_prop a
 		LEFT JOIN
-		(SELECT job_number, new_value::numeric as otherb_init
+		(SELECT job_number, old_value::numeric, new_value::numeric as otherb_init
 		FROM housing_input_research
 		WHERE field = 'otherb_init') b
 		ON a.job_number = b.job_number
@@ -86,7 +86,7 @@ UNITS_classb_prop AS (
 	SELECT a.*, b.otherb_prop
 		FROM UNITS_classb_init a
 		LEFT JOIN
-		(SELECT job_number, new_value::numeric as otherb_prop
+		(SELECT job_number, old_value::numeric, new_value::numeric as otherb_prop
 		FROM housing_input_research
 		WHERE field = 'otherb_prop') b
 		ON a.job_number = b.job_number
