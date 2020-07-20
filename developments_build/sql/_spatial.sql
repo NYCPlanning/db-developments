@@ -124,7 +124,7 @@ FROM GEO_devdb a
 )
 SELECT
     a.*,
-    b.fips_boro||a._geo_censustract2010||a._geo_censustract2010 as geo_censusblock2010,
+    b.fips_boro||a._geo_censustract2010||a._geo_censusblock2010 as geo_censusblock2010,
     b.bctcb2010,
     b.fips_boro||a._geo_censustract2010 as geo_censustract2010,
     b.bct2010,
