@@ -125,7 +125,7 @@ JOBNUMBER_incomplete_tract AS (
     SELECT job_number
     FROM MID_devdb
     WHERE tracthomes = 'Y'
-    AND job_status LIKE 'Complete'
+    AND job_status ~* '1|2|3'
 ),
 _MID_qaqc AS (
 SELECT 
@@ -159,7 +159,7 @@ SELECT
 		)  ELSE NULL
 	END) as units_co_prop_mismatch,
 	(CASE 
-		WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_co_prop_mismatch) 
+		WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_incomplete_tract) 
 		THEN 1 ELSE 0
 	END) as z_incomp_tract_home,
 	(CASE 
