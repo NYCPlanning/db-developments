@@ -187,12 +187,12 @@ JOIN_units as (
         END) as classa_complt_pct,
         b.classa_net - a.co_latest_units as classa_complt_diff,
         (CASE 
-            WHEN hotel_init IS NOT NULL
-                OR hotel_prop IS NOT NULL
-                OR otherb_init IS NOT NULL
-                OR otherb_prop IS NOT NULL
-                OR classa_init IS NOT NULL 
-                OR classa_prop IS NOT NULL
+            WHEN (hotel_init IS NOT NULL AND hotel_init <> '0')
+                OR (hotel_prop IS NOT NULL AND hotel_prop <> '0')
+                OR (otherb_init IS NOT NULL AND otherb_init <> '0')
+                OR (otherb_prop IS NOT NULL AND otherb_prop <> '0')
+                OR (classa_init IS NOT NULL AND classa_init <> '0')
+                OR (classa_prop IS NOT NULL AND classa_prop <> '0')
                 THEN 'Residential' 
         END) as resid_flag
     FROM JOIN_co a
