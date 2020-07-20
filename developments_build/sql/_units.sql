@@ -58,7 +58,7 @@ UNITS_hotel_init AS (
 		WHERE field = 'hotel_init') b
 		ON a.job_number = b.job_number
 		AND (a.classa_init = b.old_value 
-		OR a.classa_init IS NULL AND b.old_value IS NULL)
+		OR (a.classa_init IS NULL AND b.old_value IS NULL))
 ),
 
 UNITS_hotel_prop AS (
@@ -70,7 +70,7 @@ UNITS_hotel_prop AS (
 		WHERE field = 'hotel_prop') b
 		ON a.job_number = b.job_number
 		AND (a.classa_prop = b.old_value
-		OR a.classa_prop IS NULL AND b.old_value IS NULL)
+		OR (a.classa_prop IS NULL AND b.old_value IS NULL))
 ),
 
 UNITS_classb_init AS (
@@ -82,7 +82,7 @@ UNITS_classb_init AS (
 		WHERE field = 'otherb_init') b
 		ON a.job_number = b.job_number
 		AND (a.classa_init = b.old_value
-		OR a.classa_init IS NULL AND b.old_value IS NULL)
+		OR (a.classa_init IS NULL AND b.old_value IS NULL))
 ),
 
 UNITS_classb_prop AS (
@@ -94,7 +94,7 @@ UNITS_classb_prop AS (
 		WHERE field = 'otherb_prop') b
 		ON a.job_number = b.job_number
 		AND (a.classa_prop = b.old_value
-		OR a.classa_prop IS NULL AND b.old_value IS NULL)
+		OR (a.classa_prop IS NULL AND b.old_value IS NULL))
 )
 SELECT 
 	distinct 
