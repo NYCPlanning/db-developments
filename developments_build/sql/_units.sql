@@ -154,10 +154,6 @@ WITH CORR_target as (
 	AND (a.classa_prop = b.old_value::numeric 
 		OR (a.classa_prop IS NULL 
 		AND b.old_value IS NULL))
-	AND a.job_number NOT IN (
-		SELECT job_number 
-		FROM housing_input_research 
-		WHERE field = 'units_prop_res')
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'classa_prop'),
