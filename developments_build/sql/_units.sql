@@ -57,7 +57,8 @@ UNITS_hotel_init AS (
 		FROM housing_input_research
 		WHERE field = 'hotel_init') b
 		ON a.job_number = b.job_number
-		AND a.classa_init = b.old_value
+		AND (a.classa_init = b.old_value 
+		OR (a.classa_init IS NULL AND b.old_value IS NULL))
 ),
 
 UNITS_hotel_prop AS (
@@ -68,7 +69,8 @@ UNITS_hotel_prop AS (
 		FROM housing_input_research
 		WHERE field = 'hotel_prop') b
 		ON a.job_number = b.job_number
-		AND a.classa_prop = b.old_value
+		AND (a.classa_prop = b.old_value
+		OR (a.classa_prop IS NULL AND b.old_value IS NULL))
 ),
 
 UNITS_classb_init AS (
@@ -79,7 +81,8 @@ UNITS_classb_init AS (
 		FROM housing_input_research
 		WHERE field = 'otherb_init') b
 		ON a.job_number = b.job_number
-		AND a.classa_init = b.old_value
+		AND (a.classa_init = b.old_value
+		OR (a.classa_init IS NULL AND b.old_value IS NULL))
 ),
 
 UNITS_classb_prop AS (
@@ -90,7 +93,8 @@ UNITS_classb_prop AS (
 		FROM housing_input_research
 		WHERE field = 'otherb_prop') b
 		ON a.job_number = b.job_number
-		AND a.classa_prop = b.old_value
+		AND (a.classa_prop = b.old_value
+		OR (a.classa_prop IS NULL AND b.old_value IS NULL))
 )
 SELECT 
 	distinct 
@@ -150,10 +154,6 @@ WITH CORR_target as (
 	AND (a.classa_prop = b.old_value::numeric 
 		OR (a.classa_prop IS NULL 
 		AND b.old_value IS NULL))
-	AND a.job_number NOT IN (
-		SELECT job_number 
-		FROM housing_input_research 
-		WHERE field = 'units_prop_res')
 )
 UPDATE CORR_devdb a
 SET x_dcpedited = array_append(x_dcpedited, 'classa_prop'),
