@@ -131,7 +131,3 @@ DROP TABLE IF EXISTS SHP_housing;
 SELECT * INTO SHP_housing
 FROM SHP_devdb
 WHERE "ResidFlag" = 'Residential';
-
-DROP TABLE IF EXISTS manual_corrections;
-ALTER TABLE housing_input_research
-RENAME TO manual_corrections;
