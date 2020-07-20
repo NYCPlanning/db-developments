@@ -109,6 +109,7 @@ SELECT
 	job_type,
 	classa_init,
 	classa_prop,
+	classa_net,
 	hotel_init,
 	hotel_prop,
 	otherb_init,
