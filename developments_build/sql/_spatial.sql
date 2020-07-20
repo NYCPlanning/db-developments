@@ -66,7 +66,7 @@ SELECT
 		OR a.geo_censustract2010 = '000000' 
         OR a.mode = 'tpad'
         THEN get_cb(geom)
-    ELSE a.geo_censusblock2010 END) as geo_censusblock2010, 
+    ELSE a.geo_censusblock2010 END) as _geo_censusblock2010, 
 
     -- geo_censustract2010
    (CASE WHEN a.geo_censustract2010 IS NULL 
@@ -74,7 +74,7 @@ SELECT
 		OR a.geo_censustract2010 = '000000'
         OR a.mode = 'tpad' 
         THEN get_ct(geom)
-    ELSE a.geo_censustract2010 END) as geo_censustract2010, 
+    ELSE a.geo_censustract2010 END) as _geo_censustract2010, 
    
     -- geo_csd
     (CASE WHEN a.geo_csd IS NULL 
@@ -124,6 +124,8 @@ FROM GEO_devdb a
 )
 SELECT
     a.*,
+    b.fips_boro||a._geo_censustract2010||a._geo_censustract2010 as geo_censusblock2010,
+    b.fips_boro||a._geo_censustract2010 as geo_censusblock2010,
     b.nta as geo_ntacode2010,
     b.ntaname as geo_ntaname2010,
     b.puma as geo_puma,
@@ -132,4 +134,4 @@ SELECT
 INTO SPATIAL_devdb
 FROM DRAFT_spatial a
 LEFT JOIN lookup_geo b
-ON a.geo_boro||a.geo_censustract2010||a.geo_censusblock2010 = b.bctcb2010;
+ON a.geo_boro||a._geo_censustract2010||a._geo_censusblock2010 = b.bctcb2010;
