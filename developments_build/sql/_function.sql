@@ -219,13 +219,13 @@ CREATE OR REPLACE FUNCTION flag_nonres(
     SELECT
     (CASE 
           WHEN _job_description ~* concat(
-            'commer|retail|office|mixed|use|mixed-use|mixeduse|store|shop','|',
+            'commer|retail|office|mixed use|mixed-use|mixeduse|store|shop','|',
             'cultur|fitness|gym|service|eating|drink|grocery|market|restau','|',
             'food|cafeteria|cabaret|leisure|entertainment|industrial|manufact','|',
-            'warehouse|wholesale|fabric|utility|auto|storage|factor|barn|sound','|',
-            'stage|communit|facility|theater|theatre|club|stadium|repair|assembl','|',
+            'warehouse|wholesale|fabric|utility|auto|storage|factor|barn|sound stage','|',
+            'communit|facility|theater|theatre|club|stadium|repair|assembl','|',
             'pavilion|arcade|educat|elementary|school|academy|training|library','|',
-            'museum|institut|daycare|day|care|worship|church|synago|religio|hotel','|',
+            'museum|institut|daycare|day care|worship|church|synago|religio|hotel','|',
             'motel|transient|health|hospital|classro|clinic|medical|doctor|ambula','|',
             'treatment|diagnos|station|dental|public|tech|science|studies|bank','|',
             'exercise|dancing|dance|gallery|bowling|mercant|veterina|beauty|salon'
