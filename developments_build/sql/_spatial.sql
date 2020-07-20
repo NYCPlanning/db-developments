@@ -125,7 +125,9 @@ FROM GEO_devdb a
 SELECT
     a.*,
     b.fips_boro||a._geo_censustract2010||a._geo_censustract2010 as geo_censusblock2010,
+    b.bctcb2010,
     b.fips_boro||a._geo_censustract2010 as geo_censustract2010,
+    b.bct2010,
     b.nta as geo_ntacode2010,
     b.ntaname as geo_ntaname2010,
     b.puma as geo_puma,
