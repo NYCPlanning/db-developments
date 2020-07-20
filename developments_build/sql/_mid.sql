@@ -128,6 +128,8 @@ JOIN_date_permittd as (
         a.geo_ntaname2010,
         a.geo_censusblock2010,
         a.geo_censustract2010,
+        a.bctcb2010,
+        a.bct2010,
         a.geo_csd,
         a.geo_policeprct,
         a.geo_firedivision,
