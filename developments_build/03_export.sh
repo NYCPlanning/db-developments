@@ -32,10 +32,11 @@ mkdir -p output
     
     display "Export Corrections"
     CSV_export CORR_hny_matches &
-    CSV_export housing_input_research
-    mv housing_input_research.csv manual_corrections.csv
+    CSV_export manual_corrected &
+    CSV_export housing_input_research 
 
     wait
+    mv housing_input_research.csv manual_corrections.csv
     display "CSV Export Complete"
     echo "[$(date)] $VERSION" > version.txt
 )
