@@ -125,11 +125,7 @@ WITH CORR_target as (
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'classa_init'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'classa_init', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'classa_init')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -141,7 +137,7 @@ AND b.field = 'classa_init'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'classa_init'=any(x_dcpedited));
+	WHERE 'classa_init'=any(dcpeditfields));
 
 -- classa_prop
 WITH CORR_target as (
@@ -156,11 +152,7 @@ WITH CORR_target as (
 		AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'classa_prop'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'classa_prop', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'classa_prop')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -172,7 +164,7 @@ AND b.field = 'classa_prop'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'classa_prop'=any(x_dcpedited));
+	WHERE 'classa_prop'=any(dcpeditfields));
 
 /*
 ASSIGN classa_net
