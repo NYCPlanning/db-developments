@@ -127,7 +127,7 @@ WITH CORR_target as (
 		b.edited_date
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
-	AND b.field = 'otherb'
+	AND b.field = 'otherb_init'
 	AND (a.classa_init=b.old_value::numeric 
 		OR (a.classa_init IS NULL 
 			AND b.old_value IS NULL))
