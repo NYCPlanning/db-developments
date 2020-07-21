@@ -45,6 +45,16 @@ OUTPUTS:
         * job_number,
         ...
     )
+
+    manual_corrected (
+        job_number text,
+        field text,
+        old_value text,
+        new_value text,
+        reason text,
+        edited_date text
+
+    )
 */
 DROP TABLE IF EXISTS FINAL_devdb;
 WITH
@@ -204,3 +214,20 @@ SELECT
     :'VERSION' as version
 INTO FINAL_devdb
 FROM JOIN_CORR_devdb;
+
+SELECT 
+	a.job_number,
+	a.field,
+	b.old_value,
+	b.new_value,
+	b.reason,
+    b.edited_date
+INTO manual_corrected
+FROM (
+	SELECT 
+		job_number, 
+		unnest(dcpeditfields) as field
+	from corr_devdb
+) a JOIN housing_input_research b
+ON a.job_number = b.job_number 
+and a.field = b.field;
