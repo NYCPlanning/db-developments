@@ -232,8 +232,7 @@ WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
 DROP TABLE IF EXISTS CORR_devdb;
 SELECT 
 	a.job_number,
-	array[]::text[] as x_dcpedited,
-	array[]::json[] as dcpeditfields
+	array[]::text[] as dcpeditfields
 INTO CORR_devdb
 FROM (
 	SELECT
@@ -267,11 +266,7 @@ WITH CORR_target as (
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'stories_prop'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'stories_prop', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'stories_prop')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -282,7 +277,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'stories_prop'=any(x_dcpedited));
+	WHERE 'stories_prop'=any(dcpeditfields));
 
 
 -- bbl
@@ -296,11 +291,7 @@ WITH CORR_target as (
 	AND a.bbl IS NULL AND b.old_value IS NOT NULL
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'bbl'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'bbl', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'bbl')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -311,7 +302,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'bbl'=any(x_dcpedited));
+	WHERE 'bbl'=any(dcpeditfields));
 
 -- bin
 WITH CORR_target as (
@@ -324,11 +315,7 @@ WITH CORR_target as (
 	AND a.bbl IS NULL AND b.old_value IS NOT NULL
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'bin'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'bin', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'bin')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -339,7 +326,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'bin'=any(x_dcpedited));
+	WHERE 'bin'=any(dcpeditfields));
 
 -- date_lastupdt
 WITH CORR_target as (
@@ -355,11 +342,7 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'date_lastupdt'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'date_lastupdt', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'date_lastupdt')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -370,7 +353,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'date_lastupdt'=any(x_dcpedited));
+	WHERE 'date_lastupdt'=any(dcpeditfields));
 
 -- date_filed
 WITH CORR_target as (
@@ -383,11 +366,7 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'date_filed'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'date_filed', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'date_filed')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -398,7 +377,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'date_filed'=any(x_dcpedited));
+	WHERE 'date_filed'=any(dcpeditfields));
 
 -- date_statusd
 WITH CORR_target as (
@@ -411,11 +390,7 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'date_statusd'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'date_statusd', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'date_statusd')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -426,7 +401,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'date_statusd'=any(x_dcpedited));
+	WHERE 'date_statusd'=any(dcpeditfields));
 
 -- date_statusp
 WITH CORR_target as (
@@ -439,11 +414,7 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'date_statusp'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'date_statusp', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'date_statusp')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -454,7 +425,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'date_statusp'=any(x_dcpedited));
+	WHERE 'date_statusp'=any(dcpeditfields));
 
 -- date_statusr
 WITH CORR_target as (
@@ -467,11 +438,7 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'date_statusr'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'date_statusr', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'date_statusr')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -482,7 +449,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'date_statusr'=any(x_dcpedited));
+	WHERE 'date_statusr'=any(dcpeditfields));
 
 -- date_statusx
 WITH CORR_target as (
@@ -495,11 +462,7 @@ WITH CORR_target as (
 	AND is_date(b.new_value)
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'date_statusx'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'date_statusx', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'date_statusx')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -510,5 +473,5 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'date_statusx'=any(x_dcpedited));
+	WHERE 'date_statusx'=any(dcpeditfields));
 
