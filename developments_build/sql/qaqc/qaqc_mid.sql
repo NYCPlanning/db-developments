@@ -91,7 +91,7 @@ JOBNUMBER_nonres_units AS (
 JOBNUMBER_accessory AS (
 	SELECT job_number
 	FROM MID_devdb
-	WHERE ((address LIKE '%GAR%' 
+	WHERE ((address_numbr LIKE '%GAR%' 
 					OR job_desc ~* 'pool|shed|gazebo|garage')
 			AND (classa_init::numeric IN (1,2) 
 					OR classa_prop::numeric IN (1,2)))
