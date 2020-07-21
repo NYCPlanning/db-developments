@@ -34,84 +34,154 @@ IN PREVIOUS VERSION:
 */
 
 DROP TABLE IF EXISTS _UNITS_devdb;
-WITH
-INIT_OCC_devdb as (
-	SELECT 
-		a.job_number,
-		a.job_type,
-		b.occ_proposed,
-		b.occ_initial,
-		a.classa_init,
-		a.classa_prop
-	FROM INIT_devdb a
-	LEFT JOIN OCC_devdb b
-	ON a.job_number = b.job_number
-),
-
--- Take manually-created class B and hotel unit fields from corrections file
-UNITS_hotel_init AS (
-	SELECT a.*, b.hotel_init
-		FROM INIT_OCC_devdb a
-		LEFT JOIN
-		(SELECT job_number, old_value::numeric, new_value::numeric as hotel_init
-		FROM housing_input_research
-		WHERE field = 'hotel_init') b
-		ON a.job_number = b.job_number
-		AND (a.classa_init = b.old_value 
-		OR (a.classa_init IS NULL AND b.old_value IS NULL))
-),
-
-UNITS_hotel_prop AS (
-	SELECT a.*, b.hotel_prop 
-		FROM UNITS_hotel_init a
-		LEFT JOIN
-		(SELECT job_number, old_value::numeric, new_value::numeric as hotel_prop
-		FROM housing_input_research
-		WHERE field = 'hotel_prop') b
-		ON a.job_number = b.job_number
-		AND (a.classa_prop = b.old_value
-		OR (a.classa_prop IS NULL AND b.old_value IS NULL))
-),
-
-UNITS_classb_init AS (
-	SELECT a.*, b.otherb_init
-		FROM UNITS_hotel_prop a
-		LEFT JOIN
-		(SELECT job_number, old_value::numeric, new_value::numeric as otherb_init
-		FROM housing_input_research
-		WHERE field = 'otherb_init') b
-		ON a.job_number = b.job_number
-		AND (a.classa_init = b.old_value
-		OR (a.classa_init IS NULL AND b.old_value IS NULL))
-),
-
-UNITS_classb_prop AS (
-	SELECT a.*, b.otherb_prop
-		FROM UNITS_classb_init a
-		LEFT JOIN
-		(SELECT job_number, old_value::numeric, new_value::numeric as otherb_prop
-		FROM housing_input_research
-		WHERE field = 'otherb_prop') b
-		ON a.job_number = b.job_number
-		AND (a.classa_prop = b.old_value
-		OR (a.classa_prop IS NULL AND b.old_value IS NULL))
-)
-SELECT 
-	distinct 
-	job_number,
-	job_type,
-	classa_init,
-	classa_prop,
-	hotel_init,
-	hotel_prop,
-	otherb_init,
-	otherb_prop
+SELECT DISTINCT
+	a.job_number,
+	a.job_type,
+	b.occ_proposed,
+	b.occ_initial,
+	a.classa_init,
+	a.classa_prop,
+	NULL as hotel_init,
+	NULL as hotel_prop,
+	NULL as otherb_init,
+	NULL as otherb_prop
 INTO _UNITS_devdb
-FROM UNITS_classb_prop;
+FROM INIT_devdb a
+LEFT JOIN OCC_devdb b
+ON a.job_number = b.job_number;
+
 
 /*
 CORRECTIONS
+Note that hotel/otherb corrections match old_value with
+the associated classa field. As a result, these corrections
+get applied prior to the classa corrections.
 */
+
+-- hotel_init
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
+	FROM _UNITS_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'hotel_init'
+	AND (a.classa_init=b.old_value::numeric 
+		OR (a.classa_init IS NULL 
+			AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = array_append(x_dcpedited, 'hotel_init'),
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
+		'field', 'hotel_init', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _UNITS_devdb a
+SET hotel_init = b.new_value::numeric
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'hotel_init'
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE 'hotel_init'=any(x_dcpedited));
+
+-- hotel_prop
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
+	FROM _UNITS_devdb a, housing_input_research b
+	WHERE a.job_number = b.job_number
+	AND b.field = 'hotel_prop'
+	AND (a.classa_prop = b.old_value::numeric 
+		OR (a.classa_prop IS NULL 
+		AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = array_append(x_dcpedited, 'hotel_prop'),
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
+		'field', 'hotel_prop', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _UNITS_devdb a
+SET hotel_prop = b.new_value::numeric
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'hotel_prop'
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE 'hotel_prop'=any(x_dcpedited));
+
+-- otherb_init
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
+	FROM _UNITS_devdb a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'otherb'
+	AND (a.classa_init=b.old_value::numeric 
+		OR (a.classa_init IS NULL 
+			AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = array_append(x_dcpedited, 'otherb_init'),
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
+		'field', 'otherb_init', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _UNITS_devdb a
+SET otherb_init = b.new_value::numeric
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'otherb_init'
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE 'otherb_init'=any(x_dcpedited));
+
+-- otherb_prop
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
+	FROM _UNITS_devdb a, housing_input_research b
+	WHERE a.job_number = b.job_number
+	AND b.field = 'otherb_prop'
+	AND (a.classa_prop = b.old_value::numeric 
+		OR (a.classa_prop IS NULL 
+		AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET x_dcpedited = array_append(x_dcpedited, 'otherb_prop'),
+	dcpeditfields = array_append(dcpeditfields, json_build_object(
+		'field', 'otherb_prop', 'reason', b.reason, 
+		'edited_date', b.edited_date
+	))
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE _UNITS_devdb a
+SET otherb_prop = b.new_value::numeric
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'otherb_prop'
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE 'otherb_prop'=any(x_dcpedited));
+
 -- classa_init
 WITH CORR_target as (
 	SELECT a.job_number, 
