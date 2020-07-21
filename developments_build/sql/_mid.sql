@@ -238,11 +238,7 @@ WITH CORR_target as (
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited,'resid_flag'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'resid_flag', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields,'resid_flag')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -254,4 +250,4 @@ AND b.field = 'resid_flag'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'resid_flag'=any(x_dcpedited));
+	WHERE 'resid_flag'=any(dcpeditfields));
