@@ -297,6 +297,6 @@ WITH CORR_target as (
         WHERE geomsource = 'Lat/Lon DCP')
 )
 UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'geom')
+SET dcpeditfields = array_cat(dcpeditfields, ARRAY['longitude', 'latitude'])
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
