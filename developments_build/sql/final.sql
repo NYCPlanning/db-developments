@@ -222,7 +222,7 @@ SELECT
 	b.new_value,
 	b.reason,
     b.edited_date
-INTO manual_corrected
+INTO applied_corrections
 FROM (
 	SELECT 
 		job_number, 

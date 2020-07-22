@@ -32,7 +32,7 @@ mkdir -p output
     
     display "Export Corrections"
     CSV_export CORR_hny_matches &
-    CSV_export manual_corrected &
+    CSV_export applied_corrections &
     CSV_export housing_input_research 
 
     wait
