@@ -283,7 +283,7 @@ SET latitude = ST_Y(b.new_geom),
     geomsource = 'Lat/Lon DCP'
 FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
-AND (b.distance < 10 AND b.bbl IS NULL);
+AND (COALESCE(b.distance, 0) < 10 AND b.bbl IS NULL);
 
 WITH CORR_target as (
     SELECT a.job_number, 
