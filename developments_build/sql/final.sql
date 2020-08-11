@@ -215,6 +215,7 @@ SELECT
 INTO FINAL_devdb
 FROM JOIN_CORR_devdb;
 
+DROP TABLE IF EXISTS applied_corrections;
 SELECT 
 	a.job_number,
 	a.field,
