@@ -36,7 +36,8 @@ psql $BUILD_ENGINE -c "
         old_value text,
         new_value text,
         reason text,
-        edited_date text
+        edited_date text,
+        editor text
     );
 
     DROP TABLE IF EXISTS housing_input_hny;

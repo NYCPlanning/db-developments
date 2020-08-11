@@ -221,7 +221,8 @@ SELECT
 	b.old_value,
 	b.new_value,
 	b.reason,
-    b.edited_date
+    b.edited_date,
+    b.editor
 INTO applied_corrections
 FROM (
 	SELECT 
