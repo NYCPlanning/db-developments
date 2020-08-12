@@ -271,7 +271,8 @@ GEOM_corrections as (
         a.new_geom,
         a.reason,
         st_distance(a.new_geom, b.geom) as distance,
-        get_bbl(b.geom) as bbl
+        get_bbl(b.geom) as bbl,
+        in_water(b.geom) in_water
     FROM LONLAT_corrections a
     LEFT JOIN GEO_devdb b
     ON a.job_number = b.job_number
@@ -283,7 +284,7 @@ SET latitude = ST_Y(b.new_geom),
     geomsource = 'Lat/Lon DCP'
 FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
-AND (COALESCE(b.distance, 0) < 10 AND b.bbl IS NULL);
+AND (COALESCE(b.distance, 0) < 10 AND (b.bbl IS NULL OR b.in_water));
 
 WITH CORR_target as (
     SELECT a.job_number, 
