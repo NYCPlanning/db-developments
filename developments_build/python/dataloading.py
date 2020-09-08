@@ -42,7 +42,7 @@ def dob_jobapplications(mode, capture_date):
     recipe_engine = create_engine(RECIPE_ENGINE)
     build_engine = create_engine(BUILD_ENGINE)
     condition = (
-        f"AND latestactiondate::date <= '{capture_date}'" if mode == "edm" else ""
+        f"AND prefilingdate::date <= '{capture_date}'" if mode == "edm" else ""
     )
     df = pd.read_sql(
         f"""
