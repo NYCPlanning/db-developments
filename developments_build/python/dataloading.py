@@ -44,6 +44,7 @@ def dob_jobapplications(mode, capture_date):
     condition = (
         f"AND prefilingdate::date <= '{capture_date}'" if mode == "edm" else ""
     )
+    version = os.environ.get("DOB_DATA_DATE", "") if mode == "edm" else "latest"
     df = pd.read_sql(
         f"""
         SELECT 
@@ -104,7 +105,7 @@ def dob_jobapplications(mode, capture_date):
             specialactionstatus,
             latitude,
             longitude	
-        FROM dob_jobapplications.latest
+        FROM dob_jobapplications."{version}"
         WHERE jobdocnumber = '01'
 		AND jobtype ~* 'A1|DM|NB'
         {condition}
