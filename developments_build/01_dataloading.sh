@@ -11,6 +11,7 @@ docker run --rm\
     -e RECIPE_ENGINE=$RECIPE_ENGINE\
     -e BUILD_ENGINE=$BUILD_ENGINE\
     -e CAPTURE_DATE=$CAPTURE_DATE\
+    -e DOB_DATA_DATE=$DOB_DATA_DATE\
     nycplanning/cook:latest bash -c "
         python3 python/dataloading.py $MODE"
 
