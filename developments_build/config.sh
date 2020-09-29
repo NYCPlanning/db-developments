@@ -84,7 +84,7 @@ function SHP_export {
           PG:"host=$BUILD_HOST user=$BUILD_USER port=$BUILD_PORT dbname=$BUILD_DB password=$BUILD_PWD" \
           -nlt POINT $@
         rm -f $@.zip
-        zip $@.zip *
+        zip -9 $@.zip *
         ls | grep -v $@.zip | xargs rm
       )
 }
