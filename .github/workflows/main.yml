@@ -4,7 +4,7 @@ jobs:
   Build:
     name: Building ...
     if: contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[export]')
-    runs-on: edm-prod
+    runs-on: self-hosted
     env:
       RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
       BUILD_ENGINE: ${{ secrets.BUILD_ENGINE }}
