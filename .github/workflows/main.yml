@@ -53,3 +53,7 @@ jobs:
       - name: 4. archive ...
         working-directory: developments_build
         run: ./04_archive.sh
+    
+      - name: 5. clean up ...
+        working-directory: developments_build
+        run: sudo rm -rf python/utils/__pycache__
