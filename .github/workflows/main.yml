@@ -55,5 +55,6 @@ jobs:
         run: ./04_archive.sh
     
       - name: 5. clean up ...
+        if: ${{ always() }}
         working-directory: developments_build
         run: sudo rm -rf python/utils/__pycache__
