@@ -75,8 +75,8 @@ CREATE OR REPLACE FUNCTION get_csd(
     _geom geometry
   ) 
     RETURNS varchar AS $$
-      SELECT  lpad(b.schooldist::text,2,'0')
-      FROM dcp_school_districts b
+      SELECT  coundist::varchar
+      FROM dcp_councildistricts b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
@@ -190,16 +190,23 @@ CREATE OR REPLACE FUNCTION get_schoolsubdist(
   $$ LANGUAGE sql;
 
 DROP TABLE IF EXISTS dof_shoreline_subdivide;
-select ST_SubDivide(wkb_geometry, 100) as wkb_geometry 
-into dof_shoreline_subdivide
-FROM dof_shoreline;
+DROP INDEX IF EXISTS dof_shoreline_subdivide_wkb_geometry_geom_idx;
+SELECT
+	ROW_NUMBER() OVER(order by wkb_geometry) as id,
+	st_makevalid(wkb_geometry) as wkb_geometry
+INTO dof_shoreline_subdivide
+FROM (
+  SELECT ST_SubDivide(wkb_geometry, 100) as wkb_geometry 
+  FROM dof_shoreline) a;
+CREATE INDEX dof_shoreline_subdivide_wkb_geometry_geom_idx ON dof_shoreline_subdivide USING GIST (wkb_geometry gist_geometry_ops_2d);
 
 CREATE OR REPLACE FUNCTION in_water(
     _geom geometry
   ) 
     RETURNS boolean AS $$
-      SELECT ST_Within(_geom, b.wkb_geometry) 
+      SELECT id IS NOT NULL
       FROM dof_shoreline_subdivide b 
+      WHERE st_intersects(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION flag_nonres(
@@ -212,13 +219,13 @@ CREATE OR REPLACE FUNCTION flag_nonres(
     SELECT
     (CASE 
           WHEN _job_description ~* concat(
-            'commer|retail|office|mixed|use|mixed-use|mixeduse|store|shop','|',
+            'commer|retail|office|mixed use|mixed-use|mixeduse|store|shop','|',
             'cultur|fitness|gym|service|eating|drink|grocery|market|restau','|',
             'food|cafeteria|cabaret|leisure|entertainment|industrial|manufact','|',
-            'warehouse|wholesale|fabric|utility|auto|storage|factor|barn|sound','|',
-            'stage|communit|facility|theater|theatre|club|stadium|repair|assembl','|',
+            'warehouse|wholesale|fabric|utility|auto|storage|factor|barn|sound stage','|',
+            'communit|facility|theater|theatre|club|stadium|repair|assembl','|',
             'pavilion|arcade|educat|elementary|school|academy|training|library','|',
-            'museum|institut|daycare|day|care|worship|church|synago|religio|hotel','|',
+            'museum|institut|daycare|day care|worship|church|synago|religio|hotel','|',
             'motel|transient|health|hospital|classro|clinic|medical|doctor|ambula','|',
             'treatment|diagnos|station|dental|public|tech|science|studies|bank','|',
             'exercise|dancing|dance|gallery|bowling|mercant|veterina|beauty|salon'
@@ -226,39 +233,39 @@ CREATE OR REPLACE FUNCTION flag_nonres(
                 coalesce(_occ_init, ''), ' ', 
                 coalesce(_occ_prop, '')
               ) ~* concat(
-            'Assembly: Eating & Drinking (A-2)','|', 
-            'Assembly: Eating & Drinking (F-4)','|', 
-            'Assembly: Indoor Sports (A-4)','|', 
-            'Assembly: Museums (F-3)','|', 
-            'Assembly: Other (A-3)','|', 
-            'Assembly: Other (PUB)','|', 
-            'Assembly: Outdoors (A-5)','|', 
-            'Assembly: Theaters, Churches(A-1)','|', 
-            'Assembly: Theaters, Churches (F-1A)','|', 
-            'Assembly: Theaters, Churches (F-1B)','|', 
-            'Commercial: Not Specified (COM)','|', 
-            'Commercial: Offices (B)','|', 
-            'Commercial: Retail (C)','|', 
-            'Commercial: Retail (M)','|', 
-            'Educational (G)','|', 
-            'Industrial: High Hazard (A)','|', 
-            'Industrial: High Hazard (H-3)','|', 
-            'Industrial: High Hazard (H-4)','|', 
-            'Industrial: High Hazard (H-5)','|', 
-            'Industrial: Low Hazard (D-2)','|', 
-            'Industrial: Moderate Hazard (D-1)','|', 
-            'Industrial: Moderate Hazard (F-1)','|', 
-            'Institutional: Day Care (I-4)','|', 
-            'Miscellaneous (K)','|', 
-            'Miscellaneous (U)','|', 
-            'Storage: Low Hazard (B-2)','|', 
-            'Storage: Low Hazard (S-2)','|', 
-            'Storage: Moderate Hazard (B-1)','|', 
-            'Storage: Moderate Hazard (S-1)','|', 
-            'Unknown (E)','|', 
-            'Unknown (F-2)','|', 
-            'Unknown (H-1)','|', 
-            'Unknown (H-2)'
+            'Assembly: Eating & Drinking \(A-2\)','|', 
+            'Assembly: Eating & Drinking \(F-4\)','|', 
+            'Assembly: Indoor Sports \(A-4\)','|', 
+            'Assembly: Museums \(F-3\)','|', 
+            'Assembly: Other \(A-3\)','|', 
+            'Assembly: Other \(PUB\)','|', 
+            'Assembly: Outdoors \(A-5\)','|', 
+            'Assembly: Theaters, Churches \(A-1\)','|', 
+            'Assembly: Theaters, Churches \(F-1A\)','|', 
+            'Assembly: Theaters, Churches \(F-1B\)','|', 
+            'Commercial: Not Specified \(COM\)','|', 
+            'Commercial: Offices \(B\)','|', 
+            'Commercial: Retail \(C\)','|', 
+            'Commercial: Retail \(M\)','|', 
+            'Educational \(G\)','|', 
+            'Industrial: High Hazard \(A\)','|', 
+            'Industrial: High Hazard \(H-3\)','|', 
+            'Industrial: High Hazard \(H-4\)','|', 
+            'Industrial: High Hazard \(H-5\)','|', 
+            'Industrial: Low Hazard \(D-2\)','|', 
+            'Industrial: Moderate Hazard \(D-1\)','|', 
+            'Industrial: Moderate Hazard \(F-1\)','|', 
+            'Institutional: Day Care \(I-4\)','|', 
+            'Miscellaneous \(K\)','|', 
+            'Miscellaneous \(U\)','|', 
+            'Storage: Low Hazard \(B-2\)','|', 
+            'Storage: Low Hazard \(S-2\)','|', 
+            'Storage: Moderate Hazard \(B-1\)','|', 
+            'Storage: Moderate Hazard \(S-1\)','|', 
+            'Unknown \(E\)','|', 
+            'Unknown \(F-2\)','|', 
+            'Unknown \(H-1\)','|', 
+            'Unknown \(H-2\)'
           ) OR _resid_flag IS NULL
           THEN 'Non-Residential'
         ELSE NULL

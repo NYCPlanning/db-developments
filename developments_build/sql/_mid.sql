@@ -69,7 +69,82 @@ DROP TABLE IF EXISTS _MID_devdb;
 WITH
 JOIN_date_permittd as (
     SELECT
-        a.*,
+        -- All INIT_devdb fields except for classa_init and classa_prop
+        a.job_number,
+		a.job_type,
+		a.job_desc,
+		a._occ_initial,
+		a._occ_proposed,
+		a.stories_init,
+		a.stories_prop,
+		a.zoningsft_init,
+		a.zoningsft_prop,
+		a._job_status,
+		a.date_lastupdt,
+		a.date_filed,
+		a.date_statusd,
+		a.date_statusp,
+		a.date_statusr,
+		a.date_statusx,
+		a.zoningdist1,
+		a.zoningdist2,
+		a.zoningdist3,
+		a.specialdist1,
+		a.specialdist2,
+		a.landmark,
+		a.ownership,
+		a.owner_name,
+		a.owner_biznm,
+		a.owner_address,
+		a.owner_zipcode,
+		a.owner_phone,
+		a.height_init,
+		a.height_prop,
+		a.constructnsf,
+		a.enlargement,
+		a.enlargementsf,
+		a.costestimate,
+		a.loftboardcert,
+		a.edesignation,
+		a.curbcut,
+		a.tracthomes,
+		a.address_numbr,
+		a.address_street,
+		a.address,
+		a.bin,
+		a.bbl,
+		a.boro,
+		a.x_withdrawal,
+        a.geo_bbl,
+        a.geo_bin,
+        a.geo_address_numbr,
+        a.geo_address_street,
+        a.geo_address,
+        a.geo_zipcode,
+        a.geo_boro,
+        a.geo_cd,
+        a.geo_council,
+        a.geo_ntacode2010,
+        a.geo_ntaname2010,
+        a.geo_censusblock2010,
+        a.geo_censustract2010,
+        a.bctcb2010,
+        a.bct2010,
+        a.geo_csd,
+        a.geo_policeprct,
+        a.geo_firedivision,
+        a.geo_firebattalion,
+        a.geo_firecompany,
+        a.geo_puma,
+        a.geo_schoolelmntry,
+        a.geo_schoolmiddle,
+        a.geo_schoolsubdist,
+        a.geo_latitude,
+        a.geo_longitude,
+        a.latitude,
+        a.longitude,
+        a.geom,
+        a.geomsource,
         b.date_permittd,
         b.permit_year,
         b.permit_qrtr
@@ -100,6 +175,8 @@ JOIN_units as (
         a.*,
         extract(year from date_complete)::text as complete_year,
         year_quarter(date_complete) as complete_qrtr,
+        b.classa_init,
+        b.classa_prop,
         b.classa_net,
         b.hotel_init,
 	    b.hotel_prop,
@@ -112,12 +189,12 @@ JOIN_units as (
         END) as classa_complt_pct,
         b.classa_net - a.co_latest_units as classa_complt_diff,
         (CASE 
-            WHEN hotel_init IS NOT NULL
-                OR hotel_prop IS NOT NULL
-                OR otherb_init IS NOT NULL
-                OR otherb_prop IS NOT NULL
-                OR a.classa_init IS NOT NULL 
-                OR a.classa_prop IS NOT NULL
+            WHEN (hotel_init IS NOT NULL AND hotel_init <> '0')
+                OR (hotel_prop IS NOT NULL AND hotel_prop <> '0')
+                OR (otherb_init IS NOT NULL AND otherb_init <> '0')
+                OR (otherb_prop IS NOT NULL AND otherb_prop <> '0')
+                OR (classa_init IS NOT NULL AND classa_init <> '0')
+                OR (classa_prop IS NOT NULL AND classa_prop <> '0')
                 THEN 'Residential' 
         END) as resid_flag
     FROM JOIN_co a
@@ -161,11 +238,7 @@ WITH CORR_target as (
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited,'resid_flag'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'resid_flag', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields,'resid_flag')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -177,4 +250,4 @@ AND b.field = 'resid_flag'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'resid_flag'=any(x_dcpedited));
+	WHERE 'resid_flag'=any(dcpeditfields));

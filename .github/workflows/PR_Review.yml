@@ -1,0 +1,36 @@
+name: Build
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  Test:
+    name: Building ...
+    if: contains(github.event.pull_request.labels.*.name, 'GTGO')
+    runs-on: ubuntu-latest
+    env:
+      RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
+      BUILD_ENGINE: ${{ secrets.BUILD_ENGINE }}
+      EDM_DATA: ${{ secrets.EDM_DATA }}
+      AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dependencies ...
+        run: |
+
+          sudo tee /etc/apt/sources.list.d/pgdg.list <<END
+          deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+          END
+
+          curl -O https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          sudo apt-key add ACCC4CF8.asc
+
+          sudo apt update
+          sudo apt install -y postgresql-client-11
+          sudo apt autoremove
+
+      - name: 2. build dev_db ...
+        working-directory: developments_build
+        run: ./02_build_devdb.sh

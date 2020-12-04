@@ -91,7 +91,7 @@ JOBNUMBER_nonres_units AS (
 JOBNUMBER_accessory AS (
 	SELECT job_number
 	FROM MID_devdb
-	WHERE ((address LIKE '%GAR%' 
+	WHERE ((address_numbr LIKE '%GAR%' 
 					OR job_desc ~* 'pool|shed|gazebo|garage')
 			AND (classa_init::numeric IN (1,2) 
 					OR classa_prop::numeric IN (1,2)))
@@ -107,12 +107,14 @@ JOBNUMBER_b_likely AS (
     FROM MID_devdb
     WHERE occ_initial ~* 'hotel|assisted|incapacitated|restrained'
 	OR occ_proposed ~* 'hotel|assisted|incapacitated|restrained'
-    OR job_desc ~* CONCAT('Hotel|Motel|Boarding|Hoste|Lodge|UG 5', '|',
-                          'Group 5|Grp 5|Class B|SRO|Single room', '|',
-                          'Furnished|Rooming unit|Dorm|Transient', '|',
-                          'Homeless|Shelter|Group quarter|Beds', '|',
-                          'Convent|Monastery|Accommodation|Harassment', '|',
-                          'CNH|Settlement|Halfway|Nursing home|Assisted|')
+    OR job_desc ~* CONCAT('Hotel|Motel|Boarding|Hostel|Lodge|UG 5|UG5', '|',
+                          'Group 5|Grp 5|Class B|Class ''b''|Class "b"', '|',
+                          'SRO |Single room|Furnished|Rooming unit', '|',
+						  'Dorm |Dorms |Dormitor|Transient|Homeless', '|',
+                          'Shelter|Group quarter|Beds|Convent|Monastery', '|',
+                          'Accommodation|Harassment|CNH|Settlement|Halfway', '|',
+                          'Nursing home|Assisted|Supportive|Sleeping', '|',
+						  'UG3|UG 3|Group 3|Grp 3')
 ),
 JOBNUMBER_co_prop_mismatch AS (
     SELECT job_number, co_latest_certtype
@@ -124,7 +126,7 @@ JOBNUMBER_incomplete_tract AS (
     SELECT job_number
     FROM MID_devdb
     WHERE tracthomes = 'Y'
-    AND job_status LIKE 'Complete'
+    AND job_status ~* '1|2|3'
 ),
 _MID_qaqc AS (
 SELECT 
@@ -158,7 +160,7 @@ SELECT
 		)  ELSE NULL
 	END) as units_co_prop_mismatch,
 	(CASE 
-		WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_co_prop_mismatch) 
+		WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_incomplete_tract) 
 		THEN 1 ELSE 0
 	END) as z_incomp_tract_home,
 	(CASE 

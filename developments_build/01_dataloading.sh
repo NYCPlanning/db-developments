@@ -11,6 +11,7 @@ docker run --rm\
     -e RECIPE_ENGINE=$RECIPE_ENGINE\
     -e BUILD_ENGINE=$BUILD_ENGINE\
     -e CAPTURE_DATE=$CAPTURE_DATE\
+    -e DOB_DATA_DATE=$DOB_DATA_DATE\
     nycplanning/cook:latest bash -c "
         python3 python/dataloading.py $MODE"
 
@@ -36,7 +37,8 @@ psql $BUILD_ENGINE -c "
         old_value text,
         new_value text,
         reason text,
-        edited_date text
+        edited_date text,
+        editor text
     );
 
     DROP TABLE IF EXISTS housing_input_hny;
@@ -88,6 +90,31 @@ imports_csv census_units10 &
 imports_csv census_units10adj &
 imports_csv lookup_geo
 
-
 wait 
 display "data loading is complete"
+
+ tables=(
+      "dof_shoreline" 
+      "dcp_mappluto"
+      "doitt_buildingfootprints"
+      "doitt_buildingfootprints_historical"
+      "doitt_zipcodeboundaries"
+      "dcp_cdboundaries"
+      "dcp_censusblocks"
+      "dcp_censustracts"
+      "dcp_school_districts"
+      "dcp_boroboundaries_wi"
+      "dcp_councildistricts"
+      "dcp_firecompanies"
+      "doe_school_subdistricts"
+      "doe_eszones"
+      "doe_mszones"
+      "dcp_policeprecincts"
+)
+for i in "${tables[@]}"
+do
+    makevalid $i &
+done
+
+wait 
+display "all geometries valid"

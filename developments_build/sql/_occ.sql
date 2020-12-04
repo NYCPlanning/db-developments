@@ -59,11 +59,7 @@ WITH CORR_target as (
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited,'occ_initial'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'occ_initial', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields,'occ_initial')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -74,7 +70,7 @@ WHERE a.job_number=b.job_number
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'occ_initial'=any(x_dcpedited));
+	WHERE 'occ_initial'=any(dcpeditfields));
 
 -- occ_proposed
 WITH CORR_target as (
@@ -89,11 +85,7 @@ WITH CORR_target as (
 		AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited,'occ_proposed'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'occ_proposed', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields,'occ_proposed')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -105,4 +97,4 @@ AND b.field = 'occ_proposed'
 AND a.job_number in (
 	SELECT DISTINCT job_number 
 	FROM CORR_devdb
-	WHERE 'occ_proposed'=any(x_dcpedited));
+	WHERE 'occ_proposed'=any(dcpeditfields));
