@@ -253,6 +253,7 @@ DROP TABLE IF EXISTS _AGGREGATE_commntydst;
 WITH
 bctcb2010_aggregate AS (
     SELECT 
+        boro,
         cenblock10,
         commntydst,
         SUM(comp2010ap) as comp2010ap,
@@ -525,7 +526,7 @@ ORDER BY puma2010;
 
 -- Create AGGREGATE_commntydst
 DROP TABLE IF EXISTS AGGREGATE_commntydst;
-SELECT
+SELECT boro,
     commntydst,
     SUM(comp2010ap) as comp2010ap,
     SUM(comp2010) as comp2010,
@@ -549,6 +550,7 @@ SELECT
 INTO AGGREGATE_commntydst
 FROM _AGGREGATE_commntydst
 GROUP BY
+        boro,
 		commntydst
 ORDER BY commntydst;
 
