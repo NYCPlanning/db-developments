@@ -1,5 +1,8 @@
 # Build Logs
 
+## 2020/12/04 - Molly
++ Rebuild after reloading mappluto to recipes
+
 ## 2020/11/24 - Molly
 + Rebuild after filtering out inactive jobs from completions in aggregation tables
 + Try again
