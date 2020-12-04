@@ -74,6 +74,8 @@ SELECT
     a.geo_ntaname2010,
     a.geo_censusblock2010,
     a.geo_censustract2010,
+    a.bctcb2010,
+    a.bct2010,
     a.geo_csd,
     a.geo_policeprct,
     a.geo_firedivision,
@@ -96,30 +98,18 @@ ON a.uid = b.uid;
 
 -- Format dates in INIT_devdb where valid
 UPDATE INIT_devdb
-SET date_lastupdt = (CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_qaqc 
-							WHERE invalid_date_lastupdt = 1) THEN NULL
-					ELSE date_lastupdt::date END),
-	date_filed = (CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_qaqc 
-							WHERE invalid_date_filed = 1) THEN NULL
-					ELSE date_filed::date END),
-	date_statusd = (CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_qaqc 
-							WHERE invalid_date_statusd = 1) THEN NULL
-					ELSE date_statusd::date END),
-	date_statusp = (CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_qaqc 
-							WHERE invalid_date_statusp = 1) THEN NULL
-					ELSE date_statusp::date END),
-	date_statusr = (CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_qaqc 
-							WHERE invalid_date_statusr = 1) THEN NULL
-					ELSE date_statusr::date END),
-	date_statusx = (CASE WHEN job_number in (SELECT job_number 
-							FROM _INIT_qaqc 
-							WHERE invalid_date_statusx = 1) THEN NULL
-					ELSE date_statusx::date END);
+SET date_lastupdt = (CASE WHEN is_date(date_lastupdt) THEN date_lastupdt::date
+					ELSE NULL END),
+	date_filed = (CASE WHEN is_date(date_filed) THEN date_filed::date
+					ELSE NULL END),
+	date_statusd = (CASE WHEN is_date(date_statusd) THEN date_statusd::date
+					ELSE NULL END),
+	date_statusp = (CASE WHEN is_date(date_statusp) THEN date_statusp::date
+					ELSE NULL END),
+	date_statusr = (CASE WHEN is_date(date_statusr) THEN date_statusr::date
+					ELSE NULL END),
+	date_statusx = (CASE WHEN is_date(date_statusx) THEN date_statusx::date
+					ELSE NULL END);
 
 /*
 DEDUPLICATION

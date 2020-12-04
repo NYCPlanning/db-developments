@@ -7,7 +7,7 @@ on:
     branches: 
       - 'dev'
   schedule:
-    - cron: '0 9 * * MON'
+    - cron: '0 6 * * *'
       
 jobs:
   Build:
@@ -42,9 +42,15 @@ jobs:
 
       - name: 2. build dev_db ...
         working-directory: developments_build
+        shell: bash
         run: |
-          #!/bin/bash
           source config.sh
+
+          psql $BUILD_ENGINE -c "
+            UPDATE doe_school_subdistricts
+            SET wkb_geometry = st_multi(ST_CollectionExtract(wkb_geometry,3));
+          "
+
           psql $BUILD_ENGINE -f sql/_function.sql
           psql $BUILD_ENGINE -f sql/_init.sql
           

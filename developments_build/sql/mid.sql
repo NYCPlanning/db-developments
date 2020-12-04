@@ -27,8 +27,7 @@ OUTPUTS:
         job_status character varying,
         complete_year text,
         complete_qrtr text,
-        x_inactive text,
-        x_dcpedited text,
+        job_inactive text,
         dcpeditfields text
         ...
     )

@@ -168,7 +168,6 @@ OUTPUTS:
     ),
 
     AGGREGATE_commntydst (
-        boro,
         commntydst,
         comp2010ap,
         comp2010,
@@ -180,7 +179,6 @@ OUTPUTS:
     ),
 
     AGGREGATE_councildst (
-        boro,
         councildst,
         councilmbr,
         comp2010ap,
@@ -277,7 +275,7 @@ bctcb2010_aggregate AS (
         SUM(withdrawn) as withdrawn,
         SUM(inactive) as inactive
     FROM YEARLY_devdb
-    GROUP BY boro,
+    GROUP BY 
         cenblock10,
         commntydst
         ),
@@ -551,7 +549,8 @@ SELECT boro,
     SUM(total20q2) as total20q2
 INTO AGGREGATE_commntydst
 FROM _AGGREGATE_commntydst
-GROUP BY boro,
+GROUP BY
+        boro,
 		commntydst
 ORDER BY commntydst;
 
