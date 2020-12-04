@@ -1,16 +1,10 @@
 name: Build
 on: [push]
-jobs:
-  skip:
-    name: Build and test
-    runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[export]')"
-    steps:
-      - run: echo "${{ github.event.head_commit.message }}"    
+jobs: 
   Build:
     name: Building ...
-    needs: skip
-    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[export]')
+    runs-on: self-hosted
     env:
       RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
       BUILD_ENGINE: ${{ secrets.BUILD_ENGINE }}
@@ -40,9 +34,9 @@ jobs:
           curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
           chmod +x mc
           sudo mv ./mc /usr/bin
-          mc config host add spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
+          mc alias set spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
 
-      - name: 1. dataloading ..
+      - name: 1. dataloading ...
         if: "! contains(github.event.head_commit.message, '[export]')"
         working-directory: developments_build
         run: ./01_dataloading.sh
@@ -59,3 +53,8 @@ jobs:
       - name: 4. archive ...
         working-directory: developments_build
         run: ./04_archive.sh
+    
+      - name: 5. clean up ...
+        if: ${{ always() }}
+        working-directory: developments_build
+        run: sudo rm -rf python/utils/__pycache__

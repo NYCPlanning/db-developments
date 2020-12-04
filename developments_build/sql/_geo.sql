@@ -69,7 +69,10 @@ DRAFT as (
         a.date_lastupdt,
         a.job_desc,
         b.geo_bbl,
-        NULLIF(RIGHT(b.geo_bin,6),'000000') as geo_bin,
+        (CASE 
+            WHEN RIGHT(b.geo_bin,6) = '000000' THEN NULL
+            ELSE b.geo_bin
+        END) as geo_bin,
         b.geo_address_numbr,
         b.geo_address_street,
         concat(
@@ -77,7 +80,7 @@ DRAFT as (
             trim(b.geo_address_street)
         )as geo_address,
         b.geo_zipcode,
-        b.geo_boro, 
+        COALESCE(REPLACE(b.geo_boro,'0', LEFT(b.geo_bin, 1)), a.boro) as geo_boro, 
         b.geo_cd,
         b.geo_council,
         b.geo_ntacode2010, 
@@ -268,7 +271,8 @@ GEOM_corrections as (
         a.new_geom,
         a.reason,
         st_distance(a.new_geom, b.geom) as distance,
-        get_bbl(b.geom) as bbl
+        get_bbl(b.geom) as bbl,
+        in_water(b.geom) in_water
     FROM LONLAT_corrections a
     LEFT JOIN GEO_devdb b
     ON a.job_number = b.job_number
@@ -280,7 +284,7 @@ SET latitude = ST_Y(b.new_geom),
     geomsource = 'Lat/Lon DCP'
 FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
-AND (b.distance < 10 AND b.bbl IS NULL);
+AND (COALESCE(b.distance, 0) < 10 AND (b.bbl IS NULL OR b.in_water));
 
 WITH CORR_target as (
     SELECT a.job_number, 
@@ -294,10 +298,6 @@ WITH CORR_target as (
         WHERE geomsource = 'Lat/Lon DCP')
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'geom'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'geom', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_cat(dcpeditfields, ARRAY['longitude', 'latitude'])
 FROM CORR_target b
 WHERE a.job_number=b.job_number;

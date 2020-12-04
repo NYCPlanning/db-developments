@@ -37,7 +37,6 @@ OUTPUTS:
         address text,
         occ_proposed text,
         job_inactive text,
-        x_dcpedited text,
         dcpeditfields text
     )
 
@@ -100,6 +99,9 @@ SELECT
     occ_proposed,
     -- Set inactive flag
     (CASE 
+        -- All withdrawn jobs are inactive
+        WHEN job_status = '9. Withdrawn'
+            THEN 'Inactive'
         -- A date_complete indicates not inactive
         WHEN date_complete IS NOT NULL 
             THEN NULL
@@ -108,9 +110,6 @@ SELECT
             AND job_status IN ('1. Filed Application', 
                                 '2. Approved Application', 
                                 '3. Permitted for Construction')
-            THEN 'Inactive'
-        -- All withdrawn jobs are inactive
-        WHEN job_status = '9. Withdrawn'
             THEN 'Inactive'
     END) as job_inactive
 INTO STATUS_devdb
@@ -151,11 +150,7 @@ WITH CORR_target as (
             OR b.old_value = 'false')))
 )
 UPDATE CORR_devdb a
-SET x_dcpedited = array_append(x_dcpedited, 'job_inactive'),
-	dcpeditfields = array_append(dcpeditfields, json_build_object(
-		'field', 'job_inactive', 'reason', b.reason, 
-		'edited_date', b.edited_date
-	))
+SET dcpeditfields = array_append(dcpeditfields, 'job_inactive')
 FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
@@ -167,4 +162,4 @@ AND b.field = 'job_inactive'
 AND a.job_number in (
 	SELECT DISTINCT job_number
 	FROM CORR_devdb
-	WHERE 'job_inactive'=any(x_dcpedited));
+	WHERE 'job_inactive'=any(dcpeditfields));

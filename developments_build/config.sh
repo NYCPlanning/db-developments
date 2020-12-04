@@ -84,7 +84,14 @@ function SHP_export {
           PG:"host=$BUILD_HOST user=$BUILD_USER port=$BUILD_PORT dbname=$BUILD_DB password=$BUILD_PWD" \
           -nlt POINT $@
         rm -f $@.zip
-        zip $@.zip *
+        zip -9 $@.zip *
         ls | grep -v $@.zip | xargs rm
       )
+}
+
+function makevalid {
+  psql $BUILD_ENGINE -c "
+      UPDATE $1
+      SET wkb_geometry = st_makevalid(wkb_geometry);
+  "
 }
