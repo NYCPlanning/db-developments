@@ -276,6 +276,7 @@ bctcb2010_aggregate AS (
         SUM(inactive) as inactive
     FROM YEARLY_devdb
     GROUP BY 
+        boro,
         cenblock10,
         commntydst
         ),
