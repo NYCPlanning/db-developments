@@ -253,7 +253,13 @@ DROP TABLE IF EXISTS _AGGREGATE_commntydst;
 WITH
 bctcb2010_aggregate AS (
     SELECT 
-        boro,
+        (CASE
+            WHEN LEFT(commntydst, 1) = '1' THEN 'Manhattan'
+            WHEN LEFT(commntydst, 1) = '2' THEN 'Bronx'
+            WHEN LEFT(commntydst, 1) = '3' THEN 'Brooklyn'
+            WHEN LEFT(commntydst, 1) = '4' THEN 'Queens'
+            WHEN LEFT(commntydst, 1) = '5' THEN 'Staten Island'
+        END) as boro,
         cenblock10,
         commntydst,
         SUM(comp2010ap) as comp2010ap,
@@ -276,7 +282,6 @@ bctcb2010_aggregate AS (
         SUM(inactive) as inactive
     FROM YEARLY_devdb
     GROUP BY 
-        boro,
         cenblock10,
         commntydst
         ),
