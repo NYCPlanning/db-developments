@@ -120,6 +120,7 @@ def dob_jobapplications(mode, capture_date):
 def dob_permitissuance(mode, capture_date):
     recipe_engine = create_engine(RECIPE_ENGINE)
     build_engine = create_engine(BUILD_ENGINE)
+    version = os.environ.get("DOB_DATA_DATE", "") if mode == "edm" else "latest"
     condition = f"AND dobrundate::date <= '{capture_date}'" if mode == "edm" else ""
     df = pd.read_sql(
         f"""
@@ -129,7 +130,7 @@ def dob_permitissuance(mode, capture_date):
             jobdocnum,
             jobtype,
             issuancedate
-        FROM dob_permitissuance.latest
+        FROM dob_permitissuance."{version}"
         WHERE jobdocnum = '01'
         AND jobtype ~* 'A1|DM|NB'
         {condition}
