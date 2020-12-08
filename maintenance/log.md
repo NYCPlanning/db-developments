@@ -1,5 +1,8 @@
 # Build Logs
 
+## 2020/12/08 - Molly
++ Rebuild after locking permit issuance version date
+
 ## 2020/12/04 - Molly
 + Rebuild after reloading mappluto to recipes
 
