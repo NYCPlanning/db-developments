@@ -125,7 +125,6 @@ def dob_permitissuance(mode, capture_date):
     df = pd.read_sql(
         f"""
         SELECT 
-            v,
             jobnum,
             jobdocnum,
             jobtype,
