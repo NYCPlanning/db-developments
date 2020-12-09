@@ -12,7 +12,7 @@ docker run --rm\
     -v $(pwd):/src\
     -w /src\
     -e BUILD_ENGINE=$BUILD_ENGINE\
-    nycplanning/docker-geosupport:latest bash -c "
+    nycplanning/docker-geosupport:20.3.5 bash -c "
       python3 python/geocode.py
       python3 python/geocode_hny.py
     "
