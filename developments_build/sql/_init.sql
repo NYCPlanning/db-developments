@@ -134,9 +134,11 @@ JOBNUMBER_relevant as (
 		ELSE proposedzoningsqft::numeric 
     END) as zoningsft_prop,
 
-	(CASE WHEN jobtype ~* 'NB' THEN 0 
-		ELSE existingdwellingunits::numeric
-	END) as classa_init,
+    -- if existingdwellingunits is not a number then null
+        (CASE WHEN jobtype ~* 'NB' THEN 0 
+        ELSE (CASE WHEN existingdwellingunits ~ '[^0-9]' THEN NULL
+            ELSE existingdwellingunits::numeric END)
+    END) as classa_init,
 
     -- if proposeddwellingunits is not a number then null
 	(CASE WHEN jobtype ~* 'DM' THEN 0
