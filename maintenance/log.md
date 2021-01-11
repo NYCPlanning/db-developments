@@ -1,4 +1,6 @@
 # Build Logs
+## 2021/01/11 -Baiyue
++ 20Q4 Build #306
 
 ## 2020/12/08 - Molly
 + Rebuild after locking permit issuance version date
