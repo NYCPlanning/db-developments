@@ -164,8 +164,10 @@ SELECT
 		THEN 1 ELSE 0
 	END) as z_incomp_tract_home,
 	(CASE 
-		WHEN a.job_number IN (SELECT job_number_dem FROM MATCH_dem_nb) THEN 1
-		WHEN a.job_number IN (SELECT job_number_nb FROM MATCH_dem_nb) THEN 1
+		WHEN a.job_number IN (
+			SELECT DISTINCT job_number_dem FROM MATCH_dem_nb UNION 
+			SELECT DISTINCT job_number_nb FROM MATCH_dem_nb
+		) THEN 1
 		ELSE 0
 	END) as dem_nb_overlap
 FROM STATUS_qaqc a)
