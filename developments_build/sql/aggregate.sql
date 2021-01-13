@@ -48,7 +48,7 @@ INPUTS:
 
     census_units10adj(
         * centract10,
-        cenunits10adj
+        adjunits10
     )
 
 OUTPUTS:
@@ -113,7 +113,7 @@ OUTPUTS:
         inactive,
         cenunits10,
         total,
-        cenunits10adj,
+        adjunits10,
         totaladj
     ),
 
@@ -137,7 +137,7 @@ OUTPUTS:
         ...
         cenunits10,
         total,
-        cenunits10adj,
+        adjunits10,
         totaladj
     ),
 
@@ -150,7 +150,7 @@ OUTPUTS:
         ...
         cenunits10,
         total,
-        cenunits10adj,
+        adjunits10,
         totaladj
     ),
 
@@ -163,7 +163,7 @@ OUTPUTS:
         ...
         cenunits10,
         total,
-        cenunits10adj,
+        adjunits10,
         totaladj
     ),
 
@@ -174,8 +174,9 @@ OUTPUTS:
         ...
         cenunits10,
         total,
-        cenunits10adj,
+        adjunits10,
         totaladj
+
     ),
 
     AGGREGATE_councildst (
@@ -186,7 +187,7 @@ OUTPUTS:
         ...
         cenunits10,
         total,
-        cenunits10adj,
+        adjunits10,
         totaladj
     )
 
@@ -395,7 +396,7 @@ CENSUS_bct2010 AS (
 ),
 CENSUS_adj_bct2010 AS(
     SELECT a.*,
-            b.cenunits10adj,
+            b.adjunits10,
             COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10adj, 0) as totaladj
     FROM CENSUS_bct2010 a 
     JOIN census_units10adj b
@@ -457,7 +458,7 @@ SELECT boro,
     withdrawn,
     inactive,
     cenunits10,
-    cenunits10adj,
+    adjunits10,
     total,
     totaladj
 INTO AGGREGATE_tract
@@ -487,7 +488,7 @@ SELECT boro,
     SUM(withdrawn) as withdrawn,
     SUM(inactive) as inactive,
     SUM(cenunits10) as cenunits10,
-    SUM(cenunits10adj) as cenunits10adj,
+    SUM(adjunits10) as adjunits10,
     SUM(total) as total,
     SUM(totaladj) as totaladj
 INTO AGGREGATE_nta
@@ -520,7 +521,7 @@ SELECT boro,
     SUM(withdrawn) as withdrawn,
     SUM(inactive) as inactive,
     SUM(cenunits10) as cenunits10,
-    SUM(cenunits10adj) as cenunits10adj,
+    SUM(adjunits10) as adjunits10,
     SUM(total) as total,
     SUM(totaladj) as totaladj
 INTO AGGREGATE_puma
