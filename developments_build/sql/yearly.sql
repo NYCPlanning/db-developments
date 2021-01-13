@@ -51,7 +51,6 @@ OUTPUTS:
         comp2018,
         comp2019,
         comp2020,
-        comp2020q2,
         since_cen10,
         filed,
         approved,
@@ -110,10 +109,9 @@ SELECT a.job_number,
         CASE WHEN a.complete_year = '2019' AND a.job_inactive IS NULL
             THEN a.classa_net
             ELSE NULL END AS comp2019,
-        CASE WHEN a.complete_year = '2020' AND a.date_complete < '2020-07-01'::date
-                AND a.job_inactive IS NULL
+        CASE WHEN a.complete_year = '2020' AND a.job_inactive IS NULL
             THEN classa_net
-            ELSE NULL END AS comp2020q2,
+            ELSE NULL END AS comp2020,
         CASE WHEN a.date_complete > '2010-03-31'::date AND a.date_complete < '2020-07-01'::date
                 AND a.job_inactive IS NULL
             THEN a.classa_net
