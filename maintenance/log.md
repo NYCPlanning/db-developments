@@ -1,4 +1,8 @@
 # Build Logs
+
+## 2021/01/13 - Molly
++ Build after merge of #324
+
 ## 2021/01/11 -Baiyue
 + 20Q4 Build #306
 
