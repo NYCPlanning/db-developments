@@ -397,7 +397,7 @@ CENSUS_bct2010 AS (
 CENSUS_adj_bct2010 AS(
     SELECT a.*,
             b.adjunits10,
-            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10adj, 0) as totaladj
+            COALESCE(a.since_cen10, 0) + COALESCE(b.adjunits10, 0) as totaladj
     FROM CENSUS_bct2010 a 
     JOIN census_units10adj b
     ON a.centract10 = b.centract10
