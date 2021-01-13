@@ -47,7 +47,7 @@ INPUTS:
 
     census_units10adj(
         * centract10,
-        cenunits10adj
+        adjunits10
     )
 
 OUTPUTS:
@@ -79,7 +79,7 @@ OUTPUTS:
         withdrawn,
         inactive,
         cenunits10,
-        total20q2
+        total
     ),
 
     _AGGREGATE_tract(
@@ -109,9 +109,9 @@ OUTPUTS:
         withdrawn,
         inactive,
         cenunits10,
-        total20q2,
-        cenunits10adj,
-        total20q2adj
+        total,
+        adjunits10,
+        totaladj
     ),
 
     AGGREGATE_block (
@@ -122,7 +122,7 @@ OUTPUTS:
         comp2010,
         ...
         cenunits10,
-        total20q2
+        total
     ),
 
     AGGREGATE_tract (
@@ -133,9 +133,9 @@ OUTPUTS:
         comp2010,
         ...
         cenunits10,
-        total20q2,
-        cenunits10adj,
-        total20q2adj
+        total,
+        adjunits10,
+        totaladj
     ),
 
     AGGREGATE_nta (
@@ -146,9 +146,9 @@ OUTPUTS:
         comp2010,
         ...
         cenunits10,
-        total20q2,
-        cenunits10adj,
-        total20q2adj
+        total,
+        adjunits10,
+        totaladj
     ),
 
     AGGREGATE_puma (
@@ -159,9 +159,9 @@ OUTPUTS:
         comp2010,
         ...
         cenunits10,
-        total20q2,
-        cenunits10adj,
-        total20q2adj
+        total,
+        adjunits10,
+        totaladj
     ),
 
     AGGREGATE_commntydst (
@@ -170,9 +170,10 @@ OUTPUTS:
         comp2010,
         ...
         cenunits10,
-        total20q2,
-        cenunits10adj,
-        total20q2adj
+        total,
+        adjunits10,
+        totaladj
+
     ),
 
     AGGREGATE_councildst (
@@ -182,9 +183,9 @@ OUTPUTS:
         comp2010,
         ...
         cenunits10,
-        total20q2,
-        cenunits10adj,
-        total20q2adj
+        total,
+        adjunits10,
+        totaladj
     )
 
 */
@@ -235,7 +236,7 @@ bctcb2010_aggregate AS (
 CENSUS_bctcb2010 AS (
     SELECT a.*,  
             b.cenunits10, 
-            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10, 0) as total20q2
+            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10, 0) as total
     FROM bctcb2010_aggregate a 
     JOIN census_units10 b
     ON a.cenblock10 = b.cenblock10
@@ -285,7 +286,7 @@ bctcb2010_aggregate AS (
 CENSUS_bctcb2010 AS (
     SELECT a.*,  
             b.cenunits10, 
-            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10, 0) as total20q2
+            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10, 0) as total
     FROM bctcb2010_aggregate a 
     JOIN census_units10 b
     ON a.cenblock10 = b.cenblock10
@@ -328,7 +329,7 @@ bctcb2010_aggregate AS (
 CENSUS_bctcb2010 AS (
     SELECT a.*,  
             b.cenunits10, 
-            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10, 0) as total20q2
+            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10, 0) as total
     FROM bctcb2010_aggregate a 
     JOIN census_units10 b
     ON a.cenblock10 = b.cenblock10
@@ -385,15 +386,15 @@ bct2010_aggregate AS (
 CENSUS_bct2010 AS (
     SELECT a.*,  
             b.cenunits10, 
-            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10, 0) as total20q2
+            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10, 0) as total
     FROM bct2010_aggregate a 
     JOIN CENSUS_by_tract b
     ON a.centract10 = b.centract10
 ),
 CENSUS_adj_bct2010 AS(
     SELECT a.*,
-            b.cenunits10adj,
-            COALESCE(a.since_cen10, 0) + COALESCE(b.cenunits10adj, 0) as total20q2adj
+            b.adjunits10,
+            COALESCE(a.since_cen10, 0) + COALESCE(b.adjunits10, 0) as totaladj
     FROM CENSUS_bct2010 a 
     JOIN census_units10adj b
     ON a.centract10 = b.centract10
@@ -426,7 +427,7 @@ SELECT boro,
     withdrawn,
     inactive,
     cenunits10,
-    total20q2
+    total
 INTO AGGREGATE_block
 FROM _AGGREGATE_block
 ORDER BY bctcb2010;
@@ -454,9 +455,9 @@ SELECT boro,
     withdrawn,
     inactive,
     cenunits10,
-    cenunits10adj,
-    total20q2,
-    total20q2adj
+    adjunits10,
+    total,
+    totaladj
 INTO AGGREGATE_tract
 FROM _AGGREGATE_tract
 ORDER BY bct2010;
@@ -484,9 +485,9 @@ SELECT boro,
     SUM(withdrawn) as withdrawn,
     SUM(inactive) as inactive,
     SUM(cenunits10) as cenunits10,
-    SUM(cenunits10adj) as cenunits10adj,
-    SUM(total20q2) as total20q2,
-    SUM(total20q2adj) as total20q2adj
+    SUM(adjunits10) as adjunits10,
+    SUM(total) as total,
+    SUM(totaladj) as totaladj
 INTO AGGREGATE_nta
 FROM _AGGREGATE_tract
 GROUP BY boro,
@@ -517,9 +518,9 @@ SELECT boro,
     SUM(withdrawn) as withdrawn,
     SUM(inactive) as inactive,
     SUM(cenunits10) as cenunits10,
-    SUM(cenunits10adj) as cenunits10adj,
-    SUM(total20q2) as total20q2,
-    SUM(total20q2adj) as total20q2adj
+    SUM(adjunits10) as adjunits10,
+    SUM(total) as total,
+    SUM(totaladj) as totaladj
 INTO AGGREGATE_puma
 FROM _AGGREGATE_tract
 GROUP BY boro,
@@ -549,7 +550,7 @@ SELECT boro,
     SUM(withdrawn) as withdrawn,
     SUM(inactive) as inactive,
     SUM(cenunits10) as cenunits10,
-    SUM(total20q2) as total20q2
+    SUM(total) as total
 INTO AGGREGATE_commntydst
 FROM _AGGREGATE_commntydst
 GROUP BY
@@ -581,7 +582,7 @@ SELECT
     SUM(a.withdrawn) as withdrawn,
     SUM(a.inactive) as inactive,
     SUM(a.cenunits10) as cenunits10,
-    SUM(a.total20q2) as total20q2
+    SUM(a.total) as total
 INTO AGGREGATE_councildst
 FROM _AGGREGATE_councildst a
 JOIN council_members b

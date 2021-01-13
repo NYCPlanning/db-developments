@@ -112,7 +112,7 @@ SELECT a.job_number,
         CASE WHEN a.complete_year = '2020' AND a.job_inactive IS NULL
             THEN classa_net
             ELSE NULL END AS comp2020,
-        CASE WHEN a.date_complete > '2010-03-31'::date AND a.date_complete < '2020-07-01'::date
+        CASE WHEN a.date_complete > '2010-03-31'::date AND a.date_complete < :'CAPTURE_DATE'::date
                 AND a.job_inactive IS NULL
             THEN a.classa_net
             ELSE NULL END AS since_cen10,

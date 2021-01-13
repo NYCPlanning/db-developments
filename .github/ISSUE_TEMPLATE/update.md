@@ -7,6 +7,9 @@ assignees: mgraber, SPTKL
 
 ---
 
+## Update code
+- [ ] Add most recent full/half year to aggregate tables
+
 ## Update source data
 
 - [ ] Update version.env to:
