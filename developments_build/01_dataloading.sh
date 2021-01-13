@@ -62,7 +62,7 @@ psql $BUILD_ENGINE -c "
         CenTract10 text,
         NTA10 text,
         PUMA10 text,
-        CenUnits10Adj numeric
+        AdjUnits10 numeric
     );
 
     DROP TABLE IF EXISTS lookup_geo;
