@@ -144,27 +144,15 @@ def dob_permitissuance(mode, capture_date):
 def dob_cofos():
     recipe_engine = create_engine(RECIPE_ENGINE)
     build_engine = create_engine(BUILD_ENGINE)
-    df = pd.read_sql(
-        """
-        SELECT
-            v,
-            jobnum,
-            effectivedate,
-            bin,
-            boroname,
-            housenumber,
-            streetname,
-            block,
-            lot,
-            numofdwellingunits,
-            occupancyclass,
-            certificatetype,
-            buildingtypedesc,
-            docstatus
-        FROM dob_cofos.latest
-        UNION
+    table_names = [record[0] for record in recipe_engine.execute(
+        '''
+        SELECT table_name FROM information_schema.tables 
+        WHERE table_schema = 'dob_cofos' and table_type = 'BASE TABLE'
+        '''
+    )]
+    template = '''
         SELECT 
-            NULL as v,
+            '{0}' as v,
             jobnum,
             effectivedate,
             bin,
@@ -178,10 +166,10 @@ def dob_cofos():
             certificatetype,
             buildingtypedesc,
             docstatus
-        FROM dob_cofos.append
-        """,
-        recipe_engine,
-    )
+        FROM dob_cofos."{0}"
+    '''
+    query = ' UNION '.join([template.format(tb_name) for tb_name in table_names])
+    df=pd.read_sql(query, recipe_engine)
     exporter(df=df, table_name="dob_cofos", con=build_engine)
     del df
 
