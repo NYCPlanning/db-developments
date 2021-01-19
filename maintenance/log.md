@@ -1,5 +1,8 @@
 # Build Logs
 
+## 2021/01/19 - Molly
++ Build after fixing cofos tables in recipe engine  #326
+
 ## 2021/01/13 - Molly
 + Build after merge of #324
 
