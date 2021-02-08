@@ -123,16 +123,14 @@ in INIT_devdb will be the uid
 WITH latest_records AS (
 	SELECT
         job_number, 
-        geo_bbl, 
         MAX(date_lastupdt) AS date_lastupdt
 	FROM INIT_devdb
-	GROUP BY job_number, geo_bbl
+	GROUP BY job_number
 	HAVING COUNT(*)>1
 )
 DELETE FROM INIT_devdb a
 USING latest_records b
 WHERE a.job_number = b.job_number
-AND a.geo_bbl = b.geo_bbl
 AND a.date_lastupdt != b.date_lastupdt;
 
 /* 
