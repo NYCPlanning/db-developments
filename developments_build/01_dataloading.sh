@@ -41,6 +41,14 @@ psql $BUILD_ENGINE -c "
         editor text
     );
 
+    DROP TABLE IF EXISTS CORR_hny_matches;
+    CREATE TABLE CORR_hny_matches (
+        hny_id text,
+        job_number text,
+		hny_project_id text,
+		action text
+    );
+
     DROP TABLE IF EXISTS housing_input_hny;
     CREATE TABLE housing_input_hny (
         job_number text,
@@ -86,6 +94,7 @@ psql $BUILD_ENGINE -c "
 imports_csv lookup_occ &
 imports_csv lookup_ownership &
 imports_csv housing_input_research &
+imports_csv CORR_hny_matches &
 imports_csv census_units10 &
 imports_csv census_units10adj &
 imports_csv lookup_geo
