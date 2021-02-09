@@ -3,6 +3,7 @@
 ## 2021/02/09 - Molly
 + Build with 20Q4 corrections merged in #331
 + Includes new code for loading HNY corrections, merged in #330
++ Retrying with DE-exported corrections table #332
 
 ## 2021/01/19 - Molly
 + Build after fixing cofos tables in recipe engine #326
