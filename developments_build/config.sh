@@ -61,7 +61,7 @@ function Upload {
 }
 
 function imports_csv {
-   cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN DELIMITER ',' CSV HEADER WITH NULL AS '';"
+   cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN WITH DELIMITER ',' NULL '' CSV HEADER;"
 }
 
 function archive {
