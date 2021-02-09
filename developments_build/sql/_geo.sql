@@ -250,7 +250,11 @@ WITH LONLAT_corrections as (
         SELECT 
             job_number,
             reason,
-            old_value::double precision as old_lon, 
+            (CASE
+            	WHEN old_value ~ '^[-+]?[0-9]*\.?[0-9]+$' 
+            	THEN old_value::double precision
+	            ELSE NULL
+	        END) as old_lon, 
             new_value::double precision as new_lon
         FROM housing_input_research
         WHERE field = 'longitude'
@@ -258,7 +262,11 @@ WITH LONLAT_corrections as (
         SELECT 
             job_number, 
             reason,
-            old_value::double precision as old_lat, 
+            (CASE
+            	WHEN old_value ~ '^[-+]?[0-9]*\.?[0-9]+$' 
+            	THEN old_value::double precision
+	            ELSE NULL
+	        END) as old_lat, 
             new_value::double precision as new_lat
         FROM housing_input_research
         WHERE field = 'latitude'
