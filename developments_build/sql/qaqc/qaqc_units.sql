@@ -37,6 +37,7 @@ JOBNUMBER_top_alt_inc AS(
     FROM UNITS_devdb
     WHERE
     job_type = 'Alteration'
+    AND classa_net IS NOT NULL
     ORDER BY classa_net DESC
     LIMIT 20
 ),
@@ -46,6 +47,7 @@ JOBNUMBER_top_alt_dec AS(
     FROM UNITS_devdb
     WHERE
     job_type = 'Alteration'
+    AND classa_net IS NOT NULL
     ORDER BY classa_net ASC
     LIMIT 20
 )
