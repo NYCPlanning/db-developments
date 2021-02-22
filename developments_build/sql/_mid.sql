@@ -65,93 +65,130 @@ OUTPUTS:
         ...
     )
 */
+DROP TABLE IF EXISTS JOIN_date_permittd;
+CREATE TEMP TABLE JOIN_date_permittd as (
+SELECT
+    -- All INIT_devdb fields except for classa_init and classa_prop
+    a.job_number,
+    a.job_type,
+    a.job_desc,
+    a._occ_initial,
+    a._occ_proposed,
+    a.stories_init,
+    a.stories_prop,
+    a.zoningsft_init,
+    a.zoningsft_prop,
+    a._job_status,
+    a.date_lastupdt,
+    a.date_filed,
+    a.date_statusd,
+    a.date_statusp,
+    a.date_statusr,
+    a.date_statusx,
+    a.zoningdist1,
+    a.zoningdist2,
+    a.zoningdist3,
+    a.specialdist1,
+    a.specialdist2,
+    a.landmark,
+    a.ownership,
+    a.owner_name,
+    a.owner_biznm,
+    a.owner_address,
+    a.owner_zipcode,
+    a.owner_phone,
+    a.height_init,
+    a.height_prop,
+    a.constructnsf,
+    a.enlargement,
+    a.enlargementsf,
+    a.costestimate,
+    a.loftboardcert,
+    a.edesignation,
+    a.curbcut,
+    a.tracthomes,
+    a.address_numbr,
+    a.address_street,
+    a.address,
+    a.bin,
+    a.bbl,
+    a.boro,
+    a.x_withdrawal,
+    a.geo_bbl,
+    a.geo_bin,
+    a.geo_address_numbr,
+    a.geo_address_street,
+    a.geo_address,
+    a.geo_zipcode,
+    a.geo_boro,
+    a.geo_cd,
+    a.geo_council,
+    a.geo_ntacode2010,
+    a.geo_ntaname2010,
+    a.geo_censusblock2010,
+    a.geo_censustract2010,
+    a.bctcb2010,
+    a.bct2010,
+    a.geo_csd,
+    a.geo_policeprct,
+    a.geo_firedivision,
+    a.geo_firebattalion,
+    a.geo_firecompany,
+    a.geo_puma,
+    a.geo_schoolelmntry,
+    a.geo_schoolmiddle,
+    a.geo_schoolsubdist,
+    a.geo_latitude,
+    a.geo_longitude,
+    a.latitude,
+    a.longitude,
+    a.geom,
+    a.geomsource,
+    b.date_permittd,
+    b.permit_year,
+    b.permit_qrtr
+FROM INIT_devdb a
+LEFT JOIN STATUS_Q_devdb b
+ON a.job_number = b.job_number
+);
+
+/*
+CORRECTIONS: (implemeted 2021/02/22)
+    date_permittd
+*/
+WITH CORR_target as (
+	SELECT a.job_number, 
+		COALESCE(b.reason, 'NA') as reason,
+		b.edited_date
+	FROM JOIN_date_permittd a, housing_input_research b
+	WHERE a.job_number=b.job_number
+	AND b.field = 'date_permittd'
+	AND (a.date_permittd::date = b.old_value::date
+		OR (a.date_permittd IS NULL 
+			AND b.old_value IS NULL))
+)
+UPDATE CORR_devdb a
+SET dcpeditfields = array_append(dcpeditfields,'date_permittd')
+FROM CORR_target b
+WHERE a.job_number=b.job_number;
+
+UPDATE JOIN_date_permittd a
+SET date_permittd = b.new_value::date,
+    permit_year = extract(year from b.new_value::date)::text,
+    permit_qrtr = year_quarter(b.new_value::date)
+FROM housing_input_research b
+WHERE a.job_number=b.job_number
+AND b.field = 'date_permittd'
+AND a.job_number in (
+	SELECT DISTINCT job_number 
+	FROM CORR_devdb
+	WHERE 'date_permittd'=any(dcpeditfields));
+
+/*
+CONTINUE
+*/
 DROP TABLE IF EXISTS _MID_devdb;
 WITH
-JOIN_date_permittd as (
-    SELECT
-        -- All INIT_devdb fields except for classa_init and classa_prop
-        a.job_number,
-		a.job_type,
-		a.job_desc,
-		a._occ_initial,
-		a._occ_proposed,
-		a.stories_init,
-		a.stories_prop,
-		a.zoningsft_init,
-		a.zoningsft_prop,
-		a._job_status,
-		a.date_lastupdt,
-		a.date_filed,
-		a.date_statusd,
-		a.date_statusp,
-		a.date_statusr,
-		a.date_statusx,
-		a.zoningdist1,
-		a.zoningdist2,
-		a.zoningdist3,
-		a.specialdist1,
-		a.specialdist2,
-		a.landmark,
-		a.ownership,
-		a.owner_name,
-		a.owner_biznm,
-		a.owner_address,
-		a.owner_zipcode,
-		a.owner_phone,
-		a.height_init,
-		a.height_prop,
-		a.constructnsf,
-		a.enlargement,
-		a.enlargementsf,
-		a.costestimate,
-		a.loftboardcert,
-		a.edesignation,
-		a.curbcut,
-		a.tracthomes,
-		a.address_numbr,
-		a.address_street,
-		a.address,
-		a.bin,
-		a.bbl,
-		a.boro,
-		a.x_withdrawal,
-        a.geo_bbl,
-        a.geo_bin,
-        a.geo_address_numbr,
-        a.geo_address_street,
-        a.geo_address,
-        a.geo_zipcode,
-        a.geo_boro,
-        a.geo_cd,
-        a.geo_council,
-        a.geo_ntacode2010,
-        a.geo_ntaname2010,
-        a.geo_censusblock2010,
-        a.geo_censustract2010,
-        a.bctcb2010,
-        a.bct2010,
-        a.geo_csd,
-        a.geo_policeprct,
-        a.geo_firedivision,
-        a.geo_firebattalion,
-        a.geo_firecompany,
-        a.geo_puma,
-        a.geo_schoolelmntry,
-        a.geo_schoolmiddle,
-        a.geo_schoolsubdist,
-        a.geo_latitude,
-        a.geo_longitude,
-        a.latitude,
-        a.longitude,
-        a.geom,
-        a.geomsource,
-        b.date_permittd,
-        b.permit_year,
-        b.permit_qrtr
-    FROM INIT_devdb a
-    LEFT JOIN STATUS_Q_devdb b
-    ON a.job_number = b.job_number
-), 
 JOIN_co as (
     SELECT 
         a.*,
