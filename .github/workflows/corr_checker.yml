@@ -4,9 +4,6 @@ on:
     paths:
       - 'developments_build/data/housing_input_research.csv'
     types: [opened]
-  push:
-    branches:
-      - "corr_checker"
 
 jobs:
   Test:
