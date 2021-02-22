@@ -18,11 +18,12 @@ jobs:
         run: python -m pip install pandas
       
       - name: Check Fields Order
+        working-directory: developments_build/data
         shell: python 
         run: |
           import pandas as pd
           
-          df = pd.read_csv('developments_build/data/housing_input_research.csv', dtype=str)
+          df = pd.read_csv('housing_input_research.csv', dtype=str)
           correct_columns = ["job_number", "field", "old_value", "new_value", "reason", "edited_date", "editor"]
           current_columns = list(df.columns)
           assert current_columns == correct_columns, "Incorrect column order {0}".format('|'.join(current_columns))
