@@ -99,9 +99,7 @@ JOIN_CORR_devdb as (
     SELECT 
         distinct
         a.*, 
-        array_to_string(
-		b.dcpeditfields, E'/n', ''
-        ) as dcpeditfields
+        array_to_string(b.dcpeditfields, E'/n', '') as dcpeditfields
     FROM JOIN_HNY_PLUTO_devdb a
     LEFT JOIN CORR_devdb b
     ON a.job_number = b.job_number
@@ -222,8 +220,8 @@ SELECT
 	b.old_value,
 	b.new_value,
 	b.reason,
-    b.edited_date,
-    b.editor
+	b.edited_date,
+	b.editor
 INTO applied_corrections
 FROM (
 	SELECT 
@@ -237,16 +235,12 @@ and a.field = b.field;
 DROP TABLE IF EXISTS not_applied_corrections;
 WITH final_devdb_json AS (
 	SELECT job_number, row_to_json(r) as fields
-	FROM (
-	    SELECT * FROM final_devdb
-	) r
+	FROM (SELECT * FROM final_devdb) r
 ),
 not_applied AS (
-	SELECT *
-	FROM housing_input_research
+	SELECT * FROM housing_input_research
 	WHERE job_number||field NOT IN (SELECT job_number||field FROM applied_corrections)
 	AND job_number IN (SELECT job_number FROM FINAL_devdb)
-	AND field not in ('date_permitted')
 ),
 all_not_applied AS (
         SELECT 
@@ -268,7 +262,7 @@ all_not_applied AS (
 )
 SELECT 
 	a.*, 
-	array_to_string(b.dcpeditfields, ' / ') as dcpeditfields
+	array_to_string(b.dcpeditfields, E'/n', '') as dcpeditfields
 INTO not_applied_corrections
 FROM all_not_applied a
 LEFT JOIN CORR_devdb b
