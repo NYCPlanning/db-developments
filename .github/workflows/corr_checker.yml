@@ -10,6 +10,8 @@ jobs:
   Test:
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v2.3.4
+      
       - uses: actions/setup-python@v2
         with:
           python-version: '3.9'
