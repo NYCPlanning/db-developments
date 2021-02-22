@@ -31,3 +31,20 @@ jobs:
           correct_columns = ["job_number", "field", "old_value", "new_value", "reason", "edited_date", "editor"]
           current_columns = list(df.columns)
           assert current_columns == correct_columns, "Incorrect column order {0}".format('|'.join(current_columns))
+      
+      - name: Check Possible Fields
+        working-directory: developments_build/data
+        shell: python 
+        run: |
+          import pandas as pd
+          
+          df = pd.read_csv('housing_input_research.csv', dtype=str)
+          possible_columns = [
+            'classa_init', 'classa_prop', 'date_permittd', 
+            'hotel_init', 'hotel_prop', 'job_inactive', 
+            'latitude', 'longitude', 'otherb_init', 
+            'otherb_prop', 'remove', 'stories_prop'
+          ]
+          current_columns = list(df.field.unique())
+          for col in current_columns:
+            assert col in possible_columns, "This field name {0} is not supported for correction".format(col)
