@@ -4,12 +4,7 @@ DESCRIPTION:
 
 INPUTS: 
     INIT_devdb (
-        job_number,
-        job_type,
-        _job_status,
-        x_withdrawal,
-        date_statusp,
-        date_permittd
+        job_number
     )
 
     dob_permitissuance (
