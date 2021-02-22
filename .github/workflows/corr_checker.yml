@@ -1,0 +1,28 @@
+name: Check Corrections
+on:
+  pull_request:
+    types: [opened]
+  push:
+    branches:
+      - "corr_checker"
+
+jobs:
+  Test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: install pandas
+        run: python -m pip install pandas
+      
+      - name: Check Fields Order
+        shell: python 
+        run: |
+          import pandas as pd
+          
+          df = pd.read_csv('developments_build/data/housing_input_research.csv', dtype=str)
+          correct_columns = ["job_number", "field", "old_value", "new_value", "reason", "edited_date", "editor"]
+          current_columns = list(df.columns)
+          assert current_columns == correct_columns, "Incorrect column order {0}".format('|'.join(current_columns))
