@@ -1,6 +1,8 @@
-name: Check Corrections
+name: Check Corrections - housing_input_research.csv
 on:
   pull_request:
+    paths:
+      - 'developments_build/data/housing_input_research.csv'
     types: [opened]
   push:
     branches:
