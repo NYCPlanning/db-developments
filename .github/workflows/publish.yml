@@ -1,12 +1,15 @@
 name: Publish
 on:
+  release:
+    types:
+      - published
   push:
-    branches:
-      - 'publish'
+    tags:
+      - "*"
 
 jobs:
   publish:
-    name: Building ...
+    name: Publishing ...
     runs-on: ubuntu-20.04
     env:
       AWS_S3_ENDPOINT: ${{ secrets.DO_S3_ENDPOINT }}
@@ -42,4 +45,3 @@ jobs:
           compress: true
           output_format: shapefile csv pgdump
           version: ${{ steps.version.outputs.version }}
-
