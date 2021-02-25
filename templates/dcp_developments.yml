@@ -1,7 +1,7 @@
 dataset:
   name: &name dcp_developments
   version: "{{ version }}"
-  acl: public
+  acl: public-read
   source:
     url:
       path: https://nyc3.digitaloceanspaces.com/edm-publishing/db-developments/{{ version }}/output/EXPORT_devdb.csv
