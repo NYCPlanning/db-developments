@@ -183,5 +183,5 @@ if __name__ == "__main__":
     mode = "edm" if not sys.argv[1] else sys.argv[1]
 
     dob_cofos()
-    dob_jobapplications(mode, capture_date)
-    dob_permitissuance(mode, capture_date)
+    # dob_jobapplications(mode, capture_date)
+    # dob_permitissuance(mode, capture_date)

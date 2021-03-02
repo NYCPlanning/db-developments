@@ -97,7 +97,7 @@ DRAFT as (
         b.mode
 	FROM _INIT_devdb a
 	LEFT JOIN _GEO_devdb b
-	ON a.uid = b.uid
+	ON a.uid::text = b.uid::text
 ),
 GEOM_dob_bin_bldgfootprints as (
     SELECT distinct
