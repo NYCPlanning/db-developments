@@ -6,37 +6,20 @@ on:
       - '.github/workflows/weekly.yml'
     branches: 
       - dev
-      - 347-dob-data-sync
   schedule:
     - cron: '0 6 * * *'
       
 jobs:
   Build:
     name: Building ...
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
       BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
       EDM_DATA: ${{ secrets.EDM_DATA }}
     steps:
       - uses: actions/checkout@v2
-      - name: install dependencies ...
-        run: |
-          sudo apt update
-          sudo apt install -y curl zip
-
-          sudo tee /etc/apt/sources.list.d/pgdg.list <<END
-          deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
-          END
-
-          # get the signing key and import it
-          curl -O https://www.postgresql.org/media/keys/ACCC4CF8.asc
-          sudo apt-key add ACCC4CF8.asc
-
-          sudo apt update
-          sudo apt install -y postgresql-client-11
-          sudo apt autoremove
-
+      
       - name: 1. dataloading ..
         working-directory: developments_build
         run: ./01_dataloading.sh weekly
@@ -81,5 +64,5 @@ jobs:
           psql $BUILD_ENGINE -f sql/mid.sql
           psql $BUILD_ENGINE -f sql/_hny.sql
           psql $BUILD_ENGINE -v VERSION=$VERSION  -f sql/final.sql
-          psql $BUILD_ENGINE -f sql/yearly.sql
+          psql $BUILD_ENGINE -v CAPTURE_DATE=$CAPTURE_DATE -f sql/yearly.sql
           psql $BUILD_ENGINE -f sql/aggregate.sql
