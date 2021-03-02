@@ -1,4 +1,4 @@
-name: Weekly Run
+name: HED Weekly Run
 
 on:
   push:
