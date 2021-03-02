@@ -5,7 +5,8 @@ on:
     paths: 
       - '.github/workflows/weekly.yml'
     branches: 
-      - 'dev'
+      - dev
+      - 347-dob-data-sync
   schedule:
     - cron: '0 6 * * *'
       
