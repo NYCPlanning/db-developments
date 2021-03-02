@@ -15,6 +15,23 @@ docker run --rm\
     nycplanning/cook:latest bash -c "
         python3 python/dataloading.py $MODE"
 
+case $MODE in 
+    weekly) 
+        curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/dob_permitissuance/latest/dob_permitissuance.sql
+        curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/dob_jobapplications/latest/dob_jobapplications.sql
+    ;;
+    edm) 
+        curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/dob_permitissuance/$DOB_DATA_DATE/dob_permitissuance.sql
+        curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/dob_jobapplications/$DOB_DATA_DATE/dob_jobapplications.sql
+    ;;
+esac
+
+psql $BUILD_ENGINE -f dob_permitissuance.sql
+psql $BUILD_ENGINE -f dob_jobapplications.sql
+
+rm dob_permitissuance.sql
+rm dob_jobapplications.sql
+
 psql $BUILD_ENGINE -c "
     DROP TABLE IF EXISTS lookup_occ;
     CREATE TABLE lookup_occ(

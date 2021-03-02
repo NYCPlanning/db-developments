@@ -1,0 +1,34 @@
+name: DOB Data Sync
+on: 
+  push:
+    paths: 
+      - .github/workflows/dob_data_sync.yml
+      - templates/dob_jobapplications.yml
+      - templates/dob_permitissuance.yml
+  schedule:
+    - cron: '0 0 * * MON'
+
+jobs:
+  sync:
+    name: syncing ...
+    runs-on: ubuntu-20.04
+    env:
+      AWS_S3_ENDPOINT: ${{ secrets.DO_S3_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.DO_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.DO_SECRET_ACCESS_KEY }}
+      AWS_S3_BUCKET: edm-recipes
+    strategy:
+      matrix:
+        dataset:
+          - dob_permitissuance
+          - dob_jobapplications
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: NYCPlanning/action-library-archive@v1.1
+        with:
+          path: templates/${{ matrix.dataset }}.yml 
+          s3: true
+          latest: true
+          compress: true
+          output_format: csv pgdump
