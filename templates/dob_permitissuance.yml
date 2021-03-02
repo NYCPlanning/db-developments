@@ -90,7 +90,11 @@ dataset:
           issuancedate
       FROM @filename
       WHERE jobdocnum = '01'
-      AND jobtype ~* 'A1|DM|NB'
+      AND (
+        jobtype LIKE '%A1%' OR
+        jobtype LIKE '%DM%' OR
+        jobtype LIKE '%NB%'
+      )
       
   info:
     description: |

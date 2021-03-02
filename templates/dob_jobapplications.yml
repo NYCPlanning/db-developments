@@ -178,7 +178,11 @@ dataset:
         longitude	
       FROM @filename
       WHERE jobdocnumber = '01'
-      AND jobtype ~* 'A1|DM|NB'
+      AND ( 
+        jobtype LIKE '%A1%' OR
+        jobtype LIKE '%DM%' OR
+        jobtype LIKE '%NB%'
+      )
 
   info:
     description: |

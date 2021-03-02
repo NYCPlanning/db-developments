@@ -3,6 +3,8 @@ on:
   push:
     paths: 
       - .github/workflows/dob_data_sync.yml
+      - templates/dob_jobapplications.yml
+      - templates/dob_permitissuance.yml
   schedule:
     - cron: '0 0 * * MON'
 
