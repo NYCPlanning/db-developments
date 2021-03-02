@@ -118,7 +118,67 @@ dataset:
       - censustract
       - nta
       - gisbin
-    sql: null
+    sql: |
+      SELECT 
+        jobnumber,
+        jobdocnumber,
+        jobtype,
+        jobdescription,
+        existingoccupancy,
+        proposedoccupancy,
+        existingnumstories,
+        proposednumstories,
+        existingzoningsqft,
+        proposedzoningsqft,
+        existingdwellingunits,
+        proposeddwellingunits,
+        jobstatusdesc,
+        latestactiondate,
+        prefilingdate,
+        assigned,
+        paid,
+        fullypaid,
+        approved,
+        fullypermitted,
+        signoffdate,
+        zoningdist1,
+        zoningdist2,
+        zoningdist3,
+        specialdistrict1,
+        specialdistrict2,
+        landmarked,
+        cityowned,
+        ownertype,
+        nonprofit,
+        ownerfirstname,
+        ownerlastname,
+        ownerbusinessname,
+        ownerhousestreetname,
+        zip,
+        ownerphone,
+        existingheight,
+        proposedheight,
+        totalconstructionfloorarea,
+        horizontalenlrgmt,
+        verticalenlrgmt,
+        enlargementsqfootage,
+        initialcost,
+        loftboard,
+        littlee,
+        curbcut,
+        cluster,
+        housenumber,
+        streetname,
+        bin,
+        borough,
+        block,
+        lot,
+        specialactionstatus,
+        latitude,
+        longitude	
+      FROM @filename
+      WHERE jobdocnumber = '01'
+      AND jobtype ~* 'A1|DM|NB'
 
   info:
     description: |

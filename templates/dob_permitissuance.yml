@@ -82,8 +82,16 @@ dataset:
       - COUNCILDISTRICT
       - CENSUSTRACT
       - NTANAME
-    sql: null
-
+    sql: |
+      SELECT 
+          jobnum,
+          jobdocnum,
+          jobtype,
+          issuancedate
+      FROM @filename
+      WHERE jobdocnum = '01'
+      AND jobtype ~* 'A1|DM|NB'
+      
   info:
     description: |
       # The Department of Buildings (DOB) issues permits
