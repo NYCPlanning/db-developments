@@ -7,8 +7,8 @@ on:
     - cron: '0 0 * * MON'
 
 jobs:
-  publish:
-    name: Publishing ...
+  sync:
+    name: syncing ...
     runs-on: ubuntu-20.04
     env:
       AWS_S3_ENDPOINT: ${{ secrets.DO_S3_ENDPOINT }}
