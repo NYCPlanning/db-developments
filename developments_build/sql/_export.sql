@@ -37,7 +37,7 @@ SELECT
 	Hotel_Prop as "HotelProp",
 	OtherB_Init as "OtherBInit",
 	OtherB_Prop as "OtherBProp",
-	units_co as "UnitsCO",
+	units_co as "Units_CO",
 	Boro as "Boro",
 	BIN as "BIN",
 	BBL as "BBL",
