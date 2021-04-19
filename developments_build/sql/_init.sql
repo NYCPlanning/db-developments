@@ -55,7 +55,11 @@ OUTPUTS:
 		bin text,
 		bbl text,
 		boro text,
-		x_withdrawal text
+		x_withdrawal text,
+		existingzoningsqft text,
+		proposedzoningsqft text,
+		buildingclass text,
+		otherdesc text
 	)
 	
 IN PREVIOUS VERSION: 
