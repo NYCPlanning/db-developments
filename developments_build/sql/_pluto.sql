@@ -24,7 +24,9 @@ SELECT
 	b.numbldgs as pluto_bldgs,
 	b.numfloors as pluto_floors,
 	b.firm07_fla as pluto_firm07,
-	b.pfirm15_fl as pluto_pfirm15
+	b.pfirm15_fl as pluto_pfirm15,
+	b.histdist as pluto_histdst,
+	b.landmark as pluto_landmk
 INTO PLUTO_devdb
 FROM INIT_devdb a
 LEFT JOIN dcp_mappluto b
