@@ -133,7 +133,7 @@ SELECT a.job_number,
             THEN  a.classa_net 
             ELSE NULL END as withdrawn, 
         CASE WHEN a.job_status <> '9. Withdrawn'
-                AND a.job_inactive = 'Inactive'
+                AND a.job_inactive ~* 'Inactive'
                 AND a.date_lastupdt::date > '2009-12-31'::date
             THEN  a.classa_net 
             ELSE NULL END as inactive
