@@ -99,7 +99,7 @@ JOIN_CORR_devdb as (
     SELECT 
         distinct
         a.*, 
-        array_to_string(b.dcpeditfields, E'/n', '') as dcpeditfields
+        array_to_string(b.dcpeditfields, '/', '') as dcpeditfields
     FROM JOIN_HNY_PLUTO_devdb a
     LEFT JOIN CORR_devdb b
     ON a.job_number = b.job_number
@@ -262,7 +262,7 @@ all_not_applied AS (
 )
 SELECT 
 	a.*, 
-	array_to_string(b.dcpeditfields, E'/n', '') as dcpeditfields
+	array_to_string(b.dcpeditfields, '/', '') as dcpeditfields
 INTO not_applied_corrections
 FROM all_not_applied a
 LEFT JOIN CORR_devdb b
