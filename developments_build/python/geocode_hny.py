@@ -1,7 +1,7 @@
 from multiprocessing import Pool, cpu_count
 from sqlalchemy import create_engine
 from geosupport import Geosupport, GeosupportError
-from utils.exporter import exporter
+from utils import psql_insert_copy
 import pandas as pd
 import json
 import os
@@ -86,4 +86,11 @@ if __name__ == "__main__":
         it = pool.map(geocode, records, 10000)
 
     print("Geocoding finished, dumping to postgres ...")
-    exporter(df=pd.DataFrame(it), table_name="hny_geocode_results", con=engine)
+    df=pd.DataFrame(it)
+    df.to_sql(
+        'hny_geocode_results',
+        con=engine,
+        if_exists="replace",
+        index=False,
+        method=psql_insert_copy,
+    )

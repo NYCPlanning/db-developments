@@ -1,7 +1,7 @@
 from multiprocessing import Pool, cpu_count
 from sqlalchemy import create_engine
 from geosupport import Geosupport, GeosupportError
-from utils.exporter import exporter
+from utils import psql_insert_copy
 import pandas as pd
 import json
 import os
@@ -67,8 +67,8 @@ def parse_output(geo):
         geo_zipcode=geo.get("ZIP Code", ""),
         geo_ntacode2010=geo.get("Neighborhood Tabulation Area (NTA)", ""),
         # the return codes and messaged are for diagnostic puposes
-        GRC=geo.get("Geosupport Return Code (GRC)", ""),
-        GRC2=geo.get("Geosupport Return Code 2 (GRC 2)", ""),
+        grc=geo.get("Geosupport Return Code (GRC)", ""),
+        grc2=geo.get("Geosupport Return Code 2 (GRC 2)", ""),
         msg=geo.get("Message", "msg err"),
         msg2=geo.get("Message 2", "msg2 err"),
     )
@@ -99,4 +99,11 @@ if __name__ == "__main__":
         it = pool.map(geocode, records, 10000)
 
     print("geocoding finished, dumping GEO_devdb postgres ...")
-    exporter(df=pd.DataFrame(it), table_name="_GEO_devdb", con=engine)
+    df=pd.DataFrame(it)
+    df.to_sql(
+        '_geo_devdb',
+        con=engine,
+        if_exists="replace",
+        index=False,
+        method=psql_insert_copy,
+    )
