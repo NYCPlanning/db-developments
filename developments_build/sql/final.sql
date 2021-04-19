@@ -90,7 +90,9 @@ JOIN_HNY_PLUTO_devdb as (
 	b.pluto_bldgs,
 	b.pluto_floors,
 	b.pluto_firm07,
-	b.pluto_pfirm15
+	b.pluto_pfirm15,
+	b.pluto_histdst,
+	b.pluto_landmk
     FROM JOIN_HNY_devdb a
     LEFT JOIN PLUTO_devdb b
     ON a.job_number = b.job_number
@@ -179,8 +181,8 @@ SELECT
 	pluto_yrbuilt,
 	pluto_yralt1,
 	pluto_yralt2,
-	-- PLUTO_Histdst,
-	-- PLUTO_Landmk,
+	pluto_histdst,
+	pluto_landmk,
 	pluto_bldgcls,
 	pluto_landuse,
 	pluto_owner,
