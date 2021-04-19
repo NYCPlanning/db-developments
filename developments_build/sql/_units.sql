@@ -41,10 +41,22 @@ SELECT DISTINCT
 	b.occ_initial,
 	a.classa_init,
 	a.classa_prop,
-	NULL as hotel_init,
-	NULL as hotel_prop,
-	NULL as otherb_init,
-	NULL as otherb_prop
+	(CASE
+		WHEN a.job_type = 'New Building' THEN 0
+		ELSE NULL
+	END) as hotel_init,
+	(CASE
+		WHEN a.job_type = 'Demolition' THEN 0
+		ELSE NULL
+	END) as hotel_prop,
+	(CASE
+		WHEN a.job_type = 'New Building' THEN 0
+		ELSE NULL
+	END) as otherb_init,
+	(CASE
+		WHEN a.job_type = 'Demolition' THEN 0
+		ELSE NULL
+	END) as otherb_prop
 INTO _UNITS_devdb
 FROM INIT_devdb a
 LEFT JOIN OCC_devdb b
