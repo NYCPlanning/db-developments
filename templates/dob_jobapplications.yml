@@ -175,7 +175,11 @@ dataset:
         lot,
         specialactionstatus,
         latitude,
-        longitude	
+        longitude,
+        existingzoningsqft,
+        proposedzoningsqft
+        buildingclass,
+        otherdesc
       FROM @filename
       WHERE jobdocnumber = '01'
       AND ( 
