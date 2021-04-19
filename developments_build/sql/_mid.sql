@@ -144,6 +144,10 @@ SELECT
     a.longitude,
     a.geom,
     a.geomsource,
+    a.zsf_prop,
+    a.zsf_init,
+    a.other_desc,
+    a.bldg_class,
     b.date_permittd,
     b.permit_year,
     b.permit_qrtr
