@@ -1,5 +1,5 @@
 /** QAQC
-    z_inactive_with_update
+    inactive_with_update
     partially_complete
 **/
 
@@ -24,7 +24,7 @@ SELECT a.*,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_inactive_update) THEN 1
 	 	ELSE 0
-	END) as z_inactive_with_update,
+	END) as inactive_with_update,
     (CASE 
 	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_inactive_update) THEN 1
 	 	ELSE 0

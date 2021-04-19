@@ -13,7 +13,7 @@
     CO:
         units_co_prop_mismatch
     STATUS:
-        z_incomp_tract_home
+        incomp_tract_home
 **/
 
 DROP TABLE IF EXISTS MATCH_dem_nb;
@@ -162,7 +162,7 @@ SELECT
 	(CASE 
 		WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_incomplete_tract) 
 		THEN 1 ELSE 0
-	END) as z_incomp_tract_home,
+	END) as incomp_tract_home,
 	(CASE 
 		WHEN a.job_number IN (
 			SELECT DISTINCT job_number_dem FROM MATCH_dem_nb UNION 
