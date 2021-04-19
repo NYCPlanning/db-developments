@@ -135,7 +135,7 @@ SELECT
 	COALESCE(geo_address_numbr, address_numbr)||' '||COALESCE(geo_address_street, address_street) as address,
 	occ_initial,
 	occ_proposed,
-	bldg_lass,
+	bldg_class,
 	job_desc,
 	desc_other,
 	date_filed,
