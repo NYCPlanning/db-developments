@@ -36,7 +36,9 @@ SELECT
 	(CASE WHEN job_type = 'New Building' THEN 'Empty Site'
 		ELSE occ_translate(_occ_initial) 
 	END) as occ_initial,
-	occ_translate(_occ_proposed)  as occ_proposed
+	(CASE WHEN job_type = 'Demolition' THEN 'Empty Site'
+		ELSE occ_translate(_occ_proposed) 
+	END) as occ_proposed
 INTO OCC_devdb
 FROM INIT_devdb;
 
