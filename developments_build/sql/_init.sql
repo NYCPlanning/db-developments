@@ -223,6 +223,10 @@ JOBNUMBER_relevant as (
 		WHEN borough ~* 'Queens' THEN '4'
 		WHEN borough ~* 'Staten Island' THEN '5' 
 		END as boro,
+	existingzoningsqft as zsf_init,
+	proposedzoningsqft as zsf_prop,
+	buildingclass as bldg_class,
+	otherdesc as desc_other,
 	specialactionstatus as x_withdrawal,
 	ST_SetSRID(ST_Point(
 		longitude::double precision,
