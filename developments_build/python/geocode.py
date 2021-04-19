@@ -11,10 +11,10 @@ g = Geosupport()
 
 def geocode(input):
     # collect inputs
-    uid = input.pop("uid")
-    hnum = input.pop("house_number")
-    sname = input.pop("street_name")
-    borough = input.pop("borough")
+    uid = input.get("uid", "")
+    hnum = input.get("house_number", "")
+    sname = input.get("street_name", "")
+    borough = input.get("borough", "")
 
     try:
         geo = g["1B"](
