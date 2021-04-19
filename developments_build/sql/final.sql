@@ -90,7 +90,9 @@ JOIN_HNY_PLUTO_devdb as (
 	b.pluto_bldgs,
 	b.pluto_floors,
 	b.pluto_firm07,
-	b.pluto_pfirm15
+	b.pluto_pfirm15,
+	b.pluto_histdst,
+	b.pluto_landmk
     FROM JOIN_HNY_devdb a
     LEFT JOIN PLUTO_devdb b
     ON a.job_number = b.job_number
@@ -133,7 +135,9 @@ SELECT
 	COALESCE(geo_address_numbr, address_numbr)||' '||COALESCE(geo_address_street, address_street) as address,
 	occ_initial,
 	occ_proposed,
+	bldg_class,
 	job_desc,
+	desc_other,
 	date_filed,
 	date_statusd,
 	date_statusp,
@@ -148,6 +152,8 @@ SELECT
 	specialdist1,
 	specialdist2,
 	landmark,
+	zsf_init,
+	zsf_prop,
 	stories_init,
 	stories_prop,
 	height_init,
@@ -175,6 +181,8 @@ SELECT
 	pluto_yrbuilt,
 	pluto_yralt1,
 	pluto_yralt2,
+	pluto_histdst,
+	pluto_landmk,
 	pluto_bldgcls,
 	pluto_landuse,
 	pluto_owner,

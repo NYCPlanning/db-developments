@@ -28,6 +28,7 @@ SELECT
     a.outlier_nb_500plus,
     a.outlier_top_alt_increase,
     a.z_inactive_with_update,
+    a.partially_complete,
     a.z_incomp_tract_home,
     a.dem_nb_overlap
 INTO FINAL_qaqc
