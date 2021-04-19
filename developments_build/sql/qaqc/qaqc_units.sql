@@ -20,7 +20,7 @@ JOBNUMBER_large_nb AS(
     SELECT job_number
     FROM UNITS_devdb
     WHERE
-    job_type = 'New building'
+    job_type = 'New Building'
     AND classa_prop::numeric > 499
 ),
 
