@@ -101,7 +101,7 @@ SELECT
     (CASE 
         -- All withdrawn jobs are inactive
         WHEN job_status = '9. Withdrawn'
-            THEN 'Inactive'
+            THEN 'Inactive: Withdrawn'
         -- A date_complete indicates not inactive
         WHEN date_complete IS NOT NULL 
             THEN NULL
@@ -110,7 +110,7 @@ SELECT
             AND job_status IN ('1. Filed Application', 
                                 '2. Approved Application', 
                                 '3. Permitted for Construction')
-            THEN 'Inactive'
+            THEN 'Inactive: Stalled'
     END) as job_inactive
 INTO STATUS_devdb
 FROM DRAFT_STATUS_devdb;
@@ -123,7 +123,7 @@ WITH completejobs AS (
     AND classa_prop IS NOT NULL
 	AND job_status IN ('4. Partially Completed Construction', '5. Completed Construction'))
 UPDATE STATUS_devdb a 
-SET job_inactive = 'Inactive'
+SET job_inactive = 'Inactive: Duplicate'
 FROM completejobs b
 WHERE a.job_status IN ('1. Filed Application', '2. Approved Application', '3. Permitted for Construction')
 	AND a.job_type = b.job_type

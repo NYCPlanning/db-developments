@@ -12,7 +12,7 @@ JOBNUMBER_inactive_update AS(
     AND job_number IN (SELECT job_number
         FROM housing_input_research
         WHERE field = 'job_inactive'
-        AND new_value = 'Inactive')
+        AND new_value ~* 'Inactive')
 ),
 JOBNUMBER_partially_complete AS(
     SELECT job_number
