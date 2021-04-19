@@ -87,6 +87,8 @@ SELECT
 	PLUTO_YrBuilt as "PL_YrBuilt",
 	PLUTO_YrAlt1 as "PL_YrAlt1",
 	PLUTO_YrAlt2 as "PL_YrAlt2",
+	PLUTO_Histdst as "PLUTO_Histdst",
+	PLUTO_Landmk as "PLUTO_Landmk",
 	PLUTO_BldgCls as "PL_BldgCls",
 	PLUTO_LandUse as "PL_LandUse",
 	PLUTO_Owner as "PL_Owner",
