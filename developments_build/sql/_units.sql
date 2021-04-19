@@ -2,15 +2,15 @@
 /*
 DESCRIPTION:
     This script assigns units fields for devdb
-	1. Assign classa_init and classa_prop
-	2. Apply corrections to classa_init and classa_prop
-	3. Assign classa_net
+	1. Assign _classa_init and classa_prop
+	2. Apply corrections to _classa_init and classa_prop
+	3. Assign _classa_net
 INPUTS: 
 	INIT_devdb (
 		job_number text,
 		job_type text,
-		classa_init numeric,
-		classa_prop numeric
+		_classa_init numeric,
+		_classa_prop numeric
 	)
 	OCC_devdb (
 		job_number text,
@@ -20,13 +20,13 @@ INPUTS:
 OUTPUTS:
 	UNITS_devdb (
 		job_number text, 
-		classa_init numeric,
-		classa_prop numeric,
-		hotel_init numeric,
-		hotel_prop numeric,
-		otherb_init numeric,
-		otherb_prop numeric,
-		classa_net numeric
+		_classa_init numeric,
+		_classa_prop numeric,
+		_hotel_init numeric,
+		_hotel_prop numeric,
+		_otherb_init numeric,
+		_otherb_prop numeric,
+		_classa_net numeric
 	)
 IN PREVIOUS VERSION: 
     units_.sql
@@ -39,24 +39,24 @@ SELECT DISTINCT
 	a.job_type,
 	b.occ_proposed,
 	b.occ_initial,
-	a.classa_init,
-	a.classa_prop,
+	a._classa_init,
+	a._classa_prop,
 	(CASE
 		WHEN a.job_type = 'New Building' THEN 0
 		ELSE NULL
-	END) as hotel_init,
+	END) as _hotel_init,
 	(CASE
 		WHEN a.job_type = 'Demolition' THEN 0
 		ELSE NULL
-	END) as hotel_prop,
+	END) as _hotel_prop,
 	(CASE
 		WHEN a.job_type = 'New Building' THEN 0
 		ELSE NULL
-	END) as otherb_init,
+	END) as _otherb_init,
 	(CASE
 		WHEN a.job_type = 'Demolition' THEN 0
 		ELSE NULL
-	END) as otherb_prop
+	END) as _otherb_prop
 INTO _UNITS_devdb
 FROM INIT_devdb a
 LEFT JOIN OCC_devdb b
@@ -78,8 +78,8 @@ WITH CORR_target as (
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'hotel_init'
-	AND (a.classa_init=b.old_value::numeric 
-		OR (a.classa_init IS NULL 
+	AND (a._classa_init=b.old_value::numeric 
+		OR (a._classa_init IS NULL 
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
@@ -88,7 +88,7 @@ FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE _UNITS_devdb a
-SET hotel_init = b.new_value::numeric
+SET _hotel_init = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'hotel_init'
@@ -105,8 +105,8 @@ WITH CORR_target as (
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number = b.job_number
 	AND b.field = 'hotel_prop'
-	AND (a.classa_prop = b.old_value::numeric 
-		OR (a.classa_prop IS NULL 
+	AND (a._classa_prop = b.old_value::numeric 
+		OR (a._classa_prop IS NULL 
 		AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
@@ -115,7 +115,7 @@ FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE _UNITS_devdb a
-SET hotel_prop = b.new_value::numeric
+SET _hotel_prop = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'hotel_prop'
@@ -132,8 +132,8 @@ WITH CORR_target as (
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'otherb_init'
-	AND (a.classa_init=b.old_value::numeric 
-		OR (a.classa_init IS NULL 
+	AND (a._classa_init=b.old_value::numeric 
+		OR (a._classa_init IS NULL 
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
@@ -142,7 +142,7 @@ FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE _UNITS_devdb a
-SET otherb_init = b.new_value::numeric
+SET _otherb_init = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'otherb_init'
@@ -159,8 +159,8 @@ WITH CORR_target as (
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number = b.job_number
 	AND b.field = 'otherb_prop'
-	AND (a.classa_prop = b.old_value::numeric 
-		OR (a.classa_prop IS NULL 
+	AND (a._classa_prop = b.old_value::numeric 
+		OR (a._classa_prop IS NULL 
 		AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
@@ -169,7 +169,7 @@ FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE _UNITS_devdb a
-SET otherb_prop = b.new_value::numeric
+SET _otherb_prop = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'otherb_prop'
@@ -186,8 +186,8 @@ WITH CORR_target as (
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number=b.job_number
 	AND b.field = 'classa_init'
-	AND (a.classa_init=b.old_value::numeric 
-		OR (a.classa_init IS NULL 
+	AND (a._classa_init=b.old_value::numeric 
+		OR (a._classa_init IS NULL 
 			AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
@@ -196,7 +196,7 @@ FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE _UNITS_devdb a
-SET classa_init = b.new_value::numeric
+SET _classa_init = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'classa_init'
@@ -213,8 +213,8 @@ WITH CORR_target as (
 	FROM _UNITS_devdb a, housing_input_research b
 	WHERE a.job_number = b.job_number
 	AND b.field = 'classa_prop'
-	AND (a.classa_prop = b.old_value::numeric 
-		OR (a.classa_prop IS NULL 
+	AND (a._classa_prop = b.old_value::numeric 
+		OR (a._classa_prop IS NULL 
 		AND b.old_value IS NULL))
 )
 UPDATE CORR_devdb a
@@ -223,7 +223,7 @@ FROM CORR_target b
 WHERE a.job_number=b.job_number;
 
 UPDATE _UNITS_devdb a
-SET classa_prop = b.new_value::numeric
+SET _classa_prop = b.new_value::numeric
 FROM housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'classa_prop'
@@ -240,14 +240,14 @@ SELECT
 	*,
 	(CASE
 		WHEN job_type = 'Demolition' 
-			THEN classa_init * -1
+			THEN _classa_init * -1
 		WHEN job_type = 'New Building' 
-			THEN classa_prop
+			THEN _classa_prop
 		WHEN job_type = 'Alteration' 
-			AND classa_init IS NOT NULL 
-			AND classa_prop IS NOT NULL 
-			THEN classa_prop - classa_init
+			AND _classa_init IS NOT NULL 
+			AND _classa_prop IS NOT NULL 
+			THEN _classa_prop - _classa_init
 		ELSE NULL
-	END) as classa_net
+	END) as _classa_net
 INTO UNITS_devdb
 FROM _UNITS_devdb;

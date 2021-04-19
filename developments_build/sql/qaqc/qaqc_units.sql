@@ -13,7 +13,7 @@ JOBNUMBER_large_alt AS(
     FROM UNITS_devdb
     WHERE
     job_type = 'Alteration'
-    AND classa_net::numeric < -5
+    AND _classa_net::numeric < -5
 ),
 
 JOBNUMBER_large_nb AS(
@@ -21,7 +21,7 @@ JOBNUMBER_large_nb AS(
     FROM UNITS_devdb
     WHERE
     job_type = 'New Building'
-    AND classa_prop::numeric > 499
+    AND _classa_prop::numeric > 499
 ),
 
 JOBNUMBER_large_demo AS(
@@ -29,7 +29,7 @@ JOBNUMBER_large_demo AS(
     FROM UNITS_devdb
     WHERE
     job_type = 'Demolition'
-    AND classa_init::numeric > 19
+    AND _classa_init::numeric > 19
 ),
 
 JOBNUMBER_top_alt_inc AS(
@@ -37,8 +37,8 @@ JOBNUMBER_top_alt_inc AS(
     FROM UNITS_devdb
     WHERE
     job_type = 'Alteration'
-    AND classa_net IS NOT NULL
-    ORDER BY classa_net DESC
+    AND _classa_net IS NOT NULL
+    ORDER BY _classa_net DESC
     LIMIT 20
 ),
 
@@ -47,8 +47,8 @@ JOBNUMBER_top_alt_dec AS(
     FROM UNITS_devdb
     WHERE
     job_type = 'Alteration'
-    AND classa_net IS NOT NULL
-    ORDER BY classa_net ASC
+    AND _classa_net IS NOT NULL
+    ORDER BY _classa_net ASC
     LIMIT 20
 )
 
