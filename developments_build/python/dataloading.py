@@ -8,8 +8,6 @@ import sys
 
 RECIPE_ENGINE = os.environ.get("RECIPE_ENGINE", "")
 BUILD_ENGINE = os.environ.get("BUILD_ENGINE", "")
-EDM_DATA = os.environ.get("EDM_DATA", "")
-
 
 def ETL(table):
     importer = Importer(RECIPE_ENGINE, BUILD_ENGINE)
@@ -17,23 +15,10 @@ def ETL(table):
 
 
 tables = [
-    # "dof_shoreline",
     "council_members",
-    # "dcp_mappluto",
-    # "doitt_buildingfootprints",
-    # "doitt_buildingfootprints_historical",
-    # "doitt_zipcodeboundaries",
-    # "dcp_cdboundaries",
-    # "dcp_censusblocks",
-    # "dcp_censustracts",
-    # "dcp_school_districts",
-    # "dcp_boroboundaries_wi",
-    # "dcp_councildistricts",
-    # "dcp_firecompanies",
     "doe_school_subdistricts",
     "doe_eszones",
     "doe_mszones",
-    # "dcp_policeprecincts",
     "hpd_hny_units_by_building",
 ]
 
@@ -73,9 +58,5 @@ def dob_cofos():
 if __name__ == "__main__":
     with Pool(processes=cpu_count()) as pool:
         pool.map(ETL, tables)
-
-    # weekly or edm
-    capture_date = os.environ.get("CAPTURE_DATE", "")
-    mode = "edm" if not sys.argv[1] else sys.argv[1]
 
     dob_cofos()

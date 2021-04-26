@@ -7,13 +7,12 @@ MODE="${1:-edm}"
 docker run --rm\
     -v $(pwd):/developments_build\
     -w /developments_build\
-    -e EDM_DATA=$EDM_DATA\
     -e RECIPE_ENGINE=$RECIPE_ENGINE\
     -e BUILD_ENGINE=$BUILD_ENGINE\
-    -e CAPTURE_DATE=$CAPTURE_DATE\
     -e DOB_DATA_DATE=$DOB_DATA_DATE\
     nycplanning/cook:latest bash -c "python3 python/dataloading.py"
 
+max_bg_procs 5
 import_public dcp_mappluto &
 import_public doitt_buildingfootprints &
 import_public doitt_buildingfootprints_historical &
@@ -29,16 +28,16 @@ import_public dcp_policeprecincts &
 
 case $MODE in
     weekly) 
-        import_public dob_permitissuance
-        import_public dob_jobapplications
+        import_public dob_permitissuance &
+        import_public dob_jobapplications &
     ;;
     edm) 
-        import_public dob_permitissuance $DOB_DATA_DATE
-        import_public dob_jobapplications $DOB_DATA_DATE
+        import_public dob_permitissuance $DOB_DATA_DATE &
+        import_public dob_jobapplications $DOB_DATA_DATE &
     ;;
 esac
 
-psql $BUILD_ENGINE -f sql/_create.sql
+psql $BUILD_ENGINE -f sql/_create.sql 
 
 wait 
 display "data loading is complete"

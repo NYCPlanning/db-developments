@@ -80,7 +80,7 @@ function import_public {
     echo "🛠 $name.sql doesn't exists in cache, downloading ..."
     mkdir -p $target_dir && (
       cd $target_dir
-      curl -O $url/datasets/$name/$version/$name.sql
+      curl -ss -O $url/datasets/$name/$version/$name.sql
     )
   fi
 
@@ -118,4 +118,20 @@ function makevalid {
       UPDATE $1
       SET wkb_geometry = st_makevalid(wkb_geometry);
   "
+}
+
+function max_bg_procs {
+    if [[ $# -eq 0 ]] ; then
+            echo "Usage: max_bg_procs NUM_PROCS.  Will wait until the number of background (&)"
+            echo "           bash processes (as determined by 'jobs -pr') falls below NUM_PROCS"
+            return
+    fi
+    local max_number=$((0 + ${1:-0}))
+    while true; do
+            local current_number=$(jobs -pr | wc -l)
+            if [[ $current_number -lt $max_number ]]; then
+                    break
+            fi
+            sleep 1
+    done
 }
