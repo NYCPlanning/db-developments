@@ -7,140 +7,42 @@ MODE="${1:-edm}"
 docker run --rm\
     -v $(pwd):/developments_build\
     -w /developments_build\
-    -e EDM_DATA=$EDM_DATA\
     -e RECIPE_ENGINE=$RECIPE_ENGINE\
     -e BUILD_ENGINE=$BUILD_ENGINE\
-    -e CAPTURE_DATE=$CAPTURE_DATE\
     -e DOB_DATA_DATE=$DOB_DATA_DATE\
-    nycplanning/cook:latest bash -c "
-        python3 python/dataloading.py $MODE"
+    nycplanning/cook:latest python3 python/dataloading.py
 
-case $MODE in 
+max_bg_procs 5
+import_public council_members &
+import_public doe_school_subdistricts &
+import_public doe_eszones &
+import_public doe_mszones &
+import_public hpd_hny_units_by_building &
+import_public dcp_mappluto &
+import_public doitt_buildingfootprints &
+import_public doitt_buildingfootprints_historical &
+import_public doitt_zipcodeboundaries &
+import_public dcp_cdboundaries &
+import_public dcp_censusblocks &
+import_public dcp_censustracts &
+import_public dcp_school_districts &
+import_public dcp_boroboundaries_wi &
+import_public dcp_councildistricts &
+import_public dcp_firecompanies &
+import_public dcp_policeprecincts &
+
+case $MODE in
     weekly) 
-        curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/dob_permitissuance/latest/dob_permitissuance.sql
-        curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/dob_jobapplications/latest/dob_jobapplications.sql
+        import_public dob_permitissuance &
+        import_public dob_jobapplications &
     ;;
     edm) 
-        curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/dob_permitissuance/$DOB_DATA_DATE/dob_permitissuance.sql
-        curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/dob_jobapplications/$DOB_DATA_DATE/dob_jobapplications.sql
+        import_public dob_permitissuance $DOB_DATA_DATE &
+        import_public dob_jobapplications $DOB_DATA_DATE &
     ;;
 esac
 
-psql $BUILD_ENGINE -f dob_permitissuance.sql
-psql $BUILD_ENGINE -f dob_jobapplications.sql
-
-rm dob_permitissuance.sql
-rm dob_jobapplications.sql
-
-psql $BUILD_ENGINE -c "
-    DROP TABLE IF EXISTS lookup_occ;
-    CREATE TABLE lookup_occ(
-        dob_occ text,
-        occ text
-    ); 
-
-    DROP TABLE IF EXISTS lookup_ownership;
-    CREATE TABLE lookup_ownership (
-        cityowned text,
-        ownertype text,
-        nonprofit text,
-        ownership text
-    );
-
-    DROP TABLE IF EXISTS housing_input_research;
-    CREATE TABLE housing_input_research (
-        job_number text,
-        field text,
-        old_value text,
-        new_value text,
-        reason text,
-        edited_date text,
-        editor text
-    );
-
-    DROP TABLE IF EXISTS CORR_hny_matches;
-    CREATE TABLE CORR_hny_matches (
-        hny_id text,
-        job_number text,
-		hny_project_id text,
-		action text
-    );
-
-    DROP TABLE IF EXISTS housing_input_hny;
-    CREATE TABLE housing_input_hny (
-        job_number text,
-        hny_id text
-    );
-
-    DROP TABLE IF EXISTS census_units10;
-    CREATE TABLE census_units10 (
-        CenBlock10 text,
-        CenTract10 text,
-        NTA10 text,
-        PUMA10 text,
-        CenUnits10 numeric
-    );
-
-    DROP TABLE IF EXISTS census_units10adj;
-    CREATE TABLE census_units10adj (
-        BCT2010 text,
-        CenTract10 text,
-        NTA10 text,
-        PUMA10 text,
-        AdjUnits10 numeric
-    );
-
-    DROP TABLE IF EXISTS lookup_geo;
-    CREATE TABLE lookup_geo (
-        boro text,
-        borocode text,
-        fips_boro text,
-        ctcb2010 text,
-        ct2010 text,
-        bctcb2010 text,
-        bct2010 text,
-        puma text,
-        pumaname text,
-        nta text,
-        ntaname text,
-        commntydst text,
-        councildst text
-    );
-"
-
-imports_csv lookup_occ &
-imports_csv lookup_ownership &
-imports_csv housing_input_research &
-imports_csv CORR_hny_matches &
-imports_csv census_units10 &
-imports_csv census_units10adj &
-imports_csv lookup_geo
+psql $BUILD_ENGINE -f sql/_create.sql 
 
 wait 
 display "data loading is complete"
-
- tables=(
-      "dof_shoreline" 
-      "dcp_mappluto"
-      "doitt_buildingfootprints"
-      "doitt_buildingfootprints_historical"
-      "doitt_zipcodeboundaries"
-      "dcp_cdboundaries"
-      "dcp_censusblocks"
-      "dcp_censustracts"
-      "dcp_school_districts"
-      "dcp_boroboundaries_wi"
-      "dcp_councildistricts"
-      "dcp_firecompanies"
-      "doe_school_subdistricts"
-      "doe_eszones"
-      "doe_mszones"
-      "dcp_policeprecincts"
-)
-for i in "${tables[@]}"
-do
-    makevalid $i &
-done
-
-wait 
-display "all geometries valid"
