@@ -10,9 +10,14 @@ docker run --rm\
     -e RECIPE_ENGINE=$RECIPE_ENGINE\
     -e BUILD_ENGINE=$BUILD_ENGINE\
     -e DOB_DATA_DATE=$DOB_DATA_DATE\
-    nycplanning/cook:latest bash -c "python3 python/dataloading.py"
+    nycplanning/cook:latest python3 python/dataloading.py
 
 max_bg_procs 5
+import_public council_members &
+import_public doe_school_subdistricts &
+import_public doe_eszones &
+import_public doe_mszones &
+import_public hpd_hny_units_by_building &
 import_public dcp_mappluto &
 import_public doitt_buildingfootprints &
 import_public doitt_buildingfootprints_historical &
