@@ -294,18 +294,18 @@ FROM GEOM_corrections b
 WHERE a.job_number=b.job_number
 AND (COALESCE(b.distance, 0) < 10 AND (b.bbl IS NULL OR b.in_water));
 
-WITH CORR_target as (
-    SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-    AND a.job_number in (
-        SELECT distinct job_number
-        FROM GEO_devdb 
-        WHERE geomsource = 'Lat/Lon DCP')
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_cat(dcpeditfields, ARRAY['longitude', 'latitude'])
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- WITH CORR_target as (
+--     SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+--     AND a.job_number in (
+--         SELECT distinct job_number
+--         FROM GEO_devdb 
+--         WHERE geomsource = 'Lat/Lon DCP')
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_cat(dcpeditfields, ARRAY['longitude', 'latitude'])
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
