@@ -64,13 +64,13 @@ jobs:
         run: ./02_build_devdb.sh
 
       - name: 3. export ...
-        working-directory: developments_build
         if: github.event.inputs.export == 'yes'
+        working-directory: developments_build
         run: ./03_export.sh
 
       - name: 4. archive ...
-        working-directory: developments_build
         if: github.event.inputs.archive == 'yes'
+        working-directory: developments_build
         run: ./04_archive.sh
     
       - name: 5. clean up ...
