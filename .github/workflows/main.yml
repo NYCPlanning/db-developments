@@ -1,20 +1,20 @@
 name: Build
 on:
   push:
-    workflow_dispatch:
-      inputs:
-        rebuild:
-          description: 'Would you like to rebuild DevDB? (yes/no) If no, set archive or export to yes.'
-          required: false
-          default: 'yes'
-        export:
-          description: 'Would you like to export the outputs and QAQC to DigitalOcean? (yes/no)'
-          required: false
-          default: 'no'
-        archive:
-          description: 'Would you like to archive developments and dcp_housing to EDM-DATA? (yes/no)'
-          required: false
-          default: 'no'
+  workflow_dispatch:
+    inputs:
+      rebuild:
+        description: 'Would you like to rebuild DevDB? (yes/no) If no, set archive or export to yes.'
+        required: false
+        default: 'yes'
+      export:
+        description: 'Would you like to export the outputs and QAQC to DigitalOcean? (yes/no)'
+        required: false
+        default: 'no'
+      archive:
+        description: 'Would you like to archive developments and dcp_housing to EDM-DATA? (yes/no)'
+        required: false
+        default: 'no'
 jobs: 
   Build:
     name: Building ...
