@@ -1,3 +1,21 @@
+DROP TABLE IF EXISTS corrections_applied;
+CREATE TABLE corrections_applied (
+	record_id 		text,
+	field 	  		text,
+	current_value 	text,
+	old_value 		text,
+	new_value 		text
+);
+
+DROP TABLE IF EXISTS corrections_not_applied;
+CREATE TABLE corrections_not_applied (
+	record_id 		text,
+	field 	  		text,
+	current_value 	text,
+	old_value 		text,
+	new_value 		text
+);
+
 /* 
 Procedure to apply a single correction:
 - Identifies data type of field to correct

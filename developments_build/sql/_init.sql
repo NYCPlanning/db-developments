@@ -263,225 +263,236 @@ CORRECTIONS:
 	date_statusr
 	date_statusx
 */
--- stories_prop
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'stories_prop'
-	AND (a.stories_prop=b.old_value::numeric 
-		OR (a.stories_prop IS NULL 
-			AND b.old_value IS NULL))
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'stories_prop')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE _INIT_devdb a
-SET stories_prop = b.new_value::numeric
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'stories_prop'=any(dcpeditfields));
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'stories_prop');
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'bin');
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'bbl');
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_lastupdt');
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_filed');
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_statusd');
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_statusp');
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_statusr');
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_statusx');
 
 
--- bbl
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'bbl'
-	AND a.bbl IS NULL AND b.old_value IS NOT NULL
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'bbl')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- -- stories_prop
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+-- 	AND b.field = 'stories_prop'
+-- 	AND (a.stories_prop=b.old_value::numeric 
+-- 		OR (a.stories_prop IS NULL 
+-- 			AND b.old_value IS NULL))
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_append(dcpeditfields, 'stories_prop')
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
 
-UPDATE _INIT_devdb a
-SET bbl = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'bbl'=any(dcpeditfields));
+-- UPDATE _INIT_devdb a
+-- SET stories_prop = b.new_value::numeric
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number 
+-- 	FROM CORR_devdb
+-- 	WHERE 'stories_prop'=any(dcpeditfields));
 
--- bin
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'bin'
-	AND a.bbl IS NULL AND b.old_value IS NOT NULL
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'bin')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
 
-UPDATE _INIT_devdb a
-SET bin = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'bin'=any(dcpeditfields));
+-- -- bbl
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+-- 	AND b.field = 'bbl'
+-- 	AND a.bbl IS NULL AND b.old_value IS NOT NULL
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_append(dcpeditfields, 'bbl')
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
 
--- date_lastupdt
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'date_lastupdt'
-	AND (a.date_lastupdt::text = b.old_value::text
-		OR (a.date_lastupdt IS NULL
-			AND b.old_value IS NULL))
-	AND is_date(b.new_value)
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'date_lastupdt')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- UPDATE _INIT_devdb a
+-- SET bbl = b.new_value
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number 
+-- 	FROM CORR_devdb
+-- 	WHERE 'bbl'=any(dcpeditfields));
 
-UPDATE _INIT_devdb a
-SET date_lastupdt = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'date_lastupdt'=any(dcpeditfields));
+-- -- bin
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+-- 	AND b.field = 'bin'
+-- 	AND a.bbl IS NULL AND b.old_value IS NOT NULL
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_append(dcpeditfields, 'bin')
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
 
--- date_filed
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'date_filed'
-	AND is_date(b.new_value)
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'date_filed')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- UPDATE _INIT_devdb a
+-- SET bin = b.new_value
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number 
+-- 	FROM CORR_devdb
+-- 	WHERE 'bin'=any(dcpeditfields));
 
-UPDATE _INIT_devdb a
-SET date_filed = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'date_filed'=any(dcpeditfields));
+-- -- date_lastupdt
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+-- 	AND b.field = 'date_lastupdt'
+-- 	AND (a.date_lastupdt::text = b.old_value::text
+-- 		OR (a.date_lastupdt IS NULL
+-- 			AND b.old_value IS NULL))
+-- 	AND is_date(b.new_value)
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_append(dcpeditfields, 'date_lastupdt')
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
 
--- date_statusd
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'date_statusd'
-	AND is_date(b.new_value)
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'date_statusd')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- UPDATE _INIT_devdb a
+-- SET date_lastupdt = b.new_value
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number 
+-- 	FROM CORR_devdb
+-- 	WHERE 'date_lastupdt'=any(dcpeditfields));
 
-UPDATE _INIT_devdb a
-SET date_statusd = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'date_statusd'=any(dcpeditfields));
+-- -- date_filed
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+-- 	AND b.field = 'date_filed'
+-- 	AND is_date(b.new_value)
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_append(dcpeditfields, 'date_filed')
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
 
--- date_statusp
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'date_statusp'
-	AND is_date(b.new_value)
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'date_statusp')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- UPDATE _INIT_devdb a
+-- SET date_filed = b.new_value
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number 
+-- 	FROM CORR_devdb
+-- 	WHERE 'date_filed'=any(dcpeditfields));
 
-UPDATE _INIT_devdb a
-SET date_statusp = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'date_statusp'=any(dcpeditfields));
+-- -- date_statusd
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+-- 	AND b.field = 'date_statusd'
+-- 	AND is_date(b.new_value)
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_append(dcpeditfields, 'date_statusd')
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
 
--- date_statusr
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'date_statusr'
-	AND is_date(b.new_value)
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'date_statusr')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- UPDATE _INIT_devdb a
+-- SET date_statusd = b.new_value
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number 
+-- 	FROM CORR_devdb
+-- 	WHERE 'date_statusd'=any(dcpeditfields));
 
-UPDATE _INIT_devdb a
-SET date_statusr = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'date_statusr'=any(dcpeditfields));
+-- -- date_statusp
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+-- 	AND b.field = 'date_statusp'
+-- 	AND is_date(b.new_value)
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_append(dcpeditfields, 'date_statusp')
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
 
--- date_statusx
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _INIT_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'date_statusx'
-	AND is_date(b.new_value)
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'date_statusx')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
+-- UPDATE _INIT_devdb a
+-- SET date_statusp = b.new_value
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number 
+-- 	FROM CORR_devdb
+-- 	WHERE 'date_statusp'=any(dcpeditfields));
 
-UPDATE _INIT_devdb a
-SET date_statusx = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'date_statusx'=any(dcpeditfields));
+-- -- date_statusr
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+-- 	AND b.field = 'date_statusr'
+-- 	AND is_date(b.new_value)
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_append(dcpeditfields, 'date_statusr')
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
+
+-- UPDATE _INIT_devdb a
+-- SET date_statusr = b.new_value
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number 
+-- 	FROM CORR_devdb
+-- 	WHERE 'date_statusr'=any(dcpeditfields));
+
+-- -- date_statusx
+-- WITH CORR_target as (
+-- 	SELECT a.job_number, 
+-- 		COALESCE(b.reason, 'NA') as reason,
+-- 		b.edited_date
+-- 	FROM _INIT_devdb a, housing_input_research b
+-- 	WHERE a.job_number=b.job_number
+-- 	AND b.field = 'date_statusx'
+-- 	AND is_date(b.new_value)
+-- )
+-- UPDATE CORR_devdb a
+-- SET dcpeditfields = array_append(dcpeditfields, 'date_statusx')
+-- FROM CORR_target b
+-- WHERE a.job_number=b.job_number;
+
+-- UPDATE _INIT_devdb a
+-- SET date_statusx = b.new_value
+-- FROM housing_input_research b
+-- WHERE a.job_number=b.job_number
+-- AND a.job_number in (
+-- 	SELECT DISTINCT job_number 
+-- 	FROM CORR_devdb
+-- 	WHERE 'date_statusx'=any(dcpeditfields));
 
