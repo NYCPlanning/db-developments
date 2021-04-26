@@ -49,13 +49,17 @@ psql $BUILD_ENGINE -c "
 
     DROP TABLE IF EXISTS manual_corrections;
     CREATE TABLE manual_corrections (
+        build_dt timestamp with time zone,
         job_number text,
         field text,
         old_value text,
+        current_value text,
         new_value text,
+        corr_applied text,
         reason text,
         edited_date text,
-        editor text
+        editor text,
+        job_in_devdb text
     );
 
     DROP TABLE IF EXISTS CORR_hny_matches;
