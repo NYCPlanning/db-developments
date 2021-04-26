@@ -64,6 +64,30 @@ function imports_csv {
    cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN WITH DELIMITER ',' NULL '' CSV HEADER;"
 }
 
+function import_public {
+  name=$1
+  version=${2:-latest}
+  url=https://nyc3.digitaloceanspaces.com/edm-recipes
+  version=$(curl -s $url/datasets/$name/$version/config.json | jq -r '.dataset.version')
+  echo "$name version: $version"
+
+  target_dir=$(pwd)/.library/datasets/$name/$version
+
+  # Download sql dump for the datasets from data library
+  if [ -f $target_dir/$name.sql ]; then
+    echo "✅ $name.sql exists in cache"
+  else
+    echo "🛠 $name.sql doesn't exists in cache, downloading ..."
+    mkdir -p $target_dir && (
+      cd $target_dir
+      curl -O $url/datasets/$name/$version/$name.sql
+    )
+  fi
+
+  # Loading into Database
+  psql $BUILD_ENGINE -f $target_dir/$name.sql
+}
+
 function archive {
     echo "archiving $1 -> $2"
     pg_dump -t $1 $BUILD_ENGINE -O -c | psql $EDM_DATA
