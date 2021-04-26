@@ -36,8 +36,7 @@ OUTPUTS:
         classa_net numeric,
         address text,
         occ_proposed text,
-        job_inactive text,
-        dcpeditfields text
+        job_inactive text
     )
 
 IN PREVIOUS VERSION: 
