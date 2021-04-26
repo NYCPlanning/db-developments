@@ -24,6 +24,20 @@ INPUTS:
     )
 
 OUTPUT 
+    corrections_geom (
+        job_number,
+        field,
+        old_geom,
+        new_geom,
+        current_latitude,
+        current_longitude,
+        reason,
+        distance,
+        null_bbl,
+        in_water,
+        applicable
+    )
+
     GEO_devdb (
         * uid,
         job_number
@@ -240,7 +254,17 @@ CORRECTIONS
     geom
     
 */
-WITH LONLAT_corrections as (
+DROP TABLE IF EXISTS corrections_geom;
+
+/*
+Create corrections_geom
+    - Translate old and new lat/lon into geometries
+    - Using these geoms calculate boolean corrections criteria:
+        - Distance between old and new geoms is < 10m AND
+        - Old geom is not within a lot OR old geom is in water
+*/
+WITH 
+LONLAT_corrections as (
     SELECT 
         a.job_number,
         coalesce(a.reason, b.reason) as reason,
@@ -278,34 +302,91 @@ GEOM_corrections as (
         a.old_geom,
         a.new_geom,
         a.reason,
-        st_distance(a.new_geom, b.geom) as distance,
-        get_bbl(b.geom) as bbl,
-        in_water(b.geom) in_water
+        b.latitude as current_latitude,
+        b.longitude as current_longitude,
+        (COALESCE(st_distance(a.new_geom, b.geom), 0) < 10) as distance,
+        (get_bbl(b.geom) IS NULL) as null_bbl,
+        in_water(b.geom) as in_water
     FROM LONLAT_corrections a
     LEFT JOIN GEO_devdb b
     ON a.job_number = b.job_number
 )
+SELECT
+    b.job_number,
+    b.field,
+    a.old_geom,
+    a.new_geom,
+    a.current_latitude,
+    a.current_longitude,
+    a.distance,
+    a.null_bbl,
+    a.in_water,
+    a.reason,
+    (a.distance AND (a.null_bbl OR a.in_water)) as applicable
+INTO corrections_geom
+FROM GEOM_corrections a
+RIGHT MERGE housing_input_research b
+ON a.job_number = b.job_number
+WHERE b.field IN ('latitude', 'longitude');
+
+/*
+If old geom is NULL or old geom is in water and 
+new geom is within 10m of old geom, insert
+correction into the corrections_applied table.
+
+Append details of distance and spatial join checks to reason.
+*/
+INSERT INTO corrections_applied 
+    job_number, 
+    field,
+    (CASE
+        WHEN field = 'latitude' THEN current_latitude 
+        WHEN field = 'longitude' THEN current_longitude
+    END) as current_value,
+    old_value,
+    new_value,
+    reason||' / in 10m of old geom / bbl null or in water' as reason
+FROM corrections_geom
+WHERE applicable
+AND job_number IN (SELECT job_number FROM GEO_devdb);
+
+/*
+For all records from corrections_geom that did not
+get added to corrections_applied, identify why
+they didn't qualify as applicable corrections and
+add them to the corrections_not_applied table.
+
+Append disqulification criteria to reason.
+*/
+INSERT INTO corrections_not_applied 
+    job_number, 
+    field,
+    (CASE
+        WHEN field = 'latitude' THEN current_latitude 
+        WHEN field = 'longitude' THEN current_longitude
+    END) as current_value,
+    old_value,
+    new_value,
+    (CASE
+        WHEN NOT distance AND NOT (bbl OR in_water)
+            THEN reason||' / more than 10m of old geom / bbl not null and not in water'
+        WHEN NOT distance 
+            THEN reason||' / more than 10m of old geom'
+        WHEN NOT (bbl OR in_water) 
+            THEN reason||' / bbl not null and not in water'
+        ELSE reason
+    END) as reason
+FROM corrections_geom
+WHERE NOT applicable;
+
+/*
+Apply corrections where applicable
+*/
 UPDATE GEO_devdb a
 SET latitude = ST_Y(b.new_geom),
     longitude = ST_X(b.new_geom),
     geom = b.new_geom,
     geomsource = 'Lat/Lon DCP'
-FROM GEOM_corrections b
+FROM corrections_geom b
 WHERE a.job_number=b.job_number
-AND (COALESCE(b.distance, 0) < 10 AND (b.bbl IS NULL OR b.in_water));
-
--- WITH CORR_target as (
---     SELECT a.job_number, 
--- 		COALESCE(b.reason, 'NA') as reason,
--- 		b.edited_date
--- 	FROM _INIT_devdb a, housing_input_research b
--- 	WHERE a.job_number=b.job_number
---     AND a.job_number in (
---         SELECT distinct job_number
---         FROM GEO_devdb 
---         WHERE geomsource = 'Lat/Lon DCP')
--- )
--- UPDATE CORR_devdb a
--- SET dcpeditfields = array_cat(dcpeditfields, ARRAY['longitude', 'latitude'])
--- FROM CORR_target b
--- WHERE a.job_number=b.job_number;
+AND b.applicable;
