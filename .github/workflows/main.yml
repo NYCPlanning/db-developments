@@ -1,9 +1,26 @@
 name: Build
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      rebuild:
+        description: 'Would you like to rebuild DevDB? (yes/no) If no, set archive or export to yes.'
+        required: false
+        default: 'yes'
+      export:
+        description: 'Would you like to export the outputs and QAQC to DigitalOcean? (yes/no)'
+        required: false
+        default: 'no'
+      archive:
+        description: 'Would you like to archive developments and dcp_housing to EDM-DATA? (yes/no)'
+        required: false
+        default: 'no'
 jobs: 
   Build:
     name: Building ...
-    if: contains(github.event.head_commit.message, '[build]') || contains(github.event.head_commit.message, '[export]')
+    if: >- 
+      contains(github.event.head_commit.message, '[build]') ||
+      github.event_name == 'workflow_dispatch'
     runs-on: self-hosted
     env:
       RECIPE_ENGINE: ${{ secrets.RECIPE_ENGINE }}
@@ -37,20 +54,22 @@ jobs:
           mc alias set spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
 
       - name: 1. dataloading ...
-        if: "! contains(github.event.head_commit.message, '[export]')"
+        if: github.event.inputs.rebuild == 'yes'
         working-directory: developments_build
         run: ./01_dataloading.sh
 
       - name: 2. build dev_db ...
-        if: "! contains(github.event.head_commit.message, '[export]')"
+        if: github.event.inputs.rebuild == 'yes'
         working-directory: developments_build
         run: ./02_build_devdb.sh
 
       - name: 3. export ...
+        if: github.event.inputs.export == 'yes'
         working-directory: developments_build
         run: ./03_export.sh
 
       - name: 4. archive ...
+        if: github.event.inputs.archive == 'yes'
         working-directory: developments_build
         run: ./04_archive.sh
     
