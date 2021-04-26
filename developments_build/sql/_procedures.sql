@@ -4,7 +4,8 @@ CREATE TABLE corrections_applied (
 	field 	  		text,
 	current_value 	text,
 	old_value 		text,
-	new_value 		text
+	new_value 		text,
+    reason          text
 );
 
 DROP TABLE IF EXISTS corrections_not_applied;
@@ -13,7 +14,8 @@ CREATE TABLE corrections_not_applied (
 	field 	  		text,
 	current_value 	text,
 	old_value 		text,
-	new_value 		text
+	new_value 		text,
+    reason          text
 );
 
 /* 
@@ -31,7 +33,8 @@ CREATE OR REPLACE PROCEDURE correction (
     _field text,
     _ref_field text,
     _old_val text,
-    _new_val text
+    _new_val text,
+    _reason text
 ) AS $BODY$
 DECLARE
     field_type text;
@@ -64,14 +67,14 @@ BEGIN
 
         EXECUTE format($n$
             DELETE FROM corrections_applied WHERE job_number = %1$L AND field = %2$L;
-            INSERT INTO corrections_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L);
-            $n$, _job_number, _field, current_val, _old_val, _new_val);
+            INSERT INTO corrections_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L, %6);
+            $n$, _job_number, _field, current_val, _old_val, _new_val, _reason);
     ELSE 
         RAISE NOTICE 'Cannot Apply Correction';
         EXECUTE format($n$
             DELETE FROM corrections_not_applied WHERE job_number = %1$L AND field = %2$L;
-            INSERT INTO corrections_not_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L);
-            $n$, _job_number, _field, current_val, _old_val, _new_val);
+            INSERT INTO corrections_not_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L, %6);
+            $n$, _job_number, _field, current_val, _old_val, _new_val, _reason);
     END IF;
 
 END
@@ -92,6 +95,7 @@ DECLARE
     _job_number text;
     _old_value text;
     _new_value text;
+    _reason text;
     _valid_fields text[];
 BEGIN
     SELECT array_agg(column_name) FROM information_schema.columns
@@ -99,14 +103,14 @@ BEGIN
     AND table_name = _table INTO  _valid_fields;
 
     IF (_field = any(_valid_fields)) AND (_field NOT IN ('latitude','longitude')) THEN
-        FOR _job_number, _old_value, _new_value IN 
+        FOR _job_number, _old_value, _new_value, _reason IN 
             EXECUTE FORMAT($n$
-                SELECT job_number, old_value, new_value 
+                SELECT job_number, old_value, new_value, reason 
                 FROM %1$s
                 WHERE field = _field
             $n$, _corrections)
         LOOP
-            CALL correction(_table, _job_number, _field, _ref_field, _old_value, _new_value);
+            CALL correction(_table, _job_number, _field, _ref_field, _old_value, _new_value, _reason);
         END LOOP;
 
     ELSE

@@ -140,10 +140,14 @@ CORRECTIONS
     bbl (removal)
 
 */
+
+-- Programatically insert removals into housing input research for test records andd NULL bbl
 INSERT INTO housing_input_research 
-    (job_number, field)
+    (job_number, field, reason)
 SELECT 
-    job_number, 'remove' as field
+    job_number, 
+    'remove' as field,
+    'job_desc suggest this is a test record' as reason
 FROM INIT_devdb
 WHERE UPPER(job_desc) LIKE '%BIS%TEST%' 
     OR UPPER(job_desc) LIKE '% TEST %'
@@ -152,14 +156,57 @@ AND job_number NOT IN(
     FROM housing_input_research
     WHERE field = 'remove');
 
+INSERT INTO housing_input_research 
+    (job_number, field, reason)
+SELECT
+    job_number, 
+    'remove' as field,
+    'another correction set bbl from geosupport value to NULL' as reason
+FROM INIT_devdb a
+JOIN housing_input_research b
+ON a.job_number=b.job_number
+WHERE b.field = 'bbl'
+AND a.geo_bbl = b.old_value
+AND b.new_value IS NULL;
+
+-- Track corrections applied and not applied based on existance of job_number in INIT_devdb
+WITH applicable AS (
+    SELECT
+        job_number, reason
+    FROM housing_input_research
+    WHERE job_number IN (SELECT job_number FROM INIT_devdb)
+    AND field = 'remove'
+)
+INSERT INTO corrections_applied
+(SELECT 
+    job_number, 
+    'remove' as field,
+    NULL as current_value,
+    NULL as old_value,
+    NULL as new_value,
+    reason
+FROM applicable);
+
+WITH not_applicable AS (
+    SELECT
+        job_number, reason
+    FROM housing_input_research
+    WHERE job_number NOT IN (SELECT job_number FROM INIT_devdb)
+    AND field = 'remove'
+)
+INSERT INTO corrections_not_applied
+(SELECT 
+    job_number, 
+    'remove' as field,
+    NULL as current_value,
+    NULL as old_value,
+    NULL as new_value,
+    reason
+FROM not_applicable);
+
+-- Remove all records with 'remove' as field with a job_numbe existing in INIT_devdb
 DELETE FROM INIT_devdb a
 USING housing_input_research b
 WHERE a.job_number=b.job_number
 AND b.field = 'remove';
 
-DELETE FROM INIT_devdb a
-USING housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'bbl'
-AND a.geo_bbl = b.old_value
-AND b.new_value IS NULL;

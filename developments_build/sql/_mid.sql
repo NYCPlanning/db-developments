@@ -160,33 +160,7 @@ ON a.job_number = b.job_number
 CORRECTIONS: (implemeted 2021/02/22)
     date_permittd
 */
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM JOIN_date_permittd a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'date_permittd'
-	AND (a.date_permittd::date = b.old_value::date
-		OR (a.date_permittd IS NULL 
-			AND b.old_value IS NULL))
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields,'date_permittd')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE JOIN_date_permittd a
-SET date_permittd = b.new_value::date,
-    permit_year = extract(year from b.new_value::date)::text,
-    permit_qrtr = year_quarter(b.new_value::date)
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'date_permittd'
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'date_permittd'=any(dcpeditfields));
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_permittd', 'date_permittd');
 
 /*
 CONTINUE
@@ -266,29 +240,4 @@ FROM JOIN_occ;
 CORRECTIONS
     resid_flag
 */
-
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM _MID_devdb a, housing_input_research b	
-	WHERE a.job_number=b.job_number
-	AND b.field = 'resid_flag'
-	AND (a.resid_flag=b.old_value 
-		OR (a.resid_flag IS NULL 
-			AND b.old_value IS NULL))
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields,'resid_flag')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE _MID_devdb a
-SET resid_flag = NULLIF(TRIM(b.new_value), 'Other')
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'resid_flag'
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'resid_flag'=any(dcpeditfields));
+CALL apply_correction('_MID_devdb', 'housing_input_research', 'resid_flag', 'resid_flag');

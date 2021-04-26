@@ -47,56 +47,5 @@ CORRECTIONS
 	occ_initial
 	occ_proposed
 */
-
--- occ_initial
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM OCC_devdb a, housing_input_research b
-	WHERE a.job_number=b.job_number
-	AND b.field = 'occ_initial'
-	AND (a.occ_initial=b.old_value 
-		OR (a.occ_initial IS NULL 
-			AND b.old_value IS NULL))
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields,'occ_initial')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE OCC_devdb a
-SET occ_initial = b.new_value
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'occ_initial'=any(dcpeditfields));
-
--- occ_proposed
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-		b.edited_date
-	FROM OCC_devdb a, housing_input_research b	
-	WHERE a.job_number=b.job_number
-	AND b.field = 'occ_proposed'
-	AND (a.occ_proposed=b.old_value
-		OR (a.occ_proposed IS NULL
-		AND b.old_value IS NULL))
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields,'occ_proposed')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE OCC_devdb a
-SET occ_proposed = TRIM(b.new_value)
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'occ_proposed'
-AND a.job_number in (
-	SELECT DISTINCT job_number 
-	FROM CORR_devdb
-	WHERE 'occ_proposed'=any(dcpeditfields));
+CALL apply_correction('OCC_devdb', 'housing_input_research', 'occ_initial', 'occ_initial');
+CALL apply_correction('OCC_devdb', 'housing_input_research', 'occ_proposed', 'occ_proposed');
