@@ -312,6 +312,24 @@ GEOM_corrections as (
     ON a.job_number = b.job_number
 )
 SELECT
+    a.job_number,
+    a.field,
+    b.old_geom,
+    b.new_geom,
+    b.current_latitude,
+    b.current_longitude,
+    b.distance,
+    b.null_bbl,
+    b.in_water,
+    b.reason,
+    (b.distance AND (b.null_bbl OR b.in_water)) as applicable
+INTO corrections_geom
+FROM housing_input_research a
+LEFT MERGE GEOM_corrections b
+ON a.job_number = b.job_number
+WHERE a.field IN ('latitude', 'longitude');
+
+SELECT
     b.job_number,
     b.field,
     a.old_geom,
