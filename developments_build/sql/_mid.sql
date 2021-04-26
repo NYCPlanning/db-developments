@@ -160,7 +160,7 @@ ON a.job_number = b.job_number
 CORRECTIONS: (implemeted 2021/02/22)
     date_permittd
 */
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_permittd', 'date_permittd');
+CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_permittd');
 
 /*
 CONTINUE
@@ -240,4 +240,4 @@ FROM JOIN_occ;
 CORRECTIONS
     resid_flag
 */
-CALL apply_correction('_MID_devdb', 'housing_input_research', 'resid_flag', 'resid_flag');
+CALL apply_correction('_MID_devdb', 'housing_input_research', 'resid_flag');

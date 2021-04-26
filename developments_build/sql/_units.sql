@@ -73,8 +73,8 @@ CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'hotel_init', 'c
 CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'hotel_prop', 'classa_prop');
 CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'otherb_init', 'classa_init');
 CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'otherb_prop', 'classa_prop');
-CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'classa_init', 'classa_init');
-CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'classa_prop', 'classa_prop');
+CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'classa_init');
+CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'classa_prop');
 
 /*
 ASSIGN classa_net
