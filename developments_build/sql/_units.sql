@@ -69,12 +69,12 @@ Note that hotel/otherb corrections match old_value with
 the associated classa field. As a result, these corrections
 get applied prior to the classa corrections.
 */
-CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'hotel_init', 'classa_init');
-CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'hotel_prop', 'classa_prop');
-CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'otherb_init', 'classa_init');
-CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'otherb_prop', 'classa_prop');
-CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'classa_init');
-CALL apply_correction('_UNITS_devdb', 'housing_input_research', 'classa_prop');
+CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'hotel_init', 'classa_init');
+CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'hotel_prop', 'classa_prop');
+CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'otherb_init', 'classa_init');
+CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'otherb_prop', 'classa_prop');
+CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'classa_init');
+CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'classa_prop');
 
 /*
 ASSIGN classa_net

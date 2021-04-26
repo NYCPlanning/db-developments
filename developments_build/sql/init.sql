@@ -6,7 +6,7 @@ DESCRIPTION:
         SPATIAL_devdb + _INIT_devdb -> INIT_devdb
 
     2. remove records using job_number and bbl 
-        in housing_input_research 
+        in manual_corrections 
 
 INPUTS:
     _INIT_devdb (
@@ -142,7 +142,7 @@ CORRECTIONS
 */
 
 -- Programatically insert removals into housing input research for test records andd NULL bbl
-INSERT INTO housing_input_research 
+INSERT INTO manual_corrections 
     (job_number, field, reason)
 SELECT 
     job_number, 
@@ -153,17 +153,17 @@ WHERE UPPER(job_desc) LIKE '%BIS%TEST%'
     OR UPPER(job_desc) LIKE '% TEST %'
 AND job_number NOT IN(
     SELECT DISTINCT job_number
-    FROM housing_input_research
+    FROM manual_corrections
     WHERE field = 'remove');
 
-INSERT INTO housing_input_research 
+INSERT INTO manual_corrections 
     (job_number, field, reason)
 SELECT
     job_number, 
     'remove' as field,
     'another correction set bbl from geosupport value to NULL' as reason
 FROM INIT_devdb a
-JOIN housing_input_research b
+JOIN manual_corrections b
 ON a.job_number=b.job_number
 WHERE b.field = 'bbl'
 AND a.geo_bbl = b.old_value
@@ -173,7 +173,7 @@ AND b.new_value IS NULL;
 WITH applicable AS (
     SELECT
         job_number, reason
-    FROM housing_input_research
+    FROM manual_corrections
     WHERE job_number IN (SELECT job_number FROM INIT_devdb)
     AND field = 'remove'
 )
@@ -190,7 +190,7 @@ FROM applicable);
 WITH not_applicable AS (
     SELECT
         job_number, reason
-    FROM housing_input_research
+    FROM manual_corrections
     WHERE job_number NOT IN (SELECT job_number FROM INIT_devdb)
     AND field = 'remove'
 )
@@ -206,7 +206,7 @@ FROM not_applicable);
 
 -- Remove all records with 'remove' as field with a job_numbe existing in INIT_devdb
 DELETE FROM INIT_devdb a
-USING housing_input_research b
+USING manual_corrections b
 WHERE a.job_number=b.job_number
 AND b.field = 'remove';
 

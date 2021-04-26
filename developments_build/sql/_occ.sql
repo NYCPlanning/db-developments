@@ -47,5 +47,5 @@ CORRECTIONS
 	occ_initial
 	occ_proposed
 */
-CALL apply_correction('OCC_devdb', 'housing_input_research', 'occ_initial');
-CALL apply_correction('OCC_devdb', 'housing_input_research', 'occ_proposed');
+CALL apply_correction('OCC_devdb', 'manual_corrections', 'occ_initial');
+CALL apply_correction('OCC_devdb', 'manual_corrections', 'occ_proposed');

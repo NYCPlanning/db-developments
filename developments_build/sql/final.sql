@@ -228,11 +228,19 @@ SELECT
 INTO FINAL_devdb
 FROM JOIN_CORR_devdb;
 
-DROP TABLE IF EXISTS manual_corrections;
+ALTER TABLE manual_corrections RENAME TO _manual_corrections;
+
 SELECT
-	a.*,
-	(b.job_number IS NOT NULL)::int as corr_applied,
+	NOW() as build_dt,
+	a.job_number,
+	a.field,
+	a.old_value,
 	b.current_value,
+	a.new_value,
+	(b.job_number IS NOT NULL)::int as corr_applied,
+	a.reason,
+	a.edited_date,
+	a.editor,
 	(CASE
 		WHEN job_number IN 
 			(SELECT job_number FROM FINAL_devdb) 
@@ -240,7 +248,7 @@ SELECT
 		ELSE 0
 	END) as job_in_devdb
 INTO manual_corrections
-FROM housing_input_research a
+FROM _manual_corrections a
 LEFT JOIN corrections_applied b
 ON a.job_number = b.job_number
 AND a.field = b.field

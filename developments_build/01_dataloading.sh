@@ -47,8 +47,8 @@ psql $BUILD_ENGINE -c "
         ownership text
     );
 
-    DROP TABLE IF EXISTS housing_input_research;
-    CREATE TABLE housing_input_research (
+    DROP TABLE IF EXISTS manual_corrections;
+    CREATE TABLE manual_corrections (
         job_number text,
         field text,
         old_value text,
@@ -110,7 +110,7 @@ psql $BUILD_ENGINE -c "
 
 imports_csv lookup_occ &
 imports_csv lookup_ownership &
-imports_csv housing_input_research &
+imports_csv manual_corrections &
 imports_csv CORR_hny_matches &
 imports_csv census_units10 &
 imports_csv census_units10adj &

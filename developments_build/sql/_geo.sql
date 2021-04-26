@@ -14,7 +14,7 @@ INPUTS:
         ...
     )
 
-    housing_input_research (
+    manual_corrections (
         * job_number
     )
 
@@ -280,7 +280,7 @@ LONLAT_corrections as (
 	            ELSE NULL
 	        END) as old_lon, 
             new_value::double precision as new_lon
-        FROM housing_input_research
+        FROM manual_corrections
         WHERE field = 'longitude'
     ) a LEFT JOIN (
         SELECT 
@@ -292,7 +292,7 @@ LONLAT_corrections as (
 	            ELSE NULL
 	        END) as old_lat, 
             new_value::double precision as new_lat
-        FROM housing_input_research
+        FROM manual_corrections
         WHERE field = 'latitude'
     ) b ON a.job_number = b.job_number
 ),
@@ -324,7 +324,7 @@ SELECT
     b.reason,
     (b.distance AND (b.null_bbl OR b.in_water)) as applicable
 INTO corrections_geom
-FROM housing_input_research a
+FROM manual_corrections a
 LEFT MERGE GEOM_corrections b
 ON a.job_number = b.job_number
 WHERE a.field IN ('latitude', 'longitude');
@@ -343,7 +343,7 @@ SELECT
     (a.distance AND (a.null_bbl OR a.in_water)) as applicable
 INTO corrections_geom
 FROM GEOM_corrections a
-RIGHT MERGE housing_input_research b
+RIGHT MERGE manual_corrections b
 ON a.job_number = b.job_number
 WHERE b.field IN ('latitude', 'longitude');
 

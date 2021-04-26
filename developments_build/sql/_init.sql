@@ -251,12 +251,12 @@ CORRECTIONS:
 	date_statusr
 	date_statusx
 */
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'stories_prop');
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'bin');
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'bbl');
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_lastupdt');
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_filed');
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_statusd');
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_statusp');
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_statusr');
-CALL apply_correction('_INIT_devdb', 'housing_input_research', 'date_statusx');
+CALL apply_correction('_INIT_devdb', 'manual_corrections', 'stories_prop');
+CALL apply_correction('_INIT_devdb', 'manual_corrections', 'bin');
+CALL apply_correction('_INIT_devdb', 'manual_corrections', 'bbl');
+CALL apply_correction('_INIT_devdb', 'manual_corrections', 'date_lastupdt');
+CALL apply_correction('_INIT_devdb', 'manual_corrections', 'date_filed');
+CALL apply_correction('_INIT_devdb', 'manual_corrections', 'date_statusd');
+CALL apply_correction('_INIT_devdb', 'manual_corrections', 'date_statusp');
+CALL apply_correction('_INIT_devdb', 'manual_corrections', 'date_statusr');
+CALL apply_correction('_INIT_devdb', 'manual_corrections', 'date_statusx');
