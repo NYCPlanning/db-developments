@@ -89,7 +89,7 @@ CREATE OR REPLACE PROCEDURE apply_correction (
     _table text, 
     _corrections text,
     _field text,
-    _ref_field text
+    _ref_field text DEFAULT NULL
 ) AS $BODY$
 DECLARE 
     _job_number text;
@@ -110,11 +110,20 @@ BEGIN
                 WHERE field = _field
             $n$, _corrections)
         LOOP
-            CALL correction(_table, _job_number, _field, _ref_field, _old_value, _new_value, _reason);
+            -- If _ref_field is NULL -> default value, then use _field as _ref_field
+            CALL correction(
+                _table, 
+                _job_number, 
+                _field, 
+                coalesce(_ref_field, _field), 
+                _old_value, 
+                _new_value, 
+                _reason
+            );
         END LOOP;
 
     ELSE
-        RAISE NOTICE '(%1) is not a valid field for function apply_correction to (%2)', _field, _table;    
+        RAISE NOTICE '(%) is not a valid field for function apply_correction to (%)', _field, _table;    
     END IF;
 END
 $BODY$ LANGUAGE plpgsql;
