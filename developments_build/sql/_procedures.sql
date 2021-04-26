@@ -123,7 +123,7 @@ BEGIN
         END LOOP;
 
     ELSE
-        RAISE NOTICE '(%) is not a valid field for function apply_correction to (%)', _field, _table;    
+        RAISE NOTICE '( % ) is not a valid field for function apply_correction to ( % )', _field, _table;    
     END IF;
 END
 $BODY$ LANGUAGE plpgsql;
