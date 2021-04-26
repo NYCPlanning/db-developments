@@ -228,6 +228,7 @@ SELECT
 INTO FINAL_devdb
 FROM JOIN_CORR_devdb;
 
+DROP TABLE IF EXISTS manual_corrections;
 SELECT
 	a.*,
 	(b.job_number IS NOT NULL)::int as corr_applied,
@@ -238,7 +239,8 @@ SELECT
 			THEN 1
 		ELSE 0
 	END) as job_in_devdb
-housing_input_research a
+INTO manual_corrections
+FROM housing_input_research a
 LEFT JOIN corrections_applied b
 ON a.job_number = b.job_number
 AND a.field = b.field
