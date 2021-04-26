@@ -97,13 +97,20 @@ JOIN_HNY_PLUTO_devdb as (
     LEFT JOIN PLUTO_devdb b
     ON a.job_number = b.job_number
 ),
+CORR_lists as (
+	SELECT
+		job_number
+		STRING_AGG(b.field, '/') as dcpeditfields
+	FROM corrections_applied
+	GROUP BY job_number
+),
 JOIN_CORR_devdb as (
     SELECT 
         distinct
         a.*, 
-        array_to_string(b.dcpeditfields, '/', '') as dcpeditfields
+        b.dcpeditfields
     FROM JOIN_HNY_PLUTO_devdb a
-    LEFT JOIN CORR_devdb b
+    LEFT JOIN CORR_lists b
     ON a.job_number = b.job_number
 )
 -- Put columns in desired order
