@@ -354,7 +354,8 @@ correction into the corrections_applied table.
 
 Append details of distance and spatial join checks to reason.
 */
-INSERT INTO corrections_applied 
+INSERT INTO corrections_applied
+SELECT 
     job_number, 
     field,
     (CASE
@@ -377,6 +378,7 @@ add them to the corrections_not_applied table.
 Append disqulification criteria to reason.
 */
 INSERT INTO corrections_not_applied 
+SELECT
     job_number, 
     field,
     (CASE
