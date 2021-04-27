@@ -36,8 +36,7 @@ OUTPUTS:
         classa_net numeric,
         address text,
         occ_proposed text,
-        job_inactive text,
-        dcpeditfields text
+        job_inactive text
     )
 
 IN PREVIOUS VERSION: 
@@ -136,30 +135,4 @@ WHERE a.job_status IN ('1. Filed Application', '2. Approved Application', '3. Pe
 CORRECTIONS
     job_inactive
 */
--- job_inactive
-WITH CORR_target as (
-	SELECT a.job_number, 
-		COALESCE(b.reason, 'NA') as reason,
-        b.edited_date
-	FROM STATUS_devdb a, housing_input_research b	
-	WHERE a.job_number=b.job_number
-    AND b.field = 'job_inactive'
-    AND (upper(a.job_inactive)=upper(b.old_value) 
-        OR (a.job_inactive IS NULL 
-            AND (b.old_value IS NULL 
-            OR b.old_value = 'false')))
-)
-UPDATE CORR_devdb a
-SET dcpeditfields = array_append(dcpeditfields, 'job_inactive')
-FROM CORR_target b
-WHERE a.job_number=b.job_number;
-
-UPDATE STATUS_devdb a
-SET job_inactive = trim(b.new_value)
-FROM housing_input_research b
-WHERE a.job_number=b.job_number
-AND b.field = 'job_inactive'
-AND a.job_number in (
-	SELECT DISTINCT job_number
-	FROM CORR_devdb
-	WHERE 'job_inactive'=any(dcpeditfields));
+CALL apply_correction('STATUS_devdb', 'manual_corrections', 'job_inactive');

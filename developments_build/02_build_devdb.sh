@@ -3,6 +3,7 @@ source config.sh
 
 display "Starting to build Developments DB"
 psql $BUILD_ENGINE -f sql/_function.sql
+psql $BUILD_ENGINE -f sql/_procedures.sql
 psql $BUILD_ENGINE -f sql/_init.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_init.sql
 count _INIT_devdb

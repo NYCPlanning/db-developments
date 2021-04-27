@@ -97,13 +97,20 @@ JOIN_HNY_PLUTO_devdb as (
     LEFT JOIN PLUTO_devdb b
     ON a.job_number = b.job_number
 ),
+CORR_lists as (
+	SELECT
+		job_number
+		STRING_AGG(b.field, '/') as dcpeditfields
+	FROM corrections_applied
+	GROUP BY job_number
+),
 JOIN_CORR_devdb as (
     SELECT 
         distinct
         a.*, 
-        array_to_string(b.dcpeditfields, '/', '') as dcpeditfields
+        b.dcpeditfields
     FROM JOIN_HNY_PLUTO_devdb a
-    LEFT JOIN CORR_devdb b
+    LEFT JOIN CORR_lists b
     ON a.job_number = b.job_number
 )
 -- Put columns in desired order
@@ -221,57 +228,29 @@ SELECT
 INTO FINAL_devdb
 FROM JOIN_CORR_devdb;
 
-DROP TABLE IF EXISTS applied_corrections;
-SELECT 
-	a.job_number,
-	a.field,
-	b.old_value,
-	b.new_value,
-	b.reason,
-	b.edited_date,
-	b.editor
-INTO applied_corrections
-FROM (
-	SELECT 
-		job_number, 
-		unnest(dcpeditfields) as field
-	from corr_devdb
-) a JOIN housing_input_research b
-ON a.job_number = b.job_number 
-and a.field = b.field;
+ALTER TABLE manual_corrections RENAME TO _manual_corrections;
 
-DROP TABLE IF EXISTS not_applied_corrections;
-WITH final_devdb_json AS (
-	SELECT job_number, row_to_json(r) as fields
-	FROM (SELECT * FROM final_devdb) r
-),
-not_applied AS (
-	SELECT * FROM housing_input_research
-	WHERE job_number||field NOT IN (SELECT job_number||field FROM applied_corrections)
-	AND job_number IN (SELECT job_number FROM FINAL_devdb)
-),
-all_not_applied AS (
-        SELECT 
+SELECT
+	NOW() as build_dt,
 	a.job_number,
 	a.field,
-	(CASE 
-		WHEN a.field IN ('hotel_init', 'otherb_init') THEN b.fields ->> 'classa_init' 
-		WHEN a.field IN ('hotel_prop', 'otherb_prop') THEN b.fields ->> 'classa_prop'
-		ELSE b.fields ->> a.field 
-	END) as current_value,
 	a.old_value,
+	b.current_value,
 	a.new_value,
+	(b.job_number IS NOT NULL)::int as corr_applied,
 	a.reason,
 	a.edited_date,
-	a.editor
-        FROM not_applied a
-        LEFT JOIN final_devdb_json b
-        ON a.job_number = b.job_number
-)
-SELECT 
-	a.*, 
-	array_to_string(b.dcpeditfields, '/', '') as dcpeditfields
-INTO not_applied_corrections
-FROM all_not_applied a
-LEFT JOIN CORR_devdb b
-ON a.job_number = b.job_number;
+	a.editor,
+	(CASE
+		WHEN job_number IN 
+			(SELECT job_number FROM FINAL_devdb) 
+			THEN 1
+		ELSE 0
+	END) as job_in_devdb
+INTO manual_corrections
+FROM _manual_corrections a
+LEFT JOIN corrections_applied b
+ON a.job_number = b.job_number
+AND a.field = b.field
+AND a.old_value = b.old_value
+AND a.new_value = b.new_value;
