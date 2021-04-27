@@ -1,0 +1,73 @@
+name: Build
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      rebuild:
+        description: 'Would you like to rebuild DevDB? (yes/no) If no, set archive or export to yes.'
+        required: false
+        default: 'yes'
+      export:
+        description: 'Would you like to export the outputs and QAQC to DigitalOcean? (yes/no)'
+        required: false
+        default: 'no'
+      archive:
+        description: 'Would you like to archive developments and dcp_housing to EDM-DATA? (yes/no)'
+        required: false
+        default: 'no'
+jobs: 
+  Build:
+    name: Building ...
+    if: >- 
+      contains(github.event.head_commit.message, '[build]') ||
+      github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-20.04
+    services:
+      db:
+        image: postgis/postgis:11-3.0-alpine
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    env:
+      BUILD_ENGINE: postgresql://postgres:postgres@db:5432/postgres
+      EDM_DATA: ${{ secrets.EDM_DATA }}
+      AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dependencies ...
+        run: |
+          sudo apt update
+          sudo apt install -y postgresql-client-11 gdal-bin
+
+          curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
+          chmod +x mc
+          sudo mv ./mc /usr/bin
+          mc alias set spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
+
+      - name: 1. dataloading ...
+        if: github.event.inputs.rebuild == 'yes'
+        working-directory: developments_build
+        run: ./01_dataloading.sh
+
+      - name: 2. build dev_db ...
+        if: github.event.inputs.rebuild == 'yes'
+        working-directory: developments_build
+        run: ./02_build_devdb.sh
+
+      - name: 3. export ...
+        if: github.event.inputs.export == 'yes'
+        working-directory: developments_build
+        run: ./03_export.sh
+
+      - name: 4. archive ...
+        if: github.event.inputs.archive == 'yes'
+        working-directory: developments_build
+        run: ./04_archive.sh
