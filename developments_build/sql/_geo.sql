@@ -64,7 +64,7 @@ OUTPUT
     )
 
 IN PREVIOUS VERSION: 
-    geo_JOIN.sql
+    geo_merge.sql
     geoaddress.sql
     geombbl.sql
     latlon.sql
