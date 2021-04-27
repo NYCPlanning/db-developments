@@ -23,6 +23,7 @@ import_public dcp_councildistricts &
 import_public dcp_firecompanies &
 import_public dcp_policeprecincts &
 import_public dob_cofos &
+import_public dof_shoreline &
 
 case $MODE in
     weekly) 
