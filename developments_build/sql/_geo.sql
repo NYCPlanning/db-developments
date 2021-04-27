@@ -64,7 +64,7 @@ OUTPUT
     )
 
 IN PREVIOUS VERSION: 
-    geo_merge.sql
+    geo_JOIN.sql
     geoaddress.sql
     geombbl.sql
     latlon.sql
@@ -325,7 +325,7 @@ SELECT
     (b.distance AND (b.null_bbl OR b.in_water)) as applicable
 INTO corrections_geom
 FROM manual_corrections a
-LEFT MERGE GEOM_corrections b
+LEFT JOIN GEOM_corrections b
 ON a.job_number = b.job_number
 WHERE a.field IN ('latitude', 'longitude');
 
@@ -343,7 +343,7 @@ SELECT
     (a.distance AND (a.null_bbl OR a.in_water)) as applicable
 INTO corrections_geom
 FROM GEOM_corrections a
-RIGHT MERGE manual_corrections b
+RIGHT JOIN manual_corrections b
 ON a.job_number = b.job_number
 WHERE b.field IN ('latitude', 'longitude');
 
