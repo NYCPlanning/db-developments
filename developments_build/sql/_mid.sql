@@ -146,7 +146,7 @@ SELECT
     a.geomsource,
     a.zsf_prop,
     a.zsf_init,
-    a.other_desc,
+    a.desc_other,
     a.bldg_class,
     b.date_permittd,
     b.permit_year,
