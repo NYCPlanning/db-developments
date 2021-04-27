@@ -64,7 +64,7 @@ OUTPUT
     )
 
 IN PREVIOUS VERSION: 
-    geo_merge.sql
+    geo_JOIN.sql
     geoaddress.sql
     geombbl.sql
     latlon.sql
@@ -325,27 +325,9 @@ SELECT
     (b.distance AND (b.null_bbl OR b.in_water)) as applicable
 INTO corrections_geom
 FROM manual_corrections a
-LEFT MERGE GEOM_corrections b
+LEFT JOIN GEOM_corrections b
 ON a.job_number = b.job_number
 WHERE a.field IN ('latitude', 'longitude');
-
-SELECT
-    b.job_number,
-    b.field,
-    a.old_geom,
-    a.new_geom,
-    a.current_latitude,
-    a.current_longitude,
-    a.distance,
-    a.null_bbl,
-    a.in_water,
-    a.reason,
-    (a.distance AND (a.null_bbl OR a.in_water)) as applicable
-INTO corrections_geom
-FROM GEOM_corrections a
-RIGHT MERGE manual_corrections b
-ON a.job_number = b.job_number
-WHERE b.field IN ('latitude', 'longitude');
 
 /*
 If old geom is NULL or old geom is in water and 
@@ -355,18 +337,19 @@ correction into the corrections_applied table.
 Append details of distance and spatial join checks to reason.
 */
 INSERT INTO corrections_applied 
+SELECT
     job_number, 
     field,
     (CASE
         WHEN field = 'latitude' THEN current_latitude 
         WHEN field = 'longitude' THEN current_longitude
     END) as current_value,
-    old_value,
-    new_value,
+    old_geom,
+    new_geom,
     reason||' / in 10m of old geom / bbl null or in water' as reason
-FROM corrections_geom
+FROM corrections_geom a
 WHERE applicable
-AND job_number IN (SELECT job_number FROM GEO_devdb);
+AND job_number IN (SELECT b.job_number FROM GEO_devdb b);
 
 /*
 For all records from corrections_geom that did not
@@ -377,20 +360,21 @@ add them to the corrections_not_applied table.
 Append disqulification criteria to reason.
 */
 INSERT INTO corrections_not_applied 
+SELECT
     job_number, 
     field,
     (CASE
         WHEN field = 'latitude' THEN current_latitude 
         WHEN field = 'longitude' THEN current_longitude
     END) as current_value,
-    old_value,
-    new_value,
+    old_geom,
+    new_geom,
     (CASE
-        WHEN NOT distance AND NOT (bbl OR in_water)
+        WHEN NOT distance AND NOT (null_bbl OR in_water)
             THEN reason||' / more than 10m of old geom / bbl not null and not in water'
         WHEN NOT distance 
             THEN reason||' / more than 10m of old geom'
-        WHEN NOT (bbl OR in_water) 
+        WHEN NOT (null_bbl OR in_water) 
             THEN reason||' / bbl not null and not in water'
         ELSE reason
     END) as reason
