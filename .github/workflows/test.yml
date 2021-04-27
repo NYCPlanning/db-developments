@@ -1,4 +1,4 @@
-name: Build - github hosted database
+name: Test - github hosted database
 on:
   push:
   workflow_dispatch:
@@ -6,7 +6,7 @@ jobs:
   Build:
     name: Building ...
     if: >- 
-      contains(github.event.head_commit.message, '[build]') ||
+      contains(github.event.head_commit.message, '[test]') ||
       github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-20.04
     services:
