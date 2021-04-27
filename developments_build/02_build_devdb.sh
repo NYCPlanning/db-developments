@@ -9,7 +9,7 @@ psql $BUILD_ENGINE -f sql/qaqc/qaqc_init.sql
 count _INIT_devdb
 
 display "Geocoding Developments DB and HNY"
-docker run --rm\
+docker run --network=host --rm\
     -v $(pwd):/src\
     -w /src\
     -e BUILD_ENGINE=$BUILD_ENGINE\
