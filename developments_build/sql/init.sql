@@ -159,7 +159,7 @@ AND job_number NOT IN(
 INSERT INTO manual_corrections 
     (job_number, field, reason)
 SELECT
-    job_number, 
+    a.job_number, 
     'remove' as field,
     'another correction set bbl from geosupport value to NULL' as reason
 FROM INIT_devdb a

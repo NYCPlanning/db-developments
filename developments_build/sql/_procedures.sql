@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS corrections_applied;
 CREATE TABLE corrections_applied (
-	record_id 		text,
+	job_number 		text,
 	field 	  		text,
 	current_value 	text,
 	old_value 		text,
@@ -10,7 +10,7 @@ CREATE TABLE corrections_applied (
 
 DROP TABLE IF EXISTS corrections_not_applied;
 CREATE TABLE corrections_not_applied (
-	record_id 		text,
+	job_number 		text,
 	field 	  		text,
 	current_value 	text,
 	old_value 		text,
@@ -41,16 +41,12 @@ DECLARE
     current_val text;
     applicable boolean;
 BEGIN
-	EXECUTE format($n$
-        SELECT pg_typeof(a.%1$I) FROM %2$I a LIMIT 1;
-    $n$, _field, _table) INTO field_type;
-	
     EXECUTE format($n$
-        SELECT pg_typeof(a.%1$I) FROM %2$I a LIMIT 1;
+        SELECT pg_typeof(a.%1$I) FROM %2$s a LIMIT 1;
     $n$, _ref_field, _table) INTO field_type;
 
     EXECUTE format($n$
-        SELECT a.%1$I::text FROM %2$I a WHERE a.job_number = %3$L;
+        SELECT a.%1$I::text FROM %2$s a WHERE a.job_number = %3$L;
     $n$, _ref_field, _table, _job_number) INTO current_val;
 
     EXECUTE format($n$
@@ -62,18 +58,18 @@ BEGIN
     IF applicable THEN 
         RAISE NOTICE 'Applying Correction';
         EXECUTE format($n$
-            UPDATE %1$I SET %2$I = %3$L::%4$s WHERE job_number = %5$L;
+            UPDATE %1$s SET %2$I = %3$L::%4$s WHERE job_number = %5$L;
             $n$, _table, _field, _new_val, field_type, _job_number);
 
         EXECUTE format($n$
             DELETE FROM corrections_applied WHERE job_number = %1$L AND field = %2$L;
-            INSERT INTO corrections_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L, %6);
+            INSERT INTO corrections_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L, %6L);
             $n$, _job_number, _field, current_val, _old_val, _new_val, _reason);
     ELSE 
         RAISE NOTICE 'Cannot Apply Correction';
         EXECUTE format($n$
             DELETE FROM corrections_not_applied WHERE job_number = %1$L AND field = %2$L;
-            INSERT INTO corrections_not_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L, %6);
+            INSERT INTO corrections_not_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L, %6L);
             $n$, _job_number, _field, current_val, _old_val, _new_val, _reason);
     END IF;
 
@@ -100,15 +96,15 @@ DECLARE
 BEGIN
     SELECT array_agg(column_name) FROM information_schema.columns
     WHERE table_schema = 'public' 
-    AND table_name = _table INTO  _valid_fields;
+    AND table_name = lower(_table) INTO  _valid_fields;
 
     IF (_field = any(_valid_fields)) AND (_field NOT IN ('latitude','longitude')) THEN
         FOR _job_number, _old_value, _new_value, _reason IN 
             EXECUTE FORMAT($n$
                 SELECT job_number, old_value, new_value, reason 
                 FROM %1$s
-                WHERE field = _field
-            $n$, _corrections)
+                WHERE field = %2$L
+            $n$, _corrections, _field)
         LOOP
             -- If _ref_field is NULL -> default value, then use _field as _ref_field
             CALL correction(
@@ -121,7 +117,6 @@ BEGIN
                 _reason
             );
         END LOOP;
-
     ELSE
         RAISE NOTICE '( % ) is not a valid field for function apply_correction to ( % )', _field, _table;    
     END IF;
