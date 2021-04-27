@@ -9,7 +9,7 @@ psql $BUILD_ENGINE -f sql/qaqc/qaqc_init.sql
 count _INIT_devdb
 
 display "Geocoding Developments DB and HNY"
-docker run --rm\
+docker run --network=host --rm\
     -v $(pwd):/src\
     -w /src\
     -e BUILD_ENGINE=$BUILD_ENGINE\
@@ -21,6 +21,7 @@ count _GEO_devdb
 
 display "Assign geoms to _GEO_devdb and create GEO_devdb"
 psql $BUILD_ENGINE -f sql/_geo.sql
+psql $BUILD_ENGINE -f sql/_geo_corrections.sql
 count GEO_devdb
 
 display "Fill NULLs spatial boundries in GEO_devdb through spatial joins. 
