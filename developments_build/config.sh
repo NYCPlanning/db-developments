@@ -69,7 +69,7 @@ function import_public {
   version=${2:-latest}
   url=https://nyc3.digitaloceanspaces.com/edm-recipes
   version=$(curl -s $url/datasets/$name/$version/config.json | jq -r '.dataset.version')
-  echo "$name version: $version"
+  echo "🔵 $name version: $version"
 
   target_dir=$(pwd)/.library/datasets/$name/$version
 

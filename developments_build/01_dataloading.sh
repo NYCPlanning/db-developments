@@ -4,14 +4,6 @@ source config.sh
 ## Default mode is EDM
 MODE="${1:-edm}"
 
-docker run --rm\
-    -v $(pwd):/developments_build\
-    -w /developments_build\
-    -e RECIPE_ENGINE=$RECIPE_ENGINE\
-    -e BUILD_ENGINE=$BUILD_ENGINE\
-    -e DOB_DATA_DATE=$DOB_DATA_DATE\
-    nycplanning/cook:latest python3 python/dataloading.py
-
 max_bg_procs 5
 import_public council_members &
 import_public doe_school_subdistricts &
@@ -30,6 +22,7 @@ import_public dcp_boroboundaries_wi &
 import_public dcp_councildistricts &
 import_public dcp_firecompanies &
 import_public dcp_policeprecincts &
+import_public dob_cofos &
 
 case $MODE in
     weekly) 
