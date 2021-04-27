@@ -1,4 +1,4 @@
-name: Build - github db
+name: Build - github hosted database
 on:
   push:
   workflow_dispatch:
