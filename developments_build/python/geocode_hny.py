@@ -11,7 +11,7 @@ g = Geosupport()
 
 def geocode(input):
     # collect inputs
-    uid = input.pop("ogc_fid")
+    uid = str(input.pop("ogc_fid"))
     hnum = input.pop("number")
     sname = input.pop("street")
     borough = input.pop("borough")
