@@ -35,7 +35,7 @@ IN PREVIOUS VERSION:
 */
 
 DROP TABLE IF EXISTS _UNITS_devdb;
-WITH tmp_UNITS AS (
+CREATE TEMP TABLE tmp_UNITS AS (
 	SELECT DISTINCT
 		a.job_number,
 		a.job_type,
@@ -62,7 +62,31 @@ WITH tmp_UNITS AS (
 	FROM INIT_devdb a
 	LEFT JOIN OCC_devdb b
 	ON a.job_number = b.job_number
-)
+);
+
+/*
+CORRECTIONS
+	hotel_init
+	hotel_prop
+	otherb_init
+	otherb_prop
+	classa_init
+	classa_prop
+Note that hotel/otherb corrections match old_value with
+the associated classa field. As a result, these corrections
+get applied prior to the classa corrections.
+*/
+CALL apply_correction('tmp_UNITS', 'manual_corrections', 'hotel_init', 'classa_init');
+CALL apply_correction('tmp_UNITS', 'manual_corrections', 'hotel_prop', 'classa_prop');
+CALL apply_correction('tmp_UNITS', 'manual_corrections', 'otherb_init', 'classa_init');
+CALL apply_correction('tmp_UNITS', 'manual_corrections', 'otherb_prop', 'classa_prop');
+CALL apply_correction('tmp_UNITS', 'manual_corrections', 'classa_init');
+CALL apply_correction('tmp_UNITS', 'manual_corrections', 'classa_prop');
+
+/*
+Using corrected classa, hotel, and otherb unit fields, 
+calculate and then manually correct resid_flag
+*/
 SELECT
 	*,
 	(CASE 
@@ -78,23 +102,16 @@ INTO _UNITS_devdb
 FROM tmp_UNITS
 ;
 
-
 /*
 CORRECTIONS
-Note that hotel/otherb corrections match old_value with
-the associated classa field. As a result, these corrections
-get applied prior to the classa corrections.
+	resid_flag
 */
-CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'hotel_init', 'classa_init');
-CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'hotel_prop', 'classa_prop');
-CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'otherb_init', 'classa_init');
-CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'otherb_prop', 'classa_prop');
-CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'classa_init');
-CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'classa_prop');
 CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'resid_flag');
 
+
 /*
-ASSIGN classa_net and NULL out units where resid_flag is NULL
+NULL out units fields where corrected resid_flag is NULL.
+ASSIGN classa_net based on corrected classa_init and classa_prop.
 */
 DROP TABLE IF EXISTS UNITS_devdb;
 WITH NULL_nonres AS (
@@ -111,10 +128,6 @@ WITH NULL_nonres AS (
 			WHEN resid_flag IS NULL THEN NULL
 			ELSE classa_prop
 		END) as classa_prop,
-		(CASE
-			WHEN resid_flag IS NULL THEN NULL
-			ELSE classa_net
-		END) as classa_net,
 		(CASE
 			WHEN resid_flag IS NULL THEN NULL
 			ELSE hotel_init
