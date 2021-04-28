@@ -160,7 +160,7 @@ ON a.job_number = b.job_number
 CORRECTIONS: (implemeted 2021/02/22)
     date_permittd
 */
-CALL apply_correction('_INIT_devdb', 'manual_corrections', 'date_permittd');
+CALL apply_correction('JOIN_date_permittd', 'manual_corrections', 'date_permittd');
 
 /*
 CONTINUE
