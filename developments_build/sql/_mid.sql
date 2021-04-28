@@ -26,13 +26,13 @@ INPUTS:
 
     UNITS_devdb (
         * job_number,
-        _classa_init,
-        _classa_prop,
-        _hotel_init,
-	    _hotel_prop,
-	    _otherb_init,
-	    _otherb_prop,
-        _classa_net
+        classa_init,
+        classa_prop,
+        hotel_init,
+	    hotel_prop,
+	    otherb_init,
+	    otherb_prop,
+        classa_net
     )
 
     OCC_devdb (
@@ -66,7 +66,6 @@ OUTPUTS:
     )
 */
 DROP TABLE IF EXISTS JOIN_date_permittd;
-CREATE TEMP TABLE JOIN_date_permittd as (
 SELECT
     -- All INIT_devdb fields except for classa_init and classa_prop
     a.job_number,
@@ -151,10 +150,10 @@ SELECT
     b.date_permittd,
     b.permit_year,
     b.permit_qrtr
+INTO JOIN_date_permittd
 FROM INIT_devdb a
 LEFT JOIN STATUS_Q_devdb b
-ON a.job_number = b.job_number
-);
+ON a.job_number = b.job_number;
 
 /*
 CORRECTIONS: (implemeted 2021/02/22)
@@ -190,28 +189,20 @@ JOIN_units as (
         a.*,
         extract(year from date_complete)::text as complete_year,
         year_quarter(date_complete) as complete_qrtr,
-        b._classa_init,
-        b._classa_prop,
-        b._classa_net,
-        b._hotel_init,
-	    b._hotel_prop,
-	    b._otherb_init,
-	    b._otherb_prop,
+        b.classa_init,
+        b.classa_prop,
+        b.classa_net,
+        b.hotel_init,
+	    b.hotel_prop,
+	    b.otherb_init,
+	    b.otherb_prop,
         (CASE
-            WHEN b._classa_net != 0 
-                THEN a.co_latest_units/b._classa_net
+            WHEN b.classa_net != 0 
+                THEN a.co_latest_units/b.classa_net
             ELSE NULL
         END) as classa_complt_pct,
-        b._classa_net - a.co_latest_units as classa_complt_diff,
-        (CASE 
-            WHEN (_hotel_init IS NOT NULL AND _hotel_init <> '0')
-                OR (_hotel_prop IS NOT NULL AND _hotel_prop <> '0')
-                OR (_otherb_init IS NOT NULL AND _otherb_init <> '0')
-                OR (_otherb_prop IS NOT NULL AND _otherb_prop <> '0')
-                OR (_classa_init IS NOT NULL AND _classa_init <> '0')
-                OR (_classa_prop IS NOT NULL AND _classa_prop <> '0')
-                THEN 'Residential' 
-        END) as resid_flag
+        b.classa_net - a.co_latest_units as classa_complt_diff,
+        b.resid_flag
     FROM JOIN_co a
     LEFT JOIN UNITS_devdb b
     ON a.job_number = b.job_number
@@ -235,9 +226,4 @@ SELECT *
 INTO _MID_devdb
 FROM JOIN_occ;
 
-
-/*
-CORRECTIONS
-    resid_flag
-*/
-CALL apply_correction('_MID_devdb', 'manual_corrections', 'resid_flag');
+DROP TABLE JOIN_date_permittd;
