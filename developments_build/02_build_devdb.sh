@@ -59,8 +59,7 @@ display "Creating UNITS fields:
       otherb_init,
       otherb_prop,
       classa_net,
-      resid_flag, 
-      nonres_flag"
+      resid_flag"
 psql $BUILD_ENGINE -f sql/_units.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_units.sql
 count UNITS_devdb
@@ -96,7 +95,8 @@ psql $BUILD_ENGINE\
   -v CAPTURE_DATE_PREV=$CAPTURE_DATE_PREV\
   -f sql/qaqc/qaqc_status.sql
 
-display "Combining _MID_devdb with STATUS_devdb to create MID_devdb"
+display "Combining _MID_devdb with STATUS_devdb to create MID_devdb,
+            Creating nonres_flag field"
 psql $BUILD_ENGINE -f sql/mid.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_mid.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_geo.sql
