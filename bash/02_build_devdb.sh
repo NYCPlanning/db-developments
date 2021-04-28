@@ -9,17 +9,6 @@ psql $BUILD_ENGINE -f sql/_init.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_init.sql
 count _INIT_devdb
 
-display "Geocoding Developments DB and HNY"
-docker run --network=host --rm\
-    -v $(pwd):/src\
-    -w /src\
-    -e BUILD_ENGINE=$BUILD_ENGINE\
-    nycplanning/docker-geosupport:$VERSION_GEO bash -c "
-      python3 python/geocode.py
-      python3 python/geocode_hny.py
-    "
-count _GEO_devdb
-
 display "Assign geoms to _GEO_devdb and create GEO_devdb"
 psql $BUILD_ENGINE -f sql/_geo.sql
 psql $BUILD_ENGINE -f sql/_geo_corrections.sql

@@ -81,11 +81,11 @@ if __name__ == "__main__":
     df = pd.read_sql(
         """
         SELECT 
-            distinct uid, 
-            address_numbr as house_number,
-            address_street as street_name, 
-            boro as borough
-        FROM _INIT_devdb
+            distinct ogc_fid as uid, 
+            housenumber as house_number,
+            streetname as street_name, 
+            borough
+        FROM dob_jobapplications
         """,
         engine,
     )
@@ -101,7 +101,7 @@ if __name__ == "__main__":
     print("geocoding finished, dumping GEO_devdb postgres ...")
     df=pd.DataFrame(it)
     df.to_sql(
-        '_geo_devdb',
+        'dob_geocode_results',
         con=engine,
         if_exists="replace",
         index=False,

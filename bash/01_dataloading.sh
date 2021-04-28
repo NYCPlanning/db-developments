@@ -25,6 +25,9 @@ import_public dcp_firecompanies &
 import_public dcp_policeprecincts &
 import_public dob_cofos &
 import_public dof_shoreline &
+import_public dob_geocode_results &
+import_public hny_geocode_results &
+
 
 case $MODE in
     weekly) 
@@ -41,3 +44,9 @@ psql $BUILD_ENGINE -f sql/_create.sql
 
 wait 
 display "data loading is complete"
+
+psql $BUILD_ENGINE -c "
+    DROP TABLE IF EXISTS _GEO_devdb;
+    ALTER TABLE dob_geocode_results
+    RENAME TO _GEO_devdb;
+"

@@ -1,0 +1,81 @@
+name: Data Sync
+on: 
+  push:
+    paths: 
+      - .github/workflows/dob_data_sync.yml
+      - templates/dob_jobapplications.yml
+      - templates/dob_permitissuance.yml
+  schedule:
+    - cron: '0 0 * * MON'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: syncing ...
+    runs-on: ubuntu-20.04
+    env:
+      AWS_S3_ENDPOINT: ${{ secrets.DO_S3_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.DO_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.DO_SECRET_ACCESS_KEY }}
+      AWS_S3_BUCKET: edm-recipes
+    strategy:
+      matrix:
+        dataset:
+          - dob_permitissuance
+          - dob_jobapplications
+          - hpd_hny_units_by_building
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: NYCPlanning/action-library-archive@v1.1
+        with:
+          path: templates/${{ matrix.dataset }}.yml 
+          s3: true
+          latest: true
+          compress: true
+          output_format: csv pgdump
+
+  geocode:
+    name: geocoding
+    needs: sync
+    services:
+      db:
+        image: postgis/postgis:11-3.0-alpine
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    runs-on: ubuntu-20.04
+    env:
+      AWS_S3_ENDPOINT: ${{ secrets.DO_S3_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.DO_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.DO_SECRET_ACCESS_KEY }}
+      AWS_S3_BUCKET: edm-recipes
+      BUILD_ENGINE: postgresql://postgres:postgres@localhost:5432/postgres
+    steps:
+      - uses: actions/checkout@v2
+      - name: Load to Database
+        run: |
+          ./devdb.sh import dob_jobapplications
+          ./devdb.sh import hpd_hny_units_by_building
+      
+      - name: Geocode
+        run: ./devdb.sh geocode
+      
+      - name: Export to csv
+        run: | 
+          ./devdb.sh output dob_geocode_results csv
+          ./devdb.sh output hny_geocode_results csv
+      
+      - name: Check file existence
+        run: ls *.csv
+      
+      - name: Archive to Data Library
+        run: |
+          ./devdb.sh library_archive hny_geocode_results hpd_hny_units_by_building
+          ./devdb.sh library_archive dob_geocode_results dob_jobapplications

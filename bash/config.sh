@@ -64,13 +64,18 @@ function imports_csv {
    cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN WITH DELIMITER ',' NULL '' CSV HEADER;"
 }
 
-function import_public {
+function get_version {
   name=$1
   version=${2:-latest}
   url=https://nyc3.digitaloceanspaces.com/edm-recipes
   version=$(curl -s $url/datasets/$name/$version/config.json | jq -r '.dataset.version')
-  echo "🔵 $name version: $version"
+  echo -e "🔵 $name version: \e[92m\e[1m$version\e[21m\e[0m"
+}
 
+function import_public {
+  name=$1
+  version=${2:-latest}
+  get_version $1 $2
   target_dir=$(pwd)/.library/datasets/$name/$version
 
   # Download sql dump for the datasets from data library
@@ -134,4 +139,15 @@ function max_bg_procs {
             fi
             sleep 1
     done
+}
+
+function geocode {
+  docker run --network=host --rm\
+      -v $(pwd):/src\
+      -w /src\
+      -e BUILD_ENGINE=$BUILD_ENGINE\
+      nycplanning/docker-geosupport:$VERSION_GEO bash -c "
+        python3 python/geocode.py
+        python3 python/geocode_hny.py
+      "
 }
