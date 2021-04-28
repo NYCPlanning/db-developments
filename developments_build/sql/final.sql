@@ -99,8 +99,8 @@ JOIN_HNY_PLUTO_devdb as (
 ),
 CORR_lists as (
 	SELECT
-		job_number
-		STRING_AGG(b.field, '/') as dcpeditfields
+		job_number,
+		STRING_AGG(field, '/') as dcpeditfields
 	FROM corrections_applied
 	GROUP BY job_number
 ),
@@ -241,12 +241,7 @@ SELECT
 	a.reason,
 	a.edited_date,
 	a.editor,
-	(CASE
-		WHEN job_number IN 
-			(SELECT job_number FROM FINAL_devdb) 
-			THEN 1
-		ELSE 0
-	END) as job_in_devdb
+	(a.job_number IN (SELECT job_number FROM FINAL_devdb))::integer as job_in_devdb
 INTO manual_corrections
 FROM _manual_corrections a
 LEFT JOIN corrections_applied b
