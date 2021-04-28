@@ -34,35 +34,35 @@ IN PREVIOUS VERSION:
 	units_net.sql
 */
 
-DROP TABLE IF EXISTS _UNITS_devdb;
-CREATE TEMP TABLE tmp_UNITS AS (
-	SELECT DISTINCT
-		a.job_number,
-		a.job_type,
-		b.occ_proposed,
-		b.occ_initial,
-		a.classa_init,
-		a.classa_prop,
-		(CASE
-			WHEN a.job_type = 'New Building' THEN 0
-			ELSE NULL
-		END) as hotel_init,
-		(CASE
-			WHEN a.job_type = 'Demolition' THEN 0
-			ELSE NULL
-		END) as hotel_prop,
-		(CASE
-			WHEN a.job_type = 'New Building' THEN 0
-			ELSE NULL
-		END) as otherb_init,
-		(CASE
-			WHEN a.job_type = 'Demolition' THEN 0
-			ELSE NULL
-		END) as otherb_prop
-	FROM INIT_devdb a
-	LEFT JOIN OCC_devdb b
-	ON a.job_number = b.job_number
-);
+DROP TABLE IF EXISTS _UNITS_devdb_raw;
+SELECT DISTINCT
+	a.job_number,
+	a.job_type,
+	b.occ_proposed,
+	b.occ_initial,
+	a.classa_init,
+	a.classa_prop,
+	(CASE
+		WHEN a.job_type = 'New Building' THEN 0
+		ELSE NULL
+	END) as hotel_init,
+	(CASE
+		WHEN a.job_type = 'Demolition' THEN 0
+		ELSE NULL
+	END) as hotel_prop,
+	(CASE
+		WHEN a.job_type = 'New Building' THEN 0
+		ELSE NULL
+	END) as otherb_init,
+	(CASE
+		WHEN a.job_type = 'Demolition' THEN 0
+		ELSE NULL
+	END) as otherb_prop
+INTO _UNITS_devdb_raw
+FROM INIT_devdb a
+LEFT JOIN OCC_devdb b
+ON a.job_number = b.job_number;
+
 
 /*
 CORRECTIONS
@@ -76,17 +76,18 @@ Note that hotel/otherb corrections match old_value with
 the associated classa field. As a result, these corrections
 get applied prior to the classa corrections.
 */
-CALL apply_correction('tmp_UNITS', 'manual_corrections', 'hotel_init', 'classa_init');
-CALL apply_correction('tmp_UNITS', 'manual_corrections', 'hotel_prop', 'classa_prop');
-CALL apply_correction('tmp_UNITS', 'manual_corrections', 'otherb_init', 'classa_init');
-CALL apply_correction('tmp_UNITS', 'manual_corrections', 'otherb_prop', 'classa_prop');
-CALL apply_correction('tmp_UNITS', 'manual_corrections', 'classa_init');
-CALL apply_correction('tmp_UNITS', 'manual_corrections', 'classa_prop');
+CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'hotel_init', 'classa_init');
+CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'hotel_prop', 'classa_prop');
+CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'otherb_init', 'classa_init');
+CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'otherb_prop', 'classa_prop');
+CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'classa_init');
+CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'classa_prop');
 
 /*
 Using corrected classa, hotel, and otherb unit fields, 
 calculate and then manually correct resid_flag
 */
+DROP TABLE IF EXISTS _UNITS_devdb;
 SELECT
 	*,
 	(CASE 
@@ -99,8 +100,10 @@ SELECT
 			THEN 'Residential' 
 	END) as resid_flag
 INTO _UNITS_devdb
-FROM tmp_UNITS
+FROM _UNITS_devdb_raw
 ;
+
+DROP TABLE _UNITS_devdb_raw;
 
 /*
 CORRECTIONS

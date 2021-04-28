@@ -66,7 +66,6 @@ OUTPUTS:
     )
 */
 DROP TABLE IF EXISTS JOIN_date_permittd;
-CREATE TEMP TABLE JOIN_date_permittd as (
 SELECT
     -- All INIT_devdb fields except for classa_init and classa_prop
     a.job_number,
@@ -155,10 +154,10 @@ SELECT
     b.date_permittd,
     b.permit_year,
     b.permit_qrtr
+INTO JOIN_date_permittd
 FROM INIT_devdb a
 LEFT JOIN STATUS_Q_devdb b
-ON a.job_number = b.job_number
-);
+ON a.job_number = b.job_number;
 
 /*
 CORRECTIONS: (implemeted 2021/02/22)
@@ -230,3 +229,5 @@ JOIN_occ as (
 SELECT *
 INTO _MID_devdb
 FROM JOIN_occ;
+
+DROP TABLE JOIN_date_permittd;
