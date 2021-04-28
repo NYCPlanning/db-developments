@@ -51,13 +51,14 @@ display "Creating OCC fields:
 psql $BUILD_ENGINE -f sql/_occ.sql
 count OCC_devdb
 
-display "Creating temp UNITS fields: _classa_init,
-      _classa_prop,
-      _hotel_init,
-      _hotel_prop,
-      _otherb_init,
-      _otherb_prop,
-      _classa_net,
+display "Creating UNITS fields: 
+      classa_init,
+      classa_prop,
+      hotel_init,
+      hotel_prop,
+      otherb_init,
+      otherb_prop,
+      classa_net,
       resid_flag, 
       nonres_flag"
 psql $BUILD_ENGINE -f sql/_units.sql
@@ -96,14 +97,6 @@ psql $BUILD_ENGINE\
   -f sql/qaqc/qaqc_status.sql
 
 display "Combining _MID_devdb with STATUS_devdb to create MID_devdb"
-display "Creating final UNITS fields:
-      classa_init,
-      classa_prop,
-      hotel_init,
-      hotel_prop,
-      otherb_init,
-      otherb_prop,
-      classa_net"
 psql $BUILD_ENGINE -f sql/mid.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_mid.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_geo.sql
