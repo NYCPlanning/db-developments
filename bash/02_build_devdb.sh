@@ -1,5 +1,6 @@
 #!/bin/bash
-source config.sh
+CURRENT_DIR=$(dirname "$(readlink -f "$0")")
+source $CURRENT_DIR/config.sh
 
 display "Starting to build Developments DB"
 psql $BUILD_ENGINE -f sql/_function.sql
