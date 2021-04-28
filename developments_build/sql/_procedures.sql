@@ -56,7 +56,6 @@ BEGIN
 
 
     IF applicable THEN 
-        RAISE NOTICE 'Applying Correction';
         EXECUTE format($n$
             UPDATE %1$s SET %2$I = %3$L::%4$s WHERE job_number = %5$L;
             $n$, _table, _field, _new_val, field_type, _job_number);
@@ -66,7 +65,6 @@ BEGIN
             INSERT INTO corrections_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L, %6L);
             $n$, _job_number, _field, current_val, _old_val, _new_val, _reason);
     ELSE 
-        RAISE NOTICE 'Cannot Apply Correction';
         EXECUTE format($n$
             DELETE FROM corrections_not_applied WHERE job_number = %1$L AND field = %2$L;
             INSERT INTO corrections_not_applied VALUES (%1$L, %2$L, %3$L, %4$L, %5L, %6L);
@@ -99,6 +97,7 @@ BEGIN
     AND table_name = lower(_table) INTO  _valid_fields;
 
     IF (_field = any(_valid_fields)) AND (_field NOT IN ('latitude','longitude')) THEN
+        RAISE NOTICE 'Applying Corrections for %', _field;
         FOR _job_number, _old_value, _new_value, _reason IN 
             EXECUTE FORMAT($n$
                 SELECT job_number, old_value, new_value, reason 
