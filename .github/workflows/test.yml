@@ -67,7 +67,11 @@ jobs:
             echo "::set-output name=rebuild::yes"
             echo "::set-output name=archive::no"
             echo "::set-output name=export::no"
-            echo "::set-output name=weekly::no"
+            if [[ $GITHUB_EVENT_NAME == 'schedule' ]]; then
+              echo "::set-output name=weekly::yes"
+            else
+              echo "::set-output name=weekly::no"
+            fi
           fi
   
       - name: install dependencies ...
@@ -82,18 +86,24 @@ jobs:
 
       - name: 1. dataloading for HED weekly builds
         if: >- 
-          (
-            github.event_name == 'schedule' && 
-            steps.config.outputs.rebuild == 'yes'
-          ) || (
-            github.event_name == 'workflow_dispath' &&
-            steps.config.outputs.rebuild == 'yes' && 
-            steps.config.outputs.weekly == 'yes'
+          steps.config.outputs.weekly == 'yes' && (
+            (
+              github.event_name == 'schedule' && 
+              steps.config.outputs.rebuild == 'yes'
+            ) || (
+              github.event_name == 'workflow_dispath' &&
+              steps.config.outputs.rebuild == 'yes' && 
+            )
           )
         run: ./devdb.sh dataloading weekly
       
       - name: 1. dataloading for EDM builds 
-        if: github.event_name != 'schedule' && steps.config.outputs.rebuild == 'yes'
+        if: >- 
+          (
+            github.event_name != 'schedule' && 
+            steps.config.outputs.rebuild == 'yes' &&
+            steps.config.outputs.weekly == 'no'
+          )
         run: ./devdb.sh dataloading edm
 
       - name: 2. build dev_db ...
@@ -101,22 +111,26 @@ jobs:
         run: ./devdb.sh build
       
       - name: 3. Export ...
-        if: steps.config.outputs.export == 'yes'
+        if: >- 
+          steps.config.outputs.export == 'yes' &&
+          steps.config.outputs.weekly == 'no'
         run: ./devdb.sh export
       
       - name: 4. Archive ...
-        if: steps.config.outputs.archive == 'yes'
+        if: >- 
+          steps.config.outputs.archive == 'yes' &&
+          steps.config.outputs.weekly == 'no'
         run: ./devdb.sh archive
       
       - name: Export to HED database
         if: >- 
-          (
-            github.event_name == 'schedule' && 
-            steps.config.outputs.rebuild == 'yes'
-          ) || (
-            github.event_name == 'workflow_dispath' &&
-            steps.config.outputs.rebuild == 'yes' && 
-            steps.config.outputs.weekly == 'yes'
+          steps.config.outputs.weekly == 'yes' && (
+            (
+              github.event_name == 'schedule' && 
+              steps.config.outputs.rebuild == 'yes'
+            ) || (
+              github.event_name == 'workflow_dispath' &&
+              steps.config.outputs.rebuild == 'yes' && 
+            )
           )
         run: pg_dump $BUILD_ENGINE -O -c -C | psql $HED_BUILD_ENGINE
-      
