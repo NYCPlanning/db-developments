@@ -25,7 +25,6 @@ import_public dcp_firecompanies &
 import_public dcp_policeprecincts &
 import_public dob_cofos &
 import_public dof_shoreline &
-import_public dob_geocode_results &
 import_public hny_geocode_results &
 
 
@@ -33,10 +32,12 @@ case $MODE in
     weekly) 
         import_public dob_permitissuance &
         import_public dob_jobapplications &
+        import_public dob_geocode_results &
     ;;
     edm) 
         import_public dob_permitissuance $DOB_DATA_DATE &
         import_public dob_jobapplications $DOB_DATA_DATE &
+        import_public dob_geocode_results $DOB_DATA_DATE &
     ;;
 esac
 

@@ -90,7 +90,7 @@ function import_public {
   fi
 
   # Loading into Database
-  psql $BUILD_ENGINE -f $target_dir/$name.sql
+  psql $BUILD_ENGINE -v ON_ERROR_STOP=1 -q -f $target_dir/$name.sql
 }
 
 function archive {
