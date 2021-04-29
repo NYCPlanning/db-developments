@@ -59,7 +59,7 @@ jobs:
         id: config
         run: |
           if [[ $GITHUB_EVENT_NAME == 'workflow_dispatch' ]]; then
-            echo "::set-output name=rebuild::${{  github.event.inputs.archive }}"
+            echo "::set-output name=rebuild::${{  github.event.inputs.rebuild }}"
             echo "::set-output name=archive::${{  github.event.inputs.archive }}"
             echo "::set-output name=export::${{  github.event.inputs.export }}"
             echo "::set-output name=weekly::${{  github.event.inputs.weekly }}"
