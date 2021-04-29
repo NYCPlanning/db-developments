@@ -27,7 +27,11 @@ on:
 jobs: 
   Build:
     name: Building ...
-    if: ! contains(github.event.head_commit.message, '[skip]')
+    if: >- 
+      (
+        github.event_name == 'push' &&
+        ! contains(github.event.head_commit.message, '[skip]')
+      ) || github.event_name != 'push'
     runs-on: ubuntu-20.04
     services:
       db:
