@@ -86,24 +86,14 @@ jobs:
 
       - name: 1. dataloading for HED weekly builds
         if: >- 
-          steps.config.outputs.weekly == 'yes' && (
-            (
-              github.event_name == 'schedule' && 
-              steps.config.outputs.rebuild == 'yes'
-            ) || (
-              github.event_name == 'workflow_dispath' &&
-              steps.config.outputs.rebuild == 'yes' && 
-            )
-          )
+          steps.config.outputs.weekly == 'yes' && 
+          steps.config.outputs.rebuild == 'yes'
         run: ./devdb.sh dataloading weekly
       
       - name: 1. dataloading for EDM builds 
         if: >- 
-          (
-            github.event_name != 'schedule' && 
-            steps.config.outputs.rebuild == 'yes' &&
-            steps.config.outputs.weekly == 'no'
-          )
+          steps.config.outputs.rebuild == 'yes' &&
+          steps.config.outputs.weekly == 'no'
         run: ./devdb.sh dataloading edm
 
       - name: 2. build dev_db ...
@@ -124,13 +114,6 @@ jobs:
       
       - name: Export to HED database
         if: >- 
-          steps.config.outputs.weekly == 'yes' && (
-            (
-              github.event_name == 'schedule' && 
-              steps.config.outputs.rebuild == 'yes'
-            ) || (
-              github.event_name == 'workflow_dispath' &&
-              steps.config.outputs.rebuild == 'yes' && 
-            )
-          )
+          steps.config.outputs.weekly == 'yes' && 
+          steps.config.outputs.rebuild == 'yes'
         run: pg_dump $BUILD_ENGINE -O -c -C | psql $HED_BUILD_ENGINE
