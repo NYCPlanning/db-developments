@@ -116,4 +116,4 @@ jobs:
         if: >- 
           steps.config.outputs.weekly == 'yes' && 
           steps.config.outputs.rebuild == 'yes'
-        run: pg_dump $BUILD_ENGINE -O -c -C | psql $HED_BUILD_ENGINE
+        run: pg_dump $BUILD_ENGINE -O -c | psql $HED_BUILD_ENGINE
