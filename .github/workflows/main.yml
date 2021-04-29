@@ -55,25 +55,20 @@ jobs:
 
       - name: 1. dataloading ...
         if: github.event.inputs.rebuild == 'yes'
-        working-directory: developments_build
-        run: ./01_dataloading.sh
+        run: ./devdb.sh dataloading
 
       - name: 2. build dev_db ...
         if: github.event.inputs.rebuild == 'yes'
-        working-directory: developments_build
-        run: ./02_build_devdb.sh
+        run: ./devdb.sh build
 
       - name: 3. export ...
         if: github.event.inputs.export == 'yes'
-        working-directory: developments_build
-        run: ./03_export.sh
+        run: ./devdb.sh export
 
       - name: 4. archive ...
         if: github.event.inputs.archive == 'yes'
-        working-directory: developments_build
-        run: ./04_archive.sh
+        run: ./devdb.sh archive
     
       - name: 5. clean up ...
         if: ${{ always() }}
-        working-directory: developments_build
         run: sudo rm -rf python/utils/__pycache__
