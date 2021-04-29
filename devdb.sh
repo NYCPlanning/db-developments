@@ -2,7 +2,10 @@
 source bash/config.sh
 
 function dataloading { 
-    ./bash/01_dataloading.sh 
+    shift;
+    MODE="${1:-edm}"
+    echo "mode: $MODE"
+    ./bash/01_dataloading.sh $1
 }
 
 function build { 
@@ -52,7 +55,7 @@ function library_archive {
 }
 
 case $1 in
-    dataloading | build | export | archive ) $1 ;;
+    dataloading | build | export | archive ) $1 $@ ;;
     geocode) geocode ;;
     import) import $@ ;;
     output) output $@ ;;
