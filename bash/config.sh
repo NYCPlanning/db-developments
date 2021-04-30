@@ -118,13 +118,6 @@ function SHP_export {
       )
 }
 
-function makevalid {
-  psql $BUILD_ENGINE -c "
-      UPDATE $1
-      SET wkb_geometry = st_makevalid(wkb_geometry);
-  "
-}
-
 function max_bg_procs {
     if [[ $# -eq 0 ]] ; then
             echo "Usage: max_bg_procs NUM_PROCS.  Will wait until the number of background (&)"

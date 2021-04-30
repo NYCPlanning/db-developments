@@ -116,4 +116,9 @@ jobs:
         if: >- 
           steps.config.outputs.weekly == 'yes' && 
           steps.config.outputs.rebuild == 'yes'
-        run: pg_dump $BUILD_ENGINE -O -c | psql $HED_BUILD_ENGINE
+        run: |
+          pg_dump -t export_devdb $BUILD_ENGINE -O -c | psql $HED_BUILD_ENGINE &
+          pg_dump -t dcp_mappluto $BUILD_ENGINE -O -c | psql $HED_BUILD_ENGINE &
+          pg_dump -t hpd_hny_units_by_building $BUILD_ENGINE -O -c | psql $HED_BUILD_ENGINE &
+          wait 
+          echo "done!"
