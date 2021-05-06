@@ -26,7 +26,7 @@ SELECT a.*,
 	 	ELSE 0
 	END) as inactive_with_update,
     (CASE 
-	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_inactive_update) THEN 1
+	 	WHEN a.job_number IN (SELECT job_number FROM JOBNUMBER_partially_complete) THEN 1
 	 	ELSE 0
 	END) as partially_complete
 INTO STATUS_qaqc
