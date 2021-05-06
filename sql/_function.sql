@@ -186,7 +186,7 @@ CREATE OR REPLACE FUNCTION get_schoolsubdist(
     RETURNS varchar AS $$
       SELECT b.district||'_'||b.subdistrict
       FROM doe_school_subdistricts b
-      WHERE ST_Within(_geom, b.wkb_geometry)
+      WHERE ST_Within(_geom, b.geom)
   $$ LANGUAGE sql;
 
 DROP TABLE IF EXISTS dof_shoreline_subdivide;
