@@ -11,6 +11,23 @@
 
 DROP TABLE IF EXISTS _INIT_qaqc;
 WITH
+-- identify admin jobs
+JOBNUMBER_admin_nowork as (
+	SELECT job_number
+	FROM _INIT_devdb
+	WHERE upper(job_desc) LIKE '%NO WORK%'
+	OR ((upper(job_desc) LIKE '%ADMINISTRATIVE%'
+		AND jobtype <> 'New Building')
+	OR (upper(job_desc) LIKE '%ADMINISTRATIVE%'
+		AND upper(job_desc) NOT LIKE '%ERECT%'
+		AND jobtype = 'New Building'))
+	OR upper(desc_other) LIKE '%NO WORK%'
+	OR ((upper(desc_other) LIKE '%ADMINISTRATIVE%'
+		AND jobtype <> 'New Building')
+	OR (upper(desc_other) LIKE '%ADMINISTRATIVE%'
+		AND upper(desc_other) NOT LIKE '%ERECT%'
+		AND jobtype = 'New Building'))
+),
 -- identify invalid dates in input data
 JOBNUMBER_invalid_dates AS (
 	SELECT DISTINCT job_number,
@@ -45,7 +62,11 @@ SELECT a.*,
 	(CASE 
 	 	WHEN job_number IN (SELECT job_number FROM JOBNUMBER_test) THEN 1
 	 	ELSE 0
-	END) as bistest
+	END) as bistest,
+	(CASE 
+	 	WHEN job_number IN (SELECT job_number FROM JOBNUMBER_admin_nowork) THEN 1
+	 	ELSE 0
+	END) as no_work_job
 INTO _INIT_qaqc
 FROM JOBNUMBER_invalid_dates a
 ;

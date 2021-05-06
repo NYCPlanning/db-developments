@@ -74,25 +74,12 @@ IN PREVIOUS VERSION:
 
 DROP TABLE IF EXISTS _INIT_devdb;
 WITH
--- identify admin jobs
-JOBNUMBER_admin_jobs as (
-	select ogc_fid
-	from dob_jobapplications
-	WHERE upper(jobdescription) LIKE '%NO WORK%'
-	OR ((upper(jobdescription) LIKE '%ADMINISTRATIVE%'
-		AND jobtype <> 'NB')
-	OR (upper(jobdescription) LIKE '%ADMINISTRATIVE%'
-		AND upper(jobdescription) NOT LIKE '%ERECT%'
-		AND jobtype = 'NB'))
-),
 -- identify relevant_jobs
 JOBNUMBER_relevant as (
-	select ogc_fid
-	from dob_jobapplications
-	where 
-		ogc_fid not in (select ogc_fid from JOBNUMBER_admin_jobs)
-		AND jobdocnumber = '01'
-		AND jobtype ~* 'A1|DM|NB'
+	SELECT ogc_fid
+	FROM dob_jobapplications
+	WHERE jobdocnumber = '01'
+	AND jobtype ~* 'A1|DM|NB'
 ) SELECT
 	distinct
 	ogc_fid as uid,
