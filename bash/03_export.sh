@@ -33,8 +33,8 @@ mkdir -p output
     
     display "Export Corrections"
     CSV_export CORR_hny_matches &
-    CSV_export applied_corrections &
-    CSV_export not_applied_corrections &
+    CSV_export corrections_applied &
+    CSV_export corrections_not_applied &
     CSV_export manual_corrections 
 
     wait
