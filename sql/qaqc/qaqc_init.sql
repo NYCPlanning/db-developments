@@ -11,23 +11,6 @@
 
 DROP TABLE IF EXISTS _INIT_qaqc;
 WITH
--- identify admin jobs
-JOBNUMBER_admin_nowork as (
-	SELECT job_number
-	FROM _INIT_devdb
-	WHERE upper(job_desc) LIKE '%NO WORK%'
-	OR ((upper(job_desc) LIKE '%ADMINISTRATIVE%'
-		AND jobtype <> 'New Building')
-	OR (upper(job_desc) LIKE '%ADMINISTRATIVE%'
-		AND upper(job_desc) NOT LIKE '%ERECT%'
-		AND jobtype = 'New Building'))
-	OR upper(desc_other) LIKE '%NO WORK%'
-	OR ((upper(desc_other) LIKE '%ADMINISTRATIVE%'
-		AND jobtype <> 'New Building')
-	OR (upper(desc_other) LIKE '%ADMINISTRATIVE%'
-		AND upper(desc_other) NOT LIKE '%ERECT%'
-		AND jobtype = 'New Building'))
-),
 -- identify invalid dates in input data
 JOBNUMBER_invalid_dates AS (
 	SELECT DISTINCT job_number,
@@ -50,6 +33,24 @@ JOBNUMBER_invalid_dates AS (
 		 		OR date_statusx IS NULL THEN 0
 		 	ELSE 1 END) as invalid_date_statusx
 		FROM _INIT_devdb ),
+
+-- identify admin jobs
+JOBNUMBER_admin_nowork as (
+	SELECT job_number
+	FROM _INIT_devdb
+	WHERE upper(job_desc) LIKE '%NO WORK%'
+	OR ((upper(job_desc) LIKE '%ADMINISTRATIVE%'
+		AND jobtype <> 'New Building')
+	OR (upper(job_desc) LIKE '%ADMINISTRATIVE%'
+		AND upper(job_desc) NOT LIKE '%ERECT%'
+		AND jobtype = 'New Building'))
+	OR upper(desc_other) LIKE '%NO WORK%'
+	OR ((upper(desc_other) LIKE '%ADMINISTRATIVE%'
+		AND jobtype <> 'New Building')
+	OR (upper(desc_other) LIKE '%ADMINISTRATIVE%'
+		AND upper(desc_other) NOT LIKE '%ERECT%'
+		AND jobtype = 'New Building'))
+),
 
 -- Find test records
 JOBNUMBER_test AS(
