@@ -21,7 +21,7 @@ CREATE TABLE _manual_corrections (
     job_number text,
     field text,
     old_value text,
-    current_value text,
+    pre_corr_value text,
     new_value text,
     corr_applied text,
     reason text,

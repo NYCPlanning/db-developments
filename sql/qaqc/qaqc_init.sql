@@ -34,6 +34,24 @@ JOBNUMBER_invalid_dates AS (
 		 	ELSE 1 END) as invalid_date_statusx
 		FROM _INIT_devdb ),
 
+-- identify admin jobs
+JOBNUMBER_admin_nowork as (
+	SELECT job_number
+	FROM _INIT_devdb
+	WHERE upper(job_desc) LIKE '%NO WORK%'
+	OR ((upper(job_desc) LIKE '%ADMINISTRATIVE%'
+		AND job_type <> 'New Building')
+	OR (upper(job_desc) LIKE '%ADMINISTRATIVE%'
+		AND upper(job_desc) NOT LIKE '%ERECT%'
+		AND job_type = 'New Building'))
+	OR upper(desc_other) LIKE '%NO WORK%'
+	OR ((upper(desc_other) LIKE '%ADMINISTRATIVE%'
+		AND job_type <> 'New Building')
+	OR (upper(desc_other) LIKE '%ADMINISTRATIVE%'
+		AND upper(desc_other) NOT LIKE '%ERECT%'
+		AND job_type = 'New Building'))
+),
+
 -- Find test records
 JOBNUMBER_test AS(
 	SELECT job_number FROM _INIT_devdb
@@ -45,7 +63,11 @@ SELECT a.*,
 	(CASE 
 	 	WHEN job_number IN (SELECT job_number FROM JOBNUMBER_test) THEN 1
 	 	ELSE 0
-	END) as bistest
+	END) as bistest,
+	(CASE 
+	 	WHEN job_number IN (SELECT job_number FROM JOBNUMBER_admin_nowork) THEN 1
+	 	ELSE 0
+	END) as no_work_job
 INTO _INIT_qaqc
 FROM JOBNUMBER_invalid_dates a
 ;
