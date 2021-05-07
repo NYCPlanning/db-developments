@@ -14,10 +14,6 @@ INPUTS:
         ...
     )
 
-    manual_corrections (
-        * job_number
-    )
-
     dcp_mappluto (
         * bbl,
         geom

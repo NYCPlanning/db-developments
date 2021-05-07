@@ -30,7 +30,7 @@ LONLAT_corrections as (
             reason,
             old_value::double precision as old_lon, 
             new_value::double precision as new_lon
-        FROM manual_corrections
+        FROM _manual_corrections
         WHERE field = 'longitude'
     ) a LEFT JOIN (
         SELECT 
@@ -38,7 +38,7 @@ LONLAT_corrections as (
             reason,
             old_value::double precision as old_lat,
             new_value::double precision as new_lat
-        FROM manual_corrections
+        FROM _manual_corrections
         WHERE field = 'latitude'
     ) b ON a.job_number = b.job_number
 ),
@@ -78,7 +78,7 @@ SELECT
     b.reason,
     (b.distance AND (b.null_bbl OR b.in_water)) as applicable
 INTO corrections_geom
-FROM manual_corrections a
+FROM _manual_corrections a
 LEFT JOIN GEOM_corrections b
 ON a.job_number = b.job_number
 WHERE a.field IN ('latitude', 'longitude');

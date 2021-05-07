@@ -76,12 +76,12 @@ Note that hotel/otherb corrections match old_value with
 the associated classa field. As a result, these corrections
 get applied prior to the classa corrections.
 */
-CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'hotel_init', 'classa_init');
-CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'hotel_prop', 'classa_prop');
-CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'otherb_init', 'classa_init');
-CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'otherb_prop', 'classa_prop');
-CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'classa_init');
-CALL apply_correction('_UNITS_devdb_raw', 'manual_corrections', 'classa_prop');
+CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'hotel_init', 'classa_init');
+CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'hotel_prop', 'classa_prop');
+CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'otherb_init', 'classa_init');
+CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'otherb_prop', 'classa_prop');
+CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'classa_init');
+CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'classa_prop');
 
 /*
 Using corrected classa, hotel, and otherb unit fields, 
@@ -109,7 +109,7 @@ DROP TABLE _UNITS_devdb_raw;
 CORRECTIONS
 	resid_flag
 */
-CALL apply_correction('_UNITS_devdb', 'manual_corrections', 'resid_flag');
+CALL apply_correction('_UNITS_devdb', '_manual_corrections', 'resid_flag');
 
 
 /*
