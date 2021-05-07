@@ -19,7 +19,6 @@ SELECT
     a.dup_bbl_address,
     a.inactive_with_update,
     a.no_work_job,
-    a.bistest,
     b.geo_water,
     b.geo_taxlot,
     b.geo_null_latlong,

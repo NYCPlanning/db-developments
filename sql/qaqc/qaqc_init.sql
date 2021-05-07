@@ -50,20 +50,9 @@ JOBNUMBER_admin_nowork as (
 	OR (upper(desc_other) LIKE '%ADMINISTRATIVE%'
 		AND upper(desc_other) NOT LIKE '%ERECT%'
 		AND job_type = 'New Building'))
-),
-
--- Find test records
-JOBNUMBER_test AS(
-	SELECT job_number FROM _INIT_devdb
-	WHERE UPPER(job_desc) LIKE '%BIS%TEST%' 
-    	OR UPPER(job_desc) LIKE '% TEST %'
 )
 
 SELECT a.*,
-	(CASE 
-	 	WHEN job_number IN (SELECT job_number FROM JOBNUMBER_test) THEN 1
-	 	ELSE 0
-	END) as bistest,
 	(CASE 
 	 	WHEN job_number IN (SELECT job_number FROM JOBNUMBER_admin_nowork) THEN 1
 	 	ELSE 0
