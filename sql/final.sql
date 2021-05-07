@@ -235,7 +235,7 @@ SELECT
 	a.job_number,
 	a.field,
 	a.old_value,
-	b.current_value,
+	b.pre_corr_value,
 	a.new_value,
 	(b.job_number IS NOT NULL)::int as corr_applied,
 	a.reason,

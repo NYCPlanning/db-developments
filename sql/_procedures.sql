@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS corrections_applied;
 CREATE TABLE corrections_applied (
 	job_number 		text,
 	field 	  		text,
-	current_value 	text,
+	pre_corr_value 	text,
 	old_value 		text,
 	new_value 		text,
     reason          text
@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS corrections_not_applied;
 CREATE TABLE corrections_not_applied (
 	job_number 		text,
 	field 	  		text,
-	current_value 	text,
+	pre_corr_value 	text,
 	old_value 		text,
 	new_value 		text,
     reason          text
