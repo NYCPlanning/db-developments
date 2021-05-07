@@ -228,24 +228,51 @@ SELECT
 INTO FINAL_devdb
 FROM JOIN_CORR_devdb;
 
-ALTER TABLE manual_corrections RENAME TO _manual_corrections;
-
+DROP TABLE IF EXISTS manual_corrections;
+WITH 
+applied AS (
+	SELECT
+		a.job_number,
+		a.field,
+		a.old_value,
+		b.pre_corr_value,
+		a.new_value,
+		1 as corr_applied,
+		a.reason,
+		a.edited_date,
+		a.editor,
+		1 as job_in_devdb
+	FROM _manual_corrections a
+	JOIN corrections_applied b
+	ON a.job_number = b.job_number
+	AND a.field = b.field
+	AND a.old_value = b.old_value
+	AND a.new_value = b.new_value
+),
+not_applied AS (
+	SELECT
+		a.job_number,
+		a.field,
+		a.old_value,
+		b.pre_corr_value,
+		a.new_value,
+		0 as corr_applied,
+		a.reason,
+		a.edited_date,
+		a.editor,
+		(a.job_number IN (SELECT job_number FROM FINAL_devdb))::integer as job_in_devdb
+	FROM _manual_corrections a
+	JOIN corrections_not_applied b
+	ON a.job_number = b.job_number
+	AND a.field = b.field
+	AND a.old_value = b.old_value
+	AND a.new_value = b.new_value
+)
 SELECT
 	NOW() as build_dt,
-	a.job_number,
-	a.field,
-	a.old_value,
-	b.current_value,
-	a.new_value,
-	(b.job_number IS NOT NULL)::int as corr_applied,
-	a.reason,
-	a.edited_date,
-	a.editor,
-	(a.job_number IN (SELECT job_number FROM FINAL_devdb))::integer as job_in_devdb
+	a.*
 INTO manual_corrections
-FROM _manual_corrections a
-LEFT JOIN corrections_applied b
-ON a.job_number = b.job_number
-AND a.field = b.field
-AND a.old_value = b.old_value
-AND a.new_value = b.new_value;
+FROM 
+	(SELECT * FROM applied
+	UNION 
+	SELECT * FROM not_applied) a;

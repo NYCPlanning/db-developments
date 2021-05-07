@@ -15,8 +15,8 @@ CREATE TABLE lookup_ownership (
 );
 \COPY lookup_ownership FROM 'data/lookup_ownership.csv' DELIMITER ',' CSV HEADER;
 
-
-CREATE TEMP TABLE _manual_corrections (
+DROP TABLE IF EXISTS _manual_corrections;
+CREATE TABLE _manual_corrections (
     build_dt timestamp,
     job_number text,
     field text,
@@ -30,18 +30,6 @@ CREATE TEMP TABLE _manual_corrections (
     job_in_devdb text
 );
 \COPY _manual_corrections FROM 'data/manual_corrections.csv' DELIMITER ',' CSV HEADER;
-
-DROP TABLE IF EXISTS manual_corrections;
-SELECT 
-    job_number,
-    field,
-    old_value,
-    new_value,
-    reason,
-    edited_date,
-    editor
-INTO manual_corrections
-FROM _manual_corrections;
 
 DROP TABLE IF EXISTS CORR_hny_matches;
 CREATE TABLE CORR_hny_matches (
