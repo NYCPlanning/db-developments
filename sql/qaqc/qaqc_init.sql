@@ -40,16 +40,16 @@ JOBNUMBER_admin_nowork as (
 	FROM _INIT_devdb
 	WHERE upper(job_desc) LIKE '%NO WORK%'
 	OR ((upper(job_desc) LIKE '%ADMINISTRATIVE%'
-		AND jobtype <> 'New Building')
+		AND job_type <> 'New Building')
 	OR (upper(job_desc) LIKE '%ADMINISTRATIVE%'
 		AND upper(job_desc) NOT LIKE '%ERECT%'
-		AND jobtype = 'New Building'))
+		AND job_type = 'New Building'))
 	OR upper(desc_other) LIKE '%NO WORK%'
 	OR ((upper(desc_other) LIKE '%ADMINISTRATIVE%'
-		AND jobtype <> 'New Building')
+		AND job_type <> 'New Building')
 	OR (upper(desc_other) LIKE '%ADMINISTRATIVE%'
 		AND upper(desc_other) NOT LIKE '%ERECT%'
-		AND jobtype = 'New Building'))
+		AND job_type = 'New Building'))
 ),
 
 -- Find test records
