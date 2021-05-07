@@ -135,4 +135,4 @@ WHERE a.job_status IN ('1. Filed Application', '2. Approved Application', '3. Pe
 CORRECTIONS
     job_inactive
 */
-CALL apply_correction('STATUS_devdb', 'manual_corrections', 'job_inactive');
+CALL apply_correction('STATUS_devdb', '_manual_corrections', 'job_inactive');
