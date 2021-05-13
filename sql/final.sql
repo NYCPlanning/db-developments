@@ -235,12 +235,12 @@ applied AS (
 		a.job_number,
 		a.field,
 		a.old_value,
-		b.pre_corr_value,
 		a.new_value,
-		1 as corr_applied,
 		a.reason,
 		a.edited_date,
 		a.editor,
+		b.pre_corr_value,
+		1 as corr_applied,
 		1 as job_in_devdb
 	FROM _manual_corrections a
 	JOIN corrections_applied b
@@ -254,12 +254,12 @@ not_applied AS (
 		a.job_number,
 		a.field,
 		a.old_value,
-		b.pre_corr_value,
 		a.new_value,
-		0 as corr_applied,
 		a.reason,
 		a.edited_date,
 		a.editor,
+		b.pre_corr_value,
+		0 as corr_applied,
 		(a.job_number IN (SELECT job_number FROM FINAL_devdb))::integer as job_in_devdb
 	FROM _manual_corrections a
 	JOIN corrections_not_applied b
