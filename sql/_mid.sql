@@ -113,6 +113,7 @@ SELECT
     a.bbl,
     a.boro,
     a.x_withdrawal,
+    a.origin,
     a.geo_bbl,
     a.geo_bin,
     a.geo_address_numbr,
