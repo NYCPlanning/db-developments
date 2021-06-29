@@ -68,11 +68,11 @@ OUTPUTS:
 DROP TABLE IF EXISTS _INIT_devdb;
 WITH combined AS (
 	SELECT *,
-		'bis' AS origin
+		'bis' AS datasource
 	FROM _INIT_BIS_devdb
 	UNION
 	SELECT *,
-		'now' AS origin
+		'now' AS datasource
 	FROM _INIT_NOW_devdb
 )
 SELECT * 
