@@ -67,9 +67,13 @@ OUTPUTS:
 
 DROP TABLE IF EXISTS _INIT_devdb;
 WITH combined AS (
-	SELECT * FROM _INIT_BIS_devdb
+	SELECT *,
+		'bis' AS source
+	FROM _INIT_BIS_devdb
 	UNION
-	SELECT * FROM _INIT_NOW_devdb
+	SELECT *,
+		'now' AS source
+	FROM _INIT_NOW_devdb
 )
 SELECT * 
 INTO _INIT_devdb
