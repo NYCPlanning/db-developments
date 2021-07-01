@@ -126,8 +126,8 @@ SELECT
 	) as ownership,
 	
 	NULL as owner_name,
-	"owner's_business_name" as Owner_BizNm,
-	"owner's_street_name" as Owner_Address,
+	owner_s_business_name as Owner_BizNm,
+	owner_s_street_name as Owner_Address,
 	zip as Owner_ZipCode,
 	ownerphone as Owner_Phone,
 
