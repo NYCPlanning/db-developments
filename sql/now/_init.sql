@@ -142,11 +142,11 @@ SELECT
 	NULL as ConstructnSF,
 
 	(CASE 
-		WHEN (horizontalenlargement = 1 AND verticalenlargement <> 0) 
+		WHEN (horizontalenlargement = '1' AND verticalenlargement <> '0') 
 			THEN 'Horizontal'
-		WHEN (horizontalenlargement <> 0 AND verticalenlargement = 1) 
+		WHEN (horizontalenlargement <> '0' AND verticalenlargement = '1') 
 			THEN 'Vertical'
-		WHEN (horizontalenlargement = 1 AND verticalenlargement = 1) 
+		WHEN (horizontalenlargement = '1' AND verticalenlargement = '1') 
 			THEN 'Horizontal and Vertical'
 	END)  as enlargement,
 
