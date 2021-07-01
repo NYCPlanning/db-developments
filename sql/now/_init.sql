@@ -107,7 +107,7 @@ SELECT
 	current_status_date as date_lastupdt,
 	filing_date as date_filed,
 	NULL as date_statusd,
-	approved_(date) as date_statusp,
+	"approved_(date)" as date_statusp,
 	permitissueddate as date_statusr,
 	signoffdate as date_statusx,
 	NULL as ZoningDist1,
