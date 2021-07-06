@@ -1,6 +1,5 @@
 #!/bin/bash
-CURRENT_DIR=$(dirname "$(readlink -f "$0")")
-source $CURRENT_DIR/config.sh
+source bash/config.sh
 
 display "archive DevDB"
 archive EXPORT_devdb developments

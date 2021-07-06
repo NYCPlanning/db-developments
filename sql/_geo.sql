@@ -74,7 +74,7 @@ DRAFT as (
         distinct
         a.uid,
         a.job_number,
-		    a.bbl,
+		a.bbl,
         a.bin,
         a.date_lastupdt,
         a.job_desc,
@@ -107,7 +107,10 @@ DRAFT as (
         b.mode
 	FROM _INIT_devdb a
 	LEFT JOIN _GEO_devdb b
-	ON a.uid::text = b.uid::text
+	ON (CASE 
+            WHEN source = 'bis' THEN b.uid::text
+            ELSE (b.uid::integer + (SELECT MAX(_INIT_BIS_devdb.uid::integer) FROM _INIT_BIS_devdb))::text
+        END)::text = a.uid::text
 ),
 GEOM_dob_bin_bldgfootprints as (
     SELECT distinct
@@ -125,7 +128,7 @@ GEOM_dob_bin_bldgfootprints as (
         END) as geomsource
     FROM DRAFT a
     LEFT JOIN doitt_buildingfootprints b
-    ON a.bin::text = b.bin::text
+    ON a.bin::text = b.bin::numeric::bigint::text
 ),
 GEOM_geo_bin_bldgfootprints as (
 	SELECT distinct
@@ -147,7 +150,7 @@ GEOM_geo_bin_bldgfootprints as (
 		END) as geomsource
     FROM GEOM_dob_bin_bldgfootprints a
     LEFT JOIN doitt_buildingfootprints b
-    ON a.geo_bin = b.bin
+    ON a.geo_bin::text = b.bin::numeric::bigint::text
 ),
 GEOM_geosupport as (
     SELECT distinct

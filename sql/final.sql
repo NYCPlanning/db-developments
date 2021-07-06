@@ -220,6 +220,7 @@ SELECT
 	pluto_pfirm15,
 	latitude,
 	longitude,
+	datasource,
 	geomsource,
 	dcpeditfields,
 	hny_id,

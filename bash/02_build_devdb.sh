@@ -1,10 +1,11 @@
 #!/bin/bash
-CURRENT_DIR=$(dirname "$(readlink -f "$0")")
-source $CURRENT_DIR/config.sh
+source bash/config.sh
 
 display "Starting to build Developments DB"
 psql $BUILD_ENGINE -f sql/_function.sql
 psql $BUILD_ENGINE -f sql/_procedures.sql
+psql $BUILD_ENGINE -f sql/bis/_init.sql
+psql $BUILD_ENGINE -f sql/now/_init.sql
 psql $BUILD_ENGINE -f sql/_init.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_init.sql
 count _INIT_devdb

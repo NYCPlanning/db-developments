@@ -1,11 +1,11 @@
 #!/bin/bash
-CURRENT_DIR=$(dirname "$(readlink -f "$0")")
-source $CURRENT_DIR/config.sh
+source bash/config.sh
 
 ## Default mode is EDM
 MODE="${1:-edm}"
 
 max_bg_procs 5
+import_public dob_now_applications &
 import_public council_members &
 import_public doe_school_subdistricts &
 import_public doe_eszones &

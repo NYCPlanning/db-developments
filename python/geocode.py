@@ -52,7 +52,8 @@ def parse_output(geo):
         geo_bbl=geo.get("BOROUGH BLOCK LOT (BBL)", {}).get(
             "BOROUGH BLOCK LOT (BBL)", "",
         ),
-        geo_boro=geo.get("BOROUGH BLOCK LOT (BBL)", {}).get("Borough Code", "",),
+        geo_boro=geo.get("BOROUGH BLOCK LOT (BBL)", {}
+                         ).get("Borough Code", "",),
         geo_cd=geo.get("COMMUNITY DISTRICT", {}).get("COMMUNITY DISTRICT", ""),
         geo_puma=geo.get("PUMA Code", ""),
         geo_firedivision=geo.get("Fire Division", ""),
@@ -81,11 +82,30 @@ if __name__ == "__main__":
     df = pd.read_sql(
         """
         SELECT 
-            distinct ogc_fid as uid, 
-            housenumber as house_number,
-            streetname as street_name, 
-            borough
-        FROM dob_jobapplications
+            uid, 
+            regexp_replace(
+                trim(house_number), 
+                '(^|)0*', '', ''
+            ) as house_number,
+            trim(street_name) as street_name, 
+            borough,
+            source
+        FROM (
+            SELECT 
+                distinct ogc_fid as uid, 
+                housenumber as house_number,
+                streetname as street_name, 
+                borough,
+                'bis' as source
+            FROM dob_jobapplications UNION
+            SELECT 
+                distinct ogc_fid as uid, 
+                house_no as house_number,
+                street_name as street_name, 
+                borough,
+                'now' as source
+            FROM dob_now_applications
+        ) a
         """,
         engine,
     )
@@ -99,7 +119,7 @@ if __name__ == "__main__":
         it = pool.map(geocode, records, 10000)
 
     print("geocoding finished, dumping GEO_devdb postgres ...")
-    df=pd.DataFrame(it)
+    df = pd.DataFrame(it)
     df.to_sql(
         'dob_geocode_results',
         con=engine,
