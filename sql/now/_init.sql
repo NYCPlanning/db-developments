@@ -72,35 +72,35 @@ SELECT
 	(CASE WHEN jobdescription !~ '[a-zA-Z]'
 	THEN NULL ELSE jobdescription END) as job_desc,
 
-         existingoccupancyclassification as _occ_initial, 
-         proposedoccupancyclassification as _occ_proposed,
+	existingoccupancyclassification::text as _occ_initial, 
+	proposedoccupancyclassification::text as _occ_proposed,
 	
     -- set 0 -> null for jobtype = Alteration
 	(CASE WHEN jobtype ~* 'Alteration' 
         THEN nullif(existing_stories, '0')::numeric
 		ELSE NULL
-         END) as stories_init,
+	END)::numeric as stories_init,
 
 	-- set 0 -> null for jobtype = Alteration
 	(CASE WHEN jobtype ~* 'Alteration' 
         THEN nullif(proposed_no_of_stories, '0')::numeric
 		ELSE NULL
-         END) as stories_prop,
+	END)::numeric as stories_prop,
 
-         NULL as zoningsft_init,
-         NULL as zoningsft_prop,
+	NULL::numeric as zoningsft_init,
+	NULL::numeric as zoningsft_prop,
 
     -- if existingdwellingunits is not a number then null
-        (CASE WHEN jobtype ~* 'New Building' THEN 0 
-        ELSE (CASE WHEN existing_dwelling_units ~ '[^0-9]' THEN NULL
-            ELSE existing_dwelling_units::numeric END)
-        END) as classa_init,
+	(CASE WHEN jobtype ~* 'New Building' THEN 0 
+		ELSE (CASE WHEN existing_dwelling_units ~ '[^0-9]' THEN NULL
+		ELSE existing_dwelling_units::numeric END)
+	END)::numeric as classa_init,
 
     -- if proposeddwellingunits is not a number then null
 	(CASE WHEN jobtype ~* 'Demolition' THEN 0
 		ELSE (CASE WHEN proposed_dwelling_units ~ '[^0-9]' THEN NULL
 			ELSE proposed_dwelling_units::numeric END)
-	END) as classa_prop,
+	END)::numeric as classa_prop,
 
 	-- one to one mappings
 	filing_status as _job_status,
@@ -168,14 +168,14 @@ SELECT
 		'(^|)0*', '', '')||' '||trim(street_name) as address,
 	bin as bin,
 	LEFT(bin, 1)||lpad(block, 5, '0')||lpad(RIGHT(lot,4), 4, '0') as bbl,
-	CASE WHEN borough ~* 'Manhattan' THEN '1'
+	(CASE WHEN borough ~* 'Manhattan' THEN '1'
 		WHEN borough ~* 'Bronx' THEN '2'
 		WHEN borough ~* 'Brooklyn' THEN '3'
 		WHEN borough ~* 'Queens' THEN '4'
 		WHEN borough ~* 'Staten Island' THEN '5' 
-		END as boro,
-	NULL as zsf_init,
-	NULL as zsf_prop,
+	END) as boro,
+	NULL::numeric as zsf_init,
+	NULL::numeric as zsf_prop,
 	building_type as bldg_class,
 	NULL as desc_other,
 	NULL as x_withdrawal,

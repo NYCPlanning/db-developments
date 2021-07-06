@@ -73,7 +73,7 @@ JOBNUMBER_relevant as (
 ) SELECT
 	distinct
 	ogc_fid::text as uid,
-	jobnumber as job_number,
+	jobnumber:: as job_number,
 
     -- Job Type recoding
 	(CASE 
