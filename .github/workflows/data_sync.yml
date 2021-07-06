@@ -8,10 +8,11 @@ on:
   schedule:
     - cron: '0 0 * * MON'
   workflow_dispatch:
-    version:
-      description: 'Would you like to specify a version for dob_jobapplications?'
-      required: false
-      default: 'latest'
+    inputs:
+      version:
+        description: 'Would you like to specify a version for dob_jobapplications?'
+        required: false
+        default: 'latest'
 
 jobs:
   sync:
