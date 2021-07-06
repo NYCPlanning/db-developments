@@ -54,11 +54,25 @@ function library_archive {
     "
 }
 
+function load {
+    shift;
+    local name=$1
+    local version=${2:-latest}
+    import_public $1 $2
+}
+
+function sql {
+    shift;
+    psql $BUILD_ENGINE $@
+}
+
 case $1 in
     dataloading | build | export | archive ) $1 $@ ;;
     geocode) geocode ;;
     import) import $@ ;;
     output) output $@ ;;
+    load) load $@ ;;
+    sql) sql $@ ;;
     library_archive) library_archive $@ ;;
     *) echo "$1 not found" ;;
 esac
