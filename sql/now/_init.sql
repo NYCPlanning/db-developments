@@ -65,7 +65,7 @@ OUTPUTS:
 DROP TABLE IF EXISTS _INIT_NOW_devdb;
 SELECT
 	distinct
-	md5(CAST((dob_now_applications.*)AS text))::text as uid,
+	-- null as uid, -- (uid will be assigned in _init.sql)
 	job_filing_number as job_number,
 	jobtype as job_type,
 

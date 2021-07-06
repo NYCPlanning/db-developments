@@ -66,20 +66,19 @@ OUTPUTS:
 */
 
 DROP TABLE IF EXISTS _INIT_devdb;
-WITH combined AS (
+SELECT *
+INTO _INIT_devdb
+FROM (
 	SELECT *,
 		'bis' AS datasource
 	FROM _INIT_BIS_devdb
 	UNION
-	SELECT *,
+	SELECT 
+		ROW_NUMBER() OVER(ORDER BY job_number) + (SELECT MAX(uid) FROM _INIT_BIS_devdb) as uid,
+		*,
 		'now' AS datasource
 	FROM _INIT_NOW_devdb
-)
-SELECT * 
-INTO _INIT_devdb
-FROM combined
-;
-
+);
 /*
 CORRECTIONS: 
 	stories_prop
