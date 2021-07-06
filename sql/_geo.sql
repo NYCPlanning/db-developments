@@ -107,7 +107,10 @@ DRAFT as (
         b.mode
 	FROM _INIT_devdb a
 	LEFT JOIN _GEO_devdb b
-	ON a.uid::text = b.uid::text
+	ON (CASE 
+            WHEN source = 'bis' THEN b.uid::text
+            ELSE (b.uid::integer + (SELECT MAX(_INIT_BIS_devdb.uid::integer) FROM _INIT_BIS_devdb))::text
+        END)::text = a.uid::text
 ),
 GEOM_dob_bin_bldgfootprints as (
     SELECT distinct
