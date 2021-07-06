@@ -72,7 +72,7 @@ JOBNUMBER_relevant as (
 	AND jobtype ~* 'A1|DM|NB'
 ) SELECT
 	distinct
-	ogc_fid as uid,
+	ogc_fid::text as uid,
 	jobnumber as job_number,
 
     -- Job Type recoding

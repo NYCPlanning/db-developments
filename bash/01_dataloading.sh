@@ -1,6 +1,5 @@
 #!/bin/bash
-CURRENT_DIR=$(dirname "$(readlink -f "$0")")
-source $CURRENT_DIR/config.sh
+source bash/config.sh
 
 ## Default mode is EDM
 MODE="${1:-edm}"

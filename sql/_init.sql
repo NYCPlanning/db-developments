@@ -69,14 +69,10 @@ DROP TABLE IF EXISTS _INIT_devdb;
 SELECT *
 INTO _INIT_devdb
 FROM (
-	SELECT *,
-		'bis' AS datasource
+	SELECT *, 'bis' AS datasource
 	FROM _INIT_BIS_devdb
 	UNION
-	SELECT 
-		ROW_NUMBER() OVER(ORDER BY job_number) + (SELECT MAX(uid) FROM _INIT_BIS_devdb) as uid,
-		*,
-		'now' AS datasource
+	SELECT *, 'now' AS datasource
 	FROM _INIT_NOW_devdb
 ) t;
 /*

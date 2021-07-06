@@ -65,8 +65,8 @@ OUTPUTS:
 DROP TABLE IF EXISTS _INIT_NOW_devdb;
 SELECT
 	distinct
-	-- null as uid, -- (uid will be assigned in _init.sql)
-	job_filing_number as job_number,
+	(ogc_fid::integer + (SELECT MAX(uid) FROM _INIT_BIS_devdb)::text as uid,
+	job_filing_number::text as job_number,
 	jobtype as job_type,
 
 	(CASE WHEN jobdescription !~ '[a-zA-Z]'
