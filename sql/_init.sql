@@ -78,7 +78,7 @@ FROM (
 		*,
 		'now' AS datasource
 	FROM _INIT_NOW_devdb
-);
+) t;
 /*
 CORRECTIONS: 
 	stories_prop
