@@ -174,8 +174,8 @@ SELECT
 		WHEN borough ~* 'Queens' THEN '4'
 		WHEN borough ~* 'Staten Island' THEN '5' 
 	END) as boro,
-	NULL::numeric as zsf_init,
-	NULL::numeric as zsf_prop,
+	NULL::text as zsf_init,
+	NULL::text as zsf_prop,
 	building_type as bldg_class,
 	NULL as desc_other,
 	NULL as x_withdrawal,
