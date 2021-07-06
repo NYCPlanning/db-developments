@@ -52,7 +52,8 @@ def parse_output(geo):
         geo_bbl=geo.get("BOROUGH BLOCK LOT (BBL)", {}).get(
             "BOROUGH BLOCK LOT (BBL)", "",
         ),
-        geo_boro=geo.get("BOROUGH BLOCK LOT (BBL)", {}).get("Borough Code", "",),
+        geo_boro=geo.get("BOROUGH BLOCK LOT (BBL)", {}
+                         ).get("Borough Code", "",),
         geo_cd=geo.get("COMMUNITY DISTRICT", {}).get("COMMUNITY DISTRICT", ""),
         geo_puma=geo.get("PUMA Code", ""),
         geo_firedivision=geo.get("Fire Division", ""),
@@ -84,8 +85,19 @@ if __name__ == "__main__":
             distinct ogc_fid as uid, 
             housenumber as house_number,
             streetname as street_name, 
-            borough
-        FROM dob_jobapplications
+            borough,
+            'bis' as source
+        FROM dob_jobapplications UNION
+        SELECT 
+            distinct ogc_fid as uid, 
+            regexp_replace(
+                trim(house_no), 
+                '(^|)0*', '', ''
+            ) as house_number,
+            trim(street_name) as street_name, 
+            borough,
+            'now' as source
+        FROM dob_now_applications
         """,
         engine,
     )
@@ -99,7 +111,7 @@ if __name__ == "__main__":
         it = pool.map(geocode, records, 10000)
 
     print("geocoding finished, dumping GEO_devdb postgres ...")
-    df=pd.DataFrame(it)
+    df = pd.DataFrame(it)
     df.to_sql(
         'dob_geocode_results',
         con=engine,

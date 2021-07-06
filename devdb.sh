@@ -20,11 +20,6 @@ function archive {
     ./bash/04_archive.sh 
 }
 
-function import {
-    shift;
-    import_public $1 $2
-}
-
 function output {
     shift;
     name=$1
@@ -54,7 +49,7 @@ function library_archive {
     "
 }
 
-function load {
+function import {
     shift;
     local name=$1
     local version=${2:-latest}
@@ -71,7 +66,6 @@ case $1 in
     geocode) geocode ;;
     import) import $@ ;;
     output) output $@ ;;
-    load) load $@ ;;
     sql) sql $@ ;;
     library_archive) library_archive $@ ;;
     *) echo "$1 not found" ;;

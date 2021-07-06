@@ -63,6 +63,7 @@ jobs:
         run: |
           ./devdb.sh import dob_jobapplications
           ./devdb.sh import hpd_hny_units_by_building
+          ./devdb.sh import dob_now_applications
       
       - name: Geocode
         run: ./devdb.sh geocode
