@@ -82,22 +82,30 @@ if __name__ == "__main__":
     df = pd.read_sql(
         """
         SELECT 
-            distinct ogc_fid as uid, 
-            housenumber as house_number,
-            streetname as street_name, 
-            borough,
-            'bis' as source
-        FROM dob_jobapplications UNION
-        SELECT 
-            distinct ogc_fid as uid, 
+            uid, 
             regexp_replace(
-                trim(house_no), 
+                trim(house_number), 
                 '(^|)0*', '', ''
             ) as house_number,
             trim(street_name) as street_name, 
             borough,
-            'now' as source
-        FROM dob_now_applications
+            source
+        FROM (
+            SELECT 
+                distinct ogc_fid as uid, 
+                housenumber as house_number,
+                streetname as street_name, 
+                borough,
+                'bis' as source
+            FROM dob_jobapplications UNION
+            SELECT 
+                distinct ogc_fid as uid, 
+                house_no as house_number,
+                street_name as street_name, 
+                borough,
+                'now' as source
+            FROM dob_now_applications
+        ) a
         """,
         engine,
     )
