@@ -49,6 +49,25 @@ function library_archive {
     "
 }
 
+function library_archive_version {
+    shift; 
+    local name=$1
+    local version=$2
+    docker run --rm\
+        -e AWS_S3_ENDPOINT=$AWS_S3_ENDPOINT\
+        -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID\
+        -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY\
+        -e AWS_S3_BUCKET=$AWS_S3_BUCKET\
+        -v $(pwd)/templates/$name.yml:/library/$name.yml\
+        -v $(pwd)/$name.csv:/library/$name.csv\
+        -v $(pwd)/.library:/library/.library\
+    nycplanning/library:ubuntu-latest bash -c "
+        library archive -f $name.yml -s -l -o csv -v $version &
+        library archive -f $name.yml -s -l -o pgdump -v $version &
+        wait
+    "
+}
+
 function import {
     shift;
     local name=$1
@@ -68,5 +87,6 @@ case $1 in
     output) output $@ ;;
     sql) sql $@ ;;
     library_archive) library_archive $@ ;;
+    library_archive_version) library_archive_version $@ ;;
     *) echo "$1 not found" ;;
 esac

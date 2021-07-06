@@ -8,6 +8,10 @@ on:
   schedule:
     - cron: '0 0 * * MON'
   workflow_dispatch:
+    version:
+      description: 'Would you like to specify a version for dob_jobapplications?'
+      required: false
+      default: 'latest'
 
 jobs:
   sync:
@@ -59,7 +63,17 @@ jobs:
       BUILD_ENGINE: postgresql://postgres:postgres@localhost:5432/postgres
     steps:
       - uses: actions/checkout@v2
+      - name: Load to Database (workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        env: 
+          VERSION: ${{  github.event.inputs.version }}
+        run: |
+          ./devdb.sh import dob_jobapplications $VERSION
+          ./devdb.sh import hpd_hny_units_by_building
+          ./devdb.sh import dob_now_applications
+      
       - name: Load to Database
+        if: github.event_name != 'workflow_dispatch'
         run: |
           ./devdb.sh import dob_jobapplications
           ./devdb.sh import hpd_hny_units_by_building
@@ -76,7 +90,16 @@ jobs:
       - name: Check file existence
         run: ls *.csv
       
+      - name: Archive to Data Library (workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        env: 
+          VERSION: ${{  github.event.inputs.version }}
+        run: |
+          ./devdb.sh library_archive hny_geocode_results hpd_hny_units_by_building
+          ./devdb.sh library_archive_version dob_geocode_results $$VERSION
+
       - name: Archive to Data Library
+        if: github.event_name != 'workflow_dispatch'
         run: |
           ./devdb.sh library_archive hny_geocode_results hpd_hny_units_by_building
           ./devdb.sh library_archive dob_geocode_results dob_jobapplications
