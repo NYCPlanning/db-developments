@@ -80,7 +80,7 @@ DRAFT_STATUS_devdb as (
         a.complete_qrtr
     FROM _MID_devdb a
     JOIN dob_jobapplications b
-    ON a.job_number::int = b.jobnumber::int
+    ON a.job_number = b.jobnumber
 )
 SELECT
     distinct
