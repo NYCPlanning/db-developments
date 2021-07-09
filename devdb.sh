@@ -80,12 +80,35 @@ function sql {
     psql $BUILD_ENGINE $@
 }
 
+function upload_to_bq {
+    FILEPATH=dcp_developments/$VERSION/dcp_developments.csv
+    curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/$FILEPATH
+    gsutil cp dcp_developments.csv gs://edm-temporary/$FILEPATH
+    rm dcp_developments.csv
+    location=US
+    dataset=dcp_developments
+    tablename=$dataset.$(tr [A-Z] [a-z] <<< "$VERSION")
+    bq show $dataset || bq mk --location=$location --dataset $dataset
+    bq show $tablename || bq mk $tablename
+    bq load \
+        --location=$location\
+        --source_format=CSV\
+        --quote '"' \
+        --skip_leading_rows 1\
+        --replace\
+        --allow_quoted_newlines\
+        $tablename \
+        gs://edm-temporary/$FILEPATH \
+        schemas/dcp_developments.json
+}
+
 case $1 in
     dataloading | build | export | archive ) $1 $@ ;;
     geocode) geocode ;;
     import) import $@ ;;
     output) output $@ ;;
     sql) sql $@ ;;
+    bq) upload_to_bq ;;
     library_archive) library_archive $@ ;;
     library_archive_version) library_archive_version $@ ;;
     *) echo "$1 not found" ;;

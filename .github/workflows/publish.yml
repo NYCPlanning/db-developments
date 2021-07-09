@@ -53,22 +53,4 @@ jobs:
           export_default_credentials: true
       
       - name: Archive to BigQuery
-        run: |
-          FILEPATH=dcp_developments/$VERSION/dcp_developments.csv
-          curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/$FILEPATH
-          gsutil cp dcp_developments.csv gs://edm-temporary/$FILEPATH
-          location=US
-          dataset=dcp_developments
-          tablename=$dataset.$(tr [A-Z] [a-z] <<< "$VERSION")
-          bq show $dataset || bq mk --location=$location --dataset $dataset
-          bq show $tablename || bq mk $tablename
-          bq load \
-              --location=$location\
-              --source_format=CSV\
-              --quote '"' \
-              --skip_leading_rows 1\
-              --replace\
-              --allow_quoted_newlines\
-              $tablename \
-              gs://edm-temporary/$FILEPATH \
-              schemas/dcp_developments.json
+        run: ./devdb.sh bq
