@@ -21,7 +21,7 @@ jobs:
       - name: Get Version
         id: version
         run: |
-          source developments_build/version.env
+          source version.env
           echo "::set-output name=version::$VERSION"
           echo "Version is $VERSION"
       
