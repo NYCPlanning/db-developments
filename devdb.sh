@@ -4,8 +4,12 @@ source bash/config.sh
 function dataloading { 
     shift;
     MODE="${1:-edm}"
+    CLEAR="${2:-true}"
     echo "mode: $MODE"
     ./bash/01_dataloading.sh $1
+    if [ "${CLEAR}" == "true" ]; then
+        rm -rf .library
+    fi
 }
 
 function build { 
@@ -103,7 +107,7 @@ function upload_to_bq {
 }
 
 case $1 in
-    dataloading | build | export | archive ) $1 $@ ;;
+    dataloading | build | export | archive ) $@ ;;
     geocode) geocode ;;
     import) import $@ ;;
     output) output $@ ;;
