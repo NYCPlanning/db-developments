@@ -3,9 +3,8 @@ on:
   release:
     types:
       - published
-  push:
-    tags:
-      - "*"
+  workflow_dispatch:
+  
 
 jobs:
   publish:
@@ -45,3 +44,27 @@ jobs:
           compress: true
           output_format: shapefile csv pgdump
           version: ${{ steps.version.outputs.version }}
+      
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID_DATA_ENGINEERING }}
+          service_account_key: ${{ secrets.GCP_GCS_BQ_SA_KEY }}
+          export_default_credentials: true
+      
+      - name: Archive to BigQuery
+        run: |
+          curl -O https://nyc3.digitaloceanspaces.com/edm-recipes/datasets/dcp_developments/$VERSION/dcp_developments.csv
+          location=US
+          dataset=dcp_developments
+          tablename=$dataset.$VERSION
+          bq show $dataset || bq mk --location=$location --dataset $dataset
+          bq show $dataset || bq mk $tablename
+          bq load \
+              --location=$location\
+              --source_format=CSV\
+              --quote '"' \
+              --skip_leading_rows 1\
+              --replace\
+              --allow_quoted_newlines\
+              $tablename dcp_developments.csv schemas/dcp_developments.json
