@@ -1,7 +1,7 @@
 [
     {
         "mode": "NULLABLE",
-        "name": "WKT",
+        "name": "wkt",
         "type": "STRING"
       },
     {
