@@ -121,7 +121,7 @@ SELECT
 
 	ownership_translate(
 		NULLIF(LEFT(city_owned, 1), 'N'),
-		ownertype,
+		UPPER(ownertype),
 		COALESCE(LEFT(nonprofit, 1), 'N')
 	) as ownership,
 	
