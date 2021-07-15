@@ -151,7 +151,7 @@ SELECT
 	END)  as enlargement,
 
 	NULL as EnlargementSF,
-	initial_cost as CostEstimate,
+	CAST(initial_cost as MONEY)::text as CostEstimate,
 	NULL as LoftBoardCert,
 	little_e as eDesignation,
 
