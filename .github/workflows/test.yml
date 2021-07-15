@@ -94,7 +94,7 @@ jobs:
         if: >- 
           steps.config.outputs.rebuild == 'yes' &&
           steps.config.outputs.weekly == 'no'
-        run: ./devdb.sh dataloading edm
+        run: ./devdb.sh dataloading edm && ls -l
 
       - name: 2. build dev_db ...
         if: steps.config.outputs.rebuild == 'yes'
