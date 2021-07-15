@@ -64,7 +64,6 @@ function Upload {
     mc rm -r --force $SPACES/$VERSION
     mc cp -r output $SPACES/$VERSION
 }
-}
 
 function imports_csv {
    cat data/$1.csv | psql $BUILD_ENGINE -c "COPY $1 FROM STDIN WITH DELIMITER ',' NULL '' CSV HEADER;"
