@@ -43,7 +43,5 @@ mkdir -p output
 
 zip -r output/output.zip output
 
-Upload
-
 wait 
 display "Upload Complete"

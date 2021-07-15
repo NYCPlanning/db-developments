@@ -108,6 +108,7 @@ function upload_to_bq {
 
 case $1 in
     dataloading | build | export | archive ) $@ ;;
+    upload) Upload;;
     geocode) geocode ;;
     import) import $@ ;;
     output) output $@ ;;

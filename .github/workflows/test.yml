@@ -101,11 +101,11 @@ jobs:
         run: ./devdb.sh build
       
       - name: 3. Export ...
-        if: >- 
-          steps.config.outputs.export == 'yes' &&
-          steps.config.outputs.weekly == 'no'
-        run: ./devdb.sh export
-      
+        if: steps.config.outputs.weekly == 'no'
+        run: |
+          ./devdb.sh export
+          ./devdb.sh upload
+            
       - name: 4. Archive ...
         if: >- 
           steps.config.outputs.archive == 'yes' &&
