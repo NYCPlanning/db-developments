@@ -76,7 +76,6 @@ jobs:
           fi
   
       - name: install dependencies ...
-        if: steps.config.outputs.export == 'yes'
         run: |
           sudo apt update
           sudo apt install -y gdal-bin
