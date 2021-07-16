@@ -17,7 +17,8 @@
 **/
 
 DROP TABLE IF EXISTS MATCH_dem_nb;
-SELECT a.job_number as job_number_dem, 
+SELECT 
+	a.job_number as job_number_dem, 
 	b.job_number as job_number_nb,
 	a.geo_bbl
 INTO MATCH_dem_nb
@@ -81,7 +82,7 @@ JOBNUMBER_incomplete_tract AS (
     FROM MID_devdb
     WHERE tracthomes = 'Y'
     AND job_status ~* '1|2|3'
-),
+)
 SELECT 
 	STATUS_qaqc.*,
 	(
