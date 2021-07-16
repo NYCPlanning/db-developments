@@ -44,7 +44,7 @@ IN PREVIOUS VERSION:
     year_complete.sql
     unitscomplete.sql
 */
-DROP TABLE IF EXISTS STATUS_devdb;
+DROP TABLE IF EXISTS STATUS_devdb CASCADE;
 WITH
 DRAFT_STATUS_devdb as (
     SELECT
@@ -135,4 +135,5 @@ WHERE a.job_status IN ('1. Filed Application', '2. Approved Application', '3. Pe
 CORRECTIONS
     job_inactive
 */
+CREATE INDEX STATUS_devdb_job_number_idx ON STATUS_devdb(job_number);
 CALL apply_correction('STATUS_devdb', '_manual_corrections', 'job_inactive');
