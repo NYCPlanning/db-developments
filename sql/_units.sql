@@ -61,7 +61,6 @@ INTO _UNITS_devdb_raw
 FROM INIT_devdb a
 LEFT JOIN OCC_devdb b
 ON a.job_number = b.job_number;
-CREATE INDEX _UNITS_devdb_raw_job_number_idx ON _UNITS_devdb_raw(job_number);
 
 /*
 CORRECTIONS
@@ -75,6 +74,7 @@ Note that hotel/otherb corrections match old_value with
 the associated classa field. As a result, these corrections
 get applied prior to the classa corrections.
 */
+CREATE INDEX _UNITS_devdb_raw_job_number_idx ON _UNITS_devdb_raw(job_number);
 CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'hotel_init', 'classa_init');
 CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'hotel_prop', 'classa_prop');
 CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'otherb_init', 'classa_init');
