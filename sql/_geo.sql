@@ -67,6 +67,7 @@ IN PREVIOUS VERSION:
     dedupe_job_number.sql
     dropmillionbin.sql
 */
+DROP INDEX IF EXISTS GEO_devdb_geom_idx;
 DROP TABLE IF EXISTS GEO_devdb;
 WITH
 DRAFT as (
@@ -244,3 +245,7 @@ INTO GEO_devdb
 FROM DRAFT a
 LEFT JOIN GEOM_dob_latlon b
 ON a.uid = b.uid;
+
+-- Create index
+CREATE INDEX GEO_devdb_geom_idx ON GEO_devdb 
+USING GIST (GEO_devdb gist_geometry_ops_2d);
