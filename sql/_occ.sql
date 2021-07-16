@@ -30,7 +30,7 @@ IN PREVIOUS VERSION:
     occ_.sql
 */
 
-DROP TABLE IF EXISTS OCC_devdb;
+DROP TABLE IF EXISTS OCC_devdb CASCADE;
 SELECT 
 	job_number,
 	(CASE WHEN job_type = 'New Building' THEN 'Empty Site'
@@ -47,5 +47,6 @@ CORRECTIONS
 	occ_initial
 	occ_proposed
 */
+CREATE INDEX OCC_devdb_job_number_idx ON OCC_devdb(job_number);
 CALL apply_correction('OCC_devdb', '_manual_corrections', 'occ_initial');
 CALL apply_correction('OCC_devdb', '_manual_corrections', 'occ_proposed');

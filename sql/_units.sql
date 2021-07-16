@@ -33,8 +33,7 @@ IN PREVIOUS VERSION:
     units_.sql
 	units_net.sql
 */
-
-DROP TABLE IF EXISTS _UNITS_devdb_raw;
+DROP TABLE IF EXISTS _UNITS_devdb_raw CASCADE;
 SELECT DISTINCT
 	a.job_number,
 	a.job_type,
@@ -62,7 +61,7 @@ INTO _UNITS_devdb_raw
 FROM INIT_devdb a
 LEFT JOIN OCC_devdb b
 ON a.job_number = b.job_number;
-
+CREATE INDEX _UNITS_devdb_raw_job_number_idx ON _UNITS_devdb_raw(job_number);
 
 /*
 CORRECTIONS
@@ -103,7 +102,7 @@ INTO _UNITS_devdb
 FROM _UNITS_devdb_raw
 ;
 
-DROP TABLE _UNITS_devdb_raw;
+DROP TABLE _UNITS_devdb_raw CASCADE;
 
 /*
 CORRECTIONS
