@@ -39,6 +39,7 @@ jobs:
         env:
           POSTGRES_PASSWORD: postgres
         options: >-
+          --shm-size=1g
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
@@ -75,7 +76,6 @@ jobs:
           fi
   
       - name: install dependencies ...
-        if: steps.config.outputs.export == 'yes'
         run: |
           sudo apt update
           sudo apt install -y gdal-bin
@@ -94,18 +94,18 @@ jobs:
         if: >- 
           steps.config.outputs.rebuild == 'yes' &&
           steps.config.outputs.weekly == 'no'
-        run: ./devdb.sh dataloading edm
+        run: ./devdb.sh dataloading edm && ls -l
 
       - name: 2. build dev_db ...
         if: steps.config.outputs.rebuild == 'yes'
         run: ./devdb.sh build
       
       - name: 3. Export ...
-        if: >- 
-          steps.config.outputs.export == 'yes' &&
-          steps.config.outputs.weekly == 'no'
-        run: ./devdb.sh export
-      
+        if: steps.config.outputs.weekly == 'no'
+        run: |
+          ./devdb.sh export
+          ./devdb.sh upload
+            
       - name: 4. Archive ...
         if: >- 
           steps.config.outputs.archive == 'yes' &&

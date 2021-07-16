@@ -56,8 +56,13 @@ function CSV_export {
 }
 
 function Upload {
-  mc rm -r --force spaces/edm-publishing/db-developments/$@
-  mc cp -r output spaces/edm-publishing/db-developments/$@
+    local branchname=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
+    local DATE=$(date "+%Y-%m-%d")
+    local SPACES="spaces/edm-publishing/db-developments/$branchname"
+    mc rm -r --force $SPACES/latest
+    mc cp -r output $SPACES/latest
+    mc rm -r --force $SPACES/$VERSION
+    mc cp -r output $SPACES/$VERSION
 }
 
 function imports_csv {
