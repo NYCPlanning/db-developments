@@ -145,6 +145,7 @@ SELECT
 	(a.job_number IN (SELECT job_number from JOBNUMBER_dem_nb))::integer as dem_nb_overlap,
 	b.dup_bbl_address, 
 	b.dup_bbl_address_units
+INTO MID_qaqc
 FROM MID_devdb a
 	RIGHT JOIN STATUS_qaqc on a.job_number = STATUS_qaqc.job_number 
 	LEFT JOIN JOBNUMBER_duplicates b ON a.job_number = b.job_number 
