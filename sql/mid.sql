@@ -27,7 +27,7 @@ OUTPUTS:
         ...
     )
 */
-DROP TABLE IF EXISTS MID_devdb;
+DROP TABLE IF EXISTS MID_devdb CASCADE;
 WITH
 JOIN_STATUS_devdb as (
     SELECT
@@ -41,3 +41,4 @@ JOIN_STATUS_devdb as (
 SELECT *
 INTO MID_devdb
 FROM JOIN_STATUS_devdb;
+CREATE INDEX MID_devdb_raw_job_number_idx ON MID_devdb_raw(job_number);
