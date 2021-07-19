@@ -117,6 +117,7 @@ jobs:
         env:
           EDM_DATA_BUILD_ENGINE: ${{ secrets.EDM_DATA_BUILD_ENGINE }}
         if: >-
+          always() &&
           steps.config.outputs.archive == 'yes' &&
           steps.config.outputs.weekly == 'no'
         run: |

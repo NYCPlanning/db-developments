@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS FINAL_devdb;
 SELECT
+	distinct
 	MID_devdb.job_number,
 	MID_devdb.job_type,
 	MID_devdb.resid_flag,
@@ -84,7 +85,7 @@ SELECT
 	PLUTO_devdb.pluto_bldgs,
 	PLUTO_devdb.pluto_floors,
 	PLUTO_devdb.pluto_version,
-    	MID_devdb.geo_censusblock2010 as cenblock2010,
+	MID_devdb.geo_censusblock2010 as cenblock2010,
 	MID_devdb.bctcb2010,
 	MID_devdb.bct2010,
 	MID_devdb.geo_ntacode2010 as nta2010,
