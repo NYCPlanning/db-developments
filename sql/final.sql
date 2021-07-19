@@ -66,7 +66,7 @@ SELECT
 	MID_devdb.owner_address,
 	MID_devdb.owner_zipcode,
 	MID_devdb.owner_phone,
-    	PLUTO_devdb.pluto_unitres,
+	PLUTO_devdb.pluto_unitres,
 	PLUTO_devdb.pluto_bldgsf,
 	PLUTO_devdb.pluto_comsf,
 	PLUTO_devdb.pluto_offcsf,

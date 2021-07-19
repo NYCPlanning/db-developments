@@ -248,4 +248,4 @@ ON a.uid = b.uid;
 
 -- Create index
 CREATE INDEX GEO_devdb_geom_idx ON GEO_devdb 
-USING GIST (GEO_devdb gist_geometry_ops_2d);
+USING GIST (geom gist_geometry_ops_2d);
