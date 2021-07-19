@@ -38,6 +38,7 @@ jobs:
         image: postgis/postgis:11-3.0-alpine
         env:
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: devdb
         options: >-
           --shm-size=1g
           --health-cmd pg_isready
@@ -47,7 +48,7 @@ jobs:
         ports:
           - 5432:5432
     env:
-      BUILD_ENGINE: postgresql://postgres:postgres@localhost:5432/postgres
+      BUILD_ENGINE: postgresql://postgres:postgres@localhost:5432/devdb
       HED_BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
       EDM_DATA: ${{ secrets.EDM_DATA }}
       AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
@@ -111,6 +112,15 @@ jobs:
           steps.config.outputs.archive == 'yes' &&
           steps.config.outputs.weekly == 'no'
         run: ./devdb.sh archive
+      
+      - name: Export to EDM_DATA/devdb
+        env:
+          EDM_DATA_BUILD_ENGINE: ${{ secrets.EDM_DATA_BUILD_ENGINE }}
+        if: >-
+          steps.config.outputs.archive == 'yes' &&
+          steps.config.outputs.weekly == 'no'
+        run: |
+          pg_dump -t $BUILD_ENGINE -O -c | psql $EDM_DATA_BUILD_ENGINE
       
       - name: Export to HED database
         if: >- 
