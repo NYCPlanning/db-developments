@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS FINAL_devdb;
 SELECT
-	distinct
+	DISTINCT ON (MID_devdb.job_number) 
 	MID_devdb.job_number,
 	MID_devdb.job_type,
 	MID_devdb.resid_flag,

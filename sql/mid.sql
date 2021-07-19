@@ -29,7 +29,7 @@ OUTPUTS:
 */
 DROP TABLE IF EXISTS MID_devdb CASCADE;
 SELECT
-    DISTINCT _MID_devdb.*,
+    _MID_devdb.*,
     STATUS_devdb.job_status,
     STATUS_devdb.job_inactive
 INTO MID_devdb
