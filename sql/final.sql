@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS FINAL_devdb;
 SELECT
-    MID_devdb.job_number,
-    MID_devdb.job_type,
+	MID_devdb.job_number,
+	MID_devdb.job_type,
 	MID_devdb.resid_flag,
 	MID_devdb.nonres_flag,
 	MID_devdb.job_inactive,
@@ -19,13 +19,13 @@ SELECT
 	MID_devdb.otherb_init,
 	MID_devdb.otherb_prop,
 	MID_devdb.co_latest_units as units_co,
-    COALESCE(MID_devdb.geo_boro, MID_devdb.boro) as boro,
+	COALESCE(MID_devdb.geo_boro, MID_devdb.boro) as boro,
 	COALESCE(MID_devdb.geo_bin, MID_devdb.bin) as bin,
 	COALESCE(MID_devdb.geo_bbl, MID_devdb.bbl) as bbl,
 	COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr) as address_numbr,
 	COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street) as address_st,
 	COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr)
-        ||' '||COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street) as address,
+	||' '||COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street) as address,
 	MID_devdb.occ_initial,
 	MID_devdb.occ_proposed,
 	MID_devdb.bldg_class,
@@ -65,7 +65,7 @@ SELECT
 	MID_devdb.owner_address,
 	MID_devdb.owner_zipcode,
 	MID_devdb.owner_phone,
-    PLUTO_devdb.pluto_unitres,
+    	PLUTO_devdb.pluto_unitres,
 	PLUTO_devdb.pluto_bldgsf,
 	PLUTO_devdb.pluto_comsf,
 	PLUTO_devdb.pluto_offcsf,
@@ -84,7 +84,7 @@ SELECT
 	PLUTO_devdb.pluto_bldgs,
 	PLUTO_devdb.pluto_floors,
 	PLUTO_devdb.pluto_version,
-    MID_devdb.geo_censusblock2010 as cenblock2010,
+    	MID_devdb.geo_censusblock2010 as cenblock2010,
 	MID_devdb.bctcb2010,
 	MID_devdb.bct2010,
 	MID_devdb.geo_ntacode2010 as nta2010,
@@ -100,18 +100,18 @@ SELECT
 	MID_devdb.geo_firebattalion as FireBattalion,
 	MID_devdb.geo_firedivision as firedivision,
 	MID_devdb.geo_policeprct as policeprecnct,
-    --    depdrainarea,
+	--    depdrainarea,
 	--    deppumpstatn,
-    PLUTO_devdb.pluto_firm07,
+	PLUTO_devdb.pluto_firm07,
 	PLUTO_devdb.pluto_pfirm15,
 	MID_devdb.latitude,
 	MID_devdb.longitude,
 	MID_devdb.datasource,
 	MID_devdb.geomsource,
 	CORR_lists.dcpeditfields,
-    HNY_devdb.hny_id,
-    HNY_devdb.hny_jobrelate,
-    :'VERSION' as version
+	HNY_devdb.hny_id,
+	HNY_devdb.hny_jobrelate,
+	:'VERSION' as version
 INTO FINAL_devdb
 FROM MID_devdb 
     LEFT JOIN HNY_devdb ON MID_devdb.job_number = HNY_devdb.job_number
