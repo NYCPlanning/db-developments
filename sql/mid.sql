@@ -28,17 +28,12 @@ OUTPUTS:
     )
 */
 DROP TABLE IF EXISTS MID_devdb CASCADE;
-WITH
-JOIN_STATUS_devdb as (
-    SELECT
-        a.*,
-        b.job_status,
-        b.job_inactive
-    FROM _MID_devdb a
-    LEFT JOIN STATUS_devdb b
-    ON a.job_number = b.job_number
-)
-SELECT *
+SELECT
+    DISTINCT _MID_devdb.*,
+    STATUS_devdb.job_status,
+    STATUS_devdb.job_inactive
 INTO MID_devdb
-FROM JOIN_STATUS_devdb;
+FROM _MID_devdb
+LEFT JOIN STATUS_devdb
+ON _MID_devdb.job_number = STATUS_devdb.job_number;
 CREATE INDEX MID_devdb_raw_job_number_idx ON MID_devdb_raw(job_number);
