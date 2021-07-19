@@ -116,10 +116,7 @@ jobs:
       - name: Export to EDM_DATA/devdb
         env:
           EDM_DATA_BUILD_ENGINE: ${{ secrets.EDM_DATA_BUILD_ENGINE }}
-        if: >-
-          always() &&
-          steps.config.outputs.archive == 'yes' &&
-          steps.config.outputs.weekly == 'no'
+        if: always() && steps.config.outputs.weekly == 'no'
         run: |
           pg_dump -t $BUILD_ENGINE -O -c | psql $EDM_DATA_BUILD_ENGINE
       
