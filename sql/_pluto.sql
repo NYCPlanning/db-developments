@@ -2,7 +2,7 @@
 IN PREVIOUS VERSION: 
     pluto_merge.sql
 */
-DROP TABLE IF EXISTS PLUTO_devdb;
+DROP TABLE IF EXISTS PLUTO_devdb CASCADE;
 SELECT 
     a.*,
     b.version as pluto_version,
@@ -31,3 +31,4 @@ INTO PLUTO_devdb
 FROM INIT_devdb a
 LEFT JOIN dcp_mappluto b
 ON a.geo_bbl = b.bbl::bigint::text;
+CREATE INDEX PLUTO_devdb_job_number_idx ON PLUTO_devdb(job_number);

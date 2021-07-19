@@ -84,7 +84,7 @@ JOBNUMBER_incomplete_tract AS (
     AND job_status ~* '1|2|3'
 )
 SELECT 
-	STATUS_qaqc.*,
+	DISTINCT STATUS_qaqc.*,
 	(
 		job_type IN ('Demolition' , 'Alteration') AND 
 		resid_flag = 'Residential' AND 
@@ -147,6 +147,6 @@ SELECT
 	b.dup_bbl_address_units
 INTO MID_qaqc
 FROM MID_devdb a
-	RIGHT JOIN STATUS_qaqc on a.job_number = STATUS_qaqc.job_number 
+	LEFT JOIN STATUS_qaqc on a.job_number = STATUS_qaqc.job_number 
 	LEFT JOIN JOBNUMBER_duplicates b ON a.job_number = b.job_number 
 	LEFT JOIN JOBNUMBER_co_prop_mismatch c ON a.job_number = c.job_number;
