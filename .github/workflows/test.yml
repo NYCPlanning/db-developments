@@ -118,7 +118,7 @@ jobs:
           EDM_DATA_BUILD_ENGINE: ${{ secrets.EDM_DATA_BUILD_ENGINE }}
         if: always() && steps.config.outputs.weekly == 'no'
         run: |
-          pg_dump -t $BUILD_ENGINE -O -c | psql $EDM_DATA_BUILD_ENGINE
+          pg_dump $BUILD_ENGINE -O -c | psql $EDM_DATA_BUILD_ENGINE
       
       - name: Export to HED database
         if: >- 
