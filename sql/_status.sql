@@ -62,9 +62,6 @@ DRAFT_STATUS_devdb as (
             WHEN a.date_statusr IS NOT NULL THEN '3. Permitted for Construction'
             WHEN a.date_permittd IS NOT NULL THEN '3. Permitted for Construction'
             WHEN a.date_statusp IS NOT NULL THEN '2. Approved Application'
-            WHEN b.assigned IS NOT NULL THEN '1. Filed Application'
-            WHEN a.date_statusd IS NOT NULL THEN '1. Filed Application'
-            WHEN b.paid IS NOT NULL THEN '1. Filed Application'
             WHEN a.date_filed IS NOT NULL THEN '1. Filed Application'	
             ELSE NULL
         END as job_status,
