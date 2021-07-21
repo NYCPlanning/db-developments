@@ -63,10 +63,22 @@ OUTPUTS:
 */
 
 DROP TABLE IF EXISTS _INIT_NOW_devdb;
-SELECT
+WITH
+JOBNUMBER_relevant as (
+	SELECT ogc_fid
+	FROM dob_now_applications
+	WHERE jobtype ~* 'CO|New'
+	AND ogc_fid IN (
+		SELECT ogc_fid
+		FROM (
+			SELECT ogc_fid, left(job_filing_number, strpos(job_filing_number, '-') - 1),filing_date,row_number()
+  			OVER (PARTITION BY left(job_filing_number, strpos(job_filing_number, '-') - 1) ORDER BY left(job_filing_number, strpos(job_filing_number, '-') - 1), filing_date) AS rnum
+  			FROM dob_now_applications) a
+  		WHERE rnum = 1)
+) SELECT
 	distinct
 	(ogc_fid::integer + (SELECT MAX(uid::integer) FROM _INIT_BIS_devdb))::text as uid,
-	job_filing_number::text as job_number,
+	left(job_filing_number, strpos(job_filing_number, '-') - 1)::text as job_number,
 	jobtype as job_type,
 
 	(CASE WHEN jobdescription !~ '[a-zA-Z]'
@@ -183,4 +195,5 @@ SELECT
 		longitude::double precision,
 		latitude::double precision),4326) as dob_geom
 INTO _INIT_NOW_devdb
-FROM dob_now_applications;
+FROM dob_now_applications
+WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
