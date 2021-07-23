@@ -120,9 +120,9 @@ SELECT
 		ELSE NULL END) as Landmark,
 
 	ownership_translate(
-		NULLIF(LEFT(city_owned, 1), 'N'),
+		LEFT(city_owned, 1),
 		UPPER(ownertype),
-		COALESCE(LEFT(nonprofit, 1), 'N')
+		LEFT(nonprofit, 1)
 	) as ownership,
 	
 	NULL as owner_name,
