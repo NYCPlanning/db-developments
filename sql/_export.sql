@@ -123,6 +123,7 @@ SELECT
 	PLUTO_PFIRM15 as "PL_PFIRM15",
 	Latitude as "Latitude",
 	Longitude as "Longitude",
+	DataSource as "DataSource",
 	GeomSource as "GeomSource",
 	DCPEditFields as "DCPEdited",
 	HNY_ID as "HNY_ID",
