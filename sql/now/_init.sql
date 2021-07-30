@@ -68,19 +68,16 @@ JOBNUMBER_relevant as (
 	SELECT ogc_fid
 	FROM dob_now_applications
 	WHERE jobtype ~* 'CO|New'
-	AND ogc_fid IN (
-		SELECT ogc_fid
-		FROM (
-			SELECT ogc_fid, left(job_filing_number, strpos(job_filing_number, '-') - 1),filing_date,row_number()
-  			OVER (PARTITION BY left(job_filing_number, strpos(job_filing_number, '-') - 1) ORDER BY left(job_filing_number, strpos(job_filing_number, '-') - 1), filing_date) AS rnum
-  			FROM dob_now_applications) a
-  		WHERE rnum = 1)
+	AND right(job_filing_number,2)='I1'
 ) SELECT
 	distinct
 	(ogc_fid::integer + (SELECT MAX(uid::integer) FROM _INIT_BIS_devdb))::text as uid,
 	left(job_filing_number, strpos(job_filing_number, '-') - 1)::text as job_number,
-	jobtype as job_type,
-
+	(CASE 
+		WHEN jobtype = 'ALT-CO - New Building with Existing Elements to Remain' THEN 'Alteration'
+		WHEN jobtype = 'Alteration CO' THEN 'Alteration'
+		ELSE jobtype
+	END ) as job_type,
 	(CASE WHEN jobdescription !~ '[a-zA-Z]'
 	THEN NULL ELSE jobdescription END) as job_desc,
 
