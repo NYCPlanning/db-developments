@@ -1,12 +1,12 @@
 cityowned,ownertype,nonprofit,ownership
 N,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,N,Private For-Profit: Condo/Co-Op
-N,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,Y,Private For-Profit: Condo/Co-Op
+N,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,Y,Private Non-Profit: Condo/Co-Op
 N,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,,Private For-Profit: Condo/Co-Op
-Y,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,N,Private For-Profit: Condo/Co-Op
-Y,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,,Private For-Profit: Condo/Co-Op
+Y,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,N,"Government, City: Condo/Co-Op"
+Y,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,,"Government, City: Condo/Co-Op"
 ,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,N,Private For-Profit: Condo/Co-Op
 ,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,Y,Private Non-Profit: Condo/Co-Op
-,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,,Private Non-Profit: Condo/Co-Op
+,CONDO UNIT OWNER OR CO-OP TENANT-SHAREHOLDER,,Private For-Profit: Condo/Co-Op
 ,CONDO/CO-OP,N,Private For-Profit: Condo/Co-Op
 ,CONDO/CO-OP,Y,Private Non-Profit: Condo/Co-Op
 N,CORPORATION,N,Private For-Profit: Corporation
@@ -45,9 +45,9 @@ Y,INDIVIDUAL,,"Government, City: Individual"
 N,NON-PROFIT ORGANIZATION OWNED AND OPERATED,N,Private Non-Profit: Unspecified
 N,NON-PROFIT ORGANIZATION OWNED AND OPERATED,Y,Private Non-Profit: Unspecified
 N,NON-PROFIT ORGANIZATION OWNED AND OPERATED,,Private Non-Profit: Unspecified
-Y,NON-PROFIT ORGANIZATION OWNED AND OPERATED,N,Private For-Profit: Unspecified
+Y,NON-PROFIT ORGANIZATION OWNED AND OPERATED,N,Private Non-Profit: Unspecified
 Y,NON-PROFIT ORGANIZATION OWNED AND OPERATED,Y,Private Non-Profit: Unspecified
-Y,NON-PROFIT ORGANIZATION OWNED AND OPERATED,,Private For-Profit: Unspecified
+Y,NON-PROFIT ORGANIZATION OWNED AND OPERATED,,Private Non-Profit: Unspecified
 ,NON-PROFIT ORGANIZATION OWNED AND OPERATED,N,Private Non-Profit: Unspecified
 ,NON-PROFIT ORGANIZATION OWNED AND OPERATED,Y,Private Non-Profit: Unspecified
 ,NON-PROFIT ORGANIZATION OWNED AND OPERATED,,Private Non-Profit: Unspecified
@@ -90,9 +90,9 @@ Y,OTHER GOV'T AGENCY,Y,"Government, City: City Agency"
 N,OTHER GOVERNMENT OWNED AND OPERATED,N,"Government, Unspecified: Government Agency"
 N,OTHER GOVERNMENT OWNED AND OPERATED,Y,"Government, Unspecified: Government Agency"
 N,OTHER GOVERNMENT OWNED AND OPERATED,,"Government, Unspecified: Government Agency"
-Y,OTHER GOVERNMENT OWNED AND OPERATED,N,"Government, City: Government Agency"
-Y,OTHER GOVERNMENT OWNED AND OPERATED,Y,"Government, City: Other"
-Y,OTHER GOVERNMENT OWNED AND OPERATED,,"Government, City: Government Agency"
+Y,OTHER GOVERNMENT OWNED AND OPERATED,N,"Government, City: City Agency"
+Y,OTHER GOVERNMENT OWNED AND OPERATED,Y,"Government, City: City Agency"
+Y,OTHER GOVERNMENT OWNED AND OPERATED,,"Government, City: City Agency"
 ,OTHER GOVERNMENT OWNED AND OPERATED,N,"Government, Unspecified: Government Agency"
 ,OTHER GOVERNMENT OWNED AND OPERATED,Y,"Government, Unspecified: Government Agency"
 N,PARTNERSHIP,N,Private For-Profit: Partnership
