@@ -187,7 +187,9 @@ JOBNUMBER_relevant as (
 	NULL::text as zsf_prop,
 	building_type as bldg_class,
 	NULL as desc_other,
-	NULL as x_withdrawal,
+	(CASE WHEN filing_status ~* 'Withdrawn' THEN 'W'
+	ELSE NULL 
+	END) as x_withdrawal,
 	ST_SetSRID(ST_Point(
 		longitude::double precision,
 		latitude::double precision),4326) as dob_geom
