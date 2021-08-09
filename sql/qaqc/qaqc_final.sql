@@ -4,6 +4,7 @@ Alphabetize QAQC table for export
 
 DROP TABLE IF EXISTS FINAL_qaqc;
 SELECT 
+    a.job_number,
     a.b_likely_occ_desc,
     a.b_large_alt_reduction,
     a.b_nonres_with_units,
