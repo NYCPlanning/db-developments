@@ -177,7 +177,7 @@ dataset:
         latitude,
         longitude,
         existingzoningsqft,
-        proposedzoningsqft
+        proposedzoningsqft,
         buildingclass,
         otherdesc
       FROM @filename
