@@ -139,7 +139,7 @@ applied AS (
 		1 as corr_applied,
 		1 as job_in_devdb
 	FROM _manual_corrections a
-	JOIN corrections_applied b
+	LEFT JOIN corrections_applied b
 	ON a.job_number = b.job_number
 	AND a.field = b.field
 	AND a.old_value = b.old_value
@@ -158,7 +158,7 @@ not_applied AS (
 		0 as corr_applied,
 		(a.job_number IN (SELECT job_number FROM FINAL_devdb))::integer as job_in_devdb
 	FROM _manual_corrections a
-	JOIN corrections_not_applied b
+	LEFT JOIN corrections_not_applied b
 	ON a.job_number = b.job_number
 	AND a.field = b.field
 	AND a.old_value = b.old_value
