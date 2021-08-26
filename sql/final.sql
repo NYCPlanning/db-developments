@@ -142,8 +142,8 @@ applied AS (
 	LEFT JOIN corrections_applied b
 	ON a.job_number = b.job_number
 	AND a.field = b.field
-	AND a.old_value = b.old_value
-	AND a.new_value = b.new_value
+	AND (a.old_value = b.old_value OR (a.old_value IS NULL AND b.old_value IS NULL))
+	AND (a.new_value = b.new_value OR (a.new_value IS NULL AND b.new_value IS NULL))
 ),
 not_applied AS (
 	SELECT
@@ -161,14 +161,8 @@ not_applied AS (
 	LEFT JOIN corrections_not_applied b
 	ON a.job_number = b.job_number
 	AND a.field = b.field
-	AND a.old_value = b.old_value
-	AND a.new_value = b.new_value
+	AND (a.old_value = b.old_value OR (a.old_value IS NULL AND b.old_value IS NULL))
+	AND (a.new_value = b.new_value OR (a.new_value IS NULL AND b.new_value IS NULL))
 )
-SELECT
-	NOW() as build_dt,
-	a.*
-INTO manual_corrections
-FROM 
-	(SELECT * FROM applied
-	UNION 
-	SELECT * FROM not_applied) a;
+SELECT NOW() as build_dt, a.* INTO manual_corrections
+FROM (SELECT * FROM applied UNION SELECT * FROM not_applied) a;
