@@ -12,11 +12,11 @@ mkdir -p output
     cd output
 
     display "Export Devdb and HousingDB"
-    CSV_export EXPORT_housing &
-    SHP_export SHP_housing &
+    CSV_export EXPORT_housing housing &
+    SHP_export SHP_housing housing &
 
-    CSV_export EXPORT_devdb &
-    SHP_export SHP_devdb &
+    CSV_export EXPORT_devdb devdb &
+    SHP_export SHP_devdb devdb &
 
     display "Export 6 aggregate tables"
     CSV_export aggregate_block &
@@ -34,7 +34,8 @@ mkdir -p output
     CSV_export CORR_hny_matches &
     CSV_export corrections_applied &
     CSV_export corrections_not_applied &
-    CSV_export manual_corrections 
+    CSV_export corrections_reference &
+    CSV_export _manual_corrections manual_corrections &
 
     wait
     display "CSV Export Complete"

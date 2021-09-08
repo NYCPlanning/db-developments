@@ -50,9 +50,11 @@ function display {
 }
 
 function CSV_export {
-  psql $BUILD_ENGINE  -c "\COPY (
-    SELECT * FROM $@
-  ) TO STDOUT DELIMITER ',' CSV HEADER;" > $@.csv
+    local tablename=$1
+    local filename=${2:-$tablename}
+    psql $BUILD_ENGINE  -c "\COPY (
+        SELECT * FROM $tablename
+    ) TO STDOUT DELIMITER ',' CSV HEADER;" > $filename.csv
 }
 
 function Upload {
@@ -111,16 +113,20 @@ function archive {
 
 function SHP_export {
   urlparse $BUILD_ENGINE
-  mkdir -p $@ &&
+  local tablename=$1
+  local filename=${2:-$tablename}
+  mkdir -p $filename &&
     (
-      cd $@
-      ogr2ogr -progress -f "ESRI Shapefile" $@.shp \
+      cd $filename
+      ogr2ogr -progress -f "ESRI Shapefile" $filename.shp \
           PG:"host=$BUILD_HOST user=$BUILD_USER port=$BUILD_PORT dbname=$BUILD_DB password=$BUILD_PWD" \
-          -nlt POINT $@
-        rm -f $@.zip
-        zip -9 $@.zip *
+          -nlt POINT $tablename
+        rm -f $filename.shp.zip
+        zip -9 $filename.shp.zip *
         ls | grep -v $@.zip | xargs rm
-      )
+    )
+    mv $filename/$filename.shp.zip $filename.shp.zip
+    rm -rf $filename
 }
 
 function max_bg_procs {
