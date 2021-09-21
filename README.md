@@ -15,8 +15,8 @@ Processing DOB Job Application and Certificate of Occupancy data to identify job
 
   | Devdb | HousingDB
 -- | -- | --
-CSV | [EXPORT_devdb.csv](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/main/latest/output/EXPORT_devdb.csv) | [EXPORT_housing.csv](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/main/latest/output/EXPORT_housing.csv)
-Shapefile | [SHP_devdb.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/main/latest/output/SHP_devdb/SHP_devdb.zip) | [SHP_housing.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/main/latest/output/SHP_housing/SHP_housing.zip)
+CSV | [devdb.csv](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/main/latest/output/devdb.csv) | [housing.csv](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/main/latest/output/housing.csv)
+Shapefile | [devdb.shp.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/main/latest/output/devdb.shp.zip) | [housing.shp.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/main/latest/output/housing.shp.zip)
 
 #### Aggregation Tables
 

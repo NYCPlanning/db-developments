@@ -130,3 +130,5 @@ dmypy.json
 
 # Data Library
 .library/
+
+*.DS_Store

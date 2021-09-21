@@ -17,17 +17,13 @@ CREATE TABLE lookup_ownership (
 
 DROP TABLE IF EXISTS _manual_corrections;
 CREATE TABLE _manual_corrections (
-    build_dt timestamp,
     job_number text,
     field text,
     old_value text,
     new_value text,
     reason text,
     edited_date text,
-    editor text,
-    pre_corr_value text,
-    corr_applied text,
-    job_in_devdb text
+    editor text
 );
 \COPY _manual_corrections FROM 'data/manual_corrections.csv' DELIMITER ',' CSV HEADER;
 

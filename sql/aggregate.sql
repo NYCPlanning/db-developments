@@ -2,192 +2,6 @@
 DESCRIPTION:
     Creates six aggregate tables, containing unit counts
     summed over different geographies, with completions grouped by year.
-    
-INPUTS:
-    YEARLY_devdb (
-        * job_number,
-        boro,
-        bctcb2010,
-        bct2010,
-        nta2010,
-        ntaname2010,
-        puma2010,
-        pumaname10,
-        commntydst,
-        councildst,
-        comp2010ap,
-        comp2010,
-        comp2011,
-        comp2012,
-        comp2013,
-        comp2014,
-        comp2015,
-        comp2016,
-        comp2017,
-        comp2018,
-        comp2019,
-        comp2020,
-        since_cen10,
-        filed,
-        approved,
-        permitted,
-        withdrawn,
-        inactive
-    ),
-
-    council_members(
-        * district
-        name
-    ),
-
-    census_units10 (
-        * cenblock10,
-        cenunits10
-    ),
-
-    census_units10adj(
-        * centract10,
-        adjunits10
-    )
-
-OUTPUTS:
-    _AGGREGATE_block (
-        boro,
-        * bctcb2010,
-        bct2010,
-        nta2010,
-        ntaname2010,
-        puma2010,
-        pumaname10,
-        commntydst,
-        councildst,
-        comp2010ap,
-        comp2010,
-        comp2011,
-        comp2012,
-        comp2013,
-        comp2014,
-        comp2015,
-        comp2016,
-        comp2017,
-        comp2018,
-        comp2019,
-        comp2020,
-        filed,
-        approved,
-        permitted,
-        withdrawn,
-        inactive,
-        cenunits10,
-        total
-    ),
-
-    _AGGREGATE_tract(
-        boro,
-        * bct2010,
-        nta2010,
-        ntaname2010,
-        puma2010,
-        pumaname10,
-        commntydst,
-        councildst,
-        comp2010ap,
-        comp2010,
-        comp2011,
-        comp2012,
-        comp2013,
-        comp2014,
-        comp2015,
-        comp2016,
-        comp2017,
-        comp2018,
-        comp2019,
-        comp2020,
-        filed,
-        approved,
-        permitted,
-        withdrawn,
-        inactive,
-        cenunits10,
-        total,
-        adjunits10,
-        totaladj
-    ),
-
-    AGGREGATE_block (
-        boro,
-        bctcb2010,
-        cenblock10,
-        comp2010ap,
-        comp2010,
-        ...
-        cenunits10,
-        total
-    ),
-
-    AGGREGATE_tract (
-        boro,
-        bct2010,
-        centract10,
-        comp2010ap,
-        comp2010,
-        ...
-        cenunits10,
-        total,
-        adjunits10,
-        totaladj
-    ),
-
-    AGGREGATE_nta (
-        boro,
-        nta2010,
-        ntaname10,
-        comp2010ap,
-        comp2010,
-        ...
-        cenunits10,
-        total,
-        adjunits10,
-        totaladj
-    ),
-
-    AGGREGATE_puma (
-        boro,
-        puma2010,
-        pumaname10,
-        comp2010ap,
-        comp2010,
-        ...
-        cenunits10,
-        total,
-        adjunits10,
-        totaladj
-    ),
-
-    AGGREGATE_commntydst (
-        commntydst,
-        comp2010ap,
-        comp2010,
-        ...
-        cenunits10,
-        total,
-        adjunits10,
-        totaladj
-
-    ),
-
-    AGGREGATE_councildst (
-        councildst,
-        councilmbr,
-        comp2010ap,
-        comp2010,
-        ...
-        cenunits10,
-        total,
-        adjunits10,
-        totaladj
-    )
-
 */
 
 
@@ -216,6 +30,7 @@ bctcb2010_aggregate AS (
         SUM(comp2018) as comp2018,
         SUM(comp2019) as comp2019,
         SUM(comp2020) as comp2020,
+        SUM(comp2021) as comp2021,
         SUM(since_cen10) as since_cen10,
         SUM(filed) as filed,
         SUM(approved) as approved,
@@ -272,6 +87,7 @@ bctcb2010_aggregate AS (
         SUM(comp2018) as comp2018,
         SUM(comp2019) as comp2019,
         SUM(comp2020) as comp2020,
+        SUM(comp2021) as comp2021,
         SUM(since_cen10) as since_cen10,
         SUM(filed) as filed,
         SUM(approved) as approved,
@@ -315,6 +131,7 @@ bctcb2010_aggregate AS (
         SUM(comp2018) as comp2018,
         SUM(comp2019) as comp2019,
         SUM(comp2020) as comp2020,
+        SUM(comp2021) as comp2021,
         SUM(since_cen10) as since_cen10,
         SUM(filed) as filed,
         SUM(approved) as approved,
@@ -368,6 +185,7 @@ bct2010_aggregate AS (
         SUM(comp2018) as comp2018,
         SUM(comp2019) as comp2019,
         SUM(comp2020) as comp2020,
+        SUM(comp2021) as comp2021,
         SUM(since_cen10) as since_cen10,
         SUM(filed) as filed,
         SUM(approved) as approved,
@@ -421,6 +239,7 @@ SELECT boro,
     comp2018,
     comp2019,
     comp2020,
+    comp2021,
     filed,
     approved,
     permitted,
@@ -449,6 +268,7 @@ SELECT boro,
     comp2018,
     comp2019,
     comp2020,
+    comp2021,
     filed,
     approved,
     permitted,
@@ -479,6 +299,7 @@ SELECT boro,
     SUM(comp2018) as comp2018,
     SUM(comp2019) as comp2019,
     SUM(comp2020) as comp2020,
+    SUM(comp2021) as comp2021,
     SUM(filed) as filed,
     SUM(approved) as approved,
     SUM(permitted) as permitted,
@@ -512,6 +333,7 @@ SELECT boro,
     SUM(comp2018) as comp2018,
     SUM(comp2019) as comp2019,
     SUM(comp2020) as comp2020,
+    SUM(comp2021) as comp2021,
     SUM(filed) as filed,
     SUM(approved) as approved,
     SUM(permitted) as permitted,
@@ -544,6 +366,7 @@ SELECT boro,
     SUM(comp2018) as comp2018,
     SUM(comp2019) as comp2019,
     SUM(comp2020) as comp2020,
+    SUM(comp2021) as comp2021,
     SUM(filed) as filed,
     SUM(approved) as approved,
     SUM(permitted) as permitted,
@@ -576,6 +399,7 @@ SELECT
     SUM(a.comp2018) as comp2018,
     SUM(a.comp2019) as comp2019,
     SUM(a.comp2020) as comp2020,
+    SUM(a.comp2021) as comp2021,
     SUM(a.filed) as filed,
     SUM(a.approved) as approved,
     SUM(a.permitted) as permitted,

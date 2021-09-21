@@ -4,61 +4,10 @@ DESCRIPTION:
     Includes completions split by year. 
     
 INPUTS:
-    FINAL_devdb (
-        * job_number,
-        job_type,
-        date_permittd,
-        date_complete,
-        date_lastupdt,
-        classa_net,
-        boro,
-        bctcb2010,
-        bct2010,
-        nta2010,
-        ntaname2010,
-        puma2010,
-        comunitydist,
-        councildist
-    )
-
-    LOOKUP_geo(
-        boro,
-        fips_boro,
-        pumaname
-    )
-
+    FINAL_devdb
+    LOOKUP_geo
 OUTPUTS:
-    YEARLY_devdb (
-        * job_number,
-        boro,
-        bctcb2010,
-        bct2010,
-        nta2010,
-        ntaname2010,
-        puma2010,
-        pumaname10,
-        comunitydist,
-        councildist,
-        comp2010ap,
-        comp2010,
-        comp2011,
-        comp2012,
-        comp2013,
-        comp2014,
-        comp2015,
-        comp2016,
-        comp2017,
-        comp2018,
-        comp2019,
-        comp2020,
-        since_cen10,
-        filed,
-        approved,
-        permitted,
-        withdrawn,
-        inactive
-    )
-
+    YEARLY_devdb
 */
 
 DROP TABLE IF EXISTS YEARLY_devdb;
@@ -112,6 +61,9 @@ SELECT a.job_number,
         CASE WHEN a.complete_year = '2020' AND a.job_inactive IS NULL
             THEN classa_net
             ELSE NULL END AS comp2020,
+        CASE WHEN a.complete_year = '2021' AND a.job_inactive IS NULL
+            THEN classa_net
+            ELSE NULL END AS comp2021,
         CASE WHEN a.date_complete > '2010-03-31'::date AND a.date_complete < :'CAPTURE_DATE'::date
                 AND a.job_inactive IS NULL
             THEN a.classa_net
