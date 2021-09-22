@@ -148,8 +148,8 @@ CENSUS_TRACT_BLOCK as (
             WHEN DRAFT_spatial.geo_boro = '4' THEN '36081'
             WHEN DRAFT_spatial.geo_boro = '5' THEN '36085'
         END) as fips,
-        geo_boro||_geo_ct2010||a._geo_cb2010 as bctcb2010,
-        geo_boro||_geo_ct2020||a._geo_cb2020 as bctcb2020,
+        geo_boro||_geo_ct2010||_geo_cb2010 as bctcb2010,
+        geo_boro||_geo_ct2020||_geo_cb2020 as bctcb2020,
         geo_boro||_geo_ct2010 as bct2010,
         geo_boro||_geo_ct2020 as bct2020
     FROM DRAFT_spatial
