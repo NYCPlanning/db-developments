@@ -51,6 +51,7 @@ CREATE OR REPLACE FUNCTION get_zipcode(
       SELECT b.zipcode::varchar
       FROM doitt_zipcodeboundaries b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_bbl(
@@ -60,6 +61,7 @@ CREATE OR REPLACE FUNCTION get_bbl(
       SELECT b.bbl::bigint::text
       FROM dcp_mappluto b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_boro(
@@ -69,6 +71,7 @@ CREATE OR REPLACE FUNCTION get_boro(
       SELECT b.borocode::varchar
       FROM dcp_boroboundaries_wi b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_csd(
@@ -78,6 +81,7 @@ CREATE OR REPLACE FUNCTION get_csd(
       SELECT  coundist::varchar
       FROM dcp_councildistricts b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_ct2010(
@@ -87,6 +91,7 @@ CREATE OR REPLACE FUNCTION get_ct2010(
       SELECT b.ct2010::varchar
       FROM dcp_ct2010 b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_cb2010(
@@ -96,6 +101,7 @@ CREATE OR REPLACE FUNCTION get_cb2010(
       SELECT b.cb2010::varchar
       FROM dcp_cb2010 b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_ct2020(
@@ -105,6 +111,7 @@ CREATE OR REPLACE FUNCTION get_ct2020(
       SELECT b.ct2020::varchar
       FROM dcp_ct2020 b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_cb2020(
@@ -114,6 +121,7 @@ CREATE OR REPLACE FUNCTION get_cb2020(
       SELECT b.cb2020::varchar
       FROM dcp_cb2020 b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_policeprct(
@@ -123,6 +131,7 @@ CREATE OR REPLACE FUNCTION get_policeprct(
       SELECT b.precinct::varchar
       FROM dcp_policeprecincts b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_schooldist(
@@ -132,6 +141,7 @@ CREATE OR REPLACE FUNCTION get_schooldist(
       SELECT b.schooldist::varchar
       FROM dcp_school_districts b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_firecompany(
@@ -141,6 +151,7 @@ CREATE OR REPLACE FUNCTION get_firecompany(
       SELECT b.firecotype||lpad(b.fireconum::varchar, 3, '0')
       FROM dcp_firecompanies b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_firebattalion(
@@ -150,6 +161,7 @@ CREATE OR REPLACE FUNCTION get_firebattalion(
       SELECT b.firebn::varchar
       FROM dcp_firecompanies b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_firedivision(
@@ -159,6 +171,7 @@ CREATE OR REPLACE FUNCTION get_firedivision(
       SELECT b.firediv::varchar
       FROM dcp_firecompanies b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
   
 CREATE OR REPLACE FUNCTION get_bin(
@@ -188,6 +201,7 @@ CREATE OR REPLACE FUNCTION get_schoolelmntry(
       SELECT b.esid_no::varchar
       FROM doe_eszones b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 
@@ -198,6 +212,7 @@ CREATE OR REPLACE FUNCTION get_schoolmiddle(
       SELECT b.msid_no::varchar
       FROM doe_mszones b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_schoolsubdist(
@@ -207,6 +222,7 @@ CREATE OR REPLACE FUNCTION get_schoolsubdist(
       SELECT b.district||'_'||b.subdistrict
       FROM doe_school_subdistricts b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 DROP TABLE IF EXISTS dof_shoreline_subdivide;
