@@ -168,6 +168,7 @@ CREATE OR REPLACE FUNCTION get_bin(
       SELECT b.bin::varchar
       FROM doitt_buildingfootprints b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_base_bbl(
@@ -177,6 +178,7 @@ CREATE OR REPLACE FUNCTION get_base_bbl(
       SELECT b.base_bbl::varchar
       FROM doitt_buildingfootprints b
       WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
   $$ LANGUAGE sql;
 
 CREATE OR REPLACE FUNCTION get_schoolelmntry(
