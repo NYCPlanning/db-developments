@@ -173,4 +173,4 @@ SELECT
     (SELECT commntydst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010) as geo_cd
 INTO SPATIAL_devdb
 FROM DRAFT_spatial
-LEFT JOIN CENSUS_TRACT_BLOCK ON uid = DRAFT_spatial.uid
+LEFT JOIN CENSUS_TRACT_BLOCK ON DRAFT_spatial.uid = DRAFT_spatial.uid
