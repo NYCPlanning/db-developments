@@ -106,8 +106,18 @@ function upload_to_bq {
         schemas/dcp_developments.json
 }
 
+function aggregate {
+    python3 python/yearly.py sql/aggregate/yearly.sql | sql
+    python3 python/yearly.py sql/aggregate/block.sql | sql
+    python3 python/yearly.py sql/aggregate/tract.sql | sql
+    python3 python/yearly.py sql/aggregate/commntydst.sql | sql
+    python3 python/yearly.py sql/aggregate/councildst.sql | sql
+    python3 python/yearly.py sql/aggregate/nta.sql | sql
+}
+
 case $1 in
     dataloading | build | export | archive ) $@ ;;
+    aggregate ) aggregate ;;
     upload) Upload;;
     geocode) geocode ;;
     import) import $@ ;;
