@@ -151,8 +151,7 @@ CENSUS_TRACT_BLOCK as (
         geo_boro||_geo_ct2010||a._geo_cb2010 as bctcb2010,
         geo_boro||_geo_ct2020||a._geo_cb2020 as bctcb2020,
         geo_boro||_geo_ct2010 as bct2010,
-        geo_boro||_geo_ct2020 as bct2020,
-
+        geo_boro||_geo_ct2020 as bct2020
     FROM DRAFT_spatial
 )
 SELECT
