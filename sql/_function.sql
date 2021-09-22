@@ -80,21 +80,39 @@ CREATE OR REPLACE FUNCTION get_csd(
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
-CREATE OR REPLACE FUNCTION get_ct(
+CREATE OR REPLACE FUNCTION get_ct2010(
     _geom geometry
   ) 
     RETURNS varchar AS $$
       SELECT b.ct2010::varchar
-      FROM dcp_censustracts b
+      FROM dcp_ct2010 b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 
-CREATE OR REPLACE FUNCTION get_cb(
+CREATE OR REPLACE FUNCTION get_cb2010(
     _geom geometry
   ) 
     RETURNS varchar AS $$
       SELECT b.cb2010::varchar
-      FROM dcp_censusblocks b
+      FROM dcp_cb2010 b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_ct2020(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.ct2020::varchar
+      FROM dcp_ct2020 b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_cb2020(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT b.cb2020::varchar
+      FROM dcp_cb2020 b
       WHERE ST_Within(_geom, b.wkb_geometry)
   $$ LANGUAGE sql;
 

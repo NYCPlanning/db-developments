@@ -60,21 +60,37 @@ SELECT
         THEN get_boro(geom)::text
     ELSE a.geo_boro END) as geo_boro,
 
-    -- geo_censusblock2010
-    (CASE WHEN a.geo_censusblock2010 IS NULL 
-		OR a.geo_censusblock2010 = '' 
-		OR a.geo_censustract2010 = '000000' 
+    -- geo_cb2010
+    (CASE WHEN a.geo_cb2010 IS NULL 
+		OR a.geo_cb2010 = '' 
+		OR a.geo_ct2010 = '000000' 
         OR a.mode = 'tpad'
-        THEN get_cb(geom)
-    ELSE a.geo_censusblock2010 END) as _geo_censusblock2010, 
+        THEN get_cb2010(geom)
+    ELSE a.geo_cb2010 END) as _geo_cb2010, 
 
-    -- geo_censustract2010
-   (CASE WHEN a.geo_censustract2010 IS NULL 
-		OR a.geo_censustract2010 = '' 
-		OR a.geo_censustract2010 = '000000'
+    -- geo_ct2010
+   (CASE WHEN a.geo_ct2010 IS NULL 
+		OR a.geo_ct2010 = '' 
+		OR a.geo_ct2010 = '000000'
         OR a.mode = 'tpad' 
-        THEN get_ct(geom)
-    ELSE a.geo_censustract2010 END) as _geo_censustract2010, 
+        THEN get_ct2010(geom)
+    ELSE a.geo_ct2010 END) as _geo_ct2010, 
+
+    -- geo_cb2010
+    (CASE WHEN a.geo_cb2020 IS NULL 
+		OR a.geo_cb2020 = '' 
+		OR a.geo_ct2020 = '000000' 
+        OR a.mode = 'tpad'
+        THEN get_cb2020(geom)
+    ELSE a.geo_cb2020 END) as _geo_cb2020, 
+
+    -- geo_ct2010
+   (CASE WHEN a.geo_ct2020 IS NULL 
+		OR a.geo_ct2020 = '' 
+		OR a.geo_ct2020 = '000000'
+        OR a.mode = 'tpad' 
+        THEN get_ct2020(geom)
+    ELSE a.geo_ct2020 END) as _geo_ct2020, 
    
     -- geo_csd
     (CASE WHEN a.geo_csd IS NULL 
@@ -121,19 +137,41 @@ SELECT
     a.geom,
     geomsource
 FROM GEO_devdb a
+),
+CENSUS_TRACT_BLOCK as (
+    SELECT
+        distinct uid,
+        (CASE
+            WHEN DRAFT_spatial.geo_boro = '1' THEN '36061'
+            WHEN DRAFT_spatial.geo_boro = '2' THEN '36005'
+            WHEN DRAFT_spatial.geo_boro = '3' THEN '36047'
+            WHEN DRAFT_spatial.geo_boro = '4' THEN '36081'
+            WHEN DRAFT_spatial.geo_boro = '5' THEN '36085'
+        END) as fips,
+        geo_boro||_geo_ct2010||a._geo_cb2010 as bctcb2010,
+        geo_boro||_geo_ct2020||a._geo_cb2020 as bctcb2020,
+        geo_boro||_geo_ct2010 as bct2010,
+        geo_boro||_geo_ct2020 as bct2020,
+
+    FROM DRAFT_spatial
 )
 SELECT
-    a.*,
-    b.fips_boro||a._geo_censustract2010||a._geo_censusblock2010 as geo_censusblock2010,
-    b.bctcb2010,
-    b.fips_boro||a._geo_censustract2010 as geo_censustract2010,
-    b.bct2010,
-    b.nta as geo_ntacode2010,
-    b.ntaname as geo_ntaname2010,
-    b.puma as geo_puma,
-    b.councildst as geo_council,
-    b.commntydst as geo_cd
+    DRAFT_spatial.*,
+    CENSUS_TRACT_BLOCK.fips||DRAFT_spatial.geo_ct2010||DRAFT_spatial.geo_cb2010 as geo_cb2010,
+    CENSUS_TRACT_BLOCK.fips||DRAFT_spatial._geo_ct2010 as geo_ct2010,
+    CENSUS_TRACT_BLOCK.bctcb2010,
+    CENSUS_TRACT_BLOCK.bct2010,
+    CENSUS_TRACT_BLOCK.fips||DRAFT_spatial.geo_ct2020||DRAFT_spatial.geo_cb2020 as geo_cb2020,
+    CENSUS_TRACT_BLOCK.fips||DRAFT_spatial._geo_ct2020 as geo_ct2020,
+    CENSUS_TRACT_BLOCK.bctcb2020,
+    CENSUS_TRACT_BLOCK.bct2020,
+    (SELECT ntacode FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010) as geo_nta2010,
+    (SELECT ntaname FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010) as geo_ntaname2010,
+    (SELECT nta2020 FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2010) as geo_nta2020,
+    (SELECT ntaname FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2010) as geo_ntaname2020,
+    (SELECT cdta2020 FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2010) as geo_cdta2020,
+    (SELECT councildst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010) as geo_council,
+    (SELECT commntydst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010) as geo_cd
 INTO SPATIAL_devdb
-FROM DRAFT_spatial a
-LEFT JOIN lookup_geo b
-ON a.geo_boro||a._geo_censustract2010||a._geo_censusblock2010 = b.bctcb2010;
+FROM DRAFT_spatial
+LEFT JOIN CENSUS_TRACT_BLOCK ON uid = DRAFT_spatial.uid
