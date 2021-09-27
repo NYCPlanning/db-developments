@@ -195,13 +195,15 @@ SELECT
     CENSUS_TRACT_BLOCK.fips||DRAFT_spatial._geo_ct2020 as geo_ct2020,
     CENSUS_TRACT_BLOCK.bctcb2020,
     CENSUS_TRACT_BLOCK.bct2020,
-    (SELECT ntacode FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010) as geo_nta2010,
-    (SELECT ntaname FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010) as geo_ntaname2010,
-    (SELECT nta2020 FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020) as geo_nta2020,
-    (SELECT ntaname FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020) as geo_ntaname2020,
-    (SELECT cdta2020 FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020) as geo_cdta2020,
+    dcp_ct2010.ntacode as geo_nta2010,
+    dcp_ct2010.ntaname as geo_ntaname2010,
+    dcp_ct2020.nta2020 as geo_nta2020,
+    dcp_ct2020.ntaname as geo_ntaname2020,
+    dcp_ct2020.cdta2020 as geo_cdta2020,
     (SELECT councildst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010 LIMIT 1) as geo_council,
     (SELECT commntydst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010 LIMIT 1) as geo_cd
 INTO SPATIAL_devdb
 FROM DRAFT_spatial
-LEFT JOIN CENSUS_TRACT_BLOCK ON DRAFT_spatial.uid = DRAFT_spatial.uid;
+LEFT JOIN CENSUS_TRACT_BLOCK ON DRAFT_spatial.uid = CENSUS_TRACT_BLOCK.uid
+LEFT JOIN dcp_ct2010 ON CENSUS_TRACT_BLOCK.bct2010 = boroct2010
+LEFT JOIN dcp_ct2020 ON CENSUS_TRACT_BLOCK.bct2020 = boroct2020;
