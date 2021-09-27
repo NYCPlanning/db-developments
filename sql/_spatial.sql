@@ -194,7 +194,7 @@ SELECT
     CENSUS_TRACT_BLOCK.fips||DRAFT_spatial._geo_ct2020||DRAFT_spatial._geo_cb2020 as geo_cb2020,
     CENSUS_TRACT_BLOCK.fips||DRAFT_spatial._geo_ct2020 as geo_ct2020,
     CENSUS_TRACT_BLOCK.bctcb2020,
-    CENSUS_TRACT_BLOCK.bct2020--,
+    CENSUS_TRACT_BLOCK.bct2020,
     (SELECT ntacode FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010) as geo_nta2010,
     (SELECT ntaname FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010) as geo_ntaname2010,
     (SELECT nta2020 FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020) as geo_nta2020,
