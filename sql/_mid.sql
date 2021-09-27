@@ -135,7 +135,7 @@ SELECT
     a.geo_ct2020,
     a.bctcb2020,
     a.bct2020,
-    a.cdta2020,
+    a.geo_cdta2020,
     a.geo_csd,
     a.geo_policeprct,
     a.geo_firedivision,
