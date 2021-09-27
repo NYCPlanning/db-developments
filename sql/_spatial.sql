@@ -15,7 +15,8 @@ OUTPUTS:
         same schema as GEO_devdb
     )
 */
-CREATE TEMP TABLE DRAFT_spatial AS (
+DROP TABLE IF EXISTS DRAFT_spatial CASCADE;
+CREATE TABLE DRAFT_spatial AS (
     SELECT
         distinct
         a.uid,
@@ -137,8 +138,10 @@ CREATE TEMP TABLE DRAFT_spatial AS (
         geomsource
     FROM GEO_devdb a
 );
+CREATE INDEX DRAFT_spatial_uid_idx ON DRAFT_spatial(uid);
 
-CREATE TEMP TABLE CENSUS_TRACT_BLOCK AS (
+DROP TABLE IF EXISTS CENSUS_TRACT_BLOCK CASCADE;
+CREATE TABLE CENSUS_TRACT_BLOCK AS (
     SELECT
         distinct uid,
         (CASE
@@ -155,9 +158,35 @@ CREATE TEMP TABLE CENSUS_TRACT_BLOCK AS (
     FROM DRAFT_spatial
 );
 
+CREATE INDEX CENSUS_TRACT_BLOCK_uid_idx ON CENSUS_TRACT_BLOCK(uid);
+CREATE INDEX dcp_ct2020_boroct2020_idx ON dcp_ct2020(boroct2020);
+CREATE INDEX dcp_ct2010_boroct2010_idx ON dcp_ct2010(boroct2010);
+CREATE INDEX lookup_geo_bct2010_idx ON lookup_geo(bct2010);
+
 DROP TABLE IF EXISTS SPATIAL_devdb;
 SELECT
-    DRAFT_spatial.*,
+    DRAFT_spatial.uid,
+    DRAFT_spatial.geo_bbl,
+    DRAFT_spatial.geo_bin,
+    DRAFT_spatial.geo_address_numbr,
+    DRAFT_spatial.geo_address_street,
+    DRAFT_spatial.geo_address,
+    DRAFT_spatial.geo_zipcode,
+    DRAFT_spatial.geo_boro,
+    DRAFT_spatial.geo_csd,
+    DRAFT_spatial.geo_policeprct,
+    DRAFT_spatial.geo_firedivision,
+    DRAFT_spatial.geo_firebattalion,
+    DRAFT_spatial.geo_firecompany,
+    DRAFT_spatial.geo_schoolelmntry,
+    DRAFT_spatial.geo_schoolmiddle,
+    DRAFT_spatial.geo_schoolsubdist,
+    DRAFT_spatial.geo_latitude,
+    DRAFT_spatial.geo_longitude,
+    DRAFT_spatial.latitude,
+    DRAFT_spatial.longitude,
+    DRAFT_spatial.geom,
+    DRAFT_spatial.geomsource,
     CENSUS_TRACT_BLOCK.fips||DRAFT_spatial._geo_ct2010||DRAFT_spatial._geo_cb2010 as geo_cb2010,
     CENSUS_TRACT_BLOCK.fips||DRAFT_spatial._geo_ct2010 as geo_ct2010,
     CENSUS_TRACT_BLOCK.bctcb2010,
@@ -165,12 +194,12 @@ SELECT
     CENSUS_TRACT_BLOCK.fips||DRAFT_spatial._geo_ct2020||DRAFT_spatial._geo_cb2020 as geo_cb2020,
     CENSUS_TRACT_BLOCK.fips||DRAFT_spatial._geo_ct2020 as geo_ct2020,
     CENSUS_TRACT_BLOCK.bctcb2020,
-    CENSUS_TRACT_BLOCK.bct2020,
-    (SELECT ntacode FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010 LIMIT 1) as geo_nta2010,
-    (SELECT ntaname FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010 LIMIT 1) as geo_ntaname2010,
-    (SELECT nta2020 FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020 LIMIT 1) as geo_nta2020,
-    (SELECT ntaname FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020 LIMIT 1) as geo_ntaname2020,
-    (SELECT cdta2020 FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020 LIMIT 1) as geo_cdta2020,
+    CENSUS_TRACT_BLOCK.bct2020--,
+    (SELECT ntacode FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010) as geo_nta2010,
+    (SELECT ntaname FROM dcp_ct2010 WHERE CENSUS_TRACT_BLOCK.bct2010 = boroct2010) as geo_ntaname2010,
+    (SELECT nta2020 FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020) as geo_nta2020,
+    (SELECT ntaname FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020) as geo_ntaname2020,
+    (SELECT cdta2020 FROM dcp_ct2020 WHERE CENSUS_TRACT_BLOCK.bct2020 = boroct2020) as geo_cdta2020,
     (SELECT councildst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010 LIMIT 1) as geo_council,
     (SELECT commntydst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010 LIMIT 1) as geo_cd
 INTO SPATIAL_devdb
