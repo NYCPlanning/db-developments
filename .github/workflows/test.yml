@@ -55,6 +55,12 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
+      - name: "Set some postgres settings"
+        run: |
+          docker exec ${{ job.services.db.id }} sh -c 'cat /var/lib/postgresql/data/postgresql.conf'
+          docker exec ${{ job.services.db.id }} sh -c 'echo "fsync=off" >> /var/lib/postgresql/data/postgresql.conf'
+          docker kill --signal=SIGHUP ${{ job.services.db.id }}
+
       - uses: actions/checkout@v2
 
       - name: config workflows
