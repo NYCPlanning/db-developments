@@ -99,7 +99,9 @@ jobs:
 
       - name: 2. build dev_db ...
         if: steps.config.outputs.rebuild == 'yes'
-        run: ./devdb.sh build
+        run: | 
+          ./devdb.sh build
+          ./devdb.sh aggregate
       
       - name: 3. Export ...
         if: steps.config.outputs.weekly == 'no'

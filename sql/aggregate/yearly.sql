@@ -13,14 +13,27 @@ OUTPUTS:
 DROP TABLE IF EXISTS YEARLY_devdb_{{ decade }};
 SELECT 
     job_number,
-    boro,
+    (CASE
+        WHEN boro = '1' THEN 'Manhattan'
+        WHEN boro = '2' THEN 'Bronx'
+        WHEN boro = '3' THEN 'Brooklyn'
+        WHEN boro = '4' THEN 'Queens'
+        WHEN boro = '5' THEN 'Staten Island'
+    END) as boro,
     boro as borocode,
-    bctcb20{{ decade }},
+    bctcb{{ decade }},
     cenblock{{ decade }},
-    bct20{{ decade }},
-    centract{{ decade }},
-    nta20{{ decade }},
-    ntaname20{{ decade }},
+    bct{{ decade }},
+    LEFT(cenblock{{ decade }}, 11) as centract{{ decade }},
+    nta{{ decade }},
+    ntaname{{ decade }},
+
+    {% if decade == '2020' %}
+        
+        cdta{{ decade }},
+
+    {% endif %}
+
     comunitydist,
     councildist,
 
@@ -66,5 +79,4 @@ SELECT
         THEN  classa_net 
         ELSE NULL END as inactive
 
-INTO YEARLY_devdb
-FROM FINAL_devdb
+INTO YEARLY_devdb_{{ decade }} FROM FINAL_devdb; 

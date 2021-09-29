@@ -1,8 +1,7 @@
-
-DROP TABLE IF EXISTS AGGREGATE_commntydst_{{ decade}};
+DROP TABLE IF EXISTS AGGREGATE_cdta_{{ decade }};
 SELECT 
     YEARLY_devdb_{{ decade }}.boro,
-    YEARLY_devdb_{{ decade }}.comunitydist as commntydst,
+    YEARLY_devdb_{{ decade }}.cdta{{ decade }},
     SUM(comp2010ap) as comp2010ap,
 
     {%- for year in years %}
@@ -24,7 +23,7 @@ SELECT
     
     {% endif %}
 
-INTO AGGREGATE_commntydst_{{ decade}}
+INTO AGGREGATE_councildst_{{ decade}}
 FROM YEARLY_devdb_{{ decade }}
 
 {% if decade == '2010' %}
@@ -36,6 +35,6 @@ FROM YEARLY_devdb_{{ decade }}
 
 GROUP BY
     YEARLY_devdb_{{ decade }}.boro,
-    YEARLY_devdb_{{ decade }}.comunitydist
+    YEARLY_devdb_{{ decade }}.cdta{{ decade }}
 
-ORDER BY comunitydist;
+ORDER BY cdta{{ decade }};
