@@ -34,7 +34,7 @@ VERSION_PREV=20Q2
 
 **DCP Admin Boundaries from Bytes**
 - [ ] `dcp_cdboundaries`
-- [ ] `dcp_censusblocks`
+- [ ] `dcp_cb2010`
 - [ ] `dcp_censustracts`
 - [ ] `dcp_school_districts`
 - [ ] `dcp_boroboundaries_wi`

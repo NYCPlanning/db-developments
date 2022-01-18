@@ -16,8 +16,10 @@ import_public doitt_buildingfootprints &
 import_public doitt_buildingfootprints_historical &
 import_public doitt_zipcodeboundaries &
 import_public dcp_cdboundaries &
-import_public dcp_censusblocks &
-import_public dcp_censustracts &
+import_public dcp_cb2010 &
+import_public dcp_ct2010 &
+import_public dcp_cb2020 &
+import_public dcp_ct2020 &
 import_public dcp_school_districts &
 import_public dcp_boroboundaries_wi &
 import_public dcp_councildistricts &

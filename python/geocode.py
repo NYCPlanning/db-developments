@@ -55,18 +55,22 @@ def parse_output(geo):
         geo_boro=geo.get("BOROUGH BLOCK LOT (BBL)", {}
                          ).get("Borough Code", "",),
         geo_cd=geo.get("COMMUNITY DISTRICT", {}).get("COMMUNITY DISTRICT", ""),
-        geo_puma=geo.get("PUMA Code", ""),
         geo_firedivision=geo.get("Fire Division", ""),
         geo_firebattalion=geo.get("Fire Battalion", ""),
         geo_firecompany=geo.get("Fire Company Type", "")
         + geo.get("Fire Company Number", ""),
-        geo_censustract2010=geo.get("2010 Census Tract", ""),
-        geo_censusblock2010=geo.get("2010 Census Block", ""),
         geo_council=geo.get("City Council District", ""),
         geo_csd=geo.get("Community School District", ""),
         geo_policeprct=geo.get("Police Precinct", ""),
         geo_zipcode=geo.get("ZIP Code", ""),
-        geo_ntacode2010=geo.get("Neighborhood Tabulation Area (NTA)", ""),
+        geo_nta2010=geo.get("Neighborhood Tabulation Area (NTA)", None),
+        geo_nta2020=geo.get("2020 Neighborhood Tabulation Area (NTA)", None),
+        geo_ct2010=geo.get("2010 Census Tract", None),
+        geo_ct2020=geo.get("2020 Census Tract", None),
+        geo_cb2010=geo.get("2010 Census Block", None),
+        geo_cb2020=geo.get("2020 Census Block", None),
+        geo_cdta2020=geo.get(
+            "2020 Community District Tabulation Area (CDTA)", None),
         # the return codes and messaged are for diagnostic puposes
         grc=geo.get("Geosupport Return Code (GRC)", ""),
         grc2=geo.get("Geosupport Return Code 2 (GRC 2)", ""),

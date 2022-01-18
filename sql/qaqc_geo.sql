@@ -26,6 +26,11 @@ SELECT
             geo_ntaname2010 IS NULL OR
             geo_cb2010 IS NULL OR
             geo_ct2010 IS NULL OR
+            geo_nta2020 IS NULL OR
+            geo_ntaname2020 IS NULL OR
+            geo_cb2020 IS NULL OR
+            geo_ct2020 IS NULL OR
+            geo_cdta2020 IS NULL OR
             geo_csd IS NULL OR
             geo_policeprct IS NULL OR
             geo_firedivision IS NULL OR

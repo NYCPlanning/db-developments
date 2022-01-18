@@ -106,8 +106,38 @@ function upload_to_bq {
         schemas/dcp_developments.json
 }
 
+function aggregate {
+    display "Creating aggregate tables"
+    python3 python/yearly.py sql/aggregate/yearly.sql 2010 | sql
+    python3 python/yearly.py sql/aggregate/yearly.sql 2020 | sql
+    python3 python/yearly.py sql/aggregate/block.sql 2010 | sql
+    python3 python/yearly.py sql/aggregate/tract.sql 2010 | sql
+    python3 python/yearly.py sql/aggregate/block.sql 2020 | sql
+    python3 python/yearly.py sql/aggregate/tract.sql 2020 | sql
+    python3 python/yearly.py sql/aggregate/commntydst.sql 2010| sql
+    python3 python/yearly.py sql/aggregate/councildst.sql 2010| sql
+    python3 python/yearly.py sql/aggregate/nta.sql 2010| sql
+    python3 python/yearly.py sql/aggregate/nta.sql 2020| sql
+    python3 python/yearly.py sql/aggregate/cdta.sql 2020| sql
+
+    mkdir -p output && (
+        cd output &&
+        display "Export aggregate tables"
+        CSV_export aggregate_block_2010 &
+        CSV_export aggregate_block_2020 &
+        CSV_export aggregate_tract_2010 &
+        CSV_export aggregate_tract_2020 & 
+        CSV_export aggregate_commntydst_2010 &
+        CSV_export aggregate_councildst_2010 &
+        CSV_export aggregate_nta_2010 &
+        CSV_export aggregate_nta_2020 &
+        CSV_export aggregate_cdta_2020 &
+        wait
+    )
+}
+
 case $1 in
-    dataloading | build | export | archive ) $@ ;;
+    dataloading | build | aggregate | export | archive ) $@ ;;
     upload) Upload;;
     geocode) geocode ;;
     import) import $@ ;;
