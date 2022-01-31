@@ -39,7 +39,7 @@ case $MODE in
     *) 
         import_public dob_permitissuance $DOB_DATA_DATE &
         import_public dob_jobapplications $DOB_DATA_DATE &
-        import_public dob_geocode_results $DOB_DATA_DATE &
+        import_public dob_geocode_results 20220130 &
     ;;
 esac
 
