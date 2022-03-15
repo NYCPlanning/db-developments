@@ -428,6 +428,6 @@ SELECT a.job_number,
 INTO HNY_devdb
 FROM MID_devdb a
 LEFT JOIN HNY_lookup b
-ON a.job_number = b.job_number;
+ON a.job_number::text = b.job_number::text;
 
 
