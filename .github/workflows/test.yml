@@ -84,6 +84,7 @@ jobs:
           chmod +x mc
           sudo mv ./mc /usr/bin
           mc alias set spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
+          sudo apt-get install jq
 
       - name: 1. dataloading for HED weekly builds
         if: >- 
