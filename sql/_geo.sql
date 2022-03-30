@@ -76,7 +76,10 @@ DRAFT as (
         a.uid,
         a.job_number,
 		a.bbl,
-        a.bin,
+        (CASE 
+            WHEN RIGHT(a.bin,6) = '000000' THEN NULL
+            ELSE a.bin
+        END) as bin,
         a.date_lastupdt,
         a.job_desc,
         b.geo_bbl,
