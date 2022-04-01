@@ -76,6 +76,7 @@ DRAFT as (
         a.uid,
         a.job_number,
 		a.bbl,
+        -- a.bin,
         (CASE 
             WHEN RIGHT(a.bin,6) = '000000' THEN NULL
             ELSE a.bin
@@ -135,8 +136,8 @@ GEOM_dob_bin_bldgfootprints as (
         END) as geomsource
     FROM DRAFT a
     LEFT JOIN doitt_buildingfootprints b
-    WHERE b.bin IS NOT LIKE '%000000'
     ON a.bin::text = b.bin::numeric::bigint::text
+    -- WHERE RIGHT(b.bin::text, 6) != '000000'
 ),
 GEOM_geo_bin_bldgfootprints as (
 	SELECT distinct
@@ -158,8 +159,8 @@ GEOM_geo_bin_bldgfootprints as (
 		END) as geomsource
     FROM GEOM_dob_bin_bldgfootprints a
     LEFT JOIN doitt_buildingfootprints b
-    WHERE b.bin IS NOT LIKE '%000000'
     ON a.geo_bin::text = b.bin::numeric::bigint::text
+    -- WHERE RIGHT(b.bin::text, 6) != '000000'
 ),
 GEOM_geosupport as (
     SELECT distinct
