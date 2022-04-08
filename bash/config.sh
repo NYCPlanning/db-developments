@@ -60,7 +60,7 @@ function CSV_export {
 function Upload {
     local branchname=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
     local DATE=$(date "+%Y-%m-%d")
-    if [[$branchname == "main"]] 
+    if [[ $branchname == "main" ]] 
     then
       local SPACES="spaces/edm-publishing/db-developments"
     else
