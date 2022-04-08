@@ -76,7 +76,11 @@ DRAFT as (
         a.uid,
         a.job_number,
 		a.bbl,
-        a.bin,
+        -- a.bin,
+        (CASE 
+            WHEN RIGHT(a.bin,6) = '000000' THEN NULL
+            ELSE a.bin
+        END) as bin,
         a.date_lastupdt,
         a.job_desc,
         b.geo_bbl,
@@ -133,6 +137,7 @@ GEOM_dob_bin_bldgfootprints as (
     FROM DRAFT a
     LEFT JOIN doitt_buildingfootprints b
     ON a.bin::text = b.bin::numeric::bigint::text
+    -- WHERE RIGHT(b.bin::text, 6) != '000000'
 ),
 GEOM_geo_bin_bldgfootprints as (
 	SELECT distinct
@@ -155,6 +160,7 @@ GEOM_geo_bin_bldgfootprints as (
     FROM GEOM_dob_bin_bldgfootprints a
     LEFT JOIN doitt_buildingfootprints b
     ON a.geo_bin::text = b.bin::numeric::bigint::text
+    -- WHERE RIGHT(b.bin::text, 6) != '000000'
 ),
 GEOM_geosupport as (
     SELECT distinct

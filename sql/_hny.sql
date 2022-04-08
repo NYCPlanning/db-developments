@@ -357,12 +357,12 @@ WITH
                             one_hny_to_many_dev
 					FROM RELATEFLAGS_hny_matches
 					WHERE one_dev_to_many_hny = 1
-					GROUP BY job_number, one_dev_to_many_hny, one_hny_to_many_dev),
+					GROUP BY job_number, one_dev_to_many_hny, one_hny_to_many_dev), 
 
 	-- c) For multiple dev to one hny, assign units to the one with the lowest job_number
 	-- Find the minimum job_number per hny in RELATEFLAGS_hny_matches
 	min_job_number_per_hny AS 
-        (SELECT MIN(job_number::INT)::text AS job_number, hny_id
+        (SELECT MIN(job_number) AS job_number, hny_id
             FROM RELATEFLAGS_hny_matches
             WHERE one_hny_to_many_dev = 1
             GROUP BY hny_id),
