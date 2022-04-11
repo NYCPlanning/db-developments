@@ -23,7 +23,7 @@ SELECT
     
     {% endif %}
 
-INTO AGGREGATE_councildst_{{ decade}}
+INTO AGGREGATE_cdta_{{ decade}}
 FROM YEARLY_devdb_{{ decade }}
 
 {% if decade == '2010' %}
