@@ -25,7 +25,7 @@ Shapefile | [devdb.shp.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/d
 [commntydst](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_commntydst_2020.csv) |
 [councildst](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_councildst_2020.csv) |
 [NTA](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_nta_2020.csv) |
-[ctda](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_ctda_2020.csv)
+[ctda](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_cdta_2020.csv)
 
 #### Aggregation Tables 2010 Geographies
 
