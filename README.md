@@ -18,7 +18,16 @@ Processing DOB Job Application and Certificate of Occupancy data to identify job
 CSV | [devdb.csv](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/devdb.csv) | [housing.csv](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/housing.csv)
 Shapefile | [devdb.shp.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/devdb.shp.zip) | [housing.shp.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/housing.shp.zip)
 
-#### Aggregation Tables 2010
+#### Aggregation Tables 2020 Geographies
+
+[block](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_block_2020.csv) |
+[tract](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_tract_2020.csv) |
+[commntydst](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_commntydst_2020.csv) |
+[councildst](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_councildst_2020.csv) |
+[NTA](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_nta_2020.csv) |
+[PUMA](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_puma_2020.csv)
+
+#### Aggregation Tables 2010 Geographies
 
 [block](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_block_2010.csv) |
 [tract](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_tract_2010.csv) |
