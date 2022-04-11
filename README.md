@@ -33,7 +33,7 @@ Shapefile | [devdb.shp.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/d
 [tract](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_tract_2010.csv) |
 [commntydst](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_commntydst_2010.csv) |
 [councildst](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_councildst_2010.csv) |
-[NTA](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_nta_2010.csv) |
+[NTA](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/aggregate_nta_2010.csv)
 
 #### All files [bundle.zip](https://edm-publishing.nyc3.digitaloceanspaces.com/db-developments/latest/output/output.zip)
 
