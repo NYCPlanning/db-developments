@@ -31,15 +31,20 @@ STATUS_Q_create as (
     WHERE jobdocnum = '01'
     AND jobtype ~* 'A1|DM|NB'
     GROUP BY jobnum
+    UNION
+    SELECT 
+        job_filing_number as job_number,
+        min(issued_date::date) as date_permittd 
+    FROM dob_now_permits
+    WHERE right(job_filing_number,2)='I1'
+    GROUP BY job_filing_number
 ) 
 SELECT 
-    a.job_number,
-    b.date_permittd,
+    job_number,
+    date_permittd,
     -- year_permit
-    extract(year from b.date_permittd)::text as permit_year,
+    extract(year from date_permittd)::text as permit_year,
     -- quarter_permit
-    year_quarter(b.date_permittd) as permit_qrtr
+    year_quarter(date_permittd) as permit_qrtr
 INTO STATUS_Q_devdb
-FROM INIT_devdb a
-LEFT JOIN STATUS_Q_create b
-ON a.job_number = b.job_number
+FROM STATUS_Q_create
