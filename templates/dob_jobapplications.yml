@@ -119,8 +119,8 @@ dataset:
       - nta
       - gisbin
     sql: |
-    with grouped as (
-      SELECT 
+      with grouped as (
+        SELECT 
         ROW NUMBER() OVER(PARTITION BY jobnumber ORDER BY dobrundate DESC) as gid,
         jobnumber,
         jobdocnumber,
@@ -189,8 +189,8 @@ dataset:
         jobtype LIKE '%DM%' OR
         jobtype LIKE '%NB%'
       )
-    )
-    SELECT * FROM grouped WHERE gid = 1; 
+      )
+      SELECT * FROM grouped WHERE gid = 1; 
 
   info:
     description: |
