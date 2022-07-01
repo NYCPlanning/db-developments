@@ -37,7 +37,7 @@ STATUS_Q_create as (
         min(issued_date::date) as date_permittd 
     FROM dob_now_permits
     WHERE right(job_filing_number,2)='I1'
-    GROUP BY job_filing_number
+    GROUP BY left(job_filing_number, strpos(job_filing_number, '-') - 1)::text
 ) 
 SELECT 
     job_number,
