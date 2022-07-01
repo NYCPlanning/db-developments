@@ -119,7 +119,9 @@ dataset:
       - nta
       - gisbin
     sql: |
+    with grouped as (
       SELECT 
+        ROW NUMBER() OVER(PARTITION BY jobnumber ORDER BY dobrundate DESC) as gid,
         jobnumber,
         jobdocnumber,
         jobtype,
@@ -187,13 +189,13 @@ dataset:
         jobtype LIKE '%DM%' OR
         jobtype LIKE '%NB%'
       )
+    )
+    SELECT * FROM grouped WHERE gid = 1; 
 
   info:
     description: |
-      # The Department of Buildings (DOB) issues permits
-      This dataset contains all job applications submitted through the Borough Offices, 
-      through eFiling, or through the HUB, which have a "Latest Action Date" since January 1, 2000. 
-      This dataset does not include jobs submitted through DOB NOW. 
-      See the DOB NOW: Build – Job Application Filings dataset for DOB NOW jobs.
+      #This dataset contains all job applications submitted through the Borough Offices, 
+      through eFiling, or through the HUB, which have a "Latest Action Date" since January 1, 2000.
+      This dataset does not include jobs submitted through DOB NOW. See the DOB NOW: Build – Job Application Filings dataset for DOB NOW jobs.
     url: https://data.cityofnewyork.us/Housing-Development/DOB-Job-Application-Filings/ic3t-wcy2
     dependents: []
