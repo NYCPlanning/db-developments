@@ -182,13 +182,13 @@ dataset:
         proposedzoningsqft,
         buildingclass,
         otherdesc
-      FROM @filename
-      WHERE jobdocnumber = '01'
-      AND ( 
-        jobtype LIKE '%A1%' OR
-        jobtype LIKE '%DM%' OR
-        jobtype LIKE '%NB%'
-      )
+        FROM @filename
+        WHERE jobdocnumber = '01'
+        AND ( 
+          jobtype LIKE '%A1%' OR
+          jobtype LIKE '%DM%' OR
+          jobtype LIKE '%NB%'
+        )
 
   info:
     description: |
