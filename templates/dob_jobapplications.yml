@@ -119,81 +119,81 @@ dataset:
       - nta
       - gisbin
     sql: |
-      SELECT 
-        jobnumber,
-        jobdocnumber,
-        jobtype,
-        jobdescription,
-        existingoccupancy,
-        proposedoccupancy,
-        existingnumstories,
-        proposednumstories,
-        existingzoningsqft,
-        proposedzoningsqft,
-        existingdwellingunits,
-        proposeddwellingunits,
-        jobstatusdesc,
-        latestactiondate,
-        prefilingdate,
-        assigned,
-        paid,
-        fullypaid,
-        approved,
-        fullypermitted,
-        signoffdate,
-        zoningdist1,
-        zoningdist2,
-        zoningdist3,
-        specialdistrict1,
-        specialdistrict2,
-        landmarked,
-        cityowned,
-        ownertype,
-        nonprofit,
-        ownerfirstname,
-        ownerlastname,
-        ownerbusinessname,
-        ownerhousestreetname,
-        zip,
-        ownerphone,
-        existingheight,
-        proposedheight,
-        totalconstructionfloorarea,
-        horizontalenlrgmt,
-        verticalenlrgmt,
-        enlargementsqfootage,
-        initialcost,
-        loftboard,
-        littlee,
-        curbcut,
-        cluster,
-        housenumber,
-        streetname,
-        bin,
-        borough,
-        block,
-        lot,
-        specialactionstatus,
-        latitude,
-        longitude,
-        existingzoningsqft,
-        proposedzoningsqft,
-        buildingclass,
-        otherdesc
-      FROM @filename
-      WHERE jobdocnumber = '01'
-      AND ( 
-        jobtype LIKE '%A1%' OR
-        jobtype LIKE '%DM%' OR
-        jobtype LIKE '%NB%'
-      )
+        SELECT 
+          ROW_NUMBER() OVER(PARTITION BY jobnumber ORDER BY SUBSTR(dobrundate, 7, 4)||SUBSTR(dobrundate, 1, 2)||SUBSTR(dobrundate, 4, 2) DESC) as gid,
+          SUBSTR(dobrundate, 7, 4)||SUBSTR(dobrundate, 1, 2)||SUBSTR(dobrundate, 4, 2) as dobrundate,
+          jobnumber,
+          jobdocnumber,
+          jobtype,
+          jobdescription,
+          existingoccupancy,
+          proposedoccupancy,
+          existingnumstories,
+          proposednumstories,
+          existingzoningsqft,
+          proposedzoningsqft,
+          existingdwellingunits,
+          proposeddwellingunits,
+          jobstatusdesc,
+          latestactiondate,
+          prefilingdate,
+          assigned,
+          paid,
+          fullypaid,
+          approved,
+          fullypermitted,
+          signoffdate,
+          zoningdist1,
+          zoningdist2,
+          zoningdist3,
+          specialdistrict1,
+          specialdistrict2,
+          landmarked,
+          cityowned,
+          ownertype,
+          nonprofit,
+          ownerfirstname,
+          ownerlastname,
+          ownerbusinessname,
+          ownerhousestreetname,
+          zip,
+          ownerphone,
+          existingheight,
+          proposedheight,
+          totalconstructionfloorarea,
+          horizontalenlrgmt,
+          verticalenlrgmt,
+          enlargementsqfootage,
+          initialcost,
+          loftboard,
+          littlee,
+          curbcut,
+          cluster,
+          housenumber,
+          streetname,
+          bin,
+          borough,
+          block,
+          lot,
+          specialactionstatus,
+          latitude,
+          longitude,
+          existingzoningsqft,
+          proposedzoningsqft,
+          buildingclass,
+          otherdesc
+        FROM @filename
+        WHERE jobdocnumber = '01'
+        AND ( 
+          jobtype LIKE '%A1%' OR
+          jobtype LIKE '%DM%' OR
+          jobtype LIKE '%NB%'
+        )
 
   info:
     description: |
-      # The Department of Buildings (DOB) issues permits
-      This dataset contains all job applications submitted through the Borough Offices, 
-      through eFiling, or through the HUB, which have a "Latest Action Date" since January 1, 2000. 
-      This dataset does not include jobs submitted through DOB NOW. 
-      See the DOB NOW: Build – Job Application Filings dataset for DOB NOW jobs.
+      #This dataset contains all job applications submitted through the Borough Offices, 
+      through eFiling, or through the HUB, which have a "Latest Action Date" since January 1, 2000.
+      This dataset does not include jobs submitted through DOB NOW. See the DOB NOW: Build – Job Application Filings dataset for DOB NOW jobs.
     url: https://data.cityofnewyork.us/Housing-Development/DOB-Job-Application-Filings/ic3t-wcy2
     dependents: []
