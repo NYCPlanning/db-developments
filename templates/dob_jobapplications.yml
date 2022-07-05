@@ -119,9 +119,9 @@ dataset:
       - nta
       - gisbin
     sql: |
-      CREATE TEMPORARY TABLE grouped AS
         SELECT 
         ROW_NUMBER() OVER(PARTITION BY jobnumber ORDER BY dobrundate DESC) as gid,
+        dobrundate,
         jobnumber,
         jobdocnumber,
         jobtype,
@@ -188,8 +188,7 @@ dataset:
         jobtype LIKE '%A1%' OR
         jobtype LIKE '%DM%' OR
         jobtype LIKE '%NB%'
-      );
-      SELECT * FROM grouped WHERE gid = 1;
+      )
 
   info:
     description: |
