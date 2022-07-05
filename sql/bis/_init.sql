@@ -70,7 +70,6 @@ JOBNUMBER_relevant as (
 	FROM dob_jobapplications
 	WHERE jobdocnumber = '01'
 	AND jobtype ~* 'A1|DM|NB'
-	AND gid = 1
 ) SELECT
 	distinct
 	ogc_fid::text as uid,
