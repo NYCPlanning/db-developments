@@ -300,7 +300,7 @@ NOT IN (SELECT hny_id||job_number
 
 --- cross grouping of all hny_id and job between manual and other matching methods
 WITH associative_matches AS (
-    SELECT a.job_number as j1, b.job_number as j2 
+    SELECT DISTINCT a.job_number||b.job_number, a.job_number as j1, b.job_number as j2 
     FROM HNY_matches a 
     FULL JOIN HNY_matches b
     ON a.hny_id = b.hny_id 
