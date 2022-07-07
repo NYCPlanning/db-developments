@@ -297,7 +297,27 @@ IN (SELECT hny_id||job_number
 AND a.hny_id||a.job_number
 NOT IN (SELECT hny_id||job_number 
     FROM HNY_matches);
-    
+
+--- cross grouping of all hny_id and job between manual and other matching methods
+WITH associative_matches AS (
+    SELECT a.job_number as j1, b.job_number as j2 
+    FROM hny_matches a 
+    FULL JOIN hny_matches b
+    ON a.hny_id = b.hny_id 
+    WHERE a.job_number <> b.job_number)
+INSERT INTO HNY_matches(hny_id, hny_project_id, job_number, total_units, all_counted_units)
+SELECT b.hny_id, 
+        b.hny_project_id, 
+        a.j1,
+        b.total_units,
+        b.all_counted_units
+FROM associative_matches a 
+LEFT JOIN HNY_matches b 
+ON a.j2 = b.job_number
+WHERE b.hny_id||a.j1
+NOT IN (SELECT hny_id||job_number
+    FROM HNY_matches);
+
 -- Output unmatched hny records for manual research
 DROP TABLE IF EXISTS HNY_no_match;
 WITH 
