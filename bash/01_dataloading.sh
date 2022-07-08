@@ -6,6 +6,7 @@ MODE="${1:-edm}"
 
 max_bg_procs 5
 import_public dob_now_applications &
+import_public dob_now_permits &
 import_public council_members &
 import_public doe_school_subdistricts &
 import_public doe_eszones &
@@ -39,7 +40,7 @@ case $MODE in
     *) 
         import_public dob_permitissuance $DOB_DATA_DATE &
         import_public dob_jobapplications $DOB_DATA_DATE &
-        import_public dob_geocode_results $DOB_DATA_DATE &
+        import_public dob_geocode_results &
     ;;
 esac
 
