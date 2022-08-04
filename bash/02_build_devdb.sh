@@ -105,3 +105,4 @@ display "Creating FINAL_devdb and formatted QAQC table"
 psql $BUILD_ENGINE -v VERSION=$VERSION  -f sql/final.sql
 psql $BUILD_ENGINE -f sql/corrections.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_final.sql
+psql $BUILD_ENGINE -f sql/qaqc/qaqc_app.sql
