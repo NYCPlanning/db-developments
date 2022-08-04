@@ -10,7 +10,7 @@ INSERT INTO field_dist_qaqc (
     FROM(
         SELECT job_type, COUNT(DISTINCT job_number) as count
         FROM final_devdb
-        WHERE date_filed >= CAST(:PRE_DATE AS VARCHAR)
+        WHERE date_lastupdt >= CAST(:PRE_DATE AS VARCHAR)
         GROUP BY job_type) tmp );
 
 INSERT INTO field_dist_qaqc (
@@ -19,5 +19,5 @@ INSERT INTO field_dist_qaqc (
     FROM(
         SELECT job_status, COUNT(DISTINCT job_number) as count
         FROM final_devdb
-        WHERE date_filed >= CAST(:PRE_DATE AS VARCHAR)
+        WHERE date_lastupdt >= CAST(:PRE_DATE AS VARCHAR)
         GROUP BY job_status) tmp );
