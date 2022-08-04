@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS APP_qaqc;
+DROP TABLE IF EXISTS qaqc_app;
 
 SELECT
     HPD_review.job_number,
@@ -29,7 +29,7 @@ SELECT
     HPD_review.invalid_date_statusx,
     HPD_review.incomp_tract_home,
     HPD_review.dem_nb_overlap 
-INTO APP_qaqc
+INTO qaqc_app
 FROM
     FINAL_qaqc HPD_review
 WHERE
