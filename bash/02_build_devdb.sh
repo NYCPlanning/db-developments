@@ -109,3 +109,7 @@ psql $BUILD_ENGINE -f sql/qaqc/qaqc_final.sql
 display "Creating QAQC Table for QAQC Application"
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_app_additions.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_app.sql
+
+display "appending to historic table"
+import_qaqc_historic
+psql $BUILD_ENGINE -v VERSION=$VERSION -f sql/qaqc/qaqc_historic.sql

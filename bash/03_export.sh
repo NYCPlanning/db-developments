@@ -22,6 +22,8 @@ mkdir -p output
     CSV_export FINAL_qaqc &
     CSV_export HNY_no_match
     CSV_export qaqc_app
+    CSV_export qaqc_historic
+    pg_dump -d $BUILD_ENGINE -t qaqc_historic -f qaqc_historic.sql
     
     display "Export Corrections"
     CSV_export CORR_hny_matches &
