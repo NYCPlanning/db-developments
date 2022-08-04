@@ -28,10 +28,13 @@ SELECT
     HPD_review.invalid_date_statusr,
     HPD_review.invalid_date_statusx,
     HPD_review.incomp_tract_home,
-    HPD_review.dem_nb_overlap 
+    HPD_review.dem_nb_overlap,
+    qaqc_app_additions.classa_net_mismatch
 INTO qaqc_app
 FROM
     FINAL_qaqc HPD_review
+LEFT JOIN qaqc_app_additions
+ON HPD_review.job_number = qaqc_app_additions.job_number
 WHERE
     HPD_review.b_likely_occ_desc = 1
     OR HPD_review.b_large_alt_reduction = 1
@@ -58,4 +61,5 @@ WHERE
     OR HPD_review.dem_nb_overlap = 1
     OR HPD_review.dup_bbl_address_units IS NOT NULL
     OR HPD_review.dup_bbl_address IS NOT NULL
-    OR HPD_review.units_co_prop_mismatch IS NOT NULL;
+    OR HPD_review.units_co_prop_mismatch IS NOT NULL
+    OR qaqc_app_additions.classa_net_mismatch = 1;
