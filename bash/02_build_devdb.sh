@@ -109,3 +109,7 @@ psql $BUILD_ENGINE -f sql/qaqc/qaqc_final.sql
 display "Creating QAQC Table for QAQC Application"
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_app_additions.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_app.sql
+psql $BUILD_ENGINE\
+  -v VERSION_PREV=$VERSION_PREV\
+  -f sql/qaqc/qaqc_quarter_check.sql
+
