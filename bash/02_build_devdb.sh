@@ -7,7 +7,6 @@ psql $BUILD_ENGINE -f sql/_procedures.sql
 psql $BUILD_ENGINE -f sql/bis/_init.sql
 psql $BUILD_ENGINE -f sql/now/_init.sql
 psql $BUILD_ENGINE -f sql/_init.sql
-psql $BUILD_ENGINE -f sql/qaqc/qaqc_init.sql
 count _INIT_devdb
 
 display "Assign geoms to _GEO_devdb and create GEO_devdb"
@@ -52,7 +51,6 @@ display "Creating UNITS fields:
       classa_net,
       resid_flag"
 psql $BUILD_ENGINE -f sql/_units.sql
-psql $BUILD_ENGINE -f sql/qaqc/qaqc_units.sql
 count UNITS_devdb
 
 display "Creating status_q fields: date_permittd,
@@ -81,16 +79,10 @@ display "Creating status fields:
 psql $BUILD_ENGINE\
   -v CAPTURE_DATE=$CAPTURE_DATE\
   -f sql/_status.sql
-  
-psql $BUILD_ENGINE\
-  -v CAPTURE_DATE_PREV=$CAPTURE_DATE_PREV\
-  -f sql/qaqc/qaqc_status.sql
 
 display "Combining _MID_devdb with STATUS_devdb to create MID_devdb,
             Creating nonres_flag field"
 psql $BUILD_ENGINE -f sql/mid.sql
-psql $BUILD_ENGINE -f sql/qaqc/qaqc_mid.sql
-psql $BUILD_ENGINE -f sql/qaqc/qaqc_geo.sql
 count MID_devdb
 
 display "Creating HNY fields: 
@@ -104,4 +96,3 @@ count HNY_devdb
 display "Creating FINAL_devdb and formatted QAQC table"
 psql $BUILD_ENGINE -v VERSION=$VERSION  -f sql/final.sql
 psql $BUILD_ENGINE -f sql/corrections.sql
-psql $BUILD_ENGINE -f sql/qaqc/qaqc_final.sql
