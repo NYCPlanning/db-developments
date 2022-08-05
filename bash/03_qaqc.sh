@@ -16,6 +16,9 @@ display "Creating QAQC Table for qaqc mid and geo"
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_mid.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_geo.sql
 
+display "Creating QAQC Table for qaqc final"
+psql $BUILD_ENGINE -f sql/qaqc/qaqc_final.sql
+
 display "Creating QAQC Table for QAQC Application"
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_app_additions.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_app.sql
