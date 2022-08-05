@@ -105,6 +105,10 @@ display "Creating FINAL_devdb and formatted QAQC table"
 psql $BUILD_ENGINE -v VERSION=$VERSION  -f sql/final.sql
 psql $BUILD_ENGINE -f sql/corrections.sql
 psql $BUILD_ENGINE -f sql/qaqc/qaqc_final.sql
+
+display "Creating QAQC Table for QAQC Application"
+psql $BUILD_ENGINE -f sql/qaqc/qaqc_app_additions.sql
+psql $BUILD_ENGINE -f sql/qaqc/qaqc_app.sql
 psql $BUILD_ENGINE\
    -v CAPTURE_DATE_PREV=$CAPTURE_DATE_PREV\
    -f sql/qaqc/qaqc_field_distribution.sql
