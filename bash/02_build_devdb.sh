@@ -112,3 +112,6 @@ psql $BUILD_ENGINE -f sql/qaqc/qaqc_app.sql
 psql $BUILD_ENGINE\
    -v CAPTURE_DATE_PREV=$CAPTURE_DATE_PREV\
    -f sql/qaqc/qaqc_field_distribution.sql
+psql $BUILD_ENGINE\
+  -v VERSION_PREV=$VERSION_PREV\
+  -f sql/qaqc/qaqc_quarter_check.sql
