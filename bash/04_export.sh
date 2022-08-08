@@ -20,9 +20,10 @@ mkdir -p output
     
     display "Export QAQC Tables"
     CSV_export FINAL_qaqc &
-    CSV_export HNY_no_match &
+    CSV_export HNY_no_match & 
     CSV_export qaqc_app &
     CSV_export qaqc_field_distribution &
+    CSV_export qaqc_quarter_check &
     
     display "Export Corrections"
     CSV_export CORR_hny_matches &
