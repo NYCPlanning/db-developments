@@ -105,14 +105,19 @@ jobs:
         run: | 
           ./devdb.sh build
           ./devdb.sh aggregate
+
+      - name: 3. qaqc dev_db ...
+        if: steps.config.outputs.rebuild == 'yes'
+        run: | 
+          ./devdb.sh qaqc
       
-      - name: 3. Export ...
+      - name: 4. Export ...
         if: steps.config.outputs.weekly == 'no'
         run: |
           ./devdb.sh export
           ./devdb.sh upload
             
-      - name: 4. Archive ...
+      - name: 5. Archive ...
         if: >- 
           steps.config.outputs.archive == 'yes' &&
           steps.config.outputs.weekly == 'no'
