@@ -16,12 +16,16 @@ function build {
     ./bash/02_build_devdb.sh 
 }
 
+function qaqc { 
+    ./bash/03_qaqc.sh 
+}
+
 function export { 
-    ./bash/03_export.sh 
+    ./bash/04_export.sh 
 }
 
 function archive { 
-    ./bash/04_archive.sh 
+    ./bash/05_archive.sh 
 }
 
 function output {
@@ -137,7 +141,7 @@ function aggregate {
 }
 
 case $1 in
-    dataloading | build | aggregate | export | archive ) $@ ;;
+    dataloading | build | qaqc | aggregate | export | archive ) $@ ;;
     upload) Upload;;
     geocode) geocode ;;
     import) import $@ ;;
