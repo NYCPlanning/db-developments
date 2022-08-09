@@ -4,30 +4,30 @@ on:
   workflow_dispatch:
     inputs:
       rebuild:
-        description: 'Would you like to rebuild DevDB? (yes/no) If no, set archive or export to yes.'
+        description: "Would you like to rebuild DevDB? (yes/no) If no, set archive or export to yes."
         required: false
-        default: 'yes'
+        default: "yes"
       export:
-        description: 'Would you like to export the outputs and QAQC to DigitalOcean? (yes/no)'
+        description: "Would you like to export the outputs and QAQC to DigitalOcean? (yes/no)"
         required: false
-        default: 'no'
+        default: "no"
       archive:
-        description: 'Would you like to archive developments and dcp_housing to EDM-DATA? (yes/no)'
+        description: "Would you like to archive developments and dcp_housing to EDM-DATA? (yes/no)"
         required: false
-        default: 'no'
+        default: "no"
       weekly:
-        description: 'Is this for weekly devdb? (yes/no)'
+        description: "Is this for weekly devdb? (yes/no)"
         required: false
-        default: 'no'
+        default: "no"
 
   # Weekly Devdb Build for HED Dashboard
   schedule:
-    - cron: '0 6 * * *'
+    - cron: "0 6 * * *"
 
-jobs: 
+jobs:
   Build:
     name: Building ...
-    if: >- 
+    if: >-
       (
         github.event_name == 'push' &&
         ! contains(github.event.head_commit.message, '[skip]')
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-20.04
     services:
       db:
-        image: postgis/postgis:11-3.0-alpine
+        image: postgis/postgis:12-3.0-alpine
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: devdb
@@ -75,7 +75,7 @@ jobs:
               echo "::set-output name=weekly::no"
             fi
           fi
-  
+
       - name: install dependencies ...
         run: |
           sudo apt update
@@ -86,52 +86,52 @@ jobs:
           mc alias set spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
 
       - name: 1. dataloading for HED weekly builds
-        if: >- 
+        if: >-
           steps.config.outputs.weekly == 'yes' && 
           steps.config.outputs.rebuild == 'yes'
         run: ./devdb.sh dataloading weekly
-      
-      - name: 1. dataloading for EDM builds 
-        if: >- 
+
+      - name: 1. dataloading for EDM builds
+        if: >-
           steps.config.outputs.rebuild == 'yes' &&
           steps.config.outputs.weekly == 'no'
         run: ./devdb.sh dataloading edm && ls -l
 
       - name: Clear cache
         run: rm -rf .library
-        
+
       - name: 2. build dev_db ...
         if: steps.config.outputs.rebuild == 'yes'
-        run: | 
+        run: |
           ./devdb.sh build
           ./devdb.sh aggregate
 
       - name: 3. qaqc dev_db ...
         if: steps.config.outputs.rebuild == 'yes'
-        run: | 
+        run: |
           ./devdb.sh qaqc
-      
+
       - name: 4. Export ...
         if: steps.config.outputs.weekly == 'no'
         run: |
           ./devdb.sh export
           ./devdb.sh upload
-            
+
       - name: 5. Archive ...
-        if: >- 
+        if: >-
           steps.config.outputs.archive == 'yes' &&
           steps.config.outputs.weekly == 'no'
         run: ./devdb.sh archive
-      
+
       - name: Export to EDM_DATA/devdb
         env:
           EDM_DATA_BUILD_ENGINE: ${{ secrets.EDM_DATA_BUILD_ENGINE }}
         if: always() && steps.config.outputs.weekly == 'no'
         run: |
           pg_dump $BUILD_ENGINE -O -c | psql $EDM_DATA_BUILD_ENGINE
-      
+
       - name: Export to HED database
-        if: >- 
+        if: >-
           steps.config.outputs.weekly == 'yes' && 
           steps.config.outputs.rebuild == 'yes'
         run: |
