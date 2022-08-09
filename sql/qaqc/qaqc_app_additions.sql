@@ -27,8 +27,7 @@ hny_id IN (SELECT hny_id FROM hny_no_match)
 )
 UPDATE qaqc_app_additions 
 SET manual_hny_match_check = 1
-FROM qaqc_app_additions q, manual_hny_match_check m
-WHERE q.job_number = m.job_number;
-
+FROM manual_hny_match_check m
+WHERE qaqc_app_additions.job_number = m.job_number;
 UPDATE qaqc_app_additions
 SET manual_hny_match_check=(CASE WHEN manual_hny_match_check=1 THEN 1 ELSE 0 END);
