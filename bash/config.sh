@@ -60,12 +60,8 @@ function CSV_export {
 function Upload {
     local branchname=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
     local DATE=$(date "+%Y-%m-%d")
-    if [[ $branchname == "main" ]] 
-    then
-      local SPACES="spaces/edm-publishing/db-developments"
-    else
-      local SPACES="spaces/edm-publishing/db-developments/$branchname"
-    fi
+    local SPACES="spaces/edm-publishing/db-developments/$branchname"
+    
     mc rm -r --force $SPACES/latest
     mc cp -r output $SPACES/latest
     mc rm -r --force $SPACES/$VERSION
@@ -103,6 +99,22 @@ function import_public {
 
   # Loading into Database
   psql $BUILD_ENGINE -v ON_ERROR_STOP=1 -q -f $target_dir/$name.sql
+}
+
+function import_qaqc_historic {
+  target_dir=$(pwd)/.library/qaqc/$VERSION
+  qaqc_do_path=spaces/edm-publishing/db-developments/main/latest/output/qaqc_historic.sql
+  if [ -f $target_dir/$name.sql ]; then
+    echo "✅ $name.sql exists in cache"
+  else
+    echo "🛠 $name.sql doesn't exists in cache, downloading ..."
+    mkdir -p $target_dir && (
+      cd $target_dir
+      mc cp $qaqc_do_path qaqc_historic.sql
+    )
+  fi
+  psql $BUILD_ENGINE -c 'DROP TABLE IF EXISTS qaqc_historic'
+  psql $BUILD_ENGINE -v ON_ERROR_STOP=1 -q -f $target_dir/qaqc_historic.sql
 }
 
 function archive {

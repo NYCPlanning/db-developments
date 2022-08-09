@@ -1,0 +1,6 @@
+version,b_likely_occ_desc,b_large_alt_reduction,b_nonres_with_units,units_co_prop_mismatch,partially_complete,units_init_null,units_prop_null,units_res_accessory,outlier_demo_20plus,outlier_nb_500plus,outlier_top_alt_increase,dup_bbl_address_units,dup_bbl_address,inactive_with_update,no_work_job,geo_water,geo_taxlot,geo_null_latlong,geo_null_boundary,invalid_date_filed,invalid_date_lastupdt,invalid_date_statusd,invalid_date_statusp,invalid_date_statusr,invalid_date_statusx,incomp_tract_home,dem_nb_overlap
+20Q2,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20Q4,4334,600,10393,1119,13,43810,234,6824,116,95,20,1920,52395,0,15574,0,1537,553,1774,0,0,0,2,0,1,3532,65359
+21Q2,6660,715,103626,1141,16,43787,235,7097,119,100,20,655647,1883333,0,15997,0,2261,819,2312,0,0,0,2,0,1,3531,66659
+21Q4,4018,684,10572,1075,5,39483,61,5332,121,108,20,1934,52943,9,15927,217,993,160,1661,0,0,0,1,0,1,3525,68076
+22Q2,4060,714,10612,1086,5,39467,61,5577,126,114,20,1983,53521,8,16048,62,881,163,383,0,0,0,1,0,1,3525,69539
