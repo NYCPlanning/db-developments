@@ -62,4 +62,6 @@ WHERE
     OR HPD_review.dup_bbl_address_units IS NOT NULL
     OR HPD_review.dup_bbl_address IS NOT NULL
     OR HPD_review.units_co_prop_mismatch IS NOT NULL
-    OR qaqc_app_additions.classa_net_mismatch = 1;
+    OR qaqc_app_additions.classa_net_mismatch = 1
+    OR qaqc_app_additions.manual_hny_match_check = 1
+    OR qaqc_app_additions.corrections_not_applied = 1;
