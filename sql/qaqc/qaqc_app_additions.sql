@@ -17,7 +17,7 @@ INTO qaqc_app_additions
 FROM FINAL_devdb a;
 
 ALTER TABLE qaqc_app_additions ADD manual_hny_match_check INT;
-WITH manual_hny_match_check AS (
+WITH manual_hny_match AS (
     SELECT 
     job_number
     FROM corr_hny_matches 
@@ -29,7 +29,7 @@ WITH manual_hny_match_check AS (
 UPDATE qaqc_app_additions 
 SET manual_hny_match_check = (
     CASE 
-        WHEN qaqc_app_additions.job_number NOT IN (SELECT job_number FROM manual_hny_match_check) THEN 0 
+        WHEN qaqc_app_additions.job_number NOT IN (SELECT job_number FROM manual_hny_match) THEN 0 
         ELSE 1 
     END);
 
