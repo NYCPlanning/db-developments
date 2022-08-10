@@ -29,7 +29,9 @@ SELECT
     HPD_review.invalid_date_statusx,
     HPD_review.incomp_tract_home,
     HPD_review.dem_nb_overlap,
-    qaqc_app_additions.classa_net_mismatch
+    qaqc_app_additions.classa_net_mismatch,
+    qaqc_app_additions.manual_hny_match_check,
+    qaqc_app_additions.manual_corrections_not_applied
 INTO qaqc_app
 FROM
     FINAL_qaqc HPD_review
@@ -64,4 +66,4 @@ WHERE
     OR HPD_review.units_co_prop_mismatch IS NOT NULL
     OR qaqc_app_additions.classa_net_mismatch = 1
     OR qaqc_app_additions.manual_hny_match_check = 1
-    OR qaqc_app_additions.corrections_not_applied = 1;
+    OR qaqc_app_additions.manual_corrections_not_applied = 1;
