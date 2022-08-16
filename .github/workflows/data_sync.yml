@@ -15,32 +15,32 @@ on:
         default: 'latest'
 
 jobs:
-  sync:
-    name: syncing ...
-    runs-on: ubuntu-20.04
-    env:
-      AWS_S3_ENDPOINT: ${{ secrets.DO_S3_ENDPOINT }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.DO_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.DO_SECRET_ACCESS_KEY }}
-      AWS_S3_BUCKET: edm-recipes
-    strategy:
-      matrix:
-        dataset:
-          - dob_permitissuance
-          - dob_jobapplications
-          - hpd_hny_units_by_building
-    steps:
-      - uses: actions/checkout@v2
+  # sync:
+  #   name: syncing ...
+  #   runs-on: ubuntu-20.04
+  #   env:
+  #     AWS_S3_ENDPOINT: ${{ secrets.DO_S3_ENDPOINT }}
+  #     AWS_ACCESS_KEY_ID: ${{ secrets.DO_ACCESS_KEY_ID }}
+  #     AWS_SECRET_ACCESS_KEY: ${{ secrets.DO_SECRET_ACCESS_KEY }}
+  #     AWS_S3_BUCKET: edm-recipes
+  #   strategy:
+  #     matrix:
+  #       dataset:
+  #         - dob_permitissuance
+  #         - dob_jobapplications
+  #         - hpd_hny_units_by_building
+  #   steps:
+  #     - uses: actions/checkout@v2
       
-      - uses: NYCPlanning/action-library-archive@v1.1
-        with:
-            # name of the dataset
-          name: ${{ matrix.dataset }}
-          path: templates/${{ matrix.dataset }}.yml 
-          s3: true
-          latest: true
-          compress: true
-          output_format: csv pgdump
+  #     - uses: NYCPlanning/action-library-archive@v1.1
+  #       with:
+  #           # name of the dataset
+  #         name: ${{ matrix.dataset }}
+  #         path: templates/${{ matrix.dataset }}.yml 
+  #         s3: true
+  #         latest: true
+  #         compress: true
+  #         output_format: csv pgdump
 
   geocode:
     name: geocoding
@@ -94,6 +94,7 @@ jobs:
       - name: Archive to Data Library (workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
         run: |
+          echo ${{  github.event.inputs.version }}
           ./devdb.sh library_archive hny_geocode_results hpd_hny_units_by_building
           ./devdb.sh library_archive_version dob_geocode_results ${{  github.event.inputs.version }}
 
