@@ -44,7 +44,7 @@ jobs:
 
   geocode:
     name: geocoding
-    needs: sync
+    #needs: sync
     services:
       db:
         image: postgis/postgis:11-3.0-alpine
