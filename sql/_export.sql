@@ -32,7 +32,7 @@ SELECT
 	ClassA_Init as "ClassAInit",
 	ClassA_Prop as "ClassAProp",
 	ClassA_Net as "ClassANet",
-	ClassA_HNYAff as "ClassA_HNY",
+	ClassA_HNYAff::NUMERIC as "ClassA_HNY",
 	Hotel_Init as "HotelInit",
 	Hotel_Prop as "HotelProp",
 	OtherB_Init as "OtherBInit",
