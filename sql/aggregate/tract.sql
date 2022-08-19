@@ -11,7 +11,7 @@ SELECT
         
     {% endfor %}
 
-    SUM(since_cen10) as since_cen10,
+    -- SUM(since_cen10) as since_cen10,
     SUM(filed) as filed,
     SUM(approved) as approved,
     SUM(permitted) as permitted,
