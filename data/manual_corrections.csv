@@ -31747,9 +31747,9 @@ B00483096,longitude,-73.9697,-73.9699876,,7/14/22,AP
 B00485312,classa_prop,96,0,,8/3/22,VB
 B00485312,hotel_prop,96,96,,8/3/22,VB
 B00485312,otherb_prop,96,0,,8/3/22,VB
-B00488630,Inactive: Duplicate,,,duplicate of B00520784,8/4/22,VB
+B00488630,job_inactive,,Inactive: Duplicate,duplicate of B00520784,8/4/22,VB
 B00490749,remove,,,job_desc suggest this is a test record,7/12/22,SL
-B00495688,Inactive: Duplicate,,,Older permit,8/4/22,AP
+B00495688,job_inactive,,Inactive: Duplicate,Older permit,8/4/22,AP
 B00499143,classa_init,70,0,,8/3/22,VB
 B00499143,hotel_init,70,70,,8/3/22,VB
 B00499143,otherb_init,70,0,,8/3/22,VB
@@ -31766,7 +31766,7 @@ B00505340,hotel_prop,20,49,,8/3/22,VB
 B00505340,otherb_prop,20,0,,8/3/22,VB
 B00515659,latitude,40.652,40.65203436,,8/4/22,AP
 B00515659,longitude,-73.956,-73.95619804,,8/4/22,AP
-B00516485,Inactive: Duplicate,,,Older permit,8/5/22,AP
+B00516485,job_inactive,,Inactive: Duplicate,Older permit,8/5/22,AP
 B00521681,classa_init,9,0,,8/3/22,VB
 B00521681,hotel_init,9,0,,8/3/22,VB
 B00521681,otherb_init,9,9,,8/3/22,VB
@@ -31789,7 +31789,7 @@ B00533641,otherb_init,0,0,,8/3/22,VB
 B00533641,classa_prop,47,0,,8/3/22,VB
 B00533641,hotel_prop,47,47,,8/3/22,VB
 B00533641,otherb_prop,47,0,,8/3/22,VB
-B00533641,Inactive: Duplicate,,,duplicate of B00632886,8/4/22,VB
+B00533641,job_inactive,,Inactive: Duplicate,duplicate of B00632886,8/4/22,VB
 B00539478,latitude,40.731286,40.73145587,,7/14/22,AP
 B00539478,longitude,-73.961635,-73.96083122,,7/14/22,AP
 B00546778,classa_init,12,0,,8/3/22,VB
@@ -31880,7 +31880,7 @@ B00662066,hotel_prop,2,0,,8/3/22,VB
 B00662066,otherb_prop,2,0,,8/3/22,VB
 B00662334,latitude,40.6392,40.63904379,,8/3/22,AP
 B00662334,longitude,-73.9522,-73.95196973,,8/3/22,AP
-B00667866,Inactive: Duplicate,,,Older permit,8/5/22,AP
+B00667866,job_inactive,,Inactive: Duplicate,Older permit,8/5/22,AP
 B00677000,classa_init,11,2,,8/3/22,VB
 B00677000,hotel_init,11,0,,8/3/22,VB
 B00677000,otherb_init,11,11,,8/3/22,VB
@@ -31890,7 +31890,7 @@ B00680529,hotel_init,7,0,,7/21/22,SL
 B00680529,otherb_init,7,0,,7/21/22,SL
 B00680529,hotel_prop,1,0,,7/21/22,SL
 B00680529,otherb_prop,1,0,,7/21/22,SL
-B00681056,Inactive: Duplicate,,,duplicate of B00716498,8/4/22,VB
+B00681056,job_inactive,,Inactive: Duplicate,duplicate of B00716498,8/4/22,VB
 B00685211,latitude,40.6962,40.69624682,,8/3/22,AP
 B00685211,longitude,-73.9167,-73.91694051,,8/3/22,AP
 B00691825,hotel_init,5,0,,8/3/22,VB
@@ -31906,7 +31906,7 @@ B00707018,hotel_init,1,0,,8/3/22,VB
 B00707018,otherb_init,1,8,,8/3/22,VB
 B00707018,hotel_prop,2,0,,8/3/22,VB
 B00707018,otherb_prop,2,0,,8/3/22,VB
-B00709682,Inactive: Duplicate,,,Duplicate of B00750503,8/5/22,AP
+B00709682,job_inactive,,Inactive: Duplicate,Duplicate of B00750503,8/5/22,AP
 B00709787,latitude,40.6326,40.63253684,,8/3/22,AP
 B00709787,longitude,-73.9418,-73.94156197,,8/3/22,AP
 B00724335,hotel_init,3,0,,8/3/22,VB
@@ -32262,7 +32262,7 @@ Q00503580,longitude,-73.8033,-73.8030882,,7/14/22,AP
 Q00506224,hotel_prop,1,0,,7/21/22,SL
 Q00506224,otherb_prop,1,0,,7/21/22,SL
 Q00506224,classa_prop,1,0,,7/21/22,SL
-Q00506386,Inactive: Duplicate,,,Older permit,8/5/22,AP
+Q00506386,job_inactive,,Inactive: Duplicate,Older permit,8/5/22,AP
 Q00507912,hotel_prop,1,0,,7/21/22,SL
 Q00507912,otherb_prop,1,0,,7/21/22,SL
 Q00507912,classa_prop,1,0,,7/21/22,SL
@@ -32270,7 +32270,7 @@ Q00509864,latitude,40.6891,40.68894539,,7/14/22,AP
 Q00509864,longitude,-73.7621,-73.76176029,,7/14/22,AP
 Q00519166,latitude,40.6903,40.69056015,,7/14/22,AP
 Q00519166,longitude,-73.7619,-73.76160154,,7/14/22,AP
-Q00519736,Inactive: Duplicate,,,Older permit,8/5/22,AP
+Q00519736,job_inactive,,Inactive: Duplicate,Older permit,8/5/22,AP
 Q00523537,classa_prop,352,150,,8/3/22,VB
 Q00523537,hotel_prop,352,202,,8/3/22,VB
 Q00523537,otherb_prop,352,0,,8/3/22,VB
@@ -32328,14 +32328,14 @@ Q00579581,classa_prop,1,0,,7/21/22,SL
 Q00587565,hotel_prop,1,0,,7/21/22,SL
 Q00587565,otherb_prop,1,0,,7/21/22,SL
 Q00587565,classa_prop,1,0,,7/21/22,SL
-Q00588954,Inactive: Duplicate,,,duplicate of Q00689079,8/5/22,VB
+Q00588954,job_inactive,,Inactive: Duplicate,duplicate of Q00689079,8/5/22,VB
 Q00589517,latitude,40.7058,40.70549119,,8/3/22,AP
 Q00589517,longitude,-73.7877,-73.7874793,,8/3/22,AP
 Q00591316,latitude,40.7662,40.76598517,,7/14/22,AP
 Q00591316,longitude,-73.7643,-73.76452083,,7/14/22,AP
 Q00596467,latitude,40.7762,40.77624691,,7/15/22,AP
 Q00596467,longitude,-73.7754,-73.77552237,,7/15/22,AP
-Q00598188,Inactive: Duplicate,,,Older permit,8/4/22,AP
+Q00598188,job_inactive,,Inactive: Duplicate,Older permit,8/4/22,AP
 Q00598586,latitude,40.6882,40.68837847,,8/3/22,AP
 Q00598586,longitude,-73.8601,-73.85966637,,8/3/22,AP
 Q00603594,hotel_init,49,0,,7/21/22,VB
@@ -32407,7 +32407,7 @@ Q00724600,hotel_prop,1,0,,8/3/22,VB
 Q00724600,otherb_prop,1,0,,8/3/22,VB
 Q00727941,latitude,40.6059,40.60604112,,8/3/22,AP
 Q00727941,longitude,-73.7581,-73.75791756,,8/3/22,AP
-Q00728689,Inactive: Duplicate,,,,8/4/22,AP
+Q00728689,job_inactive,,Inactive: Duplicate,,8/4/22,AP
 Q00730636,classa_prop,1900,0,,7/21/22,WS
 Q00730636,hotel_init,0,0,,7/21/22,WS
 Q00730636,hotel_prop,1900,0,,7/21/22,WS
@@ -32867,12 +32867,12 @@ X00487833,classa_prop,98,0,,8/3/22,VB
 X00487833,hotel_prop,98,98,,8/3/22,VB
 X00487833,otherb_prop,98,0,,8/3/22,VB
 X00496315,remove,,,job_desc suggest this is a test record,8/9/21,AP
-X00502795,Inactive: Duplicate,,,Older permit,8/5/22,AP
+X00502795,job_inactive,,Inactive: Duplicate,Older permit,8/5/22,AP
 X00510163,hotel_init,2,0,,8/3/22,VB
 X00510163,otherb_init,2,0,,8/3/22,VB
 X00510163,hotel_prop,2,0,,8/3/22,VB
 X00510163,otherb_prop,2,0,,8/3/22,VB
-X00520103,Inactive: Duplicate,,,duplicate of X00655054,8/5/22,VB
+X00520103,job_inactive,,Inactive: Duplicate,duplicate of X00655054,8/5/22,VB
 X00527695,remove,,,job_desc suggest this is a test record,8/30/21,
 X00527748,remove,,,job_desc suggest this is a test record,8/9/21,AP
 X00543063,remove,,,job_desc suggest this is a test record,8/9/21,AP
@@ -32884,10 +32884,10 @@ X00549954,longitude,-73.8527,-73.85293173,,8/3/22,AP
 X00575788,latitude,40.8144,40.81456157,,8/3/22,AP
 X00575788,longitude,-73.8163,-73.81645073,,8/3/22,AP
 X00592926,remove,,,job_desc suggest this is a test record,7/12/22,SL
-X00593549,Inactive: Duplicate,,,"DOBNOW says this # can't be found, so I'm assuming it's inactive/duplicate",8/5/22,VB
+X00593549,job_inactive,,Inactive: Duplicate,"DOBNOW says this # can't be found, so I'm assuming it's inactive/duplicate",8/5/22,VB
 X00601293,latitude,40.8153,40.81560108,,8/3/22,AP
 X00601293,longitude,-73.8593,-73.85932023,,8/3/22,AP
-X00610635,Inactive: Duplicate,,,Duplicate of X00712226,8/5/22,AP
+X00610635,job_inactive,,Inactive: Duplicate,Duplicate of X00712226,8/5/22,AP
 X00614894,classa_init,64,0,,8/3/22,VB
 X00614894,hotel_init,64,56,,8/3/22,VB
 X00614894,otherb_init,64,0,,8/3/22,VB
@@ -32896,7 +32896,7 @@ X00614894,hotel_prop,32,32,,8/3/22,VB
 X00614894,otherb_prop,32,0,,8/3/22,VB
 X00621163,latitude,40.812486,40.81275345,,8/4/22,AP
 X00621163,longitude,-73.823162,-73.82329212,,8/4/22,AP
-X00633040,Inactive: Duplicate,,,Older permit,8/5/22,AP
+X00633040,job_inactive,,Inactive: Duplicate,Older permit,8/5/22,AP
 X00641115,classa_init,3,0,,8/3/22,VB
 X00641115,hotel_init,3,0,,8/3/22,VB
 X00641115,otherb_init,3,0,,8/3/22,VB
@@ -32912,7 +32912,7 @@ X00666162,hotel_prop,4,0,,8/3/22,VB
 X00666162,otherb_prop,4,0,,8/3/22,VB
 X00670335,latitude,40.8395,40.83967457,,8/3/22,AP
 X00670335,longitude,-73.8521,-73.85193814,,8/3/22,AP
-X00672887,Inactive: Duplicate,,,duplicate of X00727626,8/5/22,VB
+X00672887,job_inactive,,Inactive: Duplicate,duplicate of X00727626,8/5/22,VB
 X00675174,classa_init,27,0,,8/3/22,VB
 X00675174,hotel_init,27,0,,8/3/22,VB
 X00675174,otherb_init,27,27,,8/3/22,VB
@@ -32927,7 +32927,7 @@ X00695344,latitude,40.8159,40.81574393,,7/15/22,AP
 X00695344,longitude,-73.9052,-73.9055653,,7/15/22,AP
 X00696214,latitude,40.8697,40.86999935,,8/3/22,AP
 X00696214,longitude,-73.8499,-73.8497055,,8/3/22,AP
-X00703270,Inactive: Duplicate,,,duplicate of X00712236,8/5/22,VB
+X00703270,job_inactive,,Inactive: Duplicate,duplicate of X00712236,8/5/22,VB
 X00706075,latitude,40.85277673,40.85275308,,7/15/22,AP
 X00706075,longitude,-73.90225267,-73.90226815,,7/15/22,AP
 X00706075,latitude,40.85277673,40.85278517,,8/4/22,AP
@@ -32942,191 +32942,7 @@ X00732412,hotel_prop,56,0,,7/20/22,VB
 X00732412,otherb_prop,56,0,,7/20/22,VB
 X00760123,latitude,40.8608,40.8609298,,8/4/22,AP
 X00760123,longitude,-73.8238,-73.82424392,,8/4/22,AP
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
-,,,,,,
+122278481,classa_init,4,0,,8/18/22,SL
+122278481,otherb_init,4,0,,8/18/22,SL
+122278481,hotel_init,4,0,,8/18/22,SL
+122383152,job_inactive,,Inactive: Duplicate,duplicate of 121204026,8/18/22,SL
