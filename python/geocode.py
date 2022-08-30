@@ -93,7 +93,7 @@ if __name__ == "__main__":
                 trim(house_number), 
                 '(^|)0*', '', ''
             ) as house_number,
-            REPLACE(REPLACE(trim(street_name), '   ', ' '), '  ', ' ' ) as street_name, 
+            REGEXP_REPLACE(street_name, '[\s]{2,}' ,' ' , 'g') as street_name, 
             borough,
             source
         FROM (
