@@ -50,10 +50,13 @@ def parse_output(geo):
             "Building Identification Number (BIN) of Input Address or NAP", ""
         ),
         geo_bbl=geo.get("BOROUGH BLOCK LOT (BBL)", {}).get(
-            "BOROUGH BLOCK LOT (BBL)", "",
+            "BOROUGH BLOCK LOT (BBL)",
+            "",
         ),
-        geo_boro=geo.get("BOROUGH BLOCK LOT (BBL)", {}
-                         ).get("Borough Code", "",),
+        geo_boro=geo.get("BOROUGH BLOCK LOT (BBL)", {}).get(
+            "Borough Code",
+            "",
+        ),
         geo_cd=geo.get("COMMUNITY DISTRICT", {}).get("COMMUNITY DISTRICT", ""),
         geo_firedivision=geo.get("Fire Division", ""),
         geo_firebattalion=geo.get("Fire Battalion", ""),
@@ -69,8 +72,7 @@ def parse_output(geo):
         geo_ct2020=geo.get("2020 Census Tract", None),
         geo_cb2010=geo.get("2010 Census Block", None),
         geo_cb2020=geo.get("2020 Census Block", None),
-        geo_cdta2020=geo.get(
-            "2020 Community District Tabulation Area (CDTA)", None),
+        geo_cdta2020=geo.get("2020 Community District Tabulation Area (CDTA)", None),
         # the return codes and messaged are for diagnostic puposes
         grc=geo.get("Geosupport Return Code (GRC)", ""),
         grc2=geo.get("Geosupport Return Code 2 (GRC 2)", ""),
@@ -91,7 +93,7 @@ if __name__ == "__main__":
                 trim(house_number), 
                 '(^|)0*', '', ''
             ) as house_number,
-            trim(street_name) as street_name, 
+            REPLACE(REPLACE(trim(street_name), '   ', ' '), '  ', ' ' ) as street_name, 
             borough,
             source
         FROM (
@@ -125,7 +127,7 @@ if __name__ == "__main__":
     print("geocoding finished, dumping GEO_devdb postgres ...")
     df = pd.DataFrame(it)
     df.to_sql(
-        'dob_geocode_results',
+        "dob_geocode_results",
         con=engine,
         if_exists="replace",
         index=False,
