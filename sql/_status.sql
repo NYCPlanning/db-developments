@@ -69,7 +69,7 @@ DRAFT_STATUS_devdb as (
         a.date_lastupdt::date,
         GREATEST(date_lastupdt::date, date_filed::date, date_statusd::date, 
                  date_statusp::date, date_statusr::date, 
-                 date_statusx::date, date_complete::date ) as _date_lastdupdt, 
+                 date_statusx::date, date_complete::date, date_permittd ) as _date_lastupdt, 
         a.classa_init,
         a.classa_prop,
         a.classa_net,
