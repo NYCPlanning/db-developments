@@ -67,6 +67,9 @@ DRAFT_STATUS_devdb as (
         END as job_status,
         a.date_permittd,
         a.date_lastupdt::date,
+        GREATEST(date_lastupdt::date, date_filed::date, date_statusd::date, 
+                 date_statusp::date, date_statusr::date, 
+                 date_statusx::date, date_complete::date ) as _date_lastdupdt, 
         a.classa_init,
         a.classa_prop,
         a.classa_net,
@@ -100,7 +103,7 @@ SELECT
         WHEN date_complete IS NOT NULL 
             THEN NULL
         -- Jobs not (partially) complete that haven't been updated in 3 years
-        WHEN (:'CAPTURE_DATE'::date - date_lastupdt)/365 >= 3 
+        WHEN (:'CAPTURE_DATE'::date - _date_lastupdt)/365 >= 3 
             AND job_status IN ('1. Filed Application', 
                                 '2. Approved Application', 
                                 '3. Permitted for Construction')
