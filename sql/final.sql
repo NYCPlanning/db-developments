@@ -23,10 +23,10 @@ SELECT
 	COALESCE(MID_devdb.geo_boro, MID_devdb.boro) as boro,
 	COALESCE(MID_devdb.geo_bin, MID_devdb.bin) as bin,
 	COALESCE(MID_devdb.geo_bbl, MID_devdb.bbl) as bbl,
-	COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr) as address_numbr,
-	COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street) as address_st,
-	COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr)
-	||' '||COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street) as address,
+	REGEXP_REPLACE(COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr), '[\s]{2,}', ' ', 'g') as address_numbr,
+	REGEXP_REPLACE(COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street), '[\s]{2,}', ' ', 'g' ) as address_st,
+	REGEXP_REPLACE(COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr)
+	||' '||COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street), '[\s]{2,}', ' ', 'g' ) as address,
 	MID_devdb.occ_initial,
 	MID_devdb.occ_proposed,
 	MID_devdb.bldg_class,
