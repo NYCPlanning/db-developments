@@ -30,7 +30,7 @@ import_public dob_cofos &
 import_public dof_shoreline &
 import_public hny_geocode_results &
 
-
+psql $BUILD_ENGINE -c "DROP TABLE _geo_devdb"
 case $MODE in
     weekly) 
         import_public dob_permitissuance &
