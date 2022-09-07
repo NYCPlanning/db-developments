@@ -33272,3 +33272,13 @@ X00670832,classa_prop,1,0,,8/24/22,SL
 123906915,classa_prop,9,12,,8/24/22,SL
 123906915,hotel_prop,9,0,,8/24/22,SL
 123906915,classb_prop,9,0,,8/24/22,SL
+M00484025,classa_init,0,245,,9/7/22,SL
+M00484025,hotel_init,0,0,,9/7/22,SL
+M00484025,hotel_prop,245,0,,9/7/22,SL
+M00484025,classb_init,0,0,,9/7/22,SL
+M00484025,classb_prop,245,0,,9/7/22,SL
+M00483952,classa_init,0,245,,9/7/22,SL
+M00483952,hotel_init,0,0,,9/7/22,SL
+M00483952,hotel_prop,245,0,,9/7/22,SL
+M00483952,classb_init,0,0,,9/7/22,SL
+M00483952,classb_prop,245,0,,9/7/22,SL

@@ -36,15 +36,12 @@ STATUS_Q_create as (
         left(job_filing_number, strpos(job_filing_number, '-') - 1)::text as job_number,
         min(issued_date::date) as date_permittd 
     FROM dob_now_permits
-    WHERE right(job_filing_number,2)='I1'
     GROUP BY left(job_filing_number, strpos(job_filing_number, '-') - 1)::text
 ) 
 SELECT 
     job_number,
     date_permittd,
-    -- year_permit
     extract(year from date_permittd)::text as permit_year,
-    -- quarter_permit
     year_quarter(date_permittd) as permit_qrtr
 INTO STATUS_Q_devdb
 FROM STATUS_Q_create
