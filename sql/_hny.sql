@@ -252,9 +252,11 @@ WITH
 					) AS t1 
 					JOIN all_matches AS t2 
 					ON t2.hny_id = t1.hny_id 
-					AND t2.match_priority = t1.match_priority),
+					AND t2.match_priority = t1.match_priority), --- might be rewritten with a where clause
 
-	-- Then find highest priority match(es) for each job_number			
+	-- Then find highest priority match(es) for each job_number	
+    -- if a job number is same priority for different hny projects. 
+    -- it should be considered for all of the hny projects		
 	best_matches AS (SELECT t2.hny_id, t2.hny_project_id, t1.match_priority, 
 							t1.job_number, t2.job_type, 
 							t2.resid_flag, t2.total_units,
