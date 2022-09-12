@@ -200,6 +200,7 @@ SELECT
     dcp_ct2020.nta2020 as geo_nta2020,
     dcp_ct2020.ntaname as geo_ntaname2020,
     dcp_ct2020.cdta2020 as geo_cdta2020,
+    dcp_ct2020.cdtaname as geo_cdtaname2020,
     (SELECT councildst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010 LIMIT 1) as geo_council,
     (SELECT commntydst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010 LIMIT 1) as geo_cd
 INTO SPATIAL_devdb
