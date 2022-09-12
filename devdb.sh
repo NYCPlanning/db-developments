@@ -121,17 +121,22 @@ function aggregate {
     python3 python/yearly.py sql/aggregate/cdta.sql 2020| sql
 
     mkdir -p output && (
-        cd output &&
         display "Export aggregate tables"
-        CSV_export aggregate_block_2010 &
-        CSV_export aggregate_block_2020 &
-        CSV_export aggregate_tract_2010 &
-        CSV_export aggregate_tract_2020 & 
-        CSV_export aggregate_commntydst_2010 &
-        CSV_export aggregate_councildst_2010 &
-        CSV_export aggregate_nta_2010 &
-        CSV_export aggregate_nta_2020 &
-        CSV_export aggregate_cdta_2020 &
+        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_block_2020 &
+        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_tract_2020 &
+        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_nta_2020 &
+        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_councildst_2010 &
+        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_commntydst_2010  &
+
+        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_cdta_2020 & #this should fail
+
+        # CSV_export aggregate_tract_2010 &
+        # CSV_export aggregate_tract_2020 & 
+        # CSV_export aggregate_commntydst_2010 &
+        # CSV_export aggregate_councildst_2010 &
+        # CSV_export aggregate_nta_2010 &
+        # CSV_export aggregate_nta_2020 &
+        # CSV_export aggregate_cdta_2020 &
         wait
     )
 }

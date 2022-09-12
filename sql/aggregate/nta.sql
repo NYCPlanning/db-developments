@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS AGGREGATE_nta_{{ decade }};
 SELECT 
-    boro,
     nta{{ decade }},
     ntaname{{ decade }},
     SUM(comp2010ap) as comp2010ap,
@@ -39,7 +38,6 @@ FROM YEARLY_devdb_{{ decade }}
 -- {% endif %}
 
 GROUP BY 
-    boro,
     nta{{ decade }},
     ntaname{{ decade }}
 ORDER BY 

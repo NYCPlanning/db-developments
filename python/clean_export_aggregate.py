@@ -29,7 +29,7 @@ def get_index_columns(name: str):
         "aggregate_block_2020": "bctcb2020",
         "aggregate_tract_2020": "bct2020",
         "aggregate_councildst_2010": "councildst",
-        "aggregate_commntydst_2010": "commntydist",
+        "aggregate_commntydst_2010": "commntydst",
         "aggregate_nta_2020": "nta2020",
     }
     return index_name[name]
