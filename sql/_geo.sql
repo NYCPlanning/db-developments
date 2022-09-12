@@ -105,6 +105,7 @@ DRAFT as (
         b.geo_cb2020, 
         b.geo_ct2020,
         b.geo_cdta2020,
+        b.geo_cdtaname2020,
         b.geo_csd,
         b.geo_policeprct,
         b.geo_firedivision,
