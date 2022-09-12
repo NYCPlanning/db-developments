@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS AGGREGATE_tract_{{ decade }};
 SELECT 
     YEARLY_devdb_{{ decade }}.boro,
-    YEARLY_devdb_{{ decade }}.bct{{ decade }},
-    YEARLY_devdb_{{ decade }}.centract{{ decade }},
+    YEARLY_devdb_{{ decade }}.bct{{ decade }}::TEXT,
+    YEARLY_devdb_{{ decade }}.centract{{ decade }}::TEXT,
     SUM(comp2010ap) as comp2010ap,
 
     {%- for year in years %}

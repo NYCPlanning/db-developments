@@ -15,8 +15,11 @@ BUILD_ENGINE = sys.argv[1]
 
 
 def read_aggregate_template(name: str):
-    base = pd.read_csv(f"data/agg_template/{name}.csv")
-    base.set_index(get_index_columns(name), inplace=True)
+    base = pd.read_csv(
+        f"data/agg_template/{template_lookup[name]}.csv", dtype=str)
+    base.set_index(get_index_columns(name),
+                   inplace=True, verify_integrity=True)
+    base.drop(columns=base.columns, axis=1, inplace=True)
     return base
 
 
@@ -40,6 +43,9 @@ if __name__ == "__main__":
     base = read_aggregate_template(table)
     df = pd.read_sql(f"""SELECT * FROM {table}""", con=engine)
 
+    df.dropna(axis=0, subset=[get_index_columns(table)], inplace=True)
+    df.set_index(get_index_columns(table), inplace=True, verify_integrity=True)
+
     final = pd.concat([base, df], axis=1)
 
-    final.to_csv(f"{table}.csv", index=False)
+    final.to_csv(f"output/{table}.csv", index=True)
