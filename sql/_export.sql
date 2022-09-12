@@ -114,6 +114,7 @@ SELECT
 	NTA2020 as "NTA2020",
 	NTAName2020 as "NTAName20",
 	CDTA2020 as "CDTA2020",
+	CDTAName2020 as "CDTAName20",
 	ComunityDist as "CommntyDst",
 	CouncilDist as "CouncilDst",
 	SchoolSubDist as "SchSubDist",
