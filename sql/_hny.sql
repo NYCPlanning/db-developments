@@ -356,7 +356,7 @@ WITH
 			WHEN job_number IN (SELECT DISTINCT job_number FROM many_hny) THEN 1
 			ELSE 0
 		END) AS one_dev_to_many_hny
-    FROM HNY_matches m),
+    FROM HNY_matches m), --- maybe this is where the hny_geo could be brought in again
 
 -- 6) ASSIGN MATCHES   
 	-- a) Extract one-to-one matches
@@ -375,6 +375,7 @@ WITH
 							'Multiple' AS hny_id,
 							SUM(COALESCE(all_counted_units::int, '0'))::text AS classa_hnyaff,
 							SUM(COALESCE(total_units::int, '0'))::text AS all_hny_units,
+                            --- hny_geo aggregate can happen here for the hny
                             one_dev_to_many_hny,
                             one_hny_to_many_dev
 					FROM RELATEFLAGS_hny_matches
@@ -418,7 +419,7 @@ WITH
                             ELSE a.total_units
                         END
                     ELSE NULL
-            END) AS all_hny_units,
+            END) AS all_hny_units, --- units logics here are very complicated. Maybe the many to one cases can be left alone?
             one_dev_to_many_hny,
             one_hny_to_many_dev
         FROM RELATEFLAGS_hny_matches a
