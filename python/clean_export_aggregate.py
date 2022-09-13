@@ -37,17 +37,17 @@ def get_index_columns(name: str):
 
 if __name__ == "__main__":
 
-    table = sys.argv[2]
+    table_name = sys.argv[2]
 
     engine = create_engine(BUILD_ENGINE)
-    geo_base = read_aggregate_template(table)
-    aggregate = pd.read_sql(f"""SELECT * FROM {table}""", con=engine)
+    geo_base = read_aggregate_template(table_name)
+    aggregate = pd.read_sql(f"""SELECT * FROM {table_name}""", con=engine)
 
-    idx = get_index_columns(table)
+    idx = get_index_columns(table_name)
     aggregate.dropna(axis=0, subset=[idx], inplace=True)
     aggregate.set_index(idx, inplace=True, verify_integrity=True)
 
     df_concat = pd.concat([geo_base, aggregate], axis=1)
     final = df_concat.fillna(value=0)
 
-    final.to_csv(f"output/{table}.csv", index=True)
+    final.to_csv(f"output/{table_name}.csv", index=True)
