@@ -47,7 +47,7 @@ if __name__ == "__main__":
     df.set_index(get_index_columns(table), inplace=True, verify_integrity=True)
 
     df_concat = pd.concat([base, df], axis=1)
-
     final = df_concat.loc[:, ~df_concat.columns.duplicated()].copy()
+    final.fillna(value=0, inplace=True,)
 
     final.to_csv(f"output/{table}.csv", index=True)
