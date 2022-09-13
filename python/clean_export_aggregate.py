@@ -15,12 +15,12 @@ template_lookup = {
 
 
 def read_aggregate_template(name: str):
-    base = pd.read_csv(
+    geo_base = pd.read_csv(
         f"data/agg_template/{template_lookup[name]}.csv", dtype=str)
-    base.set_index(get_index_columns(name),
-                   inplace=True, verify_integrity=True)
-    base.drop(columns=["OBJECTID", "boro"], axis=1, inplace=True)
-    return base
+    geo_base.set_index(get_index_columns(name),
+                       inplace=True, verify_integrity=True)
+    geo_base.drop(columns=["OBJECTID", "boro"], axis=1, inplace=True)
+    return geo_base
 
 
 def get_index_columns(name: str):
@@ -40,14 +40,14 @@ if __name__ == "__main__":
     table = sys.argv[2]
 
     engine = create_engine(BUILD_ENGINE)
-    base = read_aggregate_template(table)
-    df = pd.read_sql(f"""SELECT * FROM {table}""", con=engine)
+    geo_base = read_aggregate_template(table)
+    aggregate = pd.read_sql(f"""SELECT * FROM {table}""", con=engine)
 
     idx = get_index_columns(table)
-    df.dropna(axis=0, subset=[idx], inplace=True)
-    df.set_index(idx, inplace=True, verify_integrity=True)
+    aggregate.dropna(axis=0, subset=[idx], inplace=True)
+    aggregate.set_index(idx, inplace=True, verify_integrity=True)
 
-    df_concat = pd.concat([base, df], axis=1)
+    df_concat = pd.concat([geo_base, aggregate], axis=1)
     final = df_concat.loc[:, ~df_concat.columns.duplicated()].copy()
     final.fillna(value=0, inplace=True,)
 
