@@ -43,8 +43,9 @@ if __name__ == "__main__":
     base = read_aggregate_template(table)
     df = pd.read_sql(f"""SELECT * FROM {table}""", con=engine)
 
-    df.dropna(axis=0, subset=[get_index_columns(table)], inplace=True)
-    df.set_index(get_index_columns(table), inplace=True, verify_integrity=True)
+    idx = get_index_columns(table)
+    df.dropna(axis=0, subset=[idx], inplace=True)
+    df.set_index(idx, inplace=True, verify_integrity=True)
 
     df_concat = pd.concat([base, df], axis=1)
     final = df_concat.loc[:, ~df_concat.columns.duplicated()].copy()
