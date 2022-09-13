@@ -48,7 +48,6 @@ if __name__ == "__main__":
     aggregate.set_index(idx, inplace=True, verify_integrity=True)
 
     df_concat = pd.concat([geo_base, aggregate], axis=1)
-    final = df_concat.loc[:, ~df_concat.columns.duplicated()].copy()
-    final.fillna(value=0, inplace=True,)
+    final = df_concat.fillna(value=0)
 
     final.to_csv(f"output/{table}.csv", index=True)
