@@ -122,12 +122,12 @@ function aggregate {
 
     mkdir -p output && (
         display "Export aggregate tables"
-        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_block_2020 &
-        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_tract_2020 &
-        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_nta_2020 &
-        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_councildst_2010 &
-        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_commntydst_2010  &
-        python3 python/clean_export_aggregate.py $BUILD_ENGINE aggregate_cdta_2020 & 
+        python3 python/clean_export_aggregate.py aggregate_block_2020 &
+        python3 python/clean_export_aggregate.py aggregate_tract_2020 &
+        python3 python/clean_export_aggregate.py aggregate_nta_2020 &
+        python3 python/clean_export_aggregate.py aggregate_councildst_2010 &
+        python3 python/clean_export_aggregate.py aggregate_commntydst_2010  &
+        python3 python/clean_export_aggregate.py aggregate_cdta_2020 & 
         wait
     )
 }

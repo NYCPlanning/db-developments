@@ -1,8 +1,7 @@
 import pandas as pd
+import os
 import sys
 from sqlalchemy import create_engine
-
-BUILD_ENGINE = sys.argv[1]
 
 template_lookup = {
     "aggregate_cdta_2020": "CDTA",
@@ -37,9 +36,10 @@ def get_index_columns(name: str):
 
 if __name__ == "__main__":
 
-    table_name = sys.argv[2]
+    table_name = sys.argv[1]
 
-    engine = create_engine(BUILD_ENGINE)
+    engine = create_engine(os.environ["BUILD_ENGINE"])
+
     geo_base = read_aggregate_template(table_name)
     aggregate = pd.read_sql(f"""SELECT * FROM {table_name}""", con=engine)
 
