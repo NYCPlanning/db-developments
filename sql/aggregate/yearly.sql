@@ -21,21 +21,21 @@ SELECT
         WHEN boro = '5' THEN 'Staten Island'
     END) as boro,
     boro as borocode,
-    bctcb{{ decade }},
-    cenblock{{ decade }},
-    bct{{ decade }},
+    bctcb{{ decade }}::TEXT,
+    cenblock{{ decade }}::TEXT,
+    bct{{ decade }}::TEXT,
     LEFT(cenblock{{ decade }}, 11) as centract{{ decade }},
-    nta{{ decade }},
+    nta{{ decade }}::TEXT,
     ntaname{{ decade }},
 
     {% if decade == '2020' %}
         
-        cdta{{ decade }},
+        cdta{{ decade }}::TEXT,
 
     {% endif %}
 
-    comunitydist,
-    councildist,
+    comunitydist::TEXT,
+    councildist::TEXT,
 
     CASE WHEN complete_year = '2010' AND date_complete > '2010-03-31'::date
             AND job_inactive IS NULL
