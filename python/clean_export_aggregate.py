@@ -15,7 +15,8 @@ template_lookup = {
 
 def read_aggregate_template(name: str):
     geo_base = pd.read_csv(
-        f"data/agg_template/{template_lookup[name]}.csv", dtype=str)
+        f"data/agg_template/{template_lookup[name]}.csv",  dtype=str,
+    )
     geo_base.set_index(get_index_columns(name),
                        inplace=True, verify_integrity=True)
     geo_base.drop(columns=["OBJECTID", "boro"], axis=1, inplace=True)
@@ -48,6 +49,6 @@ if __name__ == "__main__":
     aggregate.set_index(idx, inplace=True, verify_integrity=True)
 
     df_concat = pd.concat([geo_base, aggregate], axis=1)
-    final = df_concat.fillna(value=0)
+    final = df_concat.fillna(value=0).reset_index()
 
-    final.to_csv(f"output/{table_name}.csv", index=True)
+    final.to_csv(f"output/{table_name}.csv", index=False,)
