@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import sys
 from sqlalchemy import create_engine
+import csv
 
 template_lookup = {
     "aggregate_cdta_2020": "CDTA",
@@ -15,10 +16,10 @@ template_lookup = {
 
 def read_aggregate_template(name: str):
     geo_base = pd.read_csv(
-        f"data/agg_template/{template_lookup[name]}.csv",  dtype=str,
+        f"data/agg_template/{template_lookup[name]}.csv",
+        dtype=str,
     )
-    geo_base.set_index(get_index_columns(name),
-                       inplace=True, verify_integrity=True)
+    geo_base.set_index(get_index_columns(name), inplace=True, verify_integrity=True)
     geo_base.drop(columns=["OBJECTID", "boro"], axis=1, inplace=True)
     return geo_base
 
@@ -51,4 +52,9 @@ if __name__ == "__main__":
     df_concat = pd.concat([geo_base, aggregate], axis=1)
     final = df_concat.fillna(value=0).reset_index()
 
-    final.to_csv(f"output/{table_name}.csv", index=False,)
+    final.to_csv(
+        f"output/{table_name}.csv",
+        index=False,
+        quotechar='""',
+        quoting=csv.QUOTE_NONNUMERIC,
+    )
