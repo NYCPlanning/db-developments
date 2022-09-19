@@ -90,7 +90,8 @@ display "Creating HNY fields:
       classa_hnyaff,
       all_hny_units,
       hny_jobrelate"
-psql $BUILD_ENGINE -f sql/_hny.sql
+psql $BUILD_ENGINE -f sql/_hny_match.sql
+psql $BUILD_ENGINE -f sql/_hny_join.sql
 count HNY_devdb
 
 display "Creating FINAL_devdb and formatted QAQC table"
