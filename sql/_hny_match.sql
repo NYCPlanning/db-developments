@@ -87,7 +87,7 @@ OUTPUTS:
 		total_units
     ),
 
-    HNY_devdb (
+    DevDB_hny (
         * job_number,
         hny_id,
         classa_hnyaff,
