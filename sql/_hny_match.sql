@@ -252,7 +252,7 @@ WITH
 					) AS t1 
 					JOIN all_matches AS t2 
 					ON t2.hny_id = t1.hny_id 
-					AND t2.match_priority = t1.match_priority), --- might be rewritten with a where clause
+					AND t2.match_priority = t1.match_priority),
 
 	-- Then find highest priority match(es) for each job_number	
     -- if a job number is same priority for different hny projects. 
@@ -356,7 +356,7 @@ WITH
 			WHEN job_number IN (SELECT DISTINCT job_number FROM many_hny) THEN 1
 			ELSE 0
 		END) AS one_dev_to_many_hny
-    FROM HNY_matches m), --- maybe this is where the hny_geo could be brought in again
+    FROM HNY_matches m),
 
 -- 6) ASSIGN MATCHES   
 	-- a) Extract one-to-one matches
@@ -419,7 +419,7 @@ WITH
                             ELSE a.total_units
                         END
                     ELSE NULL
-            END) AS all_hny_units, --- units logics here are very complicated. Maybe the many to one cases can be left alone?
+            END) AS all_hny_units,
             one_dev_to_many_hny,
             one_hny_to_many_dev
         FROM RELATEFLAGS_hny_matches a
