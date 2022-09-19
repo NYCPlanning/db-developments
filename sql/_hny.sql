@@ -331,7 +331,7 @@ INTO HNY_no_match
 FROM unmatched;
 
 -- 5) Identify relationships between devdb records and hny records
-DROP TABLE IF EXISTS HNY_devdb;
+DROP TABLE IF EXISTS DevDB_hny;
 WITH 
 	-- Find cases of many-hny-to-one-devdb, after having filtered to highest priority
 	many_developments AS (SELECT hny_id
@@ -443,12 +443,12 @@ SELECT a.job_number,
         b.all_hny_units,
         (CASE 
             WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 0 THEN 'one-to-one'
-            WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 1 THEN 'one-to-many'
-            WHEN one_dev_to_many_hny = 1 AND one_hny_to_many_dev = 0 THEN 'many-to-one'
+            WHEN one_dev_to_many_hny = 1 AND one_hny_to_many_dev = 0 THEN 'one-to-many'
+            WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 1 THEN 'many-to-one'
             WHEN one_dev_to_many_hny = 1 AND one_hny_to_many_dev = 1 THEN 'many-to-many'
             ELSE NULL
         END) AS hny_jobrelate
-INTO HNY_devdb
+INTO DevDB_hny
 FROM MID_devdb a
 LEFT JOIN HNY_lookup b
 ON a.job_number = b.job_number;
