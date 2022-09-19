@@ -375,7 +375,6 @@ WITH
 							'Multiple' AS hny_id,
 							SUM(COALESCE(all_counted_units::int, '0'))::text AS classa_hnyaff,
 							SUM(COALESCE(total_units::int, '0'))::text AS all_hny_units,
-                            --- hny_geo aggregate can happen here for the hny
                             one_dev_to_many_hny,
                             one_hny_to_many_dev
 					FROM RELATEFLAGS_hny_matches
