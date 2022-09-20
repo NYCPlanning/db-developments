@@ -69,7 +69,7 @@ JOBNUMBER_relevant as (
 	SELECT ogc_fid
 	FROM dob_jobapplications
 	WHERE jobdocnumber = '01'
-	AND jobtype ~* 'A1|DM|NB'
+	AND jobtype ~* 'A1|DM|NB|A2'
 	AND gid = 1
 ) SELECT
 	distinct
@@ -81,6 +81,7 @@ JOBNUMBER_relevant as (
 		WHEN jobtype = 'A1' THEN 'Alteration'
 		WHEN jobtype = 'DM' THEN 'Demolition'
 		WHEN jobtype = 'NB' THEN 'New Building'
+		WHEN jobtype = 'A2' THEN 'A2 Alteration'
 		ELSE jobtype
 	END ) as job_type,
 
