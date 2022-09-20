@@ -86,7 +86,7 @@ CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'classa_prop');
 Using corrected classa, hotel, and otherb unit fields, 
 calculate and then manually correct resid_flag
 */
-DROP TABLE IF EXISTS _UNITS_devdb;
+DROP TABLE IF EXISTS _UNITS_devdb_resid_flag;
 SELECT
 	*,
 	(CASE 
@@ -98,7 +98,7 @@ SELECT
 			OR (classa_prop IS NOT NULL AND classa_prop <> '0')
 			THEN 'Residential' 
 	END) as resid_flag
-INTO _UNITS_devdb
+INTO _UNITS_devdb_resid_flag
 FROM _UNITS_devdb_raw
 ;
 
@@ -110,6 +110,18 @@ CORRECTIONS
 */
 CALL apply_correction('_UNITS_devdb', '_manual_corrections', 'resid_flag');
 
+/*
+Separate A2 from rest of units
+*/
+DROP TABLE IF EXISTS UNITS_A2_devdb;
+SELECT * INTO UNITS_A2_devdb 
+FROM _UNITS_devdb_resid_flag WHERE job_type = 'A2 Alteration' AND resid_flag='Residential';
+
+DROP TABLE IF EXISTS _UNITS_devdb;
+SELECT * INTO _UNITS_devdb 
+FROM _UNITS_devdb_resid_flag WHERE job_type != 'A2 Alteration';
+
+DROP TABLE _UNITS_devdb_resid_flag CASCADE;
 
 /*
 NULL out units fields where corrected resid_flag is NULL.
@@ -156,7 +168,7 @@ SELECT
 			THEN classa_init * -1
 		WHEN job_type = 'New Building' 
 			THEN classa_prop
-		WHEN job_type = 'Alteration' 
+		WHEN job_type LIKE '%Alteration' 
 			AND classa_init IS NOT NULL 
 			AND classa_prop IS NOT NULL 
 			THEN classa_prop - classa_init
