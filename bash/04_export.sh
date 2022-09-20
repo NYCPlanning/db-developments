@@ -34,6 +34,9 @@ mkdir -p output
     CSV_export corrections_reference &
     CSV_export _manual_corrections manual_corrections &
 
+    display "Export A2 units for review by housing"
+    CSV_export UNITS_A2_devdb
+
     wait
     display "CSV Export Complete"
     echo "[$(date)] $VERSION" > version.txt
