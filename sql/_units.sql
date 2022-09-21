@@ -108,7 +108,7 @@ DROP TABLE _UNITS_devdb_raw CASCADE;
 CORRECTIONS
 	resid_flag
 */
-CALL apply_correction('_UNITS_devdb', '_manual_corrections', 'resid_flag');
+CALL apply_correction('_UNITS_devdb_resid_flag', '_manual_corrections', 'resid_flag');
 
 /*
 Separate A2 from rest of units
