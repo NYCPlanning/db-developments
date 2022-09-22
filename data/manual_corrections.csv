@@ -426,7 +426,7 @@
 103316065,otherb_init,7,0,,2/1/21,TD
 103316065,hotel_prop,23,0,,2/1/21,TD
 103316065,otherb_prop,23,0,,2/1/21,TD
-103332323,job_inactive,,Inactive,duplicate,1/21/21,KS
+103332323,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 103332733,classa_init,,30,,8/8/22,VB
 103332733,hotel_init,,0,,8/8/22,VB
 103332733,otherb_init,,0,,8/8/22,VB
@@ -1156,7 +1156,7 @@
 104282303,otherb_init,,0,,8/24/20,TD
 104282303,hotel_prop,1,0,,8/24/20,TD
 104282303,otherb_prop,1,0,,8/24/20,TD
-104288138,class_init,.,20,,8/24/22,SL
+104288138,classa_init,,20,,8/24/22,SL
 104288138,hotel_init,,0,,8/24/22,SL
 104288138,otherb_init,,0,,8/24/22,SL
 104288138,hotel_prop,20,0,,8/24/22,SL
@@ -1319,7 +1319,7 @@
 104388486,classa_prop,150,145,,8/27/20,AP
 104388486,hotel_prop,150,0,,8/27/20,AP
 104388486,otherb_prop,150,0,,8/27/20,AP
-104388486,job_inactive,,Inactive,duplicate,1/21/21,KS
+104388486,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 104393513,hotel_init,30,0,,8/29/20,TD
 104393513,otherb_init,30,0,,8/29/20,TD
 104393513,hotel_prop,91,0,,8/29/20,TD
@@ -1371,7 +1371,7 @@
 104425427,hotel_prop,110,110,,7/30/20,AP
 104425427,otherb_prop,110,0,,8/29/20,AP
 104426925,classa_init,,22,,1/27/20,
-104426925,Inactive: Duplicate,,,Older permit,8/5/22,AP
+104426925,job_inactive,,Inactive: Duplicate,Older permit,8/5/22,AP
 104428843,classa_init,,4,,12/1/19,
 104428843,otherb_init,,1,,12/1/19,
 104435657,classa_init,,0,,8/29/20,KS
@@ -1603,7 +1603,7 @@
 104609005,classa_prop,4,8,,8/30/21,TD
 104609005,hotel_prop,4,0,,8/30/21,TD
 104609005,otherb_prop,4,0,,8/30/21,TD
-104609005,Inactive: Duplicate,,,Older permit,8/5/22,AP
+104609005,job_inactive,,Inactive: Duplicate,Older permit,8/5/22,AP
 104611680,hotel_init,76,0,,8/25/20,TD
 104611680,otherb_init,76,0,,8/25/20,TD
 104611680,hotel_prop,69,0,,8/25/20,TD
@@ -2531,7 +2531,7 @@
 110360341,otherb_init,1,0,,2/1/21,TD
 110360341,hotel_prop,53,0,,2/1/21,TD
 110360341,otherb_prop,53,0,,2/1/21,TD
-110364837,job_inactive,,Inactive,duplicate of 110364828,7/17/20,KS
+110364837,job_inactive,,Inactive: Duplicate,duplicate of 110364828,7/17/20,KS
 110365710,classa_init,11,0,,1/31/20,
 110365710,hotel_init,11,0,,8/29/20,TD
 110365710,otherb_init,11,11,,1/31/20,
@@ -2559,7 +2559,7 @@
 110382684,otherb_init,15,15,,8/26/20,TD
 110382684,hotel_prop,1,0,,8/26/20,TD
 110382684,otherb_prop,1,0,,8/26/20,TD
-110385226,job_inactive,,Inactive,duplicate of 110385217,7/17/20,KS
+110385226,job_inactive,,Inactive: Duplicate,duplicate of 110385217,7/17/20,KS
 110387518,hotel_init,10,0,,8/28/20,AP
 110387518,otherb_init,10,0,,8/28/20,AP
 110387518,hotel_prop,1,0,,8/28/20,AP
@@ -2803,7 +2803,7 @@
 120090542,classa_prop,173,0,,1/28/20,
 120090542,hotel_prop,173,173,,1/28/20,
 120090542,otherb_prop,173,0,,8/29/20,KS
-120091550,Inactive: Duplicate,,,Older permit,8/4/22,AP
+120091550,job_inactive,,Inactive: Duplicate,Older permit,8/4/22,AP
 120093068,hotel_init,0,0,,8/29/20,KS
 120093068,otherb_init,0,0,,7/31/20,KS
 120093068,hotel_prop,0,0,,8/29/20,KS
@@ -2910,7 +2910,7 @@
 120203751,classa_prop,218,0,,1/28/20,
 120203751,hotel_prop,218,0,,8/29/20,AP
 120203751,otherb_prop,218,218,,1/28/20,
-120205517,job_inactive,,Inactive,duplicate,1/21/21,KS
+120205517,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 120210137,classa_init,1,0,,1/29/21,ks
 120210146,classa_init,1,0,,1/29/21,ks
 120213358,hotel_init,48,0,,8/29/20,TD
@@ -5082,7 +5082,7 @@
 121205739,otherb_init,0,0,,1/26/21,TD
 121205739,hotel_prop,8,0,,1/26/21,TD
 121205739,otherb_prop,8,0,,1/26/21,TD
-121205766,job_inactive,,Inactive,duplicate,1/21/21,KS
+121205766,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 121205908,classa_init,18,0,,1/27/21,KS
 121205908,hotel_init,18,0,,1/27/21,KS
 121205908,otherb_init,18,18,,1/27/21,KS
@@ -5146,7 +5146,7 @@
 121207050,classa_prop,168,0,,8/28/20,SL
 121207050,hotel_prop,168,0,,8/28/20,SL
 121207050,otherb_prop,168,172,,8/28/20,SL
-121207210,Inactive: Duplicate,,,duplicate of M00700585,8/5/22,VB
+121207210,job_inactive,,Inactive: Duplicate,duplicate of M00700585,8/5/22,VB
 121207238,classa_init,17,2,,1/27/21,KS
 121207238,hotel_init,17,0,,1/27/21,KS
 121207238,otherb_init,17,15,,1/27/21,KS
@@ -5838,7 +5838,7 @@
 121579210,otherb_init,16,0,,8/27/20,KS
 121579210,hotel_prop,15,0,,8/27/20,KS
 121579210,otherb_prop,15,0,,8/27/20,KS
-121580538,job_inactive,,Inactive,identified as duplicate,8/13/19,
+121580538,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 121582689,classa_init,239,0,job related to units_.sql,2/19/20,
 121582689,classa_prop,285,93,change u_init / change u_prop,8/13/19,
 121585631,classa_init,,0,change u_init,8/13/19,
@@ -7156,7 +7156,7 @@
 122608320,otherb_prop,16,10,,1/31/20,
 122608730,classa_init,1,0,,7/27/20,SL
 122608749,classa_init,7,6,,1/29/21,ws
-122610638,job_inactive,,Inactive,Likely duplicate of job 122336846. Verify in 20Q2,1/31/20,
+122610638,job_inactive,,Inactive: Duplicate,Likely duplicate of job 122336846. Verify in 20Q2,1/31/20,
 122610656,hotel_init,232,0,,8/29/20,TD
 122610656,otherb_init,232,0,,8/29/20,TD
 122610656,hotel_prop,232,0,,8/29/20,TD
@@ -7685,8 +7685,8 @@
 122948640,classa_prop,31,0,,1/31/20,
 122948640,hotel_prop,31,31,,1/31/20,
 122948640,otherb_prop,31,0,,8/29/20,KS
-122950761,job_inactive,,Inactive,duplicate of 121784701,7/16/20,KS
-122951975,job_inactive,,Inactive,duplicate of 121207728,7/22/20,KS
+122950761,job_inactive,,Inactive: Duplicate,duplicate of 121784701,7/16/20,KS
+122951975,job_inactive,,Inactive: Duplicate,duplicate of 121207728,7/22/20,KS
 122961713,classa_init,11,1,,8/28/20,AP
 122961713,hotel_init,11,0,,8/28/20,AP
 122961713,otherb_init,11,10,,8/28/20,AP
@@ -7705,7 +7705,7 @@
 122971301,otherb_init,21,7,,8/24/20,TD
 122971301,hotel_prop,14,0,,8/24/20,TD
 122971301,otherb_prop,14,0,,8/24/20,TD
-122974335,job_inactive,,Inactive,Likely duplicate of job 121206284. Verify in 20Q2,1/29/20,
+122974335,job_inactive,,Inactive: Duplicate,Likely duplicate of job 121206284. Verify in 20Q2,1/29/20,
 122977172,classa_init,24,0,,7/31/20,KS
 122977172,hotel_init,24,0,,7/31/20,KS
 122977172,otherb_init,24,0,,8/29/20,KS
@@ -8042,7 +8042,7 @@
 123202578,classa_init,1,0,,1/29/21,ks
 123202587,classa_init,1,0,,1/29/21,ks
 123202596,classa_init,7,6,,1/29/21,WS
-123203121,job_inactive,,Inactive,Likely duplicate of job 123756104. Verify in 20Q2,1/29/20,
+123203121,job_inactive,,Inactive: Duplicate,Likely duplicate of job 123756104. Verify in 20Q2,1/29/20,
 123203416,classa_init,168,0,,1/28/20,
 123203416,hotel_init,168,168,,1/28/20,
 123203416,otherb_init,168,0,,8/29/20,KS
@@ -8157,7 +8157,7 @@
 123320281,otherb_init,198,0,,8/29/20,TD
 123320281,hotel_prop,198,0,,8/29/20,TD
 123320281,otherb_prop,198,0,,8/29/20,TD
-123328167,job_inactive,,Inactive,identified as duplicate,8/13/19,
+123328167,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 123328915,classa_init,11,0,,2/3/20,
 123328915,hotel_init,11,0,,8/29/20,SL
 123328915,otherb_init,11,11,,2/3/20,
@@ -8195,7 +8195,7 @@
 123338995,otherb_init,9,8,,7/29/20,SL
 123338995,hotel_prop,7,0,,8/29/20,SL
 123338995,otherb_prop,7,0,,7/29/20,SL
-123340768,job_inactive,,Inactive,duplicate of 123919359,7/27/20,KS
+123340768,job_inactive,,Inactive: Duplicate,duplicate of 123919359,7/27/20,KS
 123341865,hotel_init,1,0,,8/26/20,KS
 123341865,otherb_init,1,0,,8/26/20,KS
 123341865,classa_prop,,0,,8/26/20,KS
@@ -8381,7 +8381,7 @@
 123499632,otherb_init,53,0,,8/27/20,AP
 123499632,hotel_prop,53,0,,8/27/20,AP
 123499632,otherb_prop,53,0,,8/27/20,AP
-123508702,job_inactive,,Inactive,duplicate of 166003266,7/17/20,KS
+123508702,job_inactive,,Inactive: Duplicate,duplicate of 166003266,7/17/20,KS
 123512494,classa_init,12,1,,1/31/20,
 123512494,otherb_init,12,11,,1/31/20,
 123515268,hotel_init,10,0,,8/29/20,KS
@@ -8544,7 +8544,7 @@
 123697160,classa_prop,610,0,,1/28/20,
 123697160,hotel_prop,610,610,,7/31/20,TD
 123697160,otherb_prop,610,0,,8/29/20,TD
-123699408,job_inactive,,Inactive,duplicate of 123699792,7/17/20,KS
+123699408,job_inactive,,Inactive: Duplicate,duplicate of 123699792,7/17/20,KS
 123701574,hotel_init,9,0,,8/29/20,KS
 123701574,otherb_init,9,0,,8/29/20,KS
 123701574,hotel_prop,1,0,,8/29/20,KS
@@ -8735,7 +8735,7 @@
 123835476,classa_prop,70,0,,1/30/20,
 123835476,hotel_prop,70,30,,1/30/20,
 123835476,otherb_prop,70,0,,8/29/20,KS
-123837474,job_inactive,,Inactive,duplicate,1/21/21,KS
+123837474,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 123846954,classa_init,4,0,,1/29/21,ks
 123846963,classa_init,4,0,,1/29/21,ks
 123846981,latitude,40.7445,40.74445,,7/22/20,AP
@@ -8789,7 +8789,7 @@
 123879570,otherb_init,11,10,,7/30/20,SL
 123879570,hotel_prop,7,0,,8/29/20,SL
 123879570,otherb_prop,7,0,,7/30/20,SL
-123880265,job_inactive,,Inactive,Likely duplicate of job 123880283. Verify in 20Q2,1/29/20,
+123880265,job_inactive,,Inactive: Duplicate,Likely duplicate of job 123880283. Verify in 20Q2,1/29/20,
 123881763,hotel_init,406,0,,8/29/20,AP
 123881763,otherb_init,406,0,,8/29/20,AP
 123881763,hotel_prop,406,0,,8/29/20,AP
@@ -8870,7 +8870,7 @@
 123911151,otherb_init,20,0,,8/3/22,VB
 123911151,hotel_prop,20,0,,8/3/22,VB
 123911151,otherb_prop,20,0,,8/3/22,VB
-123913122,job_inactive,,Inactive,duplicate of 123912392,7/21/20,KS
+123913122,job_inactive,,Inactive: Duplicate,duplicate of 123912392,7/21/20,KS
 123914130,classa_init,138,0,,4/28/22,AP
 123914130,hotel_init,138,138,,4/28/22,AP
 123914130,otherb_init,138,0,,4/28/22,AP
@@ -8927,7 +8927,7 @@
 140934041,otherb_prop,4,0,,1/27/21,KS
 140934997,remove,,,job_desc suggest this is a test record,8/30/21,
 140941097,remove,,,job_desc suggest this is a test record,8/10/21,AP
-140944593,job_inactive,,Inactive,duplicate,1/21/21,KS
+140944593,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 140945510,classa_init,10,1,,4/29/22,AP
 140945510,hotel_init,10,0,,4/29/22,AP
 140945510,otherb_init,10,9,,4/29/22,AP
@@ -8937,7 +8937,7 @@
 140946234,otherb_init,49,0,,1/26/21,TD
 140946234,hotel_prop,18,40,,1/26/21,TD
 140946234,otherb_prop,18,0,,1/26/21,TD
-140949972,job_inactive,,Inactive,duplicate,1/21/21,KS
+140949972,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 140957356,hotel_init,8,0,,1/27/21,KS
 140957356,otherb_init,8,0,,1/27/21,KS
 140957356,hotel_prop,1,0,,1/27/21,KS
@@ -8957,7 +8957,7 @@
 140965908,classa_prop,21,0,,1/27/21,KS
 140965908,hotel_prop,21,0,,1/27/21,KS
 140965908,otherb_prop,21,21,,1/27/21,KS
-140965908,job_inactive,,Inactive,duplicate,1/21/21,KS
+140965908,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 140966275,classa_init,10,1,,1/26/21,TD
 140966275,hotel_init,10,0,,1/26/21,TD
 140966275,otherb_init,10,10,,1/26/21,TD
@@ -9286,7 +9286,7 @@
 201059941,classa_init,,1,,12/1/19,
 201061509,classa_init,,1,,12/1/19,
 201061527,classa_init,,1,,12/1/19,
-201065685,job_inactive,,Inactive,duplicate of 201065532,7/17/20,KS
+201065685,job_inactive,,Inactive: Duplicate,duplicate of 201065532,7/17/20,KS
 201066149,classa_init,,1,,12/1/19,
 201068272,classa_init,,2,,12/1/19,
 201069217,classa_init,,2,,8/14/20,SL
@@ -9651,7 +9651,7 @@
 210181417,otherb_init,68,0,,8/29/20,TD
 210181417,hotel_prop,68,0,,8/29/20,TD
 210181417,otherb_prop,68,0,,8/29/20,TD
-210181471,job_inactive,,Inactive,duplicate,1/21/21,KS
+210181471,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 210181863,classa_prop,18,0,,1/26/21,TD
 210181863,hotel_prop,18,0,,1/26/21,TD
 210181863,otherb_prop,18,18,,1/26/21,TD
@@ -9789,7 +9789,7 @@
 220079251,otherb_init,60,0,,4/28/22,AP
 220079251,hotel_prop,60,0,,4/28/22,AP
 220079251,otherb_prop,60,0,,4/28/22,AP
-220080089,job_inactive,,Inactive,duplicate of 220079616,7/21/20,KS
+220080089,job_inactive,,Inactive: Duplicate,duplicate of 220079616,7/21/20,KS
 220080775,classa_init,1,0,,7/27/20,SL
 220083353,classa_prop,56,0,,1/28/20,
 220083353,hotel_prop,56,56,,7/31/20,AP
@@ -9965,7 +9965,7 @@
 220173933,hotel_prop,80,0,,8/29/20,SL
 220173933,otherb_prop,80,0,,8/29/20,SL
 220173960,classa_init,1,0,,7/27/20,SL
-220176235,job_inactive,,Inactive,identified as duplicate,8/13/19,
+220176235,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 220178787,classa_init,,0,,8/3/22,VB
 220178787,hotel_init,,0,,8/3/22,VB
 220178787,otherb_init,,0,,8/3/22,VB
@@ -10363,7 +10363,7 @@
 220465093,classa_init,1,0,,2/1/21,KS
 220465226,classa_init,1,0,,2/1/21,SL
 220465226,classa_prop,,0,,2/1/21,SL
-220466396,job_inactive,,Inactive,Likely duplicate of job 220676150. Verify in 20Q2,1/29/20,
+220466396,job_inactive,,Inactive: Duplicate,Likely duplicate of job 220676150. Verify in 20Q2,1/29/20,
 220468759,classa_init,5,0,,7/17/20,KS
 220468991,classa_init,2,0,,7/27/20,SL
 220469589,classa_init,3,0,Garage,8/27/20,SL
@@ -10575,7 +10575,7 @@
 220556976,otherb_init,11,75,,1/28/20,
 220556976,classa_prop,130,2,,1/28/20,
 220556976,hotel_prop,130,128,,1/28/20,
-220557966,job_inactive,,Inactive,Likely duplicate of job 220722644. Verify in 20Q2,1/29/20,
+220557966,job_inactive,,Inactive: Duplicate,Likely duplicate of job 220722644. Verify in 20Q2,1/29/20,
 220559045,classa_init,1,0,,7/27/20,SL
 220560159,latitude,,40.853885,,1/30/20,
 220560159,longitude,,-73.789199,,1/30/20,
@@ -10653,11 +10653,11 @@
 220598333,classa_init,1,0,,7/20/20,SL
 220598850,hotel_init,1,0,,7/21/22,SL
 220598850,otherb_init,1,0,,7/21/22,SL
-220600446,job_inactive,,Inactive,duplicate of 220673162,7/22/20,KS
+220600446,job_inactive,,Inactive: Duplicate,duplicate of 220673162,7/22/20,KS
 220603504,hotel_prop,28,0,,8/29/20,AP
 220603504,otherb_prop,28,0,,8/29/20,AP
 220603899,classa_prop,,0,change u_prop,8/13/19,
-220604843,job_inactive,,Inactive,Likely duplicate of job 220696370. Verify in 20Q2,1/30/20,
+220604843,job_inactive,,Inactive: Duplicate,Likely duplicate of job 220696370. Verify in 20Q2,1/30/20,
 220607001,classa_init,1,0,,4/27/22,VB
 220607001,otherb_init,1,1,,4/27/22,VB
 220607001,hotel_init,1,0,,4/27/22,VB
@@ -10691,7 +10691,7 @@
 220613343,otherb_prop,8,0,,4/29/22,AP
 220614538,latitude,,40.872271,,1/30/20,
 220614538,longitude,,-73.858737,,1/30/20,
-220614967,job_inactive,,Inactive,duplicate of 220625731,7/21/20,KS
+220614967,job_inactive,,Inactive: Duplicate,duplicate of 220625731,7/21/20,KS
 220614967,hotel_init,2,0,,7/21/22,SL
 220614967,otherb_init,2,0,,7/21/22,SL
 220614967,classa_init,2,0,,7/21/22,SL
@@ -10719,7 +10719,7 @@
 220623467,classa_init,,0,,8/6/20,KS
 220623467,hotel_init,,0,,8/29/20,KS
 220623467,otherb_init,,1,,8/6/20,KS
-220625740,job_inactive,,Inactive,duplicate of 220625731,7/21/20,KS
+220625740,job_inactive,,Inactive: Duplicate,duplicate of 220625731,7/21/20,KS
 220626400,classa_init,2,0,,2/1/21,SL
 220627819,classa_init,1,0,,7/20/20,SL
 220627828,latitude,,40.876884,,1/30/20,
@@ -10862,7 +10862,7 @@
 220652345,otherb_prop,15,22,,1/28/20,
 220652354,classa_prop,15,0,,1/28/20,
 220652354,otherb_prop,15,15,,1/28/20,
-220652354,job_inactive,,Inactive,identified as duplicate,8/13/19,
+220652354,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 220652755,classa_init,60,0,,1/28/20,
 220652755,hotel_init,60,60,,1/28/20,
 220652755,otherb_init,60,0,,8/29/20,KS
@@ -10870,21 +10870,21 @@
 220652755,hotel_prop,77,77,,1/28/20,
 220652755,otherb_prop,77,0,,8/29/20,KS
 220652844,classa_init,1,0,,7/27/20,SL
-220653344,job_inactive,,Inactive,Likely duplicate of job 220653353. Verify in 20Q2,1/29/20,
-220655084,job_inactive,,Inactive,duplicate of 220625731,7/21/20,KS
+220653344,job_inactive,,Inactive: Duplicate,Likely duplicate of job 220653353. Verify in 20Q2,1/29/20,
+220655084,job_inactive,,Inactive: Duplicate,duplicate of 220625731,7/21/20,KS
 220655084,hotel_init,2,0,,7/21/22,SL
 220655084,otherb_init,2,0,,7/21/22,SL
 220655084,classa_init,2,0,,7/21/22,SL
-220655093,job_inactive,,Inactive,duplicate of 220625731,7/21/20,KS
+220655093,job_inactive,,Inactive: Duplicate,duplicate of 220625731,7/21/20,KS
 220655093,hotel_init,2,0,,7/21/22,SL
 220655093,otherb_init,2,0,,7/21/22,SL
 220655093,classa_init,2,0,,7/21/22,SL
 220655333,longitude,-73.902102,-73.90206505,,7/14/22,AP
 220655333,latitude,40.853013,40.85298598,,7/14/22,AP
 220655663,classa_prop,2,0,,7/21/20,SL
-220658107,job_inactive,,Inactive,duplicate,1/21/21,KS
-220658198,job_inactive,,Inactive,duplicate of 220668524,7/21/20,KS
-220658205,job_inactive,,Inactive,duplicate,1/21/21,KS
+220658107,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+220658198,job_inactive,,Inactive: Duplicate,duplicate of 220668524,7/21/20,KS
+220658205,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 220659268,classa_init,3,0,Garage,8/27/20,SL
 220659268,classa_prop,0,0,Garage,8/27/20,SL
 220659491,classa_init,,0,"240 beds, assumed 2 per room",8/27/20,SL
@@ -10953,7 +10953,7 @@
 220673215,classa_init,2,0,,7/20/20,SL
 220673439,classa_init,1,0,,7/20/20,SL
 220673484,classa_init,1,0,,7/20/20,SL
-220673974,job_inactive,,Inactive,duplicate,1/21/21,KS
+220673974,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 220676374,hotel_init,1,0,,8/3/22,VB
 220676374,otherb_init,1,0,,8/3/22,VB
 220676374,hotel_prop,1,0,,8/3/22,VB
@@ -10964,11 +10964,11 @@
 220676427,classa_prop,12,0,,8/29/20,KS
 220676427,hotel_prop,12,0,,8/29/20,KS
 220676427,otherb_prop,12,12,,8/29/20,KS
-220678979,job_inactive,,Inactive,duplicate of 220722092,7/21/20,KS
+220678979,job_inactive,,Inactive: Duplicate,duplicate of 220722092,7/21/20,KS
 220679040,classa_init,1,0,,7/20/20,SL
 220679068,classa_init,2,0,,7/20/20,SL
 220680519,classa_init,1,0,,7/20/20,SL
-220681689,job_inactive,,Inactive,duplicate,1/21/21,KS
+220681689,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 220681714,classa_init,1,0,,7/20/20,SL
 220681901,hotel_init,2,0,,8/29/20,KS
 220681901,otherb_init,2,0,,8/5/20,KS
@@ -11121,7 +11121,7 @@
 220716303,classa_init,1,0,,7/20/20,SL
 220716937,latitude,,40.870569,,1/30/20,
 220716937,longitude,,-73.861665,,1/30/20,
-220717339,job_inactive,,Inactive,Likely duplicate of job 220721510. Verify in 20Q2,1/30/20,
+220717339,job_inactive,,Inactive: Duplicate,Likely duplicate of job 220721510. Verify in 20Q2,1/30/20,
 220717393,classa_init,1,0,,7/20/20,SL
 220717400,classa_init,1,0,,2/1/21,SL
 220717482,classa_init,1,0,,7/27/20,SL
@@ -11346,9 +11346,9 @@
 240292571,otherb_init,2,0,,1/26/21,TD
 240292571,hotel_prop,2,0,,1/26/21,TD
 240292571,otherb_prop,2,0,,1/26/21,TD
-240294597,job_inactive,,Inactive,duplicate,1/21/21,KS
+240294597,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 240295989,classa_prop,1,0,,1/27/21,KS
-240295989,job_inactive,,Inactive,duplicate,1/21/21,KS
+240295989,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 240296292,latitude,40.863829,40.86494462,,1/25/21,KS
 240296292,longitude,-73.848159,-73.84787455,,1/25/21,KS
 240296309,latitude,40.863845,40.86494462,,1/25/21,KS
@@ -11399,7 +11399,7 @@
 301011722,classa_init,,0,change u_init,8/13/19,
 301011848,latitude,,40.58182162,,8/23/21,AP
 301011848,longitude,,-73.98661996,,8/23/21,AP
-301016022,job_inactive,,Inactive,duplicate of 301071854,7/21/20,KS
+301016022,job_inactive,,Inactive: Duplicate,duplicate of 301071854,7/21/20,KS
 301016898,classa_init,,0,change u_init,8/13/19,
 301018976,classa_init,,4,,7/23/20,TD
 301020286,classa_init,10,6,,8/28/20,KS
@@ -11729,7 +11729,7 @@
 301320826,otherb_init,187,0,,8/25/21,SL
 301320826,hotel_prop,191,0,,8/25/21,SL
 301320826,otherb_prop,191,0,,8/25/21,SL
-301320826,job_inactive,,Inactive,Likely duplicate of job 310208655. Verify in 20Q2,1/31/20,
+301320826,job_inactive,,Inactive: Duplicate,Likely duplicate of job 310208655. Verify in 20Q2,1/31/20,
 301321433,classa_init,,4,,1/28/20,
 301322548,classa_init,,2,,2/3/21,KS
 301323299,classa_init,,3,,12/1/19,
@@ -12628,7 +12628,7 @@
 301956355,hotel_prop,1,0,,1/21/21,TD
 301956355,otherb_prop,1,0,,1/21/21,TD
 301958638,classa_init,,2,,2/1/21,SL
-301959129,job_inactive,,Inactive,identified as duplicate,8/13/19,
+301959129,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 301960867,classa_init,,1,,12/1/19,
 301960947,classa_init,,6,,1/21/21,TD
 301960947,hotel_init,,0,,1/21/21,TD
@@ -12669,7 +12669,7 @@
 301978251,classa_prop,188,190,,8/25/21,SL
 301978251,hotel_prop,188,0,,8/25/21,SL
 301978251,otherb_prop,188,0,,8/25/21,SL
-301978251,job_inactive,,Inactive,Likely duplicate of job 310208655. Verify in 20Q2,1/31/20,
+301978251,job_inactive,,Inactive: Duplicate,Likely duplicate of job 310208655. Verify in 20Q2,1/31/20,
 301978894,classa_init,,2,,8/27/20,KS
 301978894,hotel_init,,0,,8/27/20,KS
 301978894,otherb_init,,0,,8/27/20,KS
@@ -12746,7 +12746,7 @@
 302017608,classa_prop,1,0,,12/1/19,
 302017608,hotel_prop,1,0,,8/27/20,AP
 302017608,otherb_prop,1,0,,8/27/20,AP
-302018509,job_inactive,,Inactive,duplicate of 302018493,7/17/20,KS
+302018509,job_inactive,,Inactive: Duplicate,duplicate of 302018493,7/17/20,KS
 302019580,classa_init,,2,,1/21/21,TD
 302019580,hotel_init,,0,,1/21/21,TD
 302019580,otherb_init,,0,,1/21/21,TD
@@ -13275,7 +13275,7 @@
 302244667,classa_init,,3,,12/1/19,
 302244685,classa_init,,2,,12/1/19,
 302245194,classa_init,,2,,1/21/21,KS
-302246736,job_inactive,,Inactive,Likely duplicate of job 302325151. Verify in 20Q2,1/29/20,
+302246736,job_inactive,,Inactive: Duplicate,Likely duplicate of job 302325151. Verify in 20Q2,1/29/20,
 302246843,classa_init,,1,,12/1/19,
 302247227,classa_init,,1,change u_init,8/13/19,
 302247646,classa_init,,2,change u_init,8/13/19,
@@ -15595,7 +15595,7 @@
 320484061,otherb_init,1,0,,8/29/20,KS
 320484971,classa_init,1,0,,7/27/20,SL
 320487451,classa_init,1,0,,7/27/20,SL
-320488227,job_inactive,,Inactive,duplicate of 320624669,7/20/20,KS
+320488227,job_inactive,,Inactive: Duplicate,duplicate of 320624669,7/20/20,KS
 320490731,classa_init,54,0,,1/31/20,
 320490731,hotel_init,54,54,,1/31/20,
 320490731,otherb_init,54,0,,8/29/20,KS
@@ -15907,7 +15907,7 @@
 320597412,hotel_prop,32,0,,8/25/21,TD
 320597412,otherb_prop,32,0,,8/25/21,TD
 320597546,classa_init,,0,change u_init,8/13/19,
-320599553,job_inactive,,Inactive,duplicate of 321595751,7/16/20,KS
+320599553,job_inactive,,Inactive: Duplicate,duplicate of 321595751,7/16/20,KS
 320599606,classa_init,,0,,7/20/20,SL
 320608240,classa_init,2,0,,1/29/21,ks
 320610530,classa_init,,0,,8/24/20,KS
@@ -16455,8 +16455,8 @@
 320908103,otherb_init,27,27,,1/31/20,
 320908103,hotel_prop,7,0,,8/29/20,SL
 320908103,otherb_prop,7,0,,8/29/20,SL
-320909353,job_inactive,,Inactive,duplicate of 320911787,7/20/20,KS
-320910047,job_inactive,,Inactive,Likely duplicate of job 321597036. Verify in 20Q2,1/29/20,
+320909353,job_inactive,,Inactive: Duplicate,duplicate of 320911787,7/20/20,KS
+320910047,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321597036. Verify in 20Q2,1/29/20,
 320910252,classa_init,,1,change u_init,8/13/19,
 320910485,classa_prop,,0,change u_prop,8/13/19,
 320910528,classa_init,,0,change u_init,8/13/19,
@@ -16471,7 +16471,7 @@
 320910699,hotel_init,7,0,,8/29/20,TD
 320910699,hotel_prop,4,0,,8/29/20,TD
 320910699,otherb_prop,4,0,,8/29/20,TD
-320910804,job_inactive,,Inactive,duplicate,1/21/21,KS
+320910804,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 320910911,classa_init,,0,change u_init,8/13/19,
 320910911,hotel_init,,0,,8/25/21,TD
 320910911,otherb_init,,0,,8/25/21,TD
@@ -16512,20 +16512,20 @@
 320912189,otherb_init,5,4,,2/3/20,
 320912189,hotel_prop,2,0,,8/29/20,TD
 320912189,otherb_prop,2,0,,8/29/20,TD
-320912223,job_inactive,,Inactive,duplicate of 321590300,7/27/20,KS
+320912223,job_inactive,,Inactive: Duplicate,duplicate of 321590300,7/27/20,KS
 320912367,classa_init,150,0,,7/21/22,SL
 320912367,hotel_init,150,0,,7/21/22,SL
 320912367,otherb_init,150,150,,7/21/22,SL
 320912367,hotel_prop,129,0,,7/21/22,SL
 320912367,otherb_prop,129,0,,7/21/22,SL
-320912562,job_inactive,,Inactive,duplicate of 320912599,7/20/20,KS
+320912562,job_inactive,,Inactive: Duplicate,duplicate of 320912599,7/20/20,KS
 320912633,classa_prop,85,0,,1/28/20,
 320912633,hotel_prop,85,85,,1/28/20,
 320912633,otherb_prop,85,0,,8/29/20,AP
-320912651,job_inactive,,Inactive,duplicate,1/21/21,KS
-320912759,job_inactive,,Inactive,Likely duplicate of job 322013726. Verify in 20Q2,1/31/20,
-320912768,job_inactive,,Inactive,Likely duplicate of job 322013735. Verify in 20Q2,1/31/20,
-320912777,job_inactive,,Inactive,Likely duplicate of job 322013753. Verify in 20Q2,1/31/20,
+320912651,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+320912759,job_inactive,,Inactive: Duplicate,Likely duplicate of job 322013726. Verify in 20Q2,1/31/20,
+320912768,job_inactive,,Inactive: Duplicate,Likely duplicate of job 322013735. Verify in 20Q2,1/31/20,
+320912777,job_inactive,,Inactive: Duplicate,Likely duplicate of job 322013753. Verify in 20Q2,1/31/20,
 320912802,classa_init,,0,,12/1/19,
 320912919,hotel_init,128,0,,8/29/20,TD
 320912919,otherb_init,128,0,,8/29/20,TD
@@ -17420,7 +17420,7 @@
 321190885,hotel_prop,72,72,,1/28/20,
 321190885,otherb_prop,72,0,,8/29/20,AP
 321191134,date_permittd,,2/27/18,,1/19/21,KS
-321191697,job_inactive,,Inactive,Likely duplicate of job 321191893. Verify in 20Q2,1/29/20,
+321191697,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321191893. Verify in 20Q2,1/29/20,
 321191937,classa_init,,0,change u_init,8/13/19,
 321191991,classa_init,6,0,,2/3/20,
 321191991,otherb_init,6,6,,2/3/20,
@@ -17457,7 +17457,7 @@
 321193230,classa_prop,103,0,,1/28/20,
 321193230,hotel_prop,103,103,,1/28/20,
 321193230,otherb_prop,103,0,,8/29/20,AP
-321194088,job_inactive,,Inactive,identified as duplicate,8/13/19,
+321194088,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 321194275,classa_init,29,0,,8/27/20,SL
 321194275,hotel_init,29,0,,8/27/20,SL
 321194275,otherb_init,29,29,,8/27/20,SL
@@ -17494,11 +17494,11 @@
 321196228,classa_prop,53,0,,1/28/20,
 321196228,hotel_prop,53,53,,1/28/20,
 321196228,otherb_prop,53,0,,8/29/20,AP
-321196497,job_inactive,,Inactive,duplicate of 321589642,7/23/20,KS
+321196497,job_inactive,,Inactive: Duplicate,duplicate of 321589642,7/23/20,KS
 321196594,hotel_prop,84,84,,1/28/20,
 321196594,otherb_prop,84,0,,8/29/20,AP
 321196594,classa_prop,84,0,,1/28/20,
-321196736,job_inactive,,Inactive,identified as duplicate,8/13/19,
+321196736,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 321197049,classa_prop,89,0,,1/28/20,
 321197049,hotel_prop,89,89,,1/28/20,
 321197049,otherb_prop,89,0,,8/29/20,AP
@@ -17606,7 +17606,7 @@
 321250604,hotel_prop,8,0,,2/1/21,TD
 321250604,otherb_prop,8,0,,2/1/21,TD
 321252675,classa_init,1,0,,1/29/21,ks
-321253148,job_inactive,,Inactive,duplicate of 321253139,7/21/20,KS
+321253148,job_inactive,,Inactive: Duplicate,duplicate of 321253139,7/21/20,KS
 321254263,classa_init,1,0,,7/20/20,SL
 321254272,classa_init,1,0,,7/27/20,SL
 321254423,classa_init,1,0,,7/20/20,SL
@@ -17930,8 +17930,8 @@
 321384701,latitude,40.733089,40.73322358,,7/14/22,AP
 321384701,longitude,-73.954219,-73.95437692,,7/14/22,AP
 321384783,classa_init,,0,change u_init,8/13/19,
-321384836,job_inactive,,Inactive,Likely duplicate of job 321595476. Verify in 20Q2,1/29/20,
-321385586,job_inactive,,Inactive,Likely duplicate of job 322005441. Verify in 20Q2,1/29/20,
+321384836,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321595476. Verify in 20Q2,1/29/20,
+321385586,job_inactive,,Inactive: Duplicate,Likely duplicate of job 322005441. Verify in 20Q2,1/29/20,
 321385684,hotel_init,1,0,,2/1/21,TD
 321385684,otherb_init,1,0,,2/1/21,TD
 321385684,hotel_prop,7,0,,2/1/21,TD
@@ -18022,13 +18022,13 @@
 321403272,otherb_init,,0,,8/25/21,JS
 321403272,hotel_prop,8,0,,8/25/21,JS
 321403272,otherb_prop,8,0,,8/25/21,JS
-321403619,job_inactive,,Inactive,duplicate of 321589410,7/27/20,KS
+321403619,job_inactive,,Inactive: Duplicate,duplicate of 321589410,7/27/20,KS
 321405029,hotel_init,1,0,,7/21/22,SL
 321405029,otherb_init,1,0,,7/21/22,SL
 321405190,classa_init,2,0,,7/20/20,SL
 321405546,classa_init,4,0,,1/29/21,TD
 321405555,classa_init,2,0,,1/29/21,ks
-321406563,job_inactive,,Inactive,identified as duplicate,8/13/19,
+321406563,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 321407713,classa_init,1,0,,2/1/21,KS
 321407713,classa_prop,1,0,,2/1/21,KS
 321407722,classa_init,1,0,,7/20/20,SL
@@ -18096,7 +18096,7 @@
 321439449,classa_prop,120,0,,1/28/20,
 321439449,hotel_prop,120,120,,1/28/20,
 321439449,otherb_prop,120,0,,8/29/20,AP
-321441034,job_inactive,,Inactive,duplicate of 322085435,7/27/20,KS
+321441034,job_inactive,,Inactive: Duplicate,duplicate of 322085435,7/27/20,KS
 321441953,classa_init,1,0,,1/29/21,ks
 321441962,classa_init,1,0,,1/29/21,ks
 321444157,classa_init,9,2,,1/31/20,
@@ -18149,8 +18149,8 @@
 321461976,otherb_init,8,5,,7/29/20,SL
 321461976,hotel_prop,8,0,,8/29/20,SL
 321461976,otherb_prop,8,0,,7/29/20,SL
-321463135,job_inactive,,Inactive,identified as duplicate,8/13/19,
-321463144,job_inactive,,Inactive,duplicate of 321260032,7/27/20,KS
+321463135,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
+321463144,job_inactive,,Inactive: Duplicate,duplicate of 321260032,7/27/20,KS
 321465598,classa_init,1,0,,7/20/20,SL
 321465810,hotel_init,4,0,,2/1/21,TD
 321465810,otherb_init,4,0,,2/1/21,TD
@@ -18220,7 +18220,7 @@
 321505634,otherb_init,1,0,,7/21/22,SL
 321508481,classa_init,1,0,,7/20/20,SL
 321509006,classa_init,2,0,,7/20/20,SL
-321509444,job_inactive,,Inactive,duplicate,1/21/21,KS
+321509444,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321509499,classa_init,7,1,,2/3/20,
 321509499,hotel_init,7,0,,8/29/20,TD
 321509499,otherb_init,7,6,,2/3/20,
@@ -18304,10 +18304,10 @@
 321542675,classa_init,1,0,,7/21/22,SL
 321542675,hotel_init,1,0,,7/21/22,SL
 321542675,otherb_init,1,0,,7/21/22,SL
-321542684,job_inactive,,Inactive,duplicate of 322043695,7/20/20,KS
-321542700,job_inactive,,Inactive,duplicate of 322043702,7/20/20,KS
+321542684,job_inactive,,Inactive: Duplicate,duplicate of 322043695,7/20/20,KS
+321542700,job_inactive,,Inactive: Duplicate,duplicate of 322043702,7/20/20,KS
 321543200,classa_init,2,0,,7/27/20,SL
-321545681,job_inactive,,Inactive,duplicate of 321689446,7/27/20,KS
+321545681,job_inactive,,Inactive: Duplicate,duplicate of 321689446,7/27/20,KS
 321546047,classa_init,1,0,,7/20/20,SL
 321546555,otherb_prop,67,0,,8/29/20,AP
 321546555,classa_prop,67,0,,1/28/20,
@@ -18393,7 +18393,7 @@
 321571884,otherb_prop,1,0,,8/29/20,KS
 321572446,classa_init,1,0,,7/20/20,SL
 321574417,classa_init,1,0,,2/1/21,SL
-321574426,job_inactive,,Inactive,duplicate,1/21/21,KS
+321574426,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321574907,classa_init,10,2,,1/31/20,
 321574907,otherb_init,10,8,,1/31/20,
 321575121,hotel_init,4,0,,8/29/20,TD
@@ -18402,7 +18402,7 @@
 321575121,otherb_prop,4,0,,8/29/20,TD
 321575345,classa_init,1,0,,7/27/20,SL
 321577548,classa_init,1,0,,7/27/20,SL
-321579298,job_inactive,,Inactive,duplicate of 321596144,7/22/20,KS
+321579298,job_inactive,,Inactive: Duplicate,duplicate of 321596144,7/22/20,KS
 321580598,classa_init,1,0,,7/27/20,SL
 321581686,classa_init,10,0,Garage,8/27/20,SL
 321581686,classa_prop,0,0,Garage,8/27/20,SL
@@ -18410,7 +18410,7 @@
 321581695,classa_prop,0,0,Garage,8/27/20,SL
 321581748,classa_init,3,0,Shed demolition - zero out units init,1/30/20,
 321582275,classa_prop,1,0,,7/21/20,SL
-321582532,job_inactive,,Inactive,duplicate of 321736225,7/22/20,KS
+321582532,job_inactive,,Inactive: Duplicate,duplicate of 321736225,7/22/20,KS
 321583069,classa_init,,0,change u_init,8/13/19,
 321583452,classa_prop,198,0,,4/22/22,SL
 321583452,hotel_prop,198,198,,4/22/22,SL
@@ -18429,7 +18429,7 @@
 321588233,longitude,-73.94568,-73.94586508,,1/25/21,KS
 321588297,latitude,40.63651,40.63634958,,1/25/21,KS
 321588297,longitude,-73.943959,-73.94393157,,1/25/21,KS
-321588322,job_inactive,,Inactive,duplicate of 321588313,7/16/20,KS
+321588322,job_inactive,,Inactive: Duplicate,duplicate of 321588313,7/16/20,KS
 321588448,classa_init,,0,,8/5/20,KS
 321588448,hotel_init,,0,,8/29/20,KS
 321588448,otherb_init,,0,,8/5/20,KS
@@ -18448,7 +18448,7 @@
 321589385,classa_prop,8,0,,7/29/20,SL
 321589385,hotel_prop,8,0,,8/29/20,SL
 321589385,otherb_prop,8,8,,7/29/20,SL
-321589562,job_inactive,,Inactive,duplicate of 321589535,7/17/20,KS
+321589562,job_inactive,,Inactive: Duplicate,duplicate of 321589535,7/17/20,KS
 321589651,otherb_prop,43,0,,7/15/22,SL
 321589651,classa_prop,43,0,,7/15/22,SL
 321589651,hotel_prop,43,43,,7/15/22,SL
@@ -18477,10 +18477,10 @@
 321592433,hotel_init,0,0,,1/26/21,TD
 321592433,otherb_prop,4,0,,1/26/21,TD
 321592433,hotel_prop,4,0,,1/26/21,TD
-321592530,job_inactive,,inactive,duplicate,1/21/21,KS
+321592530,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321592594,latitude,40.636723,40.63659742,,1/25/21,KS
 321592594,longitude,-73.947064,-73.94691825,,1/25/21,KS
-321593245,job_inactive,,Inactive,Likely duplicate of job 321979150. Verify in 20Q2,1/29/20,
+321593245,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321979150. Verify in 20Q2,1/29/20,
 321593254,hotel_init,1,0,,2/1/21,TD
 321593254,otherb_init,1,0,,2/1/21,TD
 321593254,hotel_prop,8,0,,2/1/21,TD
@@ -18509,7 +18509,7 @@
 321594627,classa_prop,,0,"270 beds, assumed 2 per room",8/28/20,SL
 321594627,hotel_prop,,0,"270 beds, assumed 2 per room",8/28/20,SL
 321594627,otherb_prop,,135,"270 beds, assumed 2 per room",8/28/20,SL
-321594636,job_inactive,,Inactive,duplicate of 321588000,7/27/20,KS
+321594636,job_inactive,,Inactive: Duplicate,duplicate of 321588000,7/27/20,KS
 321594690,latitude,,40.658583,,1/30/20,
 321594690,longitude,,-73.948914,,1/30/20,
 321594734,hotel_init,2,0,,2/1/21,TD
@@ -18673,18 +18673,18 @@
 321618040,otherb_init,0,0,,8/29/20,TD
 321618040,hotel_prop,32,35,,1/28/20,
 321618040,otherb_prop,32,0,,8/29/20,TD
-321619441,job_inactive,,Inactive,duplicate of 321593398,7/20/20,KS
+321619441,job_inactive,,Inactive: Duplicate,duplicate of 321593398,7/20/20,KS
 321619833,classa_init,1,0,,7/20/20,SL
 321621410,classa_init,1,0,,7/20/20,SL
 321621606,classa_init,1,0,,7/20/20,SL
 321621615,date_permittd,,2/27/18,,1/19/21,KS
 321621884,classa_init,1,0,,7/27/20,SL
 321621919,classa_init,1,0,,7/20/20,SL
-321622302,job_inactive,,Inactive,Likely duplicate of job 321622320. Verify in 20Q2,1/29/20,
+321622302,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321622320. Verify in 20Q2,1/29/20,
 321622909,classa_init,1,0,,7/27/20,SL
 321623123,classa_init,2,0,,7/20/20,SL
 321623837,classa_init,1,0,,7/20/20,SL
-321625032,job_inactive,,Inactive,duplicate,1/21/21,KS
+321625032,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321626763,classa_init,2,0,,7/27/20,SL
 321627352,hotel_init,1,0,,8/29/20,TD
 321627352,otherb_init,1,8,,2/3/20,
@@ -18738,10 +18738,10 @@
 321642273,otherb_prop,102,0,,8/3/22,VB
 321643129,classa_init,2,0,,7/21/20,KS
 321643995,classa_prop,2,0,,7/21/20,SL
-321645485,job_inactive,,Inactive,duplicate of 321387361,7/22/20,KS
+321645485,job_inactive,,Inactive: Duplicate,duplicate of 321387361,7/22/20,KS
 321646340,classa_init,2,0,,7/20/20,SL
 321646368,classa_init,1,0,,7/20/20,SL
-321646402,job_inactive,,Inactive,duplicate,1/21/21,KS
+321646402,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321646625,classa_prop,,0,change u_prop,8/13/19,
 321646910,classa_init,,0,change u_init,8/13/19,
 321646992,classa_init,2,0,,7/20/20,SL
@@ -18757,7 +18757,7 @@
 321650254,classa_init,2,0,,7/20/20,SL
 321650272,date_permittd,,6/30/20,,1/19/21,KS
 321651388,classa_init,1,0,,7/20/20,SL
-321652083,job_inactive,,Inactive,duplicate,1/21/21,KS
+321652083,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321652733,classa_init,2,0,,7/20/20,SL
 321652742,classa_init,2,0,,7/20/20,SL
 321653885,hotel_init,2,0,,8/29/20,TD
@@ -18765,7 +18765,7 @@
 321653885,hotel_prop,2,0,,8/29/20,TD
 321653885,otherb_prop,2,0,,8/29/20,TD
 321654072,classa_prop,1,0,,7/21/20,KS
-321654768,job_inactive,,Inactive,duplicate of 321386193,7/23/20,KS
+321654768,job_inactive,,Inactive: Duplicate,duplicate of 321386193,7/23/20,KS
 321656301,hotel_init,,0,,8/29/20,KS
 321656301,otherb_init,,0,,8/29/20,KS
 321656301,classa_init,,0,,8/29/20,KS
@@ -18784,7 +18784,7 @@
 321662928,hotel_prop,40,40,,8/3/22,VB
 321662928,otherb_prop,40,0,,8/3/22,VB
 321663017,classa_init,,0,change u_init,8/13/19,
-321663491,job_inactive,,Inactive,duplicate of 321489536,7/21/20,KS
+321663491,job_inactive,,Inactive: Duplicate,duplicate of 321489536,7/21/20,KS
 321664999,classa_init,1,0,,7/27/20,SL
 321666229,hotel_init,0,0,,5/6/22,SL
 321666229,otherb_init,0,0,,5/6/22,SL
@@ -18805,7 +18805,7 @@
 321670170,otherb_init,2,0,,2/1/21,TD
 321670170,hotel_prop,9,0,,2/1/21,TD
 321670170,otherb_prop,9,0,,2/1/21,TD
-321670410,job_inactive,,Inactive,duplicate,1/21/21,KS
+321670410,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321671026,classa_init,1,0,,7/20/20,SL
 321671071,classa_init,1,0,,7/20/20,SL
 321671491,classa_init,1,0,,7/31/20,KS
@@ -18838,7 +18838,7 @@
 321684744,hotel_prop,4,0,,8/29/20,TD
 321684744,otherb_prop,4,0,,8/29/20,TD
 321686537,classa_init,1,0,,7/20/20,SL
-321688054,job_inactive,,Inactive,duplicate of 322068301,7/21/20,KS
+321688054,job_inactive,,Inactive: Duplicate,duplicate of 322068301,7/21/20,KS
 321688991,classa_init,2,0,,7/20/20,SL
 321689650,latitude,40.69225,40.67081022,,8/2/22,AP
 321689650,longitude,-73.927912,-73.86717349,,8/2/22,AP
@@ -18860,7 +18860,7 @@
 321697543,classa_init,1,0,,7/20/20,SL
 321697552,classa_init,1,0,,7/27/20,SL
 321697614,classa_init,1,0,,7/20/20,SL
-321697623,job_inactive,,Inactive,duplicate of 321786590,7/27/20,KS
+321697623,job_inactive,,Inactive: Duplicate,duplicate of 321786590,7/27/20,KS
 321698864,date_permittd,,2/28/18,,1/19/21,KS
 321699408,classa_init,1,0,,7/20/20,SL
 321699523,classa_init,13,3,,1/31/20,
@@ -18917,7 +18917,7 @@
 321724693,otherb_prop,1,0,,8/24/20,TD
 321726076,classa_init,1,0,,7/20/20,SL
 321726076,classa_prop,1,0,,7/20/20,SL
-321726771,job_inactive,,Inactive,Likely duplicate of job 321385719. Verify in 20Q2,1/31/20,
+321726771,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321385719. Verify in 20Q2,1/31/20,
 321726833,classa_init,1,0,,7/20/20,SL
 321727887,classa_init,,0,change u_init,8/13/19,
 321727887,hotel_init,,0,,8/25/21,JS
@@ -18988,9 +18988,9 @@
 321747133,date_permittd,,6/7/18,,1/19/21,KS
 321747133,hotel_prop,32,0,,8/29/20,AP
 321747133,otherb_prop,32,0,,8/29/20,AP
-321749694,job_inactive,,Inactive,Likely duplicate of job 321903687. Verify in 20Q2,1/30/20,
+321749694,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321903687. Verify in 20Q2,1/30/20,
 321749701,classa_init,2,0,,7/27/20,SL
-321749710,job_inactive,,Inactive,Likely duplicate of job 321755285. Verify in 20Q2,1/29/20,
+321749710,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321755285. Verify in 20Q2,1/29/20,
 321750574,classa_init,8,0,,1/31/20,
 321750574,hotel_init,8,0,,8/29/20,TD
 321750574,otherb_init,8,8,,1/31/20,
@@ -19040,8 +19040,8 @@
 321760162,classa_init,1,0,,7/21/22,SL
 321760180,latitude,40.6452,40.64445,,7/22/20,AP
 321760180,longitude,-74.0272,-74.0256,,7/22/20,AP
-321761919,job_inactive,,Inactive,duplicate of 321937721,7/20/20,KS
-321761955,job_inactive,,Inactive,duplicate of 322017866,7/21/20,KS
+321761919,job_inactive,,Inactive: Duplicate,duplicate of 321937721,7/20/20,KS
+321761955,job_inactive,,Inactive: Duplicate,duplicate of 322017866,7/21/20,KS
 321762062,classa_init,1,0,,7/20/20,SL
 321763230,hotel_init,4,0,,8/29/20,KS
 321763230,otherb_init,4,0,,8/29/20,KS
@@ -19113,10 +19113,10 @@
 321776645,classa_init,1,0,,7/20/20,SL
 321776752,classa_init,1,0,,7/20/20,SL
 321777751,classa_init,1,0,,7/27/20,SL
-321778199,job_inactive,,Inactive,duplicate of 322024527,7/17/20,KS
+321778199,job_inactive,,Inactive: Duplicate,duplicate of 322024527,7/17/20,KS
 321778947,classa_init,1,0,,7/20/20,SL
 321778965,classa_init,1,0,,7/20/20,SL
-321779152,job_inactive,,Inactive,identified as duplicate,8/13/19,
+321779152,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 321779535,classa_init,1,0,,7/20/20,SL
 321780710,classa_init,10,2,,8/5/20,TD
 321780710,hotel_init,10,0,,8/29/20,TD
@@ -19172,8 +19172,8 @@
 321792388,hotel_init,1,0,,7/21/22,SL
 321792388,otherb_init,1,0,,7/21/22,SL
 321792592,classa_init,1,0,,7/20/20,SL
-321792930,job_inactive,,Inactive,Likely duplicate of job 321987668. Verify in 20Q2,1/30/20,
-321793788,job_inactive,,Inactive,duplicate of 322042160,7/16/20,KS
+321792930,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321987668. Verify in 20Q2,1/30/20,
+321793788,job_inactive,,Inactive: Duplicate,duplicate of 322042160,7/16/20,KS
 321794778,classa_init,1,0,,7/20/20,SL
 321794787,classa_init,1,0,,7/20/20,SL
 321794803,classa_init,1,0,,7/20/20,SL
@@ -19266,7 +19266,7 @@
 321835546,classa_init,1,0,,7/20/20,SL
 321835555,classa_init,1,0,,7/20/20,SL
 321835573,classa_init,1,0,,7/20/20,SL
-321836992,job_inactive,,Inactive,duplicate of 321387245,7/20/20,KS
+321836992,job_inactive,,Inactive: Duplicate,duplicate of 321387245,7/20/20,KS
 321837606,classa_init,17,0,,4/28/22,AP
 321837606,hotel_init,17,0,,4/28/22,AP
 321837606,otherb_init,17,17,,4/28/22,AP
@@ -19276,7 +19276,7 @@
 321843877,otherb_init,59,0,,8/24/20,TD
 321843877,hotel_prop,52,0,,8/24/20,TD
 321843877,otherb_prop,52,0,,8/24/20,TD
-321843984,job_inactive,,Inactive,duplicate of job 321774086,7/15/20,KS
+321843984,job_inactive,,Inactive: Duplicate,duplicate of job 321774086,7/15/20,KS
 321845170,classa_init,2,0,,2/1/21,SL
 321845303,classa_init,1,0,,7/20/20,SL
 321845492,classa_init,7,0,,1/31/20,
@@ -19312,7 +19312,7 @@
 321907512,classa_init,1,0,,7/20/20,SL
 321908263,classa_prop,,0,change u_prop,8/13/19,
 321908842,classa_init,1,0,,7/20/20,SL
-321909592,job_inactive,,Inactive,duplicate,1/21/21,KS
+321909592,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321910072,classa_init,1,0,,7/20/20,SL
 321910777,hotel_init,61,0,,8/29/20,TD
 321910777,otherb_init,61,0,,8/29/20,TD
@@ -19344,12 +19344,12 @@
 321917958,latitude,40.60963,40.62373473,,8/2/22,AP
 321917958,longitude,-73.962299,-73.98064166,,8/2/22,AP
 321918626,classa_init,1,0,,1/29/21,ks
-321918671,job_inactive,,Inactive,duplicate of 322083543,7/21/20,KS
-321918699,job_inactive,,Inactive,duplicate of 321903151,7/27/20,KS
+321918671,job_inactive,,Inactive: Duplicate,duplicate of 322083543,7/21/20,KS
+321918699,job_inactive,,Inactive: Duplicate,duplicate of 321903151,7/27/20,KS
 321918895,hotel_init,1,0,,8/29/20,WS
 321918895,otherb_init,1,0,,8/29/20,WS
 321921293,classa_init,2,0,,7/20/20,SL
-321921872,job_inactive,,Inactive,Likely duplicate of job 321921881. Verify in 20Q2,1/29/20,
+321921872,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321921881. Verify in 20Q2,1/29/20,
 321923772,classa_init,1,0,,7/20/20,SL
 321923807,classa_init,1,0,,7/27/20,SL
 321923825,classa_init,1,0,,7/20/20,SL
@@ -19386,7 +19386,7 @@
 321934831,hotel_prop,1,0,,8/29/20,KS
 321934831,otherb_prop,1,0,,8/29/20,KS
 321935910,classa_init,1,0,,7/20/20,SL
-321937099,job_inactive,,Inactive,duplicate of 340735556,7/20/20,KS
+321937099,job_inactive,,Inactive: Duplicate,duplicate of 340735556,7/20/20,KS
 321937446,hotel_init,2,0,,8/29/20,TD
 321937446,otherb_init,2,0,,8/29/20,TD
 321937446,hotel_prop,2,0,,8/29/20,TD
@@ -19413,7 +19413,7 @@
 321948103,classa_init,1,0,,7/27/20,SL
 321948112,classa_init,1,0,,7/27/20,SL
 321948498,classa_init,2,0,,7/27/20,SL
-321950803,job_inactive,,Inactive,duplicate of 321594342,7/20/20,KS
+321950803,job_inactive,,Inactive: Duplicate,duplicate of 321594342,7/20/20,KS
 321951991,classa_init,1,0,,7/20/20,SL
 321952080,classa_init,30,15,change_units_init,2/14/20,
 321952099,classa_init,30,15,change_units_init,2/14/20,
@@ -19429,11 +19429,11 @@
 321954033,otherb_prop,2,0,,1/27/21,KS
 321954364,hotel_prop,51,0,,8/29/20,AP
 321954364,otherb_prop,51,0,,8/29/20,AP
-321956353,job_inactive,,Inactive,duplicate,1/21/21,KS
+321956353,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321956442,classa_init,1,0,,7/20/20,SL
 321957058,classa_init,1,0,,2/1/21,KS
 321958878,classa_init,1,0,,7/20/20,SL
-321959172,job_inactive,,Inactive,Likely duplicate of job 321959181. Verify in 20Q2,1/29/20,
+321959172,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321959181. Verify in 20Q2,1/29/20,
 321959298,classa_init,1,0,,7/20/20,SL
 321959305,classa_init,1,0,,2/1/21,SL
 321959779,classa_init,1,0,,7/20/20,SL
@@ -19459,7 +19459,7 @@
 321964718,classa_prop,0,0,Garage,8/27/20,SL
 321964978,classa_init,1,0,,7/20/20,KS
 321964987,classa_init,1,0,,7/20/20,KS
-321965389,job_inactive,,Inactive,identified as duplicate,8/13/19,
+321965389,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 321965548,latitude,40.582824,40.67639181,,8/3/22,AP
 321965548,longitude,-73.987713,-73.93692482,,8/3/22,AP
 321965904,classa_init,1,0,,1/29/21,ks
@@ -19469,21 +19469,21 @@
 321966253,hotel_prop,2,0,,8/29/20,TD
 321966253,otherb_prop,2,0,,8/29/20,TD
 321966333,classa_init,1,0,,7/20/20,SL
-321966672,job_inactive,,Inactive,duplicate,1/21/21,KS
+321966672,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321969526,classa_init,1,0,,7/20/20,SL
 321969535,classa_init,1,0,,7/20/20,SL
-321969660,job_inactive,,Inactive,duplicate of 322085934,7/16/20,KS
+321969660,job_inactive,,Inactive: Duplicate,duplicate of 322085934,7/16/20,KS
 321969937,classa_init,,0,,7/20/20,SL
 321969937,classa_prop,,0,,7/20/20,SL
 321970462,classa_init,1,0,,7/20/20,SL
 321970480,classa_init,1,0,,1/29/21,ks
-321970756,job_inactive,,Inactive,identified as duplicate,8/13/19,
-321970890,job_inactive,,Inactive,duplicate of 321596787,7/27/20,KS
+321970756,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
+321970890,job_inactive,,Inactive: Duplicate,duplicate of 321596787,7/27/20,KS
 321971390,classa_init,1,0,,7/20/20,SL
 321971540,classa_init,1,0,,7/20/20,SL
 321971568,classa_init,1,0,,7/27/20,SL
 321971737,classa_init,1,0,,7/20/20,SL
-321972889,job_inactive,,Inactive,duplicate,1/21/21,KS
+321972889,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 321973806,hotel_init,0,0,,2/1/21,TD
 321973806,otherb_init,0,0,,2/1/21,TD
 321973806,hotel_prop,8,0,,2/1/21,TD
@@ -19587,10 +19587,10 @@
 321996729,classa_init,1,0,,7/20/20,SL
 321996747,classa_init,1,0,,7/20/20,SL
 321998674,classa_init,1,0,,1/29/21,ks
-321999085,job_inactive,,Inactive,Likely duplicate of job 321596643. Verify in 20Q2,1/29/20,
+321999085,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321596643. Verify in 20Q2,1/29/20,
 321999842,classa_init,1,0,,7/27/20,SL
 321999851,classa_init,1,0,,7/20/20,SL
-321999959,job_inactive,,Inactive,duplicate,1/21/21,KS
+321999959,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 322000026,classa_prop,1,0,,7/20/20,SL
 322000384,classa_init,1,1,,8/3/22,VB
 322000384,hotel_init,1,0,,8/3/22,VB
@@ -19673,14 +19673,14 @@
 322012157,otherb_init,7,0,,8/29/20,SL
 322012157,hotel_prop,6,0,,8/29/20,SL
 322012157,otherb_prop,6,0,,8/29/20,SL
-322012157,job_inactive,,Inactive,duplicate of 340732817,7/21/20,KS
+322012157,job_inactive,,Inactive: Duplicate,duplicate of 340732817,7/21/20,KS
 322012601,classa_init,2,0,,7/20/20,SL
 322012978,classa_init,,0,,2/3/21,KS
 322014636,classa_prop,1,0,,7/20/20,SL
-322014672,job_inactive,,Inactive,Likely duplicate of job 322014690. Verify in 20Q2,1/29/20,
+322014672,job_inactive,,Inactive: Duplicate,Likely duplicate of job 322014690. Verify in 20Q2,1/29/20,
 322015047,classa_init,1,0,,7/20/20,SL
 322015779,classa_init,1,0,,7/20/20,SL
-322016082,job_inactive,,Inactive,duplicate,1/21/21,KS
+322016082,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 322016876,classa_init,1,0,,7/20/20,SL
 322017250,classa_init,1,0,,7/20/20,SL
 322018525,classa_init,1,0,,7/20/20,SL
@@ -19725,7 +19725,7 @@
 322028408,otherb_init,2,0,,8/29/20,TD
 322028408,hotel_prop,2,0,,8/29/20,TD
 322028408,otherb_prop,2,0,,8/29/20,TD
-322028961,job_inactive,,Inactive,duplicate,1/21/21,KS
+322028961,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 322029041,classa_init,1,0,,7/20/20,SL
 322029336,classa_init,1,0,,2/1/21,SL
 322029372,classa_init,1,0,,7/20/20,SL
@@ -19755,7 +19755,7 @@
 322035613,otherb_prop,4,0,,4/29/22,AP
 322036202,classa_init,1,0,,7/20/20,SL
 322036220,classa_init,1,0,,7/20/20,SL
-322036266,job_inactive,,Inactive,duplicate of 322036275,7/16/20,KS
+322036266,job_inactive,,Inactive: Duplicate,duplicate of 322036275,7/16/20,KS
 322036774,classa_init,1,0,,7/20/20,SL
 322036863,classa_init,1,0,,2/1/21,SL
 322037103,classa_init,1,0,,1/29/21,ks
@@ -19797,7 +19797,7 @@
 322052817,otherb_init,,0,,8/25/21,JS
 322052817,hotel_prop,10,0,,8/25/21,JS
 322052817,otherb_prop,10,0,,8/25/21,JS
-322052817,job_inactive,,Inactive,Likely duplicate of job 321387101. Verify in 20Q2,1/28/20,
+322052817,job_inactive,,Inactive: Duplicate,Likely duplicate of job 321387101. Verify in 20Q2,1/28/20,
 322052899,classa_init,2,0,,7/27/20,SL
 322059767,classa_init,,0,,8/24/20,KS
 322059767,hotel_init,,0,,8/24/20,KS
@@ -19820,8 +19820,8 @@
 322063645,classa_prop,1,0,,1/27/21,KS
 322063654,classa_prop,1,0,,7/21/20,KS
 322064190,date_permittd,,5/24/19,,1/19/21,KS
-322064458,job_inactive,,Inactive,duplicate,1/21/21,KS
-322065698,job_inactive,,Inactive,duplicate of 321903295,7/21/20,KS
+322064458,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+322065698,job_inactive,,Inactive: Duplicate,duplicate of 321903295,7/21/20,KS
 322066991,classa_init,1,2,,2/3/20,
 322066991,hotel_init,1,0,,8/29/20,TD
 322066991,otherb_init,1,6,,2/3/20,
@@ -20028,7 +20028,7 @@
 340735896,otherb_prop,2,0,,8/3/22,VB
 340740951,latitude,40.61875,40.61852,,7/22/20,AP
 340740951,longitude,-74.031,-74.0308,,7/22/20,AP
-340741923,job_inactive,,Inactive,duplicate,1/21/21,KS
+340741923,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 340741996,hotel_init,2,0,,1/21/21,TD
 340741996,otherb_init,2,0,,1/21/21,TD
 340741996,classa_prop,,0,,1/21/21,TD
@@ -20043,8 +20043,8 @@
 340747730,otherb_init,8,8,,1/26/21,TD
 340747730,hotel_prop,8,0,,1/26/21,TD
 340747730,otherb_prop,8,0,,1/26/21,TD
-340755392,job_inactive,,Inactive,duplicate,1/21/21,KS
-340756827,job_inactive,,Inactive,duplicate,1/21/21,KS
+340755392,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+340756827,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 340757746,classa_prop,66,0,,5/6/22,SL
 340757746,hotel_prop,66,66,,5/6/22,SL
 340757746,otherb_prop,66,0,,5/6/22,SL
@@ -20078,22 +20078,22 @@
 340765693,otherb_init,2,0,,1/26/21,TD
 340765693,hotel_prop,2,0,,1/26/21,TD
 340765693,otherb_prop,2,0,,1/26/21,TD
-340766816,job_inactive,,Inactive,duplicate,1/21/21,KS
+340766816,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 340768495,classa_init,30,6,,1/26/21,TD
 340768495,hotel_init,30,24,,1/26/21,TD
 340768495,otherb_init,30,0,,1/26/21,TD
 340768495,classa_prop,30,18,,1/26/21,TD
 340768495,hotel_prop,30,12,,1/26/21,TD
 340768495,otherb_prop,30,0,,1/26/21,TD
-340770669,job_inactive,,Inactive,duplicate,1/21/21,KS
+340770669,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 340770669,latitude,40.639319,40.63923784,,7/14/22,AP
 340770669,longitude,-73.952244,-73.95242036,,7/14/22,AP
 340771613,latitude,40.717639,40.71758808,,1/25/21,KS
 340771613,longitude,-73.947895,-73.94768022,,1/25/21,KS
-340773256,job_inactive,,Inactive,duplicate,1/21/21,KS
-340773274,job_inactive,,Inactive,duplicate,1/21/21,KS
-340773354,job_inactive,,Inactive,duplicate,1/21/21,KS
-340773522,job_inactive,,Inactive,duplicate,1/21/21,KS
+340773256,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+340773274,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+340773354,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+340773522,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 340776789,hotel_init,3,0,,1/26/21,TD
 340776789,otherb_init,3,0,,1/26/21,TD
 340776789,hotel_prop,1,0,,1/26/21,TD
@@ -20109,11 +20109,11 @@
 340795483,classa_prop,149,22,,5/6/22,SL
 340795483,hotel_prop,149,127,,5/6/22,SL
 340795483,otherb_prop,149,0,,5/6/22,SL
-340797169,job_inactive,,Inactive,duplicate,1/21/21,KS
-340797463,job_inactive,,Inactive,duplicate,1/21/21,KS
-340798658,job_inactive,,Inactive,duplicate,1/21/21,KS
-340799416,job_inactive,,Inactive,duplicate,1/21/21,KS
-340799434,job_inactive,,Inactive,duplicate,1/21/21,KS
+340797169,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+340797463,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+340798658,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+340799416,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+340799434,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 340801500,classa_prop,105,0,,4/28/22,AP
 340801500,hotel_prop,105,105,,4/28/22,AP
 340801500,otherb_prop,105,0,,4/28/22,AP
@@ -20122,7 +20122,7 @@
 340801519,otherb_prop,75,0,,4/28/22,AP
 340801519,latitude,40.676037,40.67578631,,7/14/22,AP
 340801519,longitude,-73.905494,-73.90561399,,7/14/22,AP
-366001344,job_inactive,,Inactive,identified as duplicate,8/13/19,
+366001344,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 400879625,classa_init,,6,,8/25/21,JS
 400879625,hotel_init,,0,,8/25/21,JS
 400879625,otherb_init,,0,,8/25/21,JS
@@ -20808,7 +20808,7 @@
 401736984,otherb_init,,0,,8/25/21,JS
 401736984,hotel_prop,8,0,,8/25/21,JS
 401736984,otherb_prop,8,0,,8/25/21,JS
-401736984,job_inactive,,Inactive,duplicate,1/21/21,KS
+401736984,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 401737439,classa_init,,1,,1/27/20,
 401737830,classa_init,,1,,2/1/21,SL
 401737885,classa_init,,1,,1/27/20,
@@ -21429,7 +21429,7 @@
 402176168,classa_init,,1,,7/14/22,VB
 402177041,classa_init,,1,,1/27/20,
 402177906,classa_init,,1,,8/14/20,SL
-402177906,job_inactive,,Inactive,duplicate,1/21/21,KS
+402177906,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 402177997,classa_init,,2,"change u_init, change u_prop",8/13/19,
 402177997,classa_prop,,0,"change u_init, change u_prop",8/13/19,
 402178175,classa_init,,1,,1/27/20,
@@ -21817,7 +21817,7 @@
 402387476,otherb_prop,1,0,,8/24/20,KS
 402387494,classa_init,,2,,12/1/19,
 402387608,classa_init,,1,,12/1/19,
-402387975,job_inactive,,Inactive,duplicate of 402387984,7/17/20,KS
+402387975,job_inactive,,Inactive: Duplicate,duplicate of 402387984,7/17/20,KS
 402387984,classa_init,12,1,,7/17/20,KS
 402387993,classa_init,,1,change u_init,8/13/19,
 402389991,classa_init,,1,,12/1/19,
@@ -22775,7 +22775,7 @@
 402679240,classa_init,1,0,,7/27/20,SL
 402679268,classa_init,1,0,,7/27/20,SL
 402679348,classa_init,2,0,,7/27/20,SL
-402679393,job_inactive,,Inactive,duplicate of 402680951,7/21/20,KS
+402679393,job_inactive,,Inactive: Duplicate,duplicate of 402680951,7/21/20,KS
 402679767,classa_init,1,0,,7/21/20,KS
 402680050,classa_init,1,0,,7/21/20,KS
 402680078,classa_init,1,0,,7/27/20,SL
@@ -23304,11 +23304,11 @@
 410220728,classa_prop,1,0,,7/21/20,SL
 410220853,classa_init,1,0,,7/27/20,SL
 410221148,classa_prop,1,0,,7/21/20,SL
-410221727,job_inactive,,Inactive,duplicate of 410221736,7/21/20,KS
-410221745,job_inactive,,Inactive,duplicate of 410221763,7/21/20,KS
-410221754,job_inactive,,Inactive,duplicate of 410221736,7/21/20,KS
-410221781,job_inactive,,Inactive,duplicate of 410221772,7/21/20,KS
-410221790,job_inactive,,Inactive,duplicate of 410221816,7/21/20,KS
+410221727,job_inactive,,Inactive: Duplicate,duplicate of 410221736,7/21/20,KS
+410221745,job_inactive,,Inactive: Duplicate,duplicate of 410221763,7/21/20,KS
+410221754,job_inactive,,Inactive: Duplicate,duplicate of 410221736,7/21/20,KS
+410221781,job_inactive,,Inactive: Duplicate,duplicate of 410221772,7/21/20,KS
+410221790,job_inactive,,Inactive: Duplicate,duplicate of 410221816,7/21/20,KS
 410222245,classa_init,2,0,,2/1/21,SL
 410223119,latitude,40.78310569,40.78266,,7/22/20,AP
 410223119,longitude,-73.895323,-73.8963,,7/22/20,AP
@@ -23436,7 +23436,7 @@
 420051883,hotel_init,121,121,,2/3/20,
 420051883,classa_prop,120,0,,2/3/20,
 420051883,hotel_prop,120,120,,2/3/20,
-420052980,job_inactive,,Inactive,duplicate of 420842814,7/21/20,KS
+420052980,job_inactive,,Inactive: Duplicate,duplicate of 420842814,7/21/20,KS
 420053319,classa_init,1,0,,7/21/20,KS
 420053328,classa_init,1,0,,7/27/20,SL
 420053346,classa_init,1,0,,7/21/20,KS
@@ -24085,7 +24085,7 @@
 420501709,hotel_prop,61,61,,7/29/20,AP
 420501709,otherb_prop,61,0,,8/29/20,AP
 420503146,classa_init,1,0,,7/27/20,SL
-420504671,job_inactive,,Inactive,duplicate of 420504662,7/21/20,KS
+420504671,job_inactive,,Inactive: Duplicate,duplicate of 420504662,7/21/20,KS
 420504699,classa_init,1,0,,7/21/20,KS
 420505661,classa_init,1,0,,7/27/20,SL
 420505732,classa_init,1,0,Shed demolition - zero out units init,1/30/20,
@@ -24560,7 +24560,7 @@
 420664310,otherb_init,200,0,,4/22/22,SL
 420664310,hotel_prop,200,0,,4/22/22,SL
 420664310,otherb_prop,200,0,,4/22/22,SL
-420664329,job_inactive,,Inactive,Likely duplicate of job 421728802. Verify in 20Q2,1/29/20,
+420664329,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421728802. Verify in 20Q2,1/29/20,
 420664604,classa_prop,20,0,,1/28/20,
 420664604,hotel_prop,20,20,,1/28/20,
 420664604,otherb_prop,20,0,,8/29/20,AP
@@ -25104,7 +25104,7 @@
 420981673,classa_prop,1,0,,7/21/20,SL
 420982618,classa_init,1,0,,7/21/20,KS
 420982645,classa_init,1,0,,7/21/20,KS
-420983252,job_inactive,,Inactive,duplicate of 420983243,7/23/20,KS
+420983252,job_inactive,,Inactive: Duplicate,duplicate of 420983243,7/23/20,KS
 420984288,classa_init,1,0,,7/21/20,KS
 420984448,classa_init,1,0,,7/21/20,KS
 420984849,classa_prop,1,0,,7/21/20,SL
@@ -25134,7 +25134,7 @@
 420994963,hotel_prop,13,0,,2/1/21,TD
 420994963,otherb_prop,13,0,,2/1/21,TD
 420995141,classa_init,22,2,change u_init,2/14/20,
-420995668,job_inactive,,Inactive,duplicate,1/21/21,KS
+420995668,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 420996202,classa_init,2,0,,7/21/20,KS
 420996248,classa_init,1,0,,7/21/20,KS
 420996596,classa_prop,1,0,,7/21/20,SL
@@ -25387,7 +25387,7 @@
 421085006,classa_init,1,0,,7/21/20,KS
 421085426,classa_init,1,0,,7/27/20,SL
 421085845,classa_prop,1,0,,7/21/20,SL
-421086381,job_inactive,,Inactive,duplicate,1/21/21,KS
+421086381,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421087013,classa_init,1,0,,7/21/20,KS
 421087022,classa_init,1,0,,7/21/20,KS
 421087095,classa_init,2,0,,7/21/20,KS
@@ -25423,7 +25423,7 @@
 421133311,otherb_prop,104,104,,1/26/21,TD
 421133339,latitude,40.595239,40.6068496,,1/25/21,KS
 421133339,longitude,-73.782127,-73.75480355,,1/25/21,KS
-421133589,job_inactive,,Inactive,duplicate,1/21/21,KS
+421133589,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421133614,classa_init,1,0,,2/1/21,SL
 421133721,classa_prop,47,0,,4/28/22,AP
 421133721,hotel_prop,47,28,,4/28/22,AP
@@ -25449,7 +25449,7 @@
 421150916,classa_init,1,0,,7/20/20,SL
 421151700,classa_init,1,0,,7/21/20,KS
 421152585,classa_init,1,0,,7/27/20,SL
-421153487,job_inactive,,Inactive,Likely duplicate of job 421907262. Verify in 20Q2,1/29/20,
+421153487,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421907262. Verify in 20Q2,1/29/20,
 421153584,classa_init,1,0,,7/27/20,SL
 421153968,classa_prop,1,0,,7/21/20,KS
 421154128,classa_init,0,,,8/27/20,AP
@@ -25523,7 +25523,7 @@
 421177755,hotel_prop,151,151,,7/15/20,SL
 421177755,otherb_prop,151,0,,8/29/20,SL
 421179548,classa_init,1,0,,7/27/20,SL
-421179959,job_inactive,,Inactive,duplicate of 421541978,7/21/20,KS
+421179959,job_inactive,,Inactive: Duplicate,duplicate of 421541978,7/21/20,KS
 421179995,classa_prop,48,0,,1/28/20,
 421179995,hotel_prop,48,48,,1/28/20,
 421179995,otherb_prop,48,0,,8/29/20,AP
@@ -25540,7 +25540,7 @@
 421184907,otherb_init,10,7,,1/31/20,
 421184907,hotel_prop,3,0,,8/29/20,TD
 421184907,otherb_prop,3,0,,8/29/20,TD
-421185381,job_inactive,,Inactive,Likely duplicate of job 421633263. Verify in 20Q2,1/31/20,
+421185381,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421633263. Verify in 20Q2,1/31/20,
 421185416,classa_init,1,0,,7/27/20,SL
 421185933,classa_prop,3,0,,1/28/20,
 421186683,classa_init,1,0,,7/27/20,SL
@@ -25867,7 +25867,7 @@
 421315776,classa_init,1,0,,7/27/20,SL
 421316310,classa_prop,2,0,,7/21/20,SL
 421317300,classa_init,1,0,,7/20/20,SL
-421319353,job_inactive,,Inactive,duplicate of 421603777,7/16/20,KS
+421319353,job_inactive,,Inactive: Duplicate,duplicate of 421603777,7/16/20,KS
 421319399,classa_init,1,0,Garage,8/27/20,SL
 421319399,classa_prop,0,0,Garage,8/27/20,SL
 421319415,classa_init,1,0,,7/20/20,SL
@@ -25901,7 +25901,7 @@
 421331026,classa_init,1,0,Garage,8/27/20,SL
 421331026,classa_prop,0,0,Garage,8/27/20,SL
 421331035,classa_init,1,0,,7/20/20,SL
-421331106,job_inactive,,Inactive,identified as duplicate,8/13/19,
+421331106,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 421331295,classa_init,1,0,,7/20/20,SL
 421331446,classa_prop,86,0,,7/16/20,SL
 421331446,hotel_prop,86,86,,7/16/20,SL
@@ -25916,7 +25916,7 @@
 421335763,longitude,,-73.782391,,1/30/20,
 421335772,latitude,,40.752882,,1/30/20,
 421335772,longitude,,-73.782391,,1/30/20,
-421335781,job_inactive,,Inactive,duplicate,1/21/21,KS
+421335781,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421336673,classa_prop,1,0,,7/21/20,SL
 421337725,classa_init,1,0,,7/20/20,SL
 421338387,classa_init,1,0,,7/20/20,SL
@@ -26007,11 +26007,11 @@
 421378912,classa_init,1,0,,7/27/20,SL
 421378921,classa_init,2,0,,7/27/20,SL
 421379877,classa_init,1,0,,7/27/20,SL
-421380017,job_inactive,,Inactive,duplicate of 421661749,7/21/20,KS
-421380026,job_inactive,,Inactive,duplicate of 421661758,7/21/20,KS
-421380231,job_inactive,,Inactive,duplicate of 421601653,7/21/20,KS
+421380017,job_inactive,,Inactive: Duplicate,duplicate of 421661749,7/21/20,KS
+421380026,job_inactive,,Inactive: Duplicate,duplicate of 421661758,7/21/20,KS
+421380231,job_inactive,,Inactive: Duplicate,duplicate of 421601653,7/21/20,KS
 421380393,classa_init,1,0,,7/27/20,SL
-421381766,job_inactive,,Inactive,Likely duplicate of job 421717440. Verify in 20Q2,1/29/20,
+421381766,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421717440. Verify in 20Q2,1/29/20,
 421381784,classa_init,1,0,,7/20/20,SL
 421382284,classa_init,1,0,,7/20/20,SL
 421383942,classa_init,1,0,,7/20/20,SL
@@ -26035,7 +26035,7 @@
 421391942,classa_prop,68,0,,1/28/20,
 421391942,hotel_prop,68,68,,1/28/20,
 421394459,classa_init,1,0,,7/20/20,SL
-421394468,job_inactive,,Inactive,Likely duplicate of job 421394477. Verify in 20Q2,1/29/20,
+421394468,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421394477. Verify in 20Q2,1/29/20,
 421394930,classa_init,1,0,,7/27/20,SL
 421394985,latitude,,40.697909,,1/30/20,
 421394985,longitude,,-73.784334,,1/30/20,
@@ -26127,7 +26127,7 @@
 421434166,classa_init,1,0,,7/20/20,SL
 421434200,classa_init,1,0,,7/27/20,SL
 421436431,classa_init,1,0,,7/27/20,SL
-421436903,job_inactive,,Inactive,Likely duplicate of job 421725547. Verify in 20Q2,1/29/20,
+421436903,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421725547. Verify in 20Q2,1/29/20,
 421436903,hotel_prop,2,0,,7/21/22,SL
 421436903,otherb_prop,2,0,,7/21/22,SL
 421437332,classa_init,,0,change u_init,8/13/19,
@@ -26162,8 +26162,8 @@
 421458390,classa_init,1,0,,7/20/20,SL
 421459184,classa_init,1,0,,7/27/20,SL
 421459692,classa_prop,,0,change u_prop,8/13/19,
-421460412,job_inactive,,Inactive,identified as duplicate,8/13/19,
-421460635,job_inactive,,Inactive,duplicate,1/21/21,KS
+421460412,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
+421460635,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421461000,classa_init,1,0,,7/27/20,SL
 421462697,classa_init,1,0,,7/27/20,SL
 421462759,classa_prop,50,0,,1/28/20,
@@ -26193,7 +26193,7 @@
 421468334,classa_init,1,0,,7/20/20,SL
 421468343,classa_prop,1,0,,7/21/20,KS
 421468691,classa_prop,1,0,,7/21/20,SL
-421469226,job_inactive,,Inactive,identified as duplicate,8/13/19,
+421469226,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 421469789,classa_init,1,0,,7/27/20,SL
 421470704,classa_init,1,0,,7/20/20,SL
 421470955,classa_init,1,0,,7/20/20,SL
@@ -26222,7 +26222,7 @@
 421484753,classa_prop,1,0,,7/21/20,KS
 421485002,classa_init,1,0,,7/27/20,SL
 421487411,classa_init,1,0,,7/27/20,SL
-421487545,job_inactive,,Inactive,duplicate of 421661963,7/16/20,KS
+421487545,job_inactive,,Inactive: Duplicate,duplicate of 421661963,7/16/20,KS
 421488900,hotel_init,1,0,,7/21/22,SL
 421488900,otherb_init,1,0,,7/21/22,SL
 421488900,classa_init,1,0,,7/21/22,SL
@@ -26230,7 +26230,7 @@
 421491521,classa_init,1,0,,7/27/20,SL
 421491950,classa_init,1,0,,7/27/20,SL
 421492076,classa_init,1,0,,7/27/20,SL
-421492236,job_inactive,,Inactive,Likely duplicate of job 421683547. Verify in 20Q2,1/29/20,
+421492236,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421683547. Verify in 20Q2,1/29/20,
 421513204,classa_init,1,0,,7/27/20,SL
 421513268,classa_init,1,0,,7/27/20,SL
 421513277,classa_init,1,0,,7/20/20,SL
@@ -26247,7 +26247,7 @@
 421518272,classa_init,2,0,,7/27/20,SL
 421518708,classa_init,0,,,8/27/20,AP
 421518708,classa_prop,2,0,,7/20/20,SL
-421518913,job_inactive,,Inactive,duplicate,1/21/21,KS
+421518913,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421519020,classa_init,0,,,8/27/20,AP
 421519020,classa_prop,2,0,,7/20/20,SL
 421519039,classa_init,0,,,8/27/20,AP
@@ -26269,7 +26269,7 @@
 421520599,classa_init,,0,change u_init,8/13/19,
 421521151,classa_prop,1,0,,7/21/20,SL
 421521455,classa_init,1,0,,7/20/20,SL
-421522613,job_inactive,,Inactive,duplicate of 421907128,7/21/20,KS
+421522613,job_inactive,,Inactive: Duplicate,duplicate of 421907128,7/21/20,KS
 421522980,job_inactive,,Inactive,change inactive flag,8/13/19,
 421522999,classa_init,1,0,,7/20/20,SL
 421524256,hotel_init,0,0,,8/29/20,KS
@@ -26287,7 +26287,7 @@
 421525479,latitude,,40.701914,,1/30/20,
 421525479,longitude,,-73.787765,,1/30/20,
 421526012,classa_prop,6,4,,1/28/20,
-421526281,job_inactive,,Inactive,Likely duplicate of job 421917046. Verify in 20Q2,1/30/20,
+421526281,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421917046. Verify in 20Q2,1/30/20,
 421527903,classa_init,1,0,,7/27/20,SL
 421528485,classa_prop,114,0,,1/28/20,
 421528485,hotel_prop,114,114,,1/28/20,
@@ -26362,7 +26362,7 @@
 421552475,classa_init,1,0,,7/27/20,SL
 421552732,classa_init,1,0,,7/27/20,SL
 421552830,classa_init,1,0,,7/20/20,SL
-421553731,job_inactive,,Inactive,duplicate of 421799539,7/21/20,KS
+421553731,job_inactive,,Inactive: Duplicate,duplicate of 421799539,7/21/20,KS
 421554384,classa_init,2,0,,2/1/21,SL
 421554384,classa_prop,,0,,2/1/21,SL
 421554393,classa_init,2,0,Garage,8/27/20,SL
@@ -26390,7 +26390,7 @@
 421562160,classa_init,1,0,,7/20/20,SL
 421562507,classa_prop,1,0,,7/21/20,KS
 421562696,classa_init,1,0,,7/27/20,SL
-421562990,job_inactive,,Inactive,duplicate of 421796248,7/27/20,KS
+421562990,job_inactive,,Inactive: Duplicate,duplicate of 421796248,7/27/20,KS
 421563640,classa_prop,39,9,,1/28/20,
 421563640,hotel_prop,39,30,,7/27/20,AP
 421563640,otherb_prop,39,0,,8/29/20,AP
@@ -26449,10 +26449,10 @@
 421578279,classa_init,1,0,,7/20/20,SL
 421578448,classa_init,1,0,,7/27/20,SL
 421578563,classa_init,2,0,,7/20/20,SL
-421578803,job_inactive,,Inactive,Likely duplicate of job 421720659. Verify in 20Q2,1/29/20,
+421578803,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421720659. Verify in 20Q2,1/29/20,
 421579152,classa_init,1,0,,7/27/20,SL
 421580239,classa_prop,1,0,,7/21/20,KS
-421580649,job_inactive,,Inactive,Likely duplicate of job 421736535. Verify in 20Q2,1/29/20,
+421580649,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421736535. Verify in 20Q2,1/29/20,
 421580809,classa_init,1,0,,7/20/20,SL
 421581844,classa_init,1,0,,1/29/21,ks
 421582825,classa_init,3,0,Garage,8/27/20,SL
@@ -26482,7 +26482,7 @@
 421589695,classa_init,1,0,,7/27/20,SL
 421589748,classa_init,1,0,,7/27/20,SL
 421590601,classa_init,1,0,,7/20/20,SL
-421590647,job_inactive,,Inactive,duplicate,1/21/21,KS
+421590647,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421590861,classa_init,1,0,,7/20/20,SL
 421590978,classa_prop,1,0,,7/21/20,SL
 421591138,classa_init,1,0,,7/20/20,SL
@@ -26492,7 +26492,7 @@
 421592609,classa_prop,63,0,,8/3/22,VB
 421592609,hotel_prop,63,63,,8/3/22,VB
 421592609,otherb_prop,63,0,,8/3/22,VB
-421593467,job_inactive,,Inactive,Likely duplicate of job 421736660. Verify in 20Q2,1/29/20,
+421593467,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421736660. Verify in 20Q2,1/29/20,
 421593528,classa_init,1,0,,7/27/20,SL
 421593573,classa_init,1,0,,7/27/20,SL
 421593582,classa_init,11,0,,1/31/20,
@@ -26551,14 +26551,14 @@
 421607363,classa_init,1,0,,7/20/20,SL
 421607443,classa_init,1,0,,7/20/20,SL
 421607452,classa_init,1,0,,7/27/20,SL
-421607568,job_inactive,,Inactive,duplicate of 421958787,7/21/20,KS
+421607568,job_inactive,,Inactive: Duplicate,duplicate of 421958787,7/21/20,KS
 421609753,classa_init,1,0,,7/20/20,SL
 421610000,classa_init,1,0,,7/20/20,SL
 421611081,classa_init,2,0,,7/27/20,SL
 421611161,date_permittd,,10/23/18,,1/19/21,KS
 421611223,classa_init,,0,change u_init,8/13/19,
 421611278,classa_init,1,0,,7/20/20,SL
-421611312,job_inactive,,Inactive,duplicate of 421861499,7/21/20,KS
+421611312,job_inactive,,Inactive: Duplicate,duplicate of 421861499,7/21/20,KS
 421611429,classa_init,1,0,,7/20/20,SL
 421613098,classa_init,1,0,,7/27/20,SL
 421613105,hotel_init,1,0,,7/21/22,SL
@@ -26566,7 +26566,7 @@
 421613114,hotel_init,1,0,,7/21/22,SL
 421613114,otherb_init,1,0,,7/21/22,SL
 421613123,classa_init,1,0,,7/27/20,SL
-421613267,job_inactive,,Inactive,duplicate of 421639551,7/27/20,KS
+421613267,job_inactive,,Inactive: Duplicate,duplicate of 421639551,7/27/20,KS
 421613926,hotel_init,108,0,,8/29/20,TD
 421613926,otherb_init,108,0,,8/29/20,TD
 421613926,hotel_prop,108,0,,8/29/20,TD
@@ -26622,7 +26622,7 @@
 421628448,classa_init,1,0,,7/27/20,SL
 421628509,classa_init,2,0,,7/20/20,SL
 421628536,classa_init,2,0,,7/20/20,SL
-421628689,job_inactive,,Inactive,Likely duplicate of job 421633263. Verify in 20Q2,1/29/20,
+421628689,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421633263. Verify in 20Q2,1/29/20,
 421630346,classa_init,1,0,,7/20/20,SL
 421630453,classa_init,2,0,,7/27/20,SL
 421630818,classa_init,1,0,,7/20/20,SL
@@ -26641,7 +26641,7 @@
 421634020,hotel_prop,405,405,,1/28/20,
 421634020,otherb_prop,405,0,,8/29/20,AP
 421634342,classa_init,1,0,,7/20/20,SL
-421634379,job_inactive,,Inactive,duplicate of 421735723,7/16/20,KS
+421634379,job_inactive,,Inactive: Duplicate,duplicate of 421735723,7/16/20,KS
 421634743,classa_init,1,0,,7/20/20,SL
 421635109,latitude,,40.79694761,,8/23/21,AP
 421635109,longitude,,-73.81611192,,8/23/21,AP
@@ -26749,7 +26749,7 @@
 421662052,hotel_prop,1,0,,8/24/20,KS
 421662052,otherb_prop,1,0,,8/24/20,KS
 421662542,classa_init,1,0,,7/20/20,SL
-421662926,job_inactive,,Inactive,identified as duplicate,8/13/19,
+421662926,job_inactive,,Inactive: Duplicate,identified as duplicate,8/13/19,
 421663060,classa_prop,,0,,7/20/20,SL
 421663168,classa_init,3,0,,1/29/21,ks
 421663195,classa_init,1,0,,1/29/21,ks
@@ -26771,7 +26771,7 @@
 421666398,otherb_init,,0,,8/24/20,KS
 421666398,hotel_prop,2,0,,8/24/20,KS
 421666398,otherb_prop,2,0,,8/24/20,KS
-421667725,job_inactive,,Inactive,duplicate,1/21/21,KS
+421667725,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421668136,date_permittd,,3/11/19,,1/19/21,KS
 421669242,classa_init,2,0,,7/27/20,SL
 421670347,hotel_init,,0,,8/24/20,KS
@@ -26789,7 +26789,7 @@
 421672595,classa_prop,,2,,8/26/20,KS
 421672595,hotel_prop,,0,,8/26/20,KS
 421672595,otherb_prop,,0,,8/26/20,KS
-421672639,job_inactive,,Inactive,Likely duplicate of job 421893785. Verify in 20Q2,1/30/20,
+421672639,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421893785. Verify in 20Q2,1/30/20,
 421672728,latitude,,40.759454,,1/30/20,
 421672728,longitude,,-73.801094,,1/30/20,
 421672746,latitude,,40.759454,,1/30/20,
@@ -26801,7 +26801,7 @@
 421672808,hotel_prop,62,62,,1/28/20,
 421672808,otherb_prop,62,0,,8/29/20,AP
 421673308,classa_init,2,0,,7/20/20,SL
-421674450,job_inactive,,Inactive,Likely duplicate of job 421674441. Verify in 20Q2,1/29/20,
+421674450,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421674441. Verify in 20Q2,1/29/20,
 421675173,classa_init,1,0,,2/1/21,SL
 421675173,classa_prop,,0,,2/1/21,SL
 421675397,classa_prop,1,0,,7/21/20,SL
@@ -26820,7 +26820,7 @@
 421681629,classa_init,1,0,,7/20/20,SL
 421681861,classa_init,1,0,,2/1/21,KS
 421681861,classa_prop,1,0,,2/1/21,KS
-421684305,job_inactive,,Inactive,duplicate,1/21/21,KS
+421684305,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421684403,classa_init,2,0,,7/20/20,SL
 421685064,classa_init,1,0,,7/20/20,SL
 421685064,date_permittd,,12/10/18,,1/19/21,KS
@@ -26833,7 +26833,7 @@
 421686722,classa_init,1,0,,7/27/20,SL
 421686839,classa_init,1,0,,7/20/20,SL
 421686955,classa_init,1,0,,1/29/21,ks
-421687124,job_inactive,,Inactive,duplicate of 421946327,7/21/20,KS
+421687124,job_inactive,,Inactive: Duplicate,duplicate of 421946327,7/21/20,KS
 421687473,classa_init,1,0,,7/20/20,SL
 421687543,classa_init,1,0,,7/20/20,SL
 421688150,date_permittd,,5/24/19,,1/19/21,KS
@@ -26889,14 +26889,14 @@
 421698354,classa_prop,20,0,,2/3/20,
 421698354,hotel_prop,20,0,,8/29/20,KS
 421698354,otherb_prop,20,18,,2/3/20,
-421698498,job_inactive,,Inactive,duplicate of job 421396830,7/15/20,KS
+421698498,job_inactive,,Inactive: Duplicate,duplicate of job 421396830,7/15/20,KS
 421699488,classa_init,1,0,,7/27/20,SL
 421699497,classa_init,1,0,,7/21/20,KS
 421699781,classa_prop,1,0,,7/21/20,KS
 421700029,classa_init,2,0,,7/20/20,SL
 421700467,classa_init,1,0,,7/20/20,SL
 421700591,classa_init,1,0,,7/27/20,SL
-421712212,job_inactive,,Inactive,duplicate of 421802099,7/21/20,KS
+421712212,job_inactive,,Inactive: Duplicate,duplicate of 421802099,7/21/20,KS
 421712542,classa_prop,0,0,,7/20/20,SL
 421712686,classa_init,1,0,,7/20/20,SL
 421712999,classa_init,1,0,,7/27/20,SL
@@ -26957,7 +26957,7 @@
 421728072,classa_init,1,0,,7/20/20,SL
 421728081,classa_init,1,0,,7/27/20,SL
 421728321,classa_init,1,0,,2/1/21,SL
-421728919,job_inactive,,Inactive,Likely duplicate of job 421728928. Verify in 20Q2,1/29/20,
+421728919,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421728928. Verify in 20Q2,1/29/20,
 421728955,classa_init,9,1,,1/31/20,
 421728955,otherb_init,9,8,,1/31/20,
 421729366,hotel_prop,2,0,,7/21/22,SL
@@ -26972,15 +26972,15 @@
 421730130,longitude,-73.767803,-73.78000706,,8/2/22,AP
 421731246,classa_init,1,0,,2/1/21,SL
 421731246,classa_prop,1,0,,2/1/21,SL
-421731585,job_inactive,,Inactive,Likely duplicate of job 421793946. Verify in 20Q2,1/29/20,
+421731585,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421793946. Verify in 20Q2,1/29/20,
 421731638,classa_init,1,0,,1/29/21,ks
-421732628,job_inactive,,Inactive,duplicate,1/21/21,KS
+421732628,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421733574,classa_init,1,0,,7/20/20,SL
 421734047,classa_prop,2,0,,7/21/20,KS
 421734065,classa_init,1,0,,7/27/20,SL
 421734074,classa_prop,2,0,,7/21/20,SL
 421734662,classa_init,1,0,,7/20/20,SL
-421735778,job_inactive,,Inactive,duplicate of 421908813,7/21/20,KS
+421735778,job_inactive,,Inactive: Duplicate,duplicate of 421908813,7/21/20,KS
 421736063,latitude,40.765715,40.7496988,,8/2/22,AP
 421736063,longitude,-73.76971,-73.74509557,,8/2/22,AP
 421736189,date_permittd,,6/30/20,,1/19/21,KS
@@ -27008,7 +27008,7 @@
 421740021,classa_init,1,0,,7/27/20,SL
 421740432,classa_init,1,0,,7/20/20,SL
 421740646,classa_init,1,0,,7/27/20,SL
-421740851,job_inactive,,Inactive,Likely duplicate of job 421891377. Verify in 20Q2,1/30/20,
+421740851,job_inactive,,Inactive: Duplicate,Likely duplicate of job 421891377. Verify in 20Q2,1/30/20,
 421740977,hotel_init,1,0,,7/21/22,SL
 421740977,otherb_init,1,0,,7/21/22,SL
 421740977,classa_init,1,0,,7/21/22,SL
@@ -27061,7 +27061,7 @@
 421765799,classa_init,1,0,,2/1/21,SL
 421766798,classa_init,1,0,,7/20/20,SL
 421766841,classa_init,1,0,,7/20/20,SL
-421773110,job_inactive,,Inactive,duplicate of 440601494,7/21/20,KS
+421773110,job_inactive,,Inactive: Duplicate,duplicate of 440601494,7/21/20,KS
 421773575,classa_init,1,0,,2/1/21,SL
 421773593,classa_init,1,0,,2/1/21,SL
 421773682,classa_init,1,0,,7/21/20,KS
@@ -27106,7 +27106,7 @@
 421780371,classa_prop,5,8,,1/28/20,
 421782459,classa_prop,,0,,7/20/20,SL
 421782556,classa_init,1,0,,7/20/20,SL
-421782930,job_inactive,,Inactive,duplicate,1/21/21,KS
+421782930,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421783207,classa_init,1,0,,2/1/21,SL
 421783350,classa_init,1,0,,2/1/21,SL
 421783396,classa_init,1,0,,2/1/21,SL
@@ -27160,9 +27160,9 @@
 421793287,otherb_init,42,0,,8/29/20,AP
 421793287,hotel_prop,42,0,,8/29/20,AP
 421793287,otherb_prop,42,0,,8/29/20,AP
-421793401,job_inactive,,Inactive,duplicate,1/21/21,KS
+421793401,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421793562,classa_init,1,0,,7/20/20,SL
-421793704,job_inactive,,Inactive,duplicate of 421959241,7/21/20,KS
+421793704,job_inactive,,Inactive: Duplicate,duplicate of 421959241,7/21/20,KS
 421794053,classa_init,2,0,,7/20/20,SL
 421795579,classa_init,1,0,,7/27/20,SL
 421795971,hotel_init,2,0,,7/21/22,SL
@@ -27228,7 +27228,7 @@
 421889594,classa_init,2,0,Garage,8/27/20,SL
 421889594,classa_prop,2,0,Garage,8/27/20,SL
 421890831,classa_init,2,0,,7/27/20,SL
-421891019,job_inactive,,Inactive,duplicate of 421903417,7/21/20,KS
+421891019,job_inactive,,Inactive: Duplicate,duplicate of 421903417,7/21/20,KS
 421891359,classa_prop,1,0,,7/21/20,SL
 421891377,classa_init,1,0,Shed demolition - zero out units init,1/30/20,
 421892615,classa_init,1,0,,7/20/20,SL
@@ -27250,7 +27250,7 @@
 421897380,otherb_prop,8,0,,2/1/21,TD
 421903006,classa_init,1,0,,7/20/20,SL
 421903015,classa_init,1,0,,7/27/20,SL
-421904737,job_inactive,,Inactive,duplicate,1/21/21,KS
+421904737,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 421904906,classa_init,1,0,,7/20/20,SL
 421905237,classa_init,1,0,,7/27/20,SL
 421905399,classa_init,1,0,,7/20/20,SL
@@ -27295,7 +27295,7 @@
 421918250,classa_init,1,0,,7/20/20,SL
 421918349,classa_init,1,0,,7/27/20,SL
 421918358,classa_init,1,0,,2/1/21,SL
-421918713,job_inactive,,Inactive,duplicate of 420166457,7/21/20,KS
+421918713,job_inactive,,Inactive: Duplicate,duplicate of 420166457,7/21/20,KS
 421919044,classa_init,1,0,,7/27/20,SL
 421919268,classa_init,1,0,,7/27/20,SL
 421919302,classa_init,1,0,,7/20/20,SL
@@ -27344,7 +27344,7 @@
 421934125,date_permittd,,6/30/20,,1/19/21,KS
 421934982,classa_init,1,0,,7/20/20,SL
 421936891,classa_init,1,0,,7/27/20,SL
-421937685,job_inactive,,Inactive,duplicate of 421737357,7/21/20,KS
+421937685,job_inactive,,Inactive: Duplicate,duplicate of 421737357,7/21/20,KS
 421938023,classa_prop,20,0,,1/31/20,
 421938023,hotel_prop,20,0,,8/29/20,AP
 421938023,otherb_prop,20,20,,1/31/20,
@@ -27427,16 +27427,16 @@
 440604446,otherb_init,0,0,,2/1/21,TD
 440604446,hotel_prop,10,0,,2/1/21,TD
 440604446,otherb_prop,10,0,,2/1/21,TD
-440605463,job_inactive,,Inactive,duplicate,1/21/21,KS
-440606275,job_inactive,,Inactive,duplicate,1/21/21,KS
-440609049,job_inactive,,Inactive,duplicate,1/21/21,KS
-440611928,job_inactive,,Inactive,duplicate,1/21/21,KS
+440605463,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+440606275,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+440609049,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
+440611928,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 440614211,classa_init,1,0,,2/1/21,SL
 440614211,classa_prop,1,0,,2/1/21,SL
 440617904,latitude,40.76643,40.76626468,,1/25/21,KS
 440617904,longitude,-73.731105,-73.73101615,,1/25/21,KS
 440621383,classa_prop,1,0,,1/27/21,KS
-440621383,job_inactive,,Inactive,duplicate,1/21/21,KS
+440621383,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 440622328,classa_init,204,0,,1/26/21,TD
 440622328,hotel_init,204,0,,1/26/21,TD
 440622328,otherb_init,204,170,,1/26/21,TD
@@ -27444,7 +27444,7 @@
 440622328,hotel_prop,204,0,,1/26/21,TD
 440622328,otherb_prop,204,170,,1/26/21,TD
 440623283,classa_init,2,0,,2/1/21,SL
-440624157,job_inactive,,Inactive,duplicate,1/21/21,KS
+440624157,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 440624273,classa_init,2,0,,1/26/21,TD
 440624273,hotel_init,2,0,,1/26/21,TD
 440624273,otherb_init,2,0,,1/26/21,TD
@@ -27475,7 +27475,7 @@
 440629937,longitude,-73.880112,-73.880346,,1/25/21,KS
 440632451,latitude,40.68915,40.68913905,,1/25/21,KS
 440632451,longitude,-73.762056,-73.76180103,,1/25/21,KS
-440635485,job_inactive,,Inactive,duplicate,1/21/21,KS
+440635485,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 440635528,classa_prop,2,0,,2/1/21,SL
 440637116,classa_prop,1,0,,2/1/21,SL
 440637125,classa_prop,1,0,,1/25/21,KS
@@ -27505,7 +27505,7 @@
 440646534,otherb_prop,120,0,,1/26/21,TD
 440646936,latitude,40.597392,40.59713637,,1/25/21,KS
 440646936,longitude,-73.801298,-73.80270232,,1/25/21,KS
-440649238,job_inactive,,Inactive,duplicate,1/21/21,KS
+440649238,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 440650234,classa_prop,1,0,,2/1/21,SL
 440651046,classa_init,,0,,1/21/21,TD
 440651046,hotel_init,,0,,1/21/21,TD
@@ -27533,7 +27533,7 @@
 440656942,longitude,-73.834426,-73.83432921,,1/25/21,KS
 440656988,latitude,40.78608,40.785923,,1/25/21,KS
 440656988,longitude,-73.8346,-73.83432921,,1/25/21,KS
-440659761,job_inactive,,Inactive,duplicate,1/21/21,KS
+440659761,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 440660027,latitude,40.664241,40.66434336,,1/25/21,KS
 440660027,longitude,-73.748999,-73.74870147,,1/25/21,KS
 440661491,latitude,40.678615,40.67895736,,7/14/22,AP
@@ -27845,7 +27845,7 @@
 500686233,classa_init,,1,,12/1/19,
 500686466,classa_init,,2,,12/1/19,
 500687820,classa_init,,1,,12/1/19,
-500688785,job_inactive,,Inactive,duplicate of 520363160,7/27/20,KS
+500688785,job_inactive,,Inactive: Duplicate,duplicate of 520363160,7/27/20,KS
 500688990,classa_init,,1,,12/1/19,
 500689070,classa_init,,1,,12/1/19,
 500689882,classa_init,,1,,12/1/19,
@@ -28492,7 +28492,7 @@
 510034589,otherb_prop,1,0,,7/21/22,SL
 510035944,hotel_prop,1,0,,7/21/22,SL
 510035944,otherb_prop,1,0,,7/21/22,SL
-510036088,job_inactive,,Inactive,duplicate of 520080536,7/21/20,KS
+510036088,job_inactive,,Inactive: Duplicate,duplicate of 520080536,7/21/20,KS
 510043917,hotel_prop,2,0,,7/21/22,SL
 510043917,otherb_prop,2,0,,7/21/22,SL
 510046086,classa_prop,1,0,,7/21/20,SL
@@ -29503,7 +29503,7 @@
 520186432,classa_init,1,0,,7/21/20,KS
 520186628,classa_init,1,0,,7/27/20,SL
 520186708,classa_init,1,0,,7/20/20,SL
-520186744,job_inactive,,Inactive,duplicate,1/21/21,KS
+520186744,job_inactive,,Inactive: Duplicate,duplicate,1/21/21,KS
 520188047,classa_init,1,0,,7/21/20,KS
 520188163,classa_init,1,0,,7/20/20,SL
 520188234,classa_init,1,0,,7/27/20,SL
@@ -30403,7 +30403,7 @@
 520303680,otherb_prop,2,0,,7/21/22,SL
 520303742,hotel_prop,2,0,,7/21/22,SL
 520303742,otherb_prop,2,0,,7/21/22,SL
-520303760,job_inactive,,Inactive,duplicate of 520314437,7/21/20,KS
+520303760,job_inactive,,Inactive: Duplicate,duplicate of 520314437,7/21/20,KS
 520303760,hotel_prop,1,0,,7/21/22,SL
 520303760,otherb_prop,1,0,,7/21/22,SL
 520303788,hotel_prop,2,0,,7/21/22,SL
@@ -30510,7 +30510,7 @@
 520319487,otherb_init,1,0,,7/21/22,SL
 520319487,classa_init,1,0,,7/21/22,SL
 520319575,classa_init,1,0,,7/20/20,SL
-520319726,job_inactive,,Inactive,duplicate of 520324015,7/21/20,KS
+520319726,job_inactive,,Inactive: Duplicate,duplicate of 520324015,7/21/20,KS
 520319888,hotel_prop,2,0,,7/21/22,SL
 520319888,otherb_prop,2,0,,7/21/22,SL
 520319904,hotel_prop,2,0,,7/21/22,SL
@@ -30567,7 +30567,7 @@
 520325586,otherb_prop,2,0,,7/21/22,SL
 520325737,classa_init,1,0,,7/20/20,SL
 520325746,classa_init,1,0,Pool demolition - zero out units init,1/30/20,
-520326102,job_inactive,,Inactive,Likely duplicate of job 520384469. Verify in 20Q2,1/30/20,
+520326102,job_inactive,,Inactive: Duplicate,Likely duplicate of job 520384469. Verify in 20Q2,1/30/20,
 520326228,classa_init,1,0,,7/20/20,SL
 520326530,classa_init,1,0,,7/20/20,SL
 520326558,classa_init,1,0,,7/20/20,SL
@@ -30608,7 +30608,7 @@
 520329225,longitude,-74.18250832,-74.18265965,,1/22/20,
 520329314,hotel_prop,2,0,,7/21/22,SL
 520329314,otherb_prop,2,0,,7/21/22,SL
-520329449,job_inactive,,Inactive,Likely duplicate of job 520319897. Verify in 20Q2,1/29/20,
+520329449,job_inactive,,Inactive: Duplicate,Likely duplicate of job 520319897. Verify in 20Q2,1/29/20,
 520329449,hotel_prop,2,0,,7/21/22,SL
 520329449,otherb_prop,2,0,,7/21/22,SL
 520329537,classa_init,1,0,,7/20/20,SL
@@ -31044,7 +31044,7 @@
 520367399,hotel_init,1,0,,7/21/22,SL
 520367399,otherb_init,1,0,,7/21/22,SL
 520367406,classa_init,1,0,,7/21/20,KS
-520367898,job_inactive,,Inactive,duplicate of 520386323,7/21/20,KS
+520367898,job_inactive,,Inactive: Duplicate,duplicate of 520386323,7/21/20,KS
 520367898,hotel_prop,1,0,,7/21/22,SL
 520367898,otherb_prop,1,0,,7/21/22,SL
 520367941,latitude,,40.612389,,1/30/20,
@@ -31082,7 +31082,7 @@
 520370544,longitude,,-74.22749586,,8/10/21,AP
 520370544,hotel_prop,1,0,,7/21/22,SL
 520370544,otherb_prop,1,0,,7/21/22,SL
-520370848,job_inactive,,Inactive,identified as duplicate,2/14/20,
+520370848,job_inactive,,Inactive: Duplicate,identified as duplicate,2/14/20,
 520370937,hotel_prop,2,0,,7/21/22,SL
 520370937,otherb_prop,2,0,,7/21/22,SL
 520370955,latitude,,40.521895,,1/30/20,
@@ -31199,7 +31199,7 @@
 520378715,latitude,,40.500231,,1/30/20,
 520378715,longitude,,-74.238651,,1/30/20,
 520379135,classa_init,1,0,,7/20/20,SL
-520379251,job_inactive,,Inactive,duplicate of 520452466,7/21/20,KS
+520379251,job_inactive,,Inactive: Duplicate,duplicate of 520452466,7/21/20,KS
 520379493,latitude,,40.530433,,1/30/20,
 520379493,longitude,,-74.192063,,1/30/20,
 520379493,hotel_prop,2,0,,7/21/22,SL
