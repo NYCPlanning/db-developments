@@ -130,7 +130,17 @@ JOBNUMBER_relevant as (
 	NULL as ZoningDist3,
 	specialdistrict1 as SpecialDist1,
 	specialdistrict2 as SpecialDist2,
+	no_of_parking_spaces::numeric as Prkng_prop
 
+	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
+		ELSE NULL END)::numeric as ZSF_R_prop,
+	(CASE WHEN uselabel ~* 'Commercial' THEN total_floor_area 
+		ELSE NULL END)::numeric as ZSF_C_prop,
+	(CASE WHEN uselabel ~* 'Community Facility' THEN total_floor_area 
+		ELSE NULL END)::numeric as ZSF_CF_prop,
+	(CASE WHEN uselabel ~* 'Manufacturing' THEN total_floor_area 
+		ELSE NULL END)::numeric as ZSF_M_prop,
+	
 	(CASE WHEN landmark ~* 'L' THEN 'Yes'
 		ELSE NULL END) as Landmark,
 
