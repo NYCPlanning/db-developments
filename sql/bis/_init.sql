@@ -216,3 +216,10 @@ JOBNUMBER_relevant as (
 INTO _INIT_BIS_devdb
 FROM dob_jobapplications
 WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
+
+ALTER TABLE _INIT_BIS_devdb 
+ADD COLUMN ZSF_R_prop numeric,
+ADD COLUMN ZSF_C_prop numeric,
+ADD COLUMN ZSF_CF_prop numeric,
+ADD COLUMN ZSF_M_prop numeric,
+ADD COLUMN Prkng_prop numeric;
