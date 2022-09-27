@@ -192,7 +192,6 @@ JOBNUMBER_relevant as (
 	NULL::text as zsf_init,
 	NULL::text as zsf_prop,
 	-- Requested enhancement from Housing with new columns from DOB source data
-	no_of_parking_spaces::numeric as Prkng_prop,
 	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
 		ELSE NULL END) as ZSF_R_prop,
 	(CASE WHEN uselabel ~* 'Commercial' THEN total_floor_area 
@@ -201,6 +200,7 @@ JOBNUMBER_relevant as (
 		ELSE NULL END) as ZSF_CF_prop,
 	(CASE WHEN uselabel ~* 'Manufacturing' THEN total_floor_area 
 		ELSE NULL END) as ZSF_M_prop,
+	no_of_parking_spaces::numeric as Prkng_prop,
 	building_type as bldg_class,
 	NULL as desc_other,
 	(CASE WHEN filing_status ~* 'Withdrawn' THEN 'W'
