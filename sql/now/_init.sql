@@ -132,6 +132,7 @@ JOBNUMBER_relevant as (
 	specialdistrict2 as SpecialDist2,
 	no_of_parking_spaces::numeric as Prkng_prop
 
+	-- Requested enhancements from Housing from issue # 551
 	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
 		ELSE NULL END)::numeric as ZSF_R_prop,
 	(CASE WHEN uselabel ~* 'Commercial' THEN total_floor_area 
