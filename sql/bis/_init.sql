@@ -62,18 +62,6 @@ OUTPUTS:
 	)
 */
 
-DROP TABLE IF EXISTS dob_jobapplications_filtered_A2;
-
-SELECT * 
-INTO dob_jobapplications_filtered_A2
-from dob_jobapplications
-WHERE jobtype in ('A1', 'DM', 'NB') OR
-(jobtype = 'A2' 
-AND sprinkler is NULL 
-AND lower(jobdescription) LIKE '%combin%' 
-AND lower(jobdescription) NOT LIKE '%sprinkler%' 
-AND lower(jobdescription) NOT LIKE '%commercial%');
-
 
 DROP TABLE IF EXISTS _INIT_BIS_devdb;
 WITH
@@ -82,7 +70,16 @@ JOBNUMBER_relevant as (
 	SELECT ogc_fid
 	FROM dob_jobapplications
 	WHERE jobdocnumber = '01'
-	AND jobtype ~* 'A1|DM|NB|A2'
+	AND
+	( 
+		jobtype ~* 'A1|DM|NB' 
+	OR
+		(jobtype = 'A2' 
+		AND sprinkler is NULL 
+		AND lower(jobdescription) LIKE '%combin%' 
+		AND lower(jobdescription) NOT LIKE '%sprinkler%' 
+		AND lower(jobdescription) NOT LIKE '%commercial%')
+	)
 	AND gid = 1
 ) SELECT
 	distinct
@@ -228,5 +225,5 @@ JOBNUMBER_relevant as (
 		longitude::double precision,
 		latitude::double precision),4326) as dob_geom
 INTO _INIT_BIS_devdb
-FROM dob_jobapplications_filtered_A2
+FROM dob_jobapplications
 WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
