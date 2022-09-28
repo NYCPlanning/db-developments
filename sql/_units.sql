@@ -37,6 +37,7 @@ DROP TABLE IF EXISTS _UNITS_devdb_raw CASCADE;
 SELECT DISTINCT
 	a.job_number,
 	a.job_type,
+	a.job_desc,
 	b.occ_proposed,
 	b.occ_initial,
 	a.classa_init,
@@ -115,11 +116,24 @@ Separate A2 from rest of units
 */
 DROP TABLE IF EXISTS UNITS_A2_devdb;
 SELECT * INTO UNITS_A2_devdb 
-FROM _UNITS_devdb_resid_flag WHERE job_type = 'A2 Alteration' AND resid_flag='Residential';
+FROM _UNITS_devdb_resid_flag WHERE job_type = 'Alteration (A2)' AND resid_flag='Residential';
 
 DROP TABLE IF EXISTS _UNITS_devdb;
-SELECT * INTO _UNITS_devdb 
-FROM _UNITS_devdb_resid_flag WHERE job_type != 'A2 Alteration';
+SELECT 
+	job_number,
+	job_type,
+	occ_proposed,
+	occ_initial,
+	classa_init,
+	classa_prop,
+	hotel_init,
+	hotel_prop,
+	otherb_init,
+	otherb_prop, 
+	resid_flag
+ INTO _UNITS_devdb 
+FROM _UNITS_devdb_resid_flag 
+WHERE job_number NOT IN  (SELECT job_number FROM UNITS_A2_devdb);
 
 DROP TABLE _UNITS_devdb_resid_flag CASCADE;
 
