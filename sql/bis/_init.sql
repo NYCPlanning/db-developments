@@ -62,6 +62,7 @@ OUTPUTS:
 	)
 */
 
+
 DROP TABLE IF EXISTS _INIT_BIS_devdb;
 WITH
 -- identify relevant_jobs
@@ -69,7 +70,16 @@ JOBNUMBER_relevant as (
 	SELECT ogc_fid
 	FROM dob_jobapplications
 	WHERE jobdocnumber = '01'
-	AND jobtype ~* 'A1|DM|NB|A2'
+	AND
+	( 
+		jobtype ~* 'A1|DM|NB' 
+	OR
+		(jobtype = 'A2' 
+		AND sprinkler is NULL 
+		AND lower(jobdescription) LIKE '%combin%' 
+		AND lower(jobdescription) NOT LIKE '%sprinkler%' 
+		AND lower(jobdescription) NOT LIKE '%commercial%')
+	)
 	AND gid = 1
 ) SELECT
 	distinct
@@ -78,10 +88,10 @@ JOBNUMBER_relevant as (
 
     -- Job Type recoding
 	(CASE 
-		WHEN jobtype = 'A1' THEN 'Alteration'
+		WHEN jobtype = 'A1' THEN 'Alteration (A1)'
 		WHEN jobtype = 'DM' THEN 'Demolition'
 		WHEN jobtype = 'NB' THEN 'New Building'
-		WHEN jobtype = 'A2' THEN 'A2 Alteration'
+		WHEN jobtype = 'A2' THEN 'Alteration (A2)'
 		ELSE jobtype
 	END ) as job_type,
 

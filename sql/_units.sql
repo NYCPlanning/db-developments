@@ -115,11 +115,11 @@ Separate A2 from rest of units
 */
 DROP TABLE IF EXISTS UNITS_A2_devdb;
 SELECT * INTO UNITS_A2_devdb 
-FROM _UNITS_devdb_resid_flag WHERE job_type = 'A2 Alteration' AND resid_flag='Residential';
+FROM _UNITS_devdb_resid_flag WHERE job_type = 'Alteration (A2)' AND resid_flag='Residential';
 
 DROP TABLE IF EXISTS _UNITS_devdb;
 SELECT * INTO _UNITS_devdb 
-FROM _UNITS_devdb_resid_flag WHERE job_type != 'A2 Alteration';
+FROM _UNITS_devdb_resid_flag WHERE job_type != 'Alteration (A2)';
 
 DROP TABLE _UNITS_devdb_resid_flag CASCADE;
 
