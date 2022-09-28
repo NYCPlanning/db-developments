@@ -119,7 +119,6 @@ SELECT * INTO UNITS_A2_devdb
 FROM _UNITS_devdb_resid_flag WHERE job_type = 'Alteration (A2)' AND resid_flag='Residential';
 
 DROP TABLE IF EXISTS _UNITS_devdb;
-<<<<<<< HEAD
 SELECT 
 	job_number,
 	job_type,
@@ -135,10 +134,6 @@ SELECT
  INTO _UNITS_devdb 
 FROM _UNITS_devdb_resid_flag 
 WHERE job_number NOT IN  (SELECT job_number FROM UNITS_A2_devdb);
-=======
-SELECT * INTO _UNITS_devdb 
-FROM _UNITS_devdb_resid_flag WHERE job_type != 'Alteration (A2)';
->>>>>>> b9c02ee4ff6ca4653203fb896227cdd09c0e5f58
 
 DROP TABLE _UNITS_devdb_resid_flag CASCADE;
 
