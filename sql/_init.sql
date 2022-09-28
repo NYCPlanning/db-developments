@@ -60,7 +60,12 @@ OUTPUTS:
 		existingzoningsqft text,
 		proposedzoningsqft text,
 		buildingclass text,
-		otherdesc text
+		otherdesc text,
+		ZSF_R_prop numeric,
+		ZSF_C_prop numeric,
+		ZSF_CF_prop numeric,
+		ZSF_M_prop numeric,
+		Prking_prop numeric
 	)
 	
 */
