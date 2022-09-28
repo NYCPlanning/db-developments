@@ -153,7 +153,40 @@ WITH
         ON r.hny_id = h.hny_id
         WHERE r.one_dev_to_many_hny = 1 AND r.one_hny_to_many_dev = 0
         GROUP BY r.job_number, r.one_dev_to_many_hny, r.one_hny_to_many_dev), 
-    -- b) this would include all other hny devdb relationship 
+
+    -- b) For one hny to many devdb record, pick the m
+	many_to_one AS (SELECT 
+        r.hny_id AS hny_id,
+        MIN(r.job_number) as job_number, 
+        MAX(COALESCE(r.all_counted_units::int, '0'))::text AS classa_hnyaff,
+        MAX(COALESCE(r.total_units::int, '0'))::text AS all_hny_units,
+        r.one_dev_to_many_hny,
+        r.one_hny_to_many_dev,
+        MIN(h.project_start_date) as project_start_date,
+        MIN(h.project_completion_date) as project_completion_date,
+        MAX(h.extremely_low_income_units::NUMERIC) as extremely_low_income_units,
+        MAX(h.very_low_income_units::NUMERIC) as very_low_income_units,
+        MAX(h.low_income_units::NUMERIC) as low_income_units,
+        MAX(h.moderate_income_units::NUMERIC) as moderate_income_units,
+        MAX(h.middle_income_units::NUMERIC) as middle_income_units,
+        MAX(h.other_income_units::NUMERIC) as other_income_units,
+        MAX(h.studio_units::NUMERIC) as studio_units,
+        MAX(h."1_br_units"::NUMERIC) as "1_br_units",
+        MAX(h."2_br_units"::NUMERIC) as "2_br_units",
+        MAX(h."3_br_units"::NUMERIC) as "3_br_units",
+        MAX(h."4_br_units"::NUMERIC) as "4_br_units",
+        MAX(h."5_br_units"::NUMERIC) as "5_br_units",
+        MAX(h."6_br+_units"::NUMERIC) as "6_br+_units",
+        MAX(h.unknown_br_units::NUMERIC) as unknown_br_units,
+        MAX(h.counted_rental_units::NUMERIC) as counted_rental_units,
+        MAX(h.counted_homeownership_units::NUMERIC) as counted_homeownership_units
+                        
+        FROM RELATEFLAGS_hny_matches r
+        LEFT JOIN HNY_geo h
+        ON r.hny_id = h.hny_id
+        WHERE r.one_dev_to_many_hny = 0 AND r.one_hny_to_many_dev = 1
+        GROUP BY r.hny_id, r.one_dev_to_many_hny, r.one_hny_to_many_dev), 
+    -- c) this would include all other hny devdb relationship 
     other_relations AS (
             SELECT
                 r.hny_id,
