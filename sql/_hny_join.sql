@@ -120,8 +120,40 @@ WITH
 		END) AS one_dev_to_many_hny
     FROM HNY_matches m), --- maybe this is where the hny_geo could be brought in again
 
--- 5) ASSIGN MATCHES   
-	-- a) For one dev to many hny, group by job_number and sum unit fields
+-- 5) ASSIGN MATCHES
+    -- a) for one dev to one hny record simply join on hny_id from the hny_geo table for attributes
+    one_to_one AS (
+        SELECT 
+            r.hny_id,
+            r.job_number::TEXT as job_number,
+            r.all_counted_units::text as classa_hnyaff,
+            r.total_units::text as all_hny_units,
+            r.one_dev_to_many_hny,
+            r.one_hny_to_many_dev,
+            h.project_start_date as project_start_date,
+            h.project_completion_date as project_completion_date,
+            h.extremely_low_income_units::NUMERIC as extremely_low_income_units,
+            h.very_low_income_units::NUMERIC as very_low_income_units,
+            h.low_income_units::NUMERIC as low_income_units,
+            h.moderate_income_units::NUMERIC as moderate_income_units,
+            h.middle_income_units::NUMERIC as middle_income_units,
+            h.other_income_units::NUMERIC as other_income_units,
+            h.studio_units::NUMERIC as studio_units,
+            h."1_br_units"::NUMERIC as "1_br_units",
+            h."2_br_units"::NUMERIC as "2_br_units",
+            h."3_br_units"::NUMERIC as "3_br_units",
+            h."4_br_units"::NUMERIC as "4_br_units",
+            h."5_br_units"::NUMERIC as "5_br_units",
+            h."6_br+_units"::NUMERIC as "6_br+_units",
+            h.unknown_br_units::NUMERIC as unknown_br_units,
+            h.counted_rental_units::NUMERIC as counted_rental_units,
+            h.counted_homeownership_units::NUMERIC as counted_homeownership_units
+        FROM RELATEFLAGS_hny_matches r
+        LEFT JOIN HNY_geo h
+        ON r.hny_id = h.hny_id
+        WHERE NOT (r.one_dev_to_many_hny = 0 AND r.one_hny_to_many_dev = 0)        
+    ),
+	-- b) For one dev to many hny, group by job_number and sum unit fields
 	one_to_many AS (SELECT 
         string_agg(r.hny_id, ', ') AS hny_id,
         r.job_number, 
@@ -154,7 +186,7 @@ WITH
         WHERE r.one_dev_to_many_hny = 1 AND r.one_hny_to_many_dev = 0
         GROUP BY r.job_number, r.one_dev_to_many_hny, r.one_hny_to_many_dev), 
 
-    -- b) For one hny to many devdb record, pick the m
+    -- c) For one hny to many devdb record, pick the m
 	many_to_one AS (SELECT 
         r.hny_id AS hny_id,
         MIN(r.job_number) as job_number, 
@@ -186,7 +218,15 @@ WITH
         ON r.hny_id = h.hny_id
         WHERE r.one_dev_to_many_hny = 0 AND r.one_hny_to_many_dev = 1
         GROUP BY r.hny_id, r.one_dev_to_many_hny, r.one_hny_to_many_dev), 
-    -- c) this would include all other hny devdb relationship 
+    -- d) many-to-many relationship requires a two-step process to create
+        -- 1) first GROUP BY on the job_number to create the array of hny_ids. Since the HNY_matches is created in the
+        -- previous steps such that the matches are comprehensive, i.e. every hny record that joins with other devdb
+        -- records has a unique record that represents the match even when they are not direcly matches with spatial
+        -- joins or bbl joins. For more details see the associative_matches step in the _hny_match.sql, that each array
+        -- would have to contain full set of HNY_id cross-matched with different devdb records.
+        -- 2) use the newly created hny_id array to GROUP BY to squash the job_number to create one-to-one relationship
+        -- The only caveat here is that the sequence of the hny_id in the array would HAVE a impact on this "deduplication"
+        -- process and does not guarantee a unique record at the end. 
     other_relations AS (
             SELECT
                 r.hny_id,
@@ -216,7 +256,8 @@ WITH
             FROM RELATEFLAGS_hny_matches r
             LEFT JOIN HNY_geo h
             ON r.hny_id = h.hny_id
-            WHERE NOT (r.one_dev_to_many_hny = 1 AND r.one_hny_to_many_dev = 0))
+            WHERE NOT (r.one_dev_to_many_hny = 1 AND r.one_hny_to_many_dev = 0)
+        )
         
 -- 6) Insert into HNY_devdb  
 SELECT 
