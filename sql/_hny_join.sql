@@ -227,66 +227,66 @@ WITH
         -- 2) use the newly created hny_id array to GROUP BY to squash the job_number to create one-to-one relationship
         -- The only caveat here is that the sequence of the hny_id in the array would HAVE a impact on this "deduplication"
         -- process and does not guarantee a unique record at the end. 
-        _many_to_many AS (
-            SELECT 
-                string_agg(r.hny_id, ', ') AS hny_id,
-                r.job_number, 
-                SUM(COALESCE(r.all_counted_units::int, '0'))::text AS classa_hnyaff,
-                SUM(COALESCE(r.total_units::int, '0'))::text AS all_hny_units,
-                r.one_dev_to_many_hny,
-                r.one_hny_to_many_dev,
-                MIN(h.project_start_date) as project_start_date,
-                MIN(h.project_completion_date) as project_completion_date,
-                SUM(h.extremely_low_income_units::NUMERIC) as extremely_low_income_units,
-                SUM(h.very_low_income_units::NUMERIC) as very_low_income_units,
-                SUM(h.low_income_units::NUMERIC) as low_income_units,
-                SUM(h.moderate_income_units::NUMERIC) as moderate_income_units,
-                SUM(h.middle_income_units::NUMERIC) as middle_income_units,
-                SUM(h.other_income_units::NUMERIC) as other_income_units,
-                SUM(h.studio_units::NUMERIC) as studio_units,
-                SUM(h."1_br_units"::NUMERIC) as "1_br_units",
-                SUM(h."2_br_units"::NUMERIC) as "2_br_units",
-                SUM(h."3_br_units"::NUMERIC) as "3_br_units",
-                SUM(h."4_br_units"::NUMERIC) as "4_br_units",
-                SUM(h."5_br_units"::NUMERIC) as "5_br_units",
-                SUM(h."6_br+_units"::NUMERIC) as "6_br+_units",
-                SUM(h.unknown_br_units::NUMERIC) as unknown_br_units,
-                SUM(h.counted_rental_units::NUMERIC) as counted_rental_units,
-                SUM(h.counted_homeownership_units::NUMERIC) as counted_homeownership_units
-                                
-            FROM RELATEFLAGS_hny_matches r
-            LEFT JOIN HNY_geo h
-            ON r.hny_id = h.hny_id
-            WHERE r.one_dev_to_many_hny = 1 AND r.one_hny_to_many_dev = 1
-            GROUP BY r.job_number, r.one_dev_to_many_hny, r.one_hny_to_many_dev),
-        many_to_many as (
-            SELECT
-                hny_id,
-                MIN(job_number) as job_number, 
-                MAX(classa_hnyaff) as classa_hnyaff,
-                MAX(all_hny_units) as all_hny_units,
-                one_dev_to_many_hny,
-                one_hny_to_many_dev,
-                MIN(project_start_date) as project_start_date,
-                MIN(project_completion_date) as project_completion_date,
-                MAX(extremely_low_income_units::NUMERIC) as extremely_low_income_units,
-                MAX(very_low_income_units::NUMERIC) as very_low_income_units,
-                MAX(low_income_units::NUMERIC) as low_income_units,
-                MAX(moderate_income_units::NUMERIC) as moderate_income_units,
-                MAX(middle_income_units::NUMERIC) as middle_income_units,
-                MAX(other_income_units::NUMERIC) as other_income_units,
-                MAX(studio_units::NUMERIC) as studio_units,
-                MAX("1_br_units"::NUMERIC) as "1_br_units",
-                MAX("2_br_units"::NUMERIC) as "2_br_units",
-                MAX("3_br_units"::NUMERIC) as "3_br_units",
-                MAX("4_br_units"::NUMERIC) as "4_br_units",
-                MAX("5_br_units"::NUMERIC) as "5_br_units",
-                MAX("6_br+_units"::NUMERIC) as "6_br+_units",
-                MAX(unknown_br_units::NUMERIC) as unknown_br_units,
-                MAX(counted_rental_units::NUMERIC) as counted_rental_units,
-                MAX(counted_homeownership_units::NUMERIC) as counted_homeownership_units
-            FROM _many_to_many
-            GROUP BY hny_id,  one_dev_to_many_hny,one_hny_to_many_dev
+    _many_to_many AS (
+        SELECT 
+            string_agg(r.hny_id, ', ') AS hny_id,
+            r.job_number, 
+            SUM(COALESCE(r.all_counted_units::int, '0'))::text AS classa_hnyaff,
+            SUM(COALESCE(r.total_units::int, '0'))::text AS all_hny_units,
+            r.one_dev_to_many_hny,
+            r.one_hny_to_many_dev,
+            MIN(h.project_start_date) as project_start_date,
+            MIN(h.project_completion_date) as project_completion_date,
+            SUM(h.extremely_low_income_units::NUMERIC) as extremely_low_income_units,
+            SUM(h.very_low_income_units::NUMERIC) as very_low_income_units,
+            SUM(h.low_income_units::NUMERIC) as low_income_units,
+            SUM(h.moderate_income_units::NUMERIC) as moderate_income_units,
+            SUM(h.middle_income_units::NUMERIC) as middle_income_units,
+            SUM(h.other_income_units::NUMERIC) as other_income_units,
+            SUM(h.studio_units::NUMERIC) as studio_units,
+            SUM(h."1_br_units"::NUMERIC) as "1_br_units",
+            SUM(h."2_br_units"::NUMERIC) as "2_br_units",
+            SUM(h."3_br_units"::NUMERIC) as "3_br_units",
+            SUM(h."4_br_units"::NUMERIC) as "4_br_units",
+            SUM(h."5_br_units"::NUMERIC) as "5_br_units",
+            SUM(h."6_br+_units"::NUMERIC) as "6_br+_units",
+            SUM(h.unknown_br_units::NUMERIC) as unknown_br_units,
+            SUM(h.counted_rental_units::NUMERIC) as counted_rental_units,
+            SUM(h.counted_homeownership_units::NUMERIC) as counted_homeownership_units
+                            
+        FROM RELATEFLAGS_hny_matches r
+        LEFT JOIN HNY_geo h
+        ON r.hny_id = h.hny_id
+        WHERE r.one_dev_to_many_hny = 1 AND r.one_hny_to_many_dev = 1
+        GROUP BY r.job_number, r.one_dev_to_many_hny, r.one_hny_to_many_dev),
+    many_to_many as (
+        SELECT
+            hny_id,
+            MIN(job_number) as job_number, 
+            MAX(classa_hnyaff) as classa_hnyaff,
+            MAX(all_hny_units) as all_hny_units,
+            one_dev_to_many_hny,
+            one_hny_to_many_dev,
+            MIN(project_start_date) as project_start_date,
+            MIN(project_completion_date) as project_completion_date,
+            MAX(extremely_low_income_units::NUMERIC) as extremely_low_income_units,
+            MAX(very_low_income_units::NUMERIC) as very_low_income_units,
+            MAX(low_income_units::NUMERIC) as low_income_units,
+            MAX(moderate_income_units::NUMERIC) as moderate_income_units,
+            MAX(middle_income_units::NUMERIC) as middle_income_units,
+            MAX(other_income_units::NUMERIC) as other_income_units,
+            MAX(studio_units::NUMERIC) as studio_units,
+            MAX("1_br_units"::NUMERIC) as "1_br_units",
+            MAX("2_br_units"::NUMERIC) as "2_br_units",
+            MAX("3_br_units"::NUMERIC) as "3_br_units",
+            MAX("4_br_units"::NUMERIC) as "4_br_units",
+            MAX("5_br_units"::NUMERIC) as "5_br_units",
+            MAX("6_br+_units"::NUMERIC) as "6_br+_units",
+            MAX(unknown_br_units::NUMERIC) as unknown_br_units,
+            MAX(counted_rental_units::NUMERIC) as counted_rental_units,
+            MAX(counted_homeownership_units::NUMERIC) as counted_homeownership_units
+        FROM _many_to_many
+        GROUP BY hny_id,  one_dev_to_many_hny,one_hny_to_many_dev
     ) 
 -- 6) Insert into HNY_devdb  
 SELECT 
