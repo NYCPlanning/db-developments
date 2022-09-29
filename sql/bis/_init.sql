@@ -207,6 +207,11 @@ JOBNUMBER_relevant as (
 		END as boro,
 	existingzoningsqft as zsf_init,
 	proposedzoningsqft as zsf_prop,
+	NULL::numeric as ZSF_R_prop,
+	NULL::numeric as ZSF_C_prop,
+	NULL::numeric as ZSF_CF_prop,
+	NULL::numeric as ZSF_M_prop,
+	NULL::numeric as Prkng_prop,
 	buildingclass as bldg_class,
 	otherdesc as desc_other,
 	specialactionstatus as x_withdrawal,
@@ -217,9 +222,3 @@ INTO _INIT_BIS_devdb
 FROM dob_jobapplications
 WHERE ogc_fid in (select ogc_fid from JOBNUMBER_relevant);
 
-ALTER TABLE _INIT_BIS_devdb 
-ADD COLUMN ZSF_R_prop numeric,
-ADD COLUMN ZSF_C_prop numeric,
-ADD COLUMN ZSF_CF_prop numeric,
-ADD COLUMN ZSF_M_prop numeric,
-ADD COLUMN Prkng_prop numeric;
