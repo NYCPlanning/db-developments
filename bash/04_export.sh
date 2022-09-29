@@ -18,8 +18,8 @@ mkdir -p output
     CSV_export EXPORT_devdb devdb &
     SHP_export SHP_devdb devdb &
     
-    display "Export HNY_devdb"
-    CSV_export HNY_devdb &
+    display "Export HNY_devdb_lookup"
+    CSV_export HNY_devdb_lookup &
 
     display "Export QAQC Tables"
     CSV_export FINAL_qaqc &

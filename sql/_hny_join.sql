@@ -9,7 +9,7 @@ DESCRIPTION:
         b) Rest of the cases (one hny to many devdb, many hny to many devdb) are handled by including every 
         possible joins with devdb records for each hny recor.
 
-    6) Combine the two tables to create HNY_devdb
+    6) Combine the two tables to create HNY_devdb_lookup
 
 INPUTS: 
     HNY_matches (
@@ -64,7 +64,7 @@ INPUTS:
 
     
 OUTPUTS: 
-    HNY_devdb(
+    HNY_devdb_lookup(
         hny_id text,
         job_number text,
         classa_hnyaff text,
@@ -93,7 +93,7 @@ OUTPUTS:
 */
 
 -- 5) Identify relationships between devdb records and hny records
-DROP TABLE IF EXISTS HNY_devdb;
+DROP TABLE IF EXISTS HNY_devdb_lookup;
 WITH 
 	-- Find cases of many-hny-to-one-devdb, after having filtered to highest priority
 	many_developments AS (SELECT hny_id
@@ -151,7 +151,7 @@ WITH
         FROM RELATEFLAGS_hny_matches r
         LEFT JOIN HNY_geo h
         ON r.hny_id = h.hny_id
-        WHERE NOT (r.one_dev_to_many_hny = 0 AND r.one_hny_to_many_dev = 0)        
+        WHERE r.one_dev_to_many_hny = 0 AND r.one_hny_to_many_dev = 0       
     ),
 	-- b) For one dev to many hny, group by job_number and sum unit fields
 	one_to_many AS (SELECT 
@@ -286,9 +286,9 @@ WITH
             MAX(counted_rental_units::NUMERIC) as counted_rental_units,
             MAX(counted_homeownership_units::NUMERIC) as counted_homeownership_units
         FROM _many_to_many
-        GROUP BY hny_id,  one_dev_to_many_hny,one_hny_to_many_dev
+        GROUP BY hny_id,  one_dev_to_many_hny, one_hny_to_many_dev
     ) 
--- 6) Insert into HNY_devdb  
+-- 6) Insert into HNY_devdb_lookup  
 SELECT 
 *
 INTO 
