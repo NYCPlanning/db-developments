@@ -14,7 +14,7 @@ SELECT
 	MID_devdb.classa_init,
 	MID_devdb.classa_prop,
 	MID_devdb.classa_net,
-	DevDB_hny.classa_hnyaff,
+	DevDB_hny_lookup.classa_hnyaff,
 	MID_devdb.hotel_init,
 	MID_devdb.hotel_prop,
 	MID_devdb.otherb_init,
@@ -117,12 +117,12 @@ SELECT
 	MID_devdb.datasource,
 	MID_devdb.geomsource,
 	CORR_lists.dcpeditfields,
-	DevDB_hny.hny_id,
-	DevDB_hny.hny_jobrelate,
+	DevDB_hny_lookup.hny_id,
+	DevDB_hny_lookup.hny_jobrelate,
 	:'VERSION' as version
 INTO FINAL_devdb
 FROM MID_devdb 
-    LEFT JOIN DevDB_hny ON MID_devdb.job_number = DevDB_hny.job_number
+    LEFT JOIN DevDB_hny_lookup ON MID_devdb.job_number = DevDB_hny_lookup.job_number
     LEFT JOIN PLUTO_devdb ON MID_devdb.job_number = PLUTO_devdb.job_number
     LEFT JOIN (
         SELECT job_number, STRING_AGG(field, '/') as dcpeditfields
