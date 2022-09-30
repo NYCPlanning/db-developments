@@ -229,7 +229,7 @@ WITH
         -- process and does not guarantee a unique record at the end. 
     _many_to_many AS (
         SELECT 
-            string_agg(r.hny_id, ', ') AS hny_id,
+            string_agg(r.hny_id, ', ' ORDER BY r.hny_id ASC) AS hny_id,
             r.job_number, 
             SUM(COALESCE(r.all_counted_units::int, '0'))::text AS classa_hnyaff,
             SUM(COALESCE(r.total_units::int, '0'))::text AS all_hny_units,
