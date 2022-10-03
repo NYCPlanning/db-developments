@@ -99,6 +99,20 @@ CREATE TABLE DRAFT_spatial AS (
             THEN get_csd(geom)
         ELSE a.geo_csd END) as geo_csd, 
 
+        -- geo_cd
+        (CASE WHEN a.geo_cd IS NULL 
+            OR a.geo_cd = '' 
+            OR a.mode = 'tpad'
+            THEN get_cd(geom)
+        ELSE a.geo_cd END) as geo_cd, 
+        
+        -- geo_council
+        (CASE WHEN a.geo_council IS NULL 
+            OR a.geo_council = '' 
+            OR a.mode = 'tpad'
+            THEN get_council(geom)
+        ELSE a.geo_council END) as geo_csd, 
+
         -- geo_policeprct
         (CASE WHEN a.geo_policeprct IS NULL 
             OR a.geo_policeprct = '' 
@@ -174,6 +188,8 @@ SELECT
     DRAFT_spatial.geo_zipcode,
     DRAFT_spatial.geo_boro,
     DRAFT_spatial.geo_csd,
+    DRAFT_spatial.geo_cd,
+    DRAFT_spatial.geo_council,
     DRAFT_spatial.geo_policeprct,
     DRAFT_spatial.geo_firedivision,
     DRAFT_spatial.geo_firebattalion,
@@ -200,9 +216,7 @@ SELECT
     dcp_ct2020.nta2020 as geo_nta2020,
     dcp_ct2020.ntaname as geo_ntaname2020,
     dcp_ct2020.cdta2020 as geo_cdta2020,
-    dcp_ct2020.cdtaname as geo_cdtaname2020,
-    (SELECT councildst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010 LIMIT 1) as geo_council,
-    (SELECT commntydst FROM lookup_geo WHERE CENSUS_TRACT_BLOCK.bct2010 = bct2010 LIMIT 1) as geo_cd
+    dcp_ct2020.cdtaname as geo_cdtaname2020
 INTO SPATIAL_devdb
 FROM DRAFT_spatial
 LEFT JOIN CENSUS_TRACT_BLOCK ON DRAFT_spatial.uid = CENSUS_TRACT_BLOCK.uid
