@@ -9,8 +9,10 @@ ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
 ## Install postgres
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends postgresql-client 
+RUN apt-get update 
+# && export DEBIAN_FRONTEND=noninteractive \
+RUN apt-get -y install --no-install-recommends postgresql-client 
+# RUN apt-get install jq
 
 # [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
 # COPY requirements.txt /tmp/pip-tmp/
@@ -20,11 +22,11 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
-RUN apt-get install jq
+# RUN apt-get install jq
 
 # Install poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="~/.poetry/bin:$PATH"
+ENV PATH="~/.local/bin:$PATH"
 
 RUN /usr/local/bin/python3 -m pip install -U bandit
 RUN /usr/local/bin/python3 -m pip install -U black

@@ -37,9 +37,10 @@
         5432
     ],
     // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "export PATH=$PATH:$HOME/.local/bin", // && poetry install",
+    "postCreateCommand": "apt-get install -y jq", // && poetry install",
     // Adding id_rsa so that we can push to github from the dev container
-    "initializeCommand": "ssh-add $HOME/.ssh/id_rsa",
+    "initializeCommand": "ssh-add $HOME/.ssh/id_rsa"
+    // export PATH=$PATH:$HOME/.local/bin"
     // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
     // "remoteUser": "vscode"
 }
