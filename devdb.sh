@@ -4,12 +4,8 @@ source bash/config.sh
 function dataloading { 
     shift;
     MODE="${1:-edm}"
-    CLEAR="${2:-true}"
     echo "mode: $MODE"
     ./bash/01_dataloading.sh $1
-    if [ "${CLEAR}" == "true" ]; then
-        rm -rf .library
-    fi
 }
 
 function build { 
@@ -140,8 +136,12 @@ function aggregate {
     )
 }
 
+function clear {
+    rm -rf .library
+}
+
 case $1 in
-    dataloading | build | qaqc | aggregate | export | archive ) $@ ;;
+    dataloading | build | qaqc | aggregate | export | archive | clear ) $@ ;;
     upload) Upload;;
     geocode) geocode ;;
     import) import $@ ;;
