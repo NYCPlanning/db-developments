@@ -78,6 +78,26 @@ CREATE OR REPLACE FUNCTION get_csd(
     _geom geometry
   ) 
     RETURNS varchar AS $$
+      SELECT lpad(b.schooldist::text,2,'0')::varchar
+      FROM dcp_school_districts b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_cd(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
+      SELECT  borocd::varchar
+      FROM dcp_cdboundaries b
+      WHERE ST_Within(_geom, b.wkb_geometry)
+      LIMIT 1
+  $$ LANGUAGE sql;
+
+CREATE OR REPLACE FUNCTION get_council(
+    _geom geometry
+  ) 
+    RETURNS varchar AS $$
       SELECT  coundist::varchar
       FROM dcp_councildistricts b
       WHERE ST_Within(_geom, b.wkb_geometry)
