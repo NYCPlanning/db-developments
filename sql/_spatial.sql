@@ -105,13 +105,13 @@ CREATE TABLE DRAFT_spatial AS (
             OR a.mode = 'tpad'
             THEN get_cd(geom)
         ELSE a.geo_cd END) as geo_cd, 
-        
+
         -- geo_council
         (CASE WHEN a.geo_council IS NULL 
             OR a.geo_council = '' 
             OR a.mode = 'tpad'
             THEN get_council(geom)
-        ELSE a.geo_council END) as geo_csd, 
+        ELSE a.geo_council END) as geo_council, 
 
         -- geo_policeprct
         (CASE WHEN a.geo_policeprct IS NULL 
