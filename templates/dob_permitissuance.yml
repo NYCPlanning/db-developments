@@ -84,8 +84,6 @@ dataset:
       - NTANAME
     sql: |
       SELECT 
-          ROW_NUMBER() OVER(PARTITION BY jobnumber ORDER BY SUBSTR(dobrundate, 7, 4)||SUBSTR(dobrundate, 1, 2)||SUBSTR(dobrundate, 4, 2) DESC) as gid,
-          SUBSTR(dobrundate, 7, 4)||SUBSTR(dobrundate, 1, 2)||SUBSTR(dobrundate, 4, 2) as dobrundate,
           jobnum,
           jobdocnum,
           jobtype,
