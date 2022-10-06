@@ -84,6 +84,8 @@ dataset:
       - NTANAME
     sql: |
       SELECT 
+          ROW_NUMBER() OVER(PARTITION BY jobnumber ORDER BY SUBSTR(dobrundate, 7, 4)||SUBSTR(dobrundate, 1, 2)||SUBSTR(dobrundate, 4, 2) DESC) as gid,
+          SUBSTR(dobrundate, 7, 4)||SUBSTR(dobrundate, 1, 2)||SUBSTR(dobrundate, 4, 2) as dobrundate,
           jobnum,
           jobdocnum,
           jobtype,
@@ -92,9 +94,9 @@ dataset:
       WHERE jobdocnum = '01'
       AND (
         jobtype LIKE '%A1%' OR
+        jobtype LIKE '%A2%' OR
         jobtype LIKE '%DM%' OR
-        jobtype LIKE '%NB%' OR 
-        jobtype LIKE '%A2%'
+        jobtype LIKE '%NB%' 
       )
       
   info:
