@@ -98,7 +98,7 @@ CREATE OR REPLACE FUNCTION get_council(
     _geom geometry
   ) 
     RETURNS varchar AS $$
-      SELECT  coundist::varchar
+      SELECT lpad(b.coundist::text,2,'0')::varchar
       FROM dcp_councildistricts b
       WHERE ST_Within(_geom, b.wkb_geometry)
       LIMIT 1
