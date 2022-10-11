@@ -78,7 +78,7 @@ JOBNUMBER_relevant as (
 		AND sprinkler is NULL 
 		AND lower(jobdescription) LIKE '%combin%' 
 		AND lower(jobdescription) NOT LIKE '%sprinkler%' 
-		AND lower(jobdescription) NOT LIKE '%commercial%')
+		)
 	)
 	AND gid = 1
 ) SELECT
