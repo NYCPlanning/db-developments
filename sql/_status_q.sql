@@ -29,7 +29,8 @@ STATUS_Q_create as (
         min(issuancedate::date) as date_permittd
     FROM dob_permitissuance
     WHERE jobdocnum = '01'
-    AND jobtype ~* 'A1|DM|NB'
+    AND jobtype ~* 'A1|DM|NB|A2'
+    AND gid = 1
     GROUP BY jobnum
     UNION
     SELECT 
