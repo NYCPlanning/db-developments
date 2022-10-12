@@ -3,8 +3,6 @@ source bash/config.sh
 
 function dataloading { 
     shift;
-    MODE="${1:-edm}"
-    echo "mode: $MODE"
     ./bash/01_dataloading.sh $1
 }
 

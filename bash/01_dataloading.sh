@@ -1,8 +1,9 @@
 #!/bin/bash
 source bash/config.sh
 
-## Default mode is EDM
-MODE="${1:-edm}"
+## Default mode is DOB_data_date
+MODE="${1:-DOB_data_date}"
+echo "mode: $MODE"
 
 max_bg_procs 5
 import_public dob_now_applications &
@@ -33,12 +34,12 @@ import_public hny_geocode_results &
 ## Geocode results shares index with _geo_devdb
 psql $BUILD_ENGINE -c "DROP TABLE IF EXISTS _geo_devdb;" 
 case $MODE in
-    weekly) 
+    DOB_lates) 
         import_public dob_permitissuance &
         import_public dob_jobapplications &
         import_public dob_geocode_results &
     ;;
-    *) 
+    DOB_data_date) 
         import_public dob_permitissuance $DOB_DATA_DATE &
         import_public dob_jobapplications $DOB_DATA_DATE &
         import_public dob_geocode_results $DOB_DATA_DATE &
