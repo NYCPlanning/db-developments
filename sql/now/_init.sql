@@ -57,13 +57,15 @@ OUTPUTS:
 		x_withdrawal text,
 		existingzoningsqft text,
 		proposedzoningsqft text,
+		ZoningUG_init,
+		ZoningUG_prop,
 		buildingclass text,
 		otherdesc text,
 		ZSF_R_prop numeric,
 		ZSF_C_prop numeric,
 		ZSF_CF_prop numeric,
 		ZSF_M_prop numeric,
-		Prking_prop numeric
+		Prking_prop numeric,
 
 	)
 */
@@ -191,6 +193,13 @@ JOBNUMBER_relevant as (
 	END) as boro,
 	NULL::text as zsf_init,
 	NULL::text as zsf_prop,
+	--(string_to_array(existing_zoning_used_group, ','),
+	regexp_replace(
+		trim(existing_zoning_used_group),
+		'[^a-zA-Z0-9,]+', '','g') as ZoningUG_init,
+	regexp_replace(
+		trim(proposed_zoning_used_group),
+		'[^a-zA-Z0-9,]+', '','g') as ZoningUG_prop,
 	-- Requested enhancement from Housing with new columns from DOB source data
 	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
 		ELSE NULL END)::numeric as ZSF_R_prop,
