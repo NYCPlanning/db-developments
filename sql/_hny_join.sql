@@ -118,7 +118,7 @@ WITH
 			WHEN job_number IN (SELECT DISTINCT job_number FROM many_hny) THEN 1
 			ELSE 0
 		END) AS one_dev_to_many_hny
-    FROM HNY_matches m), --- maybe this is where the hny_geo could be brought in again
+    FROM HNY_matches m),
 
 -- 5) ASSIGN MATCHES
     -- a) for one dev to one hny record simply join on hny_id from the hny_geo table for attributes
@@ -153,7 +153,7 @@ WITH
         ON r.hny_id = h.hny_id
         WHERE r.one_dev_to_many_hny = 0 AND r.one_hny_to_many_dev = 0       
     ),
-	-- b) For one dev to many hny, group by job_number and sum unit fields
+	-- b) For one dev to many hny, group by job_number and sum unit fields, take the min for date fields.
 	one_to_many AS (SELECT 
         string_agg(r.hny_id, ', ') AS hny_id,
         r.job_number, 
@@ -186,7 +186,8 @@ WITH
         WHERE r.one_dev_to_many_hny = 1 AND r.one_hny_to_many_dev = 0
         GROUP BY r.job_number, r.one_dev_to_many_hny, r.one_hny_to_many_dev), 
 
-    -- c) For one hny to many devdb record, pick the m
+    -- c) For one hny to many devdb record, pick the devdb record with the least job_number. 
+    -- Other HNY attributes is set to either max or min but they should be from the same hny record
 	many_to_one AS (SELECT 
         r.hny_id AS hny_id,
         MIN(r.job_number) as job_number, 
