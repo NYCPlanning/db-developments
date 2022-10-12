@@ -77,6 +77,8 @@ SELECT
     a.stories_prop,
     a.zoningsft_init,
     a.zoningsft_prop,
+    a.ZoningUG_init,
+    a.ZoningUG_prop,
     a.ZSF_R_prop,
     a.ZSF_C_prop,
     a.ZSF_CF_prop,
