@@ -205,13 +205,17 @@ JOBNUMBER_relevant as (
 		WHEN borough ~* 'Queens' THEN '4'
 		WHEN borough ~* 'Staten Island' THEN '5' 
 		END as boro,
+	-- Add dummy columns for union to now applications for _init_devdb
 	existingzoningsqft as zsf_init,
 	proposedzoningsqft as zsf_prop,
+	NULL::text as ZoningUG_init,
+	NULL::text as ZoningUG_prop,
 	NULL::numeric as ZSF_R_prop,
 	NULL::numeric as ZSF_C_prop,
 	NULL::numeric as ZSF_CF_prop,
 	NULL::numeric as ZSF_M_prop,
 	NULL::numeric as Prkng_prop,
+	-- End Dummy columns 
 	buildingclass as bldg_class,
 	otherdesc as desc_other,
 	specialactionstatus as x_withdrawal,
