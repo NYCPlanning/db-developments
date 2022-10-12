@@ -162,13 +162,3 @@ function max_bg_procs {
     done
 }
 
-function geocode {
-  docker run --network=host --rm\
-      -v $(pwd):/src\
-      -w /src\
-      -e BUILD_ENGINE=$BUILD_ENGINE\
-      nycplanning/docker-geosupport:$VERSION_GEO bash -c "
-        python3 python/geocode.py
-        python3 python/geocode_hny.py
-      "
-}

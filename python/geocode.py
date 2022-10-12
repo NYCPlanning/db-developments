@@ -4,9 +4,9 @@ from geosupport import Geosupport, GeosupportError
 from python.utils import psql_insert_copy
 import pandas as pd
 import os
-from dotenv import load_dotenv
+from dotenv import main
 
-load_dotenv()
+main.load_dotenv()
 
 g = Geosupport()
 

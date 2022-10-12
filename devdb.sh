@@ -39,6 +39,11 @@ function output {
     esac
 }
 
+function geocode {
+  poetry run python3 -m python.geocode
+  poetry run python3 -m python.geocode_hny
+}
+
 function library_archive {
     shift;
     get_version $2
