@@ -37,7 +37,7 @@
         5432
     ],
     // Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "apt-get install -y jq",
+    "postCreateCommand": "apt-get install -y jq && poetry install",
     // Adding id_rsa so that we can push to github from the dev container
     "initializeCommand": "ssh-add $HOME/.ssh/id_rsa"
     // export PATH=$PATH:$HOME/.local/bin"

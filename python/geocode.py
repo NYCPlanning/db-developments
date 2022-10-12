@@ -4,6 +4,7 @@ from geosupport import Geosupport, GeosupportError
 from python.utils import psql_insert_copy
 import pandas as pd
 import os
+from tqdm import tqdm
 from dotenv import main
 
 main.load_dotenv()
@@ -83,10 +84,7 @@ def parse_output(geo):
     )
 
 
-if __name__ == "__main__":
-    # connect to BUILD_ENGINE
-    engine = create_engine(os.environ["BUILD_ENGINE"])
-
+def load_applications(engine):
     df = pd.read_sql(
         """
         SELECT 
@@ -113,25 +111,47 @@ if __name__ == "__main__":
                 borough,
                 'now' as source
             FROM dob_now_applications
-        ) a
+        ) a LIMIT 400000
         """,
         engine,
     )
+    
+    return df
 
+def geocode_insert_sql(df):
     records = df.to_dict("records")
-    del df
 
-    print("geocoding begins here ...")
     # Multiprocess
     with Pool(processes=cpu_count()) as pool:
-        it = pool.map(geocode, records, 10000)
+        it = tqdm(pool.map(geocode, records, 1000))
+    # it = tqdm(list(map(geocode, records)))
 
-    print("geocoding finished, dumping GEO_devdb postgres ...")
     df = pd.DataFrame(it)
     df.to_sql(
         "dob_geocode_results",
         con=engine,
-        if_exists="replace",
+        if_exists="append",
         index=False,
         method=psql_insert_copy,
     )
+
+def clear_dob_geocode_results(engine):
+    engine.execute("DROP TABLE IF EXISTS dob_geocode_results")
+
+if __name__ == "__main__":
+    # connect to BUILD_ENGINE
+    engine = create_engine(os.environ["BUILD_ENGINE"])
+
+    df = load_applications(engine)
+    clear_dob_geocode_results(engine)
+    # df = df.iloc[:2000,:]
+    start =0
+    chunk_size = 50000
+    end = chunk_size
+    while end <= df.shape[0]:
+        print(f"geocoding records {start} through {end}")
+        geocode_insert_sql(df.iloc[start:end,:])
+        start = end 
+        end = min(end+chunk_size, df.shape[0])
+        
+

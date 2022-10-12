@@ -85,8 +85,8 @@ if __name__ == "__main__":
 
     print("Geocoding HNY...")
     # Multiprocess
-    with Pool(processes=cpu_count()) as pool:
-        it = pool.map(geocode, records, 10000)
+    with Pool(processes=5) as pool:
+        it = pool.map(geocode, records, 1000)
 
     print("Geocoding finished, dumping to postgres ...")
     df=pd.DataFrame(it)
