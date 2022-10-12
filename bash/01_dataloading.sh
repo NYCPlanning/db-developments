@@ -34,7 +34,7 @@ import_public hny_geocode_results &
 ## Geocode results shares index with _geo_devdb
 psql $BUILD_ENGINE -c "DROP TABLE IF EXISTS _geo_devdb;" 
 case $MODE in
-    DOB_lates) 
+    DOB_latest) 
         import_public dob_permitissuance &
         import_public dob_jobapplications &
         import_public dob_geocode_results &
