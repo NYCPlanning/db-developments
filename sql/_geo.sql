@@ -114,11 +114,8 @@ DRAFT as (
         b.longitude::double precision as geo_longitude,
         b.mode
 	FROM _INIT_devdb a
-	LEFT JOIN _GEO_devdb b
-	ON (CASE 
-            WHEN source = 'bis' THEN b.uid::text
-            ELSE (b.uid::integer + (SELECT MAX(_INIT_BIS_devdb.uid::integer) FROM _INIT_BIS_devdb))::text
-        END)::text = a.uid::text
+	LEFT JOIN _init_geocoded b
+	ON a.uid = b.uid
 ),
 GEOM_dob_bin_bldgfootprints as (
     SELECT distinct
@@ -253,7 +250,7 @@ SELECT
 INTO GEO_devdb
 FROM DRAFT a
 LEFT JOIN GEOM_dob_latlon b
-ON a.uid = b.uid;
+ON a.uid::text = b.uid::text;
 
 -- Create index
 CREATE INDEX GEO_devdb_geom_idx ON GEO_devdb 

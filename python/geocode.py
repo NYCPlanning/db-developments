@@ -1,17 +1,19 @@
 from multiprocessing import Pool, cpu_count
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, types
 from geosupport import Geosupport, GeosupportError
 from python.utils import psql_insert_copy
 import pandas as pd
 import os
 from tqdm import tqdm
 from dotenv import main
+import json
 
 main.load_dotenv()
 
 g = Geosupport()
 
-OUTPUT_TABLE_NAME = "_INIT_geo"
+OUTPUT_TABLE_NAME = "_init_geocoded"
+
 
 def geocode(input):
     # collect inputs
@@ -90,24 +92,26 @@ def load_init_devdb(engine):
         """
         SELECT 
             uid, 
+            job_number, 
             address_numbr as house_number,
             REGEXP_REPLACE(address_street, '[\s]{2,}' ,' ' , 'g') as street_name, 
             boro as borough
-        FROM _INIT_devdb LIMIT 10000
+        FROM _INIT_devdb 
         """,
         engine,
     )
-    print('loaded df from database')
+    print("loaded df from database")
     return df
+
 
 def geocode_insert_sql(records, engine):
 
     # Multiprocess
     with Pool(processes=cpu_count()) as pool:
-        it = pool.map(geocode, records, len(records)//4)
+        it = tqdm(pool.map(geocode, records, len(records) // 4))
     # it = list(map(geocode, records))
     df = pd.DataFrame(it)
-
+    df.replace({"latitude":{"":None}, "longitude":{"":None}}, inplace=True)
     df.to_sql(
         OUTPUT_TABLE_NAME,
         con=engine,
@@ -115,12 +119,13 @@ def geocode_insert_sql(records, engine):
         index=False,
     )
 
-    print(f'records in _INIT_geocoded:')
-    print(engine.execute(f"SELECT count(*) from {OUTPUT_TABLE_NAME}").fetchall()[0][0])
+    # print(f'records in _INIT_geocoded:')
+    # print(engine.execute(f"SELECT count(*) from {OUTPUT_TABLE_NAME}").fetchall()[0][0])
 
 
 def clear_dob_geocode_results(engine):
-    engine.execute(f"DROP TABLE IF EXISTS {OUTPUT_TABLE_NAME}" )
+    engine.execute(f"DROP TABLE IF EXISTS {OUTPUT_TABLE_NAME}")
+
 
 if __name__ == "__main__":
     # connect to BUILD_ENGINE
@@ -130,15 +135,13 @@ if __name__ == "__main__":
 
     df = load_init_devdb(engine)
     records = df.to_dict("records")
+
     del df
-    # df = df.iloc[:2000,:]
-    start =0
-    chunk_size = 1000
+    start = 0
+    chunk_size = 10**4
     end = min(chunk_size, len(records))
     while start < len(records):
         print(f"geocoding records {start} through {end}")
         geocode_insert_sql(records[start:end], engine)
-        start = end 
-        end = min(end+chunk_size, len(records))
-        
-
+        start = end
+        end = min(end + chunk_size, len(records))

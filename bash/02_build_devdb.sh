@@ -9,7 +9,10 @@ psql $BUILD_ENGINE -f sql/now/_init.sql
 psql $BUILD_ENGINE -f sql/_init.sql
 count _INIT_devdb
 
-display "Assign geoms to _GEO_devdb and create GEO_devdb"
+display "Geocoding DOB records"
+poetry run python3 -m python.geocode
+
+# display "Assign geoms to _GEO_devdb and create GEO_devdb"
 psql $BUILD_ENGINE -f sql/_geo.sql
 psql $BUILD_ENGINE -f sql/_geo_corrections.sql
 count GEO_devdb
