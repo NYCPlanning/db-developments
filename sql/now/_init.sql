@@ -193,13 +193,13 @@ JOBNUMBER_relevant as (
 	END) as boro,
 	NULL::text as zsf_init,
 	NULL::text as zsf_prop,
-	--(string_to_array(existing_zoning_used_group, ','),
+	--string_to_array(existing_zoning_used_group::text, '\s+'),
 	regexp_replace(
-		trim(existing_zoning_used_group),
-		'[^a-zA-Z0-9,]+', '','g') as ZoningUG_init,
+		trim(LOWER(existing_zoning_used_group)),
+		'[^\wa-z0-9,]+', '','g') as ZoningUG_init,
 	regexp_replace(
-		trim(proposed_zoning_used_group),
-		'[^a-zA-Z0-9,]+', '','g') as ZoningUG_prop,
+		trim(LOWER(proposed_zoning_used_group)),
+		'[^\wa-z0-9,]+', '','g') as ZoningUG_prop,
 	-- Requested enhancement from Housing with new columns from DOB source data
 	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
 		ELSE NULL END)::numeric as ZSF_R_prop,
