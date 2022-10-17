@@ -197,9 +197,11 @@ JOBNUMBER_relevant as (
 	regexp_replace(
 		trim(LOWER(existing_zoning_used_group)),
 		'[^\wa-z0-9,]+', '','g') as ZoningUG_init,
+	regexp_split_to_array(existing_zoning_used_group::text, ',')::text as ZoningUG_init_array,
 	regexp_replace(
 		trim(LOWER(proposed_zoning_used_group)),
 		'[^\wa-z0-9,]+', '','g') as ZoningUG_prop,
+	regexp_split_to_array(proposed_zoning_used_group::text, ',')::text as ZoningUG_prop_array,
 	-- Requested enhancement from Housing with new columns from DOB source data
 	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
 		ELSE NULL END)::numeric as ZSF_R_prop,
