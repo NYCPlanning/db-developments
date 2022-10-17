@@ -59,7 +59,8 @@ def add_geocode(hny, geo):
         ),
     )
 
-    return  hny | new_fields
+    return hny | new_fields
+
 
 if __name__ == "__main__":
     # connect to postgres db

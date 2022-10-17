@@ -111,7 +111,7 @@ def geocode_insert_sql(records, engine):
         it = tqdm(pool.map(geocode, records, len(records) // 4))
     # it = list(map(geocode, records))
     df = pd.DataFrame(it)
-    df.replace({"latitude":{"":None}, "longitude":{"":None}}, inplace=True)
+    df.replace({"latitude": {"": None}, "longitude": {"": None}}, inplace=True)
     df.to_sql(
         OUTPUT_TABLE_NAME,
         con=engine,
