@@ -121,24 +121,17 @@ CREATE TABLE IF NOT EXISTS CORR_hny_matches (
 DROP TABLE IF EXISTS HNY_geo;
 -- 1) Merge with geocoding results and create a unique ID
 WITH hny AS (
-        SELECT a.project_id||'/'||COALESCE(LPAD(a.building_id, 6, '0'), '') as hny_id,
-                a.project_id as hny_project_id,
-                a.*, 
-                b.geo_bbl, 
-                b.geo_bin, 
-                b.geo_latitude, 
-                b.geo_longitude,
-                (CASE WHEN b.geo_longitude IS NOT NULL 
-                        AND b.geo_latitude IS NOT NULL
-                    THEN ST_SetSRID(ST_MakePoint(b.geo_longitude::NUMERIC, 
-                                    b.geo_latitude::NUMERIC),4326)
+        SELECT project_id||'/'||COALESCE(LPAD(building_id, 6, '0'), '') as hny_id,
+                project_id as hny_project_id,
+                *, 
+               
+                (CASE WHEN geo_longitude IS NOT NULL 
+                        AND geo_latitude IS NOT NULL
+                    THEN ST_SetSRID(ST_MakePoint(geo_longitude::NUMERIC, 
+                                    geo_latitude::NUMERIC),4326)
                     ELSE NULL
                 END) AS geom
-        FROM hpd_hny_units_by_building a
-        JOIN hny_geocode_results b
-        ON a.ogc_fid::text = b.uid
-        WHERE a.reporting_construction_type = 'New Construction'
-        AND a.project_name <> 'CONFIDENTIAL')
+        FROM hny_geocode_results)
 
 SELECT * 
 INTO HNY_geo

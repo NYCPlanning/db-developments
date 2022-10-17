@@ -88,6 +88,9 @@ display "Combining _MID_devdb with STATUS_devdb to create MID_devdb,
 psql $BUILD_ENGINE -f sql/mid.sql
 count MID_devdb
 
+display "Geocoding HNY records"
+poetry run python3 -m python.geocode_hny
+
 display "Creating HNY fields: 
       hny_id,
       classa_hnyaff,
