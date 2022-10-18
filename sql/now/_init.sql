@@ -193,7 +193,6 @@ JOBNUMBER_relevant as (
 	END) as boro,
 	NULL::text as zsf_init,
 	NULL::text as zsf_prop,
-	--string_to_array(existing_zoning_used_group::text, '\s+'),
 	regexp_replace(
 		trim(LOWER(existing_zoning_used_group)),
 		'[^\wa-z0-9,]+', '','g') as ZoningUG_init,
