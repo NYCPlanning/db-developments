@@ -413,17 +413,17 @@ WITH
             one_dev_to_many_hny,
             one_hny_to_many_dev
         FROM RELATEFLAGS_hny_matches a
-        WHERE one_hny_to_many_dev = 1),
+        WHERE one_hny_to_many_dev = 1)
 
     -- Combine into a single look-up table					
-	HNY_lookup AS(					
-			SELECT * FROM one_to_one
-			UNION
-			SELECT * FROM one_to_many
-                -- Many-to-many cases are further resolved in many_to_one table, so don't include
-				WHERE job_number||hny_id NOT IN (SELECT job_number||hny_id FROM many_to_one)
-			UNION
-			SELECT * FROM many_to_one)
+SELECT * INTO HNY_lookup FROM (					
+        SELECT * FROM one_to_one
+        UNION
+        SELECT * FROM one_to_many
+            -- Many-to-many cases are further resolved in many_to_one table, so don't include
+            WHERE job_number||hny_id NOT IN (SELECT job_number||hny_id FROM many_to_one)
+        UNION
+        SELECT * FROM many_to_one) as tmp;
 
 
 -- 7) MERGE WITH devdb  
@@ -440,7 +440,7 @@ SELECT a.job_number,
         END) AS hny_jobrelate
 INTO HNY_devdb
 FROM MID_devdb a
-LEFT JOIN HNY_lookup b
+INNER JOIN HNY_lookup b
 ON a.job_number = b.job_number;
 
 
