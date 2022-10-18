@@ -91,7 +91,6 @@ if __name__ == "__main__":
     # Multiprocess
     with Pool(processes=5) as pool:
         it = pool.map(geocode, records, 1000)
-        # it = map(geocode, records)
 
     print("Geocoding finished, dumping to postgres ...")
     df = pd.DataFrame(it)

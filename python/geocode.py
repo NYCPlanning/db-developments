@@ -1,12 +1,10 @@
 from multiprocessing import Pool, cpu_count
-from sqlalchemy import create_engine, types
+from sqlalchemy import create_engine
 from geosupport import Geosupport, GeosupportError
 from python.utils import psql_insert_copy
 import pandas as pd
 import os
-from tqdm import tqdm
 from dotenv import main
-import json
 
 main.load_dotenv()
 
@@ -108,8 +106,8 @@ def geocode_insert_sql(records, engine):
 
     # Multiprocess
     with Pool(processes=cpu_count()) as pool:
-        it = tqdm(pool.map(geocode, records, len(records) // 4))
-    # it = list(map(geocode, records))
+        it = pool.map(geocode, records, len(records) // 4)
+
     df = pd.DataFrame(it)
     df.replace({"latitude": {"": None}, "longitude": {"": None}}, inplace=True)
     df.to_sql(
@@ -118,9 +116,6 @@ def geocode_insert_sql(records, engine):
         if_exists="append",
         index=False,
     )
-
-    # print(f'records in _INIT_geocoded:')
-    # print(engine.execute(f"SELECT count(*) from {OUTPUT_TABLE_NAME}").fetchall()[0][0])
 
 
 def clear_dob_geocode_results(engine):
