@@ -193,7 +193,7 @@ JOBNUMBER_relevant as (
 	END) as boro,
 	NULL::text as zsf_init,
 	NULL::text as zsf_prop,
-		(SELECT DISTINCT ARRAY(
+	(SELECT DISTINCT ARRAY(
 	SELECT DISTINCT e 
 	FROM unnest(
 	ARRAY[string_to_array(
