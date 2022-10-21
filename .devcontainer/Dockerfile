@@ -12,7 +12,9 @@ RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/
 RUN apt-get update 
 # && export DEBIAN_FRONTEND=noninteractive \
 RUN apt-get -y install --no-install-recommends postgresql-client 
-
+RUN curl -O https://dl.min.io/client/mc/release/linux-amd64/mc\
+    && chmod +x mc\
+    && sudo mv ./mc /usr/bin
 
 # [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
 # COPY requirements.txt /tmp/pip-tmp/
