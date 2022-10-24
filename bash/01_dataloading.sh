@@ -34,8 +34,8 @@ import_public hny_geocode_results &
 psql $BUILD_ENGINE -c "DROP TABLE IF EXISTS _geo_devdb;" 
 case $MODE in
     weekly) 
-        import_public dob_permitissuance 20221005 &
-        import_public dob_jobapplications 20221002 &
+        import_public dob_permitissuance &
+        import_public dob_jobapplications &
         import_public dob_geocode_results &
     ;;
     *) 
