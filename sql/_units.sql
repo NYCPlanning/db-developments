@@ -112,7 +112,7 @@ CORRECTIONS
 CALL apply_correction('_UNITS_devdb_resid_flag', '_manual_corrections', 'resid_flag');
 
 /*
-Separate A2 from rest of units
+Separate A2 job types from other types of records with units 
 */
 DROP TABLE IF EXISTS UNITS_A2_devdb;
 SELECT * INTO UNITS_A2_devdb 
