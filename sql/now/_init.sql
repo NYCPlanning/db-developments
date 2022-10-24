@@ -58,7 +58,13 @@ OUTPUTS:
 		existingzoningsqft text,
 		proposedzoningsqft text,
 		buildingclass text,
-		otherdesc text
+		otherdesc text,
+		ZSF_R_prop numeric,
+		ZSF_C_prop numeric,
+		ZSF_CF_prop numeric,
+		ZSF_M_prop numeric,
+		Prking_prop numeric
+
 	)
 */
 
@@ -124,7 +130,7 @@ JOBNUMBER_relevant as (
 	NULL as ZoningDist3,
 	specialdistrict1 as SpecialDist1,
 	specialdistrict2 as SpecialDist2,
-
+	
 	(CASE WHEN landmark ~* 'L' THEN 'Yes'
 		ELSE NULL END) as Landmark,
 
@@ -185,6 +191,16 @@ JOBNUMBER_relevant as (
 	END) as boro,
 	NULL::text as zsf_init,
 	NULL::text as zsf_prop,
+	-- Requested enhancement from Housing with new columns from DOB source data
+	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
+		ELSE NULL END)::numeric as ZSF_R_prop,
+	(CASE WHEN uselabel ~* 'Commercial' THEN total_floor_area 
+		ELSE NULL END)::numeric as ZSF_C_prop,
+	(CASE WHEN uselabel ~* 'Community Facility' THEN total_floor_area 
+		ELSE NULL END)::numeric as ZSF_CF_prop,
+	(CASE WHEN uselabel ~* 'Manufacturing' THEN total_floor_area 
+		ELSE NULL END)::numeric as ZSF_M_prop,
+	no_of_parking_spaces::numeric as Prkng_prop,
 	building_type as bldg_class,
 	NULL as desc_other,
 	(CASE WHEN filing_status ~* 'Withdrawn' THEN 'W'
