@@ -30,14 +30,12 @@ STATUS_Q_create as (
     FROM dob_permitissuance
     WHERE jobdocnum = '01'
     AND jobtype ~* 'A1|DM|NB|A2'
-    AND gid = 1
     GROUP BY jobnum
     UNION
     SELECT 
         left(job_filing_number, strpos(job_filing_number, '-') - 1)::text as job_number,
         min(issued_date::date) as date_permittd 
     FROM dob_now_permits
-    WHERE right(job_filing_number,2)='I1'
     GROUP BY left(job_filing_number, strpos(job_filing_number, '-') - 1)::text
 ) 
 SELECT 
