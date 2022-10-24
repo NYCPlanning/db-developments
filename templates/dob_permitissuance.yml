@@ -96,7 +96,7 @@ dataset:
         jobtype LIKE '%A1%' OR
         jobtype LIKE '%A2%' OR
         jobtype LIKE '%DM%' OR
-        jobtype LIKE '%NB%' 
+        jobtype LIKE '%NB%'
       )
       
   info:
