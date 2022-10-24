@@ -88,7 +88,7 @@ JOBNUMBER_relevant as (
 
     -- Job Type recoding
 	(CASE 
-		WHEN jobtype = 'A1' THEN 'Alteration (A1)'
+		WHEN jobtype = 'A1' THEN 'Alteration'
 		WHEN jobtype = 'DM' THEN 'Demolition'
 		WHEN jobtype = 'NB' THEN 'New Building'
 		WHEN jobtype = 'A2' THEN 'Alteration (A2)'
