@@ -114,8 +114,8 @@ CALL apply_correction('_UNITS_devdb_resid_flag', '_manual_corrections', 'resid_f
 /*
 Separate A2 job types from other types of records with units 
 */
-DROP TABLE IF EXISTS UNITS_A2_devdb;
-SELECT * INTO UNITS_A2_devdb 
+DROP TABLE IF EXISTS EXPORT_A2_devdb;
+SELECT * INTO EXPORT_A2_devdb 
 FROM _UNITS_devdb_resid_flag WHERE job_type = 'Alteration (A2)';
 
 DROP TABLE IF EXISTS _UNITS_devdb;
@@ -133,7 +133,7 @@ SELECT
 	resid_flag
  INTO _UNITS_devdb 
 FROM _UNITS_devdb_resid_flag 
-WHERE job_number NOT IN  (SELECT job_number FROM UNITS_A2_devdb);
+WHERE job_number NOT IN  (SELECT job_number FROM EXPORT_A2_devdb);
 
 DROP TABLE _UNITS_devdb_resid_flag CASCADE;
 
