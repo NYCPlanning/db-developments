@@ -35,7 +35,7 @@ mkdir -p output
     CSV_export _manual_corrections manual_corrections &
 
     display "Export A2 units for review by housing"
-    CSV_export UNITS_A2_devdb
+    CSV_export EXPORT_A2_devdb
 
     wait
     display "CSV Export Complete"
