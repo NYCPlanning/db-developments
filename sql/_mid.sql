@@ -179,16 +179,12 @@ JOIN_co as (
         /** Complete dates for non-demolitions come from CO (_date_complete). For
             demolitions, complete dates are status Q date (date_permittd)
             when the record has a status X date, and NULL otherwise **/
-        (CASE 
-            WHEN a.job_type = 'Demolition'
-                THEN 
-                    CASE 
-                    WHEN a.date_statusx IS NOT NULL
-                        THEN a.date_permittd
-                    ELSE NULL END
-            WHEN a.job_type = 'Alteration (A2)'
-                THEN a.date_statusx::text
-            ELSE b._date_complete END) as date_complete,
+        (CASE WHEN a.job_type = 'Demolition'
+            THEN CASE WHEN a.date_statusx IS NOT NULL
+                THEN a.date_permittd
+            ELSE NULL END
+        ELSE b._date_complete END) as date_complete,
+
         b.co_latest_certtype,
         b.co_latest_units::numeric
     FROM JOIN_date_permittd a
