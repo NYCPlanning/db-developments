@@ -43,6 +43,4 @@ FROM YEARLY_devdb_{{ decade }}
 -- {% endif %}
 
 GROUP BY
-    YEARLY_devdb_{{ decade }}.boro,
-    YEARLY_devdb_{{ decade }}.bct{{ decade }},
-    YEARLY_devdb_{{ decade }}.centract{{ decade }}
+    YEARLY_devdb_{{ decade }}.bct{{ decade }}
