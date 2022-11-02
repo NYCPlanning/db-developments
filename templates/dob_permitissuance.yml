@@ -83,7 +83,7 @@ dataset:
       - CENSUSTRACT
       - NTANAME
     sql: |
-      SELECT 
+      SELECT
           jobnum,
           jobdocnum,
           jobtype,
@@ -92,6 +92,7 @@ dataset:
       WHERE jobdocnum = '01'
       AND (
         jobtype LIKE '%A1%' OR
+        jobtype LIKE '%A2%' OR
         jobtype LIKE '%DM%' OR
         jobtype LIKE '%NB%'
       )
