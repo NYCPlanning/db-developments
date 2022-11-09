@@ -65,6 +65,8 @@ SELECT
 	Landmark as "Landmark",
 	ZSF_Init as "ZSF_Init",
 	ZSF_Prop as "ZSF_Prop",
+	ZoningUG_init as "ZoningUG_init",
+	ZoningUG_prop as "ZoningUG_prop",
 	Stories_Init as "FloorsInit",
 	Stories_Prop as "FloorsProp",
 	Height_Init as "HeightInit",
@@ -145,3 +147,4 @@ DROP TABLE IF EXISTS SHP_housing;
 SELECT * INTO SHP_housing
 FROM SHP_devdb
 WHERE "ResidFlag" = 'Residential';
+
