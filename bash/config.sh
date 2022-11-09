@@ -11,6 +11,9 @@ function set_env {
   done
 }
 
+# set path
+export PATH=$HOME/.local/bin:$PATH 
+
 # Setting Environmental Variables
 set_env .env version.env
 DATE=$(date "+%Y-%m-%d")
