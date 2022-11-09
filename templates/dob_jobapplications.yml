@@ -136,6 +136,7 @@ dataset:
           proposeddwellingunits,
           jobstatusdesc,
           latestactiondate,
+          sprinkler,
           prefilingdate,
           assigned,
           paid,
@@ -186,6 +187,7 @@ dataset:
         WHERE jobdocnumber = '01'
         AND ( 
           jobtype LIKE '%A1%' OR
+          jobtype LIKE '%A2%' OR
           jobtype LIKE '%DM%' OR
           jobtype LIKE '%NB%'
         )
