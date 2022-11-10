@@ -33,6 +33,15 @@ jobs:
         ! contains(github.event.head_commit.message, '[skip]')
       ) || github.event_name != 'push'
     runs-on: ubuntu-20.04
+    env:
+      BUILD_ENGINE: postgresql://postgres:postgres@localhost:25060/devdb
+      HED_BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
+      EDM_DATA: ${{ secrets.EDM_DATA }}
+      AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    container:
+      image: nycplanning/docker-geosupport:latest
     services:
       db:
         image: postgis/postgis:12-3.0-alpine
@@ -47,15 +56,7 @@ jobs:
           --health-retries 5
         ports:
           - 25060:5432
-    env:
-      BUILD_ENGINE: postgresql://postgres:postgres@localhost:25060/devdb
-      HED_BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
-      EDM_DATA: ${{ secrets.EDM_DATA }}
-      AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    container:
-      image: nycplanning/docker-geosupport:latest
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -116,7 +117,6 @@ jobs:
       - name: 2. build dev_db ...
         if: steps.config.outputs.rebuild == 'yes'
         run: |
-          docker compose ps
           ./devdb.sh build
           ./devdb.sh aggregate
 
