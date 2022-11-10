@@ -152,4 +152,3 @@ DROP TABLE IF EXISTS SHP_housing;
 SELECT * INTO SHP_housing
 FROM SHP_devdb
 WHERE "ResidFlag" = 'Residential';
-
