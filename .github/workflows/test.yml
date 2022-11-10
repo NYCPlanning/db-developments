@@ -84,7 +84,7 @@ jobs:
       - name: install dependencies ...
         run: |
           apt update
-          apt install -y gdal-bin
+          apt install -y gdal-bin postgresql-client
 
       - name: Install and configure minio client ...
         run: |
