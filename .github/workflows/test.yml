@@ -109,6 +109,7 @@ jobs:
       - name: 2. build dev_db ...
         if: steps.config.outputs.rebuild == 'yes'
         run: |
+          docker compose ps
           ./devdb.sh build
           ./devdb.sh aggregate
 
