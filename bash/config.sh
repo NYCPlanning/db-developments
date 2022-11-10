@@ -13,6 +13,7 @@ function set_env {
 
 # set path
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/share/pypoetry/venv/bin/poetry
 echo $PATH
 
 # Setting Environmental Variables
