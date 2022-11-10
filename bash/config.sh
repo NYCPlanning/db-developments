@@ -12,7 +12,7 @@ function set_env {
 }
 
 # set path
-export PATH="$HOME/.local/share/pypoetry:$PATH"
+export PATH=$PATH:$HOME/.local/bin
 
 # Setting Environmental Variables
 set_env .env version.env
