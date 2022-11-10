@@ -28,20 +28,15 @@ import_public dcp_firecompanies &
 import_public dcp_policeprecincts &
 import_public dob_cofos &
 import_public dof_shoreline &
-import_public hny_geocode_results &
 
-## Geocode results shares index with _geo_devdb
-psql $BUILD_ENGINE -c "DROP TABLE IF EXISTS _geo_devdb;" 
 case $MODE in
     weekly) 
         import_public dob_permitissuance &
         import_public dob_jobapplications &
-        import_public dob_geocode_results &
     ;;
     *) 
         import_public dob_permitissuance $DOB_DATA_DATE &
         import_public dob_jobapplications $DOB_DATA_DATE &
-        import_public dob_geocode_results $DOB_DATA_DATE &
     ;;
 esac
 
@@ -49,8 +44,3 @@ psql $BUILD_ENGINE -f sql/_create.sql
 
 wait 
 display "data loading is complete"
-
-psql $BUILD_ENGINE -c "
-    ALTER TABLE dob_geocode_results
-    RENAME TO _GEO_devdb;
-"
