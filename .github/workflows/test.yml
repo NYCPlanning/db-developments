@@ -47,6 +47,7 @@ jobs:
           --health-retries 5
         ports:
           - 25060:5432
+
     env:
       BUILD_ENGINE: postgresql://postgres:postgres@localhost:25060/devdb
       HED_BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
@@ -54,6 +55,8 @@ jobs:
       AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    container:
+      image: nycplanning/docker-geosupport:latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
