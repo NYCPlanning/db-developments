@@ -29,7 +29,7 @@ RUN curl -O https://dl.min.io/client/mc/release/linux-amd64/mc\
 
 # Install poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="~/.local/bin:$PATH"
+ENV PATH=$HOME/.local/bin:$PATH
 
 # RUN poetry install
 RUN /usr/local/bin/python3 -m pip install -U bandit
