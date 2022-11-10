@@ -47,7 +47,6 @@ jobs:
           --health-retries 5
         ports:
           - 25060:5432
-
     env:
       BUILD_ENGINE: postgresql://postgres:postgres@localhost:25060/devdb
       HED_BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
@@ -62,7 +61,6 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10' 
-
       - name: config workflows
         id: config
         run: |
@@ -84,16 +82,22 @@ jobs:
 
       - name: install dependencies ...
         run: |
-          sudo apt update
-          sudo apt install -y gdal-bin
+          apt update
+          apt install -y gdal-bin
+
+      - name: Install and configure minio client ...
+        run: |
           curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
           chmod +x mc
-          sudo mv ./mc /usr/bin
+          mv ./mc /usr/bin/ 
           mc alias set spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
+
+      - name: Poetry Install
+        run: |
           curl -sSL https://install.python-poetry.org | python3 -
           export PATH=$PATH:$HOME/.local/bin
           poetry install
-
+        
       - name: 1. dataloading for HED weekly builds
         if: >-
           steps.config.outputs.weekly == 'yes' && 
