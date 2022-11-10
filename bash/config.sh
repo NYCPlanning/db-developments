@@ -13,6 +13,7 @@ function set_env {
 
 # set path
 export PATH=$PATH:$HOME/.local/bin
+echo $PATH
 
 # Setting Environmental Variables
 set_env .env version.env
