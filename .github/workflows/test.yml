@@ -46,6 +46,7 @@ jobs:
       db:
         image: postgis/postgis:12-3.0-alpine
         env:
+          POSTGRES_HOST: localhost
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: devdb
         options: >-
@@ -83,6 +84,7 @@ jobs:
       - name: install dependencies ...
         run: |
           apt install -y gdal-bin postgresql-client jq
+          docker compose 
 
       - name: Install and configure minio client ...
         run: |
