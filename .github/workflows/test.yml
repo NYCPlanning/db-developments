@@ -84,7 +84,6 @@ jobs:
       - name: install dependencies ...
         run: |
           apt install -y gdal-bin postgresql-client jq
-          docker compose 
 
       - name: Install and configure minio client ...
         run: |
