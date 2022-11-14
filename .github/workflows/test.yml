@@ -82,7 +82,7 @@ jobs:
 
       - name: install dependencies ...
         run: |
-          apt install -y gdal-bin postgresql-client
+          apt install -y gdal-bin postgresql-client jq
 
       - name: Install and configure minio client ...
         run: |
