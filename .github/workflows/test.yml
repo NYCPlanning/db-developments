@@ -34,7 +34,7 @@ jobs:
       ) || github.event_name != 'push'
     runs-on: ubuntu-20.04
     env:
-      BUILD_ENGINE: postgresql://postgres:postgres@postgres:5432/devdb
+      BUILD_ENGINE: postgresql://postgres:postgres@localhost:5432/devdb
       HED_BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
       EDM_DATA: ${{ secrets.EDM_DATA }}
       AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
@@ -82,7 +82,6 @@ jobs:
 
       - name: install dependencies ...
         run: |
-          apt update
           apt install -y gdal-bin postgresql-client
 
       - name: Install and configure minio client ...
