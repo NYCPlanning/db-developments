@@ -63,10 +63,10 @@ OUTPUTS:
 		zug_prop,
 		buildingclass text,
 		otherdesc text,
-		zsf_r_prop numeric,
-		zsf_c_prop numeric,
-		zsf_cf_prop numeric,
-		zsf_m_prop numeric,
+		zsfr_prop numeric,
+		zsfc_prop numeric,
+		zsfcf_prop numeric,
+		zsfm_prop numeric,
 		prking_prop numeric
 	)
 	

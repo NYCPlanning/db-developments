@@ -61,10 +61,10 @@ OUTPUTS:
 		zug_prop,
 		buildingclass text,
 		otherdesc text,
-		ZSF_R_prop numeric,
-		ZSF_C_prop numeric,
-		ZSF_CF_prop numeric,
-		ZSF_M_prop numeric,
+		zsfr_prop numeric,
+		zsfc_prop numeric,
+		zsfcf_prop numeric,
+		zsfm_prop numeric,
 		Prking_prop numeric,
 
 	)
@@ -211,13 +211,13 @@ JOBNUMBER_relevant as (
 	ORDER BY e))::text AS zug_prop,
 	-- Requested enhancement from Housing with new columns from DOB source data
 	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
-		ELSE NULL END)::numeric as zsf_r_prop,
+		ELSE NULL END)::numeric as zsfr_prop,
 	(CASE WHEN uselabel ~* 'Commercial' THEN total_floor_area 
-		ELSE NULL END)::numeric as zsf_c_prop,
+		ELSE NULL END)::numeric as zsfc_prop,
 	(CASE WHEN uselabel ~* 'Community Facility' THEN total_floor_area 
-		ELSE NULL END)::numeric as zsf_cf_prop,
+		ELSE NULL END)::numeric as zsfcf_prop,
 	(CASE WHEN uselabel ~* 'Manufacturing' THEN total_floor_area 
-		ELSE NULL END)::numeric as zsf_m_prop,
+		ELSE NULL END)::numeric as zsfm_prop,
 	no_of_parking_spaces::numeric as prkng_prop,
 	building_type as bldg_class,
 	NULL as desc_other,
