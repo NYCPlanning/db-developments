@@ -54,7 +54,7 @@ SELECT
 	MID_devdb.zsfc_prop,
 	MID_devdb.zsfcf_prop,
 	MID_devdb.zsfm_prop,
-	MID_devdb.prkng_prop,
+	MID_devdb.prkngprop,
 	MID_devdb.stories_init,
 	MID_devdb.stories_prop,
 	MID_devdb.height_init,

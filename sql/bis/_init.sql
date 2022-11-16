@@ -225,7 +225,7 @@ JOBNUMBER_relevant as (
 	NULL::numeric as zsfc_prop,
 	NULL::numeric as zsfcf_prop,
 	NULL::numeric as zsfm_prop,
-	NULL::numeric as prkng_prop,
+	NULL::numeric as prkngprop,
 	-- End Dummy columns 
 	buildingclass as bldg_class,
 	otherdesc as desc_other,

@@ -218,7 +218,7 @@ JOBNUMBER_relevant as (
 		ELSE NULL END)::numeric as zsfcf_prop,
 	(CASE WHEN uselabel ~* 'Manufacturing' THEN total_floor_area 
 		ELSE NULL END)::numeric as zsfm_prop,
-	no_of_parking_spaces::numeric as prkng_prop,
+	no_of_parking_spaces::numeric as prkngprop,
 	building_type as bldg_class,
 	NULL as desc_other,
 	(CASE WHEN filing_status ~* 'Withdrawn' THEN 'W'

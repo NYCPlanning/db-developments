@@ -83,7 +83,7 @@ SELECT
     a.zsfc_prop,
     a.zsfcf_prop,
     a.zsfm_prop,
-    a.prkng_prop,
+    a.prkngprop,
     a._job_status,
     a.date_lastupdt,
     a.date_filed,
