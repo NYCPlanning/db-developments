@@ -48,7 +48,7 @@ SELECT
 	MID_devdb.landmark,
 	MID_devdb.zsf_init,
 	MID_devdb.zsf_prop,
-	MID_devdb.zoningug_init,
+	MID_devdb.zug_init,
 	MID_devdb.zoningug_prop,
 	MID_devdb.zsf_r_prop,
 	MID_devdb.zsf_c_prop,

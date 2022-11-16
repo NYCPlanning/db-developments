@@ -57,7 +57,7 @@ OUTPUTS:
 		x_withdrawal text,
 		existingzoningsqft text,
 		proposedzoningsqft text,
-		ZoningUG_init,
+		zug_init,
 		ZoningUG_prop,
 		buildingclass text,
 		otherdesc text,
@@ -200,7 +200,7 @@ JOBNUMBER_relevant as (
 	regexp_replace(
 		trim(LOWER(existing_zoning_used_group)),
 		'[^\wa-z0-9,]+', '','g'),',')]) AS a(e)
-	ORDER BY e))::text AS zoningug_init,
+	ORDER BY e))::text AS zug_init,
 	(SELECT DISTINCT ARRAY(
 	SELECT DISTINCT e 
 	FROM unnest(

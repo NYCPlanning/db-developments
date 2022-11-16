@@ -219,7 +219,7 @@ JOBNUMBER_relevant as (
 	-- Add dummy columns for union to now applications for _init_devdb
 	existingzoningsqft as zsf_init,
 	proposedzoningsqft as zsf_prop,
-	NULL::text as zoningug_init,
+	NULL::text as zug_init,
 	NULL::text as zoningug_prop,
 	NULL::numeric as zsf_r_prop,
 	NULL::numeric as zsf_c_prop,
