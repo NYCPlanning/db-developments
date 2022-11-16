@@ -78,7 +78,7 @@ SELECT
     a.zoningsft_init,
     a.zoningsft_prop,
     a.zug_init,
-    a.zoningug_prop,
+    a.zug_prop,
     a.zsf_r_prop,
     a.zsf_c_prop,
     a.zsf_cf_prop,

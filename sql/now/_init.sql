@@ -58,7 +58,7 @@ OUTPUTS:
 		existingzoningsqft text,
 		proposedzoningsqft text,
 		zug_init,
-		ZoningUG_prop,
+		zug_prop,
 		buildingclass text,
 		otherdesc text,
 		ZSF_R_prop numeric,
@@ -208,7 +208,7 @@ JOBNUMBER_relevant as (
 	regexp_replace(
 		trim(LOWER(proposed_zoning_used_group)),
 		'[^\wa-z0-9,]+', '','g'),',')]) AS a(e)
-	ORDER BY e))::text AS zoningug_prop,
+	ORDER BY e))::text AS zug_prop,
 	-- Requested enhancement from Housing with new columns from DOB source data
 	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
 		ELSE NULL END)::numeric as zsf_r_prop,

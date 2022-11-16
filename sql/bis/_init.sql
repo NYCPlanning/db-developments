@@ -220,7 +220,7 @@ JOBNUMBER_relevant as (
 	existingzoningsqft as zsf_init,
 	proposedzoningsqft as zsf_prop,
 	NULL::text as zug_init,
-	NULL::text as zoningug_prop,
+	NULL::text as zug_prop,
 	NULL::numeric as zsf_r_prop,
 	NULL::numeric as zsf_c_prop,
 	NULL::numeric as zsf_cf_prop,

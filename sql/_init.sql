@@ -60,7 +60,7 @@ OUTPUTS:
 		existingzoningsqft text,
 		proposedzoningsqft text,
 		zug_init,
-		zoningug_prop,
+		zug_prop,
 		buildingclass text,
 		otherdesc text,
 		zsf_r_prop numeric,
