@@ -5,7 +5,7 @@ source bash/config.sh
 MODE="${1:-edm}"
 
 max_bg_procs 5
-import_public dob_now_applications 20221001 &
+import_public dob_now_applications &
 import_public dob_now_permits &
 import_public council_members &
 import_public doe_school_subdistricts &
