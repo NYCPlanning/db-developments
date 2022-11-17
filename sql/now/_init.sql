@@ -57,14 +57,14 @@ OUTPUTS:
 		x_withdrawal text,
 		existingzoningsqft text,
 		proposedzoningsqft text,
-		ZoningUG_init,
-		ZoningUG_prop,
+		zug_init,
+		zug_prop,
 		buildingclass text,
 		otherdesc text,
-		ZSF_R_prop numeric,
-		ZSF_C_prop numeric,
-		ZSF_CF_prop numeric,
-		ZSF_M_prop numeric,
+		zsfr_prop numeric,
+		zsfc_prop numeric,
+		zsfcf_prop numeric,
+		zsfm_prop numeric,
 		Prking_prop numeric,
 
 	)
@@ -200,7 +200,7 @@ JOBNUMBER_relevant as (
 	regexp_replace(
 		trim(LOWER(existing_zoning_used_group)),
 		'[^\wa-z0-9,]+', '','g'),',')]) AS a(e)
-	ORDER BY e))::text AS ZoningUG_init,
+	ORDER BY e))::text AS zug_init,
 	(SELECT DISTINCT ARRAY(
 	SELECT DISTINCT e 
 	FROM unnest(
@@ -208,17 +208,17 @@ JOBNUMBER_relevant as (
 	regexp_replace(
 		trim(LOWER(proposed_zoning_used_group)),
 		'[^\wa-z0-9,]+', '','g'),',')]) AS a(e)
-	ORDER BY e))::text AS ZoningUG_prop,
+	ORDER BY e))::text AS zug_prop,
 	-- Requested enhancement from Housing with new columns from DOB source data
 	(CASE WHEN uselabel ~* 'Residential' THEN total_floor_area 
-		ELSE NULL END)::numeric as ZSF_R_prop,
+		ELSE NULL END)::numeric as zsfr_prop,
 	(CASE WHEN uselabel ~* 'Commercial' THEN total_floor_area 
-		ELSE NULL END)::numeric as ZSF_C_prop,
+		ELSE NULL END)::numeric as zsfc_prop,
 	(CASE WHEN uselabel ~* 'Community Facility' THEN total_floor_area 
-		ELSE NULL END)::numeric as ZSF_CF_prop,
+		ELSE NULL END)::numeric as zsfcf_prop,
 	(CASE WHEN uselabel ~* 'Manufacturing' THEN total_floor_area 
-		ELSE NULL END)::numeric as ZSF_M_prop,
-	no_of_parking_spaces::numeric as Prkng_prop,
+		ELSE NULL END)::numeric as zsfm_prop,
+	no_of_parking_spaces::numeric as prkngprop,
 	building_type as bldg_class,
 	NULL as desc_other,
 	(CASE WHEN filing_status ~* 'Withdrawn' THEN 'W'
