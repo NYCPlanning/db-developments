@@ -95,13 +95,15 @@ OUTPUTS:
 -- 5) Identify relationships between devdb records and hny records
 DROP TABLE IF EXISTS HNY_devdb_lookup;
 WITH 
-	-- Find cases of many-hny-to-one-devdb, after having filtered to highest priority
+	-- Find cases of many-hny-to-one-devdb, after having filtered to highest priority.
+    -- refer to sql/_hny_match.sql for matching priority logics
 	many_developments AS (SELECT hny_id
 				FROM HNY_matches
 				GROUP BY hny_id
                 HAVING COUNT(*)>1),
 				
 	-- Find cases of many-devdb-to-one-hny, after having filtered to highest priority
+    -- refer to sql/_hny_match.sql for matching priority logics
 	many_hny AS (SELECT a.job_number
 				FROM HNY_matches a
 				GROUP BY a.job_number
