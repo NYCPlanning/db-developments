@@ -132,3 +132,6 @@ dmypy.json
 .library/
 
 *.DS_Store
+
+# output
+output/

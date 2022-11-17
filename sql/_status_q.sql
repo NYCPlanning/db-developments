@@ -41,9 +41,7 @@ STATUS_Q_create as (
 SELECT 
     job_number,
     date_permittd,
-    -- year_permit
     extract(year from date_permittd)::text as permit_year,
-    -- quarter_permit
     year_quarter(date_permittd) as permit_qrtr
 INTO STATUS_Q_devdb
 FROM STATUS_Q_create

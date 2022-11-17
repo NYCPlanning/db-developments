@@ -1,8 +1,6 @@
 DROP TABLE IF EXISTS AGGREGATE_block_{{ decade }};
 SELECT 
-    boro,
-    bctcb{{ decade }},
-    cenblock{{ decade }},
+    bctcb{{ decade }}::TEXT,
     SUM(comp2010ap) as comp2010ap,
 
     {%- for year in years %}

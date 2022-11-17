@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS AGGREGATE_cdta_{{ decade }};
 SELECT 
-    YEARLY_devdb_{{ decade }}.boro,
     YEARLY_devdb_{{ decade }}.cdta{{ decade }},
     SUM(comp2010ap) as comp2010ap,
 
@@ -34,7 +33,6 @@ FROM YEARLY_devdb_{{ decade }}
 -- {% endif %}
 
 GROUP BY
-    YEARLY_devdb_{{ decade }}.boro,
     YEARLY_devdb_{{ decade }}.cdta{{ decade }}
 
 ORDER BY cdta{{ decade }};

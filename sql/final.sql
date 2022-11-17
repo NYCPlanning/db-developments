@@ -105,6 +105,7 @@ SELECT
 	MID_devdb.geo_nta2020 as nta2020,
 	MID_devdb.geo_ntaname2020 as ntaname2020,
 	MID_devdb.geo_cdta2020 as cdta2020,
+	MID_devdb.geo_cdtaname2020 as cdtaname2020,
 	MID_devdb.geo_cd as comunitydist,
 	MID_devdb.geo_council as councildist,
 	MID_devdb.geo_schoolsubdist as schoolsubdist,
