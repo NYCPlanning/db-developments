@@ -67,7 +67,7 @@ OUTPUTS:
 		zsfc_prop numeric,
 		zsfcf_prop numeric,
 		zsfm_prop numeric,
-		prking_prop numeric
+		prkng_prop numeric
 	)
 	
 */
