@@ -12,7 +12,7 @@ import_public doe_school_subdistricts &
 import_public doe_eszones &
 import_public doe_mszones &
 import_public hpd_hny_units_by_building &
-import_public dcp_mappluto &
+import_public dcp_mappluto 22v2 &
 import_public doitt_buildingfootprints &
 import_public doitt_buildingfootprints_historical &
 import_public doitt_zipcodeboundaries &
