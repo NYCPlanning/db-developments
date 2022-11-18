@@ -72,7 +72,8 @@ def parse_output(geo):
         geo_ct2020=geo.get("2020 Census Tract", None),
         geo_cb2010=geo.get("2010 Census Block", None),
         geo_cb2020=geo.get("2020 Census Block", None),
-        geo_cdta2020=geo.get("2020 Community District Tabulation Area (CDTA)", None),
+        geo_cdta2020=geo.get(
+            "2020 Community District Tabulation Area (CDTA)", None),
         # the return codes and messaged are for diagnostic puposes
         grc=geo.get("Geosupport Return Code (GRC)", ""),
         grc2=geo.get("Geosupport Return Code 2 (GRC 2)", ""),
@@ -103,7 +104,9 @@ if __name__ == "__main__":
                 streetname as street_name, 
                 borough,
                 'bis' as source
-            FROM dob_jobapplications UNION
+            FROM dob_jobapplications 
+            where gid::text = '1'
+            UNION
             SELECT 
                 distinct ogc_fid as uid, 
                 house_no as house_number,
