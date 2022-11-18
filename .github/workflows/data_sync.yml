@@ -71,14 +71,14 @@ jobs:
         run: |
           ./devdb.sh import dob_jobapplications ${{  github.event.inputs.version }}
           ./devdb.sh import hpd_hny_units_by_building
-          ./devdb.sh import dob_now_applications
+          ./devdb.sh import dob_now_applications 20221001
       
       - name: Load to Database
         if: github.event_name != 'workflow_dispatch'
         run: |
           ./devdb.sh import dob_jobapplications
           ./devdb.sh import hpd_hny_units_by_building
-          ./devdb.sh import dob_now_applications
+          ./devdb.sh import dob_now_applications 20221001
       
       - name: Geocode
         run: ./devdb.sh geocode
