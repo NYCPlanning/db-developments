@@ -34,7 +34,7 @@ jobs:
       ) || github.event_name != 'push'
     runs-on: ubuntu-latest
     env:
-      BUILD_ENGINE: postgresql://postgres:postgres@localhost:5432/postgres
+      BUILD_ENGINE: postgresql://postgres:postgres@127.0.0.1:5432/postgres
       HED_BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
       EDM_DATA: ${{ secrets.EDM_DATA }}
       AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
@@ -109,6 +109,9 @@ jobs:
           steps.config.outputs.rebuild == 'yes' &&
           steps.config.outputs.weekly == 'no'
         run: ./devdb.sh dataloading edm && ls -l
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
 
       - name: Clear cache
         run: rm -rf .library
