@@ -46,7 +46,9 @@ jobs:
       db:
         image: postgis/postgis:12-3.0-alpine
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
         options: >-
           --shm-size=1g
           --health-cmd pg_isready
