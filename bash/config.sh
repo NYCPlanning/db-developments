@@ -11,6 +11,11 @@ function set_env {
   done
 }
 
+# set path
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/share/pypoetry/venv/bin/poetry
+echo $PATH
+
 # Setting Environmental Variables
 set_env .env version.env
 DATE=$(date "+%Y-%m-%d")

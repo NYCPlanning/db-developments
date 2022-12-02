@@ -32,13 +32,23 @@ jobs:
         github.event_name == 'push' &&
         ! contains(github.event.head_commit.message, '[skip]')
       ) || github.event_name != 'push'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    env:
+      BUILD_ENGINE: postgresql://postgres:postgres@127.0.0.1:5432/postgres
+      HED_BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
+      EDM_DATA: ${{ secrets.EDM_DATA }}
+      AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    container:
+      image: nycplanning/docker-geosupport:latest
     services:
       db:
         image: postgis/postgis:12-3.0-alpine
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: devdb
+          POSTGRES_DB: postgres
         options: >-
           --shm-size=1g
           --health-cmd pg_isready
@@ -46,17 +56,12 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          - 25060:5432
-    env:
-      BUILD_ENGINE: postgresql://postgres:postgres@localhost:25060/devdb
-      HED_BUILD_ENGINE: ${{ secrets.HED_BUILD_ENGINE }}
-      EDM_DATA: ${{ secrets.EDM_DATA }}
-      AWS_S3_ENDPOINT: ${{ secrets.AWS_S3_ENDPOINT }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          - 5432:5432
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
       - name: config workflows
         id: config
         run: |
@@ -78,13 +83,21 @@ jobs:
 
       - name: install dependencies ...
         run: |
-          sudo apt update
-          sudo apt install -y gdal-bin
+          apt install -y gdal-bin postgresql-client jq
+
+      - name: Install and configure minio client ...
+        run: |
           curl -O https://dl.min.io/client/mc/release/linux-amd64/mc
           chmod +x mc
-          sudo mv ./mc /usr/bin
+          mv ./mc /usr/bin/ 
           mc alias set spaces $AWS_S3_ENDPOINT $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY --api S3v4
 
+      - name: Poetry Install
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          export PATH=$PATH:$HOME/.local/bin
+          poetry install
+        
       - name: 1. dataloading for HED weekly builds
         if: >-
           steps.config.outputs.weekly == 'yes' && 
@@ -96,6 +109,9 @@ jobs:
           steps.config.outputs.rebuild == 'yes' &&
           steps.config.outputs.weekly == 'no'
         run: ./devdb.sh dataloading edm && ls -l
+        env:
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
 
       - name: Clear cache
         run: rm -rf .library

@@ -4,12 +4,13 @@ from geosupport import Geosupport, GeosupportError
 from python.utils import psql_insert_copy
 import pandas as pd
 import os
-from tqdm import tqdm
 from dotenv import main
 
 main.load_dotenv()
 
 g = Geosupport()
+
+OUTPUT_TABLE_NAME = "_init_geocoded"
 
 
 def geocode(input):
@@ -84,74 +85,58 @@ def parse_output(geo):
     )
 
 
-def load_applications(engine):
+def load_init_devdb(engine):
     df = pd.read_sql(
         """
         SELECT 
             uid, 
-            regexp_replace(
-                trim(house_number), 
-                '(^|)0*', '', ''
-            ) as house_number,
-            REGEXP_REPLACE(street_name, '[\s]{2,}' ,' ' , 'g') as street_name, 
-            borough,
-            source
-        FROM (
-            SELECT 
-                distinct ogc_fid as uid, 
-                housenumber as house_number,
-                streetname as street_name, 
-                borough,
-                'bis' as source
-            FROM dob_jobapplications UNION
-            SELECT 
-                distinct ogc_fid as uid, 
-                house_no as house_number,
-                street_name as street_name, 
-                borough,
-                'now' as source
-            FROM dob_now_applications
-        ) a LIMIT 400000
+            job_number, 
+            address_numbr as house_number,
+            REGEXP_REPLACE(address_street, '[\s]{2,}' ,' ' , 'g') as street_name, 
+            boro as borough
+        FROM _INIT_devdb 
         """,
         engine,
     )
-    
+    print("loaded df from database")
     return df
 
-def geocode_insert_sql(df):
-    records = df.to_dict("records")
+
+def geocode_insert_sql(records, engine):
 
     # Multiprocess
     with Pool(processes=cpu_count()) as pool:
-        it = tqdm(pool.map(geocode, records, 1000))
-    # it = tqdm(list(map(geocode, records)))
+        it = pool.map(geocode, records, len(records) // 4)
 
     df = pd.DataFrame(it)
+    df.replace({"latitude": {"": None}, "longitude": {"": None}}, inplace=True)
     df.to_sql(
-        "dob_geocode_results",
+        OUTPUT_TABLE_NAME,
         con=engine,
         if_exists="append",
         index=False,
-        method=psql_insert_copy,
     )
 
+
 def clear_dob_geocode_results(engine):
-    engine.execute("DROP TABLE IF EXISTS dob_geocode_results")
+    engine.execute(f"DROP TABLE IF EXISTS {OUTPUT_TABLE_NAME}")
+
 
 if __name__ == "__main__":
     # connect to BUILD_ENGINE
     engine = create_engine(os.environ["BUILD_ENGINE"])
 
-    df = load_applications(engine)
     clear_dob_geocode_results(engine)
-    # df = df.iloc[:2000,:]
-    start =0
-    chunk_size = 50000
-    end = chunk_size
-    while end <= df.shape[0]:
-        print(f"geocoding records {start} through {end}")
-        geocode_insert_sql(df.iloc[start:end,:])
-        start = end 
-        end = min(end+chunk_size, df.shape[0])
-        
 
+    df = load_init_devdb(engine)
+    records = df.to_dict("records")
+
+    del df
+    start = 0
+    chunk_size = 10**4
+    end = min(chunk_size, len(records))
+    while start < len(records):
+        print(f"geocoding records {start} through {end}")
+        geocode_insert_sql(records[start:end], engine)
+        start = end
+        end = min(end + chunk_size, len(records))

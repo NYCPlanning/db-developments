@@ -12,18 +12,18 @@ main.load_dotenv()
 g = Geosupport()
 
 
-def geocode(input):
+def geocode(hny):
     # collect inputs
-    uid = str(input.pop("ogc_fid"))
-    hnum = input.pop("number")
-    sname = input.pop("street")
-    borough = input.pop("borough")
+    uid = str(hny.get("ogc_fid"))
+    hnum = hny.get("number")
+    sname = hny.get("street")
+    borough = hny.get("borough")
 
     try:
         geo = g["1B"](
             street_name=sname, house_number=hnum, borough=borough, mode="regular"
         )
-        geo = parse_output(geo)
+        geo = add_geocode(hny, geo)
         geo.update(dict(uid=uid, mode="regular", func="1B", status="success"))
         return geo
     except GeosupportError:
@@ -31,17 +31,18 @@ def geocode(input):
             geo = g["1B"](
                 street_name=sname, house_number=hnum, borough=borough, mode="tpad"
             )
-            geo = parse_output(geo)
+            geo = add_geocode(hny, geo)
             geo.update(dict(uid=uid, mode="tpad", func="1B", status="success"))
             return geo
         except GeosupportError as e:
-            geo = parse_output(e.result)
+            geo = add_geocode(hny, e.result)
             geo.update(uid=uid, mode="tpad", func="1B", status="failure")
             return geo
 
 
-def parse_output(geo):
-    return dict(
+def add_geocode(hny, geo):
+
+    new_fields = dict(
         # Normalized address:
         geo_sname=geo.get("First Street Name Normalized", ""),
         geo_hnum=geo.get("House Number - Display Format", ""),
@@ -53,9 +54,12 @@ def parse_output(geo):
             "Building Identification Number (BIN) of Input Address or NAP", ""
         ),
         geo_bbl=geo.get("BOROUGH BLOCK LOT (BBL)", {}).get(
-            "BOROUGH BLOCK LOT (BBL)", "",
+            "BOROUGH BLOCK LOT (BBL)",
+            "",
         ),
     )
+
+    return hny | new_fields
 
 
 if __name__ == "__main__":
@@ -89,9 +93,9 @@ if __name__ == "__main__":
         it = pool.map(geocode, records, 1000)
 
     print("Geocoding finished, dumping to postgres ...")
-    df=pd.DataFrame(it)
+    df = pd.DataFrame(it)
     df.to_sql(
-        'hny_geocode_results',
+        "hny_geocode_results",
         con=engine,
         if_exists="replace",
         index=False,

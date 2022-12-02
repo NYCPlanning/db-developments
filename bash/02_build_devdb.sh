@@ -9,7 +9,11 @@ psql $BUILD_ENGINE -f sql/now/_init.sql
 psql $BUILD_ENGINE -f sql/_init.sql
 count _INIT_devdb
 
-display "Assign geoms to _GEO_devdb and create GEO_devdb"
+display "Geocoding DOB records"
+poetry run python3 -m python.geocode
+wait 
+
+# display "Assign geoms to _GEO_devdb and create GEO_devdb"
 psql $BUILD_ENGINE -f sql/_geo.sql
 psql $BUILD_ENGINE -f sql/_geo_corrections.sql
 count GEO_devdb
@@ -84,6 +88,10 @@ display "Combining _MID_devdb with STATUS_devdb to create MID_devdb,
             Creating nonres_flag field"
 psql $BUILD_ENGINE -f sql/mid.sql
 count MID_devdb
+
+display "Geocoding HNY records"
+poetry run python3 -m python.geocode_hny
+wait
 
 display "Creating HNY fields: 
       hny_id,

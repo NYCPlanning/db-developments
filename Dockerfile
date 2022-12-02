@@ -29,7 +29,7 @@ RUN wget https://dl.min.io/client/mc/release/linux-amd64/mc\
 
 # Install poetry
 RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH=$HOME/.local/bin:$PATH
+ENV PATH="$HOME/.local/bin:$PATH"
 
 RUN /usr/local/bin/python3 -m pip install -U bandit
 RUN /usr/local/bin/python3 -m pip install -U black
