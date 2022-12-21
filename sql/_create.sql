@@ -66,6 +66,19 @@ CREATE TABLE census_units10adj (
 );
 \COPY census_units10adj FROM 'data/census_units10adj.csv' DELIMITER ',' CSV HEADER;
 
+DROP TABLE IF EXISTS census_units20;
+CREATE TABLE census_units20 (
+    GeogType text,
+    CountyFips text,
+    BoroCode numeric,
+    BoroName text,
+    GEOID20 text,
+    BCTCB2020 text,
+    FIPSCTCB2020 text,
+    HUnits numeric
+);
+\COPY census_units20 FROM 'data/census_units20_block.csv' DELIMITER ',' CSV HEADER;
+
 
 DROP TABLE IF EXISTS lookup_geo;
 CREATE TABLE lookup_geo (
