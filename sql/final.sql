@@ -14,7 +14,7 @@ SELECT
 	MID_devdb.classa_init,
 	MID_devdb.classa_prop,
 	MID_devdb.classa_net,
-	HNY_devdb.classa_hnyaff,
+	DevDB_hny_lookup.classa_hnyaff,
 	MID_devdb.hotel_init,
 	MID_devdb.hotel_prop,
 	MID_devdb.otherb_init,
@@ -23,10 +23,10 @@ SELECT
 	COALESCE(MID_devdb.geo_boro, MID_devdb.boro) as boro,
 	COALESCE(MID_devdb.geo_bin, MID_devdb.bin) as bin,
 	COALESCE(MID_devdb.geo_bbl, MID_devdb.bbl) as bbl,
-	COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr) as address_numbr,
-	COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street) as address_st,
-	COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr)
-	||' '||COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street) as address,
+	REGEXP_REPLACE(COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr), '[\s]{2,}', ' ', 'g') as address_numbr,
+	REGEXP_REPLACE(COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street), '[\s]{2,}', ' ', 'g' ) as address_st,
+	REGEXP_REPLACE(COALESCE(MID_devdb.geo_address_numbr, MID_devdb.address_numbr)
+	||' '||COALESCE(MID_devdb.geo_address_street, MID_devdb.address_street), '[\s]{2,}', ' ', 'g' ) as address,
 	MID_devdb.occ_initial,
 	MID_devdb.occ_proposed,
 	MID_devdb.bldg_class,
@@ -48,6 +48,13 @@ SELECT
 	MID_devdb.landmark,
 	MID_devdb.zsf_init,
 	MID_devdb.zsf_prop,
+	MID_devdb.zug_init,
+	MID_devdb.zug_prop,
+	MID_devdb.zsfr_prop,
+	MID_devdb.zsfc_prop,
+	MID_devdb.zsfcf_prop,
+	MID_devdb.zsfm_prop,
+	MID_devdb.prkngprop,
 	MID_devdb.stories_init,
 	MID_devdb.stories_prop,
 	MID_devdb.height_init,
@@ -118,12 +125,12 @@ SELECT
 	MID_devdb.datasource,
 	MID_devdb.geomsource,
 	CORR_lists.dcpeditfields,
-	HNY_devdb.hny_id,
-	HNY_devdb.hny_jobrelate,
+	DevDB_hny_lookup.hny_id,
+	DevDB_hny_lookup.hny_jobrelate,
 	:'VERSION' as version
 INTO FINAL_devdb
 FROM MID_devdb 
-    LEFT JOIN HNY_devdb ON MID_devdb.job_number = HNY_devdb.job_number
+    LEFT JOIN DevDB_hny_lookup ON MID_devdb.job_number = DevDB_hny_lookup.job_number
     LEFT JOIN PLUTO_devdb ON MID_devdb.job_number = PLUTO_devdb.job_number
     LEFT JOIN (
         SELECT job_number, STRING_AGG(field, '/') as dcpeditfields

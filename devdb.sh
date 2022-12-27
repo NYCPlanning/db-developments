@@ -4,24 +4,24 @@ source bash/config.sh
 function dataloading { 
     shift;
     MODE="${1:-edm}"
-    CLEAR="${2:-true}"
     echo "mode: $MODE"
     ./bash/01_dataloading.sh $1
-    if [ "${CLEAR}" == "true" ]; then
-        rm -rf .library
-    fi
 }
 
 function build { 
     ./bash/02_build_devdb.sh 
 }
 
+function qaqc { 
+    ./bash/03_qaqc.sh 
+}
+
 function export { 
-    ./bash/03_export.sh 
+    ./bash/04_export.sh 
 }
 
 function archive { 
-    ./bash/04_archive.sh 
+    ./bash/05_archive.sh 
 }
 
 function output {
@@ -132,8 +132,12 @@ function aggregate {
     )
 }
 
+function clear {
+    rm -rf .library
+}
+
 case $1 in
-    dataloading | build | aggregate | export | archive ) $@ ;;
+    dataloading | build | qaqc | aggregate | export | archive | clear ) $@ ;;
     upload) Upload;;
     geocode) geocode ;;
     import) import $@ ;;

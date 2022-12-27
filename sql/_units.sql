@@ -37,6 +37,7 @@ DROP TABLE IF EXISTS _UNITS_devdb_raw CASCADE;
 SELECT DISTINCT
 	a.job_number,
 	a.job_type,
+	a.job_desc,
 	b.occ_proposed,
 	b.occ_initial,
 	a.classa_init,
@@ -86,7 +87,7 @@ CALL apply_correction('_UNITS_devdb_raw', '_manual_corrections', 'classa_prop');
 Using corrected classa, hotel, and otherb unit fields, 
 calculate and then manually correct resid_flag
 */
-DROP TABLE IF EXISTS _UNITS_devdb;
+DROP TABLE IF EXISTS _UNITS_devdb_resid_flag;
 SELECT
 	*,
 	(CASE 
@@ -98,7 +99,7 @@ SELECT
 			OR (classa_prop IS NOT NULL AND classa_prop <> '0')
 			THEN 'Residential' 
 	END) as resid_flag
-INTO _UNITS_devdb
+INTO _UNITS_devdb_resid_flag
 FROM _UNITS_devdb_raw
 ;
 
@@ -108,8 +109,33 @@ DROP TABLE _UNITS_devdb_raw CASCADE;
 CORRECTIONS
 	resid_flag
 */
-CALL apply_correction('_UNITS_devdb', '_manual_corrections', 'resid_flag');
+CALL apply_correction('_UNITS_devdb_resid_flag', '_manual_corrections', 'resid_flag');
 
+/*
+Separate A2 job types from other types of records with units 
+*/
+DROP TABLE IF EXISTS EXPORT_A2_devdb;
+SELECT * INTO EXPORT_A2_devdb 
+FROM _UNITS_devdb_resid_flag WHERE job_type = 'Alteration (A2)';
+
+DROP TABLE IF EXISTS _UNITS_devdb;
+SELECT 
+	job_number,
+	job_type,
+	occ_proposed,
+	occ_initial,
+	classa_init,
+	classa_prop,
+	hotel_init,
+	hotel_prop,
+	otherb_init,
+	otherb_prop, 
+	resid_flag
+ INTO _UNITS_devdb 
+FROM _UNITS_devdb_resid_flag 
+WHERE job_number NOT IN  (SELECT job_number FROM EXPORT_A2_devdb);
+
+DROP TABLE _UNITS_devdb_resid_flag CASCADE;
 
 /*
 NULL out units fields where corrected resid_flag is NULL.
@@ -156,7 +182,7 @@ SELECT
 			THEN classa_init * -1
 		WHEN job_type = 'New Building' 
 			THEN classa_prop
-		WHEN job_type = 'Alteration' 
+		WHEN job_type LIKE '%Alteration' 
 			AND classa_init IS NOT NULL 
 			AND classa_prop IS NOT NULL 
 			THEN classa_prop - classa_init

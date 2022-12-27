@@ -87,7 +87,7 @@ OUTPUTS:
 		total_units
     ),
 
-    HNY_devdb (
+    DevDB_hny_lookup (
         * job_number,
         hny_id,
         classa_hnyaff,
@@ -254,7 +254,9 @@ WITH
 					ON t2.hny_id = t1.hny_id 
 					AND t2.match_priority = t1.match_priority),
 
-	-- Then find highest priority match(es) for each job_number			
+	-- Then find highest priority match(es) for each job_number	
+    -- if a job number is same priority for different hny projects. 
+    -- it should be considered for all of the hny projects		
 	best_matches AS (SELECT t2.hny_id, t2.hny_project_id, t1.match_priority, 
 							t1.job_number, t2.job_type, 
 							t2.resid_flag, t2.total_units,
@@ -329,7 +331,7 @@ INTO HNY_no_match
 FROM unmatched;
 
 -- 5) Identify relationships between devdb records and hny records
-DROP TABLE IF EXISTS HNY_devdb;
+DROP TABLE IF EXISTS DevDB_hny_lookup;
 WITH 
 	-- Find cases of many-hny-to-one-devdb, after having filtered to highest priority
 	many_developments AS (SELECT hny_id
@@ -440,14 +442,14 @@ SELECT a.job_number,
         b.all_hny_units,
         (CASE 
             WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 0 THEN 'one-to-one'
-            WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 1 THEN 'one-to-many'
-            WHEN one_dev_to_many_hny = 1 AND one_hny_to_many_dev = 0 THEN 'many-to-one'
+            WHEN one_dev_to_many_hny = 1 AND one_hny_to_many_dev = 0 THEN 'one-to-many'
+            WHEN one_dev_to_many_hny = 0 AND one_hny_to_many_dev = 1 THEN 'many-to-one'
             WHEN one_dev_to_many_hny = 1 AND one_hny_to_many_dev = 1 THEN 'many-to-many'
             ELSE NULL
         END) AS hny_jobrelate
-INTO HNY_devdb
+INTO DevDB_hny_lookup
 FROM MID_devdb a
-LEFT JOIN HNY_lookup b
+INNER JOIN HNY_lookup b
 ON a.job_number = b.job_number;
 
 

@@ -59,8 +59,15 @@ OUTPUTS:
 		x_withdrawal text,
 		existingzoningsqft text,
 		proposedzoningsqft text,
+		zug_init,
+		zug_prop,
 		buildingclass text,
-		otherdesc text
+		otherdesc text,
+		zsfr_prop numeric,
+		zsfc_prop numeric,
+		zsfcf_prop numeric,
+		zsfm_prop numeric,
+		prkng_prop numeric
 	)
 	
 */
