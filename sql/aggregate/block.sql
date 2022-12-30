@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS AGGREGATE_block_{{ decade }};
-SELECT 
+with aggregate_units as (SELECT 
     bctcb{{ decade }}::TEXT,
     SUM(comp2010ap) as comp2010ap,
 
@@ -16,24 +16,17 @@ SELECT
     SUM(withdrawn) as withdrawn,
     SUM(inactive) as inactive
 
-    -- {% if decade == '2010' %}
 
-    --     ,SUM(census_units10.cenunits10) as cenunits10
-    --     ,SUM(COALESCE(YEARLY_devdb_{{ decade }}.since_cen10, 0) + COALESCE(census_units10.cenunits10, 0)) as total
-    
-    -- {% endif %}
-
-INTO AGGREGATE_block_{{ decade }}
 FROM YEARLY_devdb_{{ decade }}
-
--- {% if decade == '2010' %}
-
---     LEFT JOIN census_units10
---     ON YEARLY_devdb_{{ decade }}.cenblock2010 = census_units10.cenblock10
-
--- {% endif %}
 
 GROUP BY 
     boro,
     bctcb{{ decade }},
     cenblock{{ decade }}
+)
+SELECT 
+a.*,
+c.census_units20 as 
+INTO AGGREGATE_block_2020
+FROM aggregate_units a LEFT JOIN census_units20 c
+ON a.bctcb20 = c.BCTCB2020
