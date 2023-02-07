@@ -86,6 +86,9 @@ if __name__ == "__main__":
     # connect to BUILD_ENGINE
     engine = create_engine(os.environ["BUILD_ENGINE"])
 
+    # select records to be geocoded
+    # NOTE: using the Group ID (gid) value to limit selection to
+    #       the most recent version of duplicate records
     df = pd.read_sql(
         """
         SELECT 
