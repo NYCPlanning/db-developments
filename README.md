@@ -4,8 +4,21 @@ Processing DOB Job Application and Certificate of Occupancy data to identify job
 
 ## Instructions
 
-1. `cd developments_build` navigate to the building directory
-2. Set environmental variables in `.env`: `RECIPE_ENGINE`, `BUILD_ENGINE`, and `EDM_DATA`. See .env.example.
+1. Create `.env` file and set environmental variables: `RECIPE_ENGINE`, `BUILD_ENGINE`, `EDM_DATA`
+
+2. Start postgis docker container for local database:
+```bash
+docker run --name <custom_container_name> -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgis/postgis
+```
+
+3. Check connection (e.g. via database app like Postico)
+> 💡 Note: If failing to connect on mac, try `brew services stop postgresql`
+
+4. Run scripts:
+```bash
+./bash/01_dataloading.sh
+...
+```
 
 ## Development File Download
 
