@@ -3,24 +3,30 @@ name: Update
 about: Master issue for DevDB releases
 title: "{Version, i.e. 20Q4} UPDATE"
 labels: ''
-assignees: mgraber, SPTKL
+assignees:
 
 ---
 
 ## Update code
+
 - [ ] Add most recent full/half year to aggregate tables
 
 ## Update source data
 
 - [ ] Update version.env to:
-```
+
+```bash
 CAPTURE_DATE=2021-01-03
 CAPTURE_DATE_PREV=2020-06-30
 DOB_DATA_DATE=2020/01/01
 VERSION=20Q4
 VERSION_PREV=20Q2
 ```
-### Make sure the following are up-to-date in recipes:
+
+### Make sure the following are up-to-date in recipes
+
+#### General
+
 - [ ] `dcp_mappluto_wi`
 - [ ] `dof_shoreline` updated with zoningtaxlots, safe to ignore
 - [ ] `council_members` [check opendate](https://data.cityofnewyork.us/City-Government/Council-Members/uvw5-9znb)
@@ -32,7 +38,8 @@ VERSION_PREV=20Q2
 - [ ] `doe_mszones` -> same as above
 - [ ] `hpd_hny_units_by_building` [check opendata](https://data.cityofnewyork.us/Housing-Development/Housing-New-York-Units-by-Building/hg8x-zxpr)
 
-**DCP Admin Boundaries from Bytes**
+#### DCP Admin Boundaries from Bytes
+
 - [ ] `dcp_cdboundaries`
 - [ ] `dcp_cb2010`
 - [ ] `dcp_censustracts`
@@ -42,7 +49,8 @@ VERSION_PREV=20Q2
 - [ ] `dcp_firecompanies`
 - [ ] `dcp_policeprecincts`
 
-**DOB data**
+#### DOB data
+
 - [ ]  `dob_cofos` -> manually updated, received by email
 - [ ]  `dob_jobapplications` [check actions](https://github.com/NYCPlanning/recipes/actions?query=workflow%3A%22DOB+pull+for+HED%22)
 - [ ]  `dob_permitissuance` [check actions](https://github.com/NYCPlanning/recipes/actions?query=workflow%3A%22DOB+pull+for+HED%22)
