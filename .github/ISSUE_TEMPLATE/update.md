@@ -46,3 +46,5 @@ VERSION_PREV=20Q2
 - [ ]  `dob_cofos` -> manually updated, received by email
 - [ ]  `dob_jobapplications` [check actions](https://github.com/NYCPlanning/recipes/actions?query=workflow%3A%22DOB+pull+for+HED%22)
 - [ ]  `dob_permitissuance` [check actions](https://github.com/NYCPlanning/recipes/actions?query=workflow%3A%22DOB+pull+for+HED%22)
+- [ ] `dob_now_applications` -> DOB contacts us via email that the data is ready, the data is downloaded from the DOB FTP using credentials, manually uploaded to DO and ingested via Data Library pipeline
+- [ ] `dob_now_permits` -> DOB contacts us via email that the data is ready, the data is downloaded from the DOB FTP using credentials, manually uploaded to DO and ingested via Data Library pipeline
