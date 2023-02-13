@@ -89,38 +89,39 @@ if __name__ == "__main__":
     # select records to be geocoded
     # NOTE: using the Group ID (gid) value to limit selection to
     #       the most recent version of duplicate records
-    df = pd.read_sql(
-        """
-        SELECT 
-            uid, 
-            regexp_replace(
-                trim(house_number), 
-                '(^|)0*', '', ''
-            ) as house_number,
-            REGEXP_REPLACE(street_name, '[\s]{2,}' ,' ' , 'g') as street_name, 
-            borough,
-            source
-        FROM (
+    with engine.begin() as conn:
+        df = pd.read_sql(
+            """
             SELECT 
-                distinct ogc_fid as uid, 
-                housenumber as house_number,
-                streetname as street_name, 
+                uid, 
+                regexp_replace(
+                    trim(house_number), 
+                    '(^|)0*', '', ''
+                ) as house_number,
+                REGEXP_REPLACE(street_name, '[\s]{2,}' ,' ' , 'g') as street_name, 
                 borough,
-                'bis' as source
-            FROM dob_jobapplications 
-            where gid::text = '1'
-            UNION
-            SELECT 
-                distinct ogc_fid as uid, 
-                house_no as house_number,
-                street_name as street_name, 
-                borough,
-                'now' as source
-            FROM dob_now_applications
-        ) a
-        """,
-        engine,
-    )
+                source
+            FROM (
+                SELECT 
+                    distinct ogc_fid as uid, 
+                    housenumber as house_number,
+                    streetname as street_name, 
+                    borough,
+                    'bis' as source
+                FROM dob_jobapplications 
+                where gid::text = '1'
+                UNION
+                SELECT 
+                    distinct ogc_fid as uid, 
+                    house_no as house_number,
+                    street_name as street_name, 
+                    borough,
+                    'now' as source
+                FROM dob_now_applications
+            ) a
+            """,
+            conn,
+        )
 
     records = df.to_dict("records")
     del df

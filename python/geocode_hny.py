@@ -60,14 +60,15 @@ if __name__ == "__main__":
     engine = create_engine(os.environ["BUILD_ENGINE"])
 
     # read in housing table
-    df = pd.read_sql(
-        """
-        SELECT * 
-        FROM hpd_hny_units_by_building
-        WHERE reporting_construction_type = 'New Construction'
-        AND project_name <> 'CONFIDENTIAL';
-        """,
-        engine,
+    with engine.begin() as conn:
+        df = pd.read_sql(
+            """
+            SELECT * 
+            FROM hpd_hny_units_by_building
+            WHERE reporting_construction_type = 'New Construction'
+            AND project_name <> 'CONFIDENTIAL';
+            """,
+            conn,
     )
 
     # get the row number
