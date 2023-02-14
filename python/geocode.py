@@ -90,7 +90,7 @@ if __name__ == "__main__":
     # NOTE: using the Group ID (gid) value to limit selection to
     #       the most recent version of duplicate records
     with engine.begin() as conn:
-        df = pd.read_sql(
+        df = pd.read_sql_query(
             """
             SELECT 
                 uid, 

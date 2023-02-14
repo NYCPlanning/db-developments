@@ -61,7 +61,7 @@ if __name__ == "__main__":
 
     # read in housing table
     with engine.begin() as conn:
-        df = pd.read_sql(
+        df = pd.read_sql_query(
             """
             SELECT * 
             FROM hpd_hny_units_by_building
