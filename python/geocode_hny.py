@@ -1,5 +1,5 @@
 from multiprocessing import Pool, cpu_count
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from geosupport import Geosupport, GeosupportError
 from utils import psql_insert_copy
 import pandas as pd
@@ -60,14 +60,15 @@ if __name__ == "__main__":
     engine = create_engine(os.environ["BUILD_ENGINE"])
 
     # read in housing table
-    with engine.begin() as conn:
-        df = pd.read_sql_query(
-            """
+    select_query = """
             SELECT * 
             FROM hpd_hny_units_by_building
             WHERE reporting_construction_type = 'New Construction'
             AND project_name <> 'CONFIDENTIAL';
-            """,
+            """
+    with engine.begin() as conn:
+        df = pd.read_sql(
+            text(select_query),
             conn,
     )
 

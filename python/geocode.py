@@ -1,5 +1,5 @@
 from multiprocessing import Pool, cpu_count
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from geosupport import Geosupport, GeosupportError
 from utils import psql_insert_copy
 import pandas as pd
@@ -89,9 +89,7 @@ if __name__ == "__main__":
     # select records to be geocoded
     # NOTE: using the Group ID (gid) value to limit selection to
     #       the most recent version of duplicate records
-    with engine.begin() as conn:
-        df = pd.read_sql_query(
-            """
+    select_query = """
             SELECT 
                 uid, 
                 regexp_replace(
@@ -119,7 +117,10 @@ if __name__ == "__main__":
                     'now' as source
                 FROM dob_now_applications
             ) a
-            """,
+            """
+    with engine.begin() as conn:
+        df = pd.read_sql(
+            text(select_query),
             conn,
         )
 
