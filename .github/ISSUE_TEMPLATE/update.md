@@ -23,7 +23,7 @@ VERSION=20Q4
 VERSION_PREV=20Q2
 ```
 
-### Make sure the following are up-to-date in recipes
+### Make sure the following are up-to-date in Digital Ocean
 
 #### General
 
@@ -31,7 +31,7 @@ VERSION_PREV=20Q2
 - [ ] `dof_shoreline` updated with zoningtaxlots, safe to ignore
 - [ ] `council_members` [check opendate](https://data.cityofnewyork.us/City-Government/Council-Members/uvw5-9znb)
 - [ ] `doitt_buildingfootprints` [check opendata](https://data.cityofnewyork.us/Housing-Development/Building-Footprints/nqwf-w8eh)
-- [ ] `doitt_buildingfootprints_historical`[check opendata](https://data.cityofnewyork.us/Housing-Development/Building-Footprints-Historical-Shape/s5zg-yzea)
+- [ ] `doitt_buildingfootprints_historical` [check opendata](https://data.cityofnewyork.us/Housing-Development/Building-Footprints-Historical-Shape/s5zg-yzea)
 - [ ] `doitt_zipcodeboundaries` -> never changed, safe to ignore
 - [ ] `doe_school_subdistricts` -> received from capital planning
 - [ ] `doe_eszones` -> the url for this changes year by year, [search on opendata](https://data.cityofnewyork.us/browse?q=school+zones)
