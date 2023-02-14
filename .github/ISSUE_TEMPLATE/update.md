@@ -73,7 +73,7 @@ DOITT_BUILDINGS_HISTORICAL_VERSION=
 - [ ] `doe_eszones` -> the url for this changes year by year, [search on opendata](https://data.cityofnewyork.us/browse?q=school+zones)
 - [ ] `doe_mszones` -> same as above
 - [ ] `hpd_hny_units_by_building` [check opendata](https://data.cityofnewyork.us/Housing-Development/Housing-New-York-Units-by-Building/hg8x-zxpr) and [run Data Sync action](https://github.com/NYCPlanning/db-developments/actions/workflows/data_sync.yml)
-- `hny_geocode_results`
+- `hny_geocode_results` [run Data Sync action](https://github.com/NYCPlanning/db-developments/actions/workflows/data_sync.yml)
 
 #### DOB data
 
@@ -82,4 +82,4 @@ DOITT_BUILDINGS_HISTORICAL_VERSION=
 - [ ]  `dob_permitissuance` [run Data Sync action](https://github.com/NYCPlanning/db-developments/actions/workflows/data_sync.yml)
 - [ ] `dob_now_applications` -> DOB contacts us via email that the data is ready, the data is downloaded from the DOB FTP using credentials, manually uploaded to DO and ingested via Data Library pipeline
 - [ ] `dob_now_permits` -> DOB contacts us via email that the data is ready, the data is downloaded from the DOB FTP using credentials, manually uploaded to DO and ingested via Data Library pipeline
-- [ ] `dob_geocode_results`
+- [ ] `dob_geocode_results` [run Data Sync action](https://github.com/NYCPlanning/db-developments/actions/workflows/data_sync.yml)
