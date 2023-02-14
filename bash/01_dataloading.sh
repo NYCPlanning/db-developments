@@ -26,7 +26,7 @@ import_public doe_eszones $DOE_ZONES_VERSION &
 import_public doe_mszones $DOE_ZONES_VERSION &
 import_public doe_school_subdistricts $DOE_SUBDISTRICTS_VERSION &
 import_public hpd_hny_units_by_building $HNY_VERSION &
-import_public hny_geocode_results $HNY_VERSION &
+import_public hny_geocode_results $DATA_SYNC_DATE &
 import_public dob_now_applications $DOB_NOW_APPS_VERSION &
 import_public dob_now_permits $DOB_NOW_PERMITS_VERSION &
 import_public dob_cofos $DOB_COFOS_VERSION &
@@ -44,7 +44,7 @@ weekly)
 *)
     import_public dob_permitissuance $DOB_DATA_DATE &
     import_public dob_jobapplications $DOB_DATA_DATE &
-    import_public dob_geocode_results $DOB_DATA_DATE &
+    import_public dob_geocode_results $DATA_SYNC_DATE &
     ;;
 esac
 
