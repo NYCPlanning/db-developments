@@ -76,17 +76,18 @@ jobs:
       - name: Load to Database
         if: github.event_name != 'workflow_dispatch'
         run: |
-          ./devdb.sh import dob_jobapplications
           ./devdb.sh import hpd_hny_units_by_building
+          ./devdb.sh import dob_jobapplications
           ./devdb.sh import dob_now_applications
 
       - name: Geocode
+        # Also combines the imported DOB datasets
         run: ./devdb.sh geocode
 
       - name: Export to csv
         run: |
-          ./devdb.sh output dob_geocode_results csv
           ./devdb.sh output hny_geocode_results csv
+          ./devdb.sh output dob_geocode_results csv
 
       - name: Check file existence
         run: ls *.csv
