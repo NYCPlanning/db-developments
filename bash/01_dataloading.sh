@@ -20,7 +20,7 @@ import_public dcp_policeprecincts $GEOSUPPORT_VERSION &
 import_public doitt_zipcodeboundaries $DOITT_ZIPCODE_VERSION &
 import_public dof_shoreline $DOF_VERSION &
 
-import_public dcp_mappluto_wi $DCP_MAPPLUTO_VERSION &
+import_public dcp_mappluto $DCP_MAPPLUTO_VERSION &
 import_public council_members $COUNCIL_MEMBERS_VERSION &
 import_public doe_eszones $DOE_ZONES_VERSION &
 import_public doe_mszones $DOE_ZONES_VERSION &

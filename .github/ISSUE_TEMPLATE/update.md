@@ -16,15 +16,51 @@ assignees:
 - [ ] Update version.env to:
 
 ```bash
-CAPTURE_DATE=2021-01-03
-CAPTURE_DATE_PREV=2020-06-30
-DOB_DATA_DATE=2020/01/01
-VERSION=20Q4
-VERSION_PREV=20Q2
+# DevDB versions for latest release
+VERSION=22Q4 #Current Build Version of DevDB
+VERSION_PREV=22Q2 #Previous Build Version of DevDB
+
+# DevDB data details
+CAPTURE_DATE= #Reference date for the DOB records (i.e. 22Q4 is a snapshot of all DOB records filed before 01-01-2023)
+CAPTURE_DATE_PREV= #Reference date for the DOB records (i.e. 22Q4 is a snapshot of all DOB records filed after 2022-07-01)
+
+# external tools versions
+GEOSUPPORT_DOCKER_IMAGE_VERSION=22.3.0
+
+# input spatial boundaries versions
+GEOSUPPORT_VERSION=22c
+DCP_MAPPLUTO_VERSION=
+DOITT_ZIPCODE_VERSION=
+DOF_VERSION=
+
+# input data versions
+COUNCIL_MEMBERS_VERSION=
+DOE_ZONES_VERSION=
+DOE_SUBDISTRICTS_VERSION=
+HNY_VERSION=
+DOB_DATA_DATE=
+DOB_NOW_APPS_VERSION=
+DOB_NOW_PERMITS_VERSION=
+DOB_COFOS_VERSION=
+DOITT_BUILDINGS_VERSION=
+DOITT_BUILDINGS_HISTORICAL_VERSION=
 ```
 
 ### Make sure the following are up-to-date in Digital Ocean
 
+#### City Administrative Boundaries
+- [ ] `dcp_cdboundaries`  
+- [ ] `dcp_cb2010`  
+- [ ] `dcp_ct2010` 
+- [ ] `dcp_cb2020` 
+- [ ] `dcp_ct2020` 
+- [ ] `dcp_school_districts` 
+- [ ] `dcp_boroboundaries_wi`
+- [ ] `dcp_councildistricts` 
+- [ ] `dcp_firecompanies` 
+- [ ] `dcp_policeprecincts` 
+- [ ] `doitt_zipcodeboundaries` 
+- [ ] `dof_shoreline`
 #### General
 
 - [ ] `dcp_mappluto_wi`
@@ -37,17 +73,7 @@ VERSION_PREV=20Q2
 - [ ] `doe_eszones` -> the url for this changes year by year, [search on opendata](https://data.cityofnewyork.us/browse?q=school+zones)
 - [ ] `doe_mszones` -> same as above
 - [ ] `hpd_hny_units_by_building` [check opendata](https://data.cityofnewyork.us/Housing-Development/Housing-New-York-Units-by-Building/hg8x-zxpr) and [run Data Sync action](https://github.com/NYCPlanning/db-developments/actions/workflows/data_sync.yml)
-
-#### DCP Admin Boundaries from Bytes
-
-- [ ] `dcp_cdboundaries`
-- [ ] `dcp_cb2010`
-- [ ] `dcp_ct2010`
-- [ ] `dcp_school_districts`
-- [ ] `dcp_boroboundaries_wi`
-- [ ] `dcp_councildistricts`
-- [ ] `dcp_firecompanies`
-- [ ] `dcp_policeprecincts`
+- `hny_geocode_results`
 
 #### DOB data
 
@@ -56,3 +82,4 @@ VERSION_PREV=20Q2
 - [ ]  `dob_permitissuance` [run Data Sync action](https://github.com/NYCPlanning/db-developments/actions/workflows/data_sync.yml)
 - [ ] `dob_now_applications` -> DOB contacts us via email that the data is ready, the data is downloaded from the DOB FTP using credentials, manually uploaded to DO and ingested via Data Library pipeline
 - [ ] `dob_now_permits` -> DOB contacts us via email that the data is ready, the data is downloaded from the DOB FTP using credentials, manually uploaded to DO and ingested via Data Library pipeline
+- [ ] `dob_geocode_results`
