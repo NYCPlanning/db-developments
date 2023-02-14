@@ -42,7 +42,7 @@ VERSION_PREV=20Q2
 
 - [ ] `dcp_cdboundaries`
 - [ ] `dcp_cb2010`
-- [ ] `dcp_censustracts`
+- [ ] `dcp_ct2010`
 - [ ] `dcp_school_districts`
 - [ ] `dcp_boroboundaries_wi`
 - [ ] `dcp_councildistricts`
