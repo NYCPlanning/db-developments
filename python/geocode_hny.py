@@ -50,7 +50,8 @@ def parse_output(geo):
             "Building Identification Number (BIN) of Input Address or NAP", ""
         ),
         geo_bbl=geo.get("BOROUGH BLOCK LOT (BBL)", {}).get(
-            "BOROUGH BLOCK LOT (BBL)", "",
+            "BOROUGH BLOCK LOT (BBL)",
+            "",
         ),
     )
 
@@ -70,7 +71,7 @@ if __name__ == "__main__":
         df = pd.read_sql(
             text(select_query),
             conn,
-    )
+        )
 
     # get the row number
     df = df.rename(
@@ -88,9 +89,9 @@ if __name__ == "__main__":
         it = pool.map(geocode, records, 10000)
 
     print("Geocoding finished, dumping to postgres ...")
-    df=pd.DataFrame(it)
+    df = pd.DataFrame(it)
     df.to_sql(
-        'hny_geocode_results',
+        "hny_geocode_results",
         con=engine,
         if_exists="replace",
         index=False,
