@@ -1,18 +1,18 @@
 name: Data Sync
-on: 
+on:
   push:
-    paths: 
+    paths:
       - .github/workflows/dob_data_sync.yml
       - templates/dob_jobapplications.yml
       - templates/dob_permitissuance.yml
   schedule:
-    - cron: '0 0 * * MON'
+    - cron: "0 0 * * MON"
   workflow_dispatch:
     inputs:
       version:
-        description: 'Would you like to specify a version for dob_jobapplications?'
+        description: "Would you like to specify a version for dob_jobapplications?"
         required: false
-        default: 'latest'
+        default: "latest"
 
 jobs:
   sync:
@@ -31,12 +31,12 @@ jobs:
           - hpd_hny_units_by_building
     steps:
       - uses: actions/checkout@v2
-      
+
       - uses: NYCPlanning/action-library-archive@v1.1
         with:
-            # name of the dataset
+          # name of the dataset
           name: ${{ matrix.dataset }}
-          path: templates/${{ matrix.dataset }}.yml 
+          path: templates/${{ matrix.dataset }}.yml
           s3: true
           latest: true
           compress: true
@@ -72,25 +72,26 @@ jobs:
           ./devdb.sh import dob_jobapplications ${{  github.event.inputs.version }}
           ./devdb.sh import hpd_hny_units_by_building
           ./devdb.sh import dob_now_applications
-      
+
       - name: Load to Database
         if: github.event_name != 'workflow_dispatch'
         run: |
-          ./devdb.sh import dob_jobapplications
           ./devdb.sh import hpd_hny_units_by_building
+          ./devdb.sh import dob_jobapplications
           ./devdb.sh import dob_now_applications
-      
+
       - name: Geocode
+        # Also combines the imported DOB datasets
         run: ./devdb.sh geocode
-      
+
       - name: Export to csv
-        run: | 
-          ./devdb.sh output dob_geocode_results csv
+        run: |
           ./devdb.sh output hny_geocode_results csv
-      
+          ./devdb.sh output dob_geocode_results csv
+
       - name: Check file existence
         run: ls *.csv
-      
+
       - name: Archive to Data Library (workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
         run: |

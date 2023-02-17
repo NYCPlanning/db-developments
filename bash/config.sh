@@ -167,7 +167,7 @@ function geocode {
       -v $(pwd):/src\
       -w /src\
       -e BUILD_ENGINE=$BUILD_ENGINE\
-      nycplanning/docker-geosupport:$VERSION_GEO bash -c "
+      nycplanning/docker-geosupport:$GEOSUPPORT_DOCKER_IMAGE_VERSION bash -c "
         python3 python/geocode.py
         python3 python/geocode_hny.py
       "
