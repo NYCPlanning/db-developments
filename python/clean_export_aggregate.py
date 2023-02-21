@@ -42,7 +42,7 @@ if __name__ == "__main__":
     engine = create_engine(os.environ["BUILD_ENGINE"])
 
     geo_base = read_aggregate_template(table_name)
-    select_query = """SELECT * FROM {table_name}"""
+    select_query = f"SELECT * FROM {table_name}"
     aggregate = pd.read_sql(sql=text(select_query), con=engine.connect())
 
     idx = get_index_columns(table_name)
