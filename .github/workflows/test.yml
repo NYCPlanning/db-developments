@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       rebuild:
-        description: "Would you like to rebuild DevDB? (yes/no) If no, set archive or export to yes."
+        description: "Would you like to rebuild DevDB (yes/no)? If no, set archive or export to yes."
         required: false
-        default: "yes"
+        default: "no"
       export:
         description: "Would you like to export the outputs and QAQC to DigitalOcean? (yes/no)"
         required: false
@@ -15,23 +15,17 @@ on:
         description: "Would you like to archive developments and dcp_housing to EDM-DATA? (yes/no)"
         required: false
         default: "no"
-      weekly:
-        description: "Is this for weekly devdb? (yes/no)"
-        required: false
-        default: "no"
+#      weekly:
+#        description: "Is this for weekly devdb? (yes/no)"
+#        required: false
+#        default: "no"
 
   # Weekly Devdb Build for HED Dashboard
-  schedule:
-    - cron: "0 6 * * *"
+#  schedule:
+#    - cron: "0 6 * * *"
 
 jobs:
-  Build:
-    name: Building ...
-    if: >-
-      (
-        github.event_name == 'push' &&
-        ! contains(github.event.head_commit.message, '[skip]')
-      ) || github.event_name != 'push'
+  build:
     runs-on: ubuntu-20.04
     services:
       db:
@@ -64,16 +58,12 @@ jobs:
             echo "::set-output name=rebuild::${{  github.event.inputs.rebuild }}"
             echo "::set-output name=archive::${{  github.event.inputs.archive }}"
             echo "::set-output name=export::${{  github.event.inputs.export }}"
-            echo "::set-output name=weekly::${{  github.event.inputs.weekly }}"
+
           else
             echo "::set-output name=rebuild::yes"
             echo "::set-output name=archive::no"
             echo "::set-output name=export::no"
-            if [[ $GITHUB_EVENT_NAME == 'schedule' ]]; then
-              echo "::set-output name=weekly::yes"
-            else
-              echo "::set-output name=weekly::no"
-            fi
+
           fi
 
       - name: install dependencies ...
@@ -87,16 +77,8 @@ jobs:
           sudo apt install python3-pip
           pip3 install pandas sqlalchemy psycopg2
 
-      - name: 1. dataloading for HED weekly builds
-        if: >-
-          steps.config.outputs.weekly == 'yes' && 
-          steps.config.outputs.rebuild == 'yes'
-        run: ./devdb.sh dataloading weekly
-
       - name: 1. dataloading for EDM builds
-        if: >-
-          steps.config.outputs.rebuild == 'yes' &&
-          steps.config.outputs.weekly == 'no'
+        if: steps.config.outputs.rebuild == 'yes' 
         run: ./devdb.sh dataloading edm && ls -l
 
       - name: Clear cache
@@ -114,31 +96,11 @@ jobs:
           ./devdb.sh qaqc
 
       - name: 4. Export ...
-        if: steps.config.outputs.weekly == 'no'
+        if: steps.config.outputs.export == 'yes'
         run: |
           ./devdb.sh export
           ./devdb.sh upload
 
       - name: 5. Archive ...
-        if: >-
-          steps.config.outputs.archive == 'yes' &&
-          steps.config.outputs.weekly == 'no'
+        if: steps.config.outputs.archive == 'yes' 
         run: ./devdb.sh archive
-
-      - name: Export to EDM_DATA/devdb
-        env:
-          EDM_DATA_BUILD_ENGINE: ${{ secrets.EDM_DATA_BUILD_ENGINE }}
-        if: always() && steps.config.outputs.weekly == 'no'
-        run: |
-          pg_dump $BUILD_ENGINE -O -c | psql $EDM_DATA_BUILD_ENGINE
-
-      - name: Export to HED database
-        if: >-
-          steps.config.outputs.weekly == 'yes' && 
-          steps.config.outputs.rebuild == 'yes'
-        run: |
-          pg_dump -t export_devdb $BUILD_ENGINE -O -c | psql $HED_BUILD_ENGINE &
-          pg_dump -t dcp_mappluto $BUILD_ENGINE -O -c | psql $HED_BUILD_ENGINE &
-          pg_dump -t hpd_hny_units_by_building $BUILD_ENGINE -O -c | psql $HED_BUILD_ENGINE &
-          wait 
-          echo "done!"
