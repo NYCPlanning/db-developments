@@ -5,8 +5,8 @@ on:
     inputs:
       rebuild:
         description: "Would you like to rebuild DevDB (yes/no)? If no, set archive or export to yes."
-        required: false
-        default: "no"
+        required: true
+        default: "yes"
       export:
         description: "Would you like to export the outputs and QAQC to DigitalOcean? (yes/no)"
         required: false
