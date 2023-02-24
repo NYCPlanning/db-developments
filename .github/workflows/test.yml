@@ -15,14 +15,6 @@ on:
         description: "Would you like to archive developments and dcp_housing to EDM-DATA? (yes/no)"
         required: false
         default: "no"
-#      weekly:
-#        description: "Is this for weekly devdb? (yes/no)"
-#        required: false
-#        default: "no"
-
-  # Weekly Devdb Build for HED Dashboard
-#  schedule:
-#    - cron: "0 6 * * *"
 
 jobs:
   build:
