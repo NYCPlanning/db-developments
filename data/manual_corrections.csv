@@ -42,7 +42,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 102484367,classa_init,,4,change u_init,8/13/2019,
 102500330,classa_init,,4,,4/27/2022,VB
 102503300,classa_init,,0,,2/3/2021,KS
+<<<<<<< HEAD
 102507253,classa_init,206,119,Resid/Hotel to Hotel,8/28/2020,BS
+=======
+102507253,classa_init,206,119,Resid/Hotel to Hotel,8/28/2020,WS
+>>>>>>> origin/main
 102513111,classa_init,,3,,8/24/2020,KS
 102514557,classa_init,,52,,8/14/2020,SL
 102522003,classa_init,,2,change u_init,8/13/2019,
@@ -511,7 +515,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 104716504,classa_init,,5,,12/1/2019,
 104717139,classa_init,,6,,4/22/2022,VB
 104717898,classa_init,,1,,12/1/2019,
+<<<<<<< HEAD
 104720704,classa_init,12,2, ,8/28/2020,BS
+=======
+104720704,classa_init,12,2, ,8/28/2020,WS
+>>>>>>> origin/main
 104722891,classa_init,348,345,,8/25/2020,AP
 104723738,classa_init,,0,change u_init / change u_prop,8/13/2019,
 104728485,classa_init,,3,,12/1/2019,
@@ -628,7 +636,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 110111511,classa_init,,0,change u_init,8/13/2019,
 110120119,classa_init,16,0,,1/31/2020,
 110122108,classa_init,1315,0,,1/28/2020,
+<<<<<<< HEAD
 110125132,classa_init,101,69,,8/28/2020,BS
+=======
+110125132,classa_init,101,69,,8/28/2020,WS
+>>>>>>> origin/main
 110125962,classa_init,481,0,,8/6/2020,KS
 110126239,classa_init,18,3,,1/31/2020,
 110127773,classa_init,1,0,,2/3/2020,
@@ -727,7 +739,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 120260305,classa_init,2,0,,1/31/2020,
 120260779,classa_init,36,0,,1/31/2020,
 120261634,classa_init,,0,change u_init,8/13/2019,
+<<<<<<< HEAD
 120262036,classa_init,315,0,,8/28/2020,BS
+=======
+120262036,classa_init,315,0,,8/28/2020,WS
+>>>>>>> origin/main
 120272025,classa_init,602,0,,1/31/2020,
 120273863,classa_init,34,0,,1/28/2020,
 120275861,classa_init,7,1,,1/31/2020,
@@ -775,7 +791,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 120481834,classa_init,1,0,,1/29/2021,ks
 120482316,classa_init,3,0,,1/29/2021,ks
 120484163,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 120488392,classa_init,5,0,,1/29/2021,BS
+=======
+120488392,classa_init,5,0,,1/29/2021,ws
+>>>>>>> origin/main
 120497042,classa_init,,0,change u_init,8/13/2019,
 120497300,classa_init,10,4,,8/28/2020,TD
 120500671,classa_init,1,0,,1/29/2021,ks
@@ -791,7 +811,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 120549610,classa_init,1,0,,1/29/2021,ks
 120550457,classa_init,143,0,,2/3/2020,
 120550545,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 120555103,classa_init,1,0,,8/28/2020,BS
+=======
+120555103,classa_init,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 120560240,classa_init,11,0,,1/31/2020,
 120561365,classa_init,1,0,,7/21/2022,SL
 120561374,classa_init,1,0,,7/20/2020,KS
@@ -836,8 +860,13 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 120663086,classa_init,96,19,,2/18/2020,
 120663479,classa_init,17,0,,7/30/2020,SL
 120665119,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 120665128,classa_init,5,0,,1/29/2021,BS
 120665137,classa_init,5,0,,1/29/2021,BS
+=======
+120665128,classa_init,5,0,,1/29/2021,WS
+120665137,classa_init,5,0,,1/29/2021,WS
+>>>>>>> origin/main
 120671950,classa_init,82,71,,2/18/2020,
 120682001,classa_init,9,1,,1/31/2020,
 120687211,classa_init,,1,,7/31/2020,TD
@@ -868,13 +897,21 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 120768400,classa_init,1,0,,1/29/2021,ks
 120768847,classa_init,2,0,,1/29/2021,ks
 120779915,classa_init,86,0,,1/28/2020,
+<<<<<<< HEAD
 120791063,classa_init,6,0,,1/29/2021,BS
+=======
+120791063,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 120791081,classa_init,13,9,,2/3/2020,
 120793926,classa_init,1,0,,2/1/2021,SL
 120795390,classa_init,1,0,,1/29/2021,ks
 120795416,classa_init,1,0,,1/29/2021,ks
 120797003,classa_init,14,13,,8/28/2020,AP
+<<<<<<< HEAD
 120797888,classa_init,0,,,8/29/2020,BS
+=======
+120797888,classa_init,0,,,8/29/2020,WS
+>>>>>>> origin/main
 120799608,classa_init,4,0,,2/3/2020,
 120824073,classa_init,,0,change u_init,8/13/2019,
 120824082,classa_init,10,0,,2/3/2020,
@@ -911,7 +948,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 120950140,classa_init,,0,change u_init,8/13/2019,
 120952530,classa_init,,0,change u_init,8/13/2019,
 120953094,classa_init,10,1,,1/31/2020,
+<<<<<<< HEAD
 120954477,classa_init,10,1, ,8/28/2020,BS
+=======
+120954477,classa_init,10,1, ,8/28/2020,WS
+>>>>>>> origin/main
 120957982,classa_init,9,0,,2/3/2020,
 120960264,classa_init,,0,Monastery units on 2 floors,8/28/2020,SL
 120968202,classa_init,,0,change u_init,8/13/2019,
@@ -927,7 +968,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 121011403,classa_init,1,0,,2/1/2021,TD
 121012689,classa_init,610,0,,1/31/2020,
 121015533,classa_init,12,8,,8/5/2020,KS
+<<<<<<< HEAD
 121021303,classa_init,12,0,,1/29/2021,BS
+=======
+121021303,classa_init,12,0,,1/29/2021,WS
+>>>>>>> origin/main
 121021321,classa_init,1,0,,1/29/2021,ks
 121021544,classa_init,299,0,job related to units_.sql,2/21/2020,
 121021660,classa_init,1,0,,1/29/2021,ks
@@ -995,7 +1040,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 121184271,classa_init,1,0,,1/28/2020,
 121184538,classa_init,99,0,job related to units_.sql,2/19/2020,
 121184743,classa_init,24,6,,7/30/2020,SL
+<<<<<<< HEAD
 121185029,classa_init,112,121,,8/28/2020,BS
+=======
+121185029,classa_init,112,121,,8/28/2020,WS
+>>>>>>> origin/main
 121185038,classa_init,15,0,,1/31/2020,
 121185494,classa_init,1,0,job related to units_.sql,2/21/2020,
 121186055,classa_init,145,144,,8/28/2020,SL
@@ -1033,12 +1082,20 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 121191575,classa_init,6,0,,2/3/2020,
 121191762,classa_init,214,0,,1/28/2020,
 121192208,classa_init,,0,,7/15/2022,SL
+<<<<<<< HEAD
 121192235,classa_init,9,6, ,8/28/2020,BS
+=======
+121192235,classa_init,9,6, ,8/28/2020,WS
+>>>>>>> origin/main
 121192360,classa_init,14,6,,2/3/2020,
 121192645,classa_init,,0,change u_init,8/13/2019,
 121192814,classa_init,593,306,,8/8/2022,VB
 121192850,classa_init,,0,change u_init,8/13/2019,
+<<<<<<< HEAD
 121192958,classa_init,86,0,Ronald McDonald House ,8/28/2020,BS
+=======
+121192958,classa_init,86,0,Ronald McDonald House ,8/28/2020,WS
+>>>>>>> origin/main
 121193207,classa_init,10,1,,1/31/2020,
 121193243,classa_init,,0,change u_init,8/13/2019,
 121193485,classa_init,12,1,,1/31/2020,
@@ -1146,7 +1203,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 121462835,classa_init,12,1,,8/28/2020,KS
 121478267,classa_init,,0,change u_init,8/13/2019,
 121494347,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 121506833,classa_init,6,0,,1/29/2021,BS
+=======
+121506833,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 121507208,classa_init,85,0,,8/28/2020,SL
 121508797,classa_init,9,1,,1/31/2020,
 121514352,classa_init,11,3,,8/25/2020,TD
@@ -1234,14 +1295,24 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 121748216,classa_init,10,1,,8/5/2020,TD
 121748378,classa_init,11,1,,1/31/2020,
 121749493,classa_init,8,1,,1/31/2020,
+<<<<<<< HEAD
 121755449,classa_init,7,0,,1/29/2021,BS
+=======
+121755449,classa_init,7,0,,1/29/2021,WS
+>>>>>>> origin/main
 121762510,classa_init,15,8,,1/29/2021,KS
 121762529,classa_init,9,8,,1/29/2021,TD
 121764411,classa_init,15,0,,1/31/2020,
 121768177,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 121768186,classa_init,6,0,,1/29/2021,BS
 121773982,classa_init,114,0,,4/25/2022,SL
 121775695,classa_init,7,0,,1/29/2021,BS
+=======
+121768186,classa_init,6,0,,1/29/2021,WS
+121773982,classa_init,114,0,,4/25/2022,SL
+121775695,classa_init,7,0,,1/29/2021,WS
+>>>>>>> origin/main
 121777014,classa_init,11,0,,1/31/2020,
 121779432,classa_init,2,0,,1/29/2021,KS
 121800131,classa_init,11,3,,2/3/2020,
@@ -1264,7 +1335,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 121868513,classa_init,29,35,,1/28/2020,
 121889475,classa_init,217,0,job related to units_.sql,2/21/2020,
 121890445,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 121890935,classa_init,7,0,,1/29/2021,BS
+=======
+121890935,classa_init,7,0,,1/29/2021,WS
+>>>>>>> origin/main
 121890971,classa_init,7,0,,8/25/2020,SL
 121892372,classa_init,5,0,,1/29/2021,TD
 121892381,classa_init,1,0,,1/29/2021,ks
@@ -1273,7 +1348,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 121897858,classa_init,8,0,,1/29/2021,TD
 121903681,classa_init,11,0,,2/3/2020,
 121905108,classa_init,12,1,,1/31/2020,
+<<<<<<< HEAD
 121911020,classa_init,107,0,NYU Hospital Building,8/28/2020,BS
+=======
+121911020,classa_init,107,0,NYU Hospital Building,8/28/2020,WS
+>>>>>>> origin/main
 121911048,classa_init,1,0,,7/20/2020,KS
 121911057,classa_init,1,0,,7/20/2020,KS
 121912396,classa_init,92,0,,2/3/2020,
@@ -1284,7 +1363,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 121929547,classa_init,8,3,,2/3/2020,
 121934835,classa_init,11,0,,2/3/2020,
 121937903,classa_init,8,0,,2/3/2020,
+<<<<<<< HEAD
 121942639,classa_init,7,6,,1/29/2021,BS
+=======
+121942639,classa_init,7,6,,1/29/2021,WS
+>>>>>>> origin/main
 121944227,classa_init,,0,change u_init,8/13/2019,
 121949605,classa_init,10,0,,8/24/2020,TD
 121953494,classa_init,515,0,,1/28/2020,
@@ -1330,14 +1413,22 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122030881,classa_init,2,0,,1/29/2021,ks
 122032834,classa_init,15,0,,8/28/2020,AP
 122034734,classa_init,11,0,,1/31/2020,
+<<<<<<< HEAD
 122034832,classa_init,7,6,,1/29/2021,BS
+=======
+122034832,classa_init,7,6,,1/29/2021,ws
+>>>>>>> origin/main
 122036812,classa_init,1,0,,1/29/2021,ks
 122040451,classa_init,5,0,,2/3/2020,
 122041860,classa_init,3,0,,1/29/2021,ks
 122042306,classa_init,1,0,,2/1/2021,TD
 122043733,classa_init,9,0,,2/3/2020,
 122044297,classa_init,307,0,,4/27/2022,AP
+<<<<<<< HEAD
 122053865,classa_init,5,0,,1/29/2021,BS
+=======
+122053865,classa_init,5,0,,1/29/2021,WS
+>>>>>>> origin/main
 122053874,classa_init,1,0,,1/29/2021,ks
 122056666,classa_init,1,0,,1/29/2021,ks
 122056675,classa_init,2,0,,1/29/2021,ks
@@ -1368,11 +1459,19 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122119224,classa_init,1,0,,1/29/2021,ks
 122119233,classa_init,1,0,,1/29/2021,ks
 122121989,classa_init,,0,,4/26/2022,SL
+<<<<<<< HEAD
 122124922,classa_init,7,0,,1/29/2021,BS
 122127849,classa_init,7,2,,1/31/2020,
 122141725,classa_init,15,1,,1/31/2020,
 122143457,classa_init,,0,change u_init,8/13/2019,
 122144820,classa_init,17,0,,1/29/2021,BS
+=======
+122124922,classa_init,7,0,,1/29/2021,WS
+122127849,classa_init,7,2,,1/31/2020,
+122141725,classa_init,15,1,,1/31/2020,
+122143457,classa_init,,0,change u_init,8/13/2019,
+122144820,classa_init,17,0,,1/29/2021,WS
+>>>>>>> origin/main
 122144875,classa_init,4,0,,1/29/2021,TD
 122153221,classa_init,5,3,,1/28/2020,
 122164157,classa_init,4,0,,1/29/2021,TD
@@ -1390,7 +1489,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122199478,classa_init,4,0,,1/29/2021,TD
 122199487,classa_init,2,0,,1/29/2021,ks
 122199682,classa_init,8,0,,1/31/2020,
+<<<<<<< HEAD
 122201839,classa_init,1693,0,Mdtown Hilton Hotel,8/28/2020,BS
+=======
+122201839,classa_init,1693,0,Mdtown Hilton Hotel,8/28/2020,WS
+>>>>>>> origin/main
 122202909,classa_init,1,0,,2/3/2020,
 122207575,classa_init,3,0,,1/29/2021,ks
 122207931,classa_init,11,2,,8/5/2020,KS
@@ -1398,7 +1501,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122211114,classa_init,12,1,,1/28/2020,
 122211864,classa_init,157,0,job related to units_.sql,2/21/2020,
 122216805,classa_init,15,1,,1/29/2021,KS
+<<<<<<< HEAD
 122216814,classa_init,6,0,,1/29/2021,BS
+=======
+122216814,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 122218563,classa_init,15,0,,1/31/2020,
 122221381,classa_init,281,0,,2/3/2020,
 122222282,classa_init,203,168,job related to units_.sql,2/21/2020,
@@ -1411,7 +1518,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122243385,classa_init,11,1,,8/28/2020,TD
 122274591,classa_init,1,0,,1/29/2021,ks
 122278418,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 122278436,classa_init,7,0,,1/29/2021,BS
+=======
+122278436,classa_init,7,0,,1/29/2021,WS
+>>>>>>> origin/main
 122278445,classa_init,2,0,,1/29/2021,ks
 122278472,classa_init,15,0,,1/29/2021,KS
 122278490,classa_init,1,0,,1/29/2021,ks
@@ -1439,20 +1550,32 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122357056,classa_init,1,2,,1/29/2021,ks
 122357458,classa_init,2,0,,1/29/2021,ks
 122358983,classa_init,3,0,,1/29/2021,ks
+<<<<<<< HEAD
 122358992,classa_init,7,0,,1/29/2021,BS
+=======
+122358992,classa_init,7,0,,1/29/2021,WS
+>>>>>>> origin/main
 122359018,classa_init,1,0,,1/29/2021,ks
 122362273,classa_init,86,1,,1/31/2020,
 122363691,classa_init,2,0,,1/29/2021,ks
 122365546,classa_init,9,0,,1/29/2021,TD
 122369873,classa_init,2,0,,1/29/2021,KS
+<<<<<<< HEAD
 122369908,classa_init,6,0,,1/29/2021,BS
+=======
+122369908,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 122369953,classa_init,118,0,change u_init,2/14/2020,
 122369999,classa_init,1,0,,7/27/2020,SL
 122371236,classa_init,7,8,,8/28/2020,AP
 122375857,classa_init,11,0,,1/31/2020,
 122376758,classa_init,1,0,,7/27/2020,SL
 122384375,classa_init,9,0,,1/31/2020,
+<<<<<<< HEAD
 122386738,classa_init,5,0,,1/29/2021,BS
+=======
+122386738,classa_init,5,0,,1/29/2021,WS
+>>>>>>> origin/main
 122386747,classa_init,1,0,,1/29/2021,ks
 122386756,classa_init,2,0,,1/29/2021,KS
 122388479,classa_init,67,68,job related to units_.sql,2/19/2020,
@@ -1471,8 +1594,13 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122422360,classa_init,22,1,,2/3/2020,
 122423412,classa_init,5,1,,2/3/2020,
 122430155,classa_init,212,1,job related to units_.sql,2/21/2020,
+<<<<<<< HEAD
 122431350,classa_init,7,0,,1/29/2021,BS
 122431813,classa_init,7,0,,1/29/2021,BS
+=======
+122431350,classa_init,7,0,,1/29/2021,WS
+122431813,classa_init,7,0,,1/29/2021,WS
+>>>>>>> origin/main
 122435757,classa_init,4,2,,1/29/2021,TD
 122440402,classa_init,1,0,,1/29/2021,ks
 122442400,classa_init,1,0,,1/29/2021,ks
@@ -1480,7 +1608,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122446424,classa_init,12,2,,7/15/2022,SL
 122455752,classa_init,10,0,,8/24/2020,TD
 122456243,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 122456840,classa_init,366,56,,8/28/2020,BS
+=======
+122456840,classa_init,366,56,,8/28/2020,WS
+>>>>>>> origin/main
 122458090,classa_init,,0,change u_init,8/13/2019,
 122465046,classa_init,315,0,,1/28/2020,
 122465126,classa_init,5,0,,1/29/2021,TD
@@ -1497,7 +1629,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122513618,classa_init,506,5,,4/27/2022,AP
 122513770,classa_init,,0,,1/31/2020,
 122514859,classa_init,12,0,,1/31/2020,
+<<<<<<< HEAD
 122514868,classa_init,12,1, ,8/28/2020,BS
+=======
+122514868,classa_init,12,1, ,8/28/2020,WS
+>>>>>>> origin/main
 122515215,classa_init,,0,,12/1/2019,
 122516232,classa_init,1,0,,1/29/2021,ks
 122522804,classa_init,2,0,,1/29/2021,ks
@@ -1515,7 +1651,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122568765,classa_init,46,0,,1/31/2020,
 122608320,classa_init,21,0,,1/31/2020,
 122608730,classa_init,1,0,,7/27/2020,SL
+<<<<<<< HEAD
 122608749,classa_init,7,6,,1/29/2021,BS
+=======
+122608749,classa_init,7,6,,1/29/2021,ws
+>>>>>>> origin/main
 122610718,classa_init,9,0,unknown units of sros,8/28/2020,KS
 122610727,classa_init,9,0,unknown units of sros,8/28/2020,KS
 122611762,classa_init,4,0,,1/29/2021,TD
@@ -1548,7 +1688,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122659079,classa_init,3,0,,1/29/2021,ks
 122665286,classa_init,12,0,,2/3/2020,
 122665464,classa_init,4,3,,1/29/2021,TD
+<<<<<<< HEAD
 122668700,classa_init,551,0,Hotel Room Reduction,8/28/2020,BS
+=======
+122668700,classa_init,551,0,Hotel Room Reduction,8/28/2020,WS
+>>>>>>> origin/main
 122671607,classa_init,182,0,,8/3/2022,VB
 122673446,classa_init,13,0,,1/31/2020,
 122673776,classa_init,1,895,,1/28/2020,
@@ -1627,7 +1771,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122911698,classa_init,3,2,,1/29/2021,ks
 122916693,classa_init,1,0,,1/29/2021,ks
 122916700,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 122916719,classa_init,6,0,,1/29/2021,BS
+=======
+122916719,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 122923266,classa_init,321,19,,1/31/2020,
 122925120,classa_init,1,0,,1/29/2021,ks
 122927985,classa_init,1,0,,1/29/2021,ks
@@ -1645,7 +1793,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 122981906,classa_init,13,0,,8/28/2020,TD
 122983174,classa_init,10,3,,1/31/2020,
 122984832,classa_init,11,0,,1/31/2020,
+<<<<<<< HEAD
 122988320,classa_init,854,185,Essex House Hotel/Condo,8/28/2020,BS
+=======
+122988320,classa_init,854,185,Essex House Hotel/Condo,8/28/2020,WS
+>>>>>>> origin/main
 122991325,classa_init,4,0,,2/3/2020,
 122993458,classa_init,591,590,,8/29/2020,TD
 122993957,classa_init,243,265,,8/27/2020,AP
@@ -1679,17 +1831,28 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 123157458,classa_init,11,1,,7/30/2020,SL
 123161158,classa_init,9,0,,2/3/2020,
 123161274,classa_init,10,2,,1/31/2020,
+<<<<<<< HEAD
 123165859,classa_init,7,6,,1/29/2021,BS
+=======
+123165859,classa_init,7,6,,1/29/2021,WS
+>>>>>>> origin/main
 123166723,classa_init,10,0,,8/4/2020,TD
 123166741,classa_init,10,1,,8/28/2020,KS
 123178578,classa_init,119,0,,8/25/2020,AP
 123190484,classa_init,15,0,,1/31/2020,
 123190947,classa_init,42,0,,1/28/2020,
 123198752,classa_init,91,0,,4/28/2022,AP
+<<<<<<< HEAD
 123202569,classa_init,7,0,,1/29/2021,BS
 123202578,classa_init,1,0,,1/29/2021,ks
 123202587,classa_init,1,0,,1/29/2021,ks
 123202596,classa_init,7,6,,1/29/2021,BS
+=======
+123202569,classa_init,7,0,,1/29/2021,WS
+123202578,classa_init,1,0,,1/29/2021,ks
+123202587,classa_init,1,0,,1/29/2021,ks
+123202596,classa_init,7,6,,1/29/2021,WS
+>>>>>>> origin/main
 123203416,classa_init,168,0,,1/28/2020,
 123203871,classa_init,10,1,,2/3/2020,
 123204200,classa_init,2,1,,2/3/2020,
@@ -1698,13 +1861,21 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 123210818,classa_init,242,0,job related to units_.sql,2/21/2020,
 123211194,classa_init,5,0,,2/3/2020,
 123211318,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 123213520,classa_init,10,9,,8/28/2020,BS
+=======
+123213520,classa_init,10,9,,8/28/2020,WS
+>>>>>>> origin/main
 123214280,classa_init,24,0,,8/6/2020,KS
 123225517,classa_init,17,0,,1/31/2020,
 123226062,classa_init,,0,change u_init,8/13/2019,
 123227070,classa_init,110,0,,7/15/2022,SL
 123234357,classa_init,80,77,,4/29/2022,AP
+<<<<<<< HEAD
 123234507,classa_init,46,0,Hotel Building,8/28/2020,BS
+=======
+123234507,classa_init,46,0,Hotel Building,8/28/2020,WS
+>>>>>>> origin/main
 123256877,classa_init,192,1,,7/21/2022,SL
 123274900,classa_init,,0,,1/31/2020,
 123294924,classa_init,6,0,,1/29/2021,TD
@@ -1752,7 +1923,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 123552477,classa_init,13,0,,1/31/2020,
 123567158,classa_init,25,26,change u_prop,2/14/2020,
 123576479,classa_init,2,0,,1/29/2021,ks
+<<<<<<< HEAD
 123580062,classa_init,352,326,Reduction Apt count,8/28/2020,BS
+=======
+123580062,classa_init,352,326,Reduction Apt count,8/28/2020,WS
+>>>>>>> origin/main
 123582783,classa_init,21,0,,1/28/2020,
 123584399,classa_init,11,0,,1/31/2020,
 123585557,classa_init,1,0,,7/31/2020,KS
@@ -1793,7 +1968,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 123835476,classa_init,70,22,,1/30/2020,
 123846954,classa_init,4,0,,1/29/2021,ks
 123846963,classa_init,4,0,,1/29/2021,ks
+<<<<<<< HEAD
 123847392,classa_init,90,0,Hotel to Residential (Condo),8/28/2020,BS
+=======
+123847392,classa_init,90,0,Hotel to Residential (Condo),8/28/2020,WS
+>>>>>>> origin/main
 123858414,classa_init,89,0,,4/28/2022,AP
 123864130,classa_init,136,2,,1/26/2021,TD
 123869199,classa_init,1,1,,1/28/2020,
@@ -2109,7 +2288,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 220064711,classa_init,1,0,,1/29/2021,ks
 220067674,classa_init,1,0,,7/27/2020,SL
 220068995,classa_init,1,0,,7/20/2020,KS
+<<<<<<< HEAD
 220069002,classa_init,21,2,,8/28/2020,BS
+=======
+220069002,classa_init,21,2,,8/28/2020,WS
+>>>>>>> origin/main
 220077379,classa_init,1,0,,7/27/2020,SL
 220077958,classa_init,1,0,,7/20/2020,KS
 220080775,classa_init,1,0,,7/27/2020,SL
@@ -2161,7 +2344,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 220172239,classa_init,2,0,,7/27/2020,SL
 220172970,classa_init,1,0,,7/27/2020,SL
 220173577,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 220173595,classa_init,12,0,,1/29/2021,BS
+=======
+220173595,classa_init,12,0,,1/29/2021,WS
+>>>>>>> origin/main
 220173602,classa_init,1,0,,7/27/2020,SL
 220173960,classa_init,1,0,,7/27/2020,SL
 220178787,classa_init,,0,,8/3/2022,VB
@@ -2181,16 +2368,27 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 220225049,classa_init,5,0,Garage,8/27/2020,SL
 220225067,classa_init,1,0,,2/1/2021,SL
 220225085,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 220225094,classa_init,10,0,,1/29/2021,BS
 220226173,classa_init,5,0,,1/29/2021,BS
+=======
+220225094,classa_init,10,0,,1/29/2021,WS
+220226173,classa_init,5,0,,1/29/2021,WS
+>>>>>>> origin/main
 220230989,classa_init,1,0,,7/20/2020,KS
 220231023,classa_init,1,0,,7/20/2020,KS
 220232120,classa_init,1,0,,7/20/2020,KS
 220232139,classa_init,1,0,,7/20/2020,KS
 220232433,classa_init,2,0,,7/20/2020,SL
+<<<<<<< HEAD
 220234770,classa_init,5,0,,1/29/2021,BS
 220235225,classa_init,1,0,,7/27/2020,SL
 220237205,classa_init,5,0,,1/29/2021,BS
+=======
+220234770,classa_init,5,0,,1/29/2021,WS
+220235225,classa_init,1,0,,7/27/2020,SL
+220237205,classa_init,5,0,,1/29/2021,WS
+>>>>>>> origin/main
 220237214,classa_init,5,0,Garage,8/27/2020,SL
 220241502,classa_init,2,0,,1/29/2021,ks
 220242324,classa_init,1,0,,7/27/2020,SL
@@ -2218,9 +2416,15 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 220284617,classa_init,2,0,,2/1/2021,SL
 220286134,classa_init,1,0,,2/1/2021,SL
 220288613,classa_init,1,0,,7/20/2020,KS
+<<<<<<< HEAD
 220288622,classa_init,10,0,,1/29/2021,BS
 220288631,classa_init,10,0,,1/29/2021,BS
 220288640,classa_init,10,0,,1/29/2021,BS
+=======
+220288622,classa_init,10,0,,1/29/2021,wS
+220288631,classa_init,10,0,,1/29/2021,WS
+220288640,classa_init,10,0,,1/29/2021,WS
+>>>>>>> origin/main
 220288917,classa_init,1,0,,1/29/2021,ks
 220321211,classa_init,4,2,,2/3/2020,
 220321300,classa_init,1,0,,7/27/2020,SL
@@ -2238,7 +2442,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 220328893,classa_init,2,0,,7/21/2020,KS
 220329179,classa_init,3,0,,1/29/2021,ks
 220329954,classa_init,3,0,,1/29/2021,ks
+<<<<<<< HEAD
 220329963,classa_init,12,0,,1/29/2021,BS
+=======
+220329963,classa_init,12,0,,1/29/2021,WS
+>>>>>>> origin/main
 220330229,classa_init,1,0,,7/27/2020,SL
 220331237,classa_init,1,0,,7/27/2020,SL
 220331264,classa_init,2,0,,7/20/2020,SL
@@ -2274,17 +2482,28 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 220380870,classa_init,1,0,,1/29/2021,ks
 220380889,classa_init,1,0,,1/29/2021,ks
 220380898,classa_init,1,0,,7/20/2020,SL
+<<<<<<< HEAD
 220380905,classa_init,12,0,,1/29/2021,BS
 220382146,classa_init,12,0,,1/29/2021,BS
 220382244,classa_init,1,0,,7/27/2020,SL
 220382850,classa_init,12,0,,1/29/2021,BS
+=======
+220380905,classa_init,12,0,,1/29/2021,WS
+220382146,classa_init,12,0,,1/29/2021,WS
+220382244,classa_init,1,0,,7/27/2020,SL
+220382850,classa_init,12,0,,1/29/2021,WS
+>>>>>>> origin/main
 220383298,classa_init,1,0,,7/27/2020,SL
 220383305,classa_init,1,0,,7/27/2020,SL
 220384420,classa_init,1,0,,8/5/2020,TD
 220388355,classa_init,1,0,,7/27/2020,SL
 220389915,classa_init,1,0,,7/27/2020,SL
 220389942,classa_init,3,0,Garage,8/27/2020,SL
+<<<<<<< HEAD
 220391083,classa_init,12,12,,1/29/2021,BS
+=======
+220391083,classa_init,12,12,,1/29/2021,WS
+>>>>>>> origin/main
 220391092,classa_init,2,0,,7/27/2020,SL
 220395347,classa_init,,0,"240 beds, assumed 2 per room",8/27/2020,SL
 220395472,classa_init,1,0,,7/27/2020,SL
@@ -2487,7 +2706,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 220665091,classa_init,1,0,,7/27/2020,SL
 220667160,classa_init,1,0,,7/20/2020,SL
 220667669,classa_init,1,0,,7/20/2020,SL
+<<<<<<< HEAD
 220667829,classa_init,40,0,Jerome Motel,8/28/2020,BS
+=======
+220667829,classa_init,40,0,Jerome Motel,8/28/2020,WS
+>>>>>>> origin/main
 220668463,classa_init,2,0,,7/27/2020,SL
 220669747,classa_init,0,,,8/29/2020,AP
 220671841,classa_init,2,0,,7/20/2020,SL
@@ -2517,7 +2740,10 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 220691632,classa_init,1,0,,7/27/2020,SL
 220692677,classa_init,2,0,,7/21/2020,KS
 220693836,classa_init,1,0,,7/27/2020,SL
+<<<<<<< HEAD
 301071435,classa_init,,1,,1/27/2020,
+=======
+>>>>>>> origin/main
 220693845,classa_init,3,0,Garage,8/27/2020,SL
 220693872,classa_init,1,0,,7/20/2020,SL
 220694666,classa_init,1,0,,7/20/2020,SL
@@ -2551,7 +2777,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 220717482,classa_init,1,0,,7/27/2020,SL
 220719426,classa_init,1,0,,7/27/2020,SL
 220719818,classa_init,1,0,,7/20/2020,SL
+<<<<<<< HEAD
 220720138,classa_init,88,0,NonProfit Class B Units,8/28/2020,BS
+=======
+220720138,classa_init,88,0,NonProfit Class B Units,8/28/2020,WS
+>>>>>>> origin/main
 220721146,classa_init,56,56,,1/28/2020,
 220721672,classa_init,1,0,,7/20/2020,SL
 220722056,classa_init,1,0,,7/20/2020,SL
@@ -2634,6 +2864,10 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 301055916,classa_init,,4,,8/24/2020,KS
 301066502,classa_init,,2,,12/1/2019,
 301069652,classa_init,,0,change u_init,8/13/2019,
+<<<<<<< HEAD
+=======
+301071435,classa_init,,1,,1/27/2020,
+>>>>>>> origin/main
 301074147,classa_init,,5,,8/24/2020,KS
 301078456,classa_init,,2,,12/1/2019,
 301080522,classa_init,,3,,8/14/2020,SL
@@ -3089,7 +3323,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 301917433,classa_init,,1,,12/1/2019,
 301918290,classa_init,,1,,1/27/2020,
 301918628,classa_init,,1,,1/27/2020,
+<<<<<<< HEAD
 301918744,classa_init,39,0, ,8/28/2020,BS
+=======
+301918744,classa_init,39,0, ,8/28/2020,WS
+>>>>>>> origin/main
 301919878,classa_init,,2,change u_init,8/13/2019,
 301920090,classa_init,,2,,12/1/2019,
 301920802,classa_init,,1,,1/27/2020,
@@ -4207,7 +4445,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 320218581,classa_init,1,0,,7/21/2020,KS
 320218750,classa_init,1,0,,7/21/2020,KS
 320219296,classa_init,30,2,,4/28/2022,AP
+<<<<<<< HEAD
 320220603,classa_init,7,6,,1/29/2021,BS
+=======
+320220603,classa_init,7,6,,1/29/2021,WS
+>>>>>>> origin/main
 320223502,classa_init,1,0,,7/21/2020,KS
 320224342,classa_init,3,0,,7/21/2020,KS
 320224752,classa_init,1,0,,1/29/2021,ks
@@ -4278,7 +4520,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 320285696,classa_init,,0,change u_init,8/13/2019,
 320286258,classa_init,2,0,,7/21/2020,KS
 320286301,classa_init,1,0,,7/27/2020,SL
+<<<<<<< HEAD
 320287729,classa_init,6,0,,1/29/2021,BS
+=======
+320287729,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 320288719,classa_init,30,2,change u_init,2/14/2020,
 320288988,classa_init,1,0,,7/27/2020,SL
 320289656,classa_init,1,1,,8/31/2021,SL
@@ -4432,7 +4678,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 320461816,classa_init,0,,,8/27/2020,KS
 320469774,classa_init,0,,,8/27/2020,KS
 320474232,classa_init,,0,change occ_prop,8/13/2019,
+<<<<<<< HEAD
 320475678,classa_init,6,0,,1/29/2021,BS
+=======
+320475678,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 320476882,classa_init,,0,change u_init,8/13/2019,
 320476944,classa_init,4,3,,2/3/2020,
 320478675,classa_init,2,0,,7/20/2020,SL
@@ -4840,7 +5090,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 320973773,classa_init,16,0,,7/31/2020,KS
 320975502,classa_init,2,0,,7/27/2020,SL
 320977145,classa_init,2,0,,7/27/2020,SL
+<<<<<<< HEAD
 320978395,classa_init,14,12,,1/29/2021,BS
+=======
+320978395,classa_init,14,12,,1/29/2021,WS
+>>>>>>> origin/main
 320978402,classa_init,1,0,,7/20/2020,KS
 320978830,classa_init,,0,,8/24/2020,KS
 320978894,classa_init,1,0,,7/20/2020,SL
@@ -4863,7 +5117,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 320984814,classa_init,8,1,,2/3/2020,
 320986117,classa_init,1,0,,1/29/2021,ks
 320986126,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 320988393,classa_init,70,0,Nursing Home Long Abondoned,8/28/2020,BS
+=======
+320988393,classa_init,70,0,Nursing Home Long Abondoned,8/28/2020,WS
+>>>>>>> origin/main
 320988464,classa_init,,0,change u_init,8/13/2019,
 320988767,classa_init,1,0,,7/27/2020,SL
 320988927,classa_init,1,0,,1/29/2021,ks
@@ -4909,7 +5167,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 321005844,classa_init,1,0,,7/20/2020,SL
 321005853,classa_init,3,0,,1/29/2021,ks
 321005862,classa_init,3,0,,1/29/2021,ks
+<<<<<<< HEAD
 321005871,classa_init,5,0,,1/29/2021,BS
+=======
+321005871,classa_init,5,0,,1/29/2021,WS
+>>>>>>> origin/main
 321006512,classa_init,8,1,,1/31/2020,
 321008155,classa_init,1,0,,7/27/2020,SL
 321008182,classa_init,1,0,,1/29/2021,ks
@@ -5042,7 +5304,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 321130174,classa_init,1,0,Shed demolition - zero out units init,1/30/2020,
 321130584,classa_init,1,0,,7/27/2020,SL
 321130851,classa_init,1,0,,7/20/2020,SL
+<<<<<<< HEAD
 321133206,classa_init,6,0,,1/29/2021,BS
+=======
+321133206,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 321134615,classa_init,1,0,,7/20/2020,KS
 321134624,classa_init,1,0,,7/27/2020,SL
 321134633,classa_init,1,0,,7/20/2020,KS
@@ -5124,7 +5390,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 321186499,classa_init,,0,change u_init,8/13/2019,
 321186587,classa_init,107,0,,5/6/2022,SL
 321186649,classa_init,,0,,8/29/2020,KS
+<<<<<<< HEAD
 321187130,classa_init,92,0,Class B to Class A,8/28/2020,BS
+=======
+321187130,classa_init,92,0,Class B to Class A,8/28/2020,WS
+>>>>>>> origin/main
 321187167,classa_init,,0,change u_init,8/13/2019,
 321188479,classa_init,11,2,,7/29/2020,SL
 321188772,classa_init,7,1,,2/3/2020,
@@ -5784,7 +6054,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 321803116,classa_init,1,0,,7/20/2020,SL
 321805025,classa_init,1,0,,7/20/2020,SL
 321805105,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 321805169,classa_init,7,0,,1/29/2021,BS
+=======
+321805169,classa_init,7,0,,1/29/2021,WS
+>>>>>>> origin/main
 321805187,classa_init,1,0,,7/20/2020,SL
 321805258,classa_init,1,0,,7/27/2020,SL
 321805267,classa_init,1,0,,7/20/2020,SL
@@ -6051,7 +6325,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 322087148,classa_init,1,0,,2/1/2021,SL
 322087184,classa_init,1,0,,2/1/2021,SL
 322087308,classa_init,2,0,,2/1/2021,SL
+<<<<<<< HEAD
 322087380,classa_init,7,0,,1/29/2021,BS
+=======
+322087380,classa_init,7,0,,1/29/2021,WS
+>>>>>>> origin/main
 322087433,classa_init,1,0,,1/29/2021,ks
 322087442,classa_init,1,0,,1/29/2021,ks
 322087727,classa_init,1,0,,2/1/2021,SL
@@ -8114,7 +8392,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 420115057,classa_init,2,0,,7/27/2020,SL
 420115841,classa_init,1,0,,7/27/2020,SL
 420116029,classa_init,1,0,,7/27/2020,SL
+<<<<<<< HEAD
 420116332,classa_init,5,3,,1/29/2021,BS
+=======
+420116332,classa_init,5,3,,1/29/2021,WS
+>>>>>>> origin/main
 420119570,classa_init,1,0,,7/27/2020,SL
 420124573,classa_init,1,0,,7/27/2020,SL
 420124582,classa_init,1,0,,7/27/2020,SL
@@ -8175,7 +8457,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 420187247,classa_init,7,0,,7/17/2020,KS
 420187256,classa_init,7,0,,7/17/2020,KS
 420187265,classa_init,7,0,,7/17/2020,KS
+<<<<<<< HEAD
 420187274,classa_init,7,0,,1/29/2021,BS
+=======
+420187274,classa_init,7,0,,1/29/2021,WS
+>>>>>>> origin/main
 420187283,classa_init,7,0,,7/17/2020,KS
 420187292,classa_init,7,0,,7/17/2020,KS
 420187309,classa_init,7,0,,7/17/2020,KS
@@ -8300,7 +8586,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 420297949,classa_init,1,0,,7/21/2020,KS
 420298216,classa_init,1,0,,7/21/2020,KS
 420298234,classa_init,1,0,,7/21/2020,KS
+<<<<<<< HEAD
 420299162,classa_init,10,0,,1/29/2021,BS
+=======
+420299162,classa_init,10,0,,1/29/2021,ws
+>>>>>>> origin/main
 420299572,classa_init,1,0,,7/27/2020,SL
 420299723,classa_init,1,0,,2/1/2021,SL
 420300114,classa_init,1,0,,7/27/2020,SL
@@ -9034,8 +9324,13 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 421162752,classa_init,1,0,,7/21/2020,KS
 421164901,classa_init,2,0,,7/27/2020,SL
 421166491,classa_init,1,0,,7/21/2020,KS
+<<<<<<< HEAD
 421166767,classa_init,6,0,,1/29/2021,BS
 421166776,classa_init,6,0,,1/29/2021,BS
+=======
+421166767,classa_init,6,0,,1/29/2021,WS
+421166776,classa_init,6,0,,1/29/2021,ws
+>>>>>>> origin/main
 421166829,classa_init,1,0,,7/27/2020,SL
 421168569,classa_init,1,0,,7/21/2020,KS
 421169602,classa_init,1,0,,7/20/2020,SL
@@ -9048,13 +9343,20 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 421171127,classa_init,1,0,,7/27/2020,SL
 421171902,classa_init,1,0,,7/27/2020,SL
 421172670,classa_init,1,0,Shed demolition - zero out units init,1/30/2020,
+<<<<<<< HEAD
 421173633,classa_init,6,0,,1/29/2021,BS
+=======
+421173633,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 421173642,classa_init,1,0,,1/29/2021,ks
 421174286,classa_init,1,0,,7/27/2020,SL
 421174348,classa_init,1,0,,7/27/2020,SL
 421174419,classa_init,1,0,,7/20/2020,SL
 421174990,classa_init,1,0,,7/21/2020,KS
+<<<<<<< HEAD
 421253351,classa_init,1,0,,7/27/2020,SL
+=======
+>>>>>>> origin/main
 421176284,classa_init,56,0,change occ_init / change u_init,2/14/2020,
 421176710,classa_init,0,,,8/27/2020,AP
 421179548,classa_init,1,0,,7/27/2020,SL
@@ -9073,7 +9375,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 421188903,classa_init,1,0,,7/27/2020,SL
 421189528,classa_init,1,0,,7/20/2020,SL
 421189537,classa_init,1,0,,7/27/2020,SL
+<<<<<<< HEAD
 421189546,classa_init,5,5,,1/29/2021,BS
+=======
+421189546,classa_init,5,5,,1/29/2021,WS
+>>>>>>> origin/main
 421190393,classa_init,1,0,,7/27/2020,SL
 421190428,classa_init,1,0,,7/27/2020,SL
 421190534,classa_init,1,0,,7/20/2020,SL
@@ -9130,7 +9436,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 421226792,classa_init,1,0,,1/29/2021,ks
 421226809,classa_init,2,0,,7/27/2020,SL
 421226818,classa_init,1,0,,1/29/2021,ks
+<<<<<<< HEAD
 421227363,classa_init,13,12,,1/29/2021,BS
+=======
+421227363,classa_init,13,12,,1/29/2021,WS
+>>>>>>> origin/main
 421229129,classa_init,1,0,,7/20/2020,SL
 421229281,classa_init,1,0,,2/1/2021,SL
 421229833,classa_init,1,0,,7/27/2020,SL
@@ -9174,6 +9484,10 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 421251095,classa_init,1,0,,7/21/2020,KS
 421251148,classa_init,1,0,,7/20/2020,SL
 421252708,classa_init,1,0,,7/27/2020,SL
+<<<<<<< HEAD
+=======
+421253351,classa_init,1,0,,7/27/2020,SL
+>>>>>>> origin/main
 421253440,classa_init,1,0,,7/27/2020,SL
 421253468,classa_init,1,0,,1/29/2021,ks
 421254234,classa_init,1,0,,7/27/2020,SL
@@ -9183,8 +9497,13 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 421258061,classa_init,1,0,,1/29/2021,ks
 421258070,classa_init,1,0,,1/29/2021,ks
 421258604,classa_init,1,0,,2/1/2021,SL
+<<<<<<< HEAD
 421259060,classa_init,6,0,,1/29/2021,BS
 421259088,classa_init,6,0,,1/29/2021,BS
+=======
+421259060,classa_init,6,0,,1/29/2021,WS
+421259088,classa_init,6,0,,1/29/2021,WS
+>>>>>>> origin/main
 421259097,classa_init,2,0,,1/29/2021,ks
 421260753,classa_init,2,0,,7/20/2020,SL
 421262573,classa_init,2,0,,7/27/2020,SL
@@ -9418,7 +9737,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 421481079,classa_init,1,0,,7/20/2020,SL
 421481435,classa_init,1,0,,7/20/2020,SL
 421483264,classa_init,1,0,,7/27/2020,SL
+<<<<<<< HEAD
 421484049,classa_init,50,0,Catholic Vicariate House,8/28/2020,BS
+=======
+421484049,classa_init,50,0,Catholic Vicariate House,8/28/2020,WS
+>>>>>>> origin/main
 421484218,classa_init,1,0,,7/27/2020,SL
 421484646,classa_init,1,0,,7/20/2020,SL
 421485002,classa_init,1,0,,7/27/2020,SL
@@ -10857,7 +11180,11 @@ job_number,field,old_value,new_value,reason,edited_date,editor
 520254714,classa_init,1,0,,7/20/2020,SL
 520255081,classa_init,1,0,,7/20/2020,SL
 520255367,classa_init,2,0,,7/27/2020,SL
+<<<<<<< HEAD
 520255483,classa_init,28,0,Abandoned  Nursing Home,8/28/2020,BS
+=======
+520255483,classa_init,28,0,Abandoned  Nursing Home,8/28/2020,WS
+>>>>>>> origin/main
 520255508,classa_init,1,0,,7/20/2020,SL
 520257285,classa_init,1,0,,7/27/2020,SL
 520258275,classa_init,1,0,,7/27/2020,SL
@@ -11639,7 +11966,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 103995483,classa_prop,45,0,,8/28/2020,SL
 104028099,classa_prop,70,0,,8/29/2020,KS
 104052454,classa_prop,,0,,7/31/2020,TD
+<<<<<<< HEAD
 104052695,classa_prop,10,8, ,8/28/2020,BS
+=======
+104052695,classa_prop,10,8, ,8/28/2020,WS
+>>>>>>> origin/main
 104056940,classa_prop,0,34,,8/28/2020,SL
 104061809,classa_prop,9,0,,1/28/2020,
 104064110,classa_prop,145,151,,8/25/2021,SL
@@ -11849,7 +12180,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 120520542,classa_prop,167,0,,2/3/2020,
 120537339,classa_prop,,0,change u_prop,8/13/2019,
 120550457,classa_prop,141,0,,2/3/2020,
+<<<<<<< HEAD
 120555103,classa_prop,416,416,,8/28/2020,BS
+=======
+120555103,classa_prop,416,416,,8/28/2020,WS
+>>>>>>> origin/main
 120567822,classa_prop,150,0,,1/28/2020,
 120583145,classa_prop,401,0,,1/28/2020,
 120587301,classa_prop,66,55,,1/29/2020,
@@ -11925,7 +12260,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 121141059,classa_prop,,1,,2/3/2020,
 121142931,classa_prop,511,0,,8/6/2020,KS
 121158362,classa_prop,,0,,2/3/2020,
+<<<<<<< HEAD
 121169234,classa_prop,2093,0,Mdtown Hilton Hotel,8/28/2020,BS
+=======
+121169234,classa_prop,2093,0,Mdtown Hilton Hotel,8/28/2020,WS
+>>>>>>> origin/main
 121174656,classa_prop,4,0,,8/5/2020,SL
 121179456,classa_prop,24,0,,1/28/2020,
 121181103,classa_prop,79,0,,1/28/2020,
@@ -11945,7 +12284,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 121184770,classa_prop,,0,,8/24/2020,KS
 121184789,classa_prop,182,17,,8/10/2022,SL
 121184823,classa_prop,68,0,,1/28/2020,
+<<<<<<< HEAD
 121185029,classa_prop,137,0,,8/28/2020,BS
+=======
+121185029,classa_prop,137,0,,8/28/2020,WS
+>>>>>>> origin/main
 121185056,classa_prop,251,0,,8/3/2022,VB
 121185181,classa_prop,220,0,,1/28/2020,
 121185216,classa_prop,612,0,,1/28/2020,
@@ -12009,7 +12352,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 121192798,classa_prop,129,0,,7/15/2020,SL
 121192814,classa_prop,593,306,,8/8/2022,VB
 121192949,classa_prop,234,0,,7/15/2022,SL
+<<<<<<< HEAD
 121192958,classa_prop,96,0,Ronald McDonald House ,8/28/2020,BS
+=======
+121192958,classa_prop,96,0,Ronald McDonald House ,8/28/2020,WS
+>>>>>>> origin/main
 121193010,classa_prop,96,0,,1/28/2020,
 121193458,classa_prop,646,214,,1/26/2021,KS
 121193467,classa_prop,298,0,,1/28/2020,
@@ -12092,7 +12439,10 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 121330167,classa_prop,150,0,,1/28/2020,
 121330194,classa_prop,,0,,8/26/2020,KS
 121330764,classa_prop,250,0,,1/28/2020,
+<<<<<<< HEAD
 200935480,classa_prop,3,3,,8/31/2021,TD
+=======
+>>>>>>> origin/main
 121331139,classa_prop,267,171,job related to units_.sql,2/21/2020,
 121331424,classa_prop,9,5,,8/27/2020,KS
 121332450,classa_prop,176,0,,1/28/2020,
@@ -12155,7 +12505,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 122176929,classa_prop,2,1,,8/28/2020,AP
 122184812,classa_prop,158,151,,5/2/2022,AP
 122185376,classa_prop,87,0,,4/29/2022,AP
+<<<<<<< HEAD
 122201839,classa_prop,2141,0,Mdtown Hilton Hotel,8/28/2020,BS
+=======
+122201839,classa_prop,2141,0,Mdtown Hilton Hotel,8/28/2020,WS
+>>>>>>> origin/main
 122206601,classa_prop,120,0,,1/28/2020,
 122221381,classa_prop,291,0,,2/3/2020,
 122222077,classa_prop,128,0,,1/28/2020,
@@ -12176,7 +12530,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 122422360,classa_prop,21,1,,2/3/2020,
 122423412,classa_prop,3,2,,8/5/2020,TD
 122430155,classa_prop,212,1,job related to units_.sql,2/21/2020,
+<<<<<<< HEAD
 122456840,classa_prop,366,56,,8/28/2020,BS
+=======
+122456840,classa_prop,366,56,,8/28/2020,WS
+>>>>>>> origin/main
 122465046,classa_prop,321,0,,1/28/2020,
 122481741,classa_prop,1,0,,7/15/2022,SL
 122490535,classa_prop,,0,change u_prop,8/13/2019,
@@ -12193,7 +12551,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 122627835,classa_prop,145,0,,2/3/2020,
 122642907,classa_prop,,0,,8/26/2020,KS
 122644353,classa_prop,50,0,,1/28/2020,
+<<<<<<< HEAD
 122668700,classa_prop,417,0,Hotel Room Reduction,8/28/2020,BS
+=======
+122668700,classa_prop,417,0,Hotel Room Reduction,8/28/2020,WS
+>>>>>>> origin/main
 122671607,classa_prop,154,0,,8/3/2022,VB
 122704671,classa_prop,8,0,,7/29/2020,SL
 122714143,classa_prop,,0,,7/29/2020,TD
@@ -12204,7 +12566,10 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 122760654,classa_prop,11,10,,1/26/2021,KS
 122790872,classa_prop,164,140,,8/27/2020,TD
 122798954,classa_prop,5,4,,1/31/2020,
+<<<<<<< HEAD
 200947020,classa_prop,1,0,,12/1/2019,
+=======
+>>>>>>> origin/main
 122822785,classa_prop,,0,change occ_init / change occ_prop  / change u_prop,8/13/2019,
 122826763,classa_prop,300,0,,8/27/2020,AP
 122826843,classa_prop,48,0,,7/27/2020,AP
@@ -12225,7 +12590,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 122948640,classa_prop,31,0,,1/31/2020,
 122977172,classa_prop,24,0,,2/13/2020,
 122985029,classa_prop,296,0,,4/29/2022,SL
+<<<<<<< HEAD
 122988320,classa_prop,867,185,Essex House Hotel/Condo,8/28/2020,BS
+=======
+122988320,classa_prop,867,185,Essex House Hotel/Condo,8/28/2020,WS
+>>>>>>> origin/main
 122993458,classa_prop,587,586,,8/29/2020,TD
 122993957,classa_prop,243,265,,8/27/2020,AP
 123017715,classa_prop,,0,change u_prop,8/13/2019,
@@ -12277,7 +12646,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 123534504,classa_prop,210,0,,4/20/2022,SL
 123552477,classa_prop,6,7,,7/30/2020,SL
 123567158,classa_prop,30,0,change u_prop,8/13/2019,
+<<<<<<< HEAD
 123580062,classa_prop,117,110,Reduction Apt count,8/28/2020,BS
+=======
+123580062,classa_prop,117,110,Reduction Apt count,8/28/2020,WS
+>>>>>>> origin/main
 123585557,classa_prop,1,0,,7/31/2020,KS
 123679331,classa_prop,1,0,,1/26/2021,KS
 123690568,classa_prop,7,1,,7/15/2022,SL
@@ -12297,7 +12670,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 123777494,classa_prop,1,2,,8/24/2020,TD
 123819216,classa_prop,7,4,,2/3/2020,
 123835476,classa_prop,70,0,,1/30/2020,
+<<<<<<< HEAD
 123847392,classa_prop,21,21,Hotel to Residential (Condo),8/28/2020,BS
+=======
+123847392,classa_prop,21,21,Hotel to Residential (Condo),8/28/2020,WS
+>>>>>>> origin/main
 123851796,classa_prop,166,14,,1/28/2020,
 123858414,classa_prop,89,0,,4/28/2022,AP
 123864130,classa_prop,102,1,,1/26/2021,TD
@@ -12318,6 +12695,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 200855002,classa_prop,1,2,,1/21/2021,TD
 200922163,classa_prop,2,1,,12/1/2019,
 200926105,classa_prop,2,2,,8/30/2021,AP
+<<<<<<< HEAD
+=======
+200935480,classa_prop,3,3,,8/31/2021,TD
+200947020,classa_prop,1,0,,12/1/2019,
+>>>>>>> origin/main
 200982687,classa_prop,,0,,12/1/2019,
 201043851,classa_prop,70,0,,1/28/2020,
 201046046,classa_prop,,0,,8/6/2020,AP
@@ -12374,10 +12756,17 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 220053331,classa_prop,,0,,7/31/2020,TD
 220053518,classa_prop,48,0,,1/28/2020,
 220057701,classa_prop,,0,,8/24/2020,KS
+<<<<<<< HEAD
 220062054,classa_prop,0,,,8/29/2020,BS
 220064668,classa_prop,,0,change u_prop,8/13/2019,
 220068860,classa_prop,,0,change u_prop,8/13/2019,
 220075040,classa_prop,0,,,8/29/2020,BS
+=======
+220062054,classa_prop,0,,,8/29/2020,WS
+220064668,classa_prop,,0,change u_prop,8/13/2019,
+220068860,classa_prop,,0,change u_prop,8/13/2019,
+220075040,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 220083353,classa_prop,56,0,,1/28/2020,
 220105339,classa_prop,71,0,,1/28/2020,
 220114793,classa_prop,0,0,job related to units_.sql,2/19/2020,
@@ -12404,8 +12793,13 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 220205702,classa_prop,71,0,,1/28/2020,
 220211241,classa_prop,60,0,,1/28/2020,
 220225049,classa_prop,0,0,Garage,8/27/2020,SL
+<<<<<<< HEAD
 220230989,classa_prop,0,,,8/29/2020,BS
 220231023,classa_prop,0,,,8/29/2020,BS
+=======
+220230989,classa_prop,0,,,8/29/2020,WS
+220231023,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 220237214,classa_prop,0,0,Garage,8/27/2020,SL
 220243074,classa_prop,128,0,,4/29/2022,AP
 220249666,classa_prop,60,0,,1/28/2020,
@@ -12638,7 +13032,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 301910742,classa_prop,4,3,"change u_init, change u_prop",8/13/2019,
 301911983,classa_prop,3,5,change u_init,8/13/2019,
 301916595,classa_prop,2,3,,12/1/2019,
+<<<<<<< HEAD
 301918744,classa_prop,30,24, ,8/28/2020,BS
+=======
+301918744,classa_prop,30,24, ,8/28/2020,WS
+>>>>>>> origin/main
 301925665,classa_prop,156,157,,8/25/2021,SL
 301930347,classa_prop,4,4,,8/30/2021,TD
 301952652,classa_prop,18,19,,8/26/2020,KS
@@ -12838,7 +13236,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 320284606,classa_prop,20,0,,4/26/2022,SL
 320289656,classa_prop,,0,,8/31/2021,SL
 320290555,classa_prop,0,,,8/29/2020,SL
+<<<<<<< HEAD
 320302114,classa_prop,0,,,8/29/2020,BS
+=======
+320302114,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 320302686,classa_prop,,0,change u_prop,8/13/2019,
 320303444,classa_prop,41,0,,1/28/2020,
 320307333,classa_prop,40,0,,1/28/2020,
@@ -12878,11 +13280,19 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 320426767,classa_prop,1,0,,7/21/2020,SL
 320430805,classa_prop,,0,"change occ_prop, change u_prop",8/13/2019,
 320442785,classa_prop,,0,change u_prop,8/13/2019,
+<<<<<<< HEAD
 320447441,classa_prop,0,,,8/29/2020,BS
 320455244,classa_prop,40,0,,1/28/2020,
 320455798,classa_prop,6,5,,8/26/2020,KS
 320460611,classa_prop,0,,,8/29/2020,BS
 320460684,classa_prop,0,,,8/29/2020,BS
+=======
+320447441,classa_prop,0,,,8/29/2020,WS
+320455244,classa_prop,40,0,,1/28/2020,
+320455798,classa_prop,6,5,,8/26/2020,KS
+320460611,classa_prop,0,,,8/29/2020,WS
+320460684,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 320461095,classa_prop,20,0,,5/6/2022,SL
 320461816,classa_prop,1,0,,7/21/2020,KS
 320466438,classa_prop,,0,change u_prop,8/13/2019,
@@ -12904,14 +13314,23 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 320517632,classa_prop,,0,change u_prop,8/13/2019,
 320517927,classa_prop,324,128,,1/28/2020,
 320517954,classa_prop,53,0,,1/28/2020,
+<<<<<<< HEAD
 320528835,classa_prop,0,,,8/29/2020,BS
+=======
+320528835,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 320531778,classa_prop,2,0,garage,7/20/2020,KS
 320535033,classa_prop,1,0,,7/21/2020,KS
 320535042,classa_prop,1,0,,7/21/2020,KS
 320563528,classa_prop,3,3,,8/31/2021,TD
 320564055,classa_prop,0,,,8/29/2020,AP
+<<<<<<< HEAD
 320564064,classa_prop,0,,,8/29/2020,BS
 320564073,classa_prop,0,,,8/29/2020,BS
+=======
+320564064,classa_prop,0,,,8/29/2020,WS
+320564073,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 320565278,classa_prop,6,0,change occ_prop,8/13/2019,
 320567114,classa_prop,198,0,,1/28/2020,
 320576925,classa_prop,30,6,,1/31/2020,
@@ -12955,16 +13374,27 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 320784745,classa_prop,1,0,,7/21/2020,SL
 320787010,classa_prop,87,0,,1/28/2020,
 320812411,classa_prop,162,0,,1/28/2020,
+<<<<<<< HEAD
 320827423,classa_prop,0,,,8/29/2020,BS
 320829617,classa_prop,1,2,,8/27/2020,AP
 320831748,classa_prop,2,3,,2/3/2020,
 320831873,classa_prop,0,,,8/29/2020,BS
+=======
+320827423,classa_prop,0,,,8/29/2020,WS
+320829617,classa_prop,1,2,,8/27/2020,AP
+320831748,classa_prop,2,3,,2/3/2020,
+320831873,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 320834683,classa_prop,58,0,,1/28/2020,
 320837494,classa_prop,,0,change u_prop,8/13/2019,
 320839410,classa_prop,,0,change u_prop,8/13/2019,
 320845635,classa_prop,61,0,,1/28/2020,
 320846297,classa_prop,2,0,,7/20/2020,SL
+<<<<<<< HEAD
 320860760,classa_prop,0,,,8/29/2020,BS
+=======
+320860760,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 320861590,classa_prop,1,0,,7/21/2020,SL
 320862161,classa_prop,101,0,,1/28/2020,
 320862526,classa_prop,8,0,,8/24/2020,TD
@@ -12973,7 +13403,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 320872294,classa_prop,2,0,,7/20/2020,SL
 320882782,classa_prop,3,6,,8/26/2020,KS
 320894546,classa_prop,76,0,,1/28/2020,
+<<<<<<< HEAD
 320899701,classa_prop,0,,,8/29/2020,BS
+=======
+320899701,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 320906463,classa_prop,1,0,,7/21/2020,SL
 320910485,classa_prop,,0,change u_prop,8/13/2019,
 320910608,classa_prop,63,0,,8/3/2022,VB
@@ -13021,7 +13455,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 321085570,classa_prop,,0,change u_prop,8/13/2019,
 321096023,classa_prop,1,0,,7/20/2020,SL
 321096032,classa_prop,1,0,,7/20/2020,SL
+<<<<<<< HEAD
 321110025,classa_prop,0,,,8/29/2020,BS
+=======
+321110025,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 321112014,classa_prop,2,0,,7/21/2020,SL
 321125162,classa_prop,18,0,,1/28/2020,
 321135053,classa_prop,115,0,,1/31/2020,
@@ -13039,7 +13477,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 321184179,classa_prop,,0,"120 beds, assumed 2 per room",8/28/2020,SL
 321184286,classa_prop,56,0,,1/28/2020,
 321184419,classa_prop,31,0,,1/28/2020,
+<<<<<<< HEAD
 321187130,classa_prop,22,22,Class B to Class A,8/28/2020,BS
+=======
+321187130,classa_prop,22,22,Class B to Class A,8/28/2020,WS
+>>>>>>> origin/main
 321187274,classa_prop,224,0,,1/28/2020,
 321190000,classa_prop,62,0,,1/28/2020,
 321190885,classa_prop,72,0,,1/28/2020,
@@ -13984,7 +14426,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 520101906,classa_prop,,0,change u_prop,8/13/2019,
 520111851,classa_prop,,0,change u_prop,8/13/2019,
 520120887,classa_prop,2,0,,7/21/2020,SL
+<<<<<<< HEAD
 520127942,classa_prop,0,,,8/29/2020,BS
+=======
+520127942,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 520129147,classa_prop,1,0,,7/21/2020,SL
 520134480,classa_prop,37,0,,8/25/2021,TD
 520136184,classa_prop,60,0,,8/3/2022,VB
@@ -14009,7 +14455,11 @@ M00483952,classa_init,0,245,,9/7/2022,SL
 520327263,classa_prop,1,0,,7/20/2020,SL
 520328422,classa_prop,20,0,,5/6/2022,SL
 520335833,classa_prop,1,0,,7/20/2020,SL
+<<<<<<< HEAD
 520336262,classa_prop,0,,,8/29/2020,BS
+=======
+520336262,classa_prop,0,,,8/29/2020,WS
+>>>>>>> origin/main
 520351887,classa_prop,1,100,job related to units_.sql,2/19/2020,
 520354982,classa_prop,1,0,,7/21/2020,SL
 520356622,classa_prop,2,0,,7/21/2020,SL
@@ -14169,7 +14619,10 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 301892352,date_permittd,,1/26/2006,,1/19/2021,KS
 301943878,date_permittd,,10/19/2006,,1/19/2021,KS
 301953740,date_permittd,,9/15/2005,,1/19/2021,KS
+<<<<<<< HEAD
 102945235,hotel_init,,0,,8/24/2020,KS
+=======
+>>>>>>> origin/main
 301989542,date_permittd,,8/11/2005,,1/19/2021,KS
 301993993,date_permittd,,11/21/2005,,1/19/2021,KS
 302002605,date_permittd,,12/22/2005,,1/19/2021,KS
@@ -14259,7 +14712,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 102292010,hotel_init,,0,,8/24/2020,KS
 102352160,hotel_init,1,0,,7/15/2022,SL
 102353294,hotel_init,,0,,8/25/2021,JS
+<<<<<<< HEAD
 102507253,hotel_init,206,76,Resid/Hotel to Hotel,8/28/2020,BS
+=======
+102507253,hotel_init,206,76,Resid/Hotel to Hotel,8/28/2020,WS
+>>>>>>> origin/main
 102513111,hotel_init,,0,,8/24/2020,KS
 102537364,hotel_init,,0,,8/25/2021,JS
 102545435,hotel_init,,0,,8/25/2021,SL
@@ -14282,6 +14739,10 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 102912653,hotel_init,4,0,,1/26/2021,KS
 102925168,hotel_init,,0,,8/24/2020,KS
 102941346,hotel_init,,0,,8/25/2021,JS
+<<<<<<< HEAD
+=======
+102945235,hotel_init,,0,,8/24/2020,KS
+>>>>>>> origin/main
 102953403,hotel_init,,0,,8/24/2020,KS
 102956785,hotel_init,24,0,,8/28/2020,KS
 102958266,hotel_init,,0,,8/24/2020,KS
@@ -14392,7 +14853,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 104052178,hotel_init,23,0,,8/28/2020,AP
 104052454,hotel_init,,0,,8/29/2020,TD
 104052686,hotel_init,,0,,8/25/2021,JS
+<<<<<<< HEAD
 104052695,hotel_init,,0, ,8/28/2020,BS
+=======
+104052695,hotel_init,,0, ,8/28/2020,WS
+>>>>>>> origin/main
 104056940,hotel_init,35,0,,8/28/2020,SL
 104057501,hotel_init,12,0,,7/15/2022,SL
 104061391,hotel_init,12,0,,1/26/2021,KS
@@ -14429,7 +14894,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 104241688,hotel_init,4,0,,8/29/2020,TD
 104254628,hotel_init,,0,,8/31/2021,JS
 104255342,hotel_init,,0,,8/25/2021,AP
+<<<<<<< HEAD
 104276347,hotel_init,18,0,,8/28/2020,BS
+=======
+104276347,hotel_init,18,0,,8/28/2020,WS
+>>>>>>> origin/main
 104276999,hotel_init,96,95,,4/28/2022,AP
 104282303,hotel_init,,0,,8/24/2020,TD
 104288138,hotel_init,,0,,8/24/2022,SL
@@ -14520,7 +14989,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 104711126,hotel_init,1,0,,2/1/2021,TD
 104713446,hotel_init,89,20,,7/16/2020,SL
 104715676,hotel_init,,0,,4/29/2022,SL
+<<<<<<< HEAD
 104720704,hotel_init,12,0, ,8/28/2020,BS
+=======
+104720704,hotel_init,12,0, ,8/28/2020,WS
+>>>>>>> origin/main
 104722891,hotel_init,348,0,,8/25/2020,AP
 104723738,hotel_init,,0,,8/26/2020,KS
 104731569,hotel_init,,0,,8/28/2020,AP
@@ -14584,7 +15057,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 110110022,hotel_init,313,0,,8/27/2020,AP
 110120119,hotel_init,16,0,,8/29/2020,SL
 110122108,hotel_init,1315,1315,,1/28/2020,
+<<<<<<< HEAD
 110125132,hotel_init,101,24,,8/28/2020,BS
+=======
+110125132,hotel_init,101,24,,8/28/2020,WS
+>>>>>>> origin/main
 110125793,hotel_init,3,0,,8/29/2020,KS
 110125962,hotel_init,481,481,,8/6/2020,KS
 110126239,hotel_init,18,0,,8/29/2020,SL
@@ -14665,7 +15142,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 120072946,hotel_init,3,0,,8/28/2020,AP
 120072955,hotel_init,2,0,,8/28/2020,AP
 120081400,hotel_init,,0,,8/25/2021,AP
+<<<<<<< HEAD
 120083211,hotel_init,16,0, ,8/28/2020,BS
+=======
+120083211,hotel_init,16,0, ,8/28/2020,WS
+>>>>>>> origin/main
 120083961,hotel_init,72,0,,8/28/2020,TD
 120086762,hotel_init,134,0,,8/29/2020,KS
 120090187,hotel_init,0,0,,8/29/2020,KS
@@ -14706,7 +15187,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 120260298,hotel_init,2,0,,8/29/2020,SL
 120260305,hotel_init,2,0,,8/29/2020,SL
 120260779,hotel_init,36,0,,8/29/2020,KS
+<<<<<<< HEAD
 120262036,hotel_init,315,315,,8/28/2020,BS
+=======
+120262036,hotel_init,315,315,,8/28/2020,WS
+>>>>>>> origin/main
 120272025,hotel_init,602,602,,1/31/2020,
 120273863,hotel_init,34,0,,8/27/2020,AP
 120275861,hotel_init,7,0,,8/29/2020,TD
@@ -14751,7 +15236,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 120447524,hotel_init,10,0,,8/28/2020,AP
 120451082,hotel_init,57,0,,8/30/2020,KS
 120465371,hotel_init,9,0,,8/28/2020,KS
+<<<<<<< HEAD
 120474593,hotel_init,31,0,,8/29/2020,BS
+=======
+120474593,hotel_init,31,0,,8/29/2020,WS
+>>>>>>> origin/main
 120480568,hotel_init,12,0,,4/29/2022,AP
 120481013,hotel_init,12,0,,8/29/2020,SL
 120483912,hotel_init,0,0,,8/29/2020,KS
@@ -14773,7 +15262,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 120548194,hotel_init,362,0,,8/23/2021,SL
 120550457,hotel_init,143,143,,2/3/2020,
 120554248,hotel_init,35,0,,8/28/2020,TD
+<<<<<<< HEAD
 120555103,hotel_init,1,0,,8/28/2020,BS
+=======
+120555103,hotel_init,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 120557691,hotel_init,7,0,,8/28/2020,KS
 120560240,hotel_init,11,0,,8/29/2020,TD
 120561365,hotel_init,1,0,,7/21/2022,SL
@@ -14808,7 +15301,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 120659171,hotel_init,,0,,8/27/2020,SL
 120663479,hotel_init,17,0,,8/29/2020,SL
 120664236,hotel_init,3,0,,2/1/2021,TD
+<<<<<<< HEAD
 120667251,hotel_init,11,0, ,8/28/2020,BS
+=======
+120667251,hotel_init,11,0, ,8/28/2020,WS
+>>>>>>> origin/main
 120669712,hotel_init,201,0,,8/29/2020,TD
 120672496,hotel_init,1,0,,8/26/2020,KS
 120682001,hotel_init,9,0,,8/29/2020,SL
@@ -14851,7 +15348,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 120856314,hotel_init,15,0,,8/29/2020,SL
 120859286,hotel_init,151,0,,8/28/2020,AP
 120868560,hotel_init,203,0,,8/29/2020,TD
+<<<<<<< HEAD
 120869596,hotel_init,24,0,,8/29/2020,BS
+=======
+120869596,hotel_init,24,0,,8/29/2020,WS
+>>>>>>> origin/main
 120870281,hotel_init,90,85,,1/28/2020,
 120873206,hotel_init,29,0,,8/25/2020,AP
 120876294,hotel_init,140,0,,8/29/2020,KS
@@ -14873,12 +15374,21 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 120939440,hotel_init,104,83,job related to units_.sql,2/19/2020,
 120941428,hotel_init,2,0,,8/29/2020,SL
 120945317,hotel_init,282,0,,8/28/2020,AP
+<<<<<<< HEAD
 120954477,hotel_init,10,0, ,8/28/2020,BS
 120957982,hotel_init,9,0,,8/29/2020,SL
 120960264,hotel_init,,0,Monastery units on 2 floors,8/28/2020,SL
 120960718,hotel_init,20,0, ,8/28/2020,BS
 120971751,hotel_init,229,0,,8/27/2020,AP
 120973358,hotel_init,17,0,,8/28/2020,BS
+=======
+120954477,hotel_init,10,0, ,8/28/2020,WS
+120957982,hotel_init,9,0,,8/29/2020,SL
+120960264,hotel_init,,0,Monastery units on 2 floors,8/28/2020,SL
+120960718,hotel_init,20,0, ,8/28/2020,WS
+120971751,hotel_init,229,0,,8/27/2020,AP
+120973358,hotel_init,17,0,,8/28/2020,WS
+>>>>>>> origin/main
 120973991,hotel_init,12,0,,8/28/2020,TD
 120986077,hotel_init,1511,0,,8/29/2020,KS
 120991579,hotel_init,6,0,,2/1/2021,TD
@@ -14950,7 +15460,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 121184538,hotel_init,99,0,,8/30/2020,SL
 121184743,hotel_init,24,0,,8/29/2020,SL
 121184770,hotel_init,6,0,,8/24/2020,KS
+<<<<<<< HEAD
 121185029,hotel_init,112,0,,8/28/2020,BS
+=======
+121185029,hotel_init,112,0,,8/28/2020,WS
+>>>>>>> origin/main
 121185038,hotel_init,15,0,,8/29/2020,SL
 121185305,hotel_init,267,0,,8/29/2020,TD
 121185485,hotel_init,10,0,,8/28/2020,AP
@@ -15007,12 +15521,20 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 121191762,hotel_init,214,215,,1/28/2020,
 121191806,hotel_init,8,0,,8/25/2020,TD
 121192208,hotel_init,,0,,7/15/2022,SL
+<<<<<<< HEAD
 121192235,hotel_init,9,0, ,8/28/2020,BS
+=======
+121192235,hotel_init,9,0, ,8/28/2020,WS
+>>>>>>> origin/main
 121192360,hotel_init,14,0,,8/29/2020,SL
 121192468,hotel_init,9,0,,8/24/2020,TD
 121192770,hotel_init,1,0,,2/1/2021,TD
 121192814,hotel_init,593,294,,8/8/2022,VB
+<<<<<<< HEAD
 121192958,hotel_init,86,0,Ronald McDonald House ,8/28/2020,BS
+=======
+121192958,hotel_init,86,0,Ronald McDonald House ,8/28/2020,WS
+>>>>>>> origin/main
 121193207,hotel_init,10,0,,8/29/2020,TD
 121193216,hotel_init,7,0,,8/28/2020,KS
 121193485,hotel_init,12,0,,8/29/2020,TD
@@ -15103,7 +15625,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 121358627,hotel_init,40,0,,8/28/2020,TD
 121368929,hotel_init,7,0,,8/28/2020,AP
 121368983,hotel_init,20,0,,8/28/2020,AP
+<<<<<<< HEAD
 121369429,hotel_init,20,0,,8/29/2020,BS
+=======
+121369429,hotel_init,20,0,,8/29/2020,WS
+>>>>>>> origin/main
 121371256,hotel_init,1,0,,8/27/2020,KS
 121380941,hotel_init,79,0,,8/28/2020,AP
 121388033,hotel_init,10,0,,8/28/2020,TD
@@ -15136,7 +15662,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 121532608,hotel_init,30,0,,8/25/2020,AP
 121538390,hotel_init,4,0,,8/25/2020,SL
 121539567,hotel_init,450,0,,8/28/2020,AP
+<<<<<<< HEAD
 121543099,hotel_init,10,0,,8/28/2020,BS
+=======
+121543099,hotel_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 121544739,hotel_init,11,0,,8/29/2020,SL
 121545729,hotel_init,14,0,,8/29/2020,SL
 121549011,hotel_init,8,0,,7/20/2022,SL
@@ -15162,7 +15692,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 121625651,hotel_init,154,0,,8/25/2020,AP
 121629452,hotel_init,,0,,8/25/2021,JS
 121629577,hotel_init,141,0,,8/27/2020,KS
+<<<<<<< HEAD
 121634151,hotel_init,9,0, ,8/28/2020,BS
+=======
+121634151,hotel_init,9,0, ,8/28/2020,WS
+>>>>>>> origin/main
 121639726,hotel_init,9,0,,8/29/2020,TD
 121641492,hotel_init,8,0,,8/24/2020,TD
 121666713,hotel_init,585,0,,8/28/2020,AP
@@ -15188,7 +15722,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 121764411,hotel_init,15,0,,8/29/2020,SL
 121773982,hotel_init,114,108,,4/25/2022,SL
 121777014,hotel_init,11,0,,8/29/2020,TD
+<<<<<<< HEAD
 121799795,hotel_init,25,0,,8/29/2020,BS
+=======
+121799795,hotel_init,25,0,,8/29/2020,WS
+>>>>>>> origin/main
 121800131,hotel_init,11,0,,8/29/2020,SL
 121802102,hotel_init,10,0,,8/29/2020,SL
 121806297,hotel_init,9,0,,8/29/2020,TD
@@ -15210,7 +15748,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 121903681,hotel_init,11,0,,8/29/2020,SL
 121904136,hotel_init,7,0,,8/28/2020,AP
 121908604,hotel_init,71,0,,8/29/2020,TD
+<<<<<<< HEAD
 121911020,hotel_init,107,0,NYU Hospital Building,8/28/2020,BS
+=======
+121911020,hotel_init,107,0,NYU Hospital Building,8/28/2020,WS
+>>>>>>> origin/main
 121912118,hotel_init,21,0,,8/29/2020,KS
 121912396,hotel_init,92,357,,2/3/2020,
 121917453,hotel_init,799,859,,1/28/2020,
@@ -15269,7 +15811,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122185376,hotel_init,83,0,,4/29/2022,AP
 122186473,hotel_init,116,0,,8/29/2020,KS
 122199682,hotel_init,8,0,,8/29/2020,TD
+<<<<<<< HEAD
 122201839,hotel_init,1693,2191,Mdtown Hilton Hotel,8/28/2020,BS
+=======
+122201839,hotel_init,1693,2191,Mdtown Hilton Hotel,8/28/2020,WS
+>>>>>>> origin/main
 122202909,hotel_init,1,0,,8/29/2020,TD
 122207931,hotel_init,11,0,,8/29/2020,KS
 122211105,hotel_init,11,0,,8/29/2020,TD
@@ -15282,7 +15828,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122222488,hotel_init,256,0,,8/28/2020,SL
 122228213,hotel_init,8,0,,8/28/2020,AP
 122228295,hotel_init,11,0,,8/24/2020,TD
+<<<<<<< HEAD
 122233181,hotel_init,11,0, ,8/28/2020,BS
+=======
+122233181,hotel_init,11,0, ,8/28/2020,WS
+>>>>>>> origin/main
 122234055,hotel_init,37,0,,8/28/2020,KS
 122239871,hotel_init,65,0,,8/27/2020,KS
 122240574,hotel_init,200,0,,8/25/2020,AP
@@ -15290,7 +15840,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122257967,hotel_init,187,0,,8/29/2020,TD
 122267117,hotel_init,9,0,,8/28/2020,KS
 122272673,hotel_init,33,0,,4/28/2022,AP
+<<<<<<< HEAD
 122278463,hotel_init,70,0,,8/29/2020,BS
+=======
+122278463,hotel_init,70,0,,8/29/2020,WS
+>>>>>>> origin/main
 122283162,hotel_init,53,0,,8/28/2020,KS
 122284802,hotel_init,7,0,,8/29/2020,SL
 122288176,hotel_init,66,0,,8/29/2020,TD
@@ -15336,7 +15890,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122449813,hotel_init,1,0,,4/27/2022,VB
 122454370,hotel_init,8,0,,8/25/2020,TD
 122455752,hotel_init,10,0,,8/24/2020,TD
+<<<<<<< HEAD
 122456840,hotel_init,366,310,,8/28/2020,BS
+=======
+122456840,hotel_init,366,310,,8/28/2020,WS
+>>>>>>> origin/main
 122465046,hotel_init,315,315,,1/28/2020,
 122471128,hotel_init,1,0,,2/19/2021,KS
 122479512,hotel_init,10,0,,8/28/2020,TD
@@ -15349,7 +15907,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122512414,hotel_init,12,0,,8/28/2020,KS
 122513618,hotel_init,506,0,,4/27/2022,AP
 122514859,hotel_init,12,0,,8/29/2020,TD
+<<<<<<< HEAD
 122514868,hotel_init,12,0, ,8/28/2020,BS
+=======
+122514868,hotel_init,12,0, ,8/28/2020,WS
+>>>>>>> origin/main
 122523821,hotel_init,5,0,,8/29/2020,TD
 122525188,hotel_init,231,0,,8/24/2020,AP
 122531055,hotel_init,12,0,,8/29/2020,TD
@@ -15378,6 +15940,7 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122648251,hotel_init,96,0,,8/28/2020,AP
 122652762,hotel_init,4,0,,8/29/2020,SL
 122656492,hotel_init,56,0,,8/29/2020,TD
+<<<<<<< HEAD
 122668700,hotel_init,551,551,Hotel Room Reduction,8/28/2020,BS
 122671607,hotel_init,182,0,,8/3/2022,VB
 122676764,hotel_init,11,0,,8/29/2020,TD
@@ -15387,6 +15950,17 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122693193,hotel_init,8,0,,8/25/2020,TD
 122694931,hotel_init,182,0,,8/28/2020,KS
 122698811,hotel_init,26,0,,8/29/2020,BS
+=======
+122668700,hotel_init,551,551,Hotel Room Reduction,8/28/2020,WS
+122671607,hotel_init,182,0,,8/3/2022,VB
+122676764,hotel_init,11,0,,8/29/2020,TD
+122682105,hotel_init,228,228,job related to units_.sql,2/19/2020,
+122684372,hotel_init,27,0,,8/29/2020,WS
+122685362,hotel_init,10,0,,8/28/2020,TD
+122693193,hotel_init,8,0,,8/25/2020,TD
+122694931,hotel_init,182,0,,8/28/2020,KS
+122698811,hotel_init,26,0,,8/29/2020,WS
+>>>>>>> origin/main
 122699124,hotel_init,11,0,,8/29/2020,SL
 122704644,hotel_init,8,0,,1/27/2021,KS
 122704671,hotel_init,8,0,,8/29/2020,SL
@@ -15402,7 +15976,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122729556,hotel_init,228,0,,8/29/2020,TD
 122732800,hotel_init,9,0,,8/24/2020,TD
 122734639,hotel_init,216,0,,8/25/2020,SL
+<<<<<<< HEAD
 122751897,hotel_init,99,0,,8/29/2020,BS
+=======
+122751897,hotel_init,99,0,,8/29/2020,WS
+>>>>>>> origin/main
 122753822,hotel_init,28,0,,8/29/2020,TD
 122761582,hotel_init,68,0,,8/29/2020,KS
 122771795,hotel_init,,0,,8/27/2020,TD
@@ -15436,7 +16014,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122874577,hotel_init,198,0,,8/26/2020,TD
 122877985,hotel_init,16,0,,8/29/2020,KS
 122891442,hotel_init,22,0,,8/29/2020,KS
+<<<<<<< HEAD
 122895741,hotel_init,10,0,,8/28/2020,BS
+=======
+122895741,hotel_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 122895965,hotel_init,,0,,8/25/2021,AP
 122900655,hotel_init,16,0,,8/29/2020,SL
 122901128,hotel_init,130,130,,2/3/2020,
@@ -15454,7 +16036,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122948640,hotel_init,88,88,,1/31/2020,
 122961713,hotel_init,11,0,,8/28/2020,AP
 122961875,hotel_init,27,0,,7/20/2022,SL
+<<<<<<< HEAD
 122962561,hotel_init,10,0,,8/28/2020,BS
+=======
+122962561,hotel_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 122971301,hotel_init,21,0,,8/24/2020,TD
 122977172,hotel_init,24,0,,7/31/2020,KS
 122977323,hotel_init,10,0,,8/3/2022,VB
@@ -15463,8 +16049,12 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 122981906,hotel_init,13,0,,8/28/2020,TD
 122983174,hotel_init,10,0,,8/29/2020,KS
 122984832,hotel_init,11,0,,8/29/2020,KS
+<<<<<<< HEAD
 123499632,hotel_init,53,0,,8/27/2020,AP
 122988320,hotel_init,854,509,Essex House Hotel/Condo,8/28/2020,BS
+=======
+122988320,hotel_init,854,509,Essex House Hotel/Condo,8/28/2020,WS
+>>>>>>> origin/main
 122991325,hotel_init,4,0,,8/29/2020,SL
 122993458,hotel_init,591,0,,8/29/2020,TD
 122993957,hotel_init,243,0,,8/27/2020,AP
@@ -15481,7 +16071,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 123023138,hotel_init,28,0,,8/29/2020,KS
 123025118,hotel_init,9,0,,5/6/2022,SL
 123026144,hotel_init,196,214,,2/3/2020,
+<<<<<<< HEAD
 123032681,hotel_init,220,0,,8/29/2020,BS
+=======
+123032681,hotel_init,220,0,,8/29/2020,WS
+>>>>>>> origin/main
 123035642,hotel_init,602,602,,8/6/2020,KS
 123035722,hotel_init,124,124,,1/31/2020,
 123039755,hotel_init,14,0,unknown units of sros,8/28/2020,KS
@@ -15509,7 +16103,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 123161274,hotel_init,10,0,,8/29/2020,KS
 123166723,hotel_init,10,0,,8/29/2020,TD
 123166741,hotel_init,10,0,,8/28/2020,KS
+<<<<<<< HEAD
 123169748,hotel_init,15,0, ,8/28/2020,BS
+=======
+123169748,hotel_init,15,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123169855,hotel_init,2,0,,8/6/2020,TD
 123170488,hotel_init,184,0,,8/29/2020,TD
 123170530,hotel_init,115,0,,8/29/2020,TD
@@ -15519,7 +16117,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 123190947,hotel_init,42,42,,1/28/2020,
 123197218,hotel_init,161,0,,8/27/2020,TD
 123198752,hotel_init,91,91,,4/28/2022,AP
+<<<<<<< HEAD
 123201971,hotel_init,13,0, ,8/28/2020,BS
+=======
+123201971,hotel_init,13,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123203416,hotel_init,168,168,,1/28/2020,
 123203871,hotel_init,10,0,,8/29/2020,SL
 123204200,hotel_init,2,0,,8/29/2020,TD
@@ -15527,13 +16129,21 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 123210667,hotel_init,4,0,,8/29/2020,TD
 123210818,hotel_init,242,269,,8/6/2020,TD
 123211194,hotel_init,5,0,,8/29/2020,KS
+<<<<<<< HEAD
 123213520,hotel_init,10,0,,8/28/2020,BS
+=======
+123213520,hotel_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 123214280,hotel_init,24,24,,8/6/2020,KS
 123225517,hotel_init,17,0,,8/29/2020,KS
 123227070,hotel_init,110,60,,7/15/2022,SL
 123234357,hotel_init,80,186,,4/29/2022,AP
 123234491,hotel_init,7,0,,8/29/2020,KS
+<<<<<<< HEAD
 123234507,hotel_init,46,46,Hotel Building,8/28/2020,BS
+=======
+123234507,hotel_init,46,46,Hotel Building,8/28/2020,WS
+>>>>>>> origin/main
 123238317,hotel_init,3,0,,2/1/2021,TD
 123254218,hotel_init,33,0,,8/29/2020,AP
 123256877,hotel_init,192,0,,7/21/2022,SL
@@ -15564,7 +16174,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 123392033,hotel_init,317,0,,8/29/2020,AP
 123392168,hotel_init,16,0,,8/25/2021,AP
 123395879,hotel_init,12,0,,8/29/2020,SL
+<<<<<<< HEAD
 123397886,hotel_init,11,0, ,8/28/2020,BS
+=======
+123397886,hotel_init,11,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123407508,hotel_init,28,0,,8/29/2020,KS
 123410512,hotel_init,12,0,,8/29/2020,TD
 123412271,hotel_init,331,0,,8/29/2020,AP
@@ -15575,12 +16189,20 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 123429575,hotel_init,9,0,,8/29/2020,SL
 123432605,hotel_init,309,309,,7/15/2022,SL
 123438146,hotel_init,32,0,,8/25/2020,AP
+<<<<<<< HEAD
 123447261,hotel_init,1,0, ,8/28/2020,BS
+=======
+123447261,hotel_init,1,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123451638,hotel_init,3,0,,8/29/2020,TD
 123453592,hotel_init,83,0,,4/20/2022,SL
 123474864,hotel_init,8,0,,8/28/2020,KS
 123475051,hotel_init,105,0,,8/29/2020,TD
 123482329,hotel_init,7,0,,8/29/2020,TD
+<<<<<<< HEAD
+=======
+123499632,hotel_init,53,0,,8/27/2020,AP
+>>>>>>> origin/main
 123515268,hotel_init,10,0,,8/29/2020,KS
 123515847,hotel_init,65,65,,8/6/2020,KS
 123518229,hotel_init,0,0,,8/29/2020,TD
@@ -15597,7 +16219,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 123548054,hotel_init,795,0,,8/29/2020,AP
 123552477,hotel_init,13,0,,8/29/2020,SL
 123567158,hotel_init,25,0,,8/29/2020,TD
+<<<<<<< HEAD
 123580062,hotel_init,352,0,Reduction Apt count,8/28/2020,BS
+=======
+123580062,hotel_init,352,0,Reduction Apt count,8/28/2020,WS
+>>>>>>> origin/main
 123582783,hotel_init,21,0,,8/29/2020,KS
 123584399,hotel_init,11,0,,8/29/2020,SL
 123585557,hotel_init,1,0,,8/29/2020,KS
@@ -15633,7 +16259,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 123756104,hotel_init,12,0,,8/29/2020,TD
 123756168,hotel_init,43,43,,4/28/2022,AP
 123764952,hotel_init,9,0,,8/29/2020,KS
+<<<<<<< HEAD
 123766594,hotel_init,23,0,,8/29/2020,BS
+=======
+123766594,hotel_init,23,0,,8/29/2020,WS
+>>>>>>> origin/main
 123773504,hotel_init,117,76,,2/4/2021,KS
 123773684,hotel_init,222,0,,8/29/2020,TD
 123777494,hotel_init,9,0,,8/24/2020,TD
@@ -15649,7 +16279,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 123833511,hotel_init,22,0,,2/2/2021,KS
 123834896,hotel_init,10,0,,8/28/2020,KS
 123835476,hotel_init,70,0,,8/29/2020,KS
+<<<<<<< HEAD
 123847392,hotel_init,90,90,Hotel to Residential (Condo),8/28/2020,BS
+=======
+123847392,hotel_init,90,90,Hotel to Residential (Condo),8/28/2020,WS
+>>>>>>> origin/main
 123855890,hotel_init,0,0,,1/26/2021,TD
 123857594,hotel_init,84,0,,8/29/2020,TD
 123858414,hotel_init,89,89,,4/28/2022,AP
@@ -15757,10 +16391,17 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 220013321,hotel_init,2,0,,8/29/2020,KS
 220033416,hotel_init,41,41,,8/27/2020,SL
 220034558,hotel_init,137,0,,4/29/2022,AP
+<<<<<<< HEAD
 220050263,hotel_init,5,0,,8/29/2020,BS
 220053331,hotel_init,,0,,8/29/2020,TD
 220057701,hotel_init,1,0,,8/24/2020,KS
 220069002,hotel_init,21,0,,8/28/2020,BS
+=======
+220050263,hotel_init,5,0,,8/29/2020,WS
+220053331,hotel_init,,0,,8/29/2020,TD
+220057701,hotel_init,1,0,,8/24/2020,KS
+220069002,hotel_init,21,0,,8/28/2020,WS
+>>>>>>> origin/main
 220079251,hotel_init,60,0,,4/28/2022,AP
 220088401,hotel_init,25,0,,8/29/2020,KS
 220100049,hotel_init,1,0,,7/21/2022,SL
@@ -15778,7 +16419,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 220211893,hotel_init,0,0,,8/24/2020,SL
 220222961,hotel_init,1,0,,7/21/2022,SL
 220225584,hotel_init,3,0,,8/29/2020,KS
+<<<<<<< HEAD
 220228322,hotel_init,30,0, ,8/28/2020,BS
+=======
+220228322,hotel_init,30,0, ,8/28/2020,WS
+>>>>>>> origin/main
 220230952,hotel_init,1,0,,8/29/2020,AP
 220258441,hotel_init,,0,,8/29/2020,TD
 220259930,hotel_init,,117,,8/30/2021,TD
@@ -15797,7 +16442,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 220427189,hotel_init,5,0,,8/29/2020,SL
 220447639,hotel_init,96,0,,8/29/2020,KS
 220453382,hotel_init,68,0,,8/28/2020,KS
+<<<<<<< HEAD
 220453408,hotel_init,37,0,,8/28/2020,BS
+=======
+220453408,hotel_init,37,0,,8/28/2020,WS
+>>>>>>> origin/main
 220464496,hotel_init,33,0,,8/25/2020,AP
 220476438,hotel_init,1,0,,1/26/2021,KS
 220481761,hotel_init,51,0,,8/29/2020,TD
@@ -15858,7 +16507,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 220664074,hotel_init,,0,,7/15/2022,SL
 220664323,hotel_init,0,0,,8/29/2020,KS
 220665162,hotel_init,20,0,,4/28/2022,AP
+<<<<<<< HEAD
 220667829,hotel_init,40,40,Jerome Motel,8/28/2020,BS
+=======
+220667829,hotel_init,40,40,Jerome Motel,8/28/2020,WS
+>>>>>>> origin/main
 220673091,hotel_init,65,0,,4/28/2022,AP
 220673108,hotel_init,49,0,,4/20/2022,SL
 220676374,hotel_init,1,0,,8/3/2022,VB
@@ -15870,7 +16523,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 220689672,hotel_init,,0,,8/29/2020,TD
 220695914,hotel_init,67,0,,4/28/2022,AP
 220696469,hotel_init,2,0,,4/27/2022,VB
+<<<<<<< HEAD
 220698975,hotel_init,12,0, ,8/28/2020,BS
+=======
+220698975,hotel_init,12,0, ,8/28/2020,WS
+>>>>>>> origin/main
 220700720,hotel_init,1,0,,7/21/2022,SL
 220705459,hotel_init,118,0,,4/28/2022,AP
 220706387,hotel_init,6,0,,8/29/2020,TD
@@ -15884,7 +16541,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 220716081,hotel_init,1,0,,7/21/2022,SL
 220716241,hotel_init,3,0,,5/2/2022,AP
 220719578,hotel_init,2,0,,4/27/2022,VB
+<<<<<<< HEAD
 220720138,hotel_init,88,0,NonProfit Class B Units,8/28/2020,BS
+=======
+220720138,hotel_init,88,0,NonProfit Class B Units,8/28/2020,WS
+>>>>>>> origin/main
 220720227,hotel_init,2,0,,4/27/2022,VB
 220720726,hotel_init,8,0,,8/29/2020,KS
 220720735,hotel_init,8,0,,8/29/2020,KS
@@ -16051,7 +16712,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 301902485,hotel_init,10,0,,8/28/2020,AP
 301911224,hotel_init,,0,,8/24/2020,KS
 301915612,hotel_init,,0,,8/24/2020,KS
+<<<<<<< HEAD
 301918744,hotel_init,39,0, ,8/28/2020,BS
+=======
+301918744,hotel_init,39,0, ,8/28/2020,WS
+>>>>>>> origin/main
 301923621,hotel_init,1,0,,4/22/2022,SL
 301925665,hotel_init,,0,,8/25/2021,SL
 301930347,hotel_init,,0,,8/30/2021,TD
@@ -16123,7 +16788,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 302225072,hotel_init,,0,,8/24/2020,KS
 302237960,hotel_init,,0,,8/25/2021,JS
 302240331,hotel_init,12,0,,8/28/2020,KS
+<<<<<<< HEAD
 302244505,hotel_init,,0,,8/28/2020,BS
+=======
+302244505,hotel_init,,0,,8/28/2020,WS
+>>>>>>> origin/main
 302250597,hotel_init,,0,,8/25/2021,SL
 302252853,hotel_init,,0,,8/24/2020,KS
 302253237,hotel_init,2,0,,7/15/2022,SL
@@ -16309,7 +16978,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 320281654,hotel_init,21,0,,4/25/2022,SL
 320281903,hotel_init,0,0,,8/26/2020,KS
 320282449,hotel_init,,0,,8/25/2021,TD
+<<<<<<< HEAD
 320283117,hotel_init,1,0,,8/29/2020,BS
+=======
+320283117,hotel_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 320284483,hotel_init,12,0,,4/26/2022,SL
 320284606,hotel_init,20,0,,4/26/2022,SL
 320285160,hotel_init,7,0,,8/29/2020,SL
@@ -16341,7 +17014,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 320410266,hotel_init,2,0,,7/21/2022,SL
 320411087,hotel_init,20,0,,8/26/2020,AP
 320411149,hotel_init,0,0,,8/29/2020,KS
+<<<<<<< HEAD
 320413860,hotel_init,1,0,,8/29/2020,BS
+=======
+320413860,hotel_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 320417107,hotel_init,9,0,,8/29/2020,TD
 320417214,hotel_init,,0,,8/25/2021,TD
 320419043,hotel_init,10,0,,4/29/2022,AP
@@ -16367,7 +17044,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 320493355,hotel_init,9,0,,4/22/2022,SL
 320495246,hotel_init,3,0,,8/29/2020,TD
 320501701,hotel_init,10,0,,8/29/2020,TD
+<<<<<<< HEAD
 320509981,hotel_init,12,0,,8/28/2020,BS
+=======
+320509981,hotel_init,12,0,,8/28/2020,WS
+>>>>>>> origin/main
 320513100,hotel_init,15,0,,8/29/2020,SL
 320513789,hotel_init,,0,,8/24/2020,KS
 320514519,hotel_init,2,0,,8/29/2020,TD
@@ -16459,10 +17140,17 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 320912919,hotel_init,128,0,,8/29/2020,TD
 320913516,hotel_init,119,0,,8/24/2020,AP
 320914971,hotel_init,11,0,,8/29/2020,TD
+<<<<<<< HEAD
 320915809,hotel_init,10,0, ,8/28/2020,BS
 320915836,hotel_init,15,0,,8/26/2020,TD
 320915881,hotel_init,12,0,,8/29/2020,TD
 320915970,hotel_init,10,0,,8/28/2020,BS
+=======
+320915809,hotel_init,10,0, ,8/28/2020,WS
+320915836,hotel_init,15,0,,8/26/2020,TD
+320915881,hotel_init,12,0,,8/29/2020,TD
+320915970,hotel_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 320916032,hotel_init,7,0,,8/29/2020,TD
 320916504,hotel_init,0,0,,8/29/2020,KS
 320916657,hotel_init,2,0,,2/1/2021,TD
@@ -16488,7 +17176,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 320973773,hotel_init,16,0,,8/29/2020,KS
 320978830,hotel_init,,0,,8/24/2020,KS
 320984814,hotel_init,8,0,,8/29/2020,SL
+<<<<<<< HEAD
 320988393,hotel_init,70,0,Nursing Home Long Abondoned,8/28/2020,BS
+=======
+320988393,hotel_init,70,0,Nursing Home Long Abondoned,8/28/2020,WS
+>>>>>>> origin/main
 320988464,hotel_init,,0,,8/25/2021,TD
 320991842,hotel_init,10,0,,8/28/2020,AP
 320995125,hotel_init,1,0,,2/1/2021,TD
@@ -16542,7 +17234,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 321186499,hotel_init,,0,,8/25/2021,JS
 321186587,hotel_init,107,0,,5/6/2022,SL
 321186649,hotel_init,,0,,8/29/2020,KS
+<<<<<<< HEAD
 321187130,hotel_init,92,0,Class B to Class A,8/28/2020,BS
+=======
+321187130,hotel_init,92,0,Class B to Class A,8/28/2020,WS
+>>>>>>> origin/main
 321188479,hotel_init,11,0,,8/29/2020,SL
 321188772,hotel_init,7,0,,8/29/2020,SL
 321188852,hotel_init,128,0,,8/24/2020,AP
@@ -16599,7 +17295,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 321327444,hotel_init,5,0,,8/29/2020,TD
 321359908,hotel_init,6,0,,8/29/2020,TD
 321363396,hotel_init,1,0,,8/29/2020,KS
+<<<<<<< HEAD
 321367025,hotel_init,10,0,,8/28/2020,BS
+=======
+321367025,hotel_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 321369167,hotel_init,2,0,,8/29/2020,SL
 321377924,hotel_init,,0,,8/25/2021,TD
 321383025,hotel_init,2,0,,2/1/2021,TD
@@ -16622,7 +17322,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 321427817,hotel_init,19,0,,8/29/2020,KS
 321431018,hotel_init,8,0,,8/24/2020,TD
 321444157,hotel_init,9,0,,8/29/2020,TD
+<<<<<<< HEAD
 321445646,hotel_init,10,0,,8/28/2020,BS
+=======
+321445646,hotel_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 321448000,hotel_init,1,0,,7/21/2022,SL
 321450906,hotel_init,2,0,,8/29/2020,TD
 321455000,hotel_init,2,0,,7/21/2022,SL
@@ -16698,7 +17402,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 321618040,hotel_init,0,0,,8/29/2020,TD
 321627352,hotel_init,1,0,,8/29/2020,TD
 321627600,hotel_init,24,0,,8/26/2020,AP
+<<<<<<< HEAD
 321628592,hotel_init,10,0,,8/28/2020,BS
+=======
+321628592,hotel_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 321633336,hotel_init,10,0,,8/29/2020,TD
 321637298,hotel_init,2,0,,7/21/2022,SL
 321637314,hotel_init,2,0,,7/21/2022,SL
@@ -16770,7 +17478,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 321910777,hotel_init,61,0,,8/29/2020,TD
 321912178,hotel_init,0,0,,8/29/2020,KS
 321916744,hotel_init,7,0,,8/29/2020,TD
+<<<<<<< HEAD
 321918895,hotel_init,1,0,,8/29/2020,BS
+=======
+321918895,hotel_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 321925798,hotel_init,1,0,,8/31/2021,SL
 321930194,hotel_init,3,0,,8/29/2020,SL
 321934831,hotel_init,3,0,,8/29/2020,KS
@@ -17116,7 +17828,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 420200384,hotel_init,2,0,,7/21/2022,SL
 420229149,hotel_init,0,0,,8/29/2020,KS
 420288959,hotel_init,0,0,,8/29/2020,TD
+<<<<<<< HEAD
 420293907,hotel_init,1,0,,8/29/2020,BS
+=======
+420293907,hotel_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 420295923,hotel_init,2,0,,7/21/2022,SL
 420296771,hotel_init,1,0,,7/21/2022,SL
 420300837,hotel_init,1,0,,7/21/2022,SL
@@ -17255,7 +17971,11 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 421468192,hotel_init,1,0,,8/29/2020,KS
 421468209,hotel_init,31,0,,8/29/2020,KS
 421476842,hotel_init,1,0,,7/21/2022,SL
+<<<<<<< HEAD
 421484049,hotel_init,50,0,Catholic Vicariate House,8/28/2020,BS
+=======
+421484049,hotel_init,50,0,Catholic Vicariate House,8/28/2020,WS
+>>>>>>> origin/main
 421488900,hotel_init,1,0,,7/21/2022,SL
 421516372,hotel_init,1,0,,7/21/2022,SL
 421524256,hotel_init,0,0,,8/29/2020,KS
@@ -17449,9 +18169,15 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 520239340,hotel_init,1,0,,7/21/2022,SL
 520243488,hotel_init,1,0,,7/21/2022,SL
 520248768,hotel_init,1,0,,7/21/2022,SL
+<<<<<<< HEAD
 520255483,hotel_init,28,0,Abandoned  Nursing Home,8/28/2020,BS
 520259997,hotel_init,1,0,,7/21/2022,SL
 520262741,hotel_init,5,0,,8/29/2020,BS
+=======
+520255483,hotel_init,28,0,Abandoned  Nursing Home,8/28/2020,WS
+520259997,hotel_init,1,0,,7/21/2022,SL
+520262741,hotel_init,5,0,,8/29/2020,WS
+>>>>>>> origin/main
 520269316,hotel_init,1,0,,7/21/2022,SL
 520269717,hotel_init,2,0,,7/21/2022,SL
 520275158,hotel_init,1,0,,7/21/2022,SL
@@ -17469,8 +18195,13 @@ B00649561,classa_prop,899,333,,9/9/2022,SL
 520319441,hotel_init,1,0,,7/21/2022,SL
 520319450,hotel_init,1,0,,7/21/2022,SL
 520319487,hotel_init,1,0,,7/21/2022,SL
+<<<<<<< HEAD
 520336075,hotel_init,1,0,,8/29/2020,BS
 520336253,hotel_init,1,0,,8/29/2020,BS
+=======
+520336075,hotel_init,1,0,,8/29/2020,WS
+520336253,hotel_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 520336949,hotel_init,1,0,,7/21/2022,SL
 520339508,hotel_init,1,0,,7/21/2022,SL
 520351388,hotel_init,107,106,,1/28/2020,
@@ -17576,7 +18307,11 @@ Q00641580,hotel_init,120,171,,7/21/2022,VB
 Q00706470,hotel_init,12,0,,7/20/2022,VB
 Q00717874,hotel_init,142,0,,8/3/2022,VB
 Q00724600,hotel_init,1,0,,8/3/2022,VB
+<<<<<<< HEAD
 Q00730636,hotel_init,0,0,,7/21/2022,BS
+=======
+Q00730636,hotel_init,0,0,,7/21/2022,WS
+>>>>>>> origin/main
 S00500211,hotel_init,0,0,,8/3/2022,VB
 S00534878,hotel_init,0,0,,8/3/2022,VB
 S00694744,hotel_init,0,0,,8/3/2022,VB
@@ -17801,7 +18536,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 104052178,hotel_prop,17,0,,8/28/2020,AP
 104052454,hotel_prop,,0,,8/29/2020,TD
 104052686,hotel_prop,8,0,,8/25/2021,JS
+<<<<<<< HEAD
 104052695,hotel_prop,10,0, ,8/28/2020,BS
+=======
+104052695,hotel_prop,10,0, ,8/28/2020,WS
+>>>>>>> origin/main
 104056940,hotel_prop,0,0,,8/28/2020,SL
 104057501,hotel_prop,10,0,,7/15/2022,SL
 104061391,hotel_prop,10,0,,1/26/2021,KS
@@ -17840,7 +18579,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 104254628,hotel_prop,1,0,,8/31/2021,JS
 104255342,hotel_prop,14,0,,8/25/2021,AP
 104273279,hotel_prop,21,21,,7/29/2020,AP
+<<<<<<< HEAD
 104276347,hotel_prop,9,0,,8/28/2020,BS
+=======
+104276347,hotel_prop,9,0,,8/28/2020,WS
+>>>>>>> origin/main
 104276999,hotel_prop,96,95,,4/28/2022,AP
 104282303,hotel_prop,1,0,,8/24/2020,TD
 104288138,hotel_prop,20,0,,8/24/2022,SL
@@ -17951,7 +18694,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 104713446,hotel_prop,109,20,,7/16/2020,SL
 104715676,hotel_prop,10,0,,4/29/2022,SL
 104718487,hotel_prop,155,155,,7/28/2020,AP
+<<<<<<< HEAD
 104720704,hotel_prop,2,0, ,8/28/2020,BS
+=======
+104720704,hotel_prop,2,0, ,8/28/2020,WS
+>>>>>>> origin/main
 104722891,hotel_prop,308,0,,8/25/2020,AP
 104723738,hotel_prop,,0,,8/26/2020,KS
 104731569,hotel_prop,3,0,,8/28/2020,AP
@@ -18034,7 +18781,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 110117436,hotel_prop,67,71,,7/29/2020,AP
 110120119,hotel_prop,4,0,,8/29/2020,SL
 110122108,hotel_prop,1332,1332,,1/28/2020,
+<<<<<<< HEAD
 110125132,hotel_prop,104,104,,8/28/2020,BS
+=======
+110125132,hotel_prop,104,104,,8/28/2020,WS
+>>>>>>> origin/main
 110125793,hotel_prop,14,14,,2/13/2020,
 110125962,hotel_prop,426,426,,8/6/2020,KS
 110126239,hotel_prop,16,0,,8/29/2020,SL
@@ -18141,7 +18892,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 120076960,hotel_prop,94,94,,7/30/2020,AP
 120081277,hotel_prop,130,130,,1/28/2020,
 120081400,hotel_prop,18,0,,8/25/2021,AP
+<<<<<<< HEAD
 120083211,hotel_prop,6,0, ,8/28/2020,BS
+=======
+120083211,hotel_prop,6,0, ,8/28/2020,WS
+>>>>>>> origin/main
 120083961,hotel_prop,54,0,,8/28/2020,TD
 120085772,hotel_prop,48,48,job related to units_.sql,2/21/2020,
 120085950,hotel_prop,1,301,job related to units_.sql,2/21/2020,
@@ -18187,7 +18942,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 120260298,hotel_prop,8,0,,8/29/2020,SL
 120260305,hotel_prop,8,0,,8/29/2020,SL
 120260779,hotel_prop,19,19,,1/31/2020,
+<<<<<<< HEAD
 120262036,hotel_prop,315,315,,8/28/2020,BS
+=======
+120262036,hotel_prop,315,315,,8/28/2020,WS
+>>>>>>> origin/main
 120262777,hotel_prop,95,95,,7/30/2020,AP
 120272025,hotel_prop,586,586,,1/31/2020,
 120273863,hotel_prop,24,0,,8/27/2020,AP
@@ -18261,7 +19020,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 120548194,hotel_prop,,0,,8/23/2021,SL
 120550457,hotel_prop,141,141,,2/3/2020,
 120554248,hotel_prop,17,0,,8/28/2020,TD
+<<<<<<< HEAD
 120555103,hotel_prop,416,0,,8/28/2020,BS
+=======
+120555103,hotel_prop,416,0,,8/28/2020,WS
+>>>>>>> origin/main
 120557691,hotel_prop,1,0,,8/28/2020,KS
 120560240,hotel_prop,2,0,,8/29/2020,TD
 120561971,hotel_prop,8,0,,2/1/2021,TD
@@ -18300,7 +19063,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 120663086,hotel_prop,115,103,mixed-use hotel-res,8/13/2019,
 120663479,hotel_prop,5,0,,8/29/2020,SL
 120664236,hotel_prop,25,0,,2/1/2021,TD
+<<<<<<< HEAD
 120667251,hotel_prop,1,0, ,8/28/2020,BS
+=======
+120667251,hotel_prop,1,0, ,8/28/2020,WS
+>>>>>>> origin/main
 120669712,hotel_prop,201,0,,8/29/2020,TD
 120672496,hotel_prop,,0,,8/26/2020,KS
 120682001,hotel_prop,4,0,,8/29/2020,SL
@@ -18374,6 +19141,7 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 120941428,hotel_prop,5,0,,8/29/2020,SL
 120945317,hotel_prop,282,0,,8/28/2020,AP
 120951318,hotel_prop,134,134,,2/18/2020,
+<<<<<<< HEAD
 120954477,hotel_prop,0,0, ,8/28/2020,BS
 120955092,hotel_prop,86,86,,1/28/2020,
 120957982,hotel_prop,6,0,,8/29/2020,SL
@@ -18381,6 +19149,15 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 120960718,hotel_prop,11,0, ,8/28/2020,BS
 120971751,hotel_prop,229,0,,8/27/2020,AP
 120973358,hotel_prop,8,0,,8/28/2020,BS
+=======
+120954477,hotel_prop,0,0, ,8/28/2020,WS
+120955092,hotel_prop,86,86,,1/28/2020,
+120957982,hotel_prop,6,0,,8/29/2020,SL
+120960264,hotel_prop,,0,Monastery units on 2 floors,8/28/2020,SL
+120960718,hotel_prop,11,0, ,8/28/2020,WS
+120971751,hotel_prop,229,0,,8/27/2020,AP
+120973358,hotel_prop,8,0,,8/28/2020,WS
+>>>>>>> origin/main
 120973991,hotel_prop,1,0,,8/28/2020,TD
 120986077,hotel_prop,1397,0,,8/29/2020,KS
 120991579,hotel_prop,15,0,,2/1/2021,TD
@@ -18470,7 +19247,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 121184770,hotel_prop,,0,,8/24/2020,KS
 121184789,hotel_prop,182,165,,8/10/2022,SL
 121184823,hotel_prop,68,68,,1/28/2020,
+<<<<<<< HEAD
 121185029,hotel_prop,137,137,,8/28/2020,BS
+=======
+121185029,hotel_prop,137,137,,8/28/2020,WS
+>>>>>>> origin/main
 121185038,hotel_prop,7,0,,8/29/2020,SL
 121185056,hotel_prop,251,251,,8/3/2022,VB
 121185181,hotel_prop,220,220,,1/28/2020,
@@ -18575,7 +19356,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 121192075,hotel_prop,114,111,,8/3/2020,AP
 121192173,hotel_prop,143,143,,8/3/2022,VB
 121192208,hotel_prop,208,125,,7/15/2022,SL
+<<<<<<< HEAD
 121192235,hotel_prop,0,0, ,8/28/2020,BS
+=======
+121192235,hotel_prop,0,0, ,8/28/2020,WS
+>>>>>>> origin/main
 121192253,hotel_prop,95,95,,1/28/2020,
 121192271,hotel_prop,121,121,,1/28/2020,
 121192324,hotel_prop,8,71,,1/28/2020,
@@ -18586,7 +19371,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 121192798,hotel_prop,129,129,,7/15/2020,SL
 121192814,hotel_prop,593,294,,8/8/2022,VB
 121192949,hotel_prop,234,234,,7/15/2022,SL
+<<<<<<< HEAD
 121192958,hotel_prop,96,0,Ronald McDonald House ,8/28/2020,BS
+=======
+121192958,hotel_prop,96,0,Ronald McDonald House ,8/28/2020,WS
+>>>>>>> origin/main
 121193010,hotel_prop,96,96,,1/28/2020,
 121193207,hotel_prop,2,0,,8/29/2020,TD
 121193216,hotel_prop,1,0,,8/28/2020,KS
@@ -18766,7 +19555,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 121532252,hotel_prop,53,53,,1/31/2020,
 121532608,hotel_prop,0,0,,8/25/2020,AP
 121539567,hotel_prop,450,0,,8/28/2020,AP
+<<<<<<< HEAD
 121543099,hotel_prop,1,0,,8/28/2020,BS
+=======
+121543099,hotel_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 121544739,hotel_prop,7,0,,8/29/2020,SL
 121545729,hotel_prop,4,0,,8/29/2020,SL
 121549011,hotel_prop,1,0,,7/20/2022,SL
@@ -18793,7 +19586,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 121625651,hotel_prop,107,0,,8/25/2020,AP
 121629452,hotel_prop,8,0,,8/25/2021,JS
 121629577,hotel_prop,141,0,,8/27/2020,KS
+<<<<<<< HEAD
 121634151,hotel_prop,0,0, ,8/28/2020,BS
+=======
+121634151,hotel_prop,0,0, ,8/28/2020,WS
+>>>>>>> origin/main
 121639726,hotel_prop,1,0,,8/29/2020,TD
 121641492,hotel_prop,1,0,,8/24/2020,TD
 121666713,hotel_prop,585,0,,8/28/2020,AP
@@ -18909,7 +19706,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 122185376,hotel_prop,87,87,,4/29/2022,AP
 122186473,hotel_prop,19,0,,8/29/2020,KS
 122199682,hotel_prop,2,0,,8/29/2020,TD
+<<<<<<< HEAD
 122201839,hotel_prop,2141,2191,Mdtown Hilton Hotel,8/28/2020,BS
+=======
+122201839,hotel_prop,2141,2191,Mdtown Hilton Hotel,8/28/2020,WS
+>>>>>>> origin/main
 122202909,hotel_prop,2,0,,8/29/2020,TD
 122206601,hotel_prop,120,120,,1/28/2020,
 122207931,hotel_prop,10,0,,8/29/2020,KS
@@ -18925,7 +19726,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 122228213,hotel_prop,2,0,,8/28/2020,AP
 122228295,hotel_prop,3,0,,8/24/2020,TD
 122232752,hotel_prop,118,118,,1/28/2020,
+<<<<<<< HEAD
 122233181,hotel_prop,1,0, ,8/28/2020,BS
+=======
+122233181,hotel_prop,1,0, ,8/28/2020,WS
+>>>>>>> origin/main
 122234055,hotel_prop,31,0,,8/28/2020,KS
 122239871,hotel_prop,64,0,,8/27/2020,KS
 122240574,hotel_prop,156,0,,8/25/2020,AP
@@ -18980,7 +19785,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 122449813,hotel_prop,1,0,,4/27/2022,VB
 122454370,hotel_prop,1,0,,8/25/2020,TD
 122455752,hotel_prop,2,0,,8/24/2020,TD
+<<<<<<< HEAD
 122456840,hotel_prop,366,310,,8/28/2020,BS
+=======
+122456840,hotel_prop,366,310,,8/28/2020,WS
+>>>>>>> origin/main
 122465046,hotel_prop,321,322,,1/28/2020,
 122479512,hotel_prop,1,0,,8/28/2020,TD
 122480788,hotel_prop,1,0,,8/28/2020,TD
@@ -18995,7 +19804,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 122513618,hotel_prop,506,0,,4/27/2022,AP
 122513770,hotel_prop,30,30,,1/31/2020,
 122514859,hotel_prop,3,0,,8/29/2020,TD
+<<<<<<< HEAD
 122514868,hotel_prop,2,0, ,8/28/2020,BS
+=======
+122514868,hotel_prop,2,0, ,8/28/2020,WS
+>>>>>>> origin/main
 122521556,hotel_prop,75,48,mixed-use hotel-res,7/16/2020,SL
 122523821,hotel_prop,2,0,,8/29/2020,TD
 122525188,hotel_prop,174,0,,8/24/2020,AP
@@ -19025,7 +19838,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 122648251,hotel_prop,96,0,,8/28/2020,AP
 122652762,hotel_prop,8,0,,8/29/2020,SL
 122656492,hotel_prop,56,0,,8/29/2020,TD
+<<<<<<< HEAD
 122668700,hotel_prop,417,417,Hotel Room Reduction,8/28/2020,BS
+=======
+122668700,hotel_prop,417,417,Hotel Room Reduction,8/28/2020,WS
+>>>>>>> origin/main
 122671607,hotel_prop,154,0,,8/3/2022,VB
 122676764,hotel_prop,1,0,,8/29/2020,TD
 122682105,hotel_prop,188,188,job related to units_.sql,2/19/2020,
@@ -19085,7 +19902,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 122877985,hotel_prop,15,0,,8/29/2020,KS
 122888848,hotel_prop,40,40,,1/28/2020,
 122891442,hotel_prop,22,0,,8/29/2020,KS
+<<<<<<< HEAD
 122895741,hotel_prop,1,0,,8/28/2020,BS
+=======
+122895741,hotel_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 122895965,hotel_prop,18,0,,8/25/2021,AP
 122900655,hotel_prop,14,0,,8/29/2020,SL
 122901128,hotel_prop,130,130,,2/3/2020,
@@ -19104,7 +19925,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 122948640,hotel_prop,31,31,,1/31/2020,
 122961713,hotel_prop,2,0,,8/28/2020,AP
 122961875,hotel_prop,14,0,,7/20/2022,SL
+<<<<<<< HEAD
 122962561,hotel_prop,1,0,,8/28/2020,BS
+=======
+122962561,hotel_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 122971301,hotel_prop,14,0,,8/24/2020,TD
 122977172,hotel_prop,24,24,,7/31/2020,KS
 122977323,hotel_prop,1,0,,8/3/2022,VB
@@ -19114,7 +19939,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 122983174,hotel_prop,1,0,,8/29/2020,KS
 122984832,hotel_prop,0,0,,8/29/2020,KS
 122985029,hotel_prop,296,296,,4/29/2022,SL
+<<<<<<< HEAD
 122988320,hotel_prop,867,509,Essex House Hotel/Condo,8/28/2020,BS
+=======
+122988320,hotel_prop,867,509,Essex House Hotel/Condo,8/28/2020,WS
+>>>>>>> origin/main
 122991325,hotel_prop,6,0,,8/29/2020,SL
 122993458,hotel_prop,587,0,,8/29/2020,TD
 122993957,hotel_prop,243,0,,8/27/2020,AP
@@ -19158,7 +19987,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 123161274,hotel_prop,1,0,,8/29/2020,KS
 123166723,hotel_prop,4,0,,8/29/2020,TD
 123166741,hotel_prop,2,0,,8/28/2020,KS
+<<<<<<< HEAD
 123169748,hotel_prop,6,0, ,8/28/2020,BS
+=======
+123169748,hotel_prop,6,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123169855,hotel_prop,4,13,,8/6/2020,TD
 123170488,hotel_prop,184,0,,8/29/2020,TD
 123170530,hotel_prop,115,0,,8/29/2020,TD
@@ -19170,7 +20003,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 123193212,hotel_prop,117,0,,8/29/2020,SL
 123197218,hotel_prop,238,0,,8/27/2020,TD
 123198752,hotel_prop,92,92,,4/28/2022,AP
+<<<<<<< HEAD
 123201971,hotel_prop,3,0, ,8/28/2020,BS
+=======
+123201971,hotel_prop,3,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123203416,hotel_prop,171,171,,1/28/2020,
 123203871,hotel_prop,7,0,,8/29/2020,SL
 123204200,hotel_prop,2,0,,8/29/2020,TD
@@ -19178,7 +20015,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 123210667,hotel_prop,4,0,,8/29/2020,TD
 123210818,hotel_prop,242,269,,8/6/2020,TD
 123211194,hotel_prop,1,0,,8/29/2020,KS
+<<<<<<< HEAD
 123213520,hotel_prop,1,0,,8/28/2020,BS
+=======
+123213520,hotel_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 123225517,hotel_prop,1,0,,8/29/2020,KS
 123227070,hotel_prop,117,113,,7/15/2022,SL
 123234357,hotel_prop,80,186,,4/29/2022,AP
@@ -19216,7 +20057,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 123392033,hotel_prop,317,0,,8/29/2020,AP
 123392168,hotel_prop,,0,,8/25/2021,AP
 123395879,hotel_prop,8,0,,8/29/2020,SL
+<<<<<<< HEAD
 123397886,hotel_prop,1,0, ,8/28/2020,BS
+=======
+123397886,hotel_prop,1,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123407508,hotel_prop,20,0,,8/29/2020,KS
 123410512,hotel_prop,2,0,,8/29/2020,TD
 123412271,hotel_prop,331,0,,8/29/2020,AP
@@ -19227,7 +20072,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 123429575,hotel_prop,6,0,,8/29/2020,SL
 123432605,hotel_prop,288,288,,7/15/2022,SL
 123438146,hotel_prop,,0,,8/25/2020,AP
+<<<<<<< HEAD
 123447261,hotel_prop,2,0, ,8/28/2020,BS
+=======
+123447261,hotel_prop,2,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123451638,hotel_prop,2,0,,8/29/2020,TD
 123453592,hotel_prop,84,0,,4/20/2022,SL
 123474864,hotel_prop,0,0,,8/28/2020,KS
@@ -19251,7 +20100,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 123548054,hotel_prop,795,0,,8/29/2020,AP
 123552477,hotel_prop,6,0,,8/29/2020,SL
 123567158,hotel_prop,30,30,change u_prop,8/13/2019,
+<<<<<<< HEAD
 123580062,hotel_prop,117,0,Reduction Apt count,8/28/2020,BS
+=======
+123580062,hotel_prop,117,0,Reduction Apt count,8/28/2020,WS
+>>>>>>> origin/main
 123582783,hotel_prop,12,0,,8/29/2020,KS
 123584399,hotel_prop,6,0,,8/29/2020,SL
 123585557,hotel_prop,1,0,,8/29/2020,KS
@@ -19301,7 +20154,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 123830382,hotel_prop,3,0,,7/15/2022,SL
 123834896,hotel_prop,4,0,,8/28/2020,KS
 123835476,hotel_prop,70,30,,1/30/2020,
+<<<<<<< HEAD
 123847392,hotel_prop,21,0,Hotel to Residential (Condo),8/28/2020,BS
+=======
+123847392,hotel_prop,21,0,Hotel to Residential (Condo),8/28/2020,WS
+>>>>>>> origin/main
 123851796,hotel_prop,166,152,,7/27/2020,AP
 123855890,hotel_prop,1,0,,1/26/2021,TD
 123857594,hotel_prop,84,0,,8/29/2020,TD
@@ -19484,7 +20341,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 220210509,hotel_prop,63,0,,8/29/2020,AP
 220211241,hotel_prop,60,60,,1/28/2020,
 220211893,hotel_prop,90,0,,8/24/2020,SL
+<<<<<<< HEAD
 220228322,hotel_prop,21,0, ,8/28/2020,BS
+=======
+220228322,hotel_prop,21,0, ,8/28/2020,WS
+>>>>>>> origin/main
 220243074,hotel_prop,128,128,,4/29/2022,AP
 220249666,hotel_prop,60,60,,1/28/2020,
 220258441,hotel_prop,128,0,,8/29/2020,TD
@@ -19510,7 +20371,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 220447639,hotel_prop,94,94,,1/31/2020,
 220451945,hotel_prop,48,0,,8/29/2020,AP
 220453382,hotel_prop,55,0,,8/28/2020,KS
+<<<<<<< HEAD
 220453408,hotel_prop,28,0,,8/28/2020,BS
+=======
+220453408,hotel_prop,28,0,,8/28/2020,WS
+>>>>>>> origin/main
 220464496,hotel_prop,0,0,,8/25/2020,AP
 220476438,hotel_prop,1,0,,1/26/2021,KS
 220481761,hotel_prop,61,0,,8/29/2020,TD
@@ -19595,7 +20460,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 220689672,hotel_prop,,0,,8/29/2020,TD
 220695914,hotel_prop,70,0,,4/28/2022,AP
 220696469,hotel_prop,1,0,,4/27/2022,VB
+<<<<<<< HEAD
 220698975,hotel_prop,3,0, ,8/28/2020,BS
+=======
+220698975,hotel_prop,3,0, ,8/28/2020,WS
+>>>>>>> origin/main
 220705459,hotel_prop,118,0,,4/28/2022,AP
 220706387,hotel_prop,2,0,,8/29/2020,TD
 220712343,hotel_prop,15,0,,8/29/2020,KS
@@ -19767,7 +20636,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 301902485,hotel_prop,2,0,,8/28/2020,AP
 301911224,hotel_prop,1,0,,8/24/2020,KS
 301915612,hotel_prop,2,0,,8/24/2020,KS
+<<<<<<< HEAD
 301918744,hotel_prop,30,0, ,8/28/2020,BS
+=======
+301918744,hotel_prop,30,0, ,8/28/2020,WS
+>>>>>>> origin/main
 301923621,hotel_prop,1,0,,4/22/2022,SL
 301925665,hotel_prop,156,0,,8/25/2021,SL
 301930347,hotel_prop,4,0,,8/30/2021,TD
@@ -19849,7 +20722,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 302225072,hotel_prop,1,0,,8/24/2020,KS
 302237960,hotel_prop,8,0,,8/25/2021,JS
 302240331,hotel_prop,6,0,,8/28/2020,KS
+<<<<<<< HEAD
 302244505,hotel_prop,2,0,,8/28/2020,BS
+=======
+302244505,hotel_prop,2,0,,8/28/2020,WS
+>>>>>>> origin/main
 302250597,hotel_prop,183,0,,8/25/2021,SL
 302252853,hotel_prop,2,0,,8/24/2020,KS
 302253237,hotel_prop,3,0,,7/15/2022,SL
@@ -20154,7 +21031,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 320496753,hotel_prop,147,147,,1/28/2020,
 320499581,hotel_prop,14,14,,1/28/2020,
 320501701,hotel_prop,1,0,,8/29/2020,TD
+<<<<<<< HEAD
 320509981,hotel_prop,3,0,,8/28/2020,BS
+=======
+320509981,hotel_prop,3,0,,8/28/2020,WS
+>>>>>>> origin/main
 320513100,hotel_prop,6,0,,8/29/2020,SL
 320513789,hotel_prop,27,0,,8/24/2020,KS
 320514519,hotel_prop,2,0,,8/29/2020,TD
@@ -20281,11 +21162,19 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 320914971,hotel_prop,1,0,,8/29/2020,TD
 320915514,hotel_prop,54,54,,4/22/2022,SL
 320915710,hotel_prop,37,37,,7/30/2020,AP
+<<<<<<< HEAD
 320915809,hotel_prop,1,0, ,8/28/2020,BS
 320915836,hotel_prop,1,0,,8/26/2020,TD
 320915881,hotel_prop,1,0,,8/29/2020,TD
 320915943,hotel_prop,112,112,,1/28/2020,
 320915970,hotel_prop,1,0,,8/28/2020,BS
+=======
+320915809,hotel_prop,1,0, ,8/28/2020,WS
+320915836,hotel_prop,1,0,,8/26/2020,TD
+320915881,hotel_prop,1,0,,8/29/2020,TD
+320915943,hotel_prop,112,112,,1/28/2020,
+320915970,hotel_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 320916023,hotel_prop,33,33,,1/28/2020,
 320916032,hotel_prop,4,0,,8/29/2020,TD
 320916201,hotel_prop,56,56,,1/28/2020,
@@ -20377,7 +21266,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 321186480,hotel_prop,51,0,,2/1/2021,TD
 321186499,hotel_prop,9,0,,8/25/2021,JS
 321186649,hotel_prop,22,0,,8/29/2020,KS
+<<<<<<< HEAD
 321187130,hotel_prop,22,0,Class B to Class A,8/28/2020,BS
+=======
+321187130,hotel_prop,22,0,Class B to Class A,8/28/2020,WS
+>>>>>>> origin/main
 321187274,hotel_prop,224,127,,1/28/2020,
 321188479,hotel_prop,8,0,,8/29/2020,SL
 321188772,hotel_prop,4,0,,8/29/2020,SL
@@ -20430,7 +21323,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 321321636,hotel_prop,13,0,,7/15/2022,SL
 321327444,hotel_prop,3,0,,8/29/2020,TD
 321359908,hotel_prop,4,0,,8/29/2020,TD
+<<<<<<< HEAD
 321367025,hotel_prop,1,0,,8/28/2020,BS
+=======
+321367025,hotel_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 321369167,hotel_prop,8,0,,8/29/2020,SL
 321377924,hotel_prop,34,0,,8/25/2021,TD
 321383025,hotel_prop,47,0,,2/1/2021,TD
@@ -20458,7 +21355,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 321435719,hotel_prop,30,0,,8/29/2020,AP
 321439449,hotel_prop,120,120,,1/28/2020,
 321444157,hotel_prop,4,0,,8/29/2020,TD
+<<<<<<< HEAD
 321445646,hotel_prop,1,0,,8/28/2020,BS
+=======
+321445646,hotel_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 321450906,hotel_prop,3,0,,8/29/2020,TD
 321455082,hotel_prop,81,54,,2/3/2020,
 321455126,hotel_prop,4,0,,8/24/2020,TD
@@ -20532,7 +21433,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 321618040,hotel_prop,32,35,,1/28/2020,
 321627352,hotel_prop,4,0,,8/29/2020,TD
 321627600,hotel_prop,,0,,8/26/2020,AP
+<<<<<<< HEAD
 321628592,hotel_prop,1,0,,8/28/2020,BS
+=======
+321628592,hotel_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 321633336,hotel_prop,2,0,,8/29/2020,TD
 321637742,hotel_prop,2,0,,8/29/2020,TD
 321639027,hotel_prop,2,0,,8/3/2022,VB
@@ -21035,7 +21940,11 @@ M00600672,hotel_init,0,0,,9/20/2022,WS
 420655268,hotel_prop,77,77,,1/28/2020,
 420655632,hotel_prop,360,362,,8/5/2020,AP
 420656347,hotel_prop,248,248,,1/28/2020,
+<<<<<<< HEAD
 420656695,hotel_prop,923,0,,8/29/2020,BS
+=======
+420656695,hotel_prop,923,0,,8/29/2020,WS
+>>>>>>> origin/main
 420657952,hotel_prop,1,0,,7/21/2022,SL
 420657998,hotel_prop,1,0,,7/21/2022,SL
 420658087,hotel_prop,1,0,,7/21/2022,SL
@@ -22922,7 +23831,10 @@ X00633040,job_inactive,,Inactive: Duplicate,Older permit,8/5/2022,AP
 440644028,latitude,40.597392,40.59713637,,1/25/2021,KS
 440644117,latitude,40.597392,40.59713637,,1/25/2021,KS
 440646936,latitude,40.597392,40.59713637,,1/25/2021,KS
+<<<<<<< HEAD
 520099474,latitude,,40.633436,,1/30/2020,
+=======
+>>>>>>> origin/main
 440653179,latitude,40.708701,40.70862948,,1/25/2021,KS
 440654098,latitude,40.708798,40.70862948,,1/25/2021,KS
 440654141,latitude,40.708844,40.70862948,,1/25/2021,KS
@@ -23025,6 +23937,10 @@ X00633040,job_inactive,,Inactive: Duplicate,Older permit,8/5/2022,AP
 520099447,latitude,,40.633436,,1/30/2020,
 520099456,latitude,,40.633436,,1/30/2020,
 520099465,latitude,,40.633436,,1/30/2020,
+<<<<<<< HEAD
+=======
+520099474,latitude,,40.633436,,1/30/2020,
+>>>>>>> origin/main
 520099483,latitude,,40.633436,,1/30/2020,
 520102308,latitude,,40.635467,,1/30/2020,
 520102317,latitude,,40.635467,,1/30/2020,
@@ -23565,7 +24481,10 @@ S00633711,latitude,40.5889,40.5888135,,7/15/2022,AP
 S00633741,latitude,40.589,40.58925366,,7/15/2022,AP
 S00633748,latitude,40.5891,40.5888135,,7/15/2022,AP
 S00633760,latitude,40.5891,40.58925366,,7/15/2022,AP
+<<<<<<< HEAD
 540193431,classa_prop,1,0,,2/1/2021,SL
+=======
+>>>>>>> origin/main
 S00633766,latitude,40.5892,40.58925366,,7/15/2022,AP
 S00633787,latitude,40.5893,40.58925366,,7/15/2022,AP
 S00633790,latitude,40.5893,40.58926807,,8/3/2022,AP
@@ -24070,7 +24989,10 @@ X00760123,latitude,40.8608,40.8609298,,8/4/2022,AP
 421220743,longitude,,-73.726008,,1/30/2020,
 421220752,longitude,,-73.726148,,1/30/2020,
 421220761,longitude,,-73.726008,,1/30/2020,
+<<<<<<< HEAD
 540193440,classa_prop,1,0,,2/1/2021,SL
+=======
+>>>>>>> origin/main
 421220770,longitude,,-73.726008,,1/30/2020,
 421220789,longitude,,-73.726008,,1/30/2020,
 421220798,longitude,,-73.726008,,1/30/2020,
@@ -24887,13 +25809,22 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 520380356,classa_prop,2,0,,7/20/2020,SL
 520380551,classa_prop,2,0,,7/20/2020,SL
 520460108,classa_prop,1,0,,2/1/2021,SL
+<<<<<<< HEAD
+=======
+540193431,classa_prop,1,0,,2/1/2021,SL
+540193440,classa_prop,1,0,,2/1/2021,SL
+>>>>>>> origin/main
 540193459,classa_prop,1,0,,2/1/2021,SL
 102138820,otherb_init,53,46,,2/3/2020,
 102284804,otherb_init,,0,,8/8/2022,VB
 102292010,otherb_init,,0,,8/24/2020,KS
 102352160,otherb_init,1,10,,7/15/2022,SL
 102353294,otherb_init,,0,,8/25/2021,JS
+<<<<<<< HEAD
 102507253,otherb_init,206,0,Resid/Hotel to Hotel,8/28/2020,BS
+=======
+102507253,otherb_init,206,0,Resid/Hotel to Hotel,8/28/2020,WS
+>>>>>>> origin/main
 102513111,otherb_init,,0,,8/24/2020,KS
 102537364,otherb_init,,0,,8/25/2021,JS
 102545435,otherb_init,,0,,8/25/2021,SL
@@ -25032,7 +25963,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 104052178,otherb_init,23,0,,8/28/2020,AP
 104052454,otherb_init,,0,,7/31/2020,TD
 104052686,otherb_init,,0,,8/25/2021,JS
+<<<<<<< HEAD
 104052695,otherb_init,,0, ,8/28/2020,BS
+=======
+104052695,otherb_init,,0, ,8/28/2020,WS
+>>>>>>> origin/main
 104056940,otherb_init,35,0,,8/28/2020,SL
 104057501,otherb_init,12,2,,7/15/2022,SL
 104061391,otherb_init,12,9,,1/26/2021,KS
@@ -25070,7 +26005,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 104241688,otherb_init,4,12,,2/3/2020,
 104254628,otherb_init,,0,,8/31/2021,JS
 104255342,otherb_init,,0,,8/25/2021,AP
+<<<<<<< HEAD
 104276347,otherb_init,18,0,,8/28/2020,BS
+=======
+104276347,otherb_init,18,0,,8/28/2020,WS
+>>>>>>> origin/main
 104276999,otherb_init,96,0,,4/28/2022,AP
 104282303,otherb_init,,0,,8/24/2020,TD
 104288138,otherb_init,,0,,8/24/2022,SL
@@ -25169,7 +26108,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 104711126,otherb_init,1,0,,2/1/2021,TD
 104713446,otherb_init,89,0,,8/27/2020,KS
 104715676,otherb_init,,0,,4/29/2022,SL
+<<<<<<< HEAD
 104720704,otherb_init,12,10, ,8/28/2020,BS
+=======
+104720704,otherb_init,12,10, ,8/28/2020,WS
+>>>>>>> origin/main
 104722891,otherb_init,348,0,,8/25/2020,AP
 104723738,otherb_init,,0,,8/26/2020,KS
 104731569,otherb_init,,0,,8/28/2020,AP
@@ -25234,7 +26177,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 110110022,otherb_init,313,0,,8/27/2020,AP
 110120119,otherb_init,16,16,,1/31/2020,
 110122108,otherb_init,1315,0,,8/29/2020,KS
+<<<<<<< HEAD
 110125132,otherb_init,101,0,,8/28/2020,BS
+=======
+110125132,otherb_init,101,0,,8/28/2020,WS
+>>>>>>> origin/main
 110125793,otherb_init,3,0,,8/29/2020,KS
 110125962,otherb_init,481,0,,8/29/2020,KS
 110126239,otherb_init,18,15,,1/31/2020,
@@ -25322,7 +26269,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 120072946,otherb_init,3,0,,8/28/2020,AP
 120072955,otherb_init,2,0,,8/28/2020,AP
 120081400,otherb_init,,0,,8/25/2021,AP
+<<<<<<< HEAD
 120083211,otherb_init,16,16, ,8/28/2020,BS
+=======
+120083211,otherb_init,16,16, ,8/28/2020,WS
+>>>>>>> origin/main
 120083961,otherb_init,72,0,,8/28/2020,TD
 120086762,otherb_init,134,0,,8/29/2020,KS
 120090187,otherb_init,0,0,,8/29/2020,KS
@@ -25412,7 +26363,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 120447524,otherb_init,10,0,,8/28/2020,AP
 120451082,otherb_init,57,57,,2/18/2020,
 120465371,otherb_init,9,0,,8/28/2020,KS
+<<<<<<< HEAD
 120474593,otherb_init,31,0,,8/29/2020,BS
+=======
+120474593,otherb_init,31,0,,8/29/2020,WS
+>>>>>>> origin/main
 120480568,otherb_init,12,1,,4/29/2022,AP
 120481013,otherb_init,12,12,,1/31/2020,
 120483912,otherb_init,0,0,,8/29/2020,KS
@@ -25434,7 +26389,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 120548194,otherb_init,362,362,,8/23/2021,SL
 120550457,otherb_init,143,0,,8/29/2020,KS
 120554248,otherb_init,35,0,,8/28/2020,TD
+<<<<<<< HEAD
 120555103,otherb_init,1,0,,8/28/2020,BS
+=======
+120555103,otherb_init,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 120557691,otherb_init,7,0,,8/28/2020,KS
 120560240,otherb_init,11,11,,1/31/2020,
 120561365,otherb_init,1,0,,7/21/2022,SL
@@ -25469,7 +26428,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 120659171,otherb_init,,3,,7/30/2020,TD
 120663479,otherb_init,17,17,,7/30/2020,SL
 120664236,otherb_init,3,0,,2/1/2021,TD
+<<<<<<< HEAD
 120667251,otherb_init,11,0, ,8/28/2020,BS
+=======
+120667251,otherb_init,11,0, ,8/28/2020,WS
+>>>>>>> origin/main
 120669712,otherb_init,201,0,,8/29/2020,TD
 120671950,otherb_init,82,131,,2/18/2020,
 120672496,otherb_init,1,0,,8/26/2020,KS
@@ -25514,7 +26477,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 120856314,otherb_init,15,11,,1/31/2020,
 120859286,otherb_init,151,0,,8/28/2020,AP
 120868560,otherb_init,203,0,,8/29/2020,TD
+<<<<<<< HEAD
 120869596,otherb_init,24,0,,8/29/2020,BS
+=======
+120869596,otherb_init,24,0,,8/29/2020,WS
+>>>>>>> origin/main
 120870281,otherb_init,90,0,,8/29/2020,KS
 120873206,otherb_init,29,0,,8/25/2020,AP
 120876294,otherb_init,140,140,,7/31/2020,KS
@@ -25537,12 +26504,21 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 120941428,otherb_init,2,16,,7/31/2020,SL
 120945317,otherb_init,282,0,,8/28/2020,AP
 120953094,otherb_init,10,10,,1/31/2020,
+<<<<<<< HEAD
 120954477,otherb_init,10,0, ,8/28/2020,BS
 120957982,otherb_init,9,9,,7/30/2020,SL
 120960264,otherb_init,,0,Monastery units on 2 floors,8/28/2020,SL
 120960718,otherb_init,20,20, ,8/28/2020,BS
 120971751,otherb_init,229,0,,8/27/2020,AP
 120973358,otherb_init,17,0,,8/28/2020,BS
+=======
+120954477,otherb_init,10,0, ,8/28/2020,WS
+120957982,otherb_init,9,9,,7/30/2020,SL
+120960264,otherb_init,,0,Monastery units on 2 floors,8/28/2020,SL
+120960718,otherb_init,20,20, ,8/28/2020,WS
+120971751,otherb_init,229,0,,8/27/2020,AP
+120973358,otherb_init,17,0,,8/28/2020,WS
+>>>>>>> origin/main
 120973991,otherb_init,12,1,,8/28/2020,TD
 120986077,otherb_init,1511,1395,,8/6/2020,KS
 120991579,otherb_init,6,0,,2/1/2021,TD
@@ -25597,7 +26573,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 121153688,otherb_init,10,9,,1/31/2020,
 121158362,otherb_init,,0,,8/29/2020,KS
 121165121,otherb_init,28,0,,8/29/2020,TD
+<<<<<<< HEAD
 121169234,otherb_init,2091,0,Mdtown Hilton Hotel,8/28/2020,BS
+=======
+121169234,otherb_init,2091,0,Mdtown Hilton Hotel,8/28/2020,WS
+>>>>>>> origin/main
 121169421,otherb_init,148,0,,8/28/2020,TD
 121174255,otherb_init,8,5,,1/31/2020,
 121174656,otherb_init,4,0,,8/29/2020,SL
@@ -25616,7 +26596,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 121184538,otherb_init,99,88,job related to units_.sql,2/19/2020,
 121184743,otherb_init,24,18,,7/30/2020,SL
 121184770,otherb_init,6,0,,8/24/2020,KS
+<<<<<<< HEAD
 121185029,otherb_init,112,0,,8/28/2020,BS
+=======
+121185029,otherb_init,112,0,,8/28/2020,WS
+>>>>>>> origin/main
 121185038,otherb_init,15,9,,1/31/2020,
 121185305,otherb_init,267,0,,8/29/2020,TD
 121185485,otherb_init,10,0,,8/28/2020,AP
@@ -25665,7 +26649,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 121190656,otherb_init,0,0,,8/27/2020,TD
 121190683,otherb_init,16,0,,8/29/2020,KS
 121191236,otherb_init,395,0,,8/29/2020,KS
+<<<<<<< HEAD
 121191245,otherb_init,344,0,Waldorf Astoria Conversion,8/28/2020,BS
+=======
+121191245,otherb_init,344,0,Waldorf Astoria Conversion,8/28/2020,WS
+>>>>>>> origin/main
 121191316,otherb_init,11,11,,8/28/2020,AP
 121191325,otherb_init,0,0,,8/29/2020,KS
 121191511,otherb_init,15,13,,1/31/2020,
@@ -25674,12 +26662,20 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 121191762,otherb_init,214,0,,8/29/2020,KS
 121191806,otherb_init,8,8,,8/25/2020,TD
 121192208,otherb_init,,0,,7/15/2022,SL
+<<<<<<< HEAD
 121192235,otherb_init,9,0, ,8/28/2020,BS
+=======
+121192235,otherb_init,9,0, ,8/28/2020,WS
+>>>>>>> origin/main
 121192360,otherb_init,14,8,,2/3/2020,
 121192468,otherb_init,9,0,,8/24/2020,TD
 121192770,otherb_init,1,0,,2/1/2021,TD
 121192814,otherb_init,593,0,,8/8/2022,VB
+<<<<<<< HEAD
 121192958,otherb_init,86,86,Ronald McDonald House ,8/28/2020,BS
+=======
+121192958,otherb_init,86,86,Ronald McDonald House ,8/28/2020,WS
+>>>>>>> origin/main
 121193207,otherb_init,10,9,,1/31/2020,
 121193216,otherb_init,7,0,,8/28/2020,KS
 121193485,otherb_init,12,11,,1/31/2020,
@@ -25774,7 +26770,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 121358627,otherb_init,40,0,,8/28/2020,TD
 121368929,otherb_init,7,0,,8/28/2020,AP
 121368983,otherb_init,20,0,,8/28/2020,AP
+<<<<<<< HEAD
 121369429,otherb_init,20,0,,8/29/2020,BS
+=======
+121369429,otherb_init,20,0,,8/29/2020,WS
+>>>>>>> origin/main
 121371256,otherb_init,1,0,,8/27/2020,KS
 121380941,otherb_init,79,0,,8/28/2020,AP
 121388033,otherb_init,10,0,,8/28/2020,TD
@@ -25809,7 +26809,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 121532608,otherb_init,30,0,,8/25/2020,AP
 121538390,otherb_init,4,0,,8/25/2020,SL
 121539567,otherb_init,450,0,,8/28/2020,AP
+<<<<<<< HEAD
 121543099,otherb_init,10,0,,8/28/2020,BS
+=======
+121543099,otherb_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 121544739,otherb_init,11,11,,7/29/2020,SL
 121545729,otherb_init,14,14,,1/31/2020,
 121549011,otherb_init,8,0,,7/20/2022,SL
@@ -25835,7 +26839,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 121625651,otherb_init,154,0,,8/25/2020,AP
 121629452,otherb_init,,0,,8/25/2021,JS
 121629577,otherb_init,141,0,,8/27/2020,KS
+<<<<<<< HEAD
 121634151,otherb_init,9,0, ,8/28/2020,BS
+=======
+121634151,otherb_init,9,0, ,8/28/2020,WS
+>>>>>>> origin/main
 121638601,otherb_init,10,10,,1/31/2020,
 121639726,otherb_init,9,7,,1/31/2020,
 121641492,otherb_init,8,0,,8/24/2020,TD
@@ -25863,7 +26871,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 121764411,otherb_init,15,22,,1/31/2020,
 121773982,otherb_init,114,0,,4/25/2022,SL
 121777014,otherb_init,11,11,,1/31/2020,
+<<<<<<< HEAD
 121799795,otherb_init,25,0,,8/29/2020,BS
+=======
+121799795,otherb_init,25,0,,8/29/2020,WS
+>>>>>>> origin/main
 121800131,otherb_init,11,8,,2/3/2020,
 121802102,otherb_init,10,10,,2/3/2020,
 121806297,otherb_init,9,8,,1/31/2020,
@@ -25886,7 +26898,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 121904136,otherb_init,7,0,,8/28/2020,AP
 121905108,otherb_init,12,11,,1/31/2020,
 121908604,otherb_init,71,0,,8/29/2020,TD
+<<<<<<< HEAD
 121911020,otherb_init,107,107,NYU Hospital Building,8/28/2020,BS
+=======
+121911020,otherb_init,107,107,NYU Hospital Building,8/28/2020,WS
+>>>>>>> origin/main
 121912118,otherb_init,21,0,,8/29/2020,KS
 121912396,otherb_init,92,0,,8/29/2020,KS
 121917453,otherb_init,799,0,,8/29/2020,KS
@@ -25946,7 +26962,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122185376,otherb_init,83,0,,4/29/2022,AP
 122186473,otherb_init,116,114,,1/31/2020,
 122199682,otherb_init,8,8,,1/31/2020,
+<<<<<<< HEAD
 122201839,otherb_init,1693,0,Mdtown Hilton Hotel,8/28/2020,BS
+=======
+122201839,otherb_init,1693,0,Mdtown Hilton Hotel,8/28/2020,WS
+>>>>>>> origin/main
 122202909,otherb_init,1,9,,2/3/2020,
 122207931,otherb_init,11,9,,8/5/2020,KS
 122211105,otherb_init,11,11,,8/3/2020,TD
@@ -25959,7 +26979,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122222488,otherb_init,256,0,,8/28/2020,SL
 122228213,otherb_init,8,0,,8/28/2020,AP
 122228295,otherb_init,11,10,,8/24/2020,TD
+<<<<<<< HEAD
 122233181,otherb_init,11,0, ,8/28/2020,BS
+=======
+122233181,otherb_init,11,0, ,8/28/2020,WS
+>>>>>>> origin/main
 122234055,otherb_init,37,0,,8/28/2020,KS
 122239871,otherb_init,65,0,,8/27/2020,KS
 122240574,otherb_init,200,0,,8/25/2020,AP
@@ -25967,7 +26991,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122257967,otherb_init,187,0,,8/29/2020,TD
 122267117,otherb_init,9,0,,8/28/2020,KS
 122272673,otherb_init,33,0,,4/28/2022,AP
+<<<<<<< HEAD
 122278463,otherb_init,70,0,,8/29/2020,BS
+=======
+122278463,otherb_init,70,0,,8/29/2020,WS
+>>>>>>> origin/main
 122283162,otherb_init,53,8,,8/28/2020,KS
 122284802,otherb_init,7,8,,2/3/2020,
 122288176,otherb_init,66,0,,8/29/2020,TD
@@ -26015,7 +27043,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122449813,otherb_init,1,0,,4/27/2022,VB
 122454370,otherb_init,8,0,,8/25/2020,TD
 122455752,otherb_init,10,4,,8/24/2020,TD
+<<<<<<< HEAD
 122456840,otherb_init,366,0,,8/28/2020,BS
+=======
+122456840,otherb_init,366,0,,8/28/2020,WS
+>>>>>>> origin/main
 122465046,otherb_init,315,0,,8/29/2020,KS
 122471128,otherb_init,1,114,,2/19/2021,KS
 122479512,otherb_init,10,0,,8/28/2020,TD
@@ -26028,7 +27060,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122512414,otherb_init,12,0,,8/28/2020,KS
 122513618,otherb_init,506,499,,4/27/2022,AP
 122514859,otherb_init,12,12,,1/31/2020,
+<<<<<<< HEAD
 122514868,otherb_init,12,11, ,8/28/2020,BS
+=======
+122514868,otherb_init,12,11, ,8/28/2020,WS
+>>>>>>> origin/main
 122523821,otherb_init,5,8,,2/3/2020,
 122525188,otherb_init,231,0,,8/24/2020,AP
 122531055,otherb_init,12,9,,1/31/2020,
@@ -26057,16 +27093,28 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122652762,otherb_init,4,10,,7/29/2020,SL
 122656492,otherb_init,56,0,,8/29/2020,TD
 122665286,otherb_init,12,12,,2/3/2020,
+<<<<<<< HEAD
 122668700,otherb_init,551,0,Hotel Room Reduction,8/28/2020,BS
+=======
+122668700,otherb_init,551,0,Hotel Room Reduction,8/28/2020,WS
+>>>>>>> origin/main
 122671607,otherb_init,182,150,,8/3/2022,VB
 122673446,otherb_init,13,13,,1/31/2020,
 122676764,otherb_init,11,11,,1/31/2020,
 122682105,otherb_init,228,0,,8/29/2020,TD
+<<<<<<< HEAD
 122684372,otherb_init,27,0,,8/29/2020,BS
 122685362,otherb_init,10,2,,8/28/2020,TD
 122693193,otherb_init,8,0,,8/25/2020,TD
 122694931,otherb_init,182,0,,8/28/2020,KS
 122698811,otherb_init,26,0,,8/29/2020,BS
+=======
+122684372,otherb_init,27,0,,8/29/2020,WS
+122685362,otherb_init,10,2,,8/28/2020,TD
+122693193,otherb_init,8,0,,8/25/2020,TD
+122694931,otherb_init,182,0,,8/28/2020,KS
+122698811,otherb_init,26,0,,8/29/2020,WS
+>>>>>>> origin/main
 122699124,otherb_init,11,8,,2/3/2020,
 122704644,otherb_init,8,0,,1/27/2021,KS
 122704671,otherb_init,8,6,,7/29/2020,SL
@@ -26082,7 +27130,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122729556,otherb_init,228,228,,8/6/2020,TD
 122732800,otherb_init,9,0,,8/24/2020,TD
 122734639,otherb_init,216,211,,8/25/2020,SL
+<<<<<<< HEAD
 122751897,otherb_init,99,0,,8/29/2020,BS
+=======
+122751897,otherb_init,99,0,,8/29/2020,WS
+>>>>>>> origin/main
 122753822,otherb_init,28,0,,8/29/2020,TD
 122761582,otherb_init,68,0,,8/29/2020,KS
 122771795,otherb_init,,0,,8/27/2020,TD
@@ -26116,7 +27168,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122874577,otherb_init,198,164,,8/26/2020,TD
 122877985,otherb_init,16,12,,2/3/2020,
 122891442,otherb_init,22,0,,8/29/2020,KS
+<<<<<<< HEAD
 122895741,otherb_init,10,0,,8/28/2020,BS
+=======
+122895741,otherb_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 122895965,otherb_init,,0,,8/25/2021,AP
 122899462,otherb_init,85,85,job related to units_.sql,2/19/2020,
 122900655,otherb_init,16,12,,2/3/2020,
@@ -26134,7 +27190,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122948640,otherb_init,88,0,,8/29/2020,KS
 122961713,otherb_init,11,10,,8/28/2020,AP
 122961875,otherb_init,27,0,,7/20/2022,SL
+<<<<<<< HEAD
 122962561,otherb_init,10,0,,8/28/2020,BS
+=======
+122962561,otherb_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 122971301,otherb_init,21,7,,8/24/2020,TD
 122977172,otherb_init,24,0,,8/29/2020,KS
 122977323,otherb_init,10,7,,8/3/2022,VB
@@ -26143,7 +27203,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 122981906,otherb_init,13,13,,8/28/2020,TD
 122983174,otherb_init,10,7,,1/31/2020,
 122984832,otherb_init,11,11,,1/31/2020,
+<<<<<<< HEAD
 122988320,otherb_init,854,0,Essex House Hotel/Condo,8/28/2020,BS
+=======
+122988320,otherb_init,854,0,Essex House Hotel/Condo,8/28/2020,WS
+>>>>>>> origin/main
 122991325,otherb_init,4,7,,2/3/2020,
 122993458,otherb_init,591,0,,8/29/2020,TD
 122993957,otherb_init,243,0,,8/27/2020,AP
@@ -26159,7 +27223,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 123021247,otherb_init,39,0,,8/29/2020,AP
 123023138,otherb_init,28,28,,8/6/2020,KS
 123025118,otherb_init,9,1,,5/6/2022,SL
+<<<<<<< HEAD
 123032681,otherb_init,220,0,,8/29/2020,BS
+=======
+123032681,otherb_init,220,0,,8/29/2020,WS
+>>>>>>> origin/main
 123035642,otherb_init,602,0,,8/29/2020,KS
 123035722,otherb_init,124,0,,8/29/2020,KS
 123039755,otherb_init,14,14,unknown units of sros,8/28/2020,KS
@@ -26188,7 +27256,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 123161274,otherb_init,10,8,,1/31/2020,
 123166723,otherb_init,10,10,,8/4/2020,TD
 123166741,otherb_init,10,9,,8/28/2020,KS
+<<<<<<< HEAD
 123169748,otherb_init,15,0, ,8/28/2020,BS
+=======
+123169748,otherb_init,15,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123169855,otherb_init,2,6,,2/3/2020,
 123170488,otherb_init,184,0,,8/29/2020,TD
 123170530,otherb_init,115,0,,8/29/2020,TD
@@ -26198,7 +27270,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 123190947,otherb_init,42,0,,8/29/2020,KS
 123197218,otherb_init,161,0,,8/27/2020,TD
 123198752,otherb_init,91,0,,4/28/2022,AP
+<<<<<<< HEAD
 123201971,otherb_init,13,13, ,8/28/2020,BS
+=======
+123201971,otherb_init,13,13, ,8/28/2020,WS
+>>>>>>> origin/main
 123203416,otherb_init,168,0,,8/29/2020,KS
 123203871,otherb_init,10,9,,2/3/2020,
 123204200,otherb_init,2,11,,2/3/2020,
@@ -26207,13 +27283,21 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 123210667,otherb_init,4,16,,2/3/2020,
 123210818,otherb_init,242,0,,8/29/2020,TD
 123211194,otherb_init,5,8,,2/3/2020,
+<<<<<<< HEAD
 123213520,otherb_init,10,0,,8/28/2020,BS
+=======
+123213520,otherb_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 123214280,otherb_init,24,0,,8/29/2020,KS
 123225517,otherb_init,17,17,,1/31/2020,
 123227070,otherb_init,110,50,,7/15/2022,SL
 123234357,otherb_init,80,0,,4/29/2022,AP
 123234491,otherb_init,7,0,,8/29/2020,KS
+<<<<<<< HEAD
 123234507,otherb_init,46,0,Hotel Building,8/28/2020,BS
+=======
+123234507,otherb_init,46,0,Hotel Building,8/28/2020,WS
+>>>>>>> origin/main
 123238317,otherb_init,3,0,,2/1/2021,TD
 123254218,otherb_init,33,0,,8/29/2020,AP
 123256877,otherb_init,192,191,,7/21/2022,SL
@@ -26245,7 +27329,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 123392033,otherb_init,317,0,,8/29/2020,AP
 123392168,otherb_init,16,0,,8/25/2021,AP
 123395879,otherb_init,12,12,,2/3/2020,
+<<<<<<< HEAD
 123397886,otherb_init,11,0, ,8/28/2020,BS
+=======
+123397886,otherb_init,11,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123407508,otherb_init,28,13,,1/31/2020,
 123410512,otherb_init,12,0,,8/3/2020,TD
 123412271,otherb_init,331,0,,8/29/2020,AP
@@ -26256,7 +27344,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 123429575,otherb_init,9,9,,2/3/2020,
 123432605,otherb_init,309,0,,7/15/2022,SL
 123438146,otherb_init,32,0,,8/25/2020,AP
+<<<<<<< HEAD
 123447261,otherb_init,1,0, ,8/28/2020,BS
+=======
+123447261,otherb_init,1,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123451638,otherb_init,3,20,,8/3/2020,TD
 123453592,otherb_init,83,0,,4/20/2022,SL
 123474864,otherb_init,8,0,,8/28/2020,KS
@@ -26280,7 +27372,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 123548054,otherb_init,795,0,,8/29/2020,AP
 123552477,otherb_init,13,15,,7/30/2020,SL
 123567158,otherb_init,25,0,,8/29/2020,TD
+<<<<<<< HEAD
 123580062,otherb_init,352,0,Reduction Apt count,8/28/2020,BS
+=======
+123580062,otherb_init,352,0,Reduction Apt count,8/28/2020,WS
+>>>>>>> origin/main
 123582783,otherb_init,21,21,,1/28/2020,
 123584399,otherb_init,11,13,,1/31/2020,
 123585557,otherb_init,1,2,,7/31/2020,KS
@@ -26316,7 +27412,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 123756104,otherb_init,12,12,,1/31/2020,
 123756168,otherb_init,43,0,,4/28/2022,AP
 123764952,otherb_init,9,4,,2/3/2020,
+<<<<<<< HEAD
 123766594,otherb_init,23,0,,8/29/2020,BS
+=======
+123766594,otherb_init,23,0,,8/29/2020,WS
+>>>>>>> origin/main
 123773504,otherb_init,117,0,,2/4/2021,KS
 123773684,otherb_init,222,222,,8/6/2020,TD
 123777494,otherb_init,9,4,,8/24/2020,TD
@@ -26332,7 +27432,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 123833511,otherb_init,22,4,,2/2/2021,KS
 123834896,otherb_init,10,9,,8/28/2020,KS
 123835476,otherb_init,70,0,,8/29/2020,KS
+<<<<<<< HEAD
 123847392,otherb_init,90,0,Hotel to Residential (Condo),8/28/2020,BS
+=======
+123847392,otherb_init,90,0,Hotel to Residential (Condo),8/28/2020,WS
+>>>>>>> origin/main
 123855890,otherb_init,0,0,,1/26/2021,TD
 123857594,otherb_init,84,0,,8/29/2020,TD
 123858414,otherb_init,89,0,,4/28/2022,AP
@@ -26449,10 +27553,17 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 220013321,otherb_init,2,0,,8/29/2020,KS
 220033416,otherb_init,41,0,,8/27/2020,SL
 220034558,otherb_init,137,0,,4/29/2022,AP
+<<<<<<< HEAD
 220050263,otherb_init,5,0,,8/29/2020,BS
 220053331,otherb_init,,110,,7/31/2020,TD
 220057701,otherb_init,1,0,,8/24/2020,KS
 220069002,otherb_init,21,0,,8/28/2020,BS
+=======
+220050263,otherb_init,5,0,,8/29/2020,WS
+220053331,otherb_init,,110,,7/31/2020,TD
+220057701,otherb_init,1,0,,8/24/2020,KS
+220069002,otherb_init,21,0,,8/28/2020,WS
+>>>>>>> origin/main
 220079251,otherb_init,60,0,,4/28/2022,AP
 220088401,otherb_init,25,0,,8/29/2020,KS
 220100049,otherb_init,1,0,,7/21/2022,SL
@@ -26471,7 +27582,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 220211893,otherb_init,0,0,,8/24/2020,SL
 220222961,otherb_init,1,0,,7/21/2022,SL
 220225584,otherb_init,3,0,,8/29/2020,KS
+<<<<<<< HEAD
 220228322,otherb_init,30,15, ,8/28/2020,BS
+=======
+220228322,otherb_init,30,15, ,8/28/2020,WS
+>>>>>>> origin/main
 220230952,otherb_init,1,0,,8/29/2020,AP
 220258441,otherb_init,,0,,8/29/2020,TD
 220259930,otherb_init,,0,,8/30/2021,TD
@@ -26492,7 +27607,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 220427189,otherb_init,5,0,,8/29/2020,SL
 220447639,otherb_init,96,0,,8/29/2020,KS
 220453382,otherb_init,68,0,,8/28/2020,KS
+<<<<<<< HEAD
 220453408,otherb_init,37,0,,8/28/2020,BS
+=======
+220453408,otherb_init,37,0,,8/28/2020,WS
+>>>>>>> origin/main
 220464496,otherb_init,33,0,,8/25/2020,AP
 220476438,otherb_init,1,0,,1/26/2021,KS
 220481761,otherb_init,51,0,,8/29/2020,TD
@@ -26554,7 +27673,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 220664074,otherb_init,,0,,7/15/2022,SL
 220664323,otherb_init,0,0,,7/31/2020,KS
 220665162,otherb_init,20,0,,4/28/2022,AP
+<<<<<<< HEAD
 220667829,otherb_init,40,0,Jerome Motel,8/28/2020,BS
+=======
+220667829,otherb_init,40,0,Jerome Motel,8/28/2020,WS
+>>>>>>> origin/main
 220673091,otherb_init,65,0,,4/28/2022,AP
 220673108,otherb_init,49,0,,4/20/2022,SL
 220676374,otherb_init,1,0,,8/3/2022,VB
@@ -26566,7 +27689,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 220689672,otherb_init,,67,,7/29/2020,TD
 220695914,otherb_init,67,0,,4/28/2022,AP
 220696469,otherb_init,2,0,,4/27/2022,VB
+<<<<<<< HEAD
 220698975,otherb_init,12,11, ,8/28/2020,BS
+=======
+220698975,otherb_init,12,11, ,8/28/2020,WS
+>>>>>>> origin/main
 220700720,otherb_init,1,0,,7/21/2022,SL
 220705459,otherb_init,118,0,,4/28/2022,AP
 220706387,otherb_init,6,6,,2/3/2020,
@@ -26580,7 +27707,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 220716081,otherb_init,1,0,,7/21/2022,SL
 220716241,otherb_init,3,3,,5/2/2022,AP
 220719578,otherb_init,2,0,,4/27/2022,VB
+<<<<<<< HEAD
 220720138,otherb_init,88,88,NonProfit Class B Units,8/28/2020,BS
+=======
+220720138,otherb_init,88,88,NonProfit Class B Units,8/28/2020,WS
+>>>>>>> origin/main
 220720227,otherb_init,2,0,,4/27/2022,VB
 220720726,otherb_init,8,0,,8/29/2020,KS
 220720735,otherb_init,8,0,,8/29/2020,KS
@@ -26749,7 +27880,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 301902485,otherb_init,10,0,,8/28/2020,AP
 301911224,otherb_init,,0,,8/24/2020,KS
 301915612,otherb_init,,0,,8/24/2020,KS
+<<<<<<< HEAD
 301918744,otherb_init,39,0, ,8/28/2020,BS
+=======
+301918744,otherb_init,39,0, ,8/28/2020,WS
+>>>>>>> origin/main
 301923621,otherb_init,1,0,,4/22/2022,SL
 301925665,otherb_init,,0,,8/25/2021,SL
 301930347,otherb_init,,0,,8/30/2021,TD
@@ -27025,7 +28160,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 320281654,otherb_init,21,0,,4/25/2022,SL
 320281903,otherb_init,0,0,,8/26/2020,KS
 320282449,otherb_init,,0,,8/25/2021,TD
+<<<<<<< HEAD
 320283117,otherb_init,1,0,,8/29/2020,BS
+=======
+320283117,otherb_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 320284483,otherb_init,12,0,,4/26/2022,SL
 320284606,otherb_init,20,0,,4/26/2022,SL
 320285160,otherb_init,7,6,,7/31/2020,SL
@@ -27059,7 +28198,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 320410266,otherb_init,2,0,,7/21/2022,SL
 320411087,otherb_init,20,30,,8/26/2020,AP
 320411149,otherb_init,0,0,,8/29/2020,KS
+<<<<<<< HEAD
 320413860,otherb_init,1,0,,8/29/2020,BS
+=======
+320413860,otherb_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 320417107,otherb_init,9,8,,1/31/2020,
 320417214,otherb_init,,0,,8/25/2021,TD
 320419043,otherb_init,10,8,,4/29/2022,AP
@@ -27088,7 +28231,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 320493355,otherb_init,9,9,,4/22/2022,SL
 320495246,otherb_init,3,0,,8/29/2020,TD
 320501701,otherb_init,10,10,,1/31/2020,
+<<<<<<< HEAD
 320509981,otherb_init,12,12,,8/28/2020,BS
+=======
+320509981,otherb_init,12,12,,8/28/2020,WS
+>>>>>>> origin/main
 320513100,otherb_init,15,19,,1/31/2020,
 320513789,otherb_init,,0,,8/24/2020,KS
 320514519,otherb_init,2,0,,8/29/2020,TD
@@ -27193,10 +28340,17 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 320913516,otherb_init,119,0,,8/24/2020,AP
 320913721,otherb_init,8,6,,1/31/2020,
 320914971,otherb_init,11,8,,1/31/2020,
+<<<<<<< HEAD
 320915809,otherb_init,10,0, ,8/28/2020,BS
 320915836,otherb_init,15,0,,8/26/2020,TD
 320915881,otherb_init,12,11,,1/31/2020,
 320915970,otherb_init,10,0,,8/28/2020,BS
+=======
+320915809,otherb_init,10,0, ,8/28/2020,WS
+320915836,otherb_init,15,0,,8/26/2020,TD
+320915881,otherb_init,12,11,,1/31/2020,
+320915970,otherb_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 320916032,otherb_init,7,5,,2/3/2020,
 320916504,otherb_init,0,0,,8/29/2020,KS
 320916657,otherb_init,2,0,,2/1/2021,TD
@@ -27224,7 +28378,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 320973773,otherb_init,16,0,,7/31/2020,KS
 320978830,otherb_init,,0,,8/24/2020,KS
 320984814,otherb_init,8,7,,2/3/2020,
+<<<<<<< HEAD
 320988393,otherb_init,70,70,Nursing Home Long Abondoned,8/28/2020,BS
+=======
+320988393,otherb_init,70,70,Nursing Home Long Abondoned,8/28/2020,WS
+>>>>>>> origin/main
 320988464,otherb_init,,0,,8/25/2021,TD
 320991842,otherb_init,10,0,,8/28/2020,AP
 320995125,otherb_init,1,0,,2/1/2021,TD
@@ -27281,7 +28439,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 321186499,otherb_init,,0,,8/25/2021,JS
 321186587,otherb_init,107,0,,5/6/2022,SL
 321186649,otherb_init,,0,,8/29/2020,KS
+<<<<<<< HEAD
 321187130,otherb_init,92,92,Class B to Class A,8/28/2020,BS
+=======
+321187130,otherb_init,92,92,Class B to Class A,8/28/2020,WS
+>>>>>>> origin/main
 321188479,otherb_init,11,9,,7/29/2020,SL
 321188772,otherb_init,7,6,,2/3/2020,
 321188852,otherb_init,128,0,,8/24/2020,AP
@@ -27342,7 +28504,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 321327444,otherb_init,5,4,,2/3/2020,
 321359908,otherb_init,6,5,,2/3/2020,
 321363396,otherb_init,1,0,,8/29/2020,KS
+<<<<<<< HEAD
 321367025,otherb_init,10,0,,8/28/2020,BS
+=======
+321367025,otherb_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 321369167,otherb_init,2,0,,8/29/2020,SL
 321377924,otherb_init,,0,,8/25/2021,TD
 321383025,otherb_init,2,0,,2/1/2021,TD
@@ -27365,7 +28531,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 321427817,otherb_init,19,0,,7/31/2020,KS
 321431018,otherb_init,8,0,,8/24/2020,TD
 321444157,otherb_init,9,7,,1/31/2020,
+<<<<<<< HEAD
 321445646,otherb_init,10,10,,8/28/2020,BS
+=======
+321445646,otherb_init,10,10,,8/28/2020,WS
+>>>>>>> origin/main
 321448000,otherb_init,1,0,,7/21/2022,SL
 321450906,otherb_init,2,0,,8/29/2020,TD
 321455000,otherb_init,2,0,,7/21/2022,SL
@@ -27444,7 +28614,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 321618040,otherb_init,0,0,,8/29/2020,TD
 321627352,otherb_init,1,8,,2/3/2020,
 321627600,otherb_init,24,0,,8/26/2020,AP
+<<<<<<< HEAD
 321628592,otherb_init,10,0,,8/28/2020,BS
+=======
+321628592,otherb_init,10,0,,8/28/2020,WS
+>>>>>>> origin/main
 321633336,otherb_init,10,9,,1/31/2020,
 321637298,otherb_init,2,0,,7/21/2022,SL
 321637314,otherb_init,2,0,,7/21/2022,SL
@@ -27518,7 +28692,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 321910777,otherb_init,61,0,,8/29/2020,TD
 321912178,otherb_init,0,0,,8/29/2020,KS
 321916744,otherb_init,7,6,,2/3/2020,
+<<<<<<< HEAD
 321918895,otherb_init,1,0,,8/29/2020,BS
+=======
+321918895,otherb_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 321925798,otherb_init,1,0,,8/31/2021,SL
 321930194,otherb_init,3,0,,8/29/2020,SL
 321933208,otherb_init,8,7,,1/31/2020,
@@ -27868,7 +29046,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 420200384,otherb_init,2,0,,7/21/2022,SL
 420229149,otherb_init,0,0,,8/29/2020,KS
 420288959,otherb_init,0,0,,8/29/2020,TD
+<<<<<<< HEAD
 420293907,otherb_init,1,0,,8/29/2020,BS
+=======
+420293907,otherb_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 420295923,otherb_init,2,0,,7/21/2022,SL
 420296771,otherb_init,1,0,,7/21/2022,SL
 420300837,otherb_init,1,0,,7/21/2022,SL
@@ -28005,7 +29187,11 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 421468192,otherb_init,1,0,,8/29/2020,KS
 421468209,otherb_init,31,31,,1/28/2020,
 421476842,otherb_init,1,0,,7/21/2022,SL
+<<<<<<< HEAD
 421484049,otherb_init,50,50,Catholic Vicariate House,8/28/2020,BS
+=======
+421484049,otherb_init,50,50,Catholic Vicariate House,8/28/2020,WS
+>>>>>>> origin/main
 421488900,otherb_init,1,0,,7/21/2022,SL
 421516372,otherb_init,1,0,,7/21/2022,SL
 421524256,otherb_init,0,0,,8/29/2020,KS
@@ -28200,9 +29386,15 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 520239340,otherb_init,1,0,,7/21/2022,SL
 520243488,otherb_init,1,0,,7/21/2022,SL
 520248768,otherb_init,1,0,,7/21/2022,SL
+<<<<<<< HEAD
 520255483,otherb_init,28,28,Abandoned  Nursing Home,8/28/2020,BS
 520259997,otherb_init,1,0,,7/21/2022,SL
 520262741,otherb_init,5,0,,8/29/2020,BS
+=======
+520255483,otherb_init,28,28,Abandoned  Nursing Home,8/28/2020,WS
+520259997,otherb_init,1,0,,7/21/2022,SL
+520262741,otherb_init,5,0,,8/29/2020,WS
+>>>>>>> origin/main
 520269316,otherb_init,1,0,,7/21/2022,SL
 520269717,otherb_init,2,0,,7/21/2022,SL
 520275158,otherb_init,1,0,,7/21/2022,SL
@@ -28220,8 +29412,13 @@ X00760123,longitude,-73.8238,-73.82424392,,8/4/2022,AP
 520319441,otherb_init,1,0,,7/21/2022,SL
 520319450,otherb_init,1,0,,7/21/2022,SL
 520319487,otherb_init,1,0,,7/21/2022,SL
+<<<<<<< HEAD
 520336075,otherb_init,1,0,,8/29/2020,BS
 520336253,otherb_init,1,0,,8/29/2020,BS
+=======
+520336075,otherb_init,1,0,,8/29/2020,WS
+520336253,otherb_init,1,0,,8/29/2020,WS
+>>>>>>> origin/main
 520336949,otherb_init,1,0,,7/21/2022,SL
 520339508,otherb_init,1,0,,7/21/2022,SL
 520351388,otherb_init,107,0,,8/29/2020,KS
@@ -28327,7 +29524,11 @@ Q00641580,otherb_init,120,0,,7/21/2022,VB
 Q00706470,otherb_init,12,12,,7/20/2022,VB
 Q00717874,otherb_init,142,0,,8/3/2022,VB
 Q00724600,otherb_init,1,0,,8/3/2022,VB
+<<<<<<< HEAD
 Q00730636,otherb_init,0,0,,7/21/2022,BS
+=======
+Q00730636,otherb_init,0,0,,7/21/2022,WS
+>>>>>>> origin/main
 S00500211,otherb_init,0,0,,8/3/2022,VB
 S00534878,otherb_init,0,0,,8/3/2022,VB
 S00694744,otherb_init,0,0,,8/3/2022,VB
@@ -28385,9 +29586,15 @@ Q00657656,otherb_prop,495,0,,9/9/2022,SL
 Q00697281,classa_prop,2,0,,8/24/2022,SL
 Q00697282,classa_prop,2,0,,8/24/2022,SL
 Q00702259,classa_prop,2,0,,8/24/2022,SL
+<<<<<<< HEAD
 Q00730636,classa_prop,1900,0,,7/21/2022,BS
 Q00730636,hotel_prop,1900,0,,7/21/2022,BS
 Q00730636,otherb_prop,1900,0,,7/21/2022,BS
+=======
+Q00730636,classa_prop,1900,0,,7/21/2022,WS
+Q00730636,hotel_prop,1900,0,,7/21/2022,WS
+Q00730636,otherb_prop,1900,0,,7/21/2022,WS
+>>>>>>> origin/main
 Q00755907,classa_prop,1,0,,8/24/2022,SL
 S00536990,classa_prop,2,0,,8/24/2022,SL
 S00546792,classa_prop,1,0,,8/24/2022,SL
@@ -28410,7 +29617,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 102352160,otherb_prop,4,0,,7/15/2022,SL
 102353294,otherb_prop,10,0,,8/25/2021,JS
 102491590,otherb_prop,51,0,,4/18/2022,SL
+<<<<<<< HEAD
 102507253,otherb_prop,251,0,Resid/Hotel to Hotel,8/28/2020,BS
+=======
+102507253,otherb_prop,251,0,Resid/Hotel to Hotel,8/28/2020,WS
+>>>>>>> origin/main
 102513111,otherb_prop,2,0,,8/24/2020,KS
 102537364,otherb_prop,10,0,,8/25/2021,JS
 102545435,otherb_prop,197,0,,8/25/2021,SL
@@ -28546,7 +29757,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 104052178,otherb_prop,17,0,,8/28/2020,AP
 104052454,otherb_prop,,1,,7/31/2020,TD
 104052686,otherb_prop,8,0,,8/25/2021,JS
+<<<<<<< HEAD
 104052695,otherb_prop,10,0, ,8/28/2020,BS
+=======
+104052695,otherb_prop,10,0, ,8/28/2020,WS
+>>>>>>> origin/main
 104056940,otherb_prop,0,0,,8/28/2020,SL
 104057501,otherb_prop,10,0,,7/15/2022,SL
 104061391,otherb_prop,10,0,,1/26/2021,KS
@@ -28586,7 +29801,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 104254628,otherb_prop,1,0,,8/31/2021,JS
 104255342,otherb_prop,14,0,,8/25/2021,AP
 104273279,otherb_prop,21,0,,8/29/2020,AP
+<<<<<<< HEAD
 104276347,otherb_prop,9,0,,8/28/2020,BS
+=======
+104276347,otherb_prop,9,0,,8/28/2020,WS
+>>>>>>> origin/main
 104276999,otherb_prop,96,0,,4/28/2022,AP
 104282303,otherb_prop,1,0,,8/24/2020,TD
 104288138,otherb_prop,20,0,,8/24/2022,SL
@@ -28698,7 +29917,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 104713446,otherb_prop,109,0,,8/27/2020,KS
 104715676,otherb_prop,10,0,,4/29/2022,SL
 104718487,otherb_prop,155,0,,8/29/2020,AP
+<<<<<<< HEAD
 104720704,otherb_prop,2,0, ,8/28/2020,BS
+=======
+104720704,otherb_prop,2,0, ,8/28/2020,WS
+>>>>>>> origin/main
 104722891,otherb_prop,308,0,,8/25/2020,AP
 104723738,otherb_prop,,0,,8/26/2020,KS
 104731569,otherb_prop,3,0,,8/28/2020,AP
@@ -28779,7 +30002,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 110117436,otherb_prop,67,0,,8/29/2020,AP
 110120119,otherb_prop,4,0,,8/29/2020,SL
 110122108,otherb_prop,1332,0,,8/29/2020,KS
+<<<<<<< HEAD
 110125132,otherb_prop,104,0,,8/28/2020,BS
+=======
+110125132,otherb_prop,104,0,,8/28/2020,WS
+>>>>>>> origin/main
 110125793,otherb_prop,14,0,,8/29/2020,KS
 110125962,otherb_prop,426,0,,8/29/2020,KS
 110126239,otherb_prop,16,12,,1/31/2020,
@@ -28887,7 +30114,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 120076960,otherb_prop,94,0,,8/29/2020,AP
 120081277,otherb_prop,130,0,,8/29/2020,AP
 120081400,otherb_prop,18,0,,8/25/2021,AP
+<<<<<<< HEAD
 120083211,otherb_prop,6,0, ,8/28/2020,BS
+=======
+120083211,otherb_prop,6,0, ,8/28/2020,WS
+>>>>>>> origin/main
 120083961,otherb_prop,54,0,,8/28/2020,TD
 120086762,otherb_prop,213,0,,8/29/2020,KS
 120088074,otherb_prop,196,0,,8/29/2020,AP
@@ -28996,7 +30227,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 120548194,otherb_prop,,362,,8/23/2021,SL
 120550457,otherb_prop,141,0,,8/29/2020,KS
 120554248,otherb_prop,17,0,,8/28/2020,TD
+<<<<<<< HEAD
 120555103,otherb_prop,416,0,,8/28/2020,BS
+=======
+120555103,otherb_prop,416,0,,8/28/2020,WS
+>>>>>>> origin/main
 120557691,otherb_prop,1,0,,8/28/2020,KS
 120560240,otherb_prop,2,0,,8/29/2020,TD
 120561971,otherb_prop,8,0,,2/1/2021,TD
@@ -29030,7 +30265,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 120659171,otherb_prop,,2,,7/30/2020,TD
 120663479,otherb_prop,5,0,,7/30/2020,SL
 120664236,otherb_prop,25,0,,2/1/2021,TD
+<<<<<<< HEAD
 120667251,otherb_prop,1,0, ,8/28/2020,BS
+=======
+120667251,otherb_prop,1,0, ,8/28/2020,WS
+>>>>>>> origin/main
 120669712,otherb_prop,201,0,,8/29/2020,TD
 120671950,otherb_prop,81,131,,2/18/2020,
 120672496,otherb_prop,,0,,8/26/2020,KS
@@ -29102,6 +30341,7 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 120941428,otherb_prop,5,0,,7/31/2020,SL
 120945317,otherb_prop,282,0,,8/28/2020,AP
 120951318,otherb_prop,134,0,,8/30/2020,SL
+<<<<<<< HEAD
 120954477,otherb_prop,0,0, ,8/28/2020,BS
 120955092,otherb_prop,86,0,,8/29/2020,AP
 120957982,otherb_prop,6,0,,7/30/2020,SL
@@ -29109,6 +30349,15 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 120960718,otherb_prop,11,0, ,8/28/2020,BS
 120971751,otherb_prop,229,0,,8/27/2020,AP
 120973358,otherb_prop,8,0,,8/28/2020,BS
+=======
+120954477,otherb_prop,0,0, ,8/28/2020,WS
+120955092,otherb_prop,86,0,,8/29/2020,AP
+120957982,otherb_prop,6,0,,7/30/2020,SL
+120960264,otherb_prop,,2,Monastery units on 2 floors,8/28/2020,SL
+120960718,otherb_prop,11,0, ,8/28/2020,WS
+120971751,otherb_prop,229,0,,8/27/2020,AP
+120973358,otherb_prop,8,0,,8/28/2020,WS
+>>>>>>> origin/main
 120973991,otherb_prop,1,0,,8/28/2020,TD
 120986077,otherb_prop,1397,1395,,8/6/2020,KS
 120991579,otherb_prop,15,0,,2/1/2021,TD
@@ -29162,7 +30411,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 121153688,otherb_prop,2,0,,8/29/2020,TD
 121158362,otherb_prop,,1,,2/3/2020,
 121165121,otherb_prop,28,0,,8/29/2020,TD
+<<<<<<< HEAD
 121169234,otherb_prop,2093,0,Mdtown Hilton Hotel,8/28/2020,BS
+=======
+121169234,otherb_prop,2093,0,Mdtown Hilton Hotel,8/28/2020,WS
+>>>>>>> origin/main
 121169421,otherb_prop,137,0,,8/28/2020,TD
 121174656,otherb_prop,4,0,,8/29/2020,SL
 121175076,otherb_prop,33,0,,8/29/2020,AP
@@ -29191,7 +30444,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 121184743,otherb_prop,22,14,,7/30/2020,SL
 121184770,otherb_prop,,0,,8/24/2020,KS
 121184789,otherb_prop,182,0,,8/10/2022,SL
+<<<<<<< HEAD
 121185029,otherb_prop,137,0,,8/28/2020,BS
+=======
+121185029,otherb_prop,137,0,,8/28/2020,WS
+>>>>>>> origin/main
 121185038,otherb_prop,7,0,,8/29/2020,SL
 121185056,otherb_prop,251,0,,8/3/2022,VB
 121185181,otherb_prop,220,0,,8/29/2020,AP
@@ -29274,7 +30531,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 121191085,otherb_prop,286,0,,8/29/2020,AP
 121191165,otherb_prop,320,0,,8/29/2020,AP
 121191236,otherb_prop,745,0,,8/29/2020,KS
+<<<<<<< HEAD
 121191245,otherb_prop,752,0,Waldorf Astoria Conversion,8/28/2020,BS
+=======
+121191245,otherb_prop,752,0,Waldorf Astoria Conversion,8/28/2020,WS
+>>>>>>> origin/main
 121191316,otherb_prop,2,0,,8/28/2020,AP
 121191325,otherb_prop,22,0,,8/29/2020,KS
 121191361,otherb_prop,215,215,,1/28/2020,
@@ -29291,7 +30552,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 121192075,otherb_prop,114,0,,8/29/2020,AP
 121192173,otherb_prop,143,0,,8/3/2022,VB
 121192208,otherb_prop,208,0,,7/15/2022,SL
+<<<<<<< HEAD
 121192235,otherb_prop,0,0, ,8/28/2020,BS
+=======
+121192235,otherb_prop,0,0, ,8/28/2020,WS
+>>>>>>> origin/main
 121192253,otherb_prop,95,0,,8/29/2020,AP
 121192360,otherb_prop,12,5,,2/3/2020,
 121192468,otherb_prop,1,0,,8/24/2020,TD
@@ -29300,7 +30565,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 121192798,otherb_prop,129,0,,8/29/2020,SL
 121192814,otherb_prop,593,0,,8/8/2022,VB
 121192949,otherb_prop,234,0,,7/15/2022,SL
+<<<<<<< HEAD
 121192958,otherb_prop,96,96,Ronald McDonald House ,8/28/2020,BS
+=======
+121192958,otherb_prop,96,96,Ronald McDonald House ,8/28/2020,WS
+>>>>>>> origin/main
 121193010,otherb_prop,96,0,,8/29/2020,AP
 121193207,otherb_prop,2,0,,8/29/2020,TD
 121193216,otherb_prop,1,0,,8/28/2020,KS
@@ -29476,7 +30745,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 121532252,otherb_prop,53,0,,8/29/2020,TD
 121532608,otherb_prop,0,0,,8/25/2020,AP
 121539567,otherb_prop,450,0,,8/28/2020,AP
+<<<<<<< HEAD
 121543099,otherb_prop,1,0,,8/28/2020,BS
+=======
+121543099,otherb_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 121544739,otherb_prop,7,0,,7/29/2020,SL
 121545729,otherb_prop,4,0,,8/29/2020,SL
 121549011,otherb_prop,1,0,,7/20/2022,SL
@@ -29503,7 +30776,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 121625651,otherb_prop,107,0,,8/25/2020,AP
 121629452,otherb_prop,8,0,,8/25/2021,JS
 121629577,otherb_prop,141,0,,8/27/2020,KS
+<<<<<<< HEAD
 121634151,otherb_prop,0,0, ,8/28/2020,BS
+=======
+121634151,otherb_prop,0,0, ,8/28/2020,WS
+>>>>>>> origin/main
 121639726,otherb_prop,1,0,,8/29/2020,TD
 121641492,otherb_prop,1,0,,8/24/2020,TD
 121666713,otherb_prop,585,0,,8/28/2020,AP
@@ -29610,7 +30887,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 122185376,otherb_prop,87,0,,4/29/2022,AP
 122186473,otherb_prop,19,0,,8/29/2020,KS
 122199682,otherb_prop,2,0,,8/29/2020,TD
+<<<<<<< HEAD
 122201839,otherb_prop,2141,0,Mdtown Hilton Hotel,8/28/2020,BS
+=======
+122201839,otherb_prop,2141,0,Mdtown Hilton Hotel,8/28/2020,WS
+>>>>>>> origin/main
 122202909,otherb_prop,2,0,,8/29/2020,TD
 122206601,otherb_prop,120,0,,8/29/2020,AP
 122207931,otherb_prop,10,0,,8/5/2020,KS
@@ -29625,7 +30906,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 122222488,otherb_prop,250,0,,8/28/2020,SL
 122228213,otherb_prop,2,0,,8/28/2020,AP
 122228295,otherb_prop,3,0,,8/24/2020,TD
+<<<<<<< HEAD
 122233181,otherb_prop,1,0, ,8/28/2020,BS
+=======
+122233181,otherb_prop,1,0, ,8/28/2020,WS
+>>>>>>> origin/main
 122234055,otherb_prop,31,0,,8/28/2020,KS
 122239871,otherb_prop,64,0,,8/27/2020,KS
 122240574,otherb_prop,156,0,,8/25/2020,AP
@@ -29681,7 +30966,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 122449813,otherb_prop,1,0,,4/27/2022,VB
 122454370,otherb_prop,1,0,,8/25/2020,TD
 122455752,otherb_prop,2,0,,8/24/2020,TD
+<<<<<<< HEAD
 122456840,otherb_prop,366,0,,8/28/2020,BS
+=======
+122456840,otherb_prop,366,0,,8/28/2020,WS
+>>>>>>> origin/main
 122465046,otherb_prop,321,0,,8/29/2020,KS
 122479512,otherb_prop,1,0,,8/28/2020,TD
 122480788,otherb_prop,1,0,,8/28/2020,TD
@@ -29695,7 +30984,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 122512414,otherb_prop,0,0,,8/28/2020,KS
 122513618,otherb_prop,506,499,,4/27/2022,AP
 122514859,otherb_prop,3,0,,8/29/2020,TD
+<<<<<<< HEAD
 122514868,otherb_prop,2,0, ,8/28/2020,BS
+=======
+122514868,otherb_prop,2,0, ,8/28/2020,WS
+>>>>>>> origin/main
 122521556,otherb_prop,75,0,,8/29/2020,SL
 122523821,otherb_prop,2,0,,8/29/2020,TD
 122525188,otherb_prop,174,31,,8/24/2020,AP
@@ -29723,7 +31016,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 122648251,otherb_prop,96,0,,8/28/2020,AP
 122652762,otherb_prop,8,0,,7/29/2020,SL
 122656492,otherb_prop,56,0,,8/29/2020,TD
+<<<<<<< HEAD
 122668700,otherb_prop,417,0,Hotel Room Reduction,8/28/2020,BS
+=======
+122668700,otherb_prop,417,0,Hotel Room Reduction,8/28/2020,WS
+>>>>>>> origin/main
 122671607,otherb_prop,154,127,,8/3/2022,VB
 122676764,otherb_prop,1,0,,8/29/2020,TD
 122682105,otherb_prop,188,0,,8/29/2020,TD
@@ -29783,7 +31080,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 122877985,otherb_prop,15,6,,2/3/2020,
 122888848,otherb_prop,40,0,,8/29/2020,AP
 122891442,otherb_prop,22,0,,8/29/2020,KS
+<<<<<<< HEAD
 122895741,otherb_prop,1,0,,8/28/2020,BS
+=======
+122895741,otherb_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 122895965,otherb_prop,18,0,,8/25/2021,AP
 122899462,otherb_prop,6,85,job related to units_.sql,2/19/2020,
 122900655,otherb_prop,14,9,,2/3/2020,
@@ -29802,7 +31103,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 122948640,otherb_prop,31,0,,8/29/2020,KS
 122961713,otherb_prop,2,0,,8/28/2020,AP
 122961875,otherb_prop,14,0,,7/20/2022,SL
+<<<<<<< HEAD
 122962561,otherb_prop,1,0,,8/28/2020,BS
+=======
+122962561,otherb_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 122971301,otherb_prop,14,0,,8/24/2020,TD
 122977172,otherb_prop,24,0,,8/29/2020,KS
 122977323,otherb_prop,1,0,,8/3/2022,VB
@@ -29812,7 +31117,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 122983174,otherb_prop,1,0,,8/29/2020,KS
 122984832,otherb_prop,0,0,,8/29/2020,KS
 122985029,otherb_prop,296,0,,4/29/2022,SL
+<<<<<<< HEAD
 122988320,otherb_prop,867,0,Essex House Hotel/Condo,8/28/2020,BS
+=======
+122988320,otherb_prop,867,0,Essex House Hotel/Condo,8/28/2020,WS
+>>>>>>> origin/main
 122991325,otherb_prop,6,0,,8/29/2020,SL
 122993458,otherb_prop,587,0,,8/29/2020,TD
 122993957,otherb_prop,243,0,,8/27/2020,AP
@@ -29855,7 +31164,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 123161274,otherb_prop,1,0,,8/29/2020,KS
 123166723,otherb_prop,4,0,,8/4/2020,TD
 123166741,otherb_prop,2,0,,8/28/2020,KS
+<<<<<<< HEAD
 123169748,otherb_prop,6,0, ,8/28/2020,BS
+=======
+123169748,otherb_prop,6,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123169855,otherb_prop,4,0,,8/29/2020,TD
 123170488,otherb_prop,184,0,,8/29/2020,TD
 123170530,otherb_prop,115,0,,8/29/2020,TD
@@ -29866,7 +31179,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 123193212,otherb_prop,117,0,,8/29/2020,SL
 123197218,otherb_prop,238,0,,8/27/2020,TD
 123198752,otherb_prop,92,0,,4/28/2022,AP
+<<<<<<< HEAD
 123201971,otherb_prop,3,0, ,8/28/2020,BS
+=======
+123201971,otherb_prop,3,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123203416,otherb_prop,171,0,,8/29/2020,KS
 123203871,otherb_prop,7,0,,8/29/2020,SL
 123204200,otherb_prop,2,0,,8/29/2020,TD
@@ -29874,7 +31191,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 123210667,otherb_prop,4,0,,8/29/2020,TD
 123210818,otherb_prop,242,0,,8/29/2020,TD
 123211194,otherb_prop,1,0,,8/29/2020,KS
+<<<<<<< HEAD
 123213520,otherb_prop,1,0,,8/28/2020,BS
+=======
+123213520,otherb_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 123225517,otherb_prop,1,0,,8/29/2020,KS
 123227070,otherb_prop,117,4,,7/15/2022,SL
 123234357,otherb_prop,80,0,,4/29/2022,AP
@@ -29905,14 +31226,21 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 123376355,otherb_prop,2,0,,4/28/2022,AP
 123379209,otherb_prop,51,0,,8/29/2020,TD
 123383506,otherb_prop,4,0,,8/29/2020,TD
+<<<<<<< HEAD
 123915219,otherb_prop,1,0,,8/3/2022,VB
+=======
+>>>>>>> origin/main
 123384042,otherb_prop,326,0,,8/29/2020,AP
 123387058,otherb_prop,3,0,,8/29/2020,TD
 123389902,otherb_prop,1,0,,8/29/2020,KS
 123392033,otherb_prop,317,0,,8/29/2020,AP
 123392168,otherb_prop,,0,,8/25/2021,AP
 123395879,otherb_prop,8,0,,8/29/2020,SL
+<<<<<<< HEAD
 123397886,otherb_prop,1,0, ,8/28/2020,BS
+=======
+123397886,otherb_prop,1,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123407508,otherb_prop,20,4,,1/31/2020,
 123410512,otherb_prop,2,60,,8/3/2020,TD
 123412271,otherb_prop,331,0,,8/29/2020,AP
@@ -29923,7 +31251,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 123429575,otherb_prop,6,0,,8/29/2020,SL
 123432605,otherb_prop,288,0,,7/15/2022,SL
 123438146,otherb_prop,,0,,8/25/2020,AP
+<<<<<<< HEAD
 123447261,otherb_prop,2,0, ,8/28/2020,BS
+=======
+123447261,otherb_prop,2,0, ,8/28/2020,WS
+>>>>>>> origin/main
 123451638,otherb_prop,2,17,,8/3/2020,TD
 123453592,otherb_prop,84,0,,4/20/2022,SL
 123474864,otherb_prop,0,0,,8/28/2020,KS
@@ -29945,7 +31277,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 123548054,otherb_prop,795,0,,8/29/2020,AP
 123552477,otherb_prop,6,0,,7/30/2020,SL
 123567158,otherb_prop,30,0,,8/29/2020,TD
+<<<<<<< HEAD
 123580062,otherb_prop,117,0,Reduction Apt count,8/28/2020,BS
+=======
+123580062,otherb_prop,117,0,Reduction Apt count,8/28/2020,WS
+>>>>>>> origin/main
 123582783,otherb_prop,12,12,,1/28/2020,
 123584399,otherb_prop,6,0,,8/29/2020,SL
 123585557,otherb_prop,1,2,,7/31/2020,KS
@@ -29995,7 +31331,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 123830382,otherb_prop,3,0,,7/15/2022,SL
 123834896,otherb_prop,4,0,,8/28/2020,KS
 123835476,otherb_prop,70,0,,8/29/2020,KS
+<<<<<<< HEAD
 123847392,otherb_prop,21,0,Hotel to Residential (Condo),8/28/2020,BS
+=======
+123847392,otherb_prop,21,0,Hotel to Residential (Condo),8/28/2020,WS
+>>>>>>> origin/main
 123851796,otherb_prop,166,0,,8/29/2020,AP
 123855890,otherb_prop,1,0,,1/26/2021,TD
 123857594,otherb_prop,84,0,,8/29/2020,TD
@@ -30022,6 +31362,10 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 123911151,otherb_prop,20,0,,8/3/2022,VB
 123914130,otherb_prop,138,0,,4/28/2022,AP
 123914229,otherb_prop,104,0,,8/3/2022,VB
+<<<<<<< HEAD
+=======
+123915219,otherb_prop,1,0,,8/3/2022,VB
+>>>>>>> origin/main
 123920631,otherb_prop,1,0,,8/4/2022,VB
 123923157,otherb_prop,8,0,,1/26/2021,TD
 140911299,otherb_prop,6,0,,7/30/2020,SL
@@ -30181,7 +31525,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 220210509,otherb_prop,63,0,,8/29/2020,AP
 220211241,otherb_prop,60,0,,8/29/2020,AP
 220211893,otherb_prop,90,0,,8/24/2020,SL
+<<<<<<< HEAD
 220228322,otherb_prop,21,9, ,8/28/2020,BS
+=======
+220228322,otherb_prop,21,9, ,8/28/2020,WS
+>>>>>>> origin/main
 220243074,otherb_prop,128,0,,4/29/2022,AP
 220249666,otherb_prop,60,0,,8/29/2020,AP
 220258441,otherb_prop,128,0,,8/29/2020,TD
@@ -30207,7 +31555,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 220447639,otherb_prop,94,0,,8/29/2020,KS
 220451945,otherb_prop,48,0,,8/29/2020,AP
 220453382,otherb_prop,55,0,,8/28/2020,KS
+<<<<<<< HEAD
 220453408,otherb_prop,28,0,,8/28/2020,BS
+=======
+220453408,otherb_prop,28,0,,8/28/2020,WS
+>>>>>>> origin/main
 220464496,otherb_prop,0,0,,8/25/2020,AP
 220476438,otherb_prop,1,0,,1/26/2021,KS
 220481761,otherb_prop,61,0,,8/29/2020,TD
@@ -30290,7 +31642,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 220689672,otherb_prop,,64,,7/29/2020,TD
 220695914,otherb_prop,70,0,,4/28/2022,AP
 220696469,otherb_prop,1,12,,4/27/2022,VB
+<<<<<<< HEAD
 220698975,otherb_prop,3,0, ,8/28/2020,BS
+=======
+220698975,otherb_prop,3,0, ,8/28/2020,WS
+>>>>>>> origin/main
 220705459,otherb_prop,118,0,,4/28/2022,AP
 220706387,otherb_prop,2,0,,8/29/2020,TD
 220712343,otherb_prop,15,15,,1/28/2020,
@@ -30461,7 +31817,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 301902485,otherb_prop,2,0,,8/28/2020,AP
 301911224,otherb_prop,1,0,,8/24/2020,KS
 301915612,otherb_prop,2,0,,8/24/2020,KS
+<<<<<<< HEAD
 301918744,otherb_prop,30,0, ,8/28/2020,BS
+=======
+301918744,otherb_prop,30,0, ,8/28/2020,WS
+>>>>>>> origin/main
 301923621,otherb_prop,1,0,,4/22/2022,SL
 301925665,otherb_prop,156,0,,8/25/2021,SL
 301930347,otherb_prop,4,0,,8/30/2021,TD
@@ -30544,7 +31904,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 302225072,otherb_prop,1,0,,8/24/2020,KS
 302237960,otherb_prop,8,0,,8/25/2021,JS
 302240331,otherb_prop,6,0,,8/28/2020,KS
+<<<<<<< HEAD
 302244505,otherb_prop,2,0,,8/28/2020,BS
+=======
+302244505,otherb_prop,2,0,,8/28/2020,WS
+>>>>>>> origin/main
 302250597,otherb_prop,183,0,,8/25/2021,SL
 302252853,otherb_prop,2,0,,8/24/2020,KS
 302253237,otherb_prop,3,0,,7/15/2022,SL
@@ -30839,7 +32203,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 320495111,otherb_prop,102,0,,8/29/2020,AP
 320495246,otherb_prop,1,0,,8/29/2020,TD
 320501701,otherb_prop,1,0,,8/29/2020,TD
+<<<<<<< HEAD
 320509981,otherb_prop,3,0,,8/28/2020,BS
+=======
+320509981,otherb_prop,3,0,,8/28/2020,WS
+>>>>>>> origin/main
 320513100,otherb_prop,6,0,,8/29/2020,SL
 320513789,otherb_prop,27,0,,8/24/2020,KS
 320514519,otherb_prop,2,0,,8/29/2020,TD
@@ -30960,11 +32328,19 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 320914971,otherb_prop,1,0,,8/29/2020,TD
 320915514,otherb_prop,54,0,,4/22/2022,SL
 320915710,otherb_prop,37,0,,8/29/2020,AP
+<<<<<<< HEAD
 320915809,otherb_prop,1,0, ,8/28/2020,BS
 320915836,otherb_prop,1,0,,8/26/2020,TD
 320915881,otherb_prop,1,0,,8/29/2020,TD
 320915943,otherb_prop,112,0,,8/29/2020,AP
 320915970,otherb_prop,1,0,,8/28/2020,BS
+=======
+320915809,otherb_prop,1,0, ,8/28/2020,WS
+320915836,otherb_prop,1,0,,8/26/2020,TD
+320915881,otherb_prop,1,0,,8/29/2020,TD
+320915943,otherb_prop,112,0,,8/29/2020,AP
+320915970,otherb_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 320916023,otherb_prop,33,0,,8/29/2020,AP
 320916032,otherb_prop,4,0,,8/29/2020,TD
 320916504,otherb_prop,201,0,,8/29/2020,KS
@@ -31053,7 +32429,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 321186480,otherb_prop,51,0,,2/1/2021,TD
 321186499,otherb_prop,9,0,,8/25/2021,JS
 321186649,otherb_prop,22,0,,8/29/2020,KS
+<<<<<<< HEAD
 321187130,otherb_prop,22,0,Class B to Class A,8/28/2020,BS
+=======
+321187130,otherb_prop,22,0,Class B to Class A,8/28/2020,WS
+>>>>>>> origin/main
 321187274,otherb_prop,224,97,,1/28/2020,
 321188479,otherb_prop,8,0,,7/29/2020,SL
 321188772,otherb_prop,4,0,,8/29/2020,SL
@@ -31105,7 +32485,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 321321636,otherb_prop,13,0,,7/15/2022,SL
 321327444,otherb_prop,3,0,,8/29/2020,TD
 321359908,otherb_prop,4,0,,8/29/2020,TD
+<<<<<<< HEAD
 321367025,otherb_prop,1,0,,8/28/2020,BS
+=======
+321367025,otherb_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 321369167,otherb_prop,8,0,,8/29/2020,SL
 321377924,otherb_prop,34,0,,8/25/2021,TD
 321383025,otherb_prop,47,0,,2/1/2021,TD
@@ -31133,7 +32517,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 321435719,otherb_prop,30,30,,1/28/2020,
 321439449,otherb_prop,120,0,,8/29/2020,AP
 321444157,otherb_prop,4,0,,8/29/2020,TD
+<<<<<<< HEAD
 321445646,otherb_prop,1,0,,8/28/2020,BS
+=======
+321445646,otherb_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 321450906,otherb_prop,3,0,,8/29/2020,TD
 321455082,otherb_prop,81,0,,8/29/2020,TD
 321455126,otherb_prop,4,0,,8/24/2020,TD
@@ -31207,7 +32595,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 321618040,otherb_prop,32,0,,8/29/2020,TD
 321627352,otherb_prop,4,0,,8/29/2020,TD
 321627600,otherb_prop,,0,,8/26/2020,AP
+<<<<<<< HEAD
 321628592,otherb_prop,1,0,,8/28/2020,BS
+=======
+321628592,otherb_prop,1,0,,8/28/2020,WS
+>>>>>>> origin/main
 321633336,otherb_prop,2,0,,8/29/2020,TD
 321637742,otherb_prop,2,0,,8/29/2020,TD
 321639027,otherb_prop,2,0,,8/3/2022,VB
@@ -31695,7 +33087,11 @@ X00670832,classa_prop,1,0,,8/24/2022,SL
 420655142,otherb_prop,148,0,,8/29/2020,AP
 420655632,otherb_prop,360,0,,8/29/2020,AP
 420656347,otherb_prop,248,0,,8/29/2020,AP
+<<<<<<< HEAD
 420656695,otherb_prop,923,0,,8/29/2020,BS
+=======
+420656695,otherb_prop,923,0,,8/29/2020,WS
+>>>>>>> origin/main
 420657952,otherb_prop,1,0,,7/21/2022,SL
 420657998,otherb_prop,1,0,,7/21/2022,SL
 420658087,otherb_prop,1,0,,7/21/2022,SL
@@ -32923,6 +34319,7 @@ B00643705,otherb_prop,899,0,,9/9/2022,SL
 B00649561,otherb_prop,899,0,,9/9/2022,SL
 421133026,otherb_prop,96,0,,9/20/2022,WS
 421133035,otherb_prop,96,0,,9/20/2022,WS
+<<<<<<< HEAD
 111555674,remove,,,DOB Test Record,8/9/2021,AP
 127000298,remove,,,DOB Test Record,8/9/2021,AP
 127000305,remove,,,DOB Test Record,8/9/2021,AP
@@ -33781,3 +35178,126 @@ X00718550,otherb_prop,3,0,,3/9/2023,WS
 M07997116,otherb_prop,2,0,,3/9/2023,WS
 421813648,otherb_prop,6,6,,3/9/2023,WS
 321013336,otherb_prop,1,0,,3/9/2023,WS
+=======
+111555674,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+127000298,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+127000305,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+130000238,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+140908908,remove,,,,8/20/2020,KS
+140908962,remove,,,,8/20/2020,KS
+140909462,remove,,,,8/20/2020,KS
+140934997,remove,,,job_desc suggest this is a test record,8/30/2021,
+140941097,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+144444448,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+145147132,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+145147141,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+145147150,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+145147169,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+150000021,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+150000030,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+150000049,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+150000058,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+155500105,remove,,,job_desc suggest this is a test record,8/30/2021,
+166000189,remove,,,,1/30/2020,
+166000198,remove,,,,1/30/2020,
+166000205,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+166000287,remove,,,,1/30/2020,
+166000312,remove,,,,1/30/2020,
+166000820,remove,,,job_desc suggest this is a test record,8/30/2021,
+166001008,remove,,,,1/30/2020,
+166001295,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+166001302,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+166001357,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+166001776,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+166003042,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+166003499,remove,,,,1/30/2020,
+166600101,remove,,,,1/30/2020,
+166600110,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+166660288,remove,,,,8/20/2020,KS
+168980009,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+177812111,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+188832622,remove,,,job_desc suggest this is a test record,8/30/2021,
+190000018,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+190000036,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+190000045,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+190000054,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+195000008,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+199990002,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+199990011,remove,,,,1/30/2020,
+199990020,remove,,,,1/30/2020,
+199990039,remove,,,,1/30/2020,
+199990048,remove,,,,1/30/2020,
+199999986,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+220103340,remove,,,job_desc suggest this is a test record,8/30/2021,
+299990019,remove,,,job_desc suggest this is a test record,8/30/2021,
+310034557,remove,,,,1/1/2020,
+320142056,remove,,,job_desc suggest this is a test record,8/30/2021,
+321235882,remove,,,,1/30/2020,
+402214732,remove,,,,1/1/2020,
+402567183,remove,,,job_desc suggest this is a test record,8/30/2021,
+420138167,remove,,,job_desc suggest this is a test record,8/30/2021,
+420667629,remove,,,job_desc suggest this is a test record,8/30/2021,
+445120002,remove,,,job_desc suggest this is a test record,8/30/2021,
+445120011,remove,,,job_desc suggest this is a test record,8/30/2021,
+500416980,remove,,,job_desc suggest this is a test record,8/30/2021,
+500730186,remove,,,job_desc suggest this is a test record,8/30/2021,
+520138672,remove,,,,1/1/2020,
+B00477348,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+B00477368,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+B00477375,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+B00490749,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+B00739896,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+M00477355,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+M00477391,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+M00501254,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+M00501526,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+M00501528,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+M00501534,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+M00506469,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+M00506519,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+M00592927,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+M00592936,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+M00626389,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+M00639615,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+M00705021,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+M00716822,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+M00729504,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+Q00477357,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+Q00477359,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+Q00477384,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+Q00481625,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+Q00501523,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+Q00527704,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+Q00529718,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+Q00534495,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+Q00534615,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+Q00535330,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+Q00558823,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+Q00572520,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+Q00608357,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+Q00608411,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+S00477350,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+S00477364,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+S00477382,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+S00490753,remove,,,job_desc suggest this is a test record,8/10/2021,AP
+S00517299,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+S00527730,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+S00572518,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+S00572660,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+S00645744,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+S00650926,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+S00687698,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+S00687799,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+S00688001,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+S00716784,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+S00723687,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+X00477349,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+X00477365,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+X00496315,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+X00527695,remove,,,job_desc suggest this is a test record,8/30/2021,
+X00527748,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+X00543063,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+X00543121,remove,,,job_desc suggest this is a test record,8/9/2021,AP
+X00592926,remove,,,job_desc suggest this is a test record,7/12/2022,SL
+421476931,stories_prop,276,26,add prop_stories,8/13/2019,
+>>>>>>> origin/main
