@@ -1,4 +1,4 @@
-name: Test - github hosted database
+name: Run a build of DevDB/HousingDB
 on:
   push:
   workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: config workflows
         id: config
@@ -69,7 +69,7 @@ jobs:
           pip3 install pandas sqlalchemy psycopg2
 
       - name: 1. dataloading for EDM builds
-        if: steps.config.outputs.rebuild == 'yes' 
+        if: steps.config.outputs.rebuild == 'yes'
         run: ./devdb.sh dataloading edm && ls -l
 
       - name: Clear cache
@@ -93,5 +93,5 @@ jobs:
           ./devdb.sh upload
 
       - name: 5. Archive ...
-        if: steps.config.outputs.archive == 'yes' 
+        if: steps.config.outputs.archive == 'yes'
         run: ./devdb.sh archive

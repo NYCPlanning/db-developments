@@ -1,4 +1,4 @@
-name: Data Sync
+name: Data Sync and Geocoding of HPD and DOB Data
 on:
   push:
     paths:
@@ -30,7 +30,7 @@ jobs:
           - dob_jobapplications
           - hpd_hny_units_by_building
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: NYCPlanning/action-library-archive@v1.1
         with:
@@ -47,7 +47,7 @@ jobs:
     needs: sync
     services:
       db:
-        image: postgis/postgis:11-3.0-alpine
+        image: postgis/postgis:12-3.0-alpine
         env:
           POSTGRES_PASSWORD: postgres
         options: >-
@@ -65,7 +65,7 @@ jobs:
       AWS_S3_BUCKET: edm-recipes
       BUILD_ENGINE: postgresql://postgres:postgres@localhost:5432/postgres
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Load to Database (workflow_dispatch)
         if: github.event_name == 'workflow_dispatch'
         run: |
