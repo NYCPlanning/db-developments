@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-20.04
     services:
       db:
-        image: postgis/postgis:13-3.3-alpine
+        image: postgis/postgis:12-3.0-alpine
         env:
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: devdb
