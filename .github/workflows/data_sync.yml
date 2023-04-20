@@ -57,7 +57,7 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     env:
       AWS_S3_ENDPOINT: ${{ secrets.DO_S3_ENDPOINT }}
       AWS_ACCESS_KEY_ID: ${{ secrets.DO_ACCESS_KEY_ID }}
